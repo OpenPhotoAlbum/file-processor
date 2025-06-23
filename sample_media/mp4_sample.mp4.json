@@ -1,0 +1,29 @@
+{
+  "title": "IMG_4461.mp4",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1539797550",
+    "formatted": "Oct 17, 2018, 5:32:30 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1539729450",
+    "formatted": "Oct 16, 2018, 10:37:30 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "people": [{
+    "name": "Margaret"
+  }],
+  "url": "https://photos.google.com/photo/AF1QipOFWWgVbWvFB8YDkvKlySF0wUQw01Gi9j9uWHCy",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceType": "IOS_PHONE"
+    }
+  }
+}

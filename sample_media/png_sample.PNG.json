@@ -1,0 +1,31 @@
+{
+  "title": "IMG_2689.PNG",
+  "description": "",
+  "imageViews": "104",
+  "creationTime": {
+    "timestamp": "1534194058",
+    "formatted": "Aug 13, 2018, 9:00:58 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "650323440",
+    "formatted": "Aug 10, 1990, 9:24:00 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "people": [{
+    "name": "Stephen Young"
+  }, {
+    "name": "Austen Ward"
+  }],
+  "url": "https://photos.google.com/photo/AF1QipOGoitNWYnmB9C_PhLs4JvUo1F1dE2QE40Gq2Y0",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceType": "IOS_PHONE"
+    }
+  }
+}
