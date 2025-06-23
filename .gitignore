@@ -63,6 +63,5 @@ scratch/
 
 # Project specific
 backup/
-metadata/
 
 # Sample media files are now in scratch/ directory (which is ignored)
