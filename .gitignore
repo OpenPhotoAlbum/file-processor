@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript compilation output
+dist/
+*.d.ts.map
+*.js.map
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/
+
+# Project specific
+backup/
+metadata/
+test-output.json
+gps-test.json
+
+# Large media files (keep the small sample files)
+sample_media/*.jpg
+sample_media/*.JPG
+sample_media/*.jpeg
+sample_media/*.JPEG
+sample_media/*.png
+sample_media/*.PNG
+sample_media/*.heic
+sample_media/*.HEIC
+sample_media/*.gif
+sample_media/*.GIF
+sample_media/*.mov
+sample_media/*.MOV
+sample_media/*.mp4
+sample_media/*.MP4
+
+# Keep JSON metadata files and documentation
+!sample_media/*.json
+!sample_media/*.md
