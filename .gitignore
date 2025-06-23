@@ -59,12 +59,11 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+scratch/
 
 # Project specific
 backup/
 metadata/
-test-output.json
-gps-test.json
 
 # Large media files (keep the small sample files)
 sample_media/*.jpg
