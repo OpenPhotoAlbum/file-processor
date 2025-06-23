@@ -204,7 +204,7 @@ export class GPSExtractor {
   /**
    * Extract GPS from directory structure (e.g., organized by location)
    */
-  private extractFromDirectory(directoryPath: string): GPSData | null {
+  private extractFromDirectory(_directoryPath: string): GPSData | null {
     // TODO: Implement directory-based GPS extraction
     // Could parse folder names like "Photos/2023/Paris_48.8566_2.3522/"
     return null;
@@ -240,7 +240,7 @@ export class GPSExtractor {
   /**
    * Extract GPS from XMP data
    */
-  private extractFromXMP(xmpData: any): GPSData | null {
+  private extractFromXMP(_xmpData: any): GPSData | null {
     // TODO: Implement XMP GPS extraction
     return null;
   }

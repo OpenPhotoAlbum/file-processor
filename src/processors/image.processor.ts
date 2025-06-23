@@ -1,8 +1,7 @@
 import { BaseProcessor } from './base.processor.js';
 import { MediaFile, SupportedMimeType } from '../types/media.js';
 import { ImageValidator } from '../utils/image/validation.js';
-import { ExifExtractor } from '../utils/exif/extractor.js';
-import { GPSExtractor } from '../utils/gps/extractor.js';
+import { ExifExtractor, GPSExtractor } from '../utils/extractors/index.js';
 import { getEnabledMimeTypes, getAllSupportedMimeTypes } from '../utils/mime-config.js';
 
 /**
