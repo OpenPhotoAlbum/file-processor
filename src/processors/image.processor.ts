@@ -55,7 +55,9 @@ export class ImageProcessor extends BaseProcessor {
       // 2. Extract GPS data from multiple sources using shared utility
       const gpsResult = await this.gpsExtractor.extractGPS({
         exifData: exifData,
-        googleMetadata: file.googleMetadata
+        sidecarMetadata: file.sidecarMetadata,
+        filename: file.path,
+        directoryPath: file.absolutePath
       });
       
       // 3. TODO: Add other extraction steps

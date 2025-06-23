@@ -1,7 +1,14 @@
 /**
- * GPS data extraction utilities
- * Shared across image processors and potentially video processors
+ * GPS data extraction utilities - completely source-agnostic
+ * Supports EXIF, XMP, and any sidecar metadata format
  */
+
+import { SidecarMetadata } from '../../types/media.js';
+
+/**
+ * GPS source types - extensible for any metadata source
+ */
+export type GPSSource = 'exif' | 'xmp' | 'sidecar' | 'filename' | 'directory' | 'custom';
 
 export interface GPSData {
   latitude: number;
@@ -11,7 +18,8 @@ export interface GPSData {
   direction?: number;
   speed?: number;
   timestamp?: string;
-  source: 'exif' | 'google' | 'xmp' | 'fallback';
+  source: GPSSource;
+  sourceDetails?: string; // Additional info about the source (e.g., 'google-takeout', 'adobe-bridge')
 }
 
 export interface GPSExtractionResult {
@@ -21,41 +29,61 @@ export interface GPSExtractionResult {
 }
 
 /**
+ * Sources for GPS extraction - generic and extensible
+ */
+export interface GPSExtractionSources {
+  exifData?: any;
+  xmpData?: any;
+  sidecarMetadata?: SidecarMetadata[];
+  filename?: string;
+  directoryPath?: string;
+}
+
+/**
  * Extract GPS coordinates from multiple sources with conflict resolution
  */
 export class GPSExtractor {
   
   /**
-   * Main GPS extraction method - tries multiple sources
+   * Main GPS extraction method - completely source-agnostic
    */
-  async extractGPS(sources: {
-    exifData?: any;
-    googleMetadata?: any;
-    xmpData?: any;
-  }): Promise<GPSExtractionResult> {
+  async extractGPS(sources: GPSExtractionSources): Promise<GPSExtractionResult> {
     
     const gpsOptions: GPSData[] = [];
-    const conflicts: string[] = [];
     
-    // 1. Try EXIF GPS data first (most reliable for cameras)
+    // 1. Try EXIF GPS data (most reliable for cameras)
     if (sources.exifData) {
       const exifGPS = this.extractFromExif(sources.exifData);
       if (exifGPS) gpsOptions.push(exifGPS);
     }
     
-    // 2. Try Google Photos metadata (good for phone uploads)
-    if (sources.googleMetadata) {
-      const googleGPS = this.extractFromGoogle(sources.googleMetadata);
-      if (googleGPS) gpsOptions.push(googleGPS);
-    }
-    
-    // 3. Try XMP data (Adobe/other software)
+    // 2. Try XMP data (Adobe/other software)
     if (sources.xmpData) {
       const xmpGPS = this.extractFromXMP(sources.xmpData);
       if (xmpGPS) gpsOptions.push(xmpGPS);
     }
     
-    // 4. Detect conflicts and choose best option
+    // 3. Try sidecar metadata files (any source: Google Takeout, Adobe Bridge, etc.)
+    if (sources.sidecarMetadata) {
+      for (const sidecar of sources.sidecarMetadata) {
+        const sidecarGPS = this.extractFromSidecar(sidecar);
+        if (sidecarGPS) gpsOptions.push(sidecarGPS);
+      }
+    }
+    
+    // 4. Try filename-based GPS (GPS coordinates in filename)
+    if (sources.filename) {
+      const filenameGPS = this.extractFromFilename(sources.filename);
+      if (filenameGPS) gpsOptions.push(filenameGPS);
+    }
+    
+    // 5. Try directory-based GPS (GPS from folder structure)
+    if (sources.directoryPath) {
+      const directoryGPS = this.extractFromDirectory(sources.directoryPath);
+      if (directoryGPS) gpsOptions.push(directoryGPS);
+    }
+    
+    // 6. Detect conflicts and choose best option
     const { primary, conflicts: detectedConflicts } = this.resolveConflicts(gpsOptions);
     
     return {
@@ -95,26 +123,118 @@ export class GPSExtractor {
   }
   
   /**
-   * Extract GPS from Google Photos metadata
+   * Extract GPS from sidecar metadata files (any source)
    */
-  private extractFromGoogle(googleData: any): GPSData | null {
+  private extractFromSidecar(sidecar: SidecarMetadata): GPSData | null {
     try {
-      if (!googleData.geoData && !googleData.photoTakenTime?.gps) return null;
+      const data = sidecar.data;
       
-      const geoData = googleData.geoData || googleData.photoTakenTime?.gps;
+      // Try different GPS data structures based on source
+      let gpsData = null;
+      
+      if (sidecar.source === 'google-takeout') {
+        // Google Takeout JSON structure
+        gpsData = data.geoData || data.photoTakenTime?.gps;
+      } else if (sidecar.source === 'adobe-bridge') {
+        // Adobe Bridge XMP structure
+        gpsData = data.gps || data.location;
+      } else if (sidecar.format === 'json') {
+        // Generic JSON - try common GPS field names
+        gpsData = data.gps || data.location || data.coordinates || data.geoData;
+      } else {
+        // Try to find GPS-like data in any structure
+        gpsData = this.findGPSInGenericData(data);
+      }
+      
+      if (!gpsData || !gpsData.latitude || !gpsData.longitude) return null;
       
       return {
-        latitude: parseFloat(geoData.latitude),
-        longitude: parseFloat(geoData.longitude),
-        altitude: geoData.altitude ? parseFloat(geoData.altitude) : undefined,
-        accuracy: geoData.accuracy ? parseFloat(geoData.accuracy) : undefined,
-        source: 'google'
+        latitude: parseFloat(gpsData.latitude),
+        longitude: parseFloat(gpsData.longitude),
+        altitude: gpsData.altitude ? parseFloat(gpsData.altitude) : undefined,
+        accuracy: gpsData.accuracy ? parseFloat(gpsData.accuracy) : undefined,
+        direction: gpsData.direction ? parseFloat(gpsData.direction) : undefined,
+        speed: gpsData.speed ? parseFloat(gpsData.speed) : undefined,
+        timestamp: gpsData.timestamp || gpsData.time,
+        source: 'sidecar',
+        sourceDetails: `${sidecar.source} (${sidecar.format})`
       };
       
     } catch (error) {
-      console.warn('Error extracting GPS from Google metadata:', error);
+      console.warn(`Error extracting GPS from ${sidecar.source} sidecar:`, error);
       return null;
     }
+  }
+  
+  /**
+   * Extract GPS coordinates from filename patterns
+   */
+  private extractFromFilename(filename: string): GPSData | null {
+    try {
+      // Pattern: IMG_lat_lon.jpg or similar
+      const patterns = [
+        /(\d+\.\d+)_(-?\d+\.\d+)/,  // Simple lat_lon pattern
+        /lat(\d+\.\d+)_lon(-?\d+\.\d+)/i,  // lat123.45_lon-67.89
+        /(\d+\.\d+)N_(\d+\.\d+)[EW]/,  // GPS coordinate format
+      ];
+      
+      for (const pattern of patterns) {
+        const match = filename.match(pattern);
+        if (match) {
+          const lat = parseFloat(match[1]);
+          const lon = parseFloat(match[2]);
+          
+          if (!isNaN(lat) && !isNaN(lon)) {
+            return {
+              latitude: lat,
+              longitude: lon,
+              source: 'filename',
+              sourceDetails: 'extracted from filename pattern'
+            };
+          }
+        }
+      }
+      
+      return null;
+    } catch (error) {
+      return null;
+    }
+  }
+  
+  /**
+   * Extract GPS from directory structure (e.g., organized by location)
+   */
+  private extractFromDirectory(directoryPath: string): GPSData | null {
+    // TODO: Implement directory-based GPS extraction
+    // Could parse folder names like "Photos/2023/Paris_48.8566_2.3522/"
+    return null;
+  }
+  
+  /**
+   * Try to find GPS data in generic/unknown structure
+   */
+  private findGPSInGenericData(data: any): any {
+    // Recursively search for GPS-like data
+    const gpsFields = ['latitude', 'longitude', 'lat', 'lon', 'coords', 'gps'];
+    
+    function search(obj: any): any {
+      if (!obj || typeof obj !== 'object') return null;
+      
+      // Check if this object has GPS fields
+      if (gpsFields.some(field => field in obj)) {
+        return obj;
+      }
+      
+      // Recursively search nested objects
+      for (const value of Object.values(obj)) {
+        const found = search(value);
+        if (found) return found;
+      }
+      
+      return null;
+    }
+    
+    return search(data);
   }
   
   /**
@@ -139,15 +259,28 @@ export class GPSExtractor {
       for (let j = i + 1; j < gpsOptions.length; j++) {
         const distance = this.calculateDistance(gpsOptions[i], gpsOptions[j]);
         if (distance > 0.1) { // 100m threshold
-          conflicts.push(`${gpsOptions[i].source} vs ${gpsOptions[j].source}: ${distance.toFixed(0)}m apart`);
+          const source1 = gpsOptions[i].sourceDetails || gpsOptions[i].source;
+          const source2 = gpsOptions[j].sourceDetails || gpsOptions[j].source;
+          conflicts.push(`${source1} vs ${source2}: ${distance.toFixed(0)}m apart`);
         }
       }
     }
     
-    // Priority order: EXIF > Google > XMP > others
-    const priority = ['exif', 'google', 'xmp', 'fallback'];
+    // Priority order: EXIF > XMP > Sidecar > Filename > Directory > Custom
+    // TODO: Make this configurable via environment variables
+    const priority: GPSSource[] = ['exif', 'xmp', 'sidecar', 'filename', 'directory', 'custom'];
     const sorted = gpsOptions.sort((a, b) => {
-      return priority.indexOf(a.source) - priority.indexOf(b.source);
+      const priorityA = priority.indexOf(a.source);
+      const priorityB = priority.indexOf(b.source);
+      
+      // If both sources are the same type, prefer one with more accuracy info
+      if (priorityA === priorityB) {
+        const accuracyA = a.accuracy || 999999;
+        const accuracyB = b.accuracy || 999999;
+        return accuracyA - accuracyB; // Lower accuracy value is better
+      }
+      
+      return priorityA - priorityB;
     });
     
     return { primary: sorted[0], conflicts };
