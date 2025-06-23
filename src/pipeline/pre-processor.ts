@@ -1,4 +1,4 @@
-import { MediaFile, SidecarMetadata, SidecarFormat } from '../types/media.js';
+import { MediaFile, SidecarMetadata, SidecarFormat, SidecarSource } from '../types/media.js';
 import { detectMimeType } from '../utils/mime.js';
 import { toRelativePath, sanitizePathForLogging } from '../utils/paths.js';
 import { stat, readFile, access } from 'fs/promises';
@@ -56,18 +56,18 @@ async function discoverSidecarFiles(mediaFilePath: string): Promise<SidecarMetad
   // Common sidecar file patterns and their sources
   const patterns = [
     // Google Takeout JSON files
-    { extension: '.json', source: 'google-takeout', format: SidecarFormat.JSON },
+    { extension: '.json', source: SidecarSource.GOOGLE_TAKEOUT, format: SidecarFormat.JSON },
     
     // Adobe Bridge/Lightroom XMP files
-    { extension: '.xmp', source: 'adobe-bridge', format: SidecarFormat.XMP },
+    { extension: '.xmp', source: SidecarSource.ADOBE_BRIDGE, format: SidecarFormat.XMP },
     
     // Generic metadata files
-    { extension: '.metadata.json', source: 'custom', format: SidecarFormat.JSON },
-    { extension: '.meta', source: 'custom', format: SidecarFormat.TEXT },
-    { extension: '.txt', source: 'custom', format: SidecarFormat.TEXT },
+    { extension: '.metadata.json', source: SidecarSource.CUSTOM, format: SidecarFormat.JSON },
+    { extension: '.meta', source: SidecarSource.CUSTOM, format: SidecarFormat.TEXT },
+    { extension: '.txt', source: SidecarSource.CUSTOM, format: SidecarFormat.TEXT },
     
     // Video metadata (for future video support)
-    { extension: '.xml', source: 'unknown', format: SidecarFormat.XML }
+    { extension: '.xml', source: SidecarSource.UNKNOWN, format: SidecarFormat.XML }
   ];
   
   for (const pattern of patterns) {
