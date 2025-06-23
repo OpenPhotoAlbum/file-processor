@@ -3,7 +3,7 @@
  * Supports EXIF, XMP, and any sidecar metadata format
  */
 
-import { SidecarMetadata } from '../../types/media.js';
+import { SidecarMetadata, SidecarFormat } from '../../types/media.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -138,7 +138,7 @@ export class GPSExtractor {
       } else if (sidecar.source === 'adobe-bridge') {
         // Adobe Bridge XMP structure
         gpsData = data.gps || data.location;
-      } else if (sidecar.format === 'json') {
+      } else if (sidecar.format === SidecarFormat.JSON) {
         // Generic JSON - try common GPS field names
         gpsData = data.gps || data.location || data.coordinates || data.geoData;
       } else {

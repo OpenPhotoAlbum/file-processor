@@ -1,8 +1,9 @@
 import { BaseProcessor } from './base.processor.js';
-import { MediaFile } from '../types/media.js';
+import { MediaFile, SupportedMimeType } from '../types/media.js';
 import { ImageValidator } from '../utils/image/validation.js';
 import { ExifExtractor } from '../utils/exif/extractor.js';
 import { GPSExtractor } from '../utils/gps/extractor.js';
+import { getEnabledMimeTypes, getAllSupportedMimeTypes } from '../utils/mime-config.js';
 
 /**
  * Processor for image files (JPEG, PNG, HEIC, GIF, etc.)
@@ -13,14 +14,20 @@ export class ImageProcessor extends BaseProcessor {
   private exifExtractor = new ExifExtractor();
   private gpsExtractor = new GPSExtractor();
   
-  supportedMimes = [
-    'image/jpeg',
-    'image/jpg', 
-    'image/png',
-    'image/heic',
-    'image/gif',
-    'image/tiff'
-  ];
+  /**
+   * Get supported MIME types - combines codebase capabilities with user configuration
+   * Based on SupportedMimeType enum but filtered by ENABLED_MIME_TYPES env var
+   */
+  get supportedMimes(): string[] {
+    return getEnabledMimeTypes();
+  }
+  
+  /**
+   * Get all MIME types that the codebase can handle (regardless of configuration)
+   */
+  get allSupportedMimes(): string[] {
+    return getAllSupportedMimeTypes();
+  }
 
   /**
    * Enhanced validation using shared utilities

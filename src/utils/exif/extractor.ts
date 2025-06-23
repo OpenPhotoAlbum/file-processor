@@ -4,6 +4,8 @@
  */
 
 import { execSync } from 'child_process';
+import { Logger } from '../logging/index.js';
+import { createErrorFactory } from '../errors/index.js';
 
 export interface ExifData {
   camera: {
@@ -55,16 +57,33 @@ export interface ExifData {
  * ExifTool-based metadata extractor
  */
 export class ExifExtractor {
+  private logger = new Logger('EXIF Extractor');
+  private errorFactory = createErrorFactory(this.logger);
   
   /**
    * Extract comprehensive EXIF data from image file
    */
   async extractExifData(filePath: string): Promise<ExifData> {
+    this.logger.debug('Starting EXIF extraction', { filePath });
+    
     try {
       const rawExif = await this.runExifTool(filePath);
-      return this.parseExifData(rawExif);
+      const exifData = this.parseExifData(rawExif);
+      
+      this.logger.info('EXIF extraction completed', { 
+        filePath,
+        hasCamera: !!exifData.camera.make,
+        hasGPS: !!exifData.gps?.latitude,
+        hasTimestamp: !!exifData.timestamps.preferred
+      });
+      
+      return exifData;
     } catch (error) {
-      console.error(`EXIF extraction failed for ${filePath}:`, error);
+      // Create structured error with code
+      const mppError = this.errorFactory.exif('MPP-EXIF-E-001', { filePath }, error as Error);
+      
+      // For non-fatal errors, return empty data and continue processing
+      this.logger.warn('Returning empty EXIF data due to extraction failure');
       return this.createEmptyExifData();
     }
   }
@@ -76,17 +95,45 @@ export class ExifExtractor {
     // Use ExifTool with JSON output and group tags
     const command = `exiftool -json -G -coordFormat "%.8f" "${filePath}"`;
     
+    this.logger.debug('Running ExifTool command', { command, timeout: 5000 });
+    
     try {
       const output = execSync(command, { 
         encoding: 'utf8',
-        maxBuffer: 1024 * 1024 // 1MB buffer for large EXIF data
+        maxBuffer: 1024 * 1024, // 1MB buffer for large EXIF data
+        timeout: 5000 // 5 second timeout
       });
       
-      const jsonData = JSON.parse(output);
-      return Array.isArray(jsonData) ? jsonData[0] : jsonData;
+      if (!output || output.trim() === '') {
+        throw this.errorFactory.exif('MPP-EXIF-W-003', { filePath, reason: 'Empty output from ExifTool' });
+      }
+      
+      try {
+        const jsonData = JSON.parse(output);
+        return Array.isArray(jsonData) ? jsonData[0] : jsonData;
+      } catch (parseError) {
+        throw this.errorFactory.exif('MPP-EXIF-W-003', { 
+          filePath, 
+          reason: 'Invalid JSON output from ExifTool',
+          output: output.substring(0, 200) // First 200 chars for debugging
+        }, parseError as Error);
+      }
       
     } catch (error) {
-      throw new Error(`ExifTool execution failed: ${error}`);
+      // Type guard for system errors
+      if (error && typeof error === 'object' && 'code' in error && error.code === 'ETIMEDOUT') {
+        throw this.errorFactory.exif('MPP-EXIF-E-004', { filePath, timeout: 5000 }, error as unknown as Error);
+      } else if (error && typeof error === 'object' && 'status' in error) {
+        // ExifTool returned non-zero exit code
+        throw this.errorFactory.exif('MPP-EXIF-E-002', { 
+          filePath, 
+          exitCode: (error as any).status,
+          stderr: (error as any).stderr?.toString() 
+        }, error as unknown as Error);
+      } else {
+        // Re-throw MPP errors as-is
+        throw error;
+      }
     }
   }
   

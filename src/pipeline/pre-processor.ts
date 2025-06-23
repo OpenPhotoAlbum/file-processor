@@ -1,4 +1,4 @@
-import { MediaFile, SidecarMetadata } from '../types/media.js';
+import { MediaFile, SidecarMetadata, SidecarFormat } from '../types/media.js';
 import { detectMimeType } from '../utils/mime.js';
 import { toRelativePath, sanitizePathForLogging } from '../utils/paths.js';
 import { stat, readFile, access } from 'fs/promises';
@@ -56,18 +56,18 @@ async function discoverSidecarFiles(mediaFilePath: string): Promise<SidecarMetad
   // Common sidecar file patterns and their sources
   const patterns = [
     // Google Takeout JSON files
-    { extension: '.json', source: 'google-takeout', format: 'json' },
+    { extension: '.json', source: 'google-takeout', format: SidecarFormat.JSON },
     
     // Adobe Bridge/Lightroom XMP files
-    { extension: '.xmp', source: 'adobe-bridge', format: 'xmp' },
+    { extension: '.xmp', source: 'adobe-bridge', format: SidecarFormat.XMP },
     
     // Generic metadata files
-    { extension: '.metadata.json', source: 'custom', format: 'json' },
-    { extension: '.meta', source: 'custom', format: 'text' },
-    { extension: '.txt', source: 'custom', format: 'text' },
+    { extension: '.metadata.json', source: 'custom', format: SidecarFormat.JSON },
+    { extension: '.meta', source: 'custom', format: SidecarFormat.TEXT },
+    { extension: '.txt', source: 'custom', format: SidecarFormat.TEXT },
     
     // Video metadata (for future video support)
-    { extension: '.xml', source: 'unknown', format: 'xml' }
+    { extension: '.xml', source: 'unknown', format: SidecarFormat.XML }
   ];
   
   for (const pattern of patterns) {
@@ -99,23 +99,23 @@ async function discoverSidecarFiles(mediaFilePath: string): Promise<SidecarMetad
 /**
  * Read and parse sidecar file based on format
  */
-async function readSidecarFile(filePath: string, format: string): Promise<any> {
+async function readSidecarFile(filePath: string, format: SidecarFormat): Promise<any> {
   try {
     const content = await readFile(filePath, 'utf8');
     
     switch (format) {
-      case 'json':
+      case SidecarFormat.JSON:
         return JSON.parse(content);
         
-      case 'xmp':
+      case SidecarFormat.XMP:
         // TODO: Implement XMP parsing
         return { rawXMP: content };
         
-      case 'xml':
+      case SidecarFormat.XML:
         // TODO: Implement XML parsing
         return { rawXML: content };
         
-      case 'text':
+      case SidecarFormat.TEXT:
         // Parse simple key=value format
         return parseTextMetadata(content);
         
