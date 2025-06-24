@@ -5,9 +5,15 @@
   "type": "module",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc && node dist/main.js",
-    "test": "echo \"No tests yet\" && exit 0"
+    "build": "npm run lint:check && npm run typecheck && tsc",
+    "build:fast": "tsc",
+    "dev": "npm run build:fast && node dist/main.js",
+    "test": "echo \"No tests yet\" && exit 0",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "lint:check": "eslint src/**/*.ts --max-warnings 15",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "media",
@@ -23,6 +29,12 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.2.1",
     "typescript": "^5.8.3"
   }
 }

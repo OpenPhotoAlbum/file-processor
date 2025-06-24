@@ -5,3 +5,4 @@
 
 export * from './gps.js';
 export * from './exif.js';
+export * from './timestamp.js';

@@ -5,7 +5,7 @@
 
 import { execSync } from 'child_process';
 import { Logger } from '../logging/index.js';
-import { createErrorFactory } from '../errors/index.js';
+import { createExifErrorFactory } from '../errors/factories.js';
 
 export interface ExifData {
   camera: {
@@ -58,7 +58,7 @@ export interface ExifData {
  */
 export class ExifExtractor {
   private logger = new Logger('EXIF Extractor');
-  private errorFactory = createErrorFactory(this.logger);
+  private exifErrors = createExifErrorFactory(this.logger);
   
   /**
    * Extract comprehensive EXIF data from image file
@@ -80,7 +80,7 @@ export class ExifExtractor {
       return exifData;
     } catch (error) {
       // Create structured error with code
-      const mppError = this.errorFactory.exif('MPP-EXIF-E-001', { filePath }, error as Error);
+      this.exifErrors.extractionFailed({ filePath }, error as Error);
       
       // For non-fatal errors, return empty data and continue processing
       this.logger.warn('Returning empty EXIF data due to extraction failure');
@@ -105,31 +105,35 @@ export class ExifExtractor {
       });
       
       if (!output || output.trim() === '') {
-        throw this.errorFactory.exif('MPP-EXIF-W-003', { filePath, reason: 'Empty output from ExifTool' });
+        this.exifErrors.dataCorrupted({ filePath, reason: 'Empty output from ExifTool' });
+throw new Error('Empty output from ExifTool');
       }
       
       try {
         const jsonData = JSON.parse(output);
         return Array.isArray(jsonData) ? jsonData[0] : jsonData;
       } catch (parseError) {
-        throw this.errorFactory.exif('MPP-EXIF-W-003', { 
+        this.exifErrors.dataCorrupted({ 
           filePath, 
           reason: 'Invalid JSON output from ExifTool',
           output: output.substring(0, 200) // First 200 chars for debugging
-        }, parseError as Error);
+        });
+        throw parseError;
       }
       
     } catch (error) {
       // Type guard for system errors
       if (error && typeof error === 'object' && 'code' in error && error.code === 'ETIMEDOUT') {
-        throw this.errorFactory.exif('MPP-EXIF-E-004', { filePath, timeout: 5000 }, error as unknown as Error);
+        this.exifErrors.timeoutExceeded({ filePath, timeout: 5000 });
+        throw error;
       } else if (error && typeof error === 'object' && 'status' in error) {
         // ExifTool returned non-zero exit code
-        throw this.errorFactory.exif('MPP-EXIF-E-002', { 
+        this.exifErrors.exiftoolExecutionFailed({ 
           filePath, 
           exitCode: (error as any).status,
           stderr: (error as any).stderr?.toString() 
         }, error as unknown as Error);
+        throw error;
       } else {
         // Re-throw MPP errors as-is
         throw error;

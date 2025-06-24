@@ -1,17 +1,26 @@
 import { BaseProcessor } from './base.processor.js';
-import { MediaFile, SupportedMimeType } from '../types/media.js';
+import { MediaFile } from '../types/media.js';
 import { ImageValidator } from '../utils/image/validation.js';
-import { ExifExtractor, GPSExtractor } from '../utils/extractors/index.js';
+import { ExifExtractor, GPSExtractor, TimestampExtractor } from '../utils/extractors/index.js';
 import { getEnabledMimeTypes, getAllSupportedMimeTypes } from '../utils/mime-config.js';
+import { stat } from 'fs/promises';
+import { Logger } from '../utils/logging/index.js';
+import { createValidationErrorFactory, createSystemErrorFactory } from '../utils/errors/factories.js';
+import { sanitizePathForLogging } from '../utils/paths.js';
 
 /**
  * Processor for image files (JPEG, PNG, HEIC, GIF, etc.)
  * Handles EXIF extraction, GPS parsing, thumbnail generation
  */
 export class ImageProcessor extends BaseProcessor {
+  private logger = new Logger('Image Processor');
+  private validationErrors = createValidationErrorFactory(this.logger);
+  private systemErrors = createSystemErrorFactory(this.logger);
+  
   private validator = new ImageValidator();
   private exifExtractor = new ExifExtractor();
   private gpsExtractor = new GPSExtractor();
+  private timestampExtractor = new TimestampExtractor();
   
   /**
    * Get supported MIME types - combines codebase capabilities with user configuration
@@ -32,27 +41,46 @@ export class ImageProcessor extends BaseProcessor {
    * Enhanced validation using shared utilities
    */
   async validate(file: MediaFile): Promise<boolean> {
-    console.log(`Validating image: ${file.path}`);
+    const safePath = sanitizePathForLogging(file.absolutePath);
+    this.logger.info(`Validating image: ${safePath}`);
     
-    const result = await this.validator.validateImage(file);
-    
-    if (!result.isValid) {
-      console.error(`❌ Validation failed: ${file.path}`);
-      result.errors.forEach(error => console.error(`  Error: ${error}`));
+    try {
+      const result = await this.validator.validateImage(file);
+      
+      if (!result.isValid) {
+        this.logger.error(`Validation failed for image: ${safePath}`);
+        result.errors.forEach(error => {
+          this.validationErrors.signatureFailed({
+            filePath: safePath,
+            error,
+            operation: 'image validation'
+          });
+        });
+        return false;
+      }
+      
+      if (result.warnings.length > 0) {
+        result.warnings.forEach(warning => {
+          this.logger.warn(`Image validation warning for ${safePath}: ${warning}`);
+        });
+      }
+      
+      this.logger.info(`Image validation passed: ${safePath}`);
+      return true;
+      
+    } catch (error) {
+      this.systemErrors.fileOperationFailed({
+        filePath: safePath,
+        operation: 'image validation'
+      }, error as Error);
       return false;
     }
-    
-    if (result.warnings.length > 0) {
-      result.warnings.forEach(warning => console.warn(`  Warning: ${warning}`));
-    }
-    
-    console.log(`✅ Image validation passed: ${file.path}`);
-    return true;
   }
 
 
   async extract(file: MediaFile): Promise<any> {
-    console.log(`Extracting image metadata from: ${file.path}`);
+    const safePath = sanitizePathForLogging(file.absolutePath);
+    this.logger.info(`Extracting image metadata from: ${safePath}`);
     
     try {
       // 1. Extract EXIF data using shared utility
@@ -60,15 +88,26 @@ export class ImageProcessor extends BaseProcessor {
       
       // 2. Extract GPS data from multiple sources using shared utility
       const gpsResult = await this.gpsExtractor.extractGPS({
-        exifData: exifData,
+        exifData,
         sidecarMetadata: file.sidecarMetadata,
         filename: file.path,
         directoryPath: file.absolutePath
       });
+
+      // 3. Extract smart timestamps from all sources
+      const fileStats = await stat(file.absolutePath);
+      const timestampResult = await this.timestampExtractor.extractTimestamps({
+        exifData,
+        sidecarMetadata: file.sidecarMetadata,
+        fileStats,
+        filePath: file.absolutePath
+      });
       
-      // 3. TODO: Add other extraction steps
+      // 4. TODO: Add other extraction steps
       // - Thumbnail generation
       // - Dominant color extraction
+      
+      this.logger.info(`Successfully extracted metadata from: ${safePath}`);
       
       return {
         type: 'image',
@@ -85,7 +124,19 @@ export class ImageProcessor extends BaseProcessor {
           alternatives: gpsResult.alternatives,
           conflicts: gpsResult.conflicts
         },
-        timestamps: exifData.timestamps,
+        timestamps: {
+          // Legacy EXIF timestamp data for compatibility
+          exif: exifData.timestamps,
+          // Smart timestamp analysis
+          smart: {
+            primary: timestampResult.primary,
+            capture: timestampResult.capture,
+            creation: timestampResult.creation,
+            modification: timestampResult.modification,
+            alternatives: timestampResult.alternatives,
+            conflicts: timestampResult.conflicts
+          }
+        },
         camera: exifData.camera,
         settings: exifData.settings,
         technical: exifData.technical,
@@ -95,9 +146,13 @@ export class ImageProcessor extends BaseProcessor {
       };
       
     } catch (error) {
-      console.error(`Error extracting metadata from ${file.path}:`, error);
+      this.systemErrors.fileOperationFailed({
+        filePath: safePath,
+        operation: 'metadata extraction',
+        processorType: 'ImageProcessor'
+      }, error as Error);
       
-      // Return minimal data on error
+      // Return minimal data on error to allow processing to continue
       return {
         type: 'image',
         processor: 'ImageProcessor',
@@ -105,7 +160,13 @@ export class ImageProcessor extends BaseProcessor {
         error: error instanceof Error ? error.message : 'Unknown error',
         exif: {},
         dimensions: { width: 0, height: 0 },
-        gps: null
+        gps: null,
+        timestamps: null,
+        camera: null,
+        settings: null,
+        technical: null,
+        thumbnail: null,
+        dominantColor: null
       };
     }
   }

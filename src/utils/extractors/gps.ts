@@ -4,6 +4,8 @@
  */
 
 import { SidecarMetadata, SidecarFormat, SidecarSource } from '../../types/media.js';
+import { Logger } from '../logging/index.js';
+import { createGPSErrorFactory } from '../errors/factories.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -43,6 +45,8 @@ export interface GPSExtractionSources {
  * Extract GPS coordinates from multiple sources with conflict resolution
  */
 export class GPSExtractor {
+  private logger = new Logger('GPS Extractor');
+  private gpsErrors = createGPSErrorFactory(this.logger);
   
   /**
    * Main GPS extraction method - completely source-agnostic
@@ -117,7 +121,10 @@ export class GPSExtractor {
       };
       
     } catch (error) {
-      console.warn('Error extracting GPS from EXIF:', error);
+      this.gpsErrors.extractionFailed({
+        source: 'EXIF',
+        operation: 'coordinate extraction'
+      }, error as Error);
       return null;
     }
   }
@@ -161,7 +168,11 @@ export class GPSExtractor {
       };
       
     } catch (error) {
-      console.warn(`Error extracting GPS from ${sidecar.source} sidecar:`, error);
+      this.gpsErrors.extractionFailed({
+        source: sidecar.source,
+        format: sidecar.format,
+        sidecarPath: sidecar.path
+      }, error as Error);
       return null;
     }
   }
