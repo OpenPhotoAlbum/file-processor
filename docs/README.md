@@ -7,6 +7,7 @@ Welcome to the documentation for the Media Processing Pipeline project. This sys
 ### Core Systems
 - **[Path System](./path-system.md)** - Portable path abstraction with environment-based configuration
 - **[Logging System](./logging-system.md)** - Scoped logging with dual-output formatting
+- **[Error System](./error-system.md)** - Hybrid error handling with structured codes and semantic methods
 - **[Image Validation](./image-validation.md)** - File signature detection and validation
 - **[Configuration](./configuration.md)** - Environment-based configuration management
 
@@ -48,6 +49,7 @@ src/
 ├── processors/        # Media-specific processors (Image, Video, Audio)
 ├── utils/
 │   ├── logging/      # Scoped logging system
+│   ├── errors/       # Hybrid error system with semantic methods
 │   ├── config/       # Environment configuration
 │   ├── image/        # Image validation utilities  
 │   ├── exif/         # EXIF extraction
@@ -62,6 +64,7 @@ src/
 - **🎯 Type-Safe**: Full TypeScript with comprehensive type definitions
 - **📁 Portable Paths**: Environment-independent file references (`sample:`, `media:`, `relative:`)
 - **📊 Rich Logging**: Scoped loggers with colored console and plain file output
+- **⚠️ Hybrid Error System**: Structured error codes with semantic methods and autocomplete
 - **🔍 Validation**: File signature detection and integrity checking
 - **🗺️ GPS Processing**: Multi-source GPS data with conflict resolution
 - **⚙️ Configurable**: All settings via environment variables with custom colors
@@ -76,6 +79,9 @@ src/
 
 ## 📝 Recent Updates
 
+- **Hybrid Error System**: Replaced magic strings with semantic methods and named constants
+- **Structured Error Handling**: Consistent `MPP-[COMPONENT]-[SEVERITY]-[NUMBER]` error codes
+- **Enhanced Logging Integration**: Component-scoped loggers with path sanitization
 - **Path System Refactor**: Extracted hardcoded prefixes into type-safe `PathPrefix` enum
 - **Security Improvements**: Removed sensitive files from git history  
 - **Test Organization**: All test work moved to ignored `scratch/` directory

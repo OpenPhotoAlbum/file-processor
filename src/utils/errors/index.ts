@@ -7,7 +7,7 @@ export * from './codes.js';
 export * from './classes.js';
 
 import { Logger } from '../logging/index.js';
-import { MPPError, ValidationError, ExifError, GPSError, PathError, MetadataError, ConfigError, SystemError } from './classes.js';
+import { MPPError, ValidationError, ExifError, GPSError, TimestampError, PathError, MetadataError, ConfigError, SystemError } from './classes.js';
 import { ErrorCode, ErrorSeverity } from './codes.js';
 
 /**
@@ -39,6 +39,15 @@ export class ErrorFactory {
    */
   gps(code: ErrorCode, context?: Record<string, any>, cause?: Error): GPSError {
     const error = new GPSError(code, context, cause);
+    this.logError(error);
+    return error;
+  }
+
+  /**
+   * Create and log timestamp error
+   */
+  timestamp(code: ErrorCode, context?: Record<string, any>, cause?: Error): TimestampError {
+    const error = new TimestampError(code, context, cause);
     this.logError(error);
     return error;
   }

@@ -114,6 +114,16 @@ export class GPSError extends MPPError {
 }
 
 /**
+ * Timestamp processing error
+ */
+export class TimestampError extends MPPError {
+  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+    super(code, context, cause);
+    this.name = 'TimestampError';
+  }
+}
+
+/**
  * Path resolution error
  */
 export class PathError extends MPPError {

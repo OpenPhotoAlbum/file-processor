@@ -3,7 +3,9 @@
  * Supports EXIF, XMP, and any sidecar metadata format
  */
 
-import { SidecarMetadata, SidecarFormat } from '../../types/media.js';
+import { SidecarMetadata, SidecarFormat, SidecarSource } from '../../types/media.js';
+import { Logger } from '../logging/index.js';
+import { createGPSErrorFactory } from '../errors/factories.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -43,6 +45,8 @@ export interface GPSExtractionSources {
  * Extract GPS coordinates from multiple sources with conflict resolution
  */
 export class GPSExtractor {
+  private logger = new Logger('GPS Extractor');
+  private gpsErrors = createGPSErrorFactory(this.logger);
   
   /**
    * Main GPS extraction method - completely source-agnostic
@@ -117,7 +121,10 @@ export class GPSExtractor {
       };
       
     } catch (error) {
-      console.warn('Error extracting GPS from EXIF:', error);
+      this.gpsErrors.extractionFailed({
+        source: 'EXIF',
+        operation: 'coordinate extraction'
+      }, error as Error);
       return null;
     }
   }
@@ -132,10 +139,10 @@ export class GPSExtractor {
       // Try different GPS data structures based on source
       let gpsData = null;
       
-      if (sidecar.source === 'google-takeout') {
+      if (sidecar.source === SidecarSource.GOOGLE_TAKEOUT) {
         // Google Takeout JSON structure
         gpsData = data.geoData || data.photoTakenTime?.gps;
-      } else if (sidecar.source === 'adobe-bridge') {
+      } else if (sidecar.source === SidecarSource.ADOBE_BRIDGE) {
         // Adobe Bridge XMP structure
         gpsData = data.gps || data.location;
       } else if (sidecar.format === SidecarFormat.JSON) {
@@ -161,7 +168,11 @@ export class GPSExtractor {
       };
       
     } catch (error) {
-      console.warn(`Error extracting GPS from ${sidecar.source} sidecar:`, error);
+      this.gpsErrors.extractionFailed({
+        source: sidecar.source,
+        format: sidecar.format,
+        sidecarPath: sidecar.path
+      }, error as Error);
       return null;
     }
   }
@@ -204,7 +215,7 @@ export class GPSExtractor {
   /**
    * Extract GPS from directory structure (e.g., organized by location)
    */
-  private extractFromDirectory(directoryPath: string): GPSData | null {
+  private extractFromDirectory(_directoryPath: string): GPSData | null {
     // TODO: Implement directory-based GPS extraction
     // Could parse folder names like "Photos/2023/Paris_48.8566_2.3522/"
     return null;
@@ -240,7 +251,7 @@ export class GPSExtractor {
   /**
    * Extract GPS from XMP data
    */
-  private extractFromXMP(xmpData: any): GPSData | null {
+  private extractFromXMP(_xmpData: any): GPSData | null {
     // TODO: Implement XMP GPS extraction
     return null;
   }

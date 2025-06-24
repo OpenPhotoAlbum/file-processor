@@ -9,6 +9,7 @@ import { postProcess } from './post-processor.js';
  */
 export async function processFile(filePath: string): Promise<ProcessingResult> {
   try {
+    // update this to our logging system
     console.log(`Processing: ${filePath}`);
     
     // 1. Common pre-processing (shared for all files)

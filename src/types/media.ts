@@ -13,6 +13,22 @@ export enum SidecarFormat {
 }
 
 /**
+ * Known sidecar metadata sources
+ */
+export enum SidecarSource {
+  /** Google Takeout photo metadata */
+  GOOGLE_TAKEOUT = 'google-takeout',
+  /** Adobe Bridge XMP metadata */
+  ADOBE_BRIDGE = 'adobe-bridge',
+  /** Adobe Lightroom metadata */
+  ADOBE_LIGHTROOM = 'adobe-lightroom',
+  /** Custom metadata files */
+  CUSTOM = 'custom',
+  /** Unknown or unidentified source */
+  UNKNOWN = 'unknown'
+}
+
+/**
  * MIME types that the codebase can actually process
  * These are the formats our processors, validators, and extractors support
  */
@@ -35,7 +51,7 @@ export enum SupportedMimeType {
  * Metadata from external sidecar files (JSON, XMP, etc.)
  */
 export interface SidecarMetadata {
-  source: string;           // Source system: 'google-takeout', 'adobe-bridge', 'custom', etc.
+  source: SidecarSource;    // Source system using type-safe enum
   format: SidecarFormat;    // File format using type-safe enum
   path: string;            // Relative path to metadata file
   absolutePath: string;    // Absolute path for processing

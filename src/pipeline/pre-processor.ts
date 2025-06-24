@@ -1,8 +1,10 @@
-import { MediaFile, SidecarMetadata, SidecarFormat } from '../types/media.js';
+import { MediaFile, SidecarMetadata, SidecarFormat, SidecarSource } from '../types/media.js';
 import { detectMimeType } from '../utils/mime.js';
 import { toRelativePath, sanitizePathForLogging } from '../utils/paths.js';
 import { stat, readFile, access } from 'fs/promises';
 import { dirname, basename, extname, join } from 'path';
+import { Logger } from '../utils/logging/index.js';
+import { createSystemErrorFactory, createMetadataErrorFactory, createValidationErrorFactory } from '../utils/errors/factories.js';
 
 /**
  * Common pre-processing steps for ALL file types
@@ -12,36 +14,54 @@ import { dirname, basename, extname, join } from 'path';
  * - Discover sidecar metadata files
  */
 export async function preProcess(absolutePath: string): Promise<MediaFile> {
+  const logger = new Logger('Pre-processor');
+  const systemErrors = createSystemErrorFactory(logger);
+  const validationErrors = createValidationErrorFactory(logger);
   const safePath = sanitizePathForLogging(absolutePath);
-  console.log(`Pre-processing: ${safePath}`);
   
-  // Check if file exists and get size
-  const stats = await stat(absolutePath);
+  logger.info(`Pre-processing: ${safePath}`);
   
-  // Detect MIME type from extension
-  const mimeType = detectMimeType(absolutePath);
+  try {
+    // Check if file exists and get size
+    const stats = await stat(absolutePath);
+    
+    // Detect MIME type from extension
+    const mimeType = detectMimeType(absolutePath);
+    if (!mimeType) {
+      validationErrors.mimeTypeUnknown({
+        filePath: safePath,
+        operation: 'MIME type detection'
+      });
+    }
+    
+    // Convert to relative path for storage
+    const relativePath = toRelativePath(absolutePath);
+    
+    // Discover sidecar metadata files
+    const sidecarMetadata = await discoverSidecarFiles(absolutePath);
   
-  // Convert to relative path for storage
-  const relativePath = toRelativePath(absolutePath);
+    logger.info(`  MIME type: ${mimeType}`);
+    logger.info(`  File size: ${stats.size} bytes`);
+    logger.info(`  Relative path: ${relativePath}`);
+    if (sidecarMetadata.length > 0) {
+      logger.info(`  Found ${sidecarMetadata.length} sidecar metadata file(s)`);
+    }
   
-  // Discover sidecar metadata files
-  const sidecarMetadata = await discoverSidecarFiles(absolutePath);
-  
-  console.log(`  MIME type: ${mimeType}`);
-  console.log(`  File size: ${stats.size} bytes`);
-  console.log(`  Relative path: ${relativePath}`);
-  if (sidecarMetadata.length > 0) {
-    console.log(`  Found ${sidecarMetadata.length} sidecar metadata file(s)`);
+    return {
+      path: relativePath,          // Store relative path
+      absolutePath,               // Keep absolute for processing
+      hash: 'placeholder-hash',   // TODO: Generate actual hash
+      size: stats.size,
+      mimeType,
+      sidecarMetadata             // Generic sidecar metadata from any source
+    };
+  } catch (error) {
+    systemErrors.fileOperationFailed({
+      filePath: safePath,
+      operation: 'file pre-processing'
+    }, error as Error);
+    throw error;
   }
-  
-  return {
-    path: relativePath,          // Store relative path
-    absolutePath,               // Keep absolute for processing
-    hash: 'placeholder-hash',   // TODO: Generate actual hash
-    size: stats.size,
-    mimeType,
-    sidecarMetadata             // Generic sidecar metadata from any source
-  };
 }
 
 /**
@@ -51,27 +71,30 @@ export async function preProcess(absolutePath: string): Promise<MediaFile> {
 async function discoverSidecarFiles(mediaFilePath: string): Promise<SidecarMetadata[]> {
   const sidecarFiles: SidecarMetadata[] = [];
   const dir = dirname(mediaFilePath);
-  const baseName = basename(mediaFilePath, extname(mediaFilePath));
+  const fileName = basename(mediaFilePath); // Keep full filename with extension
+  const baseName = basename(mediaFilePath, extname(mediaFilePath)); // Base name without extension
   
   // Common sidecar file patterns and their sources
   const patterns = [
-    // Google Takeout JSON files
-    { extension: '.json', source: 'google-takeout', format: SidecarFormat.JSON },
+    // Google Takeout JSON files (use full filename)
+    { extension: '.json', source: SidecarSource.GOOGLE_TAKEOUT, format: SidecarFormat.JSON, useFullName: true },
     
-    // Adobe Bridge/Lightroom XMP files
-    { extension: '.xmp', source: 'adobe-bridge', format: SidecarFormat.XMP },
+    // Adobe Bridge/Lightroom XMP files (typically use base name)
+    { extension: '.xmp', source: SidecarSource.ADOBE_BRIDGE, format: SidecarFormat.XMP, useFullName: false },
     
     // Generic metadata files
-    { extension: '.metadata.json', source: 'custom', format: SidecarFormat.JSON },
-    { extension: '.meta', source: 'custom', format: SidecarFormat.TEXT },
-    { extension: '.txt', source: 'custom', format: SidecarFormat.TEXT },
+    { extension: '.metadata.json', source: SidecarSource.CUSTOM, format: SidecarFormat.JSON, useFullName: false },
+    { extension: '.meta', source: SidecarSource.CUSTOM, format: SidecarFormat.TEXT, useFullName: false },
+    { extension: '.txt', source: SidecarSource.CUSTOM, format: SidecarFormat.TEXT, useFullName: false },
     
     // Video metadata (for future video support)
-    { extension: '.xml', source: 'unknown', format: SidecarFormat.XML }
+    { extension: '.xml', source: SidecarSource.UNKNOWN, format: SidecarFormat.XML, useFullName: false }
   ];
   
   for (const pattern of patterns) {
-    const sidecarPath = join(dir, baseName + pattern.extension);
+    // Choose filename strategy based on pattern
+    const nameToUse = pattern.useFullName ? fileName : baseName;
+    const sidecarPath = join(dir, nameToUse + pattern.extension);
     
     try {
       await access(sidecarPath);
@@ -104,26 +127,32 @@ async function readSidecarFile(filePath: string, format: SidecarFormat): Promise
     const content = await readFile(filePath, 'utf8');
     
     switch (format) {
-      case SidecarFormat.JSON:
-        return JSON.parse(content);
+    case SidecarFormat.JSON:
+      return JSON.parse(content);
         
-      case SidecarFormat.XMP:
-        // TODO: Implement XMP parsing
-        return { rawXMP: content };
+    case SidecarFormat.XMP:
+      // TODO: Implement XMP parsing
+      return { rawXMP: content };
         
-      case SidecarFormat.XML:
-        // TODO: Implement XML parsing
-        return { rawXML: content };
+    case SidecarFormat.XML:
+      // TODO: Implement XML parsing
+      return { rawXML: content };
         
-      case SidecarFormat.TEXT:
-        // Parse simple key=value format
-        return parseTextMetadata(content);
+    case SidecarFormat.TEXT:
+      // Parse simple key=value format
+      return parseTextMetadata(content);
         
-      default:
-        return { rawContent: content };
+    default:
+      return { rawContent: content };
     }
   } catch (error) {
-    console.warn(`Failed to parse sidecar file ${filePath}:`, error);
+    const logger = new Logger('Pre-processor');
+    const metadataErrors = createMetadataErrorFactory(logger);
+    metadataErrors.formatUnknown({
+      sidecarPath: filePath,
+      format,
+      operation: 'sidecar file parsing'
+    }, error as Error);
     return null;
   }
 }

@@ -7,7 +7,8 @@ import { MediaFile } from '../types/media.js';
  * - Save generated files (thumbnails, etc.)
  * - Clean up temp files
  */
-export async function postProcess(file: MediaFile, metadata: any): Promise<any> {
+export async function postProcess(file: MediaFile, _metadata: any): Promise<any> {
+  // update this to our logging system
   console.log(`Post-processing: ${file.path}`); // Safe to log - it's the relative path
   
   // TODO: Implement actual logic
