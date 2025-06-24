@@ -59,29 +59,9 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+scratch/
 
 # Project specific
 backup/
-metadata/
-test-output.json
-gps-test.json
 
-# Large media files (keep the small sample files)
-sample_media/*.jpg
-sample_media/*.JPG
-sample_media/*.jpeg
-sample_media/*.JPEG
-sample_media/*.png
-sample_media/*.PNG
-sample_media/*.heic
-sample_media/*.HEIC
-sample_media/*.gif
-sample_media/*.GIF
-sample_media/*.mov
-sample_media/*.MOV
-sample_media/*.mp4
-sample_media/*.MP4
-
-# Keep JSON metadata files and documentation
-!sample_media/*.json
-!sample_media/*.md
+# Sample media files are now in scratch/ directory (which is ignored)
