@@ -8,7 +8,9 @@
     "build": "npm run lint:check && npm run typecheck && tsc",
     "build:fast": "tsc",
     "dev": "npm run build:fast && node dist/main.js",
-    "test": "echo \"No tests yet\" && exit 0",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "lint:check": "eslint src/**/*.ts --max-warnings 25",
@@ -32,6 +34,7 @@
     "sharp": "^0.34.2"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.3",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
@@ -39,6 +42,9 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^7.2.1",
+    "jest": "^30.0.2",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }

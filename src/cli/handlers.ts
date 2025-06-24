@@ -2,7 +2,7 @@
  * CLI command handlers and main processing logic
  */
 
-import { Logger } from '../utils/logging/index.js';
+import { Logger, LogLevel } from '../utils/logging/index.js';
 import { createSystemErrorFactory } from '../utils/errors/factories.js';
 import { FileSystemService } from '../services/index.js';
 import { processFile } from '../pipeline/entry.js';
@@ -34,6 +34,11 @@ export class CLIHandler {
     try {
       // Validate and normalize options
       const options = normalizeCliOptions(rawOptions);
+      
+      // Configure global logging based on quiet flag
+      if (options.quiet) {
+        Logger.configure({ level: LogLevel.FATAL });
+      }
       
       if (!options.quiet) {
         logger.info('Starting media processing pipeline...');

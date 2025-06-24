@@ -11,9 +11,6 @@ export async function postProcess(
   file: MediaFile, 
   _metadata: ProcessingResult
 ): Promise<ProcessingResult> {
-  // update this to our logging system
-  console.log(`Post-processing: ${file.path}`); // Safe to log - it's the relative path
-  
   // TODO: Implement actual logic
   // - Database storage
   // - Notification sending

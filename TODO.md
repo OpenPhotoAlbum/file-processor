@@ -47,8 +47,16 @@
 - **Architecture**: Clean separation of concerns across multiple focused modules
 
 ## Next Steps
-1. Complete FileSystemService implementation
-2. Test filesystem service with existing processors
-3. Implement CLI using filesystem service
-4. Refactor existing code to eliminate duplication
-5. Update documentation
+
+### 🧪 CLI Response Testing Framework
+- [ ] Create test structure: `tests/cli-response/` with mocks/ subdirectory
+- [ ] Generate expected response files for each sample image in scratch/
+- [ ] Build CLI test runner that executes commands and compares outputs
+- [ ] Implement response validator with schema checking
+- [ ] Add npm test script for CLI response validation
+- [ ] Create documentation for maintaining test expectations
+
+### 🔍 Performance Investigation
+- [ ] Investigate MaxListenersExceededWarning for AbortSignal memory leaks
+- [ ] Review database connection pooling and cleanup patterns
+- [ ] Check for event listener accumulation in services
