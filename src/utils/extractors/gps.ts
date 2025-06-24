@@ -6,8 +6,8 @@
 import { SidecarMetadata, SidecarFormat, SidecarSource } from '../../types/media.js';
 import { Logger } from '../logging/index.js';
 import { createGPSErrorFactory } from '../errors/factories.js';
-import { getGeolocationService } from '../../services/index.js';
-import type { LocationMatch } from '../../services/index.js';
+import { getGeolocationService, getLandmarkService } from '../../services/index.js';
+import type { LocationMatch, LandmarkMatch } from '../../services/index.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -26,6 +26,17 @@ export interface GPSData {
   sourceDetails?: string; // Additional info about the source (e.g., 'google-takeout', 'adobe-bridge')
 }
 
+/**
+ * Enrichment status for GPS extraction (combines geolocation and landmarks)
+ */
+export interface GPSEnrichmentStatus {
+  geolocation: 'success' | 'not_found' | 'error' | 'disabled';
+  landmarks: 'success' | 'partial' | 'not_found' | 'error' | 'disabled';
+  providersUsed: string[];
+  cacheHit: boolean;
+  queryTimeMs: number;
+}
+
 export interface GPSExtractionResult {
   primary: GPSData | null;
   alternatives: GPSData[];
@@ -33,7 +44,8 @@ export interface GPSExtractionResult {
   
   // Enhanced with database lookup
   geolocation?: LocationMatch | null;
-  enrichmentStatus: 'success' | 'not_found' | 'error' | 'disabled';
+  landmarks: LandmarkMatch[];
+  enrichmentStatus: GPSEnrichmentStatus;
 }
 
 /**
@@ -96,22 +108,33 @@ export class GPSExtractor {
     // 6. Detect conflicts and choose best option
     const { primary, conflicts: detectedConflicts } = this.resolveConflicts(gpsOptions);
     
-    // 7. Enrich with geolocation database lookup (if coordinates available)
+    // 7. Enrich with geolocation and landmark data (if coordinates available)
     let geolocation: LocationMatch | null = null;
-    let enrichmentStatus: 'success' | 'not_found' | 'error' | 'disabled' = 'disabled';
+    let landmarks: LandmarkMatch[] = [];
+    let enrichmentStatus: GPSEnrichmentStatus = {
+      geolocation: 'disabled',
+      landmarks: 'disabled',
+      providersUsed: [],
+      cacheHit: false,
+      queryTimeMs: 0
+    };
     
     if (primary && primary.latitude && primary.longitude) {
-      this.logger.info('Attempting geolocation enrichment', {
+      this.logger.info('Attempting geolocation and landmark enrichment', {
         coordinates: `${primary.latitude}, ${primary.longitude}`
       });
+      
+      const enrichmentStartTime = Date.now();
+      
+      // Geolocation lookup
       try {
         const geolocationService = getGeolocationService();
         this.logger.info('Got geolocation service, calling findLocation');
         geolocation = await geolocationService.findLocation(primary.latitude, primary.longitude);
-        enrichmentStatus = geolocation ? 'success' : 'not_found';
+        enrichmentStatus.geolocation = geolocation ? 'success' : 'not_found';
         this.logger.info('Geolocation lookup completed', {
           found: !!geolocation,
-          status: enrichmentStatus
+          status: enrichmentStatus.geolocation
         });
         
         if (geolocation) {
@@ -128,8 +151,52 @@ export class GPSExtractor {
           coordinates: `${primary.latitude}, ${primary.longitude}`,
           error: (error as Error).message 
         });
-        enrichmentStatus = 'error';
+        enrichmentStatus.geolocation = 'error';
       }
+      
+      // Landmark lookup
+      try {
+        const landmarkService = getLandmarkService();
+        this.logger.info('Got landmark service, searching for nearby landmarks');
+        const landmarkResult = await landmarkService.findNearbyLandmarks(
+          primary.latitude, 
+          primary.longitude,
+          {
+            maxRadius: 50000, // 50km search radius
+            maxResults: 10,
+            minConfidence: 0.2
+          }
+        );
+        
+        landmarks = landmarkResult.matches;
+        enrichmentStatus.landmarks = landmarkResult.status.landmarks;
+        enrichmentStatus.providersUsed = landmarkResult.status.providersUsed;
+        enrichmentStatus.cacheHit = landmarkResult.status.cacheHit;
+        
+        this.logger.info('Landmark lookup completed', {
+          landmarkCount: landmarks.length,
+          status: enrichmentStatus.landmarks,
+          providers: enrichmentStatus.providersUsed
+        });
+        
+        if (landmarks.length > 0) {
+          this.logger.info('GPS coordinates enriched with landmark data', {
+            coordinates: `${primary.latitude}, ${primary.longitude}`,
+            landmarkCount: landmarks.length,
+            primaryLandmark: landmarks[0].landmark.fullName,
+            distance: `${(landmarks[0].distance / 1000).toFixed(1)}km`,
+            confidence: `${(landmarks[0].confidence * 100).toFixed(0)}%`
+          });
+        }
+      } catch (error) {
+        this.logger.warn('Landmark enrichment failed', { 
+          coordinates: `${primary.latitude}, ${primary.longitude}`,
+          error: (error as Error).message 
+        });
+        enrichmentStatus.landmarks = 'error';
+      }
+      
+      enrichmentStatus.queryTimeMs = Date.now() - enrichmentStartTime;
     }
     
     return {
@@ -137,6 +204,7 @@ export class GPSExtractor {
       alternatives: gpsOptions.filter(gps => gps !== primary),
       conflicts: detectedConflicts,
       geolocation,
+      landmarks,
       enrichmentStatus
     };
   }

@@ -67,7 +67,14 @@ export async function processFile(filePath: string): Promise<ProcessingResult> {
         alternatives: [],
         conflicts: [],
         geolocation: null,
-        enrichmentStatus: 'error'
+        landmarks: [],
+        enrichmentStatus: {
+          geolocation: 'error',
+          landmarks: 'disabled',
+          providersUsed: [],
+          cacheHit: false,
+          queryTimeMs: 0
+        }
       },
       camera: {},
       settings: {},

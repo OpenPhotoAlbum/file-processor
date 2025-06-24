@@ -71,6 +71,9 @@ export class CLIHandler {
         logger.info(`Pipeline completed in ${this.formatDuration(totalDuration)}`);
       }
       
+      // Clean up database connections to allow process to exit
+      await this.cleanup();
+      
     } catch (error) {
       systemErrors.fileOperationFailed({
         operation: 'CLI command execution',
@@ -78,6 +81,9 @@ export class CLIHandler {
       }, error as Error);
       
       console.error(`\n❌ Error: ${(error as Error).message}`);
+      
+      // Clean up even on error to allow process to exit
+      await this.cleanup();
       process.exit(1);
     }
   }
@@ -293,6 +299,22 @@ export class CLIHandler {
       return `${ms}ms`;
     } else {
       return `${(ms / 1000).toFixed(1)}s`;
+    }
+  }
+
+  /**
+   * Clean up resources to allow process to exit cleanly
+   */
+  private async cleanup(): Promise<void> {
+    try {
+      // Close database connections from services
+      const { getGeolocationService } = await import('../services/index.js');
+      const geolocationService = getGeolocationService();
+      await geolocationService.close();
+      
+      logger.debug('CLI cleanup completed - database connections closed');
+    } catch (error) {
+      logger.warn('Cleanup warning', { error: (error as Error).message });
     }
   }
 }

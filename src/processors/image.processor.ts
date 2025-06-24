@@ -120,6 +120,7 @@ export class ImageProcessor extends BaseProcessor {
       this.logger.info('GPS extraction completed', {
         hasPrimary: !!gpsResult.primary,
         hasGeolocation: !!gpsResult.geolocation,
+        landmarkCount: gpsResult.landmarks.length,
         enrichmentStatus: gpsResult.enrichmentStatus
       });
 
@@ -184,6 +185,7 @@ export class ImageProcessor extends BaseProcessor {
           alternatives: gpsResult.alternatives,
           conflicts: gpsResult.conflicts,
           geolocation: gpsResult.geolocation,
+          landmarks: gpsResult.landmarks,
           enrichmentStatus: gpsResult.enrichmentStatus
         },
         camera: exifData.camera,
@@ -244,7 +246,14 @@ export class ImageProcessor extends BaseProcessor {
           alternatives: [],
           conflicts: [],
           geolocation: null,
-          enrichmentStatus: 'disabled'
+          landmarks: [],
+          enrichmentStatus: {
+            geolocation: 'disabled',
+            landmarks: 'disabled',
+            providersUsed: [],
+            cacheHit: false,
+            queryTimeMs: 0
+          }
         },
         camera: {},
         settings: {},
