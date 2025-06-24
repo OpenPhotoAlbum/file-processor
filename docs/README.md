@@ -8,6 +8,7 @@ Welcome to the documentation for the Media Processing Pipeline project. This sys
 - **[Path System](./path-system.md)** - Portable path abstraction with environment-based configuration
 - **[Logging System](./logging-system.md)** - Scoped logging with dual-output formatting
 - **[Error System](./error-system.md)** - Hybrid error handling with structured codes and semantic methods
+- **[FileSystem Service](./filesystem-service.md)** - Centralized file operations with security and batch processing
 - **[Image Validation](./image-validation.md)** - File signature detection and validation
 - **[Configuration](./configuration.md)** - Environment-based configuration management
 
@@ -18,6 +19,7 @@ Welcome to the documentation for the Media Processing Pipeline project. This sys
 
 ### Development
 - **[Getting Started](./getting-started.md)** - Setup and development guide
+- **[Command Line Interface](./cli.md)** - Professional CLI with flexible file processing
 - **[Testing](./testing.md)** - Testing strategies and sample data
 - **[Contributing](./contributing.md)** - Development workflow and standards
 
@@ -47,6 +49,8 @@ Welcome to the documentation for the Media Processing Pipeline project. This sys
 ```
 src/
 ├── processors/        # Media-specific processors (Image, Video, Audio)
+├── services/         # Centralized service layer
+│   └── filesystem/   # File operations, scanning, validation
 ├── utils/
 │   ├── logging/      # Scoped logging system
 │   ├── errors/       # Hybrid error system with semantic methods
@@ -65,6 +69,7 @@ src/
 - **📁 Portable Paths**: Environment-independent file references (`sample:`, `media:`, `relative:`)
 - **📊 Rich Logging**: Scoped loggers with colored console and plain file output
 - **⚠️ Hybrid Error System**: Structured error codes with semantic methods and autocomplete
+- **🗃️ Centralized FileSystem**: Unified service for all file operations with batch processing
 - **🔍 Validation**: File signature detection and integrity checking
 - **🗺️ GPS Processing**: Multi-source GPS data with conflict resolution
 - **⚙️ Configurable**: All settings via environment variables with custom colors
@@ -79,6 +84,8 @@ src/
 
 ## 📝 Recent Updates
 
+- **Centralized FileSystem Service**: Unified interface for all file operations with batch processing
+- **ESLint Integration**: Professional code quality enforcement with TypeScript rules
 - **Hybrid Error System**: Replaced magic strings with semantic methods and named constants
 - **Structured Error Handling**: Consistent `MPP-[COMPONENT]-[SEVERITY]-[NUMBER]` error codes
 - **Enhanced Logging Integration**: Component-scoped loggers with path sanitization
