@@ -3,10 +3,10 @@ import { MediaFile } from '../types/media.js';
 import { ImageValidator } from '../utils/image/validation.js';
 import { ExifExtractor, GPSExtractor, TimestampExtractor } from '../utils/extractors/index.js';
 import { getEnabledMimeTypes, getAllSupportedMimeTypes } from '../utils/mime-config.js';
-import { stat } from 'fs/promises';
 import { Logger } from '../utils/logging/index.js';
 import { createValidationErrorFactory, createSystemErrorFactory } from '../utils/errors/factories.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
+import { FileSystemService } from '../services/index.js';
 
 /**
  * Processor for image files (JPEG, PNG, HEIC, GIF, etc.)
@@ -16,6 +16,7 @@ export class ImageProcessor extends BaseProcessor {
   private logger = new Logger('Image Processor');
   private validationErrors = createValidationErrorFactory(this.logger);
   private systemErrors = createSystemErrorFactory(this.logger);
+  private fs = new FileSystemService();
   
   private validator = new ImageValidator();
   private exifExtractor = new ExifExtractor();
@@ -38,34 +39,52 @@ export class ImageProcessor extends BaseProcessor {
   }
 
   /**
-   * Enhanced validation using shared utilities
+   * Enhanced validation using FileSystemService and image utilities
    */
   async validate(file: MediaFile): Promise<boolean> {
     const safePath = sanitizePathForLogging(file.absolutePath);
     this.logger.info(`Validating image: ${safePath}`);
     
     try {
-      const result = await this.validator.validateImage(file);
-      
-      if (!result.isValid) {
-        this.logger.error(`Validation failed for image: ${safePath}`);
-        result.errors.forEach(error => {
+      // First, use FileSystemService for basic file validation
+      const fileValidation = await this.fs.validateFile(file.absolutePath);
+      if (!fileValidation.isValid) {
+        this.logger.error(`File validation failed for image: ${safePath}`);
+        fileValidation.errors.forEach(error => {
           this.validationErrors.signatureFailed({
             filePath: safePath,
             error,
-            operation: 'image validation'
+            operation: 'file system validation'
           });
         });
         return false;
       }
       
-      if (result.warnings.length > 0) {
-        result.warnings.forEach(warning => {
-          this.logger.warn(`Image validation warning for ${safePath}: ${warning}`);
+      // Then, use ImageValidator for image-specific validation
+      const imageResult = await this.validator.validateImage(file);
+      
+      if (!imageResult.isValid) {
+        this.logger.error(`Image validation failed for: ${safePath}`);
+        imageResult.errors.forEach(error => {
+          this.validationErrors.signatureFailed({
+            filePath: safePath,
+            error,
+            operation: 'image signature validation'
+          });
         });
+        return false;
       }
       
-      this.logger.info(`Image validation passed: ${safePath}`);
+      // Log any warnings from either validation step
+      fileValidation.warnings.forEach(warning => {
+        this.logger.warn(`File validation warning for ${safePath}: ${warning}`);
+      });
+      
+      imageResult.warnings.forEach(warning => {
+        this.logger.warn(`Image validation warning for ${safePath}: ${warning}`);
+      });
+      
+      this.logger.info(`Complete validation passed: ${safePath}`);
       return true;
       
     } catch (error) {
@@ -94,12 +113,16 @@ export class ImageProcessor extends BaseProcessor {
         directoryPath: file.absolutePath
       });
 
-      // 3. Extract smart timestamps from all sources
-      const fileStats = await stat(file.absolutePath);
+      // 3. Extract smart timestamps from all sources using FileSystemService
+      const fileMetadata = await this.fs.getFileMetadata(file.absolutePath);
+      if (!fileMetadata) {
+        throw new Error('Failed to retrieve file metadata for timestamp extraction');
+      }
+      
       const timestampResult = await this.timestampExtractor.extractTimestamps({
         exifData,
         sidecarMetadata: file.sidecarMetadata,
-        fileStats,
+        fileStats: fileMetadata.stats, // Use stats from FileSystemService
         filePath: file.absolutePath
       });
       
