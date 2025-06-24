@@ -123,7 +123,7 @@ throw new Error('Empty output from ExifTool');
       
     } catch (error) {
       // Type guard for system errors
-      if (error && typeof error === 'object' && 'code' in error && error.code === 'ETIMEDOUT') {
+      if (error && typeof error === 'object' && 'code' in error && (error as { code: string }).code === 'ETIMEDOUT') {
         this.exifErrors.timeoutExceeded({ filePath, timeout: 5000 });
         throw error;
       } else if (error && typeof error === 'object' && 'status' in error) {
@@ -224,17 +224,32 @@ throw new Error('Empty output from ExifTool');
    * Parse GPS data from EXIF
    */
   private parseGPS(rawExif: any): ExifData['gps'] | undefined {
-    const lat = rawExif['GPS:GPSLatitude'] || rawExif['Composite:GPSLatitude'];
-    const lon = rawExif['GPS:GPSLongitude'] || rawExif['Composite:GPSLongitude'];
+    const lat = rawExif['EXIF:GPSLatitude'] || rawExif['GPS:GPSLatitude'] || rawExif['Composite:GPSLatitude'];
+    const lon = rawExif['EXIF:GPSLongitude'] || rawExif['GPS:GPSLongitude'] || rawExif['Composite:GPSLongitude'];
     
     if (!lat || !lon) return undefined;
     
+    // Apply coordinate references for proper sign
+    const latRef = rawExif['EXIF:GPSLatitudeRef'] || rawExif['GPS:GPSLatitudeRef'];
+    const lonRef = rawExif['EXIF:GPSLongitudeRef'] || rawExif['GPS:GPSLongitudeRef'];
+    
+    let latitude = this.parseNumber(lat) || 0;
+    let longitude = this.parseNumber(lon) || 0;
+    
+    // Apply reference (North/South, East/West)
+    if (latRef === 'S' || latRef === 'South') {
+      latitude = -latitude;
+    }
+    if (lonRef === 'W' || lonRef === 'West') {
+      longitude = -longitude;
+    }
+    
     return {
-      latitude: this.parseNumber(lat),
-      longitude: this.parseNumber(lon),
-      altitude: this.parseNumber(rawExif['GPS:GPSAltitude']),
-      timestamp: rawExif['GPS:GPSTimeStamp'],
-      accuracy: rawExif['GPS:GPSHPositioningError']
+      latitude,
+      longitude,
+      altitude: this.parseNumber(rawExif['EXIF:GPSAltitude'] || rawExif['GPS:GPSAltitude']),
+      timestamp: rawExif['EXIF:GPSTimeStamp'] || rawExif['GPS:GPSTimeStamp'],
+      accuracy: rawExif['EXIF:GPSHPositioningError'] || rawExif['GPS:GPSHPositioningError']
     };
   }
   

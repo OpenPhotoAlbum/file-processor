@@ -166,25 +166,31 @@ export class TimestampExtractor {
         const data = sidecar.data;
 
         // photoTakenTime (when photo was actually taken)
-        if (data.photoTakenTime?.timestamp) {
-          timestamps.push({
-            timestamp: this.normalizeUnixTimestamp(data.photoTakenTime.timestamp),
-            source: 'sidecar',
-            confidence: 'high',
-            originalFormat: `${data.photoTakenTime.timestamp} (${data.photoTakenTime.formatted})`,
-            sourceDetails: 'Google Takeout photoTakenTime'
-          });
+        if (data.photoTakenTime && typeof data.photoTakenTime === 'object' && data.photoTakenTime !== null) {
+          const photoTakenTime = data.photoTakenTime as Record<string, unknown>;
+          if (photoTakenTime.timestamp) {
+            timestamps.push({
+              timestamp: this.normalizeUnixTimestamp(photoTakenTime.timestamp as string | number),
+              source: 'sidecar',
+              confidence: 'high',
+              originalFormat: `${photoTakenTime.timestamp} (${photoTakenTime.formatted || 'unknown'})`,
+              sourceDetails: 'Google Takeout photoTakenTime'
+            });
+          }
         }
 
         // creationTime (when uploaded/processed by Google)
-        if (data.creationTime?.timestamp) {
-          timestamps.push({
-            timestamp: this.normalizeUnixTimestamp(data.creationTime.timestamp),
-            source: 'sidecar',
-            confidence: 'medium',
-            originalFormat: `${data.creationTime.timestamp} (${data.creationTime.formatted})`,
-            sourceDetails: 'Google Takeout creationTime'
-          });
+        if (data.creationTime && typeof data.creationTime === 'object' && data.creationTime !== null) {
+          const creationTime = data.creationTime as Record<string, unknown>;
+          if (creationTime.timestamp) {
+            timestamps.push({
+              timestamp: this.normalizeUnixTimestamp(creationTime.timestamp as string | number),
+              source: 'sidecar',
+              confidence: 'medium',
+              originalFormat: `${creationTime.timestamp} (${creationTime.formatted || 'unknown'})`,
+              sourceDetails: 'Google Takeout creationTime'
+            });
+          }
         }
       } else {
         // Generic sidecar timestamp extraction
@@ -225,13 +231,14 @@ export class TimestampExtractor {
     ];
 
     for (const field of timestampFields) {
-      if (data[field]) {
+      const fieldValue = data[field];
+      if (fieldValue && (typeof fieldValue === 'string' || typeof fieldValue === 'number')) {
         try {
           timestamps.push({
-            timestamp: this.normalizeTimestamp(data[field]),
+            timestamp: this.normalizeTimestamp(fieldValue),
             source: 'sidecar',
             confidence: 'medium',
-            originalFormat: String(data[field]),
+            originalFormat: String(fieldValue),
             sourceDetails: `${sidecar.source} ${field}`
           });
         } catch (error) {

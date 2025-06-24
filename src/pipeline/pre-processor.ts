@@ -4,7 +4,11 @@ import { toRelativePath, sanitizePathForLogging } from '../utils/paths.js';
 import { readFile } from 'fs/promises';
 import { basename, extname } from 'path';
 import { Logger } from '../utils/logging/index.js';
-import { createSystemErrorFactory, createMetadataErrorFactory, createValidationErrorFactory } from '../utils/errors/factories.js';
+import { 
+  createSystemErrorFactory, 
+  createMetadataErrorFactory, 
+  createValidationErrorFactory 
+} from '../utils/errors/factories.js';
 import { FileSystemService } from '../services/index.js';
 
 /**
@@ -145,7 +149,7 @@ async function discoverSidecarFiles(mediaFilePath: string, fs: FileSystemService
 /**
  * Read and parse sidecar file based on format
  */
-async function readSidecarFile(filePath: string, format: SidecarFormat): Promise<any> {
+async function readSidecarFile(filePath: string, format: SidecarFormat): Promise<Record<string, unknown>> {
   try {
     const content = await readFile(filePath, 'utf8');
     
@@ -176,7 +180,7 @@ async function readSidecarFile(filePath: string, format: SidecarFormat): Promise
       format,
       operation: 'sidecar file parsing'
     }, error as Error);
-    return null;
+    return {};
   }
 }
 

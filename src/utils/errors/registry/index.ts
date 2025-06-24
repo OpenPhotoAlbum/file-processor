@@ -11,6 +11,7 @@ import { PATH_ERRORS } from './path.js';
 import { METADATA_ERRORS } from './metadata.js';
 import { CONFIG_ERRORS } from './config.js';
 import { SYSTEM_ERRORS } from './system.js';
+import { LANDMARK_ERRORS } from './landmark-registry.js';
 
 /**
  * Combined error registry from all component registries
@@ -23,7 +24,8 @@ export const ERROR_REGISTRY = {
   ...PATH_ERRORS,
   ...METADATA_ERRORS,
   ...CONFIG_ERRORS,
-  ...SYSTEM_ERRORS
+  ...SYSTEM_ERRORS,
+  ...LANDMARK_ERRORS
 } as const;
 
 // Re-export individual registries for direct access
@@ -35,3 +37,4 @@ export { PATH_ERRORS } from './path.js';
 export { METADATA_ERRORS } from './metadata.js';
 export { CONFIG_ERRORS } from './config.js';
 export { SYSTEM_ERRORS } from './system.js';
+export { LANDMARK_ERRORS } from './landmark-registry.js';

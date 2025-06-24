@@ -1,0 +1,126 @@
+[
+  {
+    "filename": "scratch/sample_media/jpg_with_gps_iphone.JPG",
+    "hasGPS": true,
+    "hasGeolocation": true,
+    "hasTimestamps": true,
+    "gpsData": {
+      "latitude": 43.23512222,
+      "longitude": -70.82372222,
+      "altitude": 29.52016985,
+      "timestamp": "17:45:29.99",
+      "accuracy": "5 m",
+      "source": "exif",
+      "sourceDetails": "EXIF GPS data"
+    },
+    "geolocationData": {
+      "city": "South Berwick",
+      "state_code": "ME",
+      "distance": 2002,
+      "confidence": 0.8,
+      "source": "boundary_proximity",
+      "method": "Nearest to South Berwick CDP municipal center",
+      "area_sq_meters": 7283831,
+      "place_type": "U1"
+    },
+    "timestampData": {
+      "timestamp": "2018-07-02T13:45:30.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2018:07:02 13:45:30",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "cameraData": null,
+    "errors": [],
+    "success": true
+  },
+  {
+    "filename": "scratch/sample_media/jpg_canon_dslr.jpg",
+    "hasGPS": false,
+    "hasGeolocation": false,
+    "hasTimestamps": true,
+    "gpsData": null,
+    "geolocationData": null,
+    "timestampData": {
+      "timestamp": "2015-03-04T07:59:21.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2015:03:04 07:59:21",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "cameraData": null,
+    "errors": [],
+    "success": true
+  },
+  {
+    "filename": "scratch/sample_media/jpg_no_gps.jpg",
+    "hasGPS": false,
+    "hasGeolocation": false,
+    "hasTimestamps": true,
+    "gpsData": null,
+    "geolocationData": null,
+    "timestampData": {
+      "timestamp": "2025-06-23T20:23:22.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:23:22-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "cameraData": null,
+    "errors": [],
+    "success": true
+  },
+  {
+    "filename": "scratch/sample_media/heic_sample1.HEIC",
+    "hasGPS": true,
+    "hasGeolocation": true,
+    "hasTimestamps": true,
+    "gpsData": {
+      "latitude": 43.23502778,
+      "longitude": -70.8237,
+      "altitude": 37.03936348,
+      "timestamp": "17:50:58",
+      "accuracy": "10 m",
+      "source": "exif",
+      "sourceDetails": "EXIF GPS data"
+    },
+    "geolocationData": {
+      "city": "South Berwick",
+      "state_code": "ME",
+      "distance": 1998,
+      "confidence": 0.8,
+      "source": "boundary_proximity",
+      "method": "Nearest to South Berwick CDP municipal center",
+      "area_sq_meters": 7283831,
+      "place_type": "U1"
+    },
+    "timestampData": {
+      "timestamp": "2018-07-02T13:50:59.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2018:07:02 13:50:59",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "cameraData": null,
+    "errors": [],
+    "success": true
+  },
+  {
+    "filename": "scratch/sample_media/png_sample.PNG",
+    "hasGPS": false,
+    "hasGeolocation": false,
+    "hasTimestamps": true,
+    "gpsData": null,
+    "geolocationData": null,
+    "timestampData": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "cameraData": null,
+    "errors": [],
+    "success": true
+  }
+]

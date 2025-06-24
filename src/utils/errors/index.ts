@@ -7,7 +7,7 @@ export * from './codes.js';
 export * from './classes.js';
 
 import { Logger } from '../logging/index.js';
-import { MPPError, ValidationError, ExifError, GPSError, TimestampError, PathError, MetadataError, ConfigError, SystemError } from './classes.js';
+import { MPPError, ValidationError, ExifError, GPSError, TimestampError, PathError, MetadataError, ConfigError, SystemError, LandmarkError } from './classes.js';
 import { ErrorCode, ErrorSeverity } from './codes.js';
 
 /**
@@ -84,6 +84,15 @@ export class ErrorFactory {
    */
   system(code: ErrorCode, context?: Record<string, any>, cause?: Error): SystemError {
     const error = new SystemError(code, context, cause);
+    this.logError(error);
+    return error;
+  }
+
+  /**
+   * Create and log landmark error
+   */
+  landmark(code: ErrorCode, context?: Record<string, any>, cause?: Error): LandmarkError {
+    const error = new LandmarkError(code, context, cause);
     this.logError(error);
     return error;
   }

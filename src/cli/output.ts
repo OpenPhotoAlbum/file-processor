@@ -87,11 +87,13 @@ export class OutputHandler {
       console.log(`  📐 Average size: ${this.formatFileSize(result.summary.sizeStats.averageSize)}`);
       
       if (result.summary.sizeStats.largestFile) {
-        console.log(`  📈 Largest: ${result.summary.sizeStats.largestFile.path} (${this.formatFileSize(result.summary.sizeStats.largestFile.size)})`);
+        console.log(`  📈 Largest: ${result.summary.sizeStats.largestFile.path} ` +
+          `(${this.formatFileSize(result.summary.sizeStats.largestFile.size)})`);
       }
       
       if (result.summary.sizeStats.smallestFile) {
-        console.log(`  📉 Smallest: ${result.summary.sizeStats.smallestFile.path} (${this.formatFileSize(result.summary.sizeStats.smallestFile.size)})`);
+        console.log(`  📉 Smallest: ${result.summary.sizeStats.smallestFile.path} ` +
+          `(${this.formatFileSize(result.summary.sizeStats.smallestFile.size)})`);
       }
     }
 

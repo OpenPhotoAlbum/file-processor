@@ -6,6 +6,8 @@
 import { SidecarMetadata, SidecarFormat, SidecarSource } from '../../types/media.js';
 import { Logger } from '../logging/index.js';
 import { createGPSErrorFactory } from '../errors/factories.js';
+import { getGeolocationService } from '../../services/index.js';
+import type { LocationMatch } from '../../services/index.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -28,6 +30,10 @@ export interface GPSExtractionResult {
   primary: GPSData | null;
   alternatives: GPSData[];
   conflicts: string[];
+  
+  // Enhanced with database lookup
+  geolocation?: LocationMatch | null;
+  enrichmentStatus: 'success' | 'not_found' | 'error' | 'disabled';
 }
 
 /**
@@ -90,10 +96,48 @@ export class GPSExtractor {
     // 6. Detect conflicts and choose best option
     const { primary, conflicts: detectedConflicts } = this.resolveConflicts(gpsOptions);
     
+    // 7. Enrich with geolocation database lookup (if coordinates available)
+    let geolocation: LocationMatch | null = null;
+    let enrichmentStatus: 'success' | 'not_found' | 'error' | 'disabled' = 'disabled';
+    
+    if (primary && primary.latitude && primary.longitude) {
+      this.logger.info('Attempting geolocation enrichment', {
+        coordinates: `${primary.latitude}, ${primary.longitude}`
+      });
+      try {
+        const geolocationService = getGeolocationService();
+        this.logger.info('Got geolocation service, calling findLocation');
+        geolocation = await geolocationService.findLocation(primary.latitude, primary.longitude);
+        enrichmentStatus = geolocation ? 'success' : 'not_found';
+        this.logger.info('Geolocation lookup completed', {
+          found: !!geolocation,
+          status: enrichmentStatus
+        });
+        
+        if (geolocation) {
+          this.logger.info('GPS coordinates enriched with location data', {
+            coordinates: `${primary.latitude}, ${primary.longitude}`,
+            city: geolocation.city,
+            state: geolocation.state_code,
+            method: geolocation.method,
+            confidence: geolocation.confidence
+          });
+        }
+      } catch (error) {
+        this.logger.warn('Geolocation enrichment failed', { 
+          coordinates: `${primary.latitude}, ${primary.longitude}`,
+          error: (error as Error).message 
+        });
+        enrichmentStatus = 'error';
+      }
+    }
+    
     return {
       primary,
       alternatives: gpsOptions.filter(gps => gps !== primary),
-      conflicts: detectedConflicts
+      conflicts: detectedConflicts,
+      geolocation,
+      enrichmentStatus
     };
   }
   
@@ -103,8 +147,29 @@ export class GPSExtractor {
   private extractFromExif(exifData: any): GPSData | null {
     try {
       const gps = exifData.GPS || exifData.gps;
+      this.logger.debug('GPS extraction from EXIF', { 
+        hasGPS: !!gps, 
+        gpsKeys: gps ? Object.keys(gps) : [],
+        exifDataKeys: Object.keys(exifData)
+      });
       if (!gps) return null;
       
+      // Check if coordinates are already parsed (from our EXIF extractor)
+      if (typeof gps.latitude === 'number' && typeof gps.longitude === 'number') {
+        return {
+          latitude: gps.latitude,
+          longitude: gps.longitude,
+          altitude: gps.altitude,
+          direction: gps.direction,
+          speed: gps.speed,
+          timestamp: gps.timestamp,
+          accuracy: gps.accuracy,
+          source: 'exif',
+          sourceDetails: 'EXIF GPS data'
+        };
+      }
+      
+      // Fallback to raw EXIF coordinate parsing
       const lat = this.parseCoordinate(gps.GPSLatitude, gps.GPSLatitudeRef);
       const lon = this.parseCoordinate(gps.GPSLongitude, gps.GPSLongitudeRef);
       
@@ -117,7 +182,8 @@ export class GPSExtractor {
         direction: gps.GPSImgDirection ? parseFloat(gps.GPSImgDirection) : undefined,
         speed: gps.GPSSpeed ? parseFloat(gps.GPSSpeed) : undefined,
         timestamp: gps.GPSTimeStamp ? this.parseGPSTimestamp(gps) : undefined,
-        source: 'exif'
+        source: 'exif',
+        sourceDetails: 'EXIF GPS data (raw)'
       };
       
     } catch (error) {
@@ -141,7 +207,10 @@ export class GPSExtractor {
       
       if (sidecar.source === SidecarSource.GOOGLE_TAKEOUT) {
         // Google Takeout JSON structure
-        gpsData = data.geoData || data.photoTakenTime?.gps;
+        gpsData = data.geoData || 
+          (data.photoTakenTime && typeof data.photoTakenTime === 'object' && data.photoTakenTime !== null 
+            ? (data.photoTakenTime as Record<string, unknown>).gps 
+            : null);
       } else if (sidecar.source === SidecarSource.ADOBE_BRIDGE) {
         // Adobe Bridge XMP structure
         gpsData = data.gps || data.location;
@@ -153,16 +222,19 @@ export class GPSExtractor {
         gpsData = this.findGPSInGenericData(data);
       }
       
-      if (!gpsData || !gpsData.latitude || !gpsData.longitude) return null;
+      if (!gpsData || typeof gpsData !== 'object' || gpsData === null) return null;
+      
+      const gpsRecord = gpsData as Record<string, unknown>;
+      if (!gpsRecord.latitude || !gpsRecord.longitude) return null;
       
       return {
-        latitude: parseFloat(gpsData.latitude),
-        longitude: parseFloat(gpsData.longitude),
-        altitude: gpsData.altitude ? parseFloat(gpsData.altitude) : undefined,
-        accuracy: gpsData.accuracy ? parseFloat(gpsData.accuracy) : undefined,
-        direction: gpsData.direction ? parseFloat(gpsData.direction) : undefined,
-        speed: gpsData.speed ? parseFloat(gpsData.speed) : undefined,
-        timestamp: gpsData.timestamp || gpsData.time,
+        latitude: parseFloat(String(gpsRecord.latitude)),
+        longitude: parseFloat(String(gpsRecord.longitude)),
+        altitude: gpsRecord.altitude ? parseFloat(String(gpsRecord.altitude)) : undefined,
+        accuracy: gpsRecord.accuracy ? parseFloat(String(gpsRecord.accuracy)) : undefined,
+        direction: gpsRecord.direction ? parseFloat(String(gpsRecord.direction)) : undefined,
+        speed: gpsRecord.speed ? parseFloat(String(gpsRecord.speed)) : undefined,
+        timestamp: String(gpsRecord.timestamp || gpsRecord.time || ''),
         source: 'sidecar',
         sourceDetails: `${sidecar.source} (${sidecar.format})`
       };

@@ -9,7 +9,14 @@ import { processFile } from '../pipeline/entry.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { OutputHandler } from './output.js';
 import { normalizeCliOptions } from './validators.js';
-import { CLIOptions, ProcessingResult, FileProcessingResult, ProcessingSummary, OutputOptions } from './types.js';
+import { 
+  CLIOptions, 
+  ProcessingResult as CLIProcessingResult, 
+  FileProcessingResult, 
+  ProcessingSummary, 
+  OutputOptions 
+} from './types.js';
+import { ProcessingResult as MediaProcessingResult } from '../types/media.js';
 
 const logger = new Logger('CLI Handler');
 const systemErrors = createSystemErrorFactory(logger);
@@ -78,13 +85,17 @@ export class CLIHandler {
   /**
    * Discover files based on CLI options
    */
-  private async discoverFiles(options: any): Promise<string[]> {
+  private async discoverFiles(options: CLIOptions & { mimeTypes?: string[]; outputPath?: string }): Promise<string[]> {
     const allFiles: string[] = [];
     
     // Handle directory scanning
     if (options.directory || options.recursive) {
       const targetPath = options.directory || options.recursive;
       const isRecursive = !!options.recursive;
+      
+      if (!targetPath) {
+        throw new Error('Directory path is required but not provided');
+      }
       
       logger.debug(`Scanning ${isRecursive ? 'recursively' : 'directory'}: ${sanitizePathForLogging(targetPath)}`);
       
@@ -169,7 +180,10 @@ export class CLIHandler {
   /**
    * Process all discovered files
    */
-  private async processFiles(files: string[], options: any): Promise<ProcessingResult> {
+  private async processFiles(
+    files: string[], 
+    options: CLIOptions & { mimeTypes?: string[]; outputPath?: string }
+  ): Promise<CLIProcessingResult> {
     const startTime = Date.now();
     const results: FileProcessingResult[] = [];
     
@@ -191,9 +205,9 @@ export class CLIHandler {
         
         results.push({
           filePath: sanitizePathForLogging(file),
-          success: metadata.success || true,
+          success: metadata.processing.success || true,
           duration,
-          metadata,
+          metadata: metadata as unknown as Record<string, unknown>,
           warnings: [] // TODO: Extract warnings from metadata
         });
         
@@ -245,7 +259,8 @@ export class CLIHandler {
     const mimeTypeBreakdown: Record<string, number> = {};
     results.forEach(result => {
       if (result.success && result.metadata) {
-        const type = result.metadata.type || 'unknown';
+        const mediaResult = result.metadata as unknown as MediaProcessingResult;
+        const type = mediaResult.media?.type || 'unknown';
         mimeTypeBreakdown[type] = (mimeTypeBreakdown[type] || 0) + 1;
       }
     });

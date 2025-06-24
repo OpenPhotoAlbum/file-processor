@@ -1,5 +1,5 @@
 import { MediaProcessor } from '../types/processors.js';
-import { MediaFile } from '../types/media.js';
+import { MediaFile, ProcessingResult } from '../types/media.js';
 
 /**
  * Abstract base class for all media processors
@@ -7,7 +7,7 @@ import { MediaFile } from '../types/media.js';
  */
 export abstract class BaseProcessor implements MediaProcessor {
   abstract supportedMimes: string[];
-  abstract extract(file: MediaFile): Promise<any>;
+  abstract extract(file: MediaFile): Promise<ProcessingResult>;
   
   // Optional validation method
   async validate(file: MediaFile): Promise<boolean> {
