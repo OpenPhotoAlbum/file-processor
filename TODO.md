@@ -25,18 +25,19 @@
 - [x] Replace hardcoded testFiles in main.ts with professional CLI
 - [x] Create comprehensive CLI documentation with examples
 
-### 🧹 Code Cleanup (Pending)
-- [ ] Refactor scattered filesystem operations to use FileSystemService
-- [ ] Update pre-processor to use centralized file discovery
-- [ ] Migrate image processor file stats to filesystem service
-- [ ] Consolidate file validation across processors
-- [ ] Remove duplicate filesystem code
+### 🧹 Code Cleanup (Completed)
+- [x] Refactor pre-processor to use FileSystemService for file discovery and validation
+- [x] Update image processor to use FileSystemService for file stats and validation
+- [x] Consolidate file validation across processors using FileSystemService
+- [x] Remove duplicate filesystem code in extractors and utilities
+- [x] Update sidecar discovery to use centralized service
+- [x] Test all processors work correctly with FileSystemService integration
 
-### 📚 Documentation Updates (Pending)
-- [ ] Document FileSystemService architecture and usage
-- [ ] Create CLI usage documentation
-- [ ] Update main README with new filesystem service
-- [ ] Add examples of filesystem service integration
+### 📚 Documentation Updates (Completed)
+- [x] Document FileSystemService architecture and usage
+- [x] Create CLI usage documentation  
+- [x] Update main README with new filesystem service
+- [x] Add examples of filesystem service integration
 
 ## Design Decisions Made
 - **Filesystem Service**: Centralized service layer for all file operations

@@ -1,10 +1,11 @@
 import { MediaFile, SidecarMetadata, SidecarFormat, SidecarSource } from '../types/media.js';
 import { detectMimeType } from '../utils/mime.js';
 import { toRelativePath, sanitizePathForLogging } from '../utils/paths.js';
-import { stat, readFile, access } from 'fs/promises';
-import { dirname, basename, extname, join } from 'path';
+import { readFile } from 'fs/promises';
+import { basename, extname } from 'path';
 import { Logger } from '../utils/logging/index.js';
 import { createSystemErrorFactory, createMetadataErrorFactory, createValidationErrorFactory } from '../utils/errors/factories.js';
+import { FileSystemService } from '../services/index.js';
 
 /**
  * Common pre-processing steps for ALL file types
@@ -17,13 +18,22 @@ export async function preProcess(absolutePath: string): Promise<MediaFile> {
   const logger = new Logger('Pre-processor');
   const systemErrors = createSystemErrorFactory(logger);
   const validationErrors = createValidationErrorFactory(logger);
+  const fs = new FileSystemService();
   const safePath = sanitizePathForLogging(absolutePath);
   
   logger.info(`Pre-processing: ${safePath}`);
   
   try {
-    // Check if file exists and get size
-    const stats = await stat(absolutePath);
+    // Validate file and get metadata using FileSystemService
+    const validation = await fs.validateFile(absolutePath);
+    if (!validation.isValid) {
+      throw new Error(`File validation failed: ${validation.errors.join(', ')}`);
+    }
+    
+    const metadata = await fs.getFileMetadata(absolutePath);
+    if (!metadata) {
+      throw new Error('Failed to retrieve file metadata');
+    }
     
     // Detect MIME type from extension
     const mimeType = detectMimeType(absolutePath);
@@ -37,11 +47,11 @@ export async function preProcess(absolutePath: string): Promise<MediaFile> {
     // Convert to relative path for storage
     const relativePath = toRelativePath(absolutePath);
     
-    // Discover sidecar metadata files
-    const sidecarMetadata = await discoverSidecarFiles(absolutePath);
+    // Discover sidecar metadata files using FileSystemService
+    const sidecarMetadata = await discoverSidecarFiles(absolutePath, fs);
   
     logger.info(`  MIME type: ${mimeType}`);
-    logger.info(`  File size: ${stats.size} bytes`);
+    logger.info(`  File size: ${metadata.size} bytes`);
     logger.info(`  Relative path: ${relativePath}`);
     if (sidecarMetadata.length > 0) {
       logger.info(`  Found ${sidecarMetadata.length} sidecar metadata file(s)`);
@@ -51,7 +61,7 @@ export async function preProcess(absolutePath: string): Promise<MediaFile> {
       path: relativePath,          // Store relative path
       absolutePath,               // Keep absolute for processing
       hash: 'placeholder-hash',   // TODO: Generate actual hash
-      size: stats.size,
+      size: metadata.size,
       mimeType,
       sidecarMetadata             // Generic sidecar metadata from any source
     };
@@ -66,53 +76,66 @@ export async function preProcess(absolutePath: string): Promise<MediaFile> {
 
 /**
  * Discover sidecar metadata files for a given media file
- * Supports multiple sources and formats
+ * Supports multiple sources and formats using FileSystemService
  */
-async function discoverSidecarFiles(mediaFilePath: string): Promise<SidecarMetadata[]> {
+async function discoverSidecarFiles(mediaFilePath: string, fs: FileSystemService): Promise<SidecarMetadata[]> {
   const sidecarFiles: SidecarMetadata[] = [];
-  const dir = dirname(mediaFilePath);
   const fileName = basename(mediaFilePath); // Keep full filename with extension
   const baseName = basename(mediaFilePath, extname(mediaFilePath)); // Base name without extension
   
-  // Common sidecar file patterns and their sources
-  const patterns = [
-    // Google Takeout JSON files (use full filename)
-    { extension: '.json', source: SidecarSource.GOOGLE_TAKEOUT, format: SidecarFormat.JSON, useFullName: true },
-    
-    // Adobe Bridge/Lightroom XMP files (typically use base name)
-    { extension: '.xmp', source: SidecarSource.ADOBE_BRIDGE, format: SidecarFormat.XMP, useFullName: false },
-    
-    // Generic metadata files
-    { extension: '.metadata.json', source: SidecarSource.CUSTOM, format: SidecarFormat.JSON, useFullName: false },
-    { extension: '.meta', source: SidecarSource.CUSTOM, format: SidecarFormat.TEXT, useFullName: false },
-    { extension: '.txt', source: SidecarSource.CUSTOM, format: SidecarFormat.TEXT, useFullName: false },
-    
-    // Video metadata (for future video support)
-    { extension: '.xml', source: SidecarSource.UNKNOWN, format: SidecarFormat.XML, useFullName: false }
-  ];
+  // Use FileSystemService to find sidecar files efficiently
+  const discoveredSidecars = await fs.findSidecarFiles(mediaFilePath, {
+    extensions: ['.json', '.xmp', '.metadata.json', '.meta', '.txt', '.xml'],
+    searchParentDirs: false // Only search in same directory for now
+  });
   
-  for (const pattern of patterns) {
-    // Choose filename strategy based on pattern
-    const nameToUse = pattern.useFullName ? fileName : baseName;
-    const sidecarPath = join(dir, nameToUse + pattern.extension);
+  // Map discovered files to our sidecar metadata format
+  for (const sidecarPath of discoveredSidecars) {
+    const sidecarExtension = extname(sidecarPath);
+    const sidecarBaseName = basename(sidecarPath, sidecarExtension);
     
+    // Determine source and format based on file patterns
+    let source = SidecarSource.CUSTOM;
+    let format = SidecarFormat.TEXT;
+    
+    if (sidecarExtension === '.json') {
+      // Google Takeout files use full filename, others use base name
+      if (sidecarBaseName === fileName || sidecarBaseName === `${baseName  }.metadata`) {
+        source = sidecarBaseName === fileName ? SidecarSource.GOOGLE_TAKEOUT : SidecarSource.CUSTOM;
+        format = SidecarFormat.JSON;
+      }
+    } else if (sidecarExtension === '.xmp') {
+      source = SidecarSource.ADOBE_BRIDGE;
+      format = SidecarFormat.XMP;
+    } else if (sidecarExtension === '.xml') {
+      source = SidecarSource.UNKNOWN;
+      format = SidecarFormat.XML;
+    } else if (sidecarExtension === '.txt' || sidecarExtension === '.meta') {
+      source = SidecarSource.CUSTOM;
+      format = SidecarFormat.TEXT;
+    }
+    
+    // Read and parse the sidecar file
     try {
-      await access(sidecarPath);
-      
-      // File exists, try to read and parse it
-      const sidecarContent = await readSidecarFile(sidecarPath, pattern.format);
+      const sidecarContent = await readSidecarFile(sidecarPath, format);
       if (sidecarContent) {
         sidecarFiles.push({
-          source: pattern.source,
-          format: pattern.format,
+          source,
+          format,
           path: toRelativePath(sidecarPath),
           absolutePath: sidecarPath,
           data: sidecarContent
         });
       }
-    } catch {
-      // File doesn't exist, continue to next pattern
-      continue;
+    } catch (error) {
+      // Log error but continue with other sidecar files
+      const logger = new Logger('Pre-processor');
+      const metadataErrors = createMetadataErrorFactory(logger);
+      metadataErrors.parsingFailed({
+        sidecarPath: sanitizePathForLogging(sidecarPath),
+        format,
+        operation: 'sidecar content reading'
+      }, error as Error);
     }
   }
   
