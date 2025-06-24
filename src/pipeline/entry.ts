@@ -1,4 +1,4 @@
-import { MediaFile, ProcessingResult } from '../types/media.js';
+import { ProcessingResult } from '../types/media.js';
 import { preProcess } from './pre-processor.js';
 import { getProcessor } from './router.js';
 import { postProcess } from './post-processor.js';
@@ -17,25 +17,62 @@ export async function processFile(filePath: string): Promise<ProcessingResult> {
     
     // 2. Route to specific processor based on MIME type
     const processor = getProcessor(file.mimeType);
-    const metadata = await processor.extract(file);
+    const result = await processor.extract(file);
     
     // 3. Common post-processing (shared for all files)
-    const result = await postProcess(file, metadata);
+    await postProcess(file, result);
     
-    return {
-      success: true,
-      mediaFile: file,
-      metadata,
-      ...result
-    };
+    // Return the new consolidated schema directly from processor
+    return result;
     
   } catch (error) {
     console.error(`Error processing ${filePath}:`, error);
+    
+    // Return error in new schema format
     return {
-      success: false,
-      mediaFile: { path: filePath } as MediaFile,
-      metadata: null,
-      error: error instanceof Error ? error.message : 'Unknown error'
+      file: {
+        path: filePath,
+        hash: 'error',
+        size: 0,
+        mimeType: 'unknown',
+        created: new Date().toISOString(),
+        modified: new Date().toISOString()
+      },
+      processing: {
+        success: false,
+        processor: 'unknown',
+        extractedAt: new Date().toISOString(),
+        error: error instanceof Error ? error.message : 'Unknown error'
+      },
+      media: {
+        type: 'unknown',
+        format: 'unknown',
+        dimensions: {
+          width: 0,
+          height: 0,
+          megapixels: 0,
+          orientation: 'unknown'
+        }
+      },
+      timestamps: {
+        primary: null,
+        capture: null,
+        creation: null,
+        modification: null,
+        alternatives: [],
+        conflicts: []
+      },
+      location: {
+        primary: null,
+        alternatives: [],
+        conflicts: [],
+        geolocation: null,
+        enrichmentStatus: 'error'
+      },
+      camera: {},
+      settings: {},
+      technical: {},
+      sidecars: []
     };
   }
 }

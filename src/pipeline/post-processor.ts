@@ -1,4 +1,4 @@
-import { MediaFile } from '../types/media.js';
+import { MediaFile, ProcessingResult } from '../types/media.js';
 
 /**
  * Common post-processing steps for ALL file types
@@ -7,7 +7,10 @@ import { MediaFile } from '../types/media.js';
  * - Save generated files (thumbnails, etc.)
  * - Clean up temp files
  */
-export async function postProcess(file: MediaFile, _metadata: any): Promise<any> {
+export async function postProcess(
+  file: MediaFile, 
+  _metadata: ProcessingResult
+): Promise<ProcessingResult> {
   // update this to our logging system
   console.log(`Post-processing: ${file.path}`); // Safe to log - it's the relative path
   
@@ -16,8 +19,5 @@ export async function postProcess(file: MediaFile, _metadata: any): Promise<any>
   // - Notification sending
   // - Cleanup
   
-  return {
-    stored: true,
-    timestamp: new Date().toISOString()
-  };
+  return _metadata;
 }

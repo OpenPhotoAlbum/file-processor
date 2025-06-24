@@ -5,6 +5,7 @@
 import { getAllSupportedMimeTypes } from '../utils/mime-config.js';
 import { Logger } from '../utils/logging/index.js';
 import { createValidationErrorFactory } from '../utils/errors/factories.js';
+import { CLIOptions } from './types.js';
 
 const logger = new Logger('CLI Validator');
 const validationErrors = createValidationErrorFactory(logger);
@@ -111,13 +112,15 @@ export function validateFileExtensions(extensions: string[]): string[] {
 /**
  * Normalize and validate CLI options
  */
-export function normalizeCliOptions(rawOptions: any): any {
-  const normalized = { ...rawOptions };
+export function normalizeCliOptions(
+  rawOptions: CLIOptions
+): CLIOptions & { mimeTypes?: string[]; outputPath?: string } {
+  const normalized: CLIOptions & { mimeTypes?: string[]; outputPath?: string } = { ...rawOptions };
   
   // Normalize MIME types if provided
   if (normalized.mime) {
     try {
-      normalized.mimeTypes = validateMimeTypes(normalized.mime);
+      normalized.mimeTypes = validateMimeTypes(normalized.mime as string);
     } catch (error) {
       logger.error(`MIME type validation failed: ${(error as Error).message}`);
       throw error;
@@ -127,7 +130,7 @@ export function normalizeCliOptions(rawOptions: any): any {
   // Normalize output path if provided
   if (normalized.output) {
     try {
-      normalized.outputPath = validateOutputPath(normalized.output);
+      normalized.outputPath = validateOutputPath(normalized.output as string);
     } catch (error) {
       logger.error(`Output path validation failed: ${(error as Error).message}`);
       throw error;

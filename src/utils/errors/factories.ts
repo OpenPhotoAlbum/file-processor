@@ -13,6 +13,7 @@ import { SystemErrors } from './registry/system.js';
 import { ValidationErrors } from './registry/validation.js';
 import { PathErrors } from './registry/path.js';
 import { ConfigErrors } from './registry/config.js';
+import { LandmarkErrors } from './registry/landmark.js';
 
 // Timestamp error factory
 export function createTimestampErrorFactory(logger: Logger) {
@@ -123,5 +124,24 @@ export function createConfigErrorFactory(logger: Logger) {
       factory.config(ConfigErrors.ENV_VAR_MISSING, context, error),
     invalidValue: (context: object, error?: Error) => 
       factory.config(ConfigErrors.INVALID_VALUE, context, error)
+  };
+}
+
+// Landmark error factory
+export function createLandmarkErrorFactory(logger: Logger = new Logger('Landmark Factory')) {
+  const factory = createErrorFactory(logger);
+  return {
+    providerUnavailable: (context: object, error?: Error) => 
+      factory.landmark(LandmarkErrors.PROVIDER_UNAVAILABLE, context, error),
+    providerTimeout: (context: object, error?: Error) => 
+      factory.landmark(LandmarkErrors.PROVIDER_TIMEOUT, context, error),
+    noLandmarksFound: (context: object) => 
+      factory.landmark(LandmarkErrors.NO_LANDMARKS_FOUND, context),
+    coordinatesInvalid: (context: object, error?: Error) => 
+      factory.landmark(LandmarkErrors.COORDINATES_INVALID, context, error),
+    serviceDisabled: (context: object) => 
+      factory.landmark(LandmarkErrors.SERVICE_DISABLED, context),
+    bundledDataCorrupted: (context: object, error?: Error) => 
+      factory.landmark(LandmarkErrors.BUNDLED_DATA_CORRUPTED, context, error)
   };
 }

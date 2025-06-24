@@ -1,5 +1,5 @@
 import { BaseProcessor } from './base.processor.js';
-import { MediaFile } from '../types/media.js';
+import { MediaFile, ProcessingResult } from '../types/media.js';
 import { ImageValidator } from '../utils/image/validation.js';
 import { ExifExtractor, GPSExtractor, TimestampExtractor } from '../utils/extractors/index.js';
 import { getEnabledMimeTypes, getAllSupportedMimeTypes } from '../utils/mime-config.js';
@@ -97,7 +97,7 @@ export class ImageProcessor extends BaseProcessor {
   }
 
 
-  async extract(file: MediaFile): Promise<any> {
+  async extract(file: MediaFile): Promise<ProcessingResult> {
     const safePath = sanitizePathForLogging(file.absolutePath);
     this.logger.info(`Extracting image metadata from: ${safePath}`);
     
@@ -106,11 +106,21 @@ export class ImageProcessor extends BaseProcessor {
       const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
       
       // 2. Extract GPS data from multiple sources using shared utility
+      this.logger.info('Starting GPS extraction', {
+        hasExifData: !!exifData,
+        hasSidecarMetadata: !!file.sidecarMetadata,
+        filename: file.path
+      });
       const gpsResult = await this.gpsExtractor.extractGPS({
         exifData,
         sidecarMetadata: file.sidecarMetadata,
         filename: file.path,
         directoryPath: file.absolutePath
+      });
+      this.logger.info('GPS extraction completed', {
+        hasPrimary: !!gpsResult.primary,
+        hasGeolocation: !!gpsResult.geolocation,
+        enrichmentStatus: gpsResult.enrichmentStatus
       });
 
       // 3. Extract smart timestamps from all sources using FileSystemService
@@ -132,40 +142,58 @@ export class ImageProcessor extends BaseProcessor {
       
       this.logger.info(`Successfully extracted metadata from: ${safePath}`);
       
+      // Get file format from MIME type
+      const format = file.mimeType.split('/')[1] || 'unknown';
+      
+      // Build consolidated schema
       return {
-        type: 'image',
-        processor: 'ImageProcessor',
-        extractedAt: new Date().toISOString(),
-        exif: exifData,
-        dimensions: {
-          width: exifData.image.width || 0,
-          height: exifData.image.height || 0
+        file: {
+          path: file.path,
+          hash: file.hash,
+          size: file.size,
+          mimeType: file.mimeType,
+          created: fileMetadata.stats.birthtime.toISOString(),
+          modified: fileMetadata.stats.mtime.toISOString()
         },
-        megapixels: exifData.image.megapixels || 0,
-        gps: {
-          primary: gpsResult.primary,
-          alternatives: gpsResult.alternatives,
-          conflicts: gpsResult.conflicts
+        processing: {
+          success: true,
+          processor: 'ImageProcessor',
+          extractedAt: new Date().toISOString(),
+          processingTimeMs: undefined // TODO: Add timing
+        },
+        media: {
+          type: 'image',
+          format,
+          dimensions: {
+            width: exifData.image.width || 0,
+            height: exifData.image.height || 0,
+            megapixels: exifData.image.megapixels || 0,
+            orientation: exifData.image.orientation || 'unknown'
+          }
         },
         timestamps: {
-          // Legacy EXIF timestamp data for compatibility
-          exif: exifData.timestamps,
-          // Smart timestamp analysis
-          smart: {
-            primary: timestampResult.primary,
-            capture: timestampResult.capture,
-            creation: timestampResult.creation,
-            modification: timestampResult.modification,
-            alternatives: timestampResult.alternatives,
-            conflicts: timestampResult.conflicts
-          }
+          primary: timestampResult.primary,
+          capture: timestampResult.capture,
+          creation: timestampResult.creation,
+          modification: timestampResult.modification,
+          alternatives: timestampResult.alternatives,
+          conflicts: timestampResult.conflicts
+        },
+        location: {
+          primary: gpsResult.primary,
+          alternatives: gpsResult.alternatives,
+          conflicts: gpsResult.conflicts,
+          geolocation: gpsResult.geolocation,
+          enrichmentStatus: gpsResult.enrichmentStatus
         },
         camera: exifData.camera,
         settings: exifData.settings,
         technical: exifData.technical,
-        // TODO: Add when implemented
-        thumbnail: null,
-        dominantColor: null
+        sidecars: file.sidecarMetadata?.map(sidecar => ({
+          source: sidecar.source,
+          format: sidecar.format,
+          path: sidecar.path
+        })) || []
       };
       
     } catch (error) {
@@ -176,20 +204,52 @@ export class ImageProcessor extends BaseProcessor {
       }, error as Error);
       
       // Return minimal data on error to allow processing to continue
+      const format = file.mimeType.split('/')[1] || 'unknown';
+      
       return {
-        type: 'image',
-        processor: 'ImageProcessor',
-        extractedAt: new Date().toISOString(),
-        error: error instanceof Error ? error.message : 'Unknown error',
-        exif: {},
-        dimensions: { width: 0, height: 0 },
-        gps: null,
-        timestamps: null,
-        camera: null,
-        settings: null,
-        technical: null,
-        thumbnail: null,
-        dominantColor: null
+        file: {
+          path: file.path,
+          hash: file.hash,
+          size: file.size,
+          mimeType: file.mimeType,
+          created: new Date().toISOString(), // Fallback timestamp
+          modified: new Date().toISOString()
+        },
+        processing: {
+          success: false,
+          processor: 'ImageProcessor',
+          extractedAt: new Date().toISOString(),
+          error: error instanceof Error ? error.message : 'Unknown error'
+        },
+        media: {
+          type: 'image',
+          format,
+          dimensions: {
+            width: 0,
+            height: 0,
+            megapixels: 0,
+            orientation: 'unknown'
+          }
+        },
+        timestamps: {
+          primary: null,
+          capture: null,
+          creation: null,
+          modification: null,
+          alternatives: [],
+          conflicts: []
+        },
+        location: {
+          primary: null,
+          alternatives: [],
+          conflicts: [],
+          geolocation: null,
+          enrichmentStatus: 'disabled'
+        },
+        camera: {},
+        settings: {},
+        technical: {},
+        sidecars: []
       };
     }
   }

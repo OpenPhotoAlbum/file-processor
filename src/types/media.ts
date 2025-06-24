@@ -55,7 +55,7 @@ export interface SidecarMetadata {
   format: SidecarFormat;    // File format using type-safe enum
   path: string;            // Relative path to metadata file
   absolutePath: string;    // Absolute path for processing
-  data: Record<string, any>; // Parsed metadata content
+  data: Record<string, unknown>; // Parsed metadata content
 }
 
 /**
@@ -70,10 +70,63 @@ export interface MediaFile {
   sidecarMetadata?: SidecarMetadata[]; // Generic external metadata from any source
 }
 
-// Processing result interface
+/**
+ * New consolidated processing result schema
+ */
 export interface ProcessingResult {
-  success: boolean;
-  mediaFile: MediaFile;
-  metadata: any; // TODO: type this properly later
-  error?: string;
+  file: {
+    path: string;
+    hash: string;
+    size: number;
+    mimeType: string;
+    created: string;
+    modified: string;
+  };
+  processing: {
+    success: boolean;
+    processor: string;
+    extractedAt: string;
+    processingTimeMs?: number;
+    error?: string;
+  };
+  media: {
+    type: string;
+    format: string;
+    dimensions: {
+      width: number;
+      height: number;
+      megapixels: number;
+      orientation: string;
+    };
+  };
+  timestamps: import('../utils/extractors/timestamp.js').TimestampExtractionResult;
+  location: import('../utils/extractors/gps.js').GPSExtractionResult;
+  camera: {
+    make?: string;
+    model?: string;
+    lens?: string;
+    software?: string;
+  };
+  settings: {
+    iso?: number;
+    aperture?: string;
+    shutterSpeed?: string;
+    focalLength?: string;
+    focalLength35mm?: string;
+    flash?: string;
+  };
+  technical: {
+    fileType?: string;
+    mimeType?: string;
+    exifVersion?: string;
+    colorSpace?: string;
+    compression?: string;
+    encoding?: string;
+    [key: string]: unknown;
+  };
+  sidecars: {
+    source: SidecarSource;
+    format: SidecarFormat;
+    path: string;
+  }[];
 }

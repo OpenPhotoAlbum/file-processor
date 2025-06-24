@@ -162,3 +162,13 @@ export class SystemError extends MPPError {
     this.name = 'SystemError';
   }
 }
+
+/**
+ * Landmark processing error
+ */
+export class LandmarkError extends MPPError {
+  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+    super(code, context, cause);
+    this.name = 'LandmarkError';
+  }
+}

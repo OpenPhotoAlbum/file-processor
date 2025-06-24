@@ -56,7 +56,7 @@ export interface FileProcessingResult {
   duration: number;
   
   /** Extracted metadata */
-  metadata?: any;
+  metadata?: Record<string, unknown>;
   
   /** Error message if processing failed */
   error?: string;

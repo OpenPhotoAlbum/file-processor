@@ -1,8 +1,8 @@
-import { MediaFile } from './media.js';
+import { MediaFile, ProcessingResult } from './media.js';
 
 // Base interface all processors must implement
 export interface MediaProcessor {
   supportedMimes: string[];
-  extract(file: MediaFile): Promise<any>; // TODO: type metadata properly
+  extract(file: MediaFile): Promise<ProcessingResult>;
   validate?(file: MediaFile): Promise<boolean>;
 }

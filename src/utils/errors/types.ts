@@ -19,5 +19,6 @@ export enum ErrorComponent {
   IMAGE = 'IMG',         // Image processing
   VIDEO = 'VID',         // Video processing
   CONFIG = 'CFG',        // Configuration errors
-  SYSTEM = 'SYS'         // System/infrastructure errors
+  SYSTEM = 'SYS',        // System/infrastructure errors
+  LANDMARK = 'LANDMARK'  // Landmark detection and enrichment
 }
