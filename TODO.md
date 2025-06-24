@@ -56,7 +56,108 @@
 - [ ] Add npm test script for CLI response validation
 - [ ] Create documentation for maintaining test expectations
 
-### 🔍 Performance Investigation
-- [ ] Investigate MaxListenersExceededWarning for AbortSignal memory leaks
-- [ ] Review database connection pooling and cleanup patterns
-- [ ] Check for event listener accumulation in services
+### 🔍 Performance Investigation (Completed)
+- [x] Investigate MaxListenersExceededWarning for AbortSignal memory leaks
+- [x] Review database connection pooling and cleanup patterns
+- [x] Check for event listener accumulation in services
+
+### 🏔️ GNIS Geographic Features Integration (Planned)
+- [ ] **Data Acquisition & Storage**
+  - [ ] Download GNIS state-by-state pipe-delimited text files from S3
+  - [ ] Create MySQL table schema for geographic features (similar to geo_municipal_boundaries)
+  - [ ] Parse pipe-delimited format with fields: feature_id, feature_name, feature_class, coordinates, etc.
+  - [ ] Build import scripts for loading GNIS data with proper SRID (4326)
+  - [ ] Create spatial indexes on coordinates for efficient radius queries
+  - [ ] Handle data updates (GNIS refreshes bi-monthly)
+
+- [ ] **Database Schema Design**
+  ```sql
+  -- Table for GNIS geographic features
+  CREATE TABLE geo_geographic_features (
+    feature_id VARCHAR(20) PRIMARY KEY,
+    feature_name VARCHAR(255) NOT NULL,
+    feature_class VARCHAR(50) NOT NULL,
+    state_code CHAR(2) NOT NULL,
+    county_name VARCHAR(100),
+    latitude DECIMAL(10, 8) NOT NULL,
+    longitude DECIMAL(11, 8) NOT NULL,
+    elevation_meters INT,
+    date_created DATE,
+    date_edited DATE,
+    -- Spatial column for efficient queries
+    coordinates POINT NOT NULL SRID 4326,
+    -- Indexes
+    INDEX idx_feature_class (feature_class),
+    INDEX idx_state (state_code),
+    SPATIAL INDEX idx_coordinates (coordinates)
+  );
+  ```
+
+- [ ] **GNIS Provider Implementation**
+  - [ ] Create GNISProvider class following existing provider pattern
+  - [ ] Implement findLandmarks() with radius-based spatial queries
+  - [ ] Map GNIS feature classes to landmark categories:
+    - Summit/Peak/Hill → 'mountain'
+    - Lake/Reservoir/Pond → 'lake'
+    - Stream/River/Creek → 'river'
+    - Valley/Canyon/Gorge → 'valley'
+    - Ridge/Range → 'ridge'
+    - Forest/Woods → 'forest'
+    - Spring/Falls → 'water_feature'
+  - [ ] Calculate confidence scores based on distance and feature prominence
+  - [ ] Add feature-specific metadata (elevation, area, length, etc.)
+
+- [ ] **Integration with Existing System**
+  - [ ] Register GNISProvider in landmark service provider list
+  - [ ] Update LandmarkCategory type to include new natural features
+  - [ ] Extend landmark schema to support GNIS-specific fields
+  - [ ] Ensure caching works with high-volume GNIS queries
+  - [ ] Add GNIS feature statistics to enrichmentStatus
+
+- [ ] **Enhanced JSON Output Structure**
+  - [ ] Include GNIS feature_id for cross-referencing
+  - [ ] Add feature_class from GNIS taxonomy
+  - [ ] Include elevation for summits and water features
+  - [ ] Add descriptive context for each feature
+  - [ ] Provide detailed statistics by category and provider
+
+- [ ] **Testing & Validation**
+  - [ ] Create test cases for mountain/lake/river detection
+  - [ ] Validate against known locations (e.g., Mount Washington area)
+  - [ ] Test performance with 1M+ features in database
+  - [ ] Ensure proper fallback when no features found
+  - [ ] Verify coordinate system consistency
+
+### Expected JSON Enhancement Example:
+```json
+{
+  "landmarks": [
+    {
+      "name": "Mount Lafayette",
+      "category": "mountain",
+      "provider": "GNIS",
+      "distance": 2.3,
+      "bearing": 45,
+      "confidence": 0.98,
+      "elevation": 1600,
+      "feature_id": "872634",
+      "feature_class": "Summit",
+      "prominence": 945,
+      "description": "Highest peak in Franconia Ridge"
+    },
+    {
+      "name": "Profile Lake",
+      "category": "lake",
+      "provider": "GNIS", 
+      "distance": 4.2,
+      "bearing": 85,
+      "confidence": 0.93,
+      "elevation": 571,
+      "feature_id": "869123",
+      "feature_class": "Lake",
+      "area_hectares": 5.2,
+      "description": "Small glacial lake at base of Cannon Mountain"
+    }
+  ]
+}
+```
