@@ -1,25 +1,25 @@
 {
   "success": true,
   "filesProcessed": 1,
-  "duration": 129,
+  "duration": 0,
   "results": [
     {
       "filePath": "sample:jpg_with_gps_iphone.JPG",
       "success": true,
-      "duration": 129,
+      "duration": 0,
       "metadata": {
         "file": {
           "path": "sample:jpg_with_gps_iphone.JPG",
-          "hash": "placeholder-hash",
+          "hash": "normalized-hash",
           "size": 1740252,
           "mimeType": "image/jpeg",
-          "created": "2025-06-23T20:23:22.376Z",
-          "modified": "2025-06-23T20:23:22.376Z"
+          "created": "normalized-timestamp",
+          "modified": "normalized-timestamp"
         },
         "processing": {
           "success": true,
           "processor": "ImageProcessor",
-          "extractedAt": "2025-06-24T15:21:00.600Z"
+          "extractedAt": "normalized-timestamp"
         },
         "media": {
           "type": "image",
@@ -74,27 +74,6 @@
               "confidence": "medium",
               "originalFormat": "2018:07:02 13:45:30",
               "sourceDetails": "EXIF:ModifyDate"
-            },
-            {
-              "timestamp": "2025-06-23T20:23:22.376Z",
-              "source": "filesystem",
-              "confidence": "low",
-              "originalFormat": "Mon Jun 23 2025 16:23:22 GMT-0400 (Eastern Daylight Time)",
-              "sourceDetails": "File birth time"
-            },
-            {
-              "timestamp": "2025-06-23T20:23:22.376Z",
-              "source": "filesystem",
-              "confidence": "low",
-              "originalFormat": "Mon Jun 23 2025 16:23:22 GMT-0400 (Eastern Daylight Time)",
-              "sourceDetails": "File modification time"
-            },
-            {
-              "timestamp": "2025-06-23T20:23:22.376Z",
-              "source": "filesystem",
-              "confidence": "low",
-              "originalFormat": "Mon Jun 23 2025 16:23:22 GMT-0400 (Eastern Daylight Time)",
-              "sourceDetails": "File change time"
             }
           ],
           "conflicts": []
@@ -112,22 +91,236 @@
           "alternatives": [],
           "conflicts": [],
           "geolocation": {
-            "city": "South Berwick",
-            "state_code": "ME",
-            "distance": 2002,
-            "confidence": 0.8,
-            "source": "boundary_proximity",
-            "method": "Nearest to South Berwick CDP municipal center",
-            "area_sq_meters": 7283831,
-            "place_type": "U1"
+            "city": "Rollinsford",
+            "state_code": "NH",
+            "county_name": "Strafford",
+            "timezone": "America/New_York",
+            "postal_code": "3869",
+            "distance": 2055,
+            "confidence": 0.79,
+            "source": "city_proximity",
+            "method": "Nearest city centroid"
           },
-          "landmarks": [],
+          "landmarks": [
+            {
+              "landmark": {
+                "id": "gnis_1775466",
+                "name": "Salmon Falls River Reservoir",
+                "fullName": "Salmon Falls River Reservoir (Reservoir)",
+                "category": "lake",
+                "subcategory": "Reservoir",
+                "latitude": "43.23841790",
+                "longitude": "-70.81783540",
+                "state": "NH",
+                "county": "Strafford",
+                "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 601,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_567190",
+                "name": "Great Works River",
+                "fullName": "Great Works River (Stream)",
+                "category": "river",
+                "subcategory": "Stream",
+                "latitude": "43.21869620",
+                "longitude": "-70.81200160",
+                "state": "ME",
+                "county": "York",
+                "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 2059,
+              "confidence": 0.96,
+              "relationship": "visible_from",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_564650",
+                "name": "Cummings Hill",
+                "fullName": "Cummings Hill (Summit)",
+                "category": "mountain",
+                "subcategory": "Summit",
+                "latitude": "43.24229870",
+                "longitude": "-70.80587170",
+                "state": "ME",
+                "county": "York",
+                "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1652,
+              "confidence": 0.9,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_867723",
+                "name": "Indigo Hill",
+                "fullName": "Indigo Hill (Summit)",
+                "category": "mountain",
+                "subcategory": "Summit",
+                "latitude": "43.24303720",
+                "longitude": "-70.84131680",
+                "state": "NH",
+                "county": "Strafford",
+                "description": "Mountain peak - in Strafford County, New Hampshire, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1675,
+              "confidence": 0.9,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_573744",
+                "name": "Powderhouse Hill",
+                "fullName": "Powderhouse Hill (Summit)",
+                "category": "mountain",
+                "subcategory": "Summit",
+                "latitude": "43.23379120",
+                "longitude": "-70.80146940",
+                "state": "ME",
+                "county": "York",
+                "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1809,
+              "confidence": 0.9,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_870558",
+                "name": "Twombly Brook",
+                "fullName": "Twombly Brook (Stream)",
+                "category": "river",
+                "subcategory": "Stream",
+                "latitude": "43.22341780",
+                "longitude": "-70.84700270",
+                "state": "NH",
+                "county": "Strafford",
+                "description": "River or stream - in Strafford County, New Hampshire, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 2292,
+              "confidence": 0.86,
+              "relationship": "visible_from",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_578705",
+                "name": "Worster Brook",
+                "fullName": "Worster Brook (Stream)",
+                "category": "river",
+                "subcategory": "Stream",
+                "latitude": "43.25425070",
+                "longitude": "-70.84089200",
+                "state": "ME",
+                "county": "York",
+                "description": "River or stream - in York County, Maine, (USGS Somersworth quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 2541,
+              "confidence": 0.85,
+              "relationship": "visible_from",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_565295",
+                "name": "Driscoll Brook",
+                "fullName": "Driscoll Brook (Stream)",
+                "category": "river",
+                "subcategory": "Stream",
+                "latitude": "43.23536250",
+                "longitude": "-70.81644640",
+                "state": "ME",
+                "county": "York",
+                "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 590,
+              "confidence": 0.79,
+              "relationship": "nearby",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_1775464",
+                "name": "Salmon Falls River Reservoir",
+                "fullName": "Salmon Falls River Reservoir (Reservoir)",
+                "category": "lake",
+                "subcategory": "Reservoir",
+                "latitude": "43.22675160",
+                "longitude": "-70.81116840",
+                "state": "NH",
+                "county": "Strafford",
+                "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1379,
+              "confidence": 0.72,
+              "relationship": "nearby",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_569462",
+                "name": "Leighs Mill Pond",
+                "fullName": "Leighs Mill Pond (Reservoir)",
+                "category": "lake",
+                "subcategory": "Reservoir",
+                "latitude": "43.22007090",
+                "longitude": "-70.80710550",
+                "state": "ME",
+                "county": "York",
+                "description": "Water reservoir - in York County, Maine, (USGS Dover East quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 2148,
+              "confidence": 0.51,
+              "relationship": "nearby",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            }
+          ],
           "enrichmentStatus": {
             "geolocation": "success",
-            "landmarks": "not_found",
-            "providersUsed": [],
+            "landmarks": "success",
+            "providersUsed": [
+              "USGS GNIS"
+            ],
             "cacheHit": false,
-            "queryTimeMs": 28
+            "queryTimeMs": 0
           }
         },
         "camera": {
@@ -154,8 +347,8 @@
           "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
           "File:FileSize": "1740 kB",
           "File:FileModifyDate": "2025:06:23 16:23:22-04:00",
-          "File:FileAccessDate": "2025:06:23 16:23:27-04:00",
-          "File:FileInodeChangeDate": "2025:06:23 16:23:22-04:00",
+          "File:FileAccessDate": "2025:06:24 19:29:13-04:00",
+          "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
           "File:FilePermissions": "-rw-r--r--",
           "File:ExifByteOrder": "Big-endian (Motorola, MM)",
           "File:EncodingProcess": "Baseline DCT, Huffman coding",
@@ -281,8 +474,8 @@
     "successfullyProcessed": 1,
     "failedFiles": 0,
     "filesWithWarnings": 0,
-    "totalDuration": 129,
-    "averageDuration": 129,
+    "totalDuration": 0,
+    "averageDuration": 0,
     "mimeTypeBreakdown": {
       "image": 1
     },

@@ -1,25 +1,25 @@
 {
   "success": true,
   "filesProcessed": 1,
-  "duration": 125,
+  "duration": 0,
   "results": [
     {
       "filePath": "sample:IMG_6645.jpg",
       "success": true,
-      "duration": 125,
+      "duration": 0,
       "metadata": {
         "file": {
           "path": "sample:IMG_6645.jpg",
-          "hash": "placeholder-hash",
+          "hash": "normalized-hash",
           "size": 1828494,
           "mimeType": "image/jpeg",
-          "created": "2025-06-24T14:52:38.391Z",
-          "modified": "2025-06-24T14:52:38.548Z"
+          "created": "normalized-timestamp",
+          "modified": "normalized-timestamp"
         },
         "processing": {
           "success": true,
           "processor": "ImageProcessor",
-          "extractedAt": "2025-06-24T15:20:59.276Z"
+          "extractedAt": "normalized-timestamp"
         },
         "media": {
           "type": "image",
@@ -74,27 +74,6 @@
               "confidence": "medium",
               "originalFormat": "2022:09:30 11:22:36",
               "sourceDetails": "EXIF:ModifyDate"
-            },
-            {
-              "timestamp": "2025-06-24T14:52:38.391Z",
-              "source": "filesystem",
-              "confidence": "low",
-              "originalFormat": "Tue Jun 24 2025 10:52:38 GMT-0400 (Eastern Daylight Time)",
-              "sourceDetails": "File birth time"
-            },
-            {
-              "timestamp": "2025-06-24T14:52:38.548Z",
-              "source": "filesystem",
-              "confidence": "low",
-              "originalFormat": "Tue Jun 24 2025 10:52:38 GMT-0400 (Eastern Daylight Time)",
-              "sourceDetails": "File modification time"
-            },
-            {
-              "timestamp": "2025-06-24T14:52:49.138Z",
-              "source": "filesystem",
-              "confidence": "low",
-              "originalFormat": "Tue Jun 24 2025 10:52:49 GMT-0400 (Eastern Daylight Time)",
-              "sourceDetails": "File change time"
             }
           ],
           "conflicts": []
@@ -111,45 +90,237 @@
           "alternatives": [],
           "conflicts": [],
           "geolocation": {
-            "city": "Bar Harbor",
+            "city": "Seal Harbor",
             "state_code": "ME",
-            "distance": 7566,
-            "confidence": 0.24,
-            "source": "boundary_proximity",
-            "method": "Nearest to Bar Harbor CDP municipal center",
-            "area_sq_meters": 8206736,
-            "place_type": "U1"
+            "county_name": "Hancock",
+            "timezone": "America/New_York",
+            "postal_code": "4675",
+            "distance": 4888,
+            "confidence": 0.51,
+            "source": "city_proximity",
+            "method": "Nearest city centroid"
           },
           "landmarks": [
             {
               "landmark": {
-                "id": "acad",
-                "name": "Acadia",
-                "fullName": "Acadia National Park",
-                "category": "national_park",
+                "id": "gnis_577073",
+                "name": "Thunder Hole",
+                "fullName": "Thunder Hole (Bay)",
+                "category": "water_feature",
+                "subcategory": "Bay",
+                "latitude": "44.32035810",
+                "longitude": "-68.18778950",
                 "state": "ME",
-                "latitude": 44.35,
-                "longitude": -68.21,
-                "description": "Rocky coastline, pristine lakes, and rugged mountains",
-                "established": "1916",
-                "source": "nps_bundled",
-                "lastUpdated": "2025-06-24T15:20:59.275Z"
+                "county": "Hancock",
+                "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
               },
-              "distance": 3582,
-              "confidence": 0.77,
+              "distance": 164,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_563336",
+                "name": "Cadillac Cliffs",
+                "fullName": "Cadillac Cliffs (Cliff)",
+                "category": "natural_feature",
+                "subcategory": "Cliff",
+                "latitude": "44.32525430",
+                "longitude": "-68.19084700",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Rock formation - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 437,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_1911769",
+                "name": "Monument Cove",
+                "fullName": "Monument Cove (Bay)",
+                "category": "water_feature",
+                "subcategory": "Bay",
+                "latitude": "44.31758040",
+                "longitude": "-68.19001190",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 490,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_566977",
+                "name": "Gorham Mountain",
+                "fullName": "Gorham Mountain (Summit)",
+                "category": "mountain",
+                "subcategory": "Summit",
+                "latitude": "44.32696620",
+                "longitude": "-68.19325300",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Mountain peak - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 700,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_572727",
+                "name": "Old Soaker",
+                "fullName": "Old Soaker (Island)",
+                "category": "natural_feature",
+                "subcategory": "Island",
+                "latitude": "44.32230260",
+                "longitude": "-68.17862240",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Land mass surrounded by water - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 767,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_572150",
+                "name": "Newport Cove",
+                "fullName": "Newport Cove (Bay)",
+                "category": "water_feature",
+                "subcategory": "Bay",
+                "latitude": "44.32730250",
+                "longitude": "-68.18112260",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 834,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_1911902",
+                "name": "Sand Beach",
+                "fullName": "Sand Beach (Beach)",
+                "category": "natural_feature",
+                "subcategory": "Beach",
+                "latitude": "44.32924700",
+                "longitude": "-68.18167810",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 979,
+              "confidence": 1,
+              "relationship": "within_boundary",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_1911722",
+                "name": "Kief Pond",
+                "fullName": "Kief Pond (Lake)",
+                "category": "lake",
+                "subcategory": "Lake",
+                "latitude": "44.33124360",
+                "longitude": "-68.18936320",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Natural lake - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1054,
+              "confidence": 0.85,
               "relationship": "nearby",
-              "source": "National Parks Service",
-              "matchMethod": "distance_based"
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_572818",
+                "name": "Otter Creek",
+                "fullName": "Otter Creek (Stream)",
+                "category": "river",
+                "subcategory": "Stream",
+                "latitude": "44.32230240",
+                "longitude": "-68.20140130",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "River or stream - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1049,
+              "confidence": 0.79,
+              "relationship": "nearby",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
+            },
+            {
+              "landmark": {
+                "id": "gnis_581649",
+                "name": "Otter Cliff",
+                "fullName": "Otter Cliff (Cliff)",
+                "category": "natural_feature",
+                "subcategory": "Cliff",
+                "latitude": "44.31063610",
+                "longitude": "-68.18890060",
+                "state": "ME",
+                "county": "Hancock",
+                "description": "Rock formation - in Hancock County, Maine, (USGS Seal Harbor quad)",
+                "source": "usgs_gnis",
+                "lastUpdated": "normalized-timestamp"
+              },
+              "distance": 1242,
+              "confidence": 0.75,
+              "relationship": "nearby",
+              "source": "USGS GNIS",
+              "matchMethod": "spatial_query"
             }
           ],
           "enrichmentStatus": {
             "geolocation": "success",
             "landmarks": "success",
             "providersUsed": [
-              "National Parks Service"
+              "National Parks Service",
+              "USGS GNIS"
             ],
             "cacheHit": false,
-            "queryTimeMs": 26
+            "queryTimeMs": 0
           }
         },
         "camera": {
@@ -176,8 +347,8 @@
           "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
           "File:FileSize": "1828 kB",
           "File:FileModifyDate": "2025:06:24 10:52:38-04:00",
-          "File:FileAccessDate": "2025:06:24 10:52:49-04:00",
-          "File:FileInodeChangeDate": "2025:06:24 10:52:49-04:00",
+          "File:FileAccessDate": "2025:06:24 19:19:23-04:00",
+          "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
           "File:FilePermissions": "-rw-rw-r--",
           "File:ExifByteOrder": "Big-endian (Motorola, MM)",
           "File:EncodingProcess": "Baseline DCT, Huffman coding",
@@ -323,8 +494,8 @@
     "successfullyProcessed": 1,
     "failedFiles": 0,
     "filesWithWarnings": 0,
-    "totalDuration": 125,
-    "averageDuration": 125,
+    "totalDuration": 0,
+    "averageDuration": 0,
     "mimeTypeBreakdown": {
       "image": 1
     },

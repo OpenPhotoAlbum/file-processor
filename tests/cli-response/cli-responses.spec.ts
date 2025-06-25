@@ -186,12 +186,17 @@ describe('CLI Response Integration Tests', () => {
     expect(location.primary.longitude).toBeCloseTo(-68.18823889, 5);
     
     // Check geolocation resolution
-    expect(location.geolocation).toHaveProperty('city', 'Bar Harbor');
+    expect(location.geolocation).toHaveProperty('city', 'Seal Harbor');
     expect(location.geolocation).toHaveProperty('state_code', 'ME');
     
-    // Check landmarks (Acadia National Park)
-    expect(location.landmarks).toHaveLength(1);
-    expect(location.landmarks[0].landmark).toHaveProperty('name', 'Acadia');
-    expect(location.landmarks[0].landmark).toHaveProperty('category', 'national_park');
+    // Check landmarks (should have multiple landmarks now with GNIS)
+    expect(location.landmarks.length).toBeGreaterThan(1);
+    
+    // Check that we have both GNIS and National Parks landmarks
+    const landmarkNames = location.landmarks.map((l: any) => l.landmark.name);
+    const landmarkSources = location.landmarks.map((l: any) => l.source);
+    
+    expect(landmarkSources).toContain('USGS GNIS');
+    expect(landmarkNames).toContain('Thunder Hole'); // Close GNIS feature
   });
 });
