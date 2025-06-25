@@ -36,7 +36,8 @@ export async function runCLI(): Promise<void> {
     .option('-o, --output <file>', 'output results to file (auto-adds .json extension)')
     .option('--overwrite', 'overwrite existing output file (default: auto-number)')
     .option('--json', 'output in JSON format')
-    .option('--quiet', 'minimal console output');
+    .option('--quiet', 'minimal console output')
+    .option('--timestamp-only', 'extract timestamp only (skip all processing)');
 
   // Help examples
   program.addHelpText('after', `

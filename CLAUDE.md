@@ -43,6 +43,20 @@
 - **Import organization**: Consistent import ordering and ES6 modules
 - **Code quality**: ESLint with TypeScript rules, auto-fix integration
 
+### CLI Enhancement Standards (December 2024)
+- **Clean output modes**: `--timestamp-only` and `--json` suppress all logging/progress
+- **Timestamp format**: `YYYY-MM-DD_HH-MM-SS` for consistent filename generation
+- **JSON output**: Direct metadata object (not CLI wrapper) for pipeable analysis
+- **Extensible suppression**: `suppressSummaryModes` array for adding new quiet modes
+- **Reuse existing logic**: Timestamp extraction leverages existing processors and services
+
+### Photo Organization Standards (December 2024)
+- **File locations**: Photos in `/photos/staging/`, metadata in `/photos/metadata/`
+- **Deduplication**: Hash-based with jdupes, metadata preservation priority
+- **Sidecar handling**: Orphaned JSONs organized by original directory structure
+- **Path prefixes**: `sample:`, `media:` prefixes for flexible file resolution
+- **Test integration**: CLI tests use direct JSON output format, normalized dynamic fields
+
 ## Development Notes
 - This project treats media processing as a production system, not a prototype
 - Stephen values sustainable development practices for long-term maintenance

@@ -9,6 +9,7 @@ import { processFile } from '../pipeline/entry.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { OutputHandler } from './output.js';
 import { normalizeCliOptions } from './validators.js';
+import { extractTimestampOnly } from './timestamp-extractor.js';
 import { 
   CLIOptions, 
   ProcessingResult as CLIProcessingResult, 
@@ -35,8 +36,8 @@ export class CLIHandler {
       // Validate and normalize options
       const options = normalizeCliOptions(rawOptions);
       
-      // Configure global logging based on quiet flag
-      if (options.quiet) {
+      // Configure global logging based on quiet flag or json mode
+      if (options.quiet || options.json || options.timestampOnly) {
         Logger.configure({ level: LogLevel.FATAL });
       }
       
@@ -59,16 +60,31 @@ export class CLIHandler {
       // Process files
       const result = await this.processFiles(filesToProcess, options);
       
-      // Handle output
-      const outputOptions: OutputOptions = {
-        format: options.json ? 'json' : 'console',
-        destination: options.outputPath ? 'file' : 'stdout',
-        filePath: options.outputPath,
-        overwrite: options.overwrite || false,
-        quiet: options.quiet || false
-      };
+      // Handle output (skip summary for certain modes)
+      const suppressSummaryModes = ['timestampOnly', 'json'] as const;
+      const shouldSuppressSummary = suppressSummaryModes.some(mode => options[mode]);
       
-      await this.outputHandler.handleOutput(result, outputOptions);
+      if (!shouldSuppressSummary) {
+        const outputOptions: OutputOptions = {
+          format: options.json ? 'json' : 'console',
+          destination: options.outputPath ? 'file' : 'stdout',
+          filePath: options.outputPath,
+          overwrite: options.overwrite || false,
+          quiet: options.quiet || false
+        };
+        
+        await this.outputHandler.handleOutput(result, outputOptions);
+      } else if (options.json && !options.timestampOnly) {
+        // For JSON mode, output the actual file metadata, not the processing summary
+        if (result.results.length === 1) {
+          // Single file - output the metadata directly
+          console.log(JSON.stringify(result.results[0].metadata, null, 2));
+        } else {
+          // Multiple files - output array of metadata
+          const metadataArray = result.results.map(r => r.metadata);
+          console.log(JSON.stringify(metadataArray, null, 2));
+        }
+      }
       
       const totalDuration = Date.now() - startTime;
       
@@ -198,7 +214,7 @@ export class CLIHandler {
     const startTime = Date.now();
     const results: FileProcessingResult[] = [];
     
-    if (!options.quiet) {
+    if (!options.quiet && !options.json && !options.timestampOnly) {
       console.log(`\n🔄 Processing ${files.length} files...\n`);
     }
     
@@ -206,23 +222,37 @@ export class CLIHandler {
       const file = files[i];
       const fileStartTime = Date.now();
       
-      if (!options.quiet) {
+      if (!options.quiet && !options.json && !options.timestampOnly) {
         console.log(`[${i + 1}/${files.length}] Processing: ${sanitizePathForLogging(file)}`);
       }
       
       try {
-        const metadata = await processFile(file);
+        let processedData: any;
+        
+        if (options.timestampOnly) {
+          // Lightweight timestamp extraction only
+          const timestamp = await extractTimestampOnly(file);
+          processedData = { timestamp };
+          
+          // For timestamp-only mode, just output the timestamp
+          console.log(timestamp);
+        } else {
+          // Full processing pipeline
+          const metadata = await processFile(file);
+          processedData = metadata;
+        }
+        
         const duration = Date.now() - fileStartTime;
         
         results.push({
           filePath: sanitizePathForLogging(file),
-          success: metadata.processing.success || true,
+          success: true,
           duration,
-          metadata: metadata as unknown as Record<string, unknown>,
+          metadata: processedData as unknown as Record<string, unknown>,
           warnings: [] // TODO: Extract warnings from metadata
         });
         
-        if (!options.quiet) {
+        if (!options.quiet && !options.timestampOnly && !options.json) {
           console.log(`  ✅ Completed in ${this.formatDuration(duration)}`);
         }
         
@@ -238,7 +268,7 @@ export class CLIHandler {
           warnings: []
         });
         
-        if (!options.quiet) {
+        if (!options.quiet && !options.json && !options.timestampOnly) {
           console.log(`  ❌ Failed: ${errorMessage}`);
         }
         

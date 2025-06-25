@@ -26,6 +26,9 @@ export interface CLIOptions {
   
   /** Minimal console output */
   quiet?: boolean;
+  
+  /** Extract timestamp only (skip all processing) */
+  timestampOnly?: boolean;
 }
 
 export interface ProcessingResult {

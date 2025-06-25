@@ -27,12 +27,12 @@ const TEST_CASES = [
 // Helper function to execute CLI command and return JSON response
 async function executeCLI(filename: string): Promise<any> {
   return new Promise((resolve, reject) => {
-    const outputFile = `/tmp/test-${Date.now()}`;
-    const child = spawn('node', ['dist/main.js', '-f', `sample:${filename}`, '--json', '-o', outputFile, '--overwrite'], {
+    const child = spawn('node', ['dist/main.js', '--files', `sample:${filename}`, '--json'], {
       cwd: PROJECT_ROOT,
       stdio: ['inherit', 'pipe', 'pipe']
     });
 
+    let stdout = '';
     let stderr = '';
     
     // Set timeout to prevent hanging tests
@@ -40,6 +40,10 @@ async function executeCLI(filename: string): Promise<any> {
       child.kill('SIGKILL');
       reject(new Error(`CLI command timed out after 30 seconds for ${filename}`));
     }, 30000);
+
+    child.stdout.on('data', (data) => {
+      stdout += data.toString();
+    });
 
     child.stderr.on('data', (data) => {
       stderr += data.toString();
@@ -54,12 +58,11 @@ async function executeCLI(filename: string): Promise<any> {
       }
 
       try {
-        // Read the generated JSON file (CLI auto-adds .json extension)
-        const content = readFileSync(`${outputFile}.json`, 'utf-8');
-        const result = JSON.parse(content);
+        // Parse JSON from stdout
+        const result = JSON.parse(stdout.trim());
         resolve(result);
       } catch (error) {
-        reject(new Error(`Failed to read/parse output file: ${error}`));
+        reject(new Error(`Failed to parse JSON output: ${error}\nStdout: ${stdout}\nStderr: ${stderr}`));
       }
     });
 
@@ -74,47 +77,37 @@ async function executeCLI(filename: string): Promise<any> {
 function normalizeDynamicFields(response: any): any {
   const normalized = JSON.parse(JSON.stringify(response));
   
-  // Normalize timing fields
-  if (normalized.duration) normalized.duration = 0;
-  if (normalized.summary?.totalDuration) normalized.summary.totalDuration = 0;
-  if (normalized.summary?.averageDuration) normalized.summary.averageDuration = 0;
+  // Normalize processing timestamp (new direct format)
+  if (normalized.processing?.extractedAt) {
+    normalized.processing.extractedAt = 'normalized-timestamp';
+  }
   
-  // Normalize result-level dynamic fields
-  if (normalized.results) {
-    for (const result of normalized.results) {
-      if (result.duration) result.duration = 0;
-      
-      if (result.metadata?.processing?.extractedAt) {
-        result.metadata.processing.extractedAt = 'normalized-timestamp';
-      }
-      
-      if (result.metadata?.file) {
-        if (result.metadata.file.created) result.metadata.file.created = 'normalized-timestamp';
-        if (result.metadata.file.modified) result.metadata.file.modified = 'normalized-timestamp';
-        if (result.metadata.file.hash) result.metadata.file.hash = 'normalized-hash';
-      }
-      
-      // Normalize enrichment timing
-      if (result.metadata?.location?.enrichmentStatus?.queryTimeMs) {
-        result.metadata.location.enrichmentStatus.queryTimeMs = 0;
-      }
-      
-      // Normalize landmark timestamps
-      if (result.metadata?.location?.landmarks) {
-        for (const landmark of result.metadata.location.landmarks) {
-          if (landmark.landmark?.lastUpdated) {
-            landmark.landmark.lastUpdated = 'normalized-timestamp';
-          }
-        }
-      }
-      
-      // Remove filesystem timestamps (they're not stable across runs)
-      if (result.metadata?.timestamps?.alternatives) {
-        result.metadata.timestamps.alternatives = result.metadata.timestamps.alternatives.filter(
-          (ts: any) => ts.source !== 'filesystem'
-        );
+  // Normalize file metadata
+  if (normalized.file) {
+    if (normalized.file.created) normalized.file.created = 'normalized-timestamp';
+    if (normalized.file.modified) normalized.file.modified = 'normalized-timestamp';
+    if (normalized.file.hash) normalized.file.hash = 'normalized-hash';
+  }
+  
+  // Normalize enrichment timing
+  if (normalized.location?.enrichmentStatus?.queryTimeMs) {
+    normalized.location.enrichmentStatus.queryTimeMs = 0;
+  }
+  
+  // Normalize landmark timestamps
+  if (normalized.location?.landmarks) {
+    for (const landmark of normalized.location.landmarks) {
+      if (landmark.landmark?.lastUpdated) {
+        landmark.landmark.lastUpdated = 'normalized-timestamp';
       }
     }
+  }
+  
+  // Remove filesystem timestamps (they're not stable across runs)
+  if (normalized.timestamps?.alternatives) {
+    normalized.timestamps.alternatives = normalized.timestamps.alternatives.filter(
+      (ts: any) => ts.source !== 'filesystem'
+    );
   }
   
   return normalized;
@@ -163,21 +156,23 @@ describe('CLI Response Integration Tests', () => {
     for (const { filename } of TEST_CASES) {
       const response = await executeCLI(filename);
       
-      expect(response).toHaveProperty('success', true);
-      expect(response).toHaveProperty('filesProcessed', 1);
-      expect(response).toHaveProperty('duration');
-      expect(response).toHaveProperty('results');
-      expect(response).toHaveProperty('summary');
+      // Check for direct file metadata structure (new JSON format)
+      expect(response).toHaveProperty('file');
+      expect(response).toHaveProperty('processing');
+      expect(response).toHaveProperty('media');
+      expect(response).toHaveProperty('timestamps');
+      expect(response).toHaveProperty('location');
+      expect(response).toHaveProperty('camera');
+      expect(response).toHaveProperty('technical');
+      expect(response).toHaveProperty('sidecars');
       
-      expect(response.results).toHaveLength(1);
-      expect(response.results[0]).toHaveProperty('success', true);
-      expect(response.results[0]).toHaveProperty('metadata');
+      expect(response.processing).toHaveProperty('success', true);
     }
   });
 
   test('GPS coordinates and geolocation work correctly', async () => {
     const response = await executeCLI('IMG_6645.jpg');
-    const location = response.results[0].metadata.location;
+    const location = response.location; // Direct property access in new format
     
     // Check GPS coordinates
     expect(location.primary).toHaveProperty('latitude');
