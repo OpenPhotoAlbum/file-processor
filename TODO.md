@@ -48,20 +48,20 @@
 
 ## Next Steps
 
-### 🧪 CLI Response Testing Framework
-- [ ] Create test structure: `tests/cli-response/` with mocks/ subdirectory
-- [ ] Generate expected response files for each sample image in scratch/
-- [ ] Build CLI test runner that executes commands and compares outputs
-- [ ] Implement response validator with schema checking
-- [ ] Add npm test script for CLI response validation
-- [ ] Create documentation for maintaining test expectations
+### 🧪 CLI Response Testing Framework (Completed)
+- [x] Create test structure: `tests/cli-response/` with mocks/ subdirectory
+- [x] Generate expected response files for each sample image in scratch/
+- [x] Build CLI test runner that executes commands and compares outputs
+- [x] Implement response validator with schema checking
+- [x] Add npm test script for CLI response validation
+- [x] Create documentation for maintaining test expectations
 
 ### 🔍 Performance Investigation (Completed)
 - [x] Investigate MaxListenersExceededWarning for AbortSignal memory leaks
 - [x] Review database connection pooling and cleanup patterns
 - [x] Check for event listener accumulation in services
 
-### 🏔️ GNIS Geographic Features Integration (Implementation Ready)
+### 🏔️ GNIS Geographic Features Integration (Completed)
 
 **Architecture**: Minimal-impact integration using existing provider pattern and CLI testing approach
 
@@ -75,55 +75,55 @@ tests/cli-response/mocks/*.json                      # UPDATED - New landmark da
 ```
 
 **Implementation Steps:**
-- [ ] **Create Database Migration (036_create_geo_geographic_features.sql)**
-  - [ ] Design table schema with spatial indexing
-  - [ ] Include feature_id, feature_name, feature_class, coordinates, elevation
-  - [ ] Add proper indexes for performance (spatial, feature_class, state)
+- [x] **Create Database Migration (055_table_geo_geographic_features.sql)**
+  - [x] Design table schema with spatial indexing
+  - [x] Include feature_id, feature_name, feature_class, coordinates, elevation
+  - [x] Add proper indexes for performance (spatial, feature_class, state)
 
-- [ ] **Build Data Loading Script (scripts/load-gnis-data.ts)**
-  - [ ] Download NH GNIS data from S3 as proof of concept
-  - [ ] Parse pipe-delimited format: feature_id|feature_name|feature_class|...
-  - [ ] Filter for relevant feature classes: Summit, Lake, Stream, Valley, Ridge, Falls
-  - [ ] Insert with proper SRID spatial conversion
-  - [ ] Add simple statistics logging
+- [x] **Build Data Loading Scripts**
+  - [x] Load complete US GNIS dataset (654K+ features) via individual state SQL files
+  - [x] Parse pipe-delimited format: feature_id|feature_name|feature_class|...
+  - [x] Filter for relevant feature classes: Summit, Lake, Stream, Valley, Ridge, Falls
+  - [x] Insert with proper SRID spatial conversion
+  - [x] Add comprehensive US municipal boundaries (267 municipalities across 17 states)
 
-- [ ] **Implement GNIS Provider (src/services/landmarks/providers/gnis.ts)**
-  - [ ] Follow existing NationalParksProvider pattern exactly
-  - [ ] Map feature classes to categories (Summit→mountain, Lake→lake, etc.)
-  - [ ] Use spatial queries matching geolocation service approach
-  - [ ] Add GNIS-specific fields (feature_id, feature_class, elevation)
-  - [ ] Calculate confidence based on distance and feature type
+- [x] **Implement GNIS Provider (src/services/landmarks/providers/gnis.ts)**
+  - [x] Follow existing NationalParksProvider pattern exactly
+  - [x] Map feature classes to categories (Summit→mountain, Lake→lake, etc.)
+  - [x] Use spatial queries with haversine formula for accurate distance calculation
+  - [x] Add GNIS-specific fields (feature_id, feature_class, county, subcategory)
+  - [x] Calculate confidence based on distance and feature type
 
-- [ ] **Update Landmark Types (src/services/landmarks/types.ts)**
-  - [ ] Add new categories: mountain, lake, river, valley, ridge, water_feature
-  - [ ] Extend Landmark interface for GNIS fields
+- [x] **Update Landmark Types (src/services/landmarks/types.ts)**
+  - [x] Add new categories: mountain, lake, river, valley, ridge, water_feature, natural_feature
+  - [x] Extend Landmark interface for GNIS fields
 
-- [ ] **Register Provider & Test**
-  - [ ] Add GNISProvider to landmark service provider list
-  - [ ] Run existing CLI tests on sample images
-  - [ ] Update mock JSON files with new landmark data
-  - [ ] Verify integration through CLI output
+- [x] **Register Provider & Test**
+  - [x] Add GNISProvider to landmark service provider list
+  - [x] Run existing CLI tests on sample images
+  - [x] Update mock JSON files with new landmark data
+  - [x] Verify integration through CLI output with comprehensive testing coverage
 
 **Testing Strategy**: Use existing Jest CLI integration tests - no new unit tests needed
-- Sample images will show new GNIS landmarks in JSON output
-- Update mock expectations to match enriched responses  
-- Monitor diffs for regressions
-  - [ ] Ensure caching works with high-volume GNIS queries
-  - [ ] Add GNIS feature statistics to enrichmentStatus
+- [x] Sample images show new GNIS landmarks in JSON output
+- [x] Updated mock expectations to match enriched responses  
+- [x] Monitor diffs for regressions
+- [x] Ensure caching works with high-volume GNIS queries
+- [x] Add GNIS feature statistics to enrichmentStatus
 
-- [ ] **Enhanced JSON Output Structure**
-  - [ ] Include GNIS feature_id for cross-referencing
-  - [ ] Add feature_class from GNIS taxonomy
-  - [ ] Include elevation for summits and water features
-  - [ ] Add descriptive context for each feature
-  - [ ] Provide detailed statistics by category and provider
+- [x] **Enhanced JSON Output Structure**
+  - [x] Include GNIS feature_id for cross-referencing
+  - [x] Add feature_class from GNIS taxonomy  
+  - [x] Include subcategory and county information
+  - [x] Add descriptive context for each feature
+  - [x] Provide detailed statistics by category and provider
 
-- [ ] **Testing & Validation**
-  - [ ] Create test cases for mountain/lake/river detection
-  - [ ] Validate against known locations (e.g., Mount Washington area)
-  - [ ] Test performance with 1M+ features in database
-  - [ ] Ensure proper fallback when no features found
-  - [ ] Verify coordinate system consistency
+- [x] **Testing & Validation**
+  - [x] Create test cases for mountain/lake/river detection
+  - [x] Validate against known locations (Acadia National Park, Rollinsford NH)
+  - [x] Test performance with 650K+ features in database
+  - [x] Ensure proper fallback when no features found
+  - [x] Verify coordinate system consistency with SRID 4326
 
 ### Expected JSON Enhancement Example:
 ```json

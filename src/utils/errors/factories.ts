@@ -109,6 +109,8 @@ export function createPathErrorFactory(logger: Logger) {
   return {
     fileNotFound: (context: object, error?: Error) => 
       factory.path(PathErrors.FILE_NOT_FOUND, context, error),
+    optionalFileNotFound: (context: object, error?: Error) => 
+      factory.path(PathErrors.OPTIONAL_FILE_NOT_FOUND, context, error),
     resolutionFailed: (context: object, error?: Error) => 
       factory.path(PathErrors.RESOLUTION_FAILED, context, error),
     permissionDenied: (context: object, error?: Error) => 

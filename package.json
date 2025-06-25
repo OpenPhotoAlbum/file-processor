@@ -15,7 +15,9 @@
     "lint:fix": "eslint src/**/*.ts --fix",
     "lint:check": "eslint src/**/*.ts --max-warnings 25",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "etl:recreation": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js",
+    "etl:recreation:incremental": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js --incremental"
   },
   "keywords": [
     "media",

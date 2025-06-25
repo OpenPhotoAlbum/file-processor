@@ -23,7 +23,16 @@ export enum LandmarkCategory {
   RIVER = 'river',
   VALLEY = 'valley',
   RIDGE = 'ridge',
-  WATER_FEATURE = 'water_feature'
+  WATER_FEATURE = 'water_feature',
+  // Recreation.gov facility categories
+  VISITOR_CENTER = 'visitor_center',
+  NATURE_CENTER = 'nature_center',
+  CAMPGROUND = 'campground',
+  DAY_USE_AREA = 'day_use_area',
+  BOAT_LAUNCH = 'boat_launch',
+  PICNIC_AREA = 'picnic_area',
+  TRAILHEAD = 'trailhead',
+  RECREATION_FACILITY = 'recreation_facility'
 }
 
 /**
@@ -33,6 +42,7 @@ export enum LandmarkSource {
   NPS_API = 'nps_api',
   NPS_BUNDLED = 'nps_bundled',
   USGS_GNIS = 'usgs_gnis',
+  RECREATION_GOV = 'recreation_gov',
   STATE_API = 'state_api',
   OSM = 'openstreetmap',
   BUNDLED = 'bundled',
@@ -149,6 +159,10 @@ export interface LandmarkServiceConfig {
     };
     naturalFeatures: {
       enabled: boolean;
+    };
+    recreation: {
+      enabled: boolean;
+      apiKey?: string;
     };
     stateParks: {
       enabled: boolean;

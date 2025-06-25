@@ -56,6 +56,13 @@ export class FileSystemService {
   }
 
   /**
+   * Validate optional file (uses INFO level logging for missing files)
+   */
+  async validateOptionalFile(filePath: string): Promise<FileValidationResult> {
+    return this.validator.validateOptionalFile(filePath);
+  }
+
+  /**
    * Validate and resolve path (handles prefixes and absolute paths)
    */
   async validatePath(inputPath: string): Promise<PathValidationResult> {
@@ -90,7 +97,7 @@ export class FileSystemService {
       // Search for sidecars in the same directory
       for (const ext of extensions) {
         const sidecarPath = join(dir, `${baseName}${ext}`);
-        const validation = await this.validateFile(sidecarPath);
+        const validation = await this.validateOptionalFile(sidecarPath);
         
         if (validation.isValid) {
           sidecarFiles.push(sidecarPath);
@@ -202,7 +209,7 @@ export class FileSystemService {
       // Search for sidecars in this parent directory
       for (const ext of extensions) {
         const sidecarPath = join(parentDir, `${baseName}${ext}`);
-        const validation = await this.validateFile(sidecarPath);
+        const validation = await this.validateOptionalFile(sidecarPath);
         
         if (validation.isValid) {
           sidecarFiles.push(sidecarPath);
