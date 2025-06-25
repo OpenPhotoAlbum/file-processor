@@ -317,7 +317,12 @@ export class CLIHandler {
       const geolocationService = getGeolocationService();
       await geolocationService.close();
       
-      logger.debug('CLI cleanup completed - database connections closed');
+      // Close landmark service connections
+      const { getLandmarkService } = await import('../services/landmarks/factory.js');
+      const landmarkService = getLandmarkService();
+      await landmarkService.close();
+      
+      logger.debug('CLI cleanup completed - all database connections closed');
     } catch (error) {
       logger.warn('Cleanup warning', { error: (error as Error).message });
     }

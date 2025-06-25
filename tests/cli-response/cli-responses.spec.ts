@@ -34,12 +34,20 @@ async function executeCLI(filename: string): Promise<any> {
     });
 
     let stderr = '';
+    
+    // Set timeout to prevent hanging tests
+    const timeout = setTimeout(() => {
+      child.kill('SIGKILL');
+      reject(new Error(`CLI command timed out after 30 seconds for ${filename}`));
+    }, 30000);
 
     child.stderr.on('data', (data) => {
       stderr += data.toString();
     });
 
     child.on('close', (code) => {
+      clearTimeout(timeout);
+      
       if (code !== 0) {
         reject(new Error(`CLI failed with code ${code}: ${stderr}`));
         return;
@@ -53,6 +61,11 @@ async function executeCLI(filename: string): Promise<any> {
       } catch (error) {
         reject(new Error(`Failed to read/parse output file: ${error}`));
       }
+    });
+
+    child.on('error', (error) => {
+      clearTimeout(timeout);
+      reject(new Error(`Failed to spawn CLI process: ${error.message}`));
     });
   });
 }

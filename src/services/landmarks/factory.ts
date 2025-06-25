@@ -4,6 +4,7 @@
 
 import { LandmarkService, LandmarkServiceConfig } from './index.js';
 import { NationalParksProvider } from './providers/national-parks.js';
+import { GNISProvider } from './providers/gnis.js';
 import { Logger } from '../../utils/logging/index.js';
 
 /**
@@ -23,7 +24,7 @@ export function createLandmarkService(): LandmarkService {
         apiKey: process.env.NPS_API_KEY
       },
       naturalFeatures: {
-        enabled: process.env.NATURAL_FEATURES_ENABLED === 'true' // Default disabled for now
+        enabled: process.env.GNIS_PROVIDER_ENABLED !== 'false' // Default enabled
       },
       stateParks: {
         enabled: process.env.STATE_PARKS_ENABLED === 'true' // Default disabled for now
@@ -44,10 +45,14 @@ export function createLandmarkService(): LandmarkService {
     logger.info('National Parks provider registered');
   }
 
+  // Register GNIS Provider for natural features
+  if (config.providers.naturalFeatures.enabled) {
+    const gnisProvider = new GNISProvider();
+    providers.push(gnisProvider);
+    logger.info('GNIS natural features provider registered');
+  }
+
   // TODO: Register additional providers as they're implemented
-  // if (config.providers.naturalFeatures.enabled) {
-  //   providers.push(new NaturalFeaturesProvider());
-  // }
   // if (config.providers.stateParks.enabled) {
   //   providers.push(new StateParksProvider());
   // }

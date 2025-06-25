@@ -16,7 +16,14 @@ export enum LandmarkCategory {
   NATURAL_FEATURE = 'natural_feature',
   HISTORIC_LANDMARK = 'historic_landmark',
   CULTURAL_SITE = 'cultural_site',
-  SCENIC_AREA = 'scenic_area'
+  SCENIC_AREA = 'scenic_area',
+  // GNIS natural feature categories
+  MOUNTAIN = 'mountain',
+  LAKE = 'lake',
+  RIVER = 'river',
+  VALLEY = 'valley',
+  RIDGE = 'ridge',
+  WATER_FEATURE = 'water_feature'
 }
 
 /**

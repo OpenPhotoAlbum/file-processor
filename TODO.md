@@ -61,56 +61,53 @@
 - [x] Review database connection pooling and cleanup patterns
 - [x] Check for event listener accumulation in services
 
-### 🏔️ GNIS Geographic Features Integration (Planned)
-- [ ] **Data Acquisition & Storage**
-  - [ ] Download GNIS state-by-state pipe-delimited text files from S3
-  - [ ] Create MySQL table schema for geographic features (similar to geo_municipal_boundaries)
-  - [ ] Parse pipe-delimited format with fields: feature_id, feature_name, feature_class, coordinates, etc.
-  - [ ] Build import scripts for loading GNIS data with proper SRID (4326)
-  - [ ] Create spatial indexes on coordinates for efficient radius queries
-  - [ ] Handle data updates (GNIS refreshes bi-monthly)
+### 🏔️ GNIS Geographic Features Integration (Implementation Ready)
 
-- [ ] **Database Schema Design**
-  ```sql
-  -- Table for GNIS geographic features
-  CREATE TABLE geo_geographic_features (
-    feature_id VARCHAR(20) PRIMARY KEY,
-    feature_name VARCHAR(255) NOT NULL,
-    feature_class VARCHAR(50) NOT NULL,
-    state_code CHAR(2) NOT NULL,
-    county_name VARCHAR(100),
-    latitude DECIMAL(10, 8) NOT NULL,
-    longitude DECIMAL(11, 8) NOT NULL,
-    elevation_meters INT,
-    date_created DATE,
-    date_edited DATE,
-    -- Spatial column for efficient queries
-    coordinates POINT NOT NULL SRID 4326,
-    -- Indexes
-    INDEX idx_feature_class (feature_class),
-    INDEX idx_state (state_code),
-    SPATIAL INDEX idx_coordinates (coordinates)
-  );
-  ```
+**Architecture**: Minimal-impact integration using existing provider pattern and CLI testing approach
 
-- [ ] **GNIS Provider Implementation**
-  - [ ] Create GNISProvider class following existing provider pattern
-  - [ ] Implement findLandmarks() with radius-based spatial queries
-  - [ ] Map GNIS feature classes to landmark categories:
-    - Summit/Peak/Hill → 'mountain'
-    - Lake/Reservoir/Pond → 'lake'
-    - Stream/River/Creek → 'river'
-    - Valley/Canyon/Gorge → 'valley'
-    - Ridge/Range → 'ridge'
-    - Forest/Woods → 'forest'
-    - Spring/Falls → 'water_feature'
-  - [ ] Calculate confidence scores based on distance and feature prominence
-  - [ ] Add feature-specific metadata (elevation, area, length, etc.)
+**File Changes Required:**
+```
+migrations/036_create_geo_geographic_features.sql     # NEW - Database table
+scripts/load-gnis-data.ts                            # NEW - One-time data loader  
+src/services/landmarks/providers/gnis.ts             # NEW - GNIS provider
+src/services/landmarks/types.ts                      # MODIFY - Add categories
+tests/cli-response/mocks/*.json                      # UPDATED - New landmark data
+```
 
-- [ ] **Integration with Existing System**
-  - [ ] Register GNISProvider in landmark service provider list
-  - [ ] Update LandmarkCategory type to include new natural features
-  - [ ] Extend landmark schema to support GNIS-specific fields
+**Implementation Steps:**
+- [ ] **Create Database Migration (036_create_geo_geographic_features.sql)**
+  - [ ] Design table schema with spatial indexing
+  - [ ] Include feature_id, feature_name, feature_class, coordinates, elevation
+  - [ ] Add proper indexes for performance (spatial, feature_class, state)
+
+- [ ] **Build Data Loading Script (scripts/load-gnis-data.ts)**
+  - [ ] Download NH GNIS data from S3 as proof of concept
+  - [ ] Parse pipe-delimited format: feature_id|feature_name|feature_class|...
+  - [ ] Filter for relevant feature classes: Summit, Lake, Stream, Valley, Ridge, Falls
+  - [ ] Insert with proper SRID spatial conversion
+  - [ ] Add simple statistics logging
+
+- [ ] **Implement GNIS Provider (src/services/landmarks/providers/gnis.ts)**
+  - [ ] Follow existing NationalParksProvider pattern exactly
+  - [ ] Map feature classes to categories (Summit→mountain, Lake→lake, etc.)
+  - [ ] Use spatial queries matching geolocation service approach
+  - [ ] Add GNIS-specific fields (feature_id, feature_class, elevation)
+  - [ ] Calculate confidence based on distance and feature type
+
+- [ ] **Update Landmark Types (src/services/landmarks/types.ts)**
+  - [ ] Add new categories: mountain, lake, river, valley, ridge, water_feature
+  - [ ] Extend Landmark interface for GNIS fields
+
+- [ ] **Register Provider & Test**
+  - [ ] Add GNISProvider to landmark service provider list
+  - [ ] Run existing CLI tests on sample images
+  - [ ] Update mock JSON files with new landmark data
+  - [ ] Verify integration through CLI output
+
+**Testing Strategy**: Use existing Jest CLI integration tests - no new unit tests needed
+- Sample images will show new GNIS landmarks in JSON output
+- Update mock expectations to match enriched responses  
+- Monitor diffs for regressions
   - [ ] Ensure caching works with high-volume GNIS queries
   - [ ] Add GNIS feature statistics to enrichmentStatus
 
