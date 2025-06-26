@@ -1,8 +1,10 @@
 # Photo Metadata Browser - Phase 0 Implementation
 
 **Date:** 2025-06-26  
-**Status:** ✅ COMPLETE  
-**Next Phase:** Ready for Phase 1 (Collection Scaling)
+**Status:** ⚠️ DEPRECATED - Moved to separate project  
+**Next Phase:** Development continues in `photo-browser-api/` repository
+
+> **⚠️ DEPRECATION WARNING:** This documentation refers to code that has been removed from the main repository. The photo browser implementation has been moved to a separate `photo-browser-api/` project for independent development. The code references below (e.g., `src/photo-browser/PhotoBrowserGenerator.ts`) no longer exist in this repository.
 
 ## Overview
 

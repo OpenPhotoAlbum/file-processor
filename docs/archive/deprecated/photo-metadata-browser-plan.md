@@ -1,8 +1,10 @@
 # Photo Metadata Browser System - Implementation Plan
 
 **Created:** 2025-06-26  
-**Status:** 📋 Planning Phase  
-**Priority:** High - Next major feature after Phase 3B completion
+**Status:** ⚠️ DEPRECATED - Moved to separate project  
+**Priority:** Development continues in `photo-browser-api/` repository
+
+> **⚠️ DEPRECATION WARNING:** This planning document refers to a feature that has been moved to a separate repository. The photo browser is now being developed independently in the `photo-browser-api/` project. This document is preserved for historical reference only.
 
 ## Overview
 

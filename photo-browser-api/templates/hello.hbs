@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Browser - {{photoId}}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #1a73e8; margin-bottom: 20px; }
+        .info { background: #f8f9fa; padding: 15px; border-radius: 4px; margin: 10px 0; }
+        .label { font-weight: bold; color: #5f6368; }
+        .error { background: #fce8e6; color: #d93025; padding: 15px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{message}}</h1>
+        <p class="label">Photo ID: <span>{{photoId}}</span></p>
+        
+        {{#if error}}
+            <div class="error">{{error}}</div>
+        {{else}}
+            <div class="info">
+                <p><span class="label">File:</span> {{fileName}} ({{fileSize}})</p>
+                <p><span class="label">Camera:</span> {{camera}} {{model}}</p>
+                <p><span class="label">Date:</span> {{dateTime}}</p>
+                <p><span class="label">Settings:</span> ISO {{iso}}, f/{{aperture}}, {{shutterSpeed}}</p>
+                {{#if hasGPS}}
+                    <p><span class="label">Location:</span> {{latitude}}, {{longitude}}</p>
+                    {{#if gpsAccuracy}}<p><span class="label">GPS Accuracy:</span> {{gpsAccuracy}}</p>{{/if}}
+                    <p><span class="label">Landmarks:</span> {{recreationCount}} Recreation.gov facilities, {{landmarkCount}} other landmarks</p>
+                {{else}}
+                    <p><span class="label">Location:</span> No GPS data</p>
+                {{/if}}
+            </div>
+            
+            <div class="info">
+                <p><span class="label">Metadata Sections:</span> {{rawMetadataKeys}}</p>
+            </div>
+        {{/if}}
+    </div>
+</body>
+</html>
