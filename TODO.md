@@ -1,52 +1,174 @@
-# Media Processing Pipeline - TODO
+# Media Processing Pipeline - TODO & Current Plan
 
-## Current Development Session
+**Last Updated:** 2025-06-26  
+**Status:** Phase 3B COMPLETE, Recreation.gov Integration Finished
 
-### 🔧 Filesystem Service (Completed)
-- [x] Design and implement centralized FileSystemService
-- [x] Create scanner module for directory enumeration with filters
-- [x] Add validator module for file existence, permissions, integrity
-- [x] Build metadata module for file stats, timestamps, sizes
-- [x] Define shared filesystem types and interfaces
-- [x] Integrate with existing path utilities system
-- [x] Add comprehensive error handling with structured error codes
-- [x] Create media-specific discovery patterns (sidecars, sequences)
-- [x] Add batch operations for efficient processing
-- [x] Create demo script showing integration patterns
+## Current Status Summary
 
-### 🎯 CLI Implementation (Completed)
-- [x] Install and configure commander.js
-- [x] Create CLI module structure (index, handlers, validators, output)
-- [x] Implement command-line argument parsing with mixed path support
-- [x] Add directory scanning with recursive options using FileSystem Service
-- [x] Support MIME type filtering that overrides env vars
-- [x] Implement output control (console, file, JSON, quiet modes)
-- [x] Add --overwrite flag for output file handling
-- [x] Replace hardcoded testFiles in main.ts with professional CLI
-- [x] Create comprehensive CLI documentation with examples
+### ✅ COMPLETED (Phases 1, 2, & 3A-3B)
+- **Deduplication:** 288,000+ duplicates removed, 818GB recovered
+- **Directory Restructuring:** Photos organized in `/photos/archive/YYYY/MM/`
+- **Filename Standardization:** All files use `YYYY-MM-DD_HH-MM-SS_000.ext`
+- **Collection Building:** Album symlinks in `/photos/collections/`
+- **MCP Integration:** Dual-context semantic search operational
+- **Infrastructure:** CLI tools, testing, documentation complete
+- **Municipal Boundaries:** Census ETL completed - 23,580 US municipalities
+- **Phase 3A:** Enriched JSON sidecars with GNIS + municipal data (15,659/15,843 photos)
+- **Phase 3B:** Recreation.gov contextual provider integration COMPLETE
+- **Google Sidecar Cleanup:** 341,597 redundant files deleted, 41GB freed
 
-### 🧹 Code Cleanup (Completed)
-- [x] Refactor pre-processor to use FileSystemService for file discovery and validation
-- [x] Update image processor to use FileSystemService for file stats and validation
-- [x] Consolidate file validation across processors using FileSystemService
-- [x] Remove duplicate filesystem code in extractors and utilities
-- [x] Update sidecar discovery to use centralized service
-- [x] Test all processors work correctly with FileSystemService integration
+### 🎯 RECREATION.GOV ENRICHMENT RESULTS
+Based on sample analysis of 100 photos:
+- **~37% of GPS photos** have Recreation.gov landmarks (facilities nearby)
+- **~63% of GPS photos** correctly have no Recreation.gov data (no facilities)
+- **All GPS photos** enriched with GNIS natural landmarks + municipal data
+- **Non-GPS photos** correctly excluded from geographic enrichment
 
-### 📚 Documentation Updates (Completed)
-- [x] Document FileSystemService architecture and usage
-- [x] Create CLI usage documentation  
-- [x] Update main README with new filesystem service
-- [x] Add examples of filesystem service integration
+### 🔄 IN PROGRESS  
+- **External iPhone transfers:** Background process continuing
 
-## Design Decisions Made
-- **Filesystem Service**: Centralized service layer for all file operations
-- **CLI Library**: Commander.js for professional CLI experience
-- **Path Handling**: Support both prefix paths and absolute paths with external: fallback
-- **Output Control**: JSON/console output with optional file writing and --overwrite flag
-- **Architecture**: Clean separation of concerns across multiple focused modules
+## Phase 3 Status - Intelligent Sidecar Generation ✅ COMPLETE
 
-## Next Steps
+### ✅ COMPLETED: Contextual Provider Logic
+Successfully implemented **smart enrichment** with all core strategies:
+
+#### ✅ 1. Comprehensive Geographic Enrichment
+- **GNIS Provider:** 650K+ natural features integrated
+- **Municipal Boundaries:** 23,580 US cities/counties/towns  
+- **Recreation.gov API:** Contextual facility detection
+- **Geolocation Services:** City proximity and timezone data
+
+#### ✅ 2. Smart Provider Strategy Achieved
+**Phase A: Local Analysis (Always Run) ✅**
+- GNIS Provider (650K+ features, local database) ✅
+- Municipal Boundaries (23,580 cities/towns) ✅  
+- Geolocation detection ✅
+
+**Phase B: Smart Recreation.gov Integration ✅**
+- Recreation.gov API enabled for ALL GPS photos ✅
+- ~37% success rate finding nearby facilities ✅
+- API rate limiting compliance (50 req/sec) ✅
+- Smart caching to avoid redundant calls ✅
+
+#### ✅ 3. Processing Results Achieved
+- **15,659/15,843 photos** successfully enriched with basic metadata
+- **GPS photos** enriched with GNIS landmarks + Recreation.gov data  
+- **Non-GPS photos** correctly excluded from geographic enrichment
+- **API optimization** through intelligent caching and rate limiting
+
+### ✅ Implementation Completed
+
+#### ✅ Phase 3A: Enhanced Sidecar Generation 
+**Comprehensive enrichment achieved:**
+1. **Generated enriched JSON sidecars** for full collection ✅
+   - EXIF data (camera, settings, GPS) ✅
+   - GNIS landmarks (mountains, lakes, natural features) ✅
+   - Municipal boundaries (accurate city/town detection) ✅
+   - Recreation.gov facilities (where geographically relevant) ✅
+   - Complete geolocation data ✅
+
+#### ✅ Phase 3B: Contextual Provider Strategy  
+**Smart Recreation.gov integration completed:**
+1. **Implemented contextual logic** in landmark detection ✅
+2. **Smart Recreation.gov enabling** for all GPS photos ✅
+3. **Optimized API usage** with caching and rate limiting ✅
+
+## 🎯 Next Phase: External Collections & Advanced Features
+
+#### Phase 3C: External iPhone Collections  
+**Next Priority Tasks:**
+- **Transfer external iPhone photo collections** to staging directory
+- **Import external iPhone collections** with deduplication against existing archive
+- **Metadata enrichment** for new photos with full provider suite
+
+#### Phase 3D: Advanced Features (Future)
+- **CompreFace integration** (face recognition) 
+- **Custom location rules** and personal landmarks
+- **Privacy zones** and location anonymization
+
+
+## Technical Implementation Notes
+
+### Contextual Provider Logic (Saved from Session)
+```typescript
+interface LandmarkContext {
+  hasNaturalFeatures: boolean;
+  hasOutdoorRecreation: boolean;
+  suggestsRecreationFacilities: boolean;
+  geographicRegion: string;
+  keywords: string[];
+}
+
+async function enrichPhotoWithLandmarks(lat: number, lng: number) {
+  // Phase A: Local providers first
+  const gnisResults = await gnisProvider.findNearbyLandmarks(lat, lng);
+  const npsResults = await npsProvider.findNearbyLandmarks(lat, lng);
+  const municipalResults = await municipalProvider.findNearbyLandmarks(lat, lng);
+  
+  // Phase B: Contextual decision
+  const context = analyzeContext(gnisResults, npsResults);
+  
+  if (context.suggestsRecreationFacilities) {
+    const recreationData = await recreationProvider.findNearbyLandmarks(lat, lng);
+    return combineResults(gnisResults, npsResults, municipalResults, recreationData);
+  }
+  
+  return combineResults(gnisResults, npsResults, municipalResults);
+}
+```
+
+### Optimization Strategies
+- **Geographic Clustering:** 500m-1km radius sharing
+- **Landmark Caching:** Cache results by GPS coordinates  
+- **Parallel Processing:** Leverage all CPU cores
+- **Collection Batching:** Process entire albums together
+- **Smart API Usage:** Only call Recreation.gov when valuable
+
+## Current Database Status
+- **GNIS Features:** 650,611 natural landmarks
+- **Municipal Boundaries:** 490 → ~19,000+ (ETL in progress)
+- **Recreation Facilities:** Available via API (contextual usage)
+
+## File Organization (Current)
+```
+/photos/
+├── staging/google-takeout/           # 4 files remaining
+├── archive/                          # Organized photos (YYYY/MM)
+│   └── [year]/[month]/
+│       ├── YYYY-MM-DD_HH-MM-SS_000.ext
+│       └── YYYY-MM-DD_HH-MM-SS_000.ext.json  # NEED TO GENERATE
+├── collections/                      # Album symlinks  
+│   ├── Friday_in_York/ -> archive photos
+│   ├── Haug_Archives/ -> archive photos
+│   └── ...
+└── metadata/
+    └── duplicate-sidecars/          # 144,499 Google JSONs (DELETE AFTER)
+```
+
+## Success Metrics Achieved
+- **Storage Efficiency:** 818GB recovered (54% reduction)
+- **Organization Quality:** 100% photos chronologically organized  
+- **Album Preservation:** 100% Google Photos albums as collections
+- **Search Capability:** MCP semantic search operational
+- **Geographic Data:** Comprehensive US municipal coverage
+
+## Next Session Goals
+1. **Begin external iPhone collection transfers**
+2. **Import and deduplicate external collections** 
+3. **Enrich new photos** with full provider suite
+4. **Begin CompreFace integration planning**
+5. **Consider privacy zone implementation**
+
+---
+
+**Key Insight:** We discovered Google sidecars in `/photos/archive/` are just copies, not enriched metadata. Need to generate proper enriched sidecars with EXIF, landmarks, and municipal data before deleting the 144K Google originals.
+
+**Architecture Achieved:** Dual organization (chronological + thematic) with semantic search, ready for intelligent metadata enrichment.
+
+## Contextual Provider Strategy Document
+See: `/docs/contextual-provider-strategy.md` for complete technical implementation details.
+
+## Previous Session History
 
 ### 🧪 CLI Response Testing Framework (Completed)
 - [x] Create test structure: `tests/cli-response/` with mocks/ subdirectory
@@ -54,107 +176,20 @@
 - [x] Build CLI test runner that executes commands and compares outputs
 - [x] Implement response validator with schema checking
 - [x] Add npm test script for CLI response validation
-- [x] Create documentation for maintaining test expectations
-
-### 🔍 Performance Investigation (Completed)
-- [x] Investigate MaxListenersExceededWarning for AbortSignal memory leaks
-- [x] Review database connection pooling and cleanup patterns
-- [x] Check for event listener accumulation in services
 
 ### 🏔️ GNIS Geographic Features Integration (Completed)
+- [x] Database migration with 650K+ geographic features
+- [x] GNIS provider implementation with spatial queries
+- [x] Municipal boundaries (267 → 19K+ with current ETL)
+- [x] Comprehensive landmark detection system
 
-**Architecture**: Minimal-impact integration using existing provider pattern and CLI testing approach
+### 🎯 CLI Implementation (Completed)
+- [x] Professional command-line interface with commander.js
+- [x] File discovery, validation, and processing workflows
+- [x] JSON/console output with comprehensive testing
 
-**File Changes Required:**
-```
-migrations/036_create_geo_geographic_features.sql     # NEW - Database table
-scripts/load-gnis-data.ts                            # NEW - One-time data loader  
-src/services/landmarks/providers/gnis.ts             # NEW - GNIS provider
-src/services/landmarks/types.ts                      # MODIFY - Add categories
-tests/cli-response/mocks/*.json                      # UPDATED - New landmark data
-```
-
-**Implementation Steps:**
-- [x] **Create Database Migration (055_table_geo_geographic_features.sql)**
-  - [x] Design table schema with spatial indexing
-  - [x] Include feature_id, feature_name, feature_class, coordinates, elevation
-  - [x] Add proper indexes for performance (spatial, feature_class, state)
-
-- [x] **Build Data Loading Scripts**
-  - [x] Load complete US GNIS dataset (654K+ features) via individual state SQL files
-  - [x] Parse pipe-delimited format: feature_id|feature_name|feature_class|...
-  - [x] Filter for relevant feature classes: Summit, Lake, Stream, Valley, Ridge, Falls
-  - [x] Insert with proper SRID spatial conversion
-  - [x] Add comprehensive US municipal boundaries (267 municipalities across 17 states)
-
-- [x] **Implement GNIS Provider (src/services/landmarks/providers/gnis.ts)**
-  - [x] Follow existing NationalParksProvider pattern exactly
-  - [x] Map feature classes to categories (Summit→mountain, Lake→lake, etc.)
-  - [x] Use spatial queries with haversine formula for accurate distance calculation
-  - [x] Add GNIS-specific fields (feature_id, feature_class, county, subcategory)
-  - [x] Calculate confidence based on distance and feature type
-
-- [x] **Update Landmark Types (src/services/landmarks/types.ts)**
-  - [x] Add new categories: mountain, lake, river, valley, ridge, water_feature, natural_feature
-  - [x] Extend Landmark interface for GNIS fields
-
-- [x] **Register Provider & Test**
-  - [x] Add GNISProvider to landmark service provider list
-  - [x] Run existing CLI tests on sample images
-  - [x] Update mock JSON files with new landmark data
-  - [x] Verify integration through CLI output with comprehensive testing coverage
-
-**Testing Strategy**: Use existing Jest CLI integration tests - no new unit tests needed
-- [x] Sample images show new GNIS landmarks in JSON output
-- [x] Updated mock expectations to match enriched responses  
-- [x] Monitor diffs for regressions
-- [x] Ensure caching works with high-volume GNIS queries
-- [x] Add GNIS feature statistics to enrichmentStatus
-
-- [x] **Enhanced JSON Output Structure**
-  - [x] Include GNIS feature_id for cross-referencing
-  - [x] Add feature_class from GNIS taxonomy  
-  - [x] Include subcategory and county information
-  - [x] Add descriptive context for each feature
-  - [x] Provide detailed statistics by category and provider
-
-- [x] **Testing & Validation**
-  - [x] Create test cases for mountain/lake/river detection
-  - [x] Validate against known locations (Acadia National Park, Rollinsford NH)
-  - [x] Test performance with 650K+ features in database
-  - [x] Ensure proper fallback when no features found
-  - [x] Verify coordinate system consistency with SRID 4326
-
-### Expected JSON Enhancement Example:
-```json
-{
-  "landmarks": [
-    {
-      "name": "Mount Lafayette",
-      "category": "mountain",
-      "provider": "GNIS",
-      "distance": 2.3,
-      "bearing": 45,
-      "confidence": 0.98,
-      "elevation": 1600,
-      "feature_id": "872634",
-      "feature_class": "Summit",
-      "prominence": 945,
-      "description": "Highest peak in Franconia Ridge"
-    },
-    {
-      "name": "Profile Lake",
-      "category": "lake",
-      "provider": "GNIS", 
-      "distance": 4.2,
-      "bearing": 85,
-      "confidence": 0.93,
-      "elevation": 571,
-      "feature_id": "869123",
-      "feature_class": "Lake",
-      "area_hectares": 5.2,
-      "description": "Small glacial lake at base of Cannon Mountain"
-    }
-  ]
-}
-```
+### 🔧 Infrastructure (Completed)
+- [x] FileSystemService for centralized file operations
+- [x] Error handling with structured error codes
+- [x] Logging system with component-specific colors
+- [x] Database integration with spatial indexing
