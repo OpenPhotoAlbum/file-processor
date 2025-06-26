@@ -44,7 +44,9 @@ export enum SupportedMimeType {
   /** GIF images - basic support */
   GIF = 'image/gif',
   /** TIFF images - full support */
-  TIFF = 'image/tiff'
+  TIFF = 'image/tiff',
+  /** WEBP images - modern web format */
+  WEBP = 'image/webp'
 }
 
 /**

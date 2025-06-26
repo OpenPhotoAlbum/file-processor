@@ -7,7 +7,9 @@ const processorMap: Record<string, new() => MediaProcessor> = {
   'image/jpg': ImageProcessor,
   'image/png': ImageProcessor,
   'image/heic': ImageProcessor,
-  'image/gif': ImageProcessor
+  'image/gif': ImageProcessor,
+  'image/tiff': ImageProcessor,
+  'image/webp': ImageProcessor
   // TODO: Add video, audio, etc. processors later
 };
 
