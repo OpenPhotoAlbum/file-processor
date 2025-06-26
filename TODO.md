@@ -26,6 +26,7 @@ Based on sample analysis of 100 photos:
 
 ### 🔄 IN PROGRESS  
 - **External iPhone transfers:** Background process continuing
+- **Photo Metadata Browser:** Phase 0 complete, Phase 1 ready
 
 ## Phase 3 Status - Intelligent Sidecar Generation ✅ COMPLETE
 
@@ -73,7 +74,19 @@ Successfully implemented **smart enrichment** with all core strategies:
 2. **Smart Recreation.gov enabling** for all GPS photos ✅
 3. **Optimized API usage** with caching and rate limiting ✅
 
-## 🎯 Next Phase: External Collections & Advanced Features
+## 🎯 Next Phase: Photo Browser & External Collections
+
+#### Phase 0-1: Photo Metadata Browser System ✅ FOUNDATION COMPLETE
+**Status: Phase 0 Complete, Phase 1 Ready**
+- **Prime example established:** Acadia beach scene (`2022-01-01_00-00-00_008.jpeg`)
+- **Template engine working:** Clean HTML generation from metadata
+- **Rich insights integration:** Recreation.gov + GNIS + technical analysis
+- **Design proven:** Professional layout with photo display and intelligence cards
+
+**Next Steps - Phase 1:**
+- **Scale to collections:** Generate one page per collection using validated template
+- **Collection experiences:** Leverage all photos in album for timeline/geography
+- **Interactive features:** Maps, related photos, technical comparisons
 
 #### Phase 3C: External iPhone Collections  
 **Next Priority Tasks:**

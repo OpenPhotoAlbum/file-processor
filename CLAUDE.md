@@ -57,6 +57,14 @@
 - **Path prefixes**: `sample:`, `media:` prefixes for flexible file resolution
 - **Test integration**: CLI tests use direct JSON output format, normalized dynamic fields
 
+### Photo Metadata Browser Standards (December 2024)
+- **Prime example**: `/photos/archive/2022/01/2022-01-01_00-00-00_008.jpeg` - Acadia beach scene
+- **Exemplary metadata richness**: 10 Recreation.gov landmarks, Acadia National Park context, iPhone 13 Pro technical data
+- **Template approach**: Build complete HTML from scratch using metadata, not template replacement
+- **Geographic intelligence**: National Park + Recreation.gov facility integration (Blackwoods Campground 1.4km)
+- **Technical insights**: Face detection, focus distance, optimal lighting analysis
+- **Design principles**: Clean photo display, professional insights cards, responsive grid layout
+
 ## Development Notes
 - This project treats media processing as a production system, not a prototype
 - Stephen values sustainable development practices for long-term maintenance
