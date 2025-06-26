@@ -1,0 +1,30 @@
+{
+  "name": "photo-search-mcp",
+  "description": "Semantic search for photo metadata and collections",
+  "project_root": "/home/stephen/Documents/initial-media-processing",
+  "photo_archives": [
+    "/photos/archive",
+    "/photos/collections",
+    "/photos/metadata"
+  ],
+  "index_patterns": {
+    "metadata_files": ["*.json"],
+    "documentation": ["*.md"],
+    "configuration": ["*.yaml", "*.yml", "*.json"],
+    "scripts": ["phase2-*.sh"]
+  },
+  "search_features": {
+    "natural_language": true,
+    "date_search": true,
+    "location_search": true,
+    "collection_search": true,
+    "people_search": true,
+    "camera_info": true,
+    "similar_photos": true
+  },
+  "embeddings": {
+    "model": "text-embedding-ada-002",
+    "chunk_size": 1000,
+    "chunk_overlap": 200
+  }
+}

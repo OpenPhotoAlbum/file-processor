@@ -1,0 +1,62 @@
+[
+  {
+    "session_id": "ingest_directory_1750916284",
+    "operation": "ingest_directory",
+    "description": "Processing /photos/metadata (recursive=True)",
+    "start_time": "2025-06-26T01:38:04.420245",
+    "start_usage": null,
+    "tokens_processed": 0,
+    "api_calls": 0,
+    "texts_processed": 0,
+    "model": "text-embedding-ada-002",
+    "end_time": "2025-06-26T01:38:04.420281",
+    "end_usage": null,
+    "estimated_cost": 0.0,
+    "duration_seconds": 3.6e-05
+  },
+  {
+    "session_id": "ingest_directory_1750916313",
+    "operation": "ingest_directory",
+    "description": "Processing /photos/metadata (recursive=True)",
+    "start_time": "2025-06-26T01:38:33.377097",
+    "start_usage": null,
+    "tokens_processed": 0,
+    "api_calls": 0,
+    "texts_processed": 0,
+    "model": "text-embedding-ada-002",
+    "end_time": "2025-06-26T01:38:33.377129",
+    "end_usage": null,
+    "estimated_cost": 0.0,
+    "duration_seconds": 3.2e-05
+  },
+  {
+    "session_id": "ingest_directory_1750916390",
+    "operation": "ingest_directory",
+    "description": "Processing /photos/archive (recursive=True)",
+    "start_time": "2025-06-26T01:39:50.213390",
+    "start_usage": null,
+    "tokens_processed": 51112579,
+    "api_calls": 14071,
+    "texts_processed": 200577,
+    "model": "text-embedding-3-small",
+    "end_time": "2025-06-26T03:32:42.456419",
+    "end_usage": null,
+    "estimated_cost": 1.02225158,
+    "duration_seconds": 6772.243029
+  },
+  {
+    "session_id": "ingest_directory_1750975590",
+    "operation": "ingest_directory",
+    "description": "Processing /photos/metadata (recursive=True)",
+    "start_time": "2025-06-26T18:06:30.324574",
+    "start_usage": null,
+    "tokens_processed": 0,
+    "api_calls": 0,
+    "texts_processed": 0,
+    "model": "text-embedding-ada-002",
+    "end_time": "2025-06-26T18:06:30.324622",
+    "end_usage": null,
+    "estimated_cost": 0.0,
+    "duration_seconds": 4.8e-05
+  }
+]

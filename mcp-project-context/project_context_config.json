@@ -1,0 +1,33 @@
+{
+  "name": "project-context-mcp",
+  "description": "Development context and source code search for media processing project",
+  "project_root": "/home/stephen/Documents/initial-media-processing",
+  "focus_areas": [
+    "src/",
+    "docs/",
+    "tests/", 
+    "scripts/",
+    "configuration files"
+  ],
+  "index_patterns": {
+    "source_code": ["*.ts", "*.js"],
+    "documentation": ["*.md"],
+    "configuration": ["*.yaml", "*.yml", "*.json"],
+    "scripts": ["*.sh"],
+    "tests": ["*.spec.ts", "*.test.ts"]
+  },
+  "search_features": {
+    "code_search": true,
+    "architecture_understanding": true,
+    "implementation_patterns": true,
+    "configuration_lookup": true,
+    "documentation_search": true,
+    "development_history": true
+  },
+  "embeddings": {
+    "model": "text-embedding-ada-002",
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "database": "project-embeddings.db"
+  }
+}
