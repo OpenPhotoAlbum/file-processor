@@ -4,8 +4,7 @@
   "project_root": "/home/stephen/Documents/initial-media-processing",
   "photo_archives": [
     "/photos/archive",
-    "/photos/collections",
-    "/photos/metadata"
+    "/photos/collections"
   ],
   "index_patterns": {
     "metadata_files": ["*.json"],
