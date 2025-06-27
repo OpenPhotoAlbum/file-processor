@@ -1338,18 +1338,24 @@
                             <span class="value">{{altitude}}</span>
                         </div>
                         {{/if}}
+                        {{#if city}}
                         <div class="info-row">
                             <span class="label">Location:</span>
-                            <span class="value highlight">{{city}}, {{state}}</span>
+                            <span class="value highlight">{{city}}{{#if state}}, {{state}}{{/if}}</span>
                         </div>
+                        {{/if}}
+                        {{#if county}}
                         <div class="info-row">
                             <span class="label">County:</span>
                             <span class="value">{{county}}</span>
                         </div>
+                        {{/if}}
+                        {{#if timezone}}
                         <div class="info-row">
                             <span class="label">Timezone:</span>
                             <span class="value">{{timezone}}</span>
                         </div>
+                        {{/if}}
                         <div class="info-row" style="font-size: 12px; color: #9ca3af;">
                             <span class="label" style="font-size: 12px; color: #9ca3af;">Source:</span>
                             <span class="value" style="font-size: 12px; color: #9ca3af;">{{gpsSource}}</span>

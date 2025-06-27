@@ -279,10 +279,10 @@ function extractBasicInfo(metadata) {
     gpsSource: metadata.location?.primary?.sourceDetails || metadata.location?.primary?.source || 'EXIF GPS data',
     
     // Geolocation
-    city: metadata.location?.geolocation?.city || 'Unknown',
-    state: metadata.location?.geolocation?.state_code || metadata.location?.geolocation?.state || 'Unknown',
-    county: metadata.location?.geolocation?.county_name || metadata.location?.geolocation?.county || 'Unknown',
-    timezone: metadata.location?.geolocation?.timezone || 'Unknown',
+    city: metadata.location?.geolocation?.city || null,
+    state: metadata.location?.geolocation?.state_code || metadata.location?.geolocation?.state || null,
+    county: metadata.location?.geolocation?.county_name || metadata.location?.geolocation?.county || null,
+    timezone: metadata.location?.geolocation?.timezone || null,
     postalCode: metadata.location?.geolocation?.postal_code || metadata.location?.geolocation?.postalCode || 'Unknown',
     geolocationDistance: metadata.location?.geolocation?.distance ? `${metadata.location.geolocation.distance}m` : null,
     geolocationConfidence: metadata.location?.geolocation?.confidence || null,
