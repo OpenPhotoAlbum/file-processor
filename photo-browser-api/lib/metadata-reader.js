@@ -387,25 +387,98 @@ function extractBasicInfo(metadata) {
     
     // Image orientation for layout
     isHorizontalImage: (() => {
+      // Check EXIF orientation first for rotation info
+      const exifOrientation = metadata.technical?.['EXIF:Orientation'];
+      const processedOrientation = metadata.media?.dimensions?.orientation;
+      
+      // EXIF orientation values that indicate portrait/vertical display:
+      // 6 = Rotate 90 CW, 8 = Rotate 270 CW (or 90 CCW)
+      if (exifOrientation === 6 || exifOrientation === 8 || 
+          exifOrientation === '6' || exifOrientation === '8') {
+        return false; // This is actually vertical when displayed
+      }
+      
+      // Check processed orientation string
+      if (processedOrientation && processedOrientation.toLowerCase().includes('portrait')) {
+        return false;
+      }
+      
+      // Special case: some images marked as "Horizontal (normal)" might actually be rotated
+      // If dimensions are 4032x3024 (typical iPhone landscape) but appear vertical,
+      // the image likely has EXIF rotation that's being applied by browsers but not our processing
       const width = metadata.media?.dimensions?.width || metadata.technical?.['EXIF:ExifImageWidth'];
       const height = metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'];
+      if (processedOrientation === "Horizontal (normal)" && 
+          width === 4032 && height === 3024) {
+        // This is likely a rotated image that appears vertical in browsers
+        return false;
+      }
+      
+      // Fallback to dimensions
       if (width && height) {
+        // If EXIF says rotate 90/270 degrees, swap the comparison
+        if (exifOrientation === 6 || exifOrientation === 8 || 
+            exifOrientation === '6' || exifOrientation === '8') {
+          return height >= width; // Swapped because of rotation
+        }
         return width >= height;
       }
-      // Fallback to EXIF orientation if dimensions not available
-      const orientation = metadata.technical?.['EXIF:Orientation'] || '';
-      return !orientation.includes('90') && !orientation.includes('270') && !orientation.toLowerCase().includes('portrait');
+      
+      return true; // Default to horizontal if we can't determine
     })(),
     isVerticalImage: (() => {
+      // Check EXIF orientation first for rotation info
+      const exifOrientation = metadata.technical?.['EXIF:Orientation'];
+      const processedOrientation = metadata.media?.dimensions?.orientation;
       const width = metadata.media?.dimensions?.width || metadata.technical?.['EXIF:ExifImageWidth'];
       const height = metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'];
+      
+      // EXIF orientation values that indicate portrait/vertical display:
+      // 6 = Rotate 90 CW, 8 = Rotate 270 CW (or 90 CCW)
+      if (exifOrientation === 6 || exifOrientation === 8 || 
+          exifOrientation === '6' || exifOrientation === '8') {
+        return true; // This is vertical when displayed
+      }
+      
+      // Check processed orientation string
+      if (processedOrientation && processedOrientation.toLowerCase().includes('portrait')) {
+        return true;
+      }
+      
+      // Special case: some images marked as "Horizontal (normal)" might actually be rotated
+      // If dimensions are 4032x3024 (typical iPhone landscape) but appear vertical,
+      // the image likely has EXIF rotation that's being applied by browsers but not our processing
+      if (processedOrientation === "Horizontal (normal)" && 
+          width === 4032 && height === 3024) {
+        // This is likely a rotated image that appears vertical in browsers
+        return true;
+      }
+      
+      // Fallback to dimensions  
       if (width && height) {
+        // If EXIF says rotate 90/270 degrees, swap the comparison
+        if (exifOrientation === 6 || exifOrientation === 8 || 
+            exifOrientation === '6' || exifOrientation === '8') {
+          return height < width; // Swapped because of rotation
+        }
         return width < height;
       }
-      // Fallback to EXIF orientation if dimensions not available
-      const orientation = metadata.technical?.['EXIF:Orientation'] || '';
-      return orientation.includes('90') || orientation.includes('270') || orientation.toLowerCase().includes('portrait');
-    })()
+      
+      return false; // Default to horizontal if we can't determine
+    })(),
+    
+    // Debug orientation data
+    orientationDebug: {
+      exifOrientation: metadata.technical?.['EXIF:Orientation'],
+      processedOrientation: metadata.media?.dimensions?.orientation,
+      width: metadata.media?.dimensions?.width || metadata.technical?.['EXIF:ExifImageWidth'],
+      height: metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'],
+      rawDimensionRatio: (() => {
+        const w = metadata.media?.dimensions?.width || metadata.technical?.['EXIF:ExifImageWidth'];
+        const h = metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'];
+        return w && h ? (w / h).toFixed(2) : 'unknown';
+      })()
+    }
   };
   
   // Calculate megapixels
