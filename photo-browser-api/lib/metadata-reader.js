@@ -383,7 +383,29 @@ function extractBasicInfo(metadata) {
     isUnknownCamera: (metadata.camera?.make || metadata.technical?.['EXIF:Make'] || 'Unknown') === 'Unknown',
     isUnknownModel: (metadata.camera?.model || metadata.technical?.['EXIF:Model'] || 'Unknown') === 'Unknown',
     isUnknownLens: (metadata.technical?.['EXIF:LensModel'] || metadata.technical?.['EXIF:LensInfo'] || 'Unknown') === 'Unknown',
-    isUnknownSoftware: (metadata.technical?.['EXIF:Software'] || 'Unknown') === 'Unknown'
+    isUnknownSoftware: (metadata.technical?.['EXIF:Software'] || 'Unknown') === 'Unknown',
+    
+    // Image orientation for layout
+    isHorizontalImage: (() => {
+      const width = metadata.media?.dimensions?.width || metadata.technical?.['EXIF:ExifImageWidth'];
+      const height = metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'];
+      if (width && height) {
+        return width >= height;
+      }
+      // Fallback to EXIF orientation if dimensions not available
+      const orientation = metadata.technical?.['EXIF:Orientation'] || '';
+      return !orientation.includes('90') && !orientation.includes('270') && !orientation.toLowerCase().includes('portrait');
+    })(),
+    isVerticalImage: (() => {
+      const width = metadata.media?.dimensions?.width || metadata.technical?.['EXIF:ExifImageWidth'];
+      const height = metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'];
+      if (width && height) {
+        return width < height;
+      }
+      // Fallback to EXIF orientation if dimensions not available
+      const orientation = metadata.technical?.['EXIF:Orientation'] || '';
+      return orientation.includes('90') || orientation.includes('270') || orientation.toLowerCase().includes('portrait');
+    })()
   };
   
   // Calculate megapixels

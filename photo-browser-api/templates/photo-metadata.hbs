@@ -604,6 +604,15 @@
             justify-content: flex-start;
         }
         
+        /* Conditional widths based on image orientation */
+        .map-header.vertical-image .map-header-content {
+            flex: 0 0 33.333%;
+        }
+        
+        .map-header.vertical-image .map-container {
+            flex: 0 0 66.667%;
+        }
+        
         .map-title {
             font-size: 18px;
             font-weight: 600;
@@ -1274,7 +1283,7 @@
 <body>
     {{#if hasGPS}}
     <!-- Full Width Interactive Map Header -->
-    <div class="map-header">
+    <div class="map-header{{#if isVerticalImage}} vertical-image{{/if}}">
         <div class="map-header-content">
             <div class="map-title">📸{{#if city}} {{city}}{{#if state}}, {{state}}{{/if}}{{else}} Photo Location{{/if}}</div>
             <div class="map-coordinates-display">{{latitude}}, {{longitude}}</div>
