@@ -57,6 +57,12 @@
 - **Path prefixes**: `sample:`, `media:` prefixes for flexible file resolution
 - **Test integration**: CLI tests use direct JSON output format, normalized dynamic fields
 
+### Commands
+- **Generate Sidecar**: Creates an enriched version of a sidecar file
+`RECREATION_GOV_PROVIDER_ENABLED=true  node dist/main.js -f "/photos/archive/2025/05/2025-05-31_14-53-36_001.JPG" -o /photos/archive/path/to/file/name.jpg.json`
+- **Build CLI APP**: `npm run build`
+- **View Sidecar JSON**: `RECREATION_GOV_PROVIDER_ENABLED=true node dist/main.js -f "/photos/archive/2025/05/2025-05-31_14-53-36_001.JPG" --json | jq`
+
 ### Photo Metadata Browser Standards (December 2024)
 - **Prime example**: `/photos/archive/2022/01/2022-01-01_00-00-00_008.jpeg` - Acadia beach scene
 - **Exemplary metadata richness**: 10 Recreation.gov landmarks, Acadia National Park context, iPhone 13 Pro technical data
