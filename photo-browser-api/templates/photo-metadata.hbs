@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Metadata - {{photoId}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/file-icon-vectors@1.0.0/dist/file-icon-classic.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #202124;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: #fff;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            margin-bottom: 24px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 400;
+            color: #1a73e8;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: #5f6368;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section-icon {
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .orientation-Unknown {
+            opacity: 0.4;
+        }
+        
+        /* Dim unknown/not available values */
+        .value:has-text("Unknown"), 
+        .value[data-value="Unknown"],
+        .info-row:has(.value:contains("Unknown")) {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        
+        /* Manual class for unknown values */
+        .unknown-value {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        
+        /* Multi-line date formatting */
+        .file-date {
+            line-height: 1.2;
+        }
+        
+        .file-time {
+            display: block;
+            font-size: 10px;
+            font-weight: bold;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+        
+        /* Landmark type pill badges */
+        .landmark-type-pill {
+            display: inline-block;
+            background: #e5e7eb;
+            color: #374151;
+            font-size: 10px;
+            font-weight: 500;
+            padding: 2px 6px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 8px;
+        }
+        
+        .landmark-type-pill.water {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .landmark-type-pill.mountain {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+        
+        .landmark-type-pill.recreation {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        
+        .section-header {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        
+        .section-count {
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 12px;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .label {
+            font-weight: 500;
+            color: #5f6368;
+            min-width: 120px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        
+        .value {
+            color: #202124;
+            text-align: right;
+            word-break: break-word;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+        }
+        
+        .status-success {
+            color: #137333;
+            background: #e6f4ea;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-error {
+            color: #d93025;
+            background: #fce8e6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .highlight {
+            color: #1a73e8;
+            font-weight: 500;
+        }
+        
+        .coordinates {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #dadce0;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+        }
+        
+        .camera-stats {
+            margin-top: 12px;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #dadce0;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a73e8;
+            margin-bottom: 4px;
+            line-height: 18px;
+            white-space: nowrap;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #5f6368;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .landmarks-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .landmark-item {
+            background: rgba(255,255,255,0.9);
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border-left: 4px solid transparent;
+            border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%) 1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+        
+        .landmark-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        .landmark-name {
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 4px;
+        }
+        
+        .landmark-title-header {
+            font-weight: 600;
+            color: #202124;
+            font-size: 15px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            width: 100%;
+        }
+        
+        .landmark-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .landmark-details {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .landmark-meta {
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        .file-path {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #dadce0;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .dimensions-display {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .dimensions-value {
+            font-size: 32px;
+            font-weight: 500;
+            color: #1a73e8;
+            margin-bottom: 8px;
+        }
+        
+        .megapixels {
+            font-size: 18px;
+            color: #137333;
+            font-weight: 500;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #5f6368;
+            font-style: italic;
+            padding: 24px;
+        }
+        
+        .photo-preview {
+            background: #fff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+        
+        .photo-preview img {
+            max-width: 100%;
+            max-height: 600px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .photo-preview img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+        }
+        
+        .photo-preview h3 {
+            margin-bottom: 16px;
+            color: #202124;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .photo-info {
+            margin-top: 16px;
+            color: #5f6368;
+            font-size: 14px;
+        }
+        
+        .timestamp-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .timestamp-item-primary {
+            background: #f8f9fa;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            border-left-color: #137333;
+        }
+        
+        .timestamp-item-secondary {
+            background: #f8f9fa;
+            padding: 8px;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            border-left: 2px solid;
+            font-size: 13px;
+        }
+        
+        .timestamp-value-primary {
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        
+        .timestamp-value-secondary {
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+        
+        .timestamp-source-secondary {
+            color: #5f6368;
+            font-size: 11px;
+            line-height: 1.3;
+        }
+        
+        .timestamp-item {
+            background: #f8f9fa;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+        
+        .confidence-high { border-left-color: #137333; }
+        .confidence-medium { border-left-color: #f9ab00; }
+        .confidence-low { border-left-color: #d93025; }
+        
+        .timestamp-value {
+            font-weight: 500;
+            color: #202124;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        
+        .timestamp-source {
+            font-size: 12px;
+            color: #5f6368;
+            margin-top: 4px;
+        }
+        
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 16px;
+            /* Removed max-height and overflow for full visibility */
+        }
+        
+        .technical-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+        }
+        
+        .technical-group {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #1a73e8;
+        }
+        
+        .technical-group-title {
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .technical-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px solid #e8eaed;
+            font-size: 13px;
+        }
+        
+        .technical-item:last-child {
+            border-bottom: none;
+        }
+        
+        .technical-key {
+            color: #5f6368;
+            font-weight: 500;
+            min-width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .technical-value {
+            color: #202124;
+            font-family: 'SF Mono', Monaco, monospace;
+            text-align: right;
+            word-break: break-word;
+            margin-left: 12px;
+        }
+        
+        .enrichment-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .enrichment-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .enrichment-value {
+            font-weight: 500;
+            color: #137333;
+            margin-bottom: 4px;
+        }
+        
+        .enrichment-label {
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        .array-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .array-item {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+        }
+        
+        /* Interactive Map Styles */
+        .location-interactive {
+            margin: 16px 0;
+        }
+        
+        .mini-map-container {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dadce0;
+            margin-bottom: 16px;
+        }
+        
+        /* Full width map header */
+        .map-header {
+            width: 100%;
+            display: flex;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+        
+        .map-container {
+            flex: 1;
+            min-height: 400px;
+        }
+        
+        .map-header-content {
+            width: 320px;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.12);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .map-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+        
+        .map-subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .map-location {
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 8px;
+        }
+        
+        .map-coordinates-display {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: #5f6368;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        
+        .map-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .map-action-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .map-action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .map-action-btn-secondary {
+            background: rgba(255,255,255,0.9);
+            color: #5f6368;
+            border: 1px solid rgba(218, 220, 224, 0.6);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .map-action-btn-secondary:hover {
+            background: rgba(255,255,255,1);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .map-placeholder {
+            height: 100%;
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .map-coordinates {
+            margin-top: 8px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            color: #1b5e20;
+        }
+        
+        .gps-accuracy-viz {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .accuracy-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: #1b5e20;
+        }
+        
+        .accuracy-meter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .accuracy-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #4caf50 30%, transparent 30%);
+            border: 2px solid #4caf50;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .accuracy-info {
+            flex: 1;
+        }
+        
+        .accuracy-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1b5e20;
+        }
+        
+        .accuracy-description {
+            font-size: 12px;
+            color: #5f6368;
+            margin-top: 2px;
+        }
+        
+        /* Landmark Cards */
+        .landmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .landmark-card {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .landmark-card:hover {
+            background: #f1f3f4;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .landmark-mountain { border-left-color: #8d6e63; }
+        .landmark-water { border-left-color: #42a5f5; }
+        .landmark-recreation { border-left-color: #66bb6a; }
+        .landmark-other { border-left-color: #bdbdbd; }
+        
+        .landmark-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .landmark-icon {
+            font-size: 18px;
+        }
+        
+        .landmark-title {
+            font-weight: 500;
+            color: #202124;
+            flex: 1;
+        }
+        
+        .landmark-distance {
+            font-size: 12px;
+            color: #1a73e8;
+            font-weight: 500;
+            background: #e8f0fe;
+            padding: 2px 6px;
+            border-radius: 12px;
+        }
+        
+        .landmark-details-compact {
+            font-size: 13px;
+            color: #5f6368;
+            line-height: 1.4;
+        }
+        
+        .landmark-meta-compact {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #5f6368;
+        }
+        
+        /* Direction indicators */
+        .direction-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #5f6368;
+        }
+        
+        .compass-icon {
+            font-size: 12px;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: background 0.2s ease;
+        }
+        
+        .action-btn:hover {
+            background: #1557b0;
+        }
+        
+        .action-btn-secondary {
+            background: #f8f9fa;
+            color: #5f6368;
+            border: 1px solid #dadce0;
+        }
+        
+        .action-btn-secondary:hover {
+            background: #f1f3f4;
+        }
+        
+        /* Map marker styles */
+        .photo-marker {
+            background: white;
+            border: 2px solid #1a73e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .landmark-marker {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .landmark-photos-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+        }
+        
+        .landmark-photos-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(102, 126, 234, 0.4);
+        }
+        
+        .landmark-photos-btn i {
+            font-size: 10px;
+        }
+        
+        .landmark-description {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .landmark-description.collapsed {
+            max-height: 3.6em; /* ~3 lines of text */
+            overflow: hidden;
+        }
+        
+        .landmark-description.collapsed::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2em;
+            background: linear-gradient(transparent, white);
+            pointer-events: none;
+        }
+        
+        .landmark-description.expanded {
+            max-height: none;
+        }
+        
+        .landmark-description.no-overflow {
+            max-height: none;
+            overflow: visible;
+        }
+        
+        .landmark-description.no-overflow::after {
+            display: none;
+        }
+        
+        .landmark-description-toggle {
+            color: #667eea;
+            font-size: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 4px;
+            display: inline-block;
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        
+        .landmark-description-toggle:hover {
+            opacity: 1;
+        }
+        
+        /* RenderJSON VSCode Dark Theme */
+        #json-tree-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #3c3c3c;
+            max-height: 600px;
+            overflow: auto;
+        }
+        
+        /* JSON Keys */
+        .renderjson .key {
+            color: #9cdcfe;
+            font-weight: normal;
+        }
+        
+        /* JSON Strings */
+        .renderjson .string {
+            color: #ce9178;
+        }
+        
+        /* JSON Numbers */
+        .renderjson .number {
+            color: #b5cea8;
+        }
+        
+        /* JSON Booleans */
+        .renderjson .bool {
+            color: #569cd6;
+        }
+        
+        /* JSON Null */
+        .renderjson .null {
+            color: #569cd6;
+        }
+        
+        /* Disclosure triangles */
+        .renderjson .disclosure {
+            color: #d4d4d4;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .renderjson .disclosure:hover {
+            background-color: #2d2d30;
+            border-radius: 2px;
+        }
+        
+        /* Object/Array brackets */
+        .renderjson .syntax {
+            color: #ffd700;
+        }
+        
+        /* Collapsed indicator */
+        .renderjson .collapsed {
+            white-space: nowrap;
+            color: #9ca3af !important; /* Light gray for collapsed items count */
+        }
+        
+        .renderjson .collapsed:after {
+            content: " ... ";
+            color: #6a9955;
+            font-style: italic;
+        }
+        
+        /* Style for collapsed object/array indicators like "5 items" */
+        .renderjson a {
+            color: #9ca3af !important;
+            text-decoration: none;
+        }
+        
+        .renderjson a:hover {
+            color: #d4d4d4 !important;
+        }
+    </style>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/renderjson@1.4.0/renderjson.js"></script>
+    <script>
+        let map = null;
+        
+        function initializeMap(lat, lon, landmarks, mapId = 'interactive-map') {
+            if (map) {
+                map.remove();
+            }
+            
+            // Create map with higher zoom for header map
+            const zoom = mapId === 'map-header' ? 14 : 13;
+            map = L.map(mapId).setView([lat, lon], zoom);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add photo location marker
+            const photoMarker = L.marker([lat, lon], {
+                icon: L.divIcon({
+                    className: 'photo-marker',
+                    html: '📸',
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 15]
+                })
+            }).addTo(map);
+            
+            photoMarker.bindPopup(`
+                <div style="text-align: center;">
+                    <strong>📸 Photo Location</strong><br>
+                    <small>${lat.toFixed(6)}, ${lon.toFixed(6)}</small>
+                </div>
+            `);
+            
+            // Add landmark markers
+            landmarks.forEach(landmark => {
+                if (landmark.latitude && landmark.longitude) {
+                    const landmarkMarker = L.marker([landmark.latitude, landmark.longitude], {
+                        icon: L.divIcon({
+                            className: 'landmark-marker',
+                            html: landmark.icon,
+                            iconSize: [25, 25],
+                            iconAnchor: [12.5, 12.5]
+                        })
+                    }).addTo(map);
+                    
+                    landmarkMarker.bindPopup(`
+                        <div>
+                            <strong>${landmark.icon} ${landmark.name}</strong><br>
+                            <small>${landmark.subcategory}</small><br>
+                            <small>🧭 ${landmark.compassDirection || 'Unknown'} • ${landmark.distanceKm}km</small><br>
+                            <small style="color: #666;">${landmark.source}</small>
+                        </div>
+                    `);
+                }
+            });
+            
+            // Add accuracy circle if available
+            const accuracyText = document.querySelector('.accuracy-value')?.textContent;
+            if (accuracyText) {
+                const accuracyMeters = parseFloat(accuracyText.replace(/[^\d.]/g, ''));
+                if (accuracyMeters) {
+                    L.circle([lat, lon], {
+                        radius: accuracyMeters,
+                        color: '#4caf50',
+                        fillColor: '#4caf50',
+                        fillOpacity: 0.1,
+                        weight: 2
+                    }).addTo(map);
+                }
+            }
+        }
+        
+        function toggleLandmarkDetails(card) {
+            const detailed = card.querySelector('.landmark-detailed');
+            if (detailed.style.display === 'none') {
+                detailed.style.display = 'block';
+                card.style.transform = 'translateY(-2px)';
+                card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            } else {
+                detailed.style.display = 'none';
+                card.style.transform = 'translateY(-1px)';
+                card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }
+        }
+        
+        function viewLandmarkPhotos(landmarkId, landmarkName) {
+            // Prevent event bubbling to the parent card
+            event.stopPropagation();
+            
+            // Placeholder function for future implementation
+            alert(`Coming soon: View photos taken near "${landmarkName}"\n\nLandmark ID: ${landmarkId}\n\nThis will show all photos from our collection taken within this landmark area.`);
+            
+            // Future implementation would navigate to:
+            // window.location.href = `/landmark-photos/${landmarkId}`;
+        }
+        
+        function toggleDescription(landmarkId, event) {
+            // Prevent event bubbling to the parent card
+            if (event) {
+                event.stopPropagation();
+            }
+            
+            console.log('toggleDescription called with ID:', landmarkId); // Debug log
+            
+            const description = document.getElementById(`desc-${landmarkId}`);
+            const toggle = document.getElementById(`toggle-${landmarkId}`);
+            
+            console.log('Description element:', description); // Debug log
+            console.log('Toggle element:', toggle); // Debug log
+            
+            if (!description || !toggle) {
+                console.error('Could not find elements for landmark ID:', landmarkId);
+                return;
+            }
+            
+            if (description.classList.contains('collapsed')) {
+                description.classList.remove('collapsed');
+                description.classList.add('expanded');
+                toggle.textContent = 'Read less';
+                console.log('Expanded description for:', landmarkId);
+            } else {
+                description.classList.remove('expanded');
+                description.classList.add('collapsed');
+                toggle.textContent = 'Read more';
+                console.log('Collapsed description for:', landmarkId);
+            }
+        }
+        
+        function copyCoordinates() {
+            const coords = document.querySelector('.coordinates');
+            if (coords) {
+                navigator.clipboard.writeText(coords.textContent);
+                alert('Coordinates copied to clipboard!');
+            }
+        }
+        
+        function openInMaps(lat, lon) {
+            const url = `https://www.google.com/maps?q=${lat},${lon}`;
+            window.open(url, '_blank');
+        }
+        
+        // Initialize map when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            {{#if hasGPS}}
+            const landmarks = [
+                {{#each landmarks}}
+                {
+                    name: "{{name}}",
+                    latitude: {{latitude}},
+                    longitude: {{longitude}},
+                    icon: "{{icon}}",
+                    subcategory: "{{subcategory}}",
+                    compassDirection: "{{compassDirection}}",
+                    distanceKm: "{{distanceKm}}",
+                    source: "{{source}}"
+                }{{#unless @last}},{{/unless}}
+                {{/each}}
+            ];
+            
+            // Initialize the map with photo location and landmarks
+            initializeMap({{latitude}}, {{longitude}}, landmarks, 'map-header');
+            {{/if}}
+            
+            // Add event listeners for description toggles
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('landmark-description-toggle')) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    const landmarkId = event.target.getAttribute('data-landmark-id');
+                    toggleDescription(landmarkId, event);
+                    return false;
+                }
+            });
+            
+            // Check which descriptions need toggle buttons after DOM loads
+            setTimeout(function() {
+                document.querySelectorAll('.landmark-description').forEach(function(desc) {
+                    const toggle = desc.nextElementSibling;
+                    if (toggle && toggle.classList.contains('landmark-description-toggle')) {
+                        // Check if content is actually being cut off
+                        if (desc.scrollHeight <= desc.clientHeight + 5) { // 5px tolerance
+                            // Content fits, remove collapsed class and hide toggle
+                            desc.classList.remove('collapsed');
+                            desc.classList.add('no-overflow');
+                            toggle.style.display = 'none';
+                        }
+                    }
+                });
+            }, 100);
+            
+            // Initialize RenderJSON
+            try {
+                const metadataJson = {{{fullMetadata}}};
+                const container = document.getElementById('json-tree-container');
+                
+                if (container && metadataJson && typeof renderjson !== 'undefined') {
+                    // Configure renderjson
+                    renderjson.set_icons('▼', '▶'); // Down and right arrows
+                    renderjson.set_show_to_level(3); // Show 3 levels deep by default
+                    renderjson.set_max_string_length(100); // Truncate long strings
+                    
+                    // Render the JSON
+                    container.appendChild(renderjson(metadataJson));
+                }
+            } catch (error) {
+                console.error('Error initializing JSON viewer:', error);
+                // Fallback to simple pre-formatted JSON
+                const container = document.getElementById('json-tree-container');
+                if (container) {
+                    container.innerHTML = `<pre style="color: #d4d4d4; margin: 0; white-space: pre-wrap;">${JSON.stringify({{{fullMetadata}}}, null, 2)}</pre>`;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    {{#if hasGPS}}
+    <!-- Full Width Interactive Map Header -->
+    <div class="map-header">
+        <div class="map-header-content">
+            <div class="map-title">📸 {{city}}, {{state}}</div>
+            <div class="map-coordinates-display">{{latitude}}, {{longitude}}</div>
+            <div class="map-actions">
+                <button class="map-action-btn" onclick="copyCoordinates()">
+                    📋 Copy GPS
+                </button>
+                <button class="map-action-btn" onclick="openInMaps({{latitude}}, {{longitude}})">
+                    🗺️ Maps
+                </button>
+                <a href="https://www.google.com/maps/@{{latitude}},{{longitude}},3a,75y/data=!3m7!1e1" target="_blank" class="map-action-btn map-action-btn-secondary">
+                    👁️ Street View
+                </a>
+            </div>
+            
+            <!-- Photo Preview in Sidebar -->
+            <div style="margin-top: 16px; flex: 1;">
+                <img src="/photos/{{photoId}}" alt="{{fileName}}" style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <div style="display: none; padding: 20px; background: #f8f9fa; border-radius: 6px; border: 2px dashed #dadce0; text-align: center;">
+                    <p style="color: #5f6368; margin: 0; font-size: 12px;">Preview not available</p>
+                    <p style="color: #5f6368; margin: 4px 0 0 0; font-size: 11px;">{{mimeType}} format</p>
+                </div>
+                <div style="margin-top: 8px; font-size: 11px; color: #5f6368; text-align: center;">
+                    {{fileName}}{{#if megapixels}} • {{megapixels}} MP{{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="map-container">
+            <div id="map-header" style="height: 100%; width: 100%;"></div>
+        </div>
+    </div>
+    {{else}}
+    <!-- Simple header for photos without GPS -->
+    <div class="header">
+        <h1>Photo Metadata Viewer</h1>
+        <p>Comprehensive analysis of image metadata</p>
+    </div>
+    {{/if}}
+    
+    <div class="container">
+        {{#if error}}
+            <div class="section">
+                <div class="status-error">{{error}}</div>
+            </div>
+        {{else}}
+            <!-- Location Details (Full Width) -->
+            {{#if hasGPS}}
+            <div class="section" style="margin-bottom: 14px;">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-map-pin section-icon"></i>
+                            Location Details
+                        </h2>
+                    </div>
+                    
+                    <div>
+                        <div class="info-row">
+                            <span class="label">Coordinates:</span>
+                            <span class="value">{{latitude}}, {{longitude}}</span>
+                        </div>
+                        {{#if altitude}}
+                        <div class="info-row">
+                            <span class="label">Altitude:</span>
+                            <span class="value">{{altitude}}</span>
+                        </div>
+                        {{/if}}
+                        <div class="info-row">
+                            <span class="label">Location:</span>
+                            <span class="value highlight">{{city}}, {{state}}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">County:</span>
+                            <span class="value">{{county}}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Timezone:</span>
+                            <span class="value">{{timezone}}</span>
+                        </div>
+                        <div class="info-row" style="font-size: 12px; color: #9ca3af;">
+                            <span class="label" style="font-size: 12px; color: #9ca3af;">Source:</span>
+                            <span class="value" style="font-size: 12px; color: #9ca3af;">{{gpsSource}}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- GPS Accuracy Visualization -->
+                    {{#if gpsAccuracy}}
+                    <div class="gps-accuracy-viz">
+                        <div class="accuracy-header">
+                            📍 GPS Accuracy
+                        </div>
+                        <div class="accuracy-meter">
+                            <div class="accuracy-circle">
+                                📍
+                            </div>
+                            <div class="accuracy-info">
+                                <div class="accuracy-value">{{gpsAccuracy}}</div>
+                                <div class="accuracy-description">Location is accurate within this radius</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+            </div>
+            {{else}}
+            <div class="section" style="margin-bottom: 14px;">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-map-pin section-icon"></i>
+                        Location Details
+                    </h2>
+                </div>
+                <div class="empty-state">No GPS location data available</div>
+            </div>
+            {{/if}}
+                
+        <!-- Full Width Media & Camera Properties -->
+        <div class="section" style="margin-bottom: 14px;">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-camera section-icon"></i>
+                    Media & Camera Properties
+                </h2>
+            </div>
+            
+            <!-- Top Row: File Icon + Resolution + Camera Info -->
+            <div style="display: grid; grid-template-columns: auto auto 1fr; gap: 32px; align-items: center; margin-bottom: 20px;">
+                <!-- File Type Icon Column -->
+                <div style="flex-shrink: 0;">
+                    {{#if isVideoFile}}
+                    <!-- Video file icon -->
+                    <svg width="50" height="60" viewBox="0 0 50 60" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <!-- File shape -->
+                        <path d="M5 0 h30 l10 10 v45 a5 5 0 0 1 -5 5 h-30 a5 5 0 0 1 -5 -5 v-50 a5 5 0 0 1 5 -5" 
+                              fill="#f8f9fa" stroke="#6b7280" stroke-width="1"/>
+                        <!-- Folded corner -->
+                        <path d="M35 0 v10 h10" fill="#e5e7eb" stroke="#6b7280" stroke-width="1"/>
+                        <!-- Video play icon -->
+                        <path d="M18 15 v14 l12 -7 z" fill="#6b7280"/>
+                        <!-- Extension text -->
+                        <text x="25" y="45" text-anchor="middle" 
+                              font-family="Arial, sans-serif" font-size="10" font-weight="bold" 
+                              fill="#374151">{{fileExtension}}</text>
+                    </svg>
+                    {{else}}
+                    <!-- Image file icon -->
+                    <svg width="50" height="60" viewBox="0 0 50 60" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <!-- File shape -->
+                        <path d="M5 0 h30 l10 10 v45 a5 5 0 0 1 -5 5 h-30 a5 5 0 0 1 -5 -5 v-50 a5 5 0 0 1 5 -5" 
+                              fill="#f8f9fa" stroke="#6b7280" stroke-width="1"/>
+                        <!-- Folded corner -->
+                        <path d="M35 0 v10 h10" fill="#e5e7eb" stroke="#6b7280" stroke-width="1"/>
+                        <!-- Image icon (mountains and sun) -->
+                        <circle cx="33" cy="17" r="3" fill="#9ca3af"/>
+                        <path d="M10 28 l8 -8 l7 7 l10 -5 v10 h-25 z" fill="#6b7280"/>
+                        <path d="M10 28 l8 -8 l7 7" fill="none" stroke="#4b5563" stroke-width="1"/>
+                        <!-- Extension text -->
+                        <text x="25" y="45" text-anchor="middle" 
+                              font-family="Arial, sans-serif" font-size="10" font-weight="bold" 
+                              fill="#374151">{{fileExtension}}</text>
+                    </svg>
+                    {{/if}}
+                </div>
+                
+                <!-- Resolution Stats Column -->
+                {{#if imageWidth}}
+                <div style="text-align: left; white-space: nowrap;">
+                    <div style="font-size: 28px; font-weight: 600; color: #1565c0; margin-bottom: 4px; line-height: 1;">
+                        {{imageWidth}} × {{imageHeight}}
+                    </div>
+                    {{#if megapixels}}
+                    <div style="font-size: 15px; color: #2e7d32; font-weight: 500; margin-bottom: 4px;">
+                        {{megapixels}} Megapixels
+                    </div>
+                    {{/if}}
+                    {{#if orientation}}
+                    <div style="font-size: 13px; color: #5f6368;" class="orientation-{{orientation}}">
+                        Orientation: {{orientation}}
+                    </div>
+                    {{/if}}
+                </div>
+                {{/if}}
+                
+                <!-- Camera Info Column -->
+                <div>
+                    <div class="info-row">
+                        <span class="label">Size:</span>
+                        <span class="value">{{fileSize}}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Make:</span>
+                        <span class="value highlight {{#if isUnknownCamera}}unknown-value{{/if}}">{{camera}}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Model:</span>
+                        <span class="value highlight {{#if isUnknownModel}}unknown-value{{/if}}">{{model}}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Lens:</span>
+                        <span class="value {{#if isUnknownLens}}unknown-value{{/if}}">{{lens}}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Software:</span>
+                        <span class="value {{#if isUnknownSoftware}}unknown-value{{/if}}">{{software}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Camera Settings Grid -->
+            <div class="camera-stats">
+                <div class="stat-card">
+                    <div class="stat-value">{{iso}}</div>
+                    <div class="stat-label">ISO</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{aperture}}</div>
+                    <div class="stat-label">Aperture</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{shutterSpeed}}</div>
+                    <div class="stat-label">Shutter Speed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{focalLength}}</div>
+                    <div class="stat-label">Focal Length</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{focalLength35mm}}</div>
+                    <div class="stat-label">35mm Equivalent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{flash}}</div>
+                    <div class="stat-label">Flash</div>
+                </div>
+            </div>
+        </div>
+                
+        <!-- Second Row - Processing Status -->
+        <div class="three-column">
+            <div class="section">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h2 class="section-title" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">
+                            <i class="fas fa-check-circle section-icon" style="color: {{#if processingSuccess}}#4caf50{{else}}#f44336{{/if}};"></i>
+                            Processing Status
+                        </h2>
+                        <div style="font-size: 12px; color: #5f6368; margin-top: 2px;">
+                            {{extractedAt.date}}{{#if extractedAt.time}} {{extractedAt.time}}{{/if}}
+                        </div>
+                    </div>
+                    <span class="{{#if processingSuccess}}status-success{{else}}status-error{{/if}}" style="margin-left: auto;">{{processingSuccess}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Combined Timestamps Section (Full Width) -->
+        <div class="section" style="margin-bottom: 14px;">
+            <div class="section-header">
+                <h2 class="section-title file-date">
+                    <i class="fas fa-clock section-icon"></i>
+                    {{#if primaryTimestamp.date}}
+                        {{primaryTimestamp.date}}
+                        {{#if primaryTimestamp.time}}<span class="file-time">{{primaryTimestamp.time}}</span>{{/if}}
+                    {{else}}Unknown Timestamp{{/if}}
+                </h2>
+            </div>
+            
+            <!-- Other Timestamps -->
+            <div class="section-subtitle">Other Sources</div>
+            <div class="two-column" style="margin-bottom: 20px;">
+                <div class="info-row">
+                    <span class="label">Capture:</span>
+                    <span class="value file-date">{{#if captureTimestamp.date}}
+                        {{captureTimestamp.date}}
+                        {{#if captureTimestamp.time}}<span class="file-time">{{captureTimestamp.time}}</span>{{/if}}
+                    {{else}}Unknown{{/if}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Creation:</span>
+                    <span class="value file-date">{{#if creationTimestamp.date}}
+                        {{creationTimestamp.date}}
+                        {{#if creationTimestamp.time}}<span class="file-time">{{creationTimestamp.time}}</span>{{/if}}
+                    {{else}}Unknown{{/if}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Modification:</span>
+                    <span class="value file-date">{{#if modificationTimestamp.date}}
+                        {{modificationTimestamp.date}}
+                        {{#if modificationTimestamp.time}}<span class="file-time">{{modificationTimestamp.time}}</span>{{/if}}
+                    {{else}}Unknown{{/if}}</span>
+                </div>
+            </div>
+            
+            <!-- Alternative Timestamps (Only medium and high confidence) -->
+            {{#if hasAlternativeTimestamps}}
+            <div class="section-subtitle">Alternative Sources</div>
+            {{#each allTimestamps}}
+            <div class="timestamp-item-primary confidence-{{confidence}}" style="margin-bottom: 12px;">
+                <div class="timestamp-value-primary file-date">
+                    {{value.date}}
+                    {{#if value.time}}<span class="file-time">{{value.time}}</span>{{/if}}
+                </div>
+                <div class="timestamp-source">Source: {{source}} • Confidence: {{confidence}}{{#if hasDetails}} • Details: {{details}}{{/if}}</div>
+            </div>
+            {{/each}}
+            {{/if}}
+            
+            {{#if timestampConflicts.length}}
+            <div class="section-subtitle" style="margin-top: 24px;">Conflicts</div>
+                {{#each timestampConflicts}}
+                <div class="timestamp-item confidence-low">
+                    <div class="timestamp-value">{{this}}</div>
+                </div>
+                {{/each}}
+            {{/if}}
+        </div>
+            
+        <!-- Landmarks -->
+        {{#if landmarks.length}}
+        <div class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">
+                        <i class="fas fa-map-marked-alt section-icon"></i>
+                        Nearby Landmarks & Points of Interest
+                    </h2>
+                    <div class="section-subtitle">Click cards for details</div>
+                </div>
+                <div class="section-count">{{landmarks.length}}</div>
+            </div>
+            
+            <div class="landmarks-grid">
+                {{#each landmarks}}
+                <div class="landmark-card {{cssClass}}" onclick="toggleLandmarkDetails(this)">
+                    <!-- Title as full-width header -->
+                    <div class="landmark-title-header">
+                        {{name}}
+                    </div>
+                    
+                    <!-- Icon, type, distance in row below -->
+                    <div class="landmark-meta-row">
+                        <span class="landmark-icon">{{icon}}</span>
+                        <span class="landmark-type-pill landmark-type-{{pillClass}}">{{subcategory}}</span>
+                        <span class="landmark-distance">{{#if distanceKm}}{{distanceKm}}km{{else}}{{distance}}{{/if}}</span>
+                        {{#if compassDirection}}<span class="direction-indicator">🧭 {{compassDirection}}</span>{{/if}}
+                    </div>
+                    
+                    <div class="landmark-details-compact">
+                        {{#if description}}
+                        <div class="landmark-description collapsed" style="margin-top: 8px; font-size: 12px; line-height: 1.3;" id="desc-{{id}}">
+                            {{#if hasHtmlDescription}}
+                                {{{description}}}
+                            {{else}}
+                                {{description}}
+                            {{/if}}
+                        </div>
+                        <span class="landmark-description-toggle" data-landmark-id="{{id}}" id="toggle-{{id}}">
+                            Read more
+                        </span>
+                        {{/if}}
+                    </div>
+                    
+                    <div class="landmark-meta-compact">
+                        <span>{{source}}</span>
+                        <span>{{relationship}}</span>
+                        {{#if confidence}}<span>{{confidence}} confidence</span>{{/if}}
+                        <button class="landmark-photos-btn" onclick="viewLandmarkPhotos('{{id}}', '{{name}}')">
+                            <i class="fas fa-images"></i>
+                            View Photos
+                        </button>
+                    </div>
+                    
+                    <!-- Hidden detailed info (shown on click) -->
+                    <div class="landmark-detailed" style="display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0e0e0;">
+                        <div style="font-size: 12px; color: #5f6368;">
+                            <div><strong>ID:</strong> {{id}}</div>
+                            <div><strong>Coordinates:</strong> {{latitude}}, {{longitude}}</div>
+                            {{#if state}}<div><strong>Location:</strong> {{state}}{{#if county}}, {{county}} County{{/if}}</div>{{/if}}
+                            <div><strong>Method:</strong> {{method}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        
+        <!-- Technical Details -->
+        {{#if technicalGroups.length}}
+        <div class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">
+                        <i class="fas fa-cogs section-icon"></i>
+                        Technical Details
+                    </h2>
+                    <div class="section-subtitle">Comprehensive EXIF and technical metadata organized by category</div>
+                </div>
+            </div>
+            
+            <div class="technical-grid-full">
+                {{#each technicalGroups}}
+                <div class="technical-group">
+                    <div class="technical-group-title">{{title}} <span style="font-weight: 400; font-size: 12px; color: #5f6368;">({{count}} items)</span></div>
+                    {{#each data}}
+                    <div class="technical-item">
+                        <span class="technical-key">{{@key}}:</span>
+                        <span class="technical-value">
+                            {{#if this.date}}
+                                <span class="file-date">
+                                    {{this.date}}
+                                    {{#if this.time}}<span class="file-time">{{this.time}}</span>{{/if}}
+                                </span>
+                            {{else}}
+                                {{this}}
+                            {{/if}}
+                        </span>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        
+        <!-- XMP Region Data -->
+        {{#if hasRegionData}}
+        <div class="section">
+            <h2 class="section-title">XMP Region Data</h2>
+            {{#if regionTypes}}
+            <div class="info-row">
+                <span class="label">Region Types:</span>
+                <span class="value">{{regionTypes}}</span>
+            </div>
+            {{/if}}
+            {{#each regionData}}
+            <div class="info-row">
+                <span class="label">{{@key}}:</span>
+                <span class="value">{{this}}</span>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+        
+            
+            {{#if fullMetadata}}
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-code section-icon"></i>
+                        Interactive Metadata Explorer
+                    </h2>
+                    <div class="section-subtitle">Explore the complete metadata structure</div>
+                </div>
+                <div id="json-tree-container"></div>
+            </div>
+            {{/if}}
+        {{/if}}
+    </div>
+</body>
+</html>
