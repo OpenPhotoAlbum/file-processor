@@ -1300,9 +1300,16 @@
                 </a>
             </div>
             
-            <!-- Photo Preview in Sidebar -->
+            <!-- Photo/Video Preview in Sidebar -->
             <div style="margin-top: 16px; flex: 1;">
-                <img src="/photos/{{photoId}}" alt="{{fileName}}" style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                {{#if isVideo}}
+                    <video controls style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <source src="/photos/{{photoId}}" type="{{mimeType}}">
+                        Your browser does not support the video tag.
+                    </video>
+                {{else}}
+                    <img src="/photos/{{photoId}}" alt="{{fileName}}" style="width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                {{/if}}
                 <div style="display: none; padding: 20px; background: #f8f9fa; border-radius: 6px; border: 2px dashed #dadce0; text-align: center;">
                     <p style="color: #5f6368; margin: 0; font-size: 12px;">Preview not available</p>
                     <p style="color: #5f6368; margin: 4px 0 0 0; font-size: 11px;">{{mimeType}} format</p>

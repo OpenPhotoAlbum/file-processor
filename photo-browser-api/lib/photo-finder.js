@@ -26,7 +26,7 @@ function findPhotoById(photoId) {
     }
     
     // Look for photo file (try common extensions)
-    const extensions = ['.heic', '.jpeg', '.jpg', '.mov', '.mp4', '.HEIC', '.JPEG', '.JPG'];
+    const extensions = ['.heic', '.jpeg', '.jpg', '.mov', '.mp4', '.HEIC', '.JPEG', '.JPG', '.MOV', '.MP4'];
     let photoPath = null;
     
     for (const ext of extensions) {

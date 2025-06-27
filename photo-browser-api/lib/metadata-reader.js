@@ -222,6 +222,7 @@ function extractBasicInfo(metadata) {
     imageHeight: metadata.media?.dimensions?.height || metadata.technical?.['EXIF:ExifImageHeight'],
     megapixels: null,
     orientation: metadata.technical?.['EXIF:Orientation'] || 'Unknown',
+    isVideo: metadata.media?.type === 'video' || (metadata.file?.mimeType && metadata.file.mimeType.startsWith('video/')),
     
     // Camera Information
     camera: metadata.camera?.make || metadata.technical?.['EXIF:Make'] || 'Unknown',
