@@ -20,6 +20,21 @@ app.get('/', (req, res) => {
   });
 });
 
+// Serve photo files
+app.get('/photos/:photoId', (req, res) => {
+  const photoId = req.params.photoId;
+  const { findPhotoById } = require('./lib/photo-finder');
+  
+  const photoResult = findPhotoById(photoId);
+  
+  if (!photoResult.found || !photoResult.photoPath) {
+    return res.status(404).send('Photo not found');
+  }
+  
+  // Serve the actual photo file
+  res.sendFile(photoResult.photoPath);
+});
+
 app.get('/metadata/:photoId', (req, res) => {
   const photoId = req.params.photoId;
   
@@ -31,7 +46,7 @@ app.get('/metadata/:photoId', (req, res) => {
   const photoResult = findPhotoById(photoId);
   
   if (!photoResult.found) {
-    return res.render('hello', {
+    return res.render('photo-metadata', {
       photoId,
       message: 'Photo Not Found',
       error: photoResult.error
@@ -42,7 +57,7 @@ app.get('/metadata/:photoId', (req, res) => {
   const metadataResult = readMetadata(photoResult.jsonPath);
   
   if (!metadataResult.success) {
-    return res.render('hello', {
+    return res.render('photo-metadata', {
       photoId,
       message: 'Metadata Error',
       error: metadataResult.error
@@ -53,7 +68,7 @@ app.get('/metadata/:photoId', (req, res) => {
   const templateData = extractBasicInfo(metadataResult.metadata);
   templateData.photoId = photoId;
   
-  res.render('hello', templateData);
+  res.render('photo-metadata', templateData);
 });
 
 app.listen(PORT, () => {

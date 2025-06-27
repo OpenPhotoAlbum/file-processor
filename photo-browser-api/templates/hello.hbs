@@ -38,6 +38,13 @@
             <div class="info">
                 <p><span class="label">Metadata Sections:</span> {{rawMetadataKeys}}</p>
             </div>
+            
+            {{#if fullMetadata}}
+            <div class="info">
+                <h3>Full Metadata (JSON):</h3>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 12px; max-height: 400px; overflow-y: auto;">{{fullMetadata}}</pre>
+            </div>
+            {{/if}}
         {{/if}}
     </div>
 </body>
