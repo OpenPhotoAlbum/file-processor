@@ -1273,7 +1273,7 @@
     <!-- Full Width Interactive Map Header -->
     <div class="map-header">
         <div class="map-header-content">
-            <div class="map-title">📸 {{city}}, {{state}}</div>
+            <div class="map-title">📸{{#if city}} {{city}}{{#if state}}, {{state}}{{/if}}{{else}} Photo Location{{/if}}</div>
             <div class="map-coordinates-display">{{latitude}}, {{longitude}}</div>
             <div class="map-actions">
                 <button class="map-action-btn" onclick="copyCoordinates()">
