@@ -68,6 +68,8 @@ export async function up(knex: Knex): Promise<void> {
     table.decimal('aperture_f_number', 3, 1);
     table.decimal('shutter_speed_seconds', 10, 6);
     table.integer('frame_count').defaultTo(1);
+    // Note: integration_time_seconds will be computed at query time or in application layer
+    // MySQL computed columns require raw SQL which varies by version
     table.decimal('integration_time_seconds', 10, 6);
     table.integer('focal_length_mm');
     
@@ -96,7 +98,7 @@ export async function up(knex: Knex): Promise<void> {
     table.index('primary_timestamp');
     table.index(['collection', 'primary_timestamp']);
     table.index(['media_type', 'media_format']);
-    table.index(['iso_value', 'aperture_f_number', 'shutter_speed_seconds']);
+    table.index(['iso_value', 'aperture_f_number', 'shutter_speed_seconds'], 'idx_camera_settings');
     table.index('integration_time_seconds');
     table.index('imaging_train_id');
     table.index('dominant_color_hex');
@@ -116,10 +118,9 @@ export async function up(knex: Knex): Promise<void> {
     // Foreign keys
     table.foreign('file_id').references('id').inTable('media_files').onDelete('CASCADE');
     
-    // Spatial index (MySQL specific)
-    if (knex.client.config.client === 'mysql2') {
-      table.index(['latitude', 'longitude'], 'idx_coordinates', 'SPATIAL');
-    }
+    // Spatial index (MySQL specific) - requires POINT column type for true spatial indexing
+    // For now, use a regular composite index which still provides good performance
+    table.index(['latitude', 'longitude'], 'idx_coordinates');
   });
 
   // Create landmarks table

@@ -1,12 +1,25 @@
 import knex, { Knex } from 'knex';
 import config from './knexfile.js';
 import { Logger } from '../utils/logging/index.js';
+import { fileURLToPath } from 'url';
 
 const logger = new Logger('Database');
 
+// Detect if we're running from dist (compiled) or src
+const __filename = fileURLToPath(import.meta.url);
+const isCompiledCode = __filename.includes('/dist/');
+
 // Get environment or default to development
 const environment = process.env.NODE_ENV || 'development';
-const knexConfig = config[environment];
+const knexConfig = { ...config[environment] };
+
+// Override extension if running from compiled code
+if (isCompiledCode && knexConfig.migrations) {
+  knexConfig.migrations.extension = 'js';
+}
+if (isCompiledCode && knexConfig.seeds) {
+  knexConfig.seeds.extension = 'js';
+}
 
 // Create the Knex instance
 export const db: Knex = knex(knexConfig);

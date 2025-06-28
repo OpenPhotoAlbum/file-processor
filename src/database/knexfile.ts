@@ -1,7 +1,14 @@
 import type { Knex } from 'knex';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 const config: { [key: string]: Knex.Config } = {
   development: {
@@ -22,13 +29,14 @@ const config: { [key: string]: Knex.Config } = {
       max: 10
     },
     migrations: {
-      directory: './migrations',
-      extension: 'ts',
-      tableName: 'knex_migrations'
+      directory: `${__dirname}/migrations`,
+      extension: isProduction ? 'js' : 'ts',
+      tableName: 'knex_migrations',
+      loadExtensions: ['.js'] // Only load .js files in compiled code
     },
     seeds: {
-      directory: './seeds',
-      extension: 'ts'
+      directory: `${__dirname}/seeds`,
+      extension: isProduction ? 'js' : 'ts'
     }
   },
 
