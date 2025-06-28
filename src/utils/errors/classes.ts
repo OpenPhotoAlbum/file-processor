@@ -4,6 +4,7 @@
  */
 
 import { ErrorCode, ErrorSeverity, getErrorInfo } from './codes.js';
+import type { UnknownJsonContent } from '../../types/semantic-any.js';
 
 /**
  * Base custom error class with error codes
@@ -11,13 +12,13 @@ import { ErrorCode, ErrorSeverity, getErrorInfo } from './codes.js';
 export class MPPError extends Error {
   public readonly code: ErrorCode;
   public readonly severity: ErrorSeverity;
-  public readonly context?: Record<string, any>;
+  public readonly context?: UnknownJsonContent;
   public readonly userAction?: string;
   public readonly cause?: Error;
 
   constructor(
     code: ErrorCode, 
-    context?: Record<string, any>, 
+    context?: UnknownJsonContent, 
     cause?: Error
   ) {
     const errorInfo = getErrorInfo(code);
@@ -87,7 +88,7 @@ export class MPPError extends Error {
  * Validation-specific error
  */
 export class ValidationError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'ValidationError';
   }
@@ -97,7 +98,7 @@ export class ValidationError extends MPPError {
  * EXIF extraction error
  */
 export class ExifError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'ExifError';
   }
@@ -107,7 +108,7 @@ export class ExifError extends MPPError {
  * GPS processing error
  */
 export class GPSError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'GPSError';
   }
@@ -117,7 +118,7 @@ export class GPSError extends MPPError {
  * Timestamp processing error
  */
 export class TimestampError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'TimestampError';
   }
@@ -127,7 +128,7 @@ export class TimestampError extends MPPError {
  * Path resolution error
  */
 export class PathError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'PathError';
   }
@@ -137,7 +138,7 @@ export class PathError extends MPPError {
  * Metadata processing error
  */
 export class MetadataError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'MetadataError';
   }
@@ -147,7 +148,7 @@ export class MetadataError extends MPPError {
  * Configuration error
  */
 export class ConfigError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'ConfigError';
   }
@@ -157,7 +158,7 @@ export class ConfigError extends MPPError {
  * System error
  */
 export class SystemError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'SystemError';
   }
@@ -167,7 +168,7 @@ export class SystemError extends MPPError {
  * Landmark processing error
  */
 export class LandmarkError extends MPPError {
-  constructor(code: ErrorCode, context?: Record<string, any>, cause?: Error) {
+  constructor(code: ErrorCode, context?: UnknownJsonContent, cause?: Error) {
     super(code, context, cause);
     this.name = 'LandmarkError';
   }

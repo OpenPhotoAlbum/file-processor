@@ -8,6 +8,8 @@ import { Logger } from '../logging/index.js';
 import { createGPSErrorFactory } from '../errors/factories.js';
 import { getGeolocationService, getLandmarkService } from '../../services/index.js';
 import type { LocationMatch, LandmarkMatch } from '../../services/index.js';
+import type { XMPData, GenericMetadata, CoordinateValue } from './types.js';
+import type { ExternalToolOutput, UnknownSidecarData } from '../../types/semantic-any.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -52,8 +54,8 @@ export interface GPSExtractionResult {
  * Sources for GPS extraction - generic and extensible
  */
 export interface GPSExtractionSources {
-  exifData?: any;
-  xmpData?: any;
+  exifData?: ExternalToolOutput;
+  xmpData?: XMPData;
   sidecarMetadata?: SidecarMetadata[];
   filename?: string;
   directoryPath?: string;
@@ -212,7 +214,7 @@ export class GPSExtractor {
   /**
    * Extract GPS from EXIF data
    */
-  private extractFromExif(exifData: any): GPSData | null {
+  private extractFromExif(exifData: ExternalToolOutput): GPSData | null {
     try {
       const gps = exifData.GPS || exifData.gps;
       this.logger.debug('GPS extraction from EXIF', { 
@@ -364,11 +366,11 @@ export class GPSExtractor {
   /**
    * Try to find GPS data in generic/unknown structure
    */
-  private findGPSInGenericData(data: any): any {
+  private findGPSInGenericData(data: GenericMetadata): GenericMetadata | null {
     // Recursively search for GPS-like data
     const gpsFields = ['latitude', 'longitude', 'lat', 'lon', 'coords', 'gps'];
     
-    function search(obj: any): any {
+    function search(obj: GenericMetadata): GenericMetadata | null {
       if (!obj || typeof obj !== 'object') return null;
       
       // Check if this object has GPS fields
@@ -391,7 +393,7 @@ export class GPSExtractor {
   /**
    * Extract GPS from XMP data
    */
-  private extractFromXMP(_xmpData: any): GPSData | null {
+  private extractFromXMP(_xmpData: XMPData): GPSData | null {
     // TODO: Implement XMP GPS extraction
     return null;
   }
@@ -440,7 +442,7 @@ export class GPSExtractor {
   /**
    * Parse coordinate from EXIF format
    */
-  private parseCoordinate(coord: any, ref: string): number | null {
+  private parseCoordinate(coord: CoordinateValue, ref: string): number | null {
     if (!coord || !ref) return null;
     
     try {
@@ -472,7 +474,7 @@ export class GPSExtractor {
   /**
    * Parse GPS timestamp from EXIF
    */
-  private parseGPSTimestamp(gps: any): string | undefined {
+  private parseGPSTimestamp(gps: GenericMetadata): string | undefined {
     try {
       if (gps.GPSDateStamp && gps.GPSTimeStamp) {
         return `${gps.GPSDateStamp} ${gps.GPSTimeStamp}`;

@@ -39,9 +39,16 @@
 ### Technical Standards Established
 - **Error codes**: `MPP-[COMPONENT]-[SEVERITY]-[NUMBER]` format
 - **Logging**: Component-scoped loggers with structured output
-- **Type safety**: Minimize `any` usage, prefer proper typing
+- **Type safety**: **NEVER use `any` type** - use semantic aliases from `types/semantic-any.ts` when dynamic typing is truly required
 - **Import organization**: Consistent import ordering and ES6 modules
 - **Code quality**: ESLint with TypeScript rules, auto-fix integration
+
+### Semantic Any Types System (December 2024)
+- **Philosophy**: Eliminate `any` but acknowledge metadata heterogeneity reality
+- **Semantic aliases**: `ExternalToolOutput`, `UnknownSidecarData`, `UnknownJsonContent` etc.
+- **Documentation requirement**: Each semantic any type must explain WHY dynamic typing is needed
+- **Usage rule**: Only use when data structure is genuinely unknowable at compile time
+- **Conversion expectation**: Convert to proper types as soon as structure becomes known
 
 ### CLI Enhancement Standards (December 2024)
 - **Clean output modes**: `--timestamp-only` and `--json` suppress all logging/progress

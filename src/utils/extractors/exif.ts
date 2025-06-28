@@ -6,6 +6,8 @@
 import { execSync } from 'child_process';
 import { Logger } from '../logging/index.js';
 import { createExifErrorFactory } from '../errors/factories.js';
+import type { RawExifData, CoordinateValue, ReferenceDirection } from './types.js';
+import type { ExternalToolOutput } from '../../types/semantic-any.js';
 
 export interface ExifData {
   camera: {
@@ -49,7 +51,7 @@ export interface ExifData {
     mimeType?: string;
     exifVersion?: string;
     encoding?: string;
-    [key: string]: any; // For additional technical fields
+    [key: string]: unknown; // For additional technical fields
   };
 }
 
@@ -90,8 +92,14 @@ export class ExifExtractor {
   
   /**
    * Run ExifTool command and parse JSON output
+   * 
+   * Returns ExternalToolOutput because ExifTool's JSON structure varies by:
+   * - Camera manufacturer and model 
+   * - File format (JPEG vs HEIC vs MOV)
+   * - Software version
+   * - Available metadata fields
    */
-  private async runExifTool(filePath: string): Promise<any> {
+  private async runExifTool(filePath: string): Promise<ExternalToolOutput> {
     // Use ExifTool with JSON output and group tags
     const command = `exiftool -json -G -coordFormat "%.8f" "${filePath}"`;
     
@@ -130,8 +138,8 @@ throw new Error('Empty output from ExifTool');
         // ExifTool returned non-zero exit code
         this.exifErrors.exiftoolExecutionFailed({ 
           filePath, 
-          exitCode: (error as any).status,
-          stderr: (error as any).stderr?.toString() 
+          exitCode: 'status' in error ? (error as { status: number }).status : 'unknown',
+          stderr: 'stderr' in error ? String((error as { stderr: unknown }).stderr) : 'unknown' 
         }, error as unknown as Error);
         throw error;
       } else {
@@ -143,8 +151,10 @@ throw new Error('Empty output from ExifTool');
   
   /**
    * Parse raw EXIF data into structured format
+   * 
+   * Takes ExternalToolOutput and converts it to our known ExifData structure
    */
-  private parseExifData(rawExif: any): ExifData {
+  private parseExifData(rawExif: ExternalToolOutput): ExifData {
     const exif = this.createEmptyExifData();
     
     // Camera information
@@ -197,7 +207,7 @@ throw new Error('Empty output from ExifTool');
   /**
    * Parse timestamp data with priority handling
    */
-  private parseTimestamps(rawExif: any): ExifData['timestamps'] {
+  private parseTimestamps(rawExif: ExternalToolOutput): ExifData['timestamps'] {
     const timestamps: ExifData['timestamps'] = {};
     
     // Extract all possible timestamp sources
@@ -223,7 +233,7 @@ throw new Error('Empty output from ExifTool');
   /**
    * Parse GPS data from EXIF
    */
-  private parseGPS(rawExif: any): ExifData['gps'] | undefined {
+  private parseGPS(rawExif: ExternalToolOutput): ExifData['gps'] | undefined {
     const lat = rawExif['EXIF:GPSLatitude'] || rawExif['GPS:GPSLatitude'] || rawExif['Composite:GPSLatitude'];
     const lon = rawExif['EXIF:GPSLongitude'] || rawExif['GPS:GPSLongitude'] || rawExif['Composite:GPSLongitude'];
     
@@ -252,7 +262,7 @@ throw new Error('Empty output from ExifTool');
    * Parse coordinate with direction handling
    * Handles both separate reference fields and direction markers within coordinate strings
    */
-  private parseCoordinateWithDirection(coordinate: any, referenceField: string | null): number | null {
+  private parseCoordinateWithDirection(coordinate: CoordinateValue, referenceField: ReferenceDirection | null): number | null {
     if (typeof coordinate === 'number') {
       // Pure numeric coordinate - apply reference if available
       if (referenceField === 'S' || referenceField === 'South' || referenceField === 'W' || referenceField === 'West') {
@@ -297,7 +307,7 @@ throw new Error('Empty output from ExifTool');
   /**
    * Parse number from EXIF value
    */
-  private parseNumber(value: any): number | undefined {
+  private parseNumber(value: unknown): number | undefined {
     if (typeof value === 'number') return value;
     if (typeof value === 'string') {
       const num = parseFloat(value);

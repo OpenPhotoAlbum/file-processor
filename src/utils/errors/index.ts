@@ -8,6 +8,7 @@ export * from './classes.js';
 
 import { Logger } from '../logging/index.js';
 import { MPPError, ValidationError, ExifError, GPSError, TimestampError, PathError, MetadataError, ConfigError, SystemError, LandmarkError } from './classes.js';
+import type { UnknownJsonContent } from '../../types/semantic-any.js';
 import { ErrorCode, ErrorSeverity } from './codes.js';
 
 /**
@@ -19,7 +20,7 @@ export class ErrorFactory {
   /**
    * Create and log validation error
    */
-  validation(code: ErrorCode, context?: Record<string, any>, cause?: Error): ValidationError {
+  validation(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): ValidationError {
     const error = new ValidationError(code, context, cause);
     this.logError(error);
     return error;
@@ -28,7 +29,7 @@ export class ErrorFactory {
   /**
    * Create and log EXIF error
    */
-  exif(code: ErrorCode, context?: Record<string, any>, cause?: Error): ExifError {
+  exif(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): ExifError {
     const error = new ExifError(code, context, cause);
     this.logError(error);
     return error;
@@ -37,7 +38,7 @@ export class ErrorFactory {
   /**
    * Create and log GPS error
    */
-  gps(code: ErrorCode, context?: Record<string, any>, cause?: Error): GPSError {
+  gps(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): GPSError {
     const error = new GPSError(code, context, cause);
     this.logError(error);
     return error;
@@ -46,7 +47,7 @@ export class ErrorFactory {
   /**
    * Create and log timestamp error
    */
-  timestamp(code: ErrorCode, context?: Record<string, any>, cause?: Error): TimestampError {
+  timestamp(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): TimestampError {
     const error = new TimestampError(code, context, cause);
     this.logError(error);
     return error;
@@ -55,7 +56,7 @@ export class ErrorFactory {
   /**
    * Create and log path error
    */
-  path(code: ErrorCode, context?: Record<string, any>, cause?: Error): PathError {
+  path(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): PathError {
     const error = new PathError(code, context, cause);
     this.logError(error);
     return error;
@@ -64,7 +65,7 @@ export class ErrorFactory {
   /**
    * Create and log metadata error
    */
-  metadata(code: ErrorCode, context?: Record<string, any>, cause?: Error): MetadataError {
+  metadata(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): MetadataError {
     const error = new MetadataError(code, context, cause);
     this.logError(error);
     return error;
@@ -73,7 +74,7 @@ export class ErrorFactory {
   /**
    * Create and log configuration error
    */
-  config(code: ErrorCode, context?: Record<string, any>, cause?: Error): ConfigError {
+  config(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): ConfigError {
     const error = new ConfigError(code, context, cause);
     this.logError(error);
     return error;
@@ -82,7 +83,7 @@ export class ErrorFactory {
   /**
    * Create and log system error
    */
-  system(code: ErrorCode, context?: Record<string, any>, cause?: Error): SystemError {
+  system(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): SystemError {
     const error = new SystemError(code, context, cause);
     this.logError(error);
     return error;
@@ -91,7 +92,7 @@ export class ErrorFactory {
   /**
    * Create and log landmark error
    */
-  landmark(code: ErrorCode, context?: Record<string, any>, cause?: Error): LandmarkError {
+  landmark(code: ErrorCode, context?: UnknownJsonContent, cause?: Error): LandmarkError {
     const error = new LandmarkError(code, context, cause);
     this.logError(error);
     return error;
@@ -131,28 +132,28 @@ export class ErrorFactory {
 /**
  * Check if an error is an MPP error
  */
-export function isMPPError(error: any): error is MPPError {
+export function isMPPError(error: unknown): error is MPPError {
   return error instanceof MPPError;
 }
 
 /**
  * Get error code from any error (returns null for non-MPP errors)
  */
-export function getErrorCode(error: any): ErrorCode | null {
+export function getErrorCode(error: unknown): ErrorCode | null {
   return isMPPError(error) ? error.code : null;
 }
 
 /**
  * Check if error should halt processing
  */
-export function shouldHaltProcessing(error: any): boolean {
+export function shouldHaltProcessing(error: unknown): boolean {
   return isMPPError(error) && error.isFatal();
 }
 
 /**
  * Get user-friendly error message
  */
-export function getUserErrorMessage(error: any): string {
+export function getUserErrorMessage(error: unknown): string {
   if (isMPPError(error)) {
     return error.getUserMessage();
   }

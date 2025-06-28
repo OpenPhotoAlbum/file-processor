@@ -6,6 +6,8 @@
 import { SidecarMetadata, SidecarFormat, SidecarSource } from '../../types/media.js';
 import { Logger } from '../logging/index.js';
 import { createTimestampErrorFactory } from '../errors/factories.js';
+import type { FileStats } from './types.js';
+import type { ExternalToolOutput } from '../../types/semantic-any.js';
 
 /**
  * Timestamp source types
@@ -46,9 +48,9 @@ export interface TimestampExtractionResult {
  * Input sources for timestamp extraction
  */
 export interface TimestampExtractionSources {
-  exifData?: any;                    // From EXIF extractor
+  exifData?: ExternalToolOutput;      // From EXIF extractor
   sidecarMetadata?: SidecarMetadata[]; // From pre-processor  
-  fileStats?: any;                   // fs.Stats object
+  fileStats?: FileStats;              // fs.Stats object
   filePath?: string;                 // For filename-based dates
 }
 
@@ -114,7 +116,7 @@ export class TimestampExtractor {
   /**
    * Extract timestamps from EXIF data
    */
-  private extractFromExif(exifData: any): TimestampInfo[] {
+  private extractFromExif(exifData: ExternalToolOutput): TimestampInfo[] {
     const timestamps: TimestampInfo[] = [];
 
     // EXIF DateTimeOriginal (highest priority - when photo was taken)
@@ -254,7 +256,7 @@ export class TimestampExtractor {
   /**
    * Extract timestamps from filesystem metadata
    */
-  private extractFromFilesystem(fileStats: any): TimestampInfo[] {
+  private extractFromFilesystem(fileStats: FileStats): TimestampInfo[] {
     const timestamps: TimestampInfo[] = [];
 
     // Birth time (when file was created) - most reliable filesystem timestamp

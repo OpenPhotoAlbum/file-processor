@@ -19,11 +19,14 @@ export interface LoggingConfig {
   filePath?: string;
 }
 
+// Type for structured logging data - JSON-serializable values
+export type LogData = Record<string, unknown>;
+
 export interface LogEntry {
   timestamp: string;
   level: LogLevel;
   context: string;
   message: string;
-  data?: Record<string, any>;
+  data?: LogData;
   error?: Error;
 }

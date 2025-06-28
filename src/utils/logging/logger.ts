@@ -4,7 +4,7 @@
  * Fully configurable through environment variables
  */
 
-import { LogLevel, LoggingConfig, LogEntry } from './types.js';
+import { LogLevel, LoggingConfig, LogEntry, LogData } from './types.js';
 import { getLoggingConfig } from '../config/logging.js';
 import { appendFileSync, existsSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
@@ -17,8 +17,8 @@ export enum LogOutput {
 }
 
 export class Logger {
-  private static config: any = null;
-  private static envConfig: any = null;
+  private static config: LoggingConfig | null = null;
+  private static envConfig: LoggingConfig | null = null;
 
   constructor(private context: string) {
     // Initialize config from environment on first use
@@ -79,42 +79,42 @@ export class Logger {
   /**
    * Log debug message
    */
-  debug(message: string, data?: Record<string, any>): void {
+  debug(message: string, data?: LogData): void {
     this.log(LogLevel.DEBUG, message, data);
   }
 
   /**
    * Log info message
    */
-  info(message: string, data?: Record<string, any>): void {
+  info(message: string, data?: LogData): void {
     this.log(LogLevel.INFO, message, data);
   }
 
   /**
    * Log warning message
    */
-  warn(message: string, data?: Record<string, any>): void {
+  warn(message: string, data?: LogData): void {
     this.log(LogLevel.WARN, message, data);
   }
 
   /**
    * Log error message
    */
-  error(message: string, error?: Error, data?: Record<string, any>): void {
+  error(message: string, error?: Error, data?: LogData): void {
     this.log(LogLevel.ERROR, message, data, error);
   }
 
   /**
    * Log fatal message
    */
-  fatal(message: string, error?: Error, data?: Record<string, any>): void {
+  fatal(message: string, error?: Error, data?: LogData): void {
     this.log(LogLevel.FATAL, message, data, error);
   }
 
   /**
    * Internal logging method
    */
-  private log(level: LogLevel, message: string, data?: Record<string, any>, error?: Error): void {
+  private log(level: LogLevel, message: string, data?: LogData, error?: Error): void {
     // Check if we should log this level
     if (level < Logger.config.level) {
       return;
@@ -219,7 +219,7 @@ export class Logger {
   /**
    * Format values for logging
    */
-  private formatValue(value: any): string {
+  private formatValue(value: unknown): string {
     if (typeof value === 'string') {
       return value;
     } else if (typeof value === 'number' || typeof value === 'boolean') {

@@ -88,5 +88,20 @@
     "end_usage": null,
     "estimated_cost": 0.00998014,
     "duration_seconds": 101.976454
+  },
+  {
+    "session_id": "ingest_directory_1751079527",
+    "operation": "ingest_directory",
+    "description": "Processing /mnt/hdd/photo-process (recursive=True)",
+    "start_time": "2025-06-27T22:58:47.987041",
+    "start_usage": null,
+    "tokens_processed": 3146211,
+    "api_calls": 869,
+    "texts_processed": 12187,
+    "model": "text-embedding-3-small",
+    "end_time": "2025-06-27T23:05:05.713619",
+    "end_usage": null,
+    "estimated_cost": 0.06292422,
+    "duration_seconds": 377.726578
   }
 ]
