@@ -107,6 +107,9 @@ export interface ProcessingResult {
       megapixels: number;
       orientation: string;
     };
+    dominantColor?: string;
+    meanColor?: string;
+    salientColor?: string;
     isLivePhoto?: boolean;
     livePhotoInfo?: {
       confidence: 'high' | 'medium' | 'low' | 'none';
