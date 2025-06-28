@@ -7,6 +7,7 @@ import { LivePhotoDetector } from '../utils/video/live-photo-detector.js';
 import { Logger } from '../utils/logging/index.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { FileSystemService } from '../services/index.js';
+import { statsToFileStats } from '../utils/extractors/types.js';
 
 /**
  * Processor for video files (MP4, MOV, AVI, etc.)
@@ -98,11 +99,7 @@ export class VideoProcessor extends BaseProcessor {
         exifData,
         sidecarMetadata: file.sidecarMetadata,
         filePath: file.path,
-        fileStats: {
-          birthtime: fileMetadata.birthtime,
-          mtime: fileMetadata.mtime,
-          ctime: fileMetadata.mtime // Use mtime as ctime
-        }
+        fileStats: statsToFileStats(fileMetadata.stats)
       });
       
       // Detect if this is a Live Photo

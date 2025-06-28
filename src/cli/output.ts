@@ -2,7 +2,8 @@
  * CLI output formatting and file writing
  */
 
-import { writeFile, access } from 'fs/promises';
+import { writeFile } from 'fs/promises';
+import { existsSync } from 'fs';
 import { resolve } from 'path';
 import { Logger } from '../utils/logging/index.js';
 import { createSystemErrorFactory } from '../utils/errors/factories.js';
@@ -145,16 +146,14 @@ export class OutputHandler {
     try {
       // Check if file exists and handle overwrite logic
       if (!options.overwrite) {
-        try {
-          await access(absolutePath);
+        if (existsSync(absolutePath)) {
           // File exists and overwrite is false - generate numbered filename
-          const numberedPath = await this.generateNumberedPath(absolutePath);
+          const numberedPath = this.generateNumberedPath(absolutePath);
           logger.info(`File exists, using numbered path: ${sanitizePathForLogging(numberedPath)}`);
           await this.writeJsonToFile(result, numberedPath);
           return;
-        } catch {
-          // File doesn't exist, proceed with original path
         }
+        // File doesn't exist, proceed with original path
       }
 
       await this.writeJsonToFile(result, absolutePath);
@@ -185,19 +184,17 @@ export class OutputHandler {
   /**
    * Generate numbered filename if file exists
    */
-  private async generateNumberedPath(originalPath: string): Promise<string> {
+  private generateNumberedPath(originalPath: string): string {
     const ext = '.json';
     const basePath = originalPath.replace(/\.json$/, '');
     let counter = 1;
     
     while (counter < 1000) { // Prevent infinite loop
       const numberedPath = `${basePath}-${counter}${ext}`;
-      try {
-        await access(numberedPath);
-        counter++;
-      } catch {
+      if (!existsSync(numberedPath)) {
         return numberedPath;
       }
+      counter++;
     }
     
     throw new Error('Could not generate unique filename (too many existing files)');

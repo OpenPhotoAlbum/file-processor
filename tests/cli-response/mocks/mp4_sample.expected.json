@@ -1,0 +1,98 @@
+{
+  "file": {
+    "path": "sample:mp4_sample.mp4",
+    "hash": "placeholder-hash",
+    "size": 2753149,
+    "mimeType": "video/mp4",
+    "created": "2025-06-24T17:10:35.392Z",
+    "modified": "2025-06-23T20:24:01.668Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "VideoProcessor",
+    "extractedAt": "2025-06-28T19:55:13.809Z"
+  },
+  "media": {
+    "type": "video",
+    "format": "mp4",
+    "dimensions": {
+      "width": 0,
+      "height": 0,
+      "megapixels": 0,
+      "orientation": "Unknown"
+    },
+    "isLivePhoto": false
+  },
+  "camera": {},
+  "settings": {},
+  "timestamps": {
+    "capture": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "creation": {
+      "timestamp": "2025-06-24T17:10:35.392Z",
+      "source": "filesystem",
+      "confidence": "low",
+      "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+      "sourceDetails": "File birth time"
+    },
+    "modification": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "primary": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2025-06-24T17:10:35.392Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-23T20:24:01.668Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Mon Jun 23 2025 16:24:01 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.396Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "technical": {},
+  "sidecars": []
+}

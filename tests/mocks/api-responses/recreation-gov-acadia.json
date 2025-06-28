@@ -1,0 +1,26 @@
+{
+  "METADATA": {
+    "RESULTS": {
+      "CURRENT_COUNT": 1,
+      "TOTAL_COUNT": 1
+    }
+  },
+  "RECDATA": [
+    {
+      "FacilityID": "258585",
+      "FacilityName": "Sieur de Monts Nature Center",
+      "FacilityTypeDescription": "Facility",
+      "FacilityLatitude": 44.362109,
+      "FacilityLongitude": -68.207848,
+      "FacilityDescription": "Sieur de Monts Nature Center has visitor services, hiking information, and interactive exhibits. It acts as a trailhead for many hiking trails starting in the Sieur de Monts area. Park rangers are present during the spring, summer, and fall months. - Phone: (207) 288-3338, ADA Access: No",
+      "FacilityDirections": null,
+      "FacilityPhone": "(207) 288-3338",
+      "FacilityEmail": null,
+      "FacilityReservationURL": null,
+      "FacilityAdaAccess": "No",
+      "StayLimit": null,
+      "Keywords": "nature center,visitor services,hiking",
+      "LastUpdatedDate": "2021-12-23"
+    }
+  ]
+}

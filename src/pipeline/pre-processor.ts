@@ -93,8 +93,8 @@ async function discoverSidecarFiles(mediaFilePath: string, fs: FileSystemService
     searchParentDirs: false // Only search in same directory for now
   });
   
-  // Map discovered files to our sidecar metadata format
-  for (const sidecarPath of discoveredSidecars) {
+  // Process all sidecar files concurrently for better performance
+  const sidecarPromises = discoveredSidecars.map(async (sidecarPath) => {
     const sidecarExtension = extname(sidecarPath);
     const sidecarBaseName = basename(sidecarPath, sidecarExtension);
     
@@ -123,14 +123,15 @@ async function discoverSidecarFiles(mediaFilePath: string, fs: FileSystemService
     try {
       const sidecarContent = await readSidecarFile(sidecarPath, format);
       if (sidecarContent) {
-        sidecarFiles.push({
+        return {
           source,
           format,
           path: toRelativePath(sidecarPath),
           absolutePath: sidecarPath,
           data: sidecarContent
-        });
+        };
       }
+      return null;
     } catch (error) {
       // Log error but continue with other sidecar files
       const logger = new Logger('Pre-processor');
@@ -140,8 +141,13 @@ async function discoverSidecarFiles(mediaFilePath: string, fs: FileSystemService
         format,
         operation: 'sidecar content reading'
       }, error as Error);
+      return null;
     }
-  }
+  });
+
+  // Wait for all sidecar files to be processed and filter out failures
+  const sidecarResults = await Promise.all(sidecarPromises);
+  sidecarFiles.push(...sidecarResults.filter(result => result !== null));
   
   return sidecarFiles;
 }

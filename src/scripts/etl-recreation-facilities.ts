@@ -81,19 +81,24 @@ class RecreationETL {
       const limit = 50; // Recreation.gov API pagination limit
       
       while (true) {
+        // Sequential API calls required for pagination - need response before next request
+        // eslint-disable-next-line no-await-in-loop
         const facilities = await this.fetchFacilities(offset, limit);
         
         if (facilities.length === 0) {
           break;
         }
         
+        // Sequential batch processing maintains order and proper error handling
+        // eslint-disable-next-line no-await-in-loop
         await this.loadFacilities(facilities);
         totalProcessed += facilities.length;
         offset += limit;
         
         this.logger.info(`Processed ${totalProcessed} facilities...`);
         
-        // Rate limiting - Recreation.gov likely has rate limits
+        // Rate limiting required to avoid API violations - must be sequential
+        // eslint-disable-next-line no-await-in-loop
         await this.sleep(100); // 100ms delay between requests
       }
       
@@ -168,6 +173,90 @@ class RecreationETL {
 
   private async loadFacilities(facilities: RecreationFacility[]): Promise<void> {
     if (!this.db) throw new Error('Database not connected');
+    
+    if (facilities.length === 0) return;
+
+    // Prepare batch insert with multiple VALUES clauses
+    const baseQuery = `
+      INSERT INTO recreation_facilities (
+        facility_id, facility_name, facility_type, latitude, longitude, coordinates,
+        description, directions, phone, email, reservation_url, ada_access, stay_limit, keywords,
+        organization_id, organization_name, parent_organization_id, last_updated_date, 
+        data_source, etl_batch_id
+      ) VALUES `;
+      
+    const duplicateKeyUpdate = `
+      ON DUPLICATE KEY UPDATE
+        facility_name = VALUES(facility_name),
+        facility_type = VALUES(facility_type),
+        latitude = VALUES(latitude),
+        longitude = VALUES(longitude),
+        coordinates = VALUES(coordinates),
+        description = VALUES(description),
+        directions = VALUES(directions),
+        phone = VALUES(phone),
+        email = VALUES(email),
+        reservation_url = VALUES(reservation_url),
+        ada_access = VALUES(ada_access),
+        stay_limit = VALUES(stay_limit),
+        keywords = VALUES(keywords),
+        organization_id = VALUES(organization_id),
+        organization_name = VALUES(organization_name),
+        parent_organization_id = VALUES(parent_organization_id),
+        last_updated_date = VALUES(last_updated_date),
+        etl_batch_id = VALUES(etl_batch_id),
+        updated_at = CURRENT_TIMESTAMP
+    `;
+
+    // Prepare batch data and SQL
+    const values: (string | number | Date | null)[] = [];
+    const valuePlaceholders: string[] = [];
+    
+    for (const facility of facilities) {
+      // Get primary organization (first one)
+      const primaryOrg = facility.ORGANIZATION?.[0];
+      
+      valuePlaceholders.push('(?, ?, ?, ?, ?, ST_GeomFromText(?, 4326), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+      
+      values.push(
+        facility.FacilityID,
+        facility.FacilityName,
+        facility.FacilityTypeDescription,
+        facility.FacilityLatitude,
+        facility.FacilityLongitude,
+        `POINT(${facility.FacilityLongitude} ${facility.FacilityLatitude})`, // Note: longitude first for POINT
+        this.cleanHtml(facility.FacilityDescription),
+        facility.FacilityDirections || null,
+        facility.FacilityPhone || null,
+        facility.FacilityEmail || null,
+        facility.FacilityReservationURL || null,
+        facility.FacilityAdaAccess || null,
+        facility.StayLimit || null,
+        facility.Keywords || null,
+        primaryOrg?.OrgID || null,
+        primaryOrg?.OrgName || null,
+        primaryOrg?.ParentOrgID || null,
+        facility.LastUpdatedDate ? new Date(facility.LastUpdatedDate) : null,
+        'recreation_gov_api',
+        this.batchId
+      );
+    }
+
+    const fullQuery = baseQuery + valuePlaceholders.join(', ') + duplicateKeyUpdate;
+    
+    try {
+      await this.db.execute(fullQuery, values);
+      this.logger.debug(`Successfully inserted/updated ${facilities.length} facilities in batch`);
+    } catch (error) {
+      this.logger.error('Batch insert failed, falling back to individual inserts', error as Error);
+      
+      // Fallback to individual inserts if batch fails
+      await this.loadFacilitiesIndividually(facilities);
+    }
+  }
+
+  private async loadFacilitiesIndividually(facilities: RecreationFacility[]): Promise<void> {
+    if (!this.db) throw new Error('Database not connected');
 
     const insertQuery = `
       INSERT INTO recreation_facilities (
@@ -211,21 +300,23 @@ class RecreationETL {
           facility.FacilityLongitude,
           `POINT(${facility.FacilityLongitude} ${facility.FacilityLatitude})`, // Note: longitude first for POINT
           this.cleanHtml(facility.FacilityDescription),
-          facility.FacilityDirections,
-          facility.FacilityPhone,
-          facility.FacilityEmail,
-          facility.FacilityReservationURL,
-          facility.FacilityAdaAccess,
-          facility.StayLimit,
-          facility.Keywords,
-          primaryOrg?.OrgID,
-          primaryOrg?.OrgName,
-          primaryOrg?.ParentOrgID,
+          facility.FacilityDirections || null,
+          facility.FacilityPhone || null,
+          facility.FacilityEmail || null,
+          facility.FacilityReservationURL || null,
+          facility.FacilityAdaAccess || null,
+          facility.StayLimit || null,
+          facility.Keywords || null,
+          primaryOrg?.OrgID || null,
+          primaryOrg?.OrgName || null,
+          primaryOrg?.ParentOrgID || null,
           facility.LastUpdatedDate ? new Date(facility.LastUpdatedDate) : null,
           'recreation_gov_api',
           this.batchId
         ];
 
+        // Fallback individual insert when batch processing fails
+        // eslint-disable-next-line no-await-in-loop
         await this.db.execute(insertQuery, values);
         
       } catch (error) {

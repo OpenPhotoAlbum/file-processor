@@ -4,7 +4,7 @@
  * Fully configurable through environment variables
  */
 
-import { LogLevel, LoggingConfig, LogEntry, LogData } from './types.js';
+import { LogLevel, LoggingConfig, ExtendedLoggingConfig, LogEntry, LogData } from './types.js';
 import { getLoggingConfig } from '../config/logging.js';
 import { appendFileSync, existsSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
@@ -18,7 +18,7 @@ export enum LogOutput {
 
 export class Logger {
   private static config: LoggingConfig | null = null;
-  private static envConfig: LoggingConfig | null = null;
+  private static envConfig: ExtendedLoggingConfig | null = null;
 
   constructor(private context: string) {
     // Initialize config from environment on first use
@@ -42,8 +42,9 @@ export class Logger {
     };
     
     // Ensure log directory exists if file output is enabled
-    if (Logger.config.outputs.includes(LogOutput.FILE) && Logger.config.filePath) {
-      const logDir = dirname(Logger.config.filePath);
+    const config = Logger.ensureConfig();
+    if (config.outputs.includes(LogOutput.FILE) && config.filePath) {
+      const logDir = dirname(config.filePath);
       if (!existsSync(logDir)) {
         mkdirSync(logDir, { recursive: true });
       }
@@ -51,18 +52,26 @@ export class Logger {
   }
 
   /**
-   * Configure all logger instances globally (optional override)
+   * Ensure config is initialized and return it
    */
-  static configure(config: Partial<LoggingConfig>): void {
+  private static ensureConfig(): LoggingConfig {
     if (!Logger.config) {
       Logger.initializeConfig();
     }
-    
-    Logger.config = { ...Logger.config, ...config };
+    return Logger.config!;
+  }
+
+  /**
+   * Configure all logger instances globally (optional override)
+   */
+  static configure(config: Partial<LoggingConfig>): void {
+    const currentConfig = Logger.ensureConfig();
+    Logger.config = { ...currentConfig, ...config };
     
     // Ensure log directory exists if file output is enabled
-    if (Logger.config.outputs.includes(LogOutput.FILE) && Logger.config.filePath) {
-      const logDir = dirname(Logger.config.filePath);
+    const finalConfig = Logger.ensureConfig();
+    if (finalConfig.outputs.includes(LogOutput.FILE) && finalConfig.filePath) {
+      const logDir = dirname(finalConfig.filePath);
       if (!existsSync(logDir)) {
         mkdirSync(logDir, { recursive: true });
       }
@@ -73,7 +82,7 @@ export class Logger {
    * Get current configuration
    */
   static getConfig(): LoggingConfig {
-    return { ...Logger.config };
+    return { ...Logger.ensureConfig() };
   }
 
   /**
@@ -116,7 +125,7 @@ export class Logger {
    */
   private log(level: LogLevel, message: string, data?: LogData, error?: Error): void {
     // Check if we should log this level
-    if (level < Logger.config.level) {
+    if (level < Logger.ensureConfig().level) {
       return;
     }
 
@@ -130,7 +139,7 @@ export class Logger {
     };
 
     // Output to each configured target
-    Logger.config.outputs.forEach((output: string) => {
+    Logger.ensureConfig().outputs.forEach((output: string) => {
       if (output === LogOutput.CONSOLE) {
         this.writeToConsole(entry);
       } else if (output === LogOutput.FILE) {
@@ -147,19 +156,19 @@ export class Logger {
     
     // Use appropriate console method based on level
     switch (entry.level) {
-      case LogLevel.DEBUG:
-        console.debug(formatted);
-        break;
-      case LogLevel.INFO:
-        console.info(formatted);
-        break;
-      case LogLevel.WARN:
-        console.warn(formatted);
-        break;
-      case LogLevel.ERROR:
-      case LogLevel.FATAL:
-        console.error(formatted);
-        break;
+    case LogLevel.DEBUG:
+      console.debug(formatted);
+      break;
+    case LogLevel.INFO:
+      console.info(formatted);
+      break;
+    case LogLevel.WARN:
+      console.warn(formatted);
+      break;
+    case LogLevel.ERROR:
+    case LogLevel.FATAL:
+      console.error(formatted);
+      break;
     }
   }
 
@@ -167,12 +176,13 @@ export class Logger {
    * Write to file without colors
    */
   private writeToFile(entry: LogEntry): void {
-    if (!Logger.config.filePath) return;
+    const config = Logger.ensureConfig();
+    if (!config.filePath) return;
 
-    const formatted = this.formatMessage(entry, LogOutput.FILE) + '\n';
+    const formatted = `${this.formatMessage(entry, LogOutput.FILE)  }\n`;
     
     try {
-      appendFileSync(Logger.config.filePath, formatted, 'utf8');
+      appendFileSync(config.filePath, formatted, 'utf8');
     } catch (error) {
       // Fallback to console if file write fails
       console.error('Failed to write to log file:', error);
@@ -184,7 +194,8 @@ export class Logger {
    * Format message for different outputs
    */
   private formatMessage(entry: LogEntry, target: LogOutput): string {
-    const timestamp = Logger.config.includeTimestamp ? entry.timestamp + ' ' : '';
+    const config = Logger.ensureConfig();
+    const timestamp = config.includeTimestamp ? `${entry.timestamp  } ` : '';
     const levelStr = LogLevel[entry.level].padEnd(5);
     const contextStr = `[${entry.context}]`;
     
@@ -206,8 +217,8 @@ export class Logger {
 
     if (this.shouldColorize(target)) {
       // Colored output for terminal using environment config
-      const levelColor = Logger.envConfig.levelColors[LogLevel[entry.level]] || '';
-      const scopeColor = Logger.envConfig.scopeColors[entry.context] || Logger.envConfig.scopeColors.default || '';
+      const levelColor = Logger.envConfig?.levelColors[LogLevel[entry.level]] || '';
+      const scopeColor = Logger.envConfig?.scopeColors[entry.context] || Logger.envConfig?.scopeColors.default || '';
       
       return `${timestamp}${levelColor}[${levelStr}]${RESET_COLOR} ${scopeColor}${contextStr}${RESET_COLOR} ${message}`;
     } else {
@@ -236,8 +247,9 @@ export class Logger {
    * Determine if output should be colorized
    */
   private shouldColorize(target: LogOutput): boolean {
+    const config = Logger.ensureConfig();
     return target === LogOutput.CONSOLE && 
            process.stdout.isTTY && 
-           Logger.config.colorize;
+           config.colorize;
   }
 }

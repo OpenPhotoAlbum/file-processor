@@ -1,0 +1,125 @@
+{
+  "file": {
+    "path": "sample:gif_animation.gif",
+    "hash": "placeholder-hash",
+    "size": 1374641,
+    "mimeType": "image/gif",
+    "created": "2025-06-24T17:10:35.358Z",
+    "modified": "2025-06-23T20:24:01.677Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "ImageProcessor",
+    "extractedAt": "2025-06-28T19:55:18.302Z"
+  },
+  "media": {
+    "type": "image",
+    "format": "gif",
+    "dimensions": {
+      "width": 0,
+      "height": 0,
+      "megapixels": 0,
+      "orientation": "unknown"
+    },
+    "dominantColor": "#08080a",
+    "meanColor": "#7d5236",
+    "salientColor": "#000000"
+  },
+  "timestamps": {
+    "primary": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "capture": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "creation": {
+      "timestamp": "2025-06-24T17:10:35.358Z",
+      "source": "filesystem",
+      "confidence": "low",
+      "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+      "sourceDetails": "File birth time"
+    },
+    "modification": {
+      "timestamp": "2025-06-23T20:24:01.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:24:01-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2025-06-24T17:10:35.358Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-23T20:24:01.677Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Mon Jun 23 2025 16:24:01 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.359Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "camera": {},
+  "settings": {},
+  "technical": {
+    "fileType": "GIF",
+    "mimeType": "image/gif",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/gif_animation.gif",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "gif_animation.gif",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "1375 kB",
+    "File:FileModifyDate": "2025:06:23 16:24:01-04:00",
+    "File:FileAccessDate": "2025:06:28 15:49:38-04:00",
+    "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
+    "File:FilePermissions": "-rw-r--r--",
+    "GIF:GIFVersion": "89a",
+    "GIF:ImageWidth": 972,
+    "GIF:ImageHeight": 730,
+    "GIF:HasColorMap": "Yes",
+    "GIF:ColorResolutionDepth": 8,
+    "GIF:BitsPerPixel": 8,
+    "GIF:BackgroundColor": 0,
+    "GIF:AnimationIterations": "Infinite",
+    "GIF:TransparentColor": 0,
+    "GIF:FrameCount": 4,
+    "GIF:Duration": "1.00 s",
+    "Composite:ImageSize": "972x730",
+    "Composite:Megapixels": 0.71
+  },
+  "sidecars": []
+}

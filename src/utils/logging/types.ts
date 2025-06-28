@@ -19,6 +19,11 @@ export interface LoggingConfig {
   filePath?: string;
 }
 
+export interface ExtendedLoggingConfig extends LoggingConfig {
+  levelColors: Record<string, string>;
+  scopeColors: Record<string, string>;
+}
+
 // Type for structured logging data - JSON-serializable values
 export type LogData = Record<string, unknown>;
 

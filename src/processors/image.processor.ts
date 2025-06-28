@@ -147,7 +147,11 @@ export class ImageProcessor extends BaseProcessor {
           meanColor: fullColorAnalysis.meanColor,
           salientColor: fullColorAnalysis.salientColor || undefined
         };
-        this.logger.info(`Extracted colors - dominant: ${colorAnalysis.dominantColor}, mean: ${colorAnalysis.meanColor}, salient: ${colorAnalysis.salientColor || 'none'}`, { filename: file.path });
+        this.logger.info(
+          `Extracted colors - dominant: ${colorAnalysis.dominantColor}` +
+          `, mean: ${colorAnalysis.meanColor}, salient: ${colorAnalysis.salientColor || 'none'}`,
+          { filename: file.path }
+        );
       } catch (error) {
         this.logger.warn(`Failed to extract color analysis from ${safePath}:`, { error });
         colorAnalysis = {};

@@ -6,10 +6,14 @@
 import { SidecarMetadata, SidecarFormat, SidecarSource } from '../../types/media.js';
 import { Logger } from '../logging/index.js';
 import { createGPSErrorFactory } from '../errors/factories.js';
-import { getGeolocationService, getLandmarkService } from '../../services/index.js';
-import type { LocationMatch, LandmarkMatch } from '../../services/index.js';
 import type { XMPData, GenericMetadata, CoordinateValue } from './types.js';
-import type { ExternalToolOutput, UnknownSidecarData } from '../../types/semantic-any.js';
+import type { ExternalToolOutput } from '../../types/semantic-any.js';
+import { 
+  getGeolocationService, 
+  getLandmarkService, 
+  type LocationMatch, 
+  type LandmarkMatch 
+} from '../../services/index.js';
 
 /**
  * GPS source types - extensible for any metadata source
@@ -113,7 +117,7 @@ export class GPSExtractor {
     // 7. Enrich with geolocation and landmark data (if coordinates available)
     let geolocation: LocationMatch | null = null;
     let landmarks: LandmarkMatch[] = [];
-    let enrichmentStatus: GPSEnrichmentStatus = {
+    const enrichmentStatus: GPSEnrichmentStatus = {
       geolocation: 'disabled',
       landmarks: 'disabled',
       providersUsed: [],
@@ -328,7 +332,7 @@ export class GPSExtractor {
       const patterns = [
         /(\d+\.\d+)_(-?\d+\.\d+)/,  // Simple lat_lon pattern
         /lat(\d+\.\d+)_lon(-?\d+\.\d+)/i,  // lat123.45_lon-67.89
-        /(\d+\.\d+)N_(\d+\.\d+)[EW]/,  // GPS coordinate format
+        /(\d+\.\d+)N_(\d+\.\d+)[EW]/  // GPS coordinate format
       ];
       
       for (const pattern of patterns) {
@@ -349,7 +353,7 @@ export class GPSExtractor {
       }
       
       return null;
-    } catch (error) {
+    } catch {
       return null;
     }
   }
@@ -380,8 +384,10 @@ export class GPSExtractor {
       
       // Recursively search nested objects
       for (const value of Object.values(obj)) {
-        const found = search(value);
-        if (found) return found;
+        if (value && typeof value === 'object') {
+          const found = search(value as GenericMetadata);
+          if (found) return found;
+        }
       }
       
       return null;
@@ -466,7 +472,7 @@ export class GPSExtractor {
       
       return decimal;
       
-    } catch (error) {
+    } catch {
       return null;
     }
   }

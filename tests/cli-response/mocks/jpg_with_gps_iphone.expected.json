@@ -1,16 +1,16 @@
 {
   "file": {
     "path": "sample:jpg_with_gps_iphone.JPG",
-    "hash": "normalized-hash",
+    "hash": "placeholder-hash",
     "size": 1740252,
     "mimeType": "image/jpeg",
-    "created": "normalized-timestamp",
-    "modified": "normalized-timestamp"
+    "created": "2025-06-24T17:10:35.377Z",
+    "modified": "2025-06-23T20:23:22.376Z"
   },
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "normalized-timestamp"
+    "extractedAt": "2025-06-28T19:55:09.998Z"
   },
   "media": {
     "type": "image",
@@ -20,7 +20,10 @@
       "height": 3024,
       "megapixels": 12.2,
       "orientation": "Horizontal (normal)"
-    }
+    },
+    "dominantColor": "#111413",
+    "meanColor": "#6f6a62",
+    "salientColor": "#d9d9cb"
   },
   "timestamps": {
     "primary": {
@@ -65,6 +68,27 @@
         "confidence": "medium",
         "originalFormat": "2018:07:02 13:45:30",
         "sourceDetails": "EXIF:ModifyDate"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.377Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-23T20:23:22.376Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Mon Jun 23 2025 16:23:22 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.379Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
       }
     ],
     "conflicts": []
@@ -106,7 +130,7 @@
           "county": "Strafford",
           "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 601,
         "confidence": 1,
@@ -127,7 +151,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 2059,
         "confidence": 0.96,
@@ -148,7 +172,7 @@
           "county": "York",
           "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 1652,
         "confidence": 0.9,
@@ -169,7 +193,7 @@
           "county": "Strafford",
           "description": "Mountain peak - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 1675,
         "confidence": 0.9,
@@ -190,7 +214,7 @@
           "county": "York",
           "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 1809,
         "confidence": 0.9,
@@ -211,7 +235,7 @@
           "county": "Strafford",
           "description": "River or stream - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.772Z"
         },
         "distance": 2292,
         "confidence": 0.86,
@@ -232,7 +256,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Somersworth quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.772Z"
         },
         "distance": 2541,
         "confidence": 0.85,
@@ -253,7 +277,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 590,
         "confidence": 0.79,
@@ -274,7 +298,7 @@
           "county": "Strafford",
           "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:07.771Z"
         },
         "distance": 1379,
         "confidence": 0.72,
@@ -284,34 +308,34 @@
       },
       {
         "landmark": {
-          "id": "gnis_569462",
-          "name": "Leighs Mill Pond",
-          "fullName": "Leighs Mill Pond (Reservoir)",
-          "category": "lake",
-          "subcategory": "Reservoir",
-          "latitude": "43.22007090",
-          "longitude": "-70.80710550",
-          "state": "ME",
-          "county": "York",
-          "description": "Water reservoir - in York County, Maine, (USGS Dover East quad)",
-          "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "id": "recreation_area_1405",
+          "name": "Great Bay National Wildlife Refuge",
+          "fullName": "Great Bay National Wildlife Refuge",
+          "category": "national_recreation_area",
+          "subcategory": "Recreation Area",
+          "latitude": 43.0890378,
+          "longitude": -70.843613,
+          "state": "US",
+          "description": "<p><span><span><span><span><span><span>Established in 1992, Great Bay National Wildlife Refuge is located along the eastern shore of New Hampshire's Great Bay in the town of Newington. The refuge protects a significant area along the seacoast for migratory birds and other wildlife. It is one of the longest stretches of undeveloped shoreline along the bay, and consists of mud flats, salt and freshwater marshes, swamps, ponds, streams, woodlands and fields. These diverse habitats support many plants and animals native to the area, including New Hampshire's greatest concentration of wintering bald eagles, and several state-listed rare and endangered species.</span></span></span></span></span></span></p>\n\n<p><span><span><span><span><span><span>The rich and varied habitats of the refuge provide wildlife and visitors alike with a place to rest and recharge. Several recreational opportunities are available for visitors to watch wildlife, hike, bike, and hunt on the refuge.</span></span></span></span></span></span></p>\n\n<p><span><span><span><span><span><span>Great Bay National Wildlife Refuge is managed by Parker River National Wildlife Refuge. For more information, please contact Parker River at (978) 465-5753.  The general email address for Great Bay NWR is parkerriver@fws.gov</span></span></span></span></span></span></p>\n - Phone: 978-465-5753, Email: parkerriver@fws.gov",
+          "source": "recreation_gov",
+          "lastUpdated": "2024-07-17"
         },
-        "distance": 2148,
-        "confidence": 0.51,
+        "distance": 16324,
+        "confidence": 0.6735247150524717,
         "relationship": "nearby",
-        "source": "USGS GNIS",
-        "matchMethod": "spatial_query"
+        "source": "Recreation.gov",
+        "matchMethod": "recreation_area_spatial_query"
       }
     ],
     "enrichmentStatus": {
       "geolocation": "success",
       "landmarks": "success",
       "providersUsed": [
-        "USGS GNIS"
+        "USGS GNIS",
+        "Recreation.gov"
       ],
       "cacheHit": false,
-      "queryTimeMs": 0
+      "queryTimeMs": 864
     }
   },
   "camera": {
@@ -338,7 +362,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "1740 kB",
     "File:FileModifyDate": "2025:06:23 16:23:22-04:00",
-    "File:FileAccessDate": "2025:06:24 19:29:13-04:00",
+    "File:FileAccessDate": "2025:06:27 22:57:16-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

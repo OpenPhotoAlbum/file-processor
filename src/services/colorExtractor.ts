@@ -73,7 +73,8 @@ async function extractMeanColor(imagePath: string, colors = 64): Promise<string>
 }
 
 // Extract top N colors with percentages
-async function extractTopColors(imagePath: string, topN = 3, colors = 64): Promise<Array<{color: string, percentage: number}>> {
+type ExtractTopColors = Promise<Array<{color: string, percentage: number}>>;
+async function extractTopColors(imagePath: string, topN = 3, colors = 64): ExtractTopColors {
   const quantizedBuffer = await quantizeImage(imagePath, colors);
     
   const { data, info } = await sharp(quantizedBuffer)

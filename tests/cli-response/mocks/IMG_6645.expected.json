@@ -1,16 +1,16 @@
 {
   "file": {
     "path": "sample:IMG_6645.jpg",
-    "hash": "normalized-hash",
+    "hash": "placeholder-hash",
     "size": 1828494,
     "mimeType": "image/jpeg",
-    "created": "normalized-timestamp",
-    "modified": "normalized-timestamp"
+    "created": "2025-06-24T17:10:35.355Z",
+    "modified": "2025-06-24T14:52:38.548Z"
   },
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "normalized-timestamp"
+    "extractedAt": "2025-06-28T19:55:06.963Z"
   },
   "media": {
     "type": "image",
@@ -20,7 +20,10 @@
       "height": 3024,
       "megapixels": 12.2,
       "orientation": "Rotate 180"
-    }
+    },
+    "dominantColor": "#69a9f4",
+    "meanColor": "#7e7680",
+    "salientColor": "#010a1d"
   },
   "timestamps": {
     "primary": {
@@ -65,6 +68,27 @@
         "confidence": "medium",
         "originalFormat": "2022:09:30 11:22:36",
         "sourceDetails": "EXIF:ModifyDate"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.355Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-24T14:52:38.548Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 10:52:38 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.358Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
       }
     ],
     "conflicts": []
@@ -105,7 +129,7 @@
           "county": "Hancock",
           "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.467Z"
         },
         "distance": 164,
         "confidence": 1,
@@ -126,7 +150,7 @@
           "county": "Hancock",
           "description": "Rock formation - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 437,
         "confidence": 1,
@@ -147,7 +171,7 @@
           "county": "Hancock",
           "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 490,
         "confidence": 1,
@@ -168,7 +192,7 @@
           "county": "Hancock",
           "description": "Mountain peak - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 700,
         "confidence": 1,
@@ -189,7 +213,7 @@
           "county": "Hancock",
           "description": "Land mass surrounded by water - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 767,
         "confidence": 1,
@@ -210,7 +234,7 @@
           "county": "Hancock",
           "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 834,
         "confidence": 1,
@@ -231,13 +255,33 @@
           "county": "Hancock",
           "description": "in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 979,
         "confidence": 1,
         "relationship": "within_boundary",
         "source": "USGS GNIS",
         "matchMethod": "spatial_query"
+      },
+      {
+        "landmark": {
+          "id": "recreation_258585",
+          "name": "Sieur de Monts Nature Center",
+          "fullName": "Sieur de Monts Nature Center",
+          "category": "nature_center",
+          "subcategory": "Facility",
+          "latitude": 44.362109,
+          "longitude": -68.207848,
+          "state": "US",
+          "description": "Sieur de Monts Nature Center has visitor services, hiking information, and interactive exhibits. It acts as a trailhead for many hiking trails starting in the Sieur de Monts area. Park rangers are present during the spring, summer, and fall months. - Phone: (207) 288-3338, ADA Access: No",
+          "source": "recreation_gov",
+          "lastUpdated": "2021-12-23"
+        },
+        "distance": 4746,
+        "confidence": 0.9721933972296233,
+        "relationship": "nearby",
+        "source": "Recreation.gov",
+        "matchMethod": "recreation_api_spatial_query"
       },
       {
         "landmark": {
@@ -252,7 +296,7 @@
           "county": "Hancock",
           "description": "Natural lake - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 1054,
         "confidence": 0.85,
@@ -273,31 +317,10 @@
           "county": "Hancock",
           "description": "River or stream - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
+          "lastUpdated": "2025-06-28T19:55:04.468Z"
         },
         "distance": 1049,
         "confidence": 0.79,
-        "relationship": "nearby",
-        "source": "USGS GNIS",
-        "matchMethod": "spatial_query"
-      },
-      {
-        "landmark": {
-          "id": "gnis_581649",
-          "name": "Otter Cliff",
-          "fullName": "Otter Cliff (Cliff)",
-          "category": "natural_feature",
-          "subcategory": "Cliff",
-          "latitude": "44.31063610",
-          "longitude": "-68.18890060",
-          "state": "ME",
-          "county": "Hancock",
-          "description": "Rock formation - in Hancock County, Maine, (USGS Seal Harbor quad)",
-          "source": "usgs_gnis",
-          "lastUpdated": "normalized-timestamp"
-        },
-        "distance": 1242,
-        "confidence": 0.75,
         "relationship": "nearby",
         "source": "USGS GNIS",
         "matchMethod": "spatial_query"
@@ -308,10 +331,11 @@
       "landmarks": "success",
       "providersUsed": [
         "National Parks Service",
-        "USGS GNIS"
+        "USGS GNIS",
+        "Recreation.gov"
       ],
       "cacheHit": false,
-      "queryTimeMs": 0
+      "queryTimeMs": 998
     }
   },
   "camera": {
@@ -338,7 +362,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "1828 kB",
     "File:FileModifyDate": "2025:06:24 10:52:38-04:00",
-    "File:FileAccessDate": "2025:06:24 19:19:23-04:00",
+    "File:FileAccessDate": "2025:06:28 08:54:38-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-rw-r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

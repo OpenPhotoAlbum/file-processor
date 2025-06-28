@@ -6,10 +6,29 @@
 import { ProcessingResult, ProcessingEvent } from '../types/media.js';
 import { Logger } from './logging/index.js';
 import { readFileSync, writeFileSync, existsSync, unlinkSync, renameSync } from 'fs';
+import type { GPSEnrichmentStatus } from './extractors/gps.js';
+import type { LandmarkMatch } from '../services/index.js';
+import type { TimestampInfo } from './extractors/timestamp.js';
+import type { UnknownJsonContent } from '../types/semantic-any.js';
+
+export enum MergeMode {
+  OVERWRITE = 'overwrite',
+  MERGE = 'merge',
+  MERGE_SELECTIVE = 'merge-selective'
+}
+
+export enum MetadataSection {
+  LOCATION = 'location',
+  TIMESTAMPS = 'timestamps',
+  CAMERA = 'camera',
+  SETTINGS = 'settings',
+  TECHNICAL = 'technical',
+  MEDIA = 'media'
+}
 
 export interface MergeOptions {
-  mode: 'overwrite' | 'merge' | 'merge-selective';
-  sections?: Array<'location' | 'timestamps' | 'camera' | 'settings' | 'technical' | 'media'>;
+  mode: MergeMode;
+  sections?: MetadataSection[];
   preserveEnrichment?: boolean;
   createBackup?: boolean;
   dryRun?: boolean;
@@ -47,35 +66,42 @@ export class MetadataMerger {
     // Handle processing history
     this.mergeProcessingHistory(merged, newData, changes);
     
-    if (options.mode === 'overwrite') {
+    if (options.mode === MergeMode.OVERWRITE) {
       // Complete overwrite
       return { merged: newData, changes: ['all fields'], preserved: [] };
     }
     
     // Selective merge based on sections
-    const sectionsToMerge = options.sections || ['location', 'timestamps', 'camera', 'settings', 'technical', 'media'];
+    const sectionsToMerge = options.sections || [
+      MetadataSection.LOCATION, 
+      MetadataSection.TIMESTAMPS, 
+      MetadataSection.CAMERA, 
+      MetadataSection.SETTINGS, 
+      MetadataSection.TECHNICAL, 
+      MetadataSection.MEDIA
+    ];
     
-    if (sectionsToMerge.includes('media')) {
+    if (sectionsToMerge.includes(MetadataSection.MEDIA)) {
       this.mergeMediaSection(merged, existing, newData, changes, preserved);
     }
     
-    if (sectionsToMerge.includes('location')) {
+    if (sectionsToMerge.includes(MetadataSection.LOCATION)) {
       this.mergeLocationSection(merged, existing, newData, changes, preserved, options);
     }
     
-    if (sectionsToMerge.includes('timestamps')) {
+    if (sectionsToMerge.includes(MetadataSection.TIMESTAMPS)) {
       this.mergeTimestampsSection(merged, existing, newData, changes, preserved);
     }
     
-    if (sectionsToMerge.includes('camera')) {
+    if (sectionsToMerge.includes(MetadataSection.CAMERA)) {
       this.mergeCameraSection(merged, existing, newData, changes, preserved);
     }
     
-    if (sectionsToMerge.includes('settings')) {
+    if (sectionsToMerge.includes(MetadataSection.SETTINGS)) {
       this.mergeSettingsSection(merged, existing, newData, changes, preserved);
     }
     
-    if (sectionsToMerge.includes('technical')) {
+    if (sectionsToMerge.includes(MetadataSection.TECHNICAL)) {
       this.mergeTechnicalSection(merged, existing, newData, changes, preserved);
     }
     
@@ -141,7 +167,7 @@ export class MetadataMerger {
     if (existing.media) {
       Object.keys(existing.media).forEach(key => {
         if (!(key in newData.media) && existing.media[key as keyof typeof existing.media] !== undefined) {
-          (merged.media as any)[key] = existing.media[key as keyof typeof existing.media];
+          (merged.media as Record<string, unknown>)[key] = existing.media[key as keyof typeof existing.media];
           preserved.push(`media.${key}`);
         }
       });
@@ -193,7 +219,7 @@ export class MetadataMerger {
       enrichmentStatus: this.mergeEnrichmentStatus(
         existing.location.enrichmentStatus,
         newData.location.enrichmentStatus
-      )
+      ) || newData.location.enrichmentStatus
     };
     
     // Track what was preserved
@@ -337,20 +363,20 @@ export class MetadataMerger {
   /**
    * Helper: Merge landmarks intelligently
    */
-  private mergeLandmarks(existing: any[], newLandmarks: any[]): any[] {
+  private mergeLandmarks(existing: LandmarkMatch[], newLandmarks: LandmarkMatch[]): LandmarkMatch[] {
     const landmarkMap = new Map();
     
     // Add existing landmarks
-    existing.forEach(landmark => {
-      const key = `${landmark.name}-${landmark.category}`;
-      landmarkMap.set(key, landmark);
+    existing.forEach(landmarkMatch => {
+      const key = `${landmarkMatch.landmark.name}-${landmarkMatch.landmark.category}`;
+      landmarkMap.set(key, landmarkMatch);
     });
     
     // Add new landmarks
-    newLandmarks.forEach(landmark => {
-      const key = `${landmark.name}-${landmark.category}`;
+    newLandmarks.forEach(landmarkMatch => {
+      const key = `${landmarkMatch.landmark.name}-${landmarkMatch.landmark.category}`;
       if (!landmarkMap.has(key)) {
-        landmarkMap.set(key, landmark);
+        landmarkMap.set(key, landmarkMatch);
       }
     });
     
@@ -360,7 +386,10 @@ export class MetadataMerger {
   /**
    * Helper: Merge enrichment status
    */
-  private mergeEnrichmentStatus(existing: any, newStatus: any): any {
+  private mergeEnrichmentStatus(
+    existing: GPSEnrichmentStatus | undefined, 
+    newStatus: GPSEnrichmentStatus | undefined
+  ): GPSEnrichmentStatus | undefined {
     if (!existing) return newStatus;
     if (!newStatus) return existing;
     
@@ -379,7 +408,10 @@ export class MetadataMerger {
   /**
    * Helper: Select best timestamp based on confidence
    */
-  private selectBestTimestamp(existing: any, newTimestamp: any): any {
+  private selectBestTimestamp(
+    existing: TimestampInfo | null, 
+    newTimestamp: TimestampInfo | null
+  ): TimestampInfo | null {
     if (!existing) return newTimestamp;
     if (!newTimestamp) return existing;
     
@@ -392,7 +424,7 @@ export class MetadataMerger {
   /**
    * Helper: Merge timestamp alternatives
    */
-  private mergeTimestampAlternatives(existing: any[], newAlts: any[]): any[] {
+  private mergeTimestampAlternatives(existing: TimestampInfo[], newAlts: TimestampInfo[]): TimestampInfo[] {
     const altMap = new Map();
     
     // Add all alternatives with deduplication
@@ -409,7 +441,7 @@ export class MetadataMerger {
   /**
    * Helper: Merge objects preferring non-empty values
    */
-  private mergeObjects(existing: any, newObj: any): any {
+  private mergeObjects(existing: Record<string, unknown>, newObj: Record<string, unknown>): Record<string, unknown> {
     const merged = { ...existing };
     
     Object.entries(newObj).forEach(([key, value]) => {
@@ -453,7 +485,7 @@ export class MetadataMerger {
       }
       
       const content = readFileSync(filePath, 'utf8');
-      const data = JSON.parse(content);
+      const data = JSON.parse(content) as UnknownJsonContent;
       
       // Handle CLI output format
       if (data.results && data.results[0]?.metadata) {

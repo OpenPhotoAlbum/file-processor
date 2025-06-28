@@ -1,0 +1,135 @@
+{
+  "file": {
+    "path": "sample:jpg_no_gps.jpg",
+    "hash": "placeholder-hash",
+    "size": 654852,
+    "mimeType": "image/jpeg",
+    "created": "2025-06-24T17:10:35.364Z",
+    "modified": "2025-06-23T20:23:22.378Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "ImageProcessor",
+    "extractedAt": "2025-06-28T19:55:14.747Z"
+  },
+  "media": {
+    "type": "image",
+    "format": "jpeg",
+    "dimensions": {
+      "width": 1440,
+      "height": 1678,
+      "megapixels": 2.4,
+      "orientation": "Horizontal (normal)"
+    },
+    "dominantColor": "#eee3e5",
+    "meanColor": "#868471",
+    "salientColor": "#00000e"
+  },
+  "timestamps": {
+    "primary": {
+      "timestamp": "2025-06-23T20:23:22.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:23:22-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "capture": {
+      "timestamp": "2025-06-23T20:23:22.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:23:22-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "creation": {
+      "timestamp": "2025-06-24T17:10:35.364Z",
+      "source": "filesystem",
+      "confidence": "low",
+      "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+      "sourceDetails": "File birth time"
+    },
+    "modification": {
+      "timestamp": "2025-06-23T20:23:22.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:06:23 16:23:22-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2025-06-24T17:10:35.364Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-23T20:23:22.378Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Mon Jun 23 2025 16:23:22 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.364Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "camera": {
+    "software": "Instagram"
+  },
+  "settings": {},
+  "technical": {
+    "fileType": "JPEG",
+    "mimeType": "image/jpeg",
+    "exifVersion": "0220",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/jpg_no_gps.jpg",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "jpg_no_gps.jpg",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "655 kB",
+    "File:FileModifyDate": "2025:06:23 16:23:22-04:00",
+    "File:FileAccessDate": "2025:06:27 22:57:16-04:00",
+    "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
+    "File:FilePermissions": "-rw-r--r--",
+    "File:ExifByteOrder": "Big-endian (Motorola, MM)",
+    "File:EncodingProcess": "Baseline DCT, Huffman coding",
+    "File:BitsPerSample": 8,
+    "File:ColorComponents": 3,
+    "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "JFIF:JFIFVersion": 1.01,
+    "JFIF:ResolutionUnit": "None",
+    "JFIF:XResolution": 1,
+    "JFIF:YResolution": 1,
+    "EXIF:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "EXIF:ExifVersion": "0220",
+    "EXIF:ImageUniqueID": "2105c74ffb549d9f0000000000000000",
+    "EXIF:XResolution": 72,
+    "EXIF:YResolution": 72,
+    "EXIF:ResolutionUnit": "inches",
+    "EXIF:ThumbnailOffset": 296,
+    "EXIF:ThumbnailLength": 9172,
+    "EXIF:ThumbnailImage": "(Binary data 9172 bytes, use -b option to extract)",
+    "Composite:ImageSize": "1440x1678",
+    "Composite:Megapixels": 2.4
+  },
+  "sidecars": []
+}

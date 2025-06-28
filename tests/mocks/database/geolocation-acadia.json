@@ -1,0 +1,13 @@
+{
+  "city": "Seal Harbor",
+  "state_code": "ME",
+  "county_name": "Hancock",
+  "timezone": "America/New_York",
+  "postal_code": "4675",
+  "distance": 4888,
+  "confidence": 0.51,
+  "source": "city_proximity",
+  "method": "Nearest city centroid",
+  "area_sq_meters": 1500000,
+  "place_type": "town"
+}

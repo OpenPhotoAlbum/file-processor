@@ -10,7 +10,7 @@ import { sanitizePathForLogging } from '../utils/paths.js';
 import { OutputHandler } from './output.js';
 import { normalizeCliOptions } from './validators.js';
 import { extractTimestampOnly } from './timestamp-extractor.js';
-import { MetadataMerger, MergeOptions } from '../utils/metadata-merger.js';
+import { MetadataMerger, MergeOptions, MergeMode, MetadataSection } from '../utils/metadata-merger.js';
 import { 
   CLIOptions, 
   ProcessingResult as CLIProcessingResult, 
@@ -151,16 +151,19 @@ export class CLIHandler {
     if (options.files && options.files.length > 0) {
       logger.debug(`Processing ${options.files.length} individual files`);
       
-      // Validate each file
-      const validatedFiles: string[] = [];
-      for (const file of options.files) {
+      // Validate all file paths concurrently
+      const validationPromises = options.files.map(async (file) => {
         const validation = await this.fs.validatePath(file);
         if (validation.isValid) {
-          validatedFiles.push(validation.absolutePath);
+          return validation.absolutePath;
         } else {
           logger.warn(`Invalid file path: ${sanitizePathForLogging(file)} - ${validation.errors.join(', ')}`);
+          return null;
         }
-      }
+      });
+      
+      const validationResults = await Promise.all(validationPromises);
+      const validatedFiles = validationResults.filter((file): file is string => file !== null);
       
       allFiles.push(...validatedFiles);
     }
@@ -229,21 +232,25 @@ export class CLIHandler {
       }
       
       try {
-        let processedData: any;
+        let processedData: { timestamp: string } | MediaProcessingResult;
         
         if (options.timestampOnly) {
-          // Lightweight timestamp extraction only
+          // Sequential processing provides ordered progress feedback and resource management
+          // eslint-disable-next-line no-await-in-loop
           const timestamp = await extractTimestampOnly(file);
           processedData = { timestamp };
           
           // For timestamp-only mode, just output the timestamp
           console.log(timestamp);
         } else {
-          // Full processing pipeline
+          // Sequential processing allows ordered progress display and prevents API/DB overload
+          // eslint-disable-next-line no-await-in-loop
           let metadata = await processFile(file);
           
           // Handle merge logic if specified
           if (options.merge || options.mergeSections || options.preserveEnrichment) {
+            // Sequential merge maintains file processing order for consistency
+            // eslint-disable-next-line no-await-in-loop
             metadata = await this.handleMetadataMerge(file, metadata, options);
           }
           
@@ -403,8 +410,8 @@ export class CLIHandler {
       
       // Configure merge options
       const mergeOptions: MergeOptions = {
-        mode: options.mergeSections ? 'merge-selective' : 'merge',
-        sections: options.mergeSections as Array<'location' | 'timestamps' | 'camera' | 'settings' | 'technical' | 'media'> | undefined,
+        mode: options.mergeSections ? MergeMode.MERGE_SELECTIVE : MergeMode.MERGE,
+        sections: options.mergeSections as MetadataSection[] | undefined,
         preserveEnrichment: options.preserveEnrichment !== false, // Default to true
         createBackup: options.backup,
         dryRun: options.dryRun

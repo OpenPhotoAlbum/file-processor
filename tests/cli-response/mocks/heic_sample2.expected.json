@@ -1,0 +1,272 @@
+{
+  "file": {
+    "path": "sample:heic_sample2.HEIC",
+    "hash": "placeholder-hash",
+    "size": 1544776,
+    "mimeType": "image/heic",
+    "created": "2025-06-24T17:10:35.361Z",
+    "modified": "2025-06-23T20:24:01.660Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "ImageProcessor",
+    "extractedAt": "2025-06-28T19:55:13.246Z"
+  },
+  "media": {
+    "type": "image",
+    "format": "heic",
+    "dimensions": {
+      "width": 4032,
+      "height": 3024,
+      "megapixels": 12.2,
+      "orientation": "Rotate 90 CW"
+    },
+    "dominantColor": "#fbeedc",
+    "meanColor": "#a88166",
+    "salientColor": "#fd9a3c"
+  },
+  "timestamps": {
+    "primary": {
+      "timestamp": "2021-08-12T17:29:02.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2021:08:12 17:29:02",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "capture": {
+      "timestamp": "2021-08-12T17:29:02.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2021:08:12 17:29:02",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "creation": {
+      "timestamp": "2021-08-12T17:29:02.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2021:08:12 17:29:02",
+      "sourceDetails": "EXIF:CreateDate"
+    },
+    "modification": {
+      "timestamp": "2021-08-12T17:29:02.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2021:08:12 17:29:02",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2021-08-12T17:29:02.000Z",
+        "source": "exif",
+        "confidence": "high",
+        "originalFormat": "2021:08:12 17:29:02",
+        "sourceDetails": "EXIF:CreateDate"
+      },
+      {
+        "timestamp": "2021-08-12T17:29:02.000Z",
+        "source": "exif",
+        "confidence": "medium",
+        "originalFormat": "2021:08:12 17:29:02",
+        "sourceDetails": "EXIF:ModifyDate"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.361Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-23T20:24:01.660Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Mon Jun 23 2025 16:24:01 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.363Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "camera": {
+    "make": "Apple",
+    "model": "iPhone 11 Pro Max",
+    "lens": "iPhone 11 Pro Max back triple camera 4.25mm f/1.8",
+    "software": 14.6
+  },
+  "settings": {
+    "iso": 400,
+    "aperture": 1.8,
+    "shutterSpeed": "1/40",
+    "focalLength": "4.2 mm",
+    "focalLength35mm": "26 mm",
+    "flash": "Auto, Did not fire"
+  },
+  "technical": {
+    "fileType": "JPEG",
+    "mimeType": "image/jpeg",
+    "exifVersion": "0232",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/heic_sample2.HEIC",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "heic_sample2.HEIC",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "1545 kB",
+    "File:FileModifyDate": "2025:06:23 16:24:01-04:00",
+    "File:FileAccessDate": "2025:06:28 15:17:57-04:00",
+    "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
+    "File:FilePermissions": "-rw-r--r--",
+    "File:ExifByteOrder": "Big-endian (Motorola, MM)",
+    "File:EncodingProcess": "Baseline DCT, Huffman coding",
+    "File:BitsPerSample": 8,
+    "File:ColorComponents": 3,
+    "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "JFIF:JFIFVersion": 1.01,
+    "JFIF:ResolutionUnit": "None",
+    "JFIF:XResolution": 1,
+    "JFIF:YResolution": 1,
+    "EXIF:XResolution": 72,
+    "EXIF:YResolution": 72,
+    "EXIF:ResolutionUnit": "inches",
+    "EXIF:HostComputer": "iPhone 11 Pro Max",
+    "EXIF:YCbCrPositioning": "Centered",
+    "EXIF:ExposureProgram": "Program AE",
+    "EXIF:ExifVersion": "0232",
+    "EXIF:OffsetTime": "-05:00",
+    "EXIF:OffsetTimeOriginal": "-05:00",
+    "EXIF:OffsetTimeDigitized": "-05:00",
+    "EXIF:ComponentsConfiguration": "Y, Cb, Cr, -",
+    "EXIF:ShutterSpeedValue": "1/40",
+    "EXIF:ApertureValue": 1.8,
+    "EXIF:BrightnessValue": 0.5546220787,
+    "EXIF:ExposureCompensation": 0,
+    "EXIF:MeteringMode": "Multi-segment",
+    "EXIF:Flash": "Auto, Did not fire",
+    "EXIF:SubjectArea": "1641 1366 358 357",
+    "EXIF:SubSecTimeOriginal": 837,
+    "EXIF:SubSecTimeDigitized": 837,
+    "EXIF:FlashpixVersion": "0100",
+    "EXIF:SensingMethod": "One-chip color area",
+    "EXIF:SceneType": "Directly photographed",
+    "EXIF:ExposureMode": "Auto",
+    "EXIF:WhiteBalance": "Auto",
+    "EXIF:SceneCaptureType": "Standard",
+    "EXIF:ImageUniqueID": "c2eccb07b495eac20000000000000000",
+    "EXIF:LensInfo": "1.539999962-6mm f/1.8-2.4",
+    "EXIF:LensMake": "Apple",
+    "EXIF:CompositeImage": "General Composite Image",
+    "EXIF:ThumbnailOffset": 2320,
+    "EXIF:ThumbnailLength": 5521,
+    "EXIF:ThumbnailImage": "(Binary data 5521 bytes, use -b option to extract)",
+    "MakerNotes:MakerNoteVersion": 12,
+    "MakerNotes:RunTimeFlags": "Valid",
+    "MakerNotes:RunTimeValue": "1521577457396250",
+    "MakerNotes:RunTimeScale": 1000000000,
+    "MakerNotes:RunTimeEpoch": 0,
+    "MakerNotes:AEStable": "Yes",
+    "MakerNotes:AETarget": 203,
+    "MakerNotes:AEAverage": 191,
+    "MakerNotes:AFStable": "Yes",
+    "MakerNotes:AccelerationVector": "-0.02265232801 -0.9916024208 -0.1413792224",
+    "MakerNotes:FocusDistanceRange": "0.39 - 0.70 m",
+    "MakerNotes:OISMode": 2,
+    "MakerNotes:ImageCaptureType": "Photo",
+    "MakerNotes:LivePhotoVideoIndex": 575668224,
+    "MakerNotes:HDRHeadroom": 0.5,
+    "MakerNotes:SignalToNoiseRatio": 30.18157576,
+    "MakerNotes:PhotoIdentifier": "56EC4682-B2CA-4130-8018-57BF01153F0F",
+    "MakerNotes:FocusPosition": 206,
+    "XMP:XMPToolkit": "XMP Core 5.5.0",
+    "XMP:RegionType": [
+      "Face",
+      "Face"
+    ],
+    "XMP:RegionAreaY": [
+      "0.57699999999999996",
+      "0.45495238095238089"
+    ],
+    "XMP:RegionAreaW": [
+      "0.083809523809523778",
+      "0.091142857142857137"
+    ],
+    "XMP:RegionAreaX": [
+      0.5,
+      "0.40519047619047621"
+    ],
+    "XMP:RegionAreaH": [
+      "0.11209523809523814",
+      "0.12152380952380953"
+    ],
+    "XMP:RegionAreaUnit": [
+      "normalized",
+      "normalized"
+    ],
+    "XMP:RegionExtensionsAngleInfoYaw": 0,
+    "XMP:RegionExtensionsAngleInfoRoll": 270,
+    "XMP:RegionExtensionsConfidenceLevel": 811,
+    "XMP:RegionExtensionsFaceID": 2,
+    "XMP:RegionAppliedToDimensionsH": 3168,
+    "XMP:RegionAppliedToDimensionsW": 4224,
+    "XMP:RegionAppliedToDimensionsUnit": "pixel",
+    "ICC_Profile:ProfileCMMType": "Apple Computer Inc.",
+    "ICC_Profile:ProfileVersion": "4.0.0",
+    "ICC_Profile:ProfileClass": "Display Device Profile",
+    "ICC_Profile:ColorSpaceData": "RGB ",
+    "ICC_Profile:ProfileConnectionSpace": "XYZ ",
+    "ICC_Profile:ProfileDateTime": "2017:07:07 13:22:32",
+    "ICC_Profile:ProfileFileSignature": "acsp",
+    "ICC_Profile:PrimaryPlatform": "Apple Computer Inc.",
+    "ICC_Profile:CMMFlags": "Not Embedded, Independent",
+    "ICC_Profile:DeviceManufacturer": "Apple Computer Inc.",
+    "ICC_Profile:DeviceModel": "",
+    "ICC_Profile:DeviceAttributes": "Reflective, Glossy, Positive, Color",
+    "ICC_Profile:RenderingIntent": "Perceptual",
+    "ICC_Profile:ConnectionSpaceIlluminant": "0.9642 1 0.82491",
+    "ICC_Profile:ProfileCreator": "Apple Computer Inc.",
+    "ICC_Profile:ProfileID": "ca1a9582257f104d389913d5d1ea1582",
+    "ICC_Profile:ProfileDescription": "Display P3",
+    "ICC_Profile:ProfileCopyright": "Copyright Apple Inc., 2017",
+    "ICC_Profile:MediaWhitePoint": "0.95045 1 1.08905",
+    "ICC_Profile:RedMatrixColumn": "0.51512 0.2412 -0.00105",
+    "ICC_Profile:GreenMatrixColumn": "0.29198 0.69225 0.04189",
+    "ICC_Profile:BlueMatrixColumn": "0.1571 0.06657 0.78407",
+    "ICC_Profile:RedTRC": "(Binary data 32 bytes, use -b option to extract)",
+    "ICC_Profile:ChromaticAdaptation": "1.04788 0.02292 -0.0502 0.02959 0.99048 -0.01706 -0.00923 0.01508 0.75168",
+    "ICC_Profile:BlueTRC": "(Binary data 32 bytes, use -b option to extract)",
+    "ICC_Profile:GreenTRC": "(Binary data 32 bytes, use -b option to extract)",
+    "Composite:RunTimeSincePowerUp": "17 days 14:39:37",
+    "Composite:Aperture": 1.8,
+    "Composite:ImageSize": "4032x3024",
+    "Composite:Megapixels": 12.2,
+    "Composite:ScaleFactor35efl": 6.1,
+    "Composite:ShutterSpeed": "1/40",
+    "Composite:SubSecCreateDate": "2021:08:12 17:29:02.837-05:00",
+    "Composite:SubSecDateTimeOriginal": "2021:08:12 17:29:02.837-05:00",
+    "Composite:SubSecModifyDate": "2021:08:12 17:29:02-05:00",
+    "Composite:CircleOfConfusion": "0.005 mm",
+    "Composite:FOV": "69.4 deg",
+    "Composite:FocalLength35efl": "4.2 mm (35 mm equivalent: 26.0 mm)",
+    "Composite:HyperfocalDistance": "2.04 m",
+    "Composite:LightValue": 5,
+    "Composite:LensID": "iPhone 11 Pro Max back triple camera 4.25mm f/1.8"
+  },
+  "sidecars": []
+}

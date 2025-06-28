@@ -1,0 +1,267 @@
+{
+  "file": {
+    "path": "sample:jpg_rotate_180.JPG",
+    "hash": "placeholder-hash",
+    "size": 348570,
+    "mimeType": "image/jpeg",
+    "created": "2025-06-24T17:10:35.364Z",
+    "modified": "2025-06-23T20:23:22.380Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "ImageProcessor",
+    "extractedAt": "2025-06-28T19:55:19.635Z"
+  },
+  "media": {
+    "type": "image",
+    "format": "jpeg",
+    "dimensions": {
+      "width": 3088,
+      "height": 2320,
+      "megapixels": 7.2,
+      "orientation": "Rotate 180"
+    },
+    "dominantColor": "#15161a",
+    "meanColor": "#8b7e75",
+    "salientColor": "#293134"
+  },
+  "timestamps": {
+    "primary": {
+      "timestamp": "2019-12-18T09:32:28.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2019:12:18 09:32:28",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "capture": {
+      "timestamp": "2019-12-18T09:32:28.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2019:12:18 09:32:28",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "creation": {
+      "timestamp": "2019-12-18T09:32:28.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "2019:12:18 09:32:28",
+      "sourceDetails": "EXIF:CreateDate"
+    },
+    "modification": {
+      "timestamp": "2019-12-18T09:32:28.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2019:12:18 09:32:28",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2019-12-18T09:32:28.000Z",
+        "source": "exif",
+        "confidence": "high",
+        "originalFormat": "2019:12:18 09:32:28",
+        "sourceDetails": "EXIF:CreateDate"
+      },
+      {
+        "timestamp": "2019-12-18T09:32:28.000Z",
+        "source": "exif",
+        "confidence": "medium",
+        "originalFormat": "2019:12:18 09:32:28",
+        "sourceDetails": "EXIF:ModifyDate"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.364Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File birth time"
+      },
+      {
+        "timestamp": "2025-06-23T20:23:22.380Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Mon Jun 23 2025 16:23:22 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File modification time"
+      },
+      {
+        "timestamp": "2025-06-24T17:10:35.365Z",
+        "source": "filesystem",
+        "confidence": "low",
+        "originalFormat": "Tue Jun 24 2025 13:10:35 GMT-0400 (Eastern Daylight Time)",
+        "sourceDetails": "File change time"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "camera": {
+    "make": "Apple",
+    "model": "iPhone X",
+    "lens": "iPhone X front camera 2.87mm f/2.2",
+    "software": 13.3
+  },
+  "settings": {
+    "iso": 160,
+    "aperture": 2.2,
+    "shutterSpeed": "1/60",
+    "focalLength": "2.9 mm",
+    "focalLength35mm": "32 mm",
+    "flash": "Off, Did not fire"
+  },
+  "technical": {
+    "fileType": "JPEG",
+    "mimeType": "image/jpeg",
+    "exifVersion": "0231",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/jpg_rotate_180.JPG",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "jpg_rotate_180.JPG",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "349 kB",
+    "File:FileModifyDate": "2025:06:23 16:23:22-04:00",
+    "File:FileAccessDate": "2025:06:28 10:21:50-04:00",
+    "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
+    "File:FilePermissions": "-rw-r--r--",
+    "File:ExifByteOrder": "Big-endian (Motorola, MM)",
+    "File:EncodingProcess": "Baseline DCT, Huffman coding",
+    "File:BitsPerSample": 8,
+    "File:ColorComponents": 3,
+    "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "JFIF:JFIFVersion": 1.01,
+    "JFIF:ResolutionUnit": "None",
+    "JFIF:XResolution": 1,
+    "JFIF:YResolution": 1,
+    "EXIF:XResolution": 72,
+    "EXIF:YResolution": 72,
+    "EXIF:ResolutionUnit": "inches",
+    "EXIF:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "EXIF:YCbCrPositioning": "Centered",
+    "EXIF:ExposureProgram": "Program AE",
+    "EXIF:ExifVersion": "0231",
+    "EXIF:OffsetTime": "-06:00",
+    "EXIF:OffsetTimeOriginal": "-06:00",
+    "EXIF:OffsetTimeDigitized": "-06:00",
+    "EXIF:ComponentsConfiguration": "Y, Cb, Cr, -",
+    "EXIF:ShutterSpeedValue": "1/60",
+    "EXIF:ApertureValue": 2.2,
+    "EXIF:BrightnessValue": 3.019174846,
+    "EXIF:ExposureCompensation": 0,
+    "EXIF:MeteringMode": "Multi-segment",
+    "EXIF:Flash": "Off, Did not fire",
+    "EXIF:SubSecTimeOriginal": 346,
+    "EXIF:SubSecTimeDigitized": 346,
+    "EXIF:FlashpixVersion": "0100",
+    "EXIF:SensingMethod": "One-chip color area",
+    "EXIF:SceneType": "Directly photographed",
+    "EXIF:ExposureMode": "Auto",
+    "EXIF:WhiteBalance": "Auto",
+    "EXIF:SceneCaptureType": "Standard",
+    "EXIF:ImageUniqueID": "33cfe3ccb26fb1df0000000000000000",
+    "EXIF:LensInfo": "2.87mm f/2.2",
+    "EXIF:LensMake": "Apple",
+    "EXIF:ThumbnailOffset": 2000,
+    "EXIF:ThumbnailLength": 6908,
+    "EXIF:ThumbnailImage": "(Binary data 6908 bytes, use -b option to extract)",
+    "MakerNotes:MakerNoteVersion": 11,
+    "MakerNotes:RunTimeFlags": "Valid",
+    "MakerNotes:RunTimeValue": 17896507949333,
+    "MakerNotes:RunTimeScale": 1000000000,
+    "MakerNotes:RunTimeEpoch": 0,
+    "MakerNotes:AEStable": "Yes",
+    "MakerNotes:AETarget": 210,
+    "MakerNotes:AEAverage": 215,
+    "MakerNotes:AFStable": "Yes",
+    "MakerNotes:AccelerationVector": "-0.9427346582 -0.1354421526 -0.2613073289",
+    "MakerNotes:ImageCaptureType": "Unknown (4)",
+    "MakerNotes:LivePhotoVideoIndex": 8192,
+    "MakerNotes:HDRHeadroom": 0,
+    "MakerNotes:SignalToNoiseRatio": 0,
+    "MakerNotes:PhotoIdentifier": "502F3C3E-AAB3-4EE4-B47D-E7B64737DA7F",
+    "XMP:XMPToolkit": "XMP Core 5.5.0",
+    "XMP:RegionType": [
+      "Face",
+      "Face"
+    ],
+    "XMP:RegionAreaY": [
+      "0.34650000000000003",
+      "0.80049999999999999"
+    ],
+    "XMP:RegionAreaW": [
+      0.22,
+      "0.24299999999999994"
+    ],
+    "XMP:RegionAreaX": [
+      "0.26800000000000002",
+      "0.57850000000000001"
+    ],
+    "XMP:RegionAreaH": [
+      "0.29299999999999998",
+      "0.32299999999999995"
+    ],
+    "XMP:RegionAreaUnit": [
+      "normalized",
+      "normalized"
+    ],
+    "XMP:RegionExtensionsAngleInfoYaw": 0,
+    "XMP:RegionExtensionsAngleInfoRoll": 180,
+    "XMP:RegionExtensionsConfidenceLevel": 336,
+    "XMP:RegionExtensionsFaceID": 20,
+    "XMP:RegionAppliedToDimensionsH": 2320,
+    "XMP:RegionAppliedToDimensionsW": 3088,
+    "XMP:RegionAppliedToDimensionsUnit": "pixel",
+    "ICC_Profile:ProfileCMMType": "Apple Computer Inc.",
+    "ICC_Profile:ProfileVersion": "4.0.0",
+    "ICC_Profile:ProfileClass": "Display Device Profile",
+    "ICC_Profile:ColorSpaceData": "RGB ",
+    "ICC_Profile:ProfileConnectionSpace": "XYZ ",
+    "ICC_Profile:ProfileDateTime": "2017:07:07 13:22:32",
+    "ICC_Profile:ProfileFileSignature": "acsp",
+    "ICC_Profile:PrimaryPlatform": "Apple Computer Inc.",
+    "ICC_Profile:CMMFlags": "Not Embedded, Independent",
+    "ICC_Profile:DeviceManufacturer": "Apple Computer Inc.",
+    "ICC_Profile:DeviceModel": "",
+    "ICC_Profile:DeviceAttributes": "Reflective, Glossy, Positive, Color",
+    "ICC_Profile:RenderingIntent": "Perceptual",
+    "ICC_Profile:ConnectionSpaceIlluminant": "0.9642 1 0.82491",
+    "ICC_Profile:ProfileCreator": "Apple Computer Inc.",
+    "ICC_Profile:ProfileID": "ca1a9582257f104d389913d5d1ea1582",
+    "ICC_Profile:ProfileDescription": "Display P3",
+    "ICC_Profile:ProfileCopyright": "Copyright Apple Inc., 2017",
+    "ICC_Profile:MediaWhitePoint": "0.95045 1 1.08905",
+    "ICC_Profile:RedMatrixColumn": "0.51512 0.2412 -0.00105",
+    "ICC_Profile:GreenMatrixColumn": "0.29198 0.69225 0.04189",
+    "ICC_Profile:BlueMatrixColumn": "0.1571 0.06657 0.78407",
+    "ICC_Profile:RedTRC": "(Binary data 32 bytes, use -b option to extract)",
+    "ICC_Profile:ChromaticAdaptation": "1.04788 0.02292 -0.0502 0.02959 0.99048 -0.01706 -0.00923 0.01508 0.75168",
+    "ICC_Profile:BlueTRC": "(Binary data 32 bytes, use -b option to extract)",
+    "ICC_Profile:GreenTRC": "(Binary data 32 bytes, use -b option to extract)",
+    "Composite:RunTimeSincePowerUp": "4:58:17",
+    "Composite:Aperture": 2.2,
+    "Composite:ImageSize": "3088x2320",
+    "Composite:Megapixels": 7.2,
+    "Composite:ScaleFactor35efl": 11.1,
+    "Composite:ShutterSpeed": "1/60",
+    "Composite:SubSecCreateDate": "2019:12:18 09:32:28.346-06:00",
+    "Composite:SubSecDateTimeOriginal": "2019:12:18 09:32:28.346-06:00",
+    "Composite:SubSecModifyDate": "2019:12:18 09:32:28-06:00",
+    "Composite:CircleOfConfusion": "0.003 mm",
+    "Composite:FOV": "58.7 deg",
+    "Composite:FocalLength35efl": "2.9 mm (35 mm equivalent: 32.0 mm)",
+    "Composite:HyperfocalDistance": "1.39 m",
+    "Composite:LightValue": 7.5,
+    "Composite:LensID": "iPhone X front camera 2.87mm f/2.2"
+  },
+  "sidecars": []
+}
