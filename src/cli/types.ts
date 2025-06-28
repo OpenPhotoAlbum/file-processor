@@ -21,11 +21,29 @@ export interface CLIOptions {
   /** Overwrite existing output file */
   overwrite?: boolean;
   
+  /** Merge with existing metadata instead of overwriting */
+  merge?: boolean;
+  
+  /** Specific sections to merge (when using --merge) */
+  mergeSections?: string[];
+  
+  /** Preserve expensive enrichment operations during merge */
+  preserveEnrichment?: boolean;
+  
+  /** Create backup before overwriting/merging */
+  backup?: boolean;
+  
+  /** Dry run mode (show what would be changed) */
+  dryRun?: boolean;
+  
   /** Output in JSON format */
   json?: boolean;
   
   /** Minimal console output */
   quiet?: boolean;
+  
+  /** Extract timestamp only (skip all processing) */
+  timestampOnly?: boolean;
 }
 
 export interface ProcessingResult {

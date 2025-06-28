@@ -1,0 +1,77 @@
+# Photo Search MCP - Ignore Patterns
+# Focus on indexing metadata, not media files themselves
+
+# === MEDIA FILES (we index metadata, not the files) ===
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.heic
+*.HEIC
+*.bmp
+*.tiff
+*.webp
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# === BUILD & DEVELOPMENT ===
+node_modules/
+dist/
+build/
+coverage/
+*.log
+.env*
+
+# === DATABASES (except our embeddings) ===
+*.db
+!embeddings.db
+*.sqlite
+*.sqlite3
+
+# === TEMPORARY FILES ===
+tmp/
+temp/
+cache/
+.cache/
+*.tmp
+*.temp
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# === GIT ===
+.git/
+.gitignore
+
+# === TEST FILES ===
+test-*/
+tests/
+*test*.json
+*mock*.json
+
+# === LARGE DATA FILES ===
+*.sql
+*.csv
+*.tsv
+duplicates.json
+controlled-test.json
+tiny-test.json
+
+# === BACKUP FILES ===
+*.backup
+backup/
+backups/
+
+# === PACKAGE FILES ===
+package-lock.json
+yarn.lock
+
+# === SCRIPTS WE DON'T NEED TO INDEX ===
+scripts/*.sh
+!scripts/phase2-*.sh  # Keep restructuring scripts for reference

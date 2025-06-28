@@ -7,6 +7,7 @@ import { Logger } from '../utils/logging/index.js';
 import { createValidationErrorFactory, createSystemErrorFactory } from '../utils/errors/factories.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { FileSystemService } from '../services/index.js';
+import { extractColorAnalysis } from '../services/colorExtractor.js';
 
 /**
  * Processor for image files (JPEG, PNG, HEIC, GIF, etc.)
@@ -137,9 +138,23 @@ export class ImageProcessor extends BaseProcessor {
         filePath: file.absolutePath
       });
       
-      // 4. TODO: Add other extraction steps
+      // 4. Extract color analysis
+      let colorAnalysis: { dominantColor?: string; meanColor?: string; salientColor?: string } = {};
+      try {
+        const fullColorAnalysis = await extractColorAnalysis(file.absolutePath);
+        colorAnalysis = {
+          dominantColor: fullColorAnalysis.dominantColor,
+          meanColor: fullColorAnalysis.meanColor,
+          salientColor: fullColorAnalysis.salientColor || undefined
+        };
+        this.logger.info(`Extracted colors - dominant: ${colorAnalysis.dominantColor}, mean: ${colorAnalysis.meanColor}, salient: ${colorAnalysis.salientColor || 'none'}`, { filename: file.path });
+      } catch (error) {
+        this.logger.warn(`Failed to extract color analysis from ${safePath}:`, { error });
+        colorAnalysis = {};
+      }
+      
+      // 5. TODO: Add other extraction steps
       // - Thumbnail generation
-      // - Dominant color extraction
       
       this.logger.info(`Successfully extracted metadata from: ${safePath}`);
       
@@ -170,7 +185,10 @@ export class ImageProcessor extends BaseProcessor {
             height: exifData.image.height || 0,
             megapixels: exifData.image.megapixels || 0,
             orientation: exifData.image.orientation || 'unknown'
-          }
+          },
+          dominantColor: colorAnalysis.dominantColor,
+          meanColor: colorAnalysis.meanColor,
+          salientColor: colorAnalysis.salientColor
         },
         timestamps: {
           primary: timestampResult.primary,

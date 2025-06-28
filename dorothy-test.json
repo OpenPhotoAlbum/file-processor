@@ -1,0 +1,19 @@
+[
+{
+  "description": "rmlint json-dump of lint files",
+  "cwd": "/home/stephen/Documents/initial-media-processing/",
+  "args": "rmlint /photos/staging/google-takeout/Takeout/Google Photos/Dorothy-Eddie-Chooljians Old Photos/ --output=json:dorothy-test.json",
+  "version": "2.9.0",
+  "rev": "2.3",
+  "progress": 0,
+  "checksum_type": "blake2b"
+}, {
+  "aborted": false,
+  "progress": 100,
+  "total_files": 1825,
+  "ignored_files": 0,
+  "ignored_folders": 0,
+  "duplicates": 0,
+  "duplicate_sets": 0,
+  "total_lint_size": 0
+}]

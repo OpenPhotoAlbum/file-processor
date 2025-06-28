@@ -25,7 +25,7 @@ export const GPS_ERRORS = {
   },
   [GPSErrors.EXTRACTION_FAILED]: {
     component: ErrorComponent.GPS,
-    severity: ErrorSeverity.ERROR,
+    severity: ErrorSeverity.WARNING,
     message: 'GPS extraction failed',
     description: 'Unable to extract GPS coordinates from any available source',
     userAction: 'Check GPS data format in source files'

@@ -110,6 +110,36 @@ export function validateFileExtensions(extensions: string[]): string[] {
 }
 
 /**
+ * Validate merge sections
+ */
+export function validateMergeSections(sections: string): string[] {
+  const validSections = ['location', 'timestamps', 'camera', 'settings', 'technical', 'media'];
+  const requestedSections = sections.split(',').map(s => s.trim().toLowerCase());
+  const validRequestedSections: string[] = [];
+  const invalidSections: string[] = [];
+  
+  for (const section of requestedSections) {
+    if (validSections.includes(section)) {
+      validRequestedSections.push(section);
+    } else {
+      invalidSections.push(section);
+    }
+  }
+  
+  if (invalidSections.length > 0) {
+    logger.warn(`Invalid merge sections ignored: ${invalidSections.join(', ')}`);
+    logger.info(`Valid sections: ${validSections.join(', ')}`);
+  }
+  
+  if (validRequestedSections.length === 0) {
+    throw new Error(`No valid merge sections provided. Valid: ${validSections.join(', ')}`);
+  }
+  
+  logger.debug(`Validated merge sections: ${validRequestedSections.join(', ')}`);
+  return validRequestedSections;
+}
+
+/**
  * Normalize and validate CLI options
  */
 export function normalizeCliOptions(
@@ -135,6 +165,28 @@ export function normalizeCliOptions(
       logger.error(`Output path validation failed: ${(error as Error).message}`);
       throw error;
     }
+  }
+  
+  // Validate merge sections if provided
+  if (normalized.mergeSections) {
+    try {
+      normalized.mergeSections = validateMergeSections(Array.isArray(normalized.mergeSections) ? 
+        normalized.mergeSections.join(',') : normalized.mergeSections as string);
+    } catch (error) {
+      logger.error(`Merge sections validation failed: ${(error as Error).message}`);
+      throw error;
+    }
+  }
+  
+  // Validate merge logic
+  if (normalized.mergeSections && !normalized.merge) {
+    logger.warn('--merge-sections specified without --merge flag. Adding --merge automatically.');
+    normalized.merge = true;
+  }
+  
+  if (normalized.dryRun && !normalized.merge) {
+    logger.warn('--dry-run specified without --merge flag. Adding --merge automatically.');
+    normalized.merge = true;
   }
   
   // Validate input sources

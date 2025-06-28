@@ -1,0 +1,71 @@
+[
+{
+  "description": "rmlint json-dump of lint files",
+  "cwd": "/home/stephen/Documents/initial-media-processing/",
+  "args": "rmlint /tmp/duplicate-test --output=json:controlled-test.json",
+  "version": "2.9.0",
+  "rev": "2.3",
+  "progress": 0,
+  "checksum_type": "blake2b"
+}, {
+  "id": 1001699508,
+  "type": "duplicate_file",
+  "progress": 100,
+  "checksum": "d69325be8cdb9462681102a177471e95e55ef5682356f1d6cecbfb1d67869145ac1eec5c723cdcdf25169efd0a8e2eb972b83e0ec1198606754e1e05f3aef4fc",
+  "path": "/tmp/duplicate-test/amelia_IMG_2037.PNG",
+  "size": 115479,
+  "twins": 2,
+  "depth": 1,
+  "inode": 28406,
+  "disk_id": 37,
+  "is_original": true,
+  "mtime": 1750873618.8346491
+}, {
+  "id": 1346592502,
+  "type": "duplicate_file",
+  "progress": 100,
+  "checksum": "d69325be8cdb9462681102a177471e95e55ef5682356f1d6cecbfb1d67869145ac1eec5c723cdcdf25169efd0a8e2eb972b83e0ec1198606754e1e05f3aef4fc",
+  "path": "/tmp/duplicate-test/archive_IMG_2037.PNG",
+  "size": 115479,
+  "twins": 2,
+  "depth": 1,
+  "inode": 28407,
+  "disk_id": 37,
+  "is_original": false,
+  "mtime": 1750873618.8356493
+}, {
+  "id": 3504105221,
+  "type": "duplicate_file",
+  "progress": 100,
+  "checksum": "a142888ad406d6348069c196c63f2c3a3c2e17db92006ba70496a7cf66a9cc1324ebafd415e9b96597b1dcd1bda8d3a82c43d6b4b709809c89d71ac91d421d55",
+  "path": "/tmp/duplicate-test/amelia_IMG_2842.PNG",
+  "size": 139694,
+  "twins": 2,
+  "depth": 1,
+  "inode": 28408,
+  "disk_id": 37,
+  "is_original": true,
+  "mtime": 1750873618.8366492
+}, {
+  "id": 471364140,
+  "type": "duplicate_file",
+  "progress": 100,
+  "checksum": "a142888ad406d6348069c196c63f2c3a3c2e17db92006ba70496a7cf66a9cc1324ebafd415e9b96597b1dcd1bda8d3a82c43d6b4b709809c89d71ac91d421d55",
+  "path": "/tmp/duplicate-test/archive_IMG_2842.PNG",
+  "size": 139694,
+  "twins": 2,
+  "depth": 1,
+  "inode": 28409,
+  "disk_id": 37,
+  "is_original": false,
+  "mtime": 1750873618.8376493
+}, {
+  "aborted": false,
+  "progress": 100,
+  "total_files": 4,
+  "ignored_files": 0,
+  "ignored_folders": 0,
+  "duplicates": 2,
+  "duplicate_sets": 2,
+  "total_lint_size": 255173
+}]

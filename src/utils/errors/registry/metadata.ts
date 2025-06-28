@@ -17,7 +17,7 @@ export const MetadataErrors = {
 export const METADATA_ERRORS = {
   [MetadataErrors.PARSING_FAILED]: {
     component: ErrorComponent.METADATA,
-    severity: ErrorSeverity.ERROR,
+    severity: ErrorSeverity.WARNING,
     message: 'Sidecar metadata parsing failed',
     description: 'Sidecar metadata file found but could not be parsed',
     userAction: 'Check sidecar file format and content structure'

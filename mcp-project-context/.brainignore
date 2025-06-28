@@ -1,0 +1,112 @@
+# Project Context MCP - Source Code and Documentation Focus
+# Index development context, exclude media and build artifacts
+
+# === MEDIA FILES (never index these for project context) ===
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+*.png
+*.PNG
+*.gif
+*.GIF
+*.heic
+*.HEIC
+*.bmp
+*.BMP
+*.tiff
+*.TIFF
+*.webp
+*.WEBP
+*.mp4
+*.MP4
+*.mov
+*.MOV
+*.avi
+*.AVI
+*.mkv
+*.MKV
+
+# === MEDIA DIRECTORIES ===
+scratch/sample_media/
+scratch/sample_photos/
+samples/
+sample_media/
+
+# === PHOTOS DIRECTORY (exclude entirely) ===
+/photos/
+photos/
+
+# === BUILD & DEVELOPMENT ARTIFACTS ===
+node_modules/
+dist/
+build/
+coverage/
+.vscode/
+.idea/
+*.log
+.env*
+
+# === DATABASES ===
+*.db
+!embeddings.db
+*.sqlite
+*.sqlite3
+
+# === TEMPORARY FILES ===
+tmp/
+temp/
+cache/
+.cache/
+*.tmp
+*.temp
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# === GIT ===
+.git/
+
+# === LARGE DATA FILES ===
+*.sql
+*.csv
+*.tsv
+duplicates.json
+controlled-test.json
+tiny-test.json
+dorothy-test.json
+
+# === BACKUP FILES ===
+*.backup
+backup/
+backups/
+
+# === PACKAGE FILES ===
+package-lock.json
+yarn.lock
+
+# === TEST DATA FILES ===
+*test*.json
+*mock*.json
+tests/cli-response/mocks/
+
+# === EXCLUDE OTHER MCP DIRECTORIES ===
+mcp-photo-search/
+mcp-project-context/venv/
+mcp-project-context/embeddings.db
+
+# === FOCUS ON SOURCE CODE ===
+# Include these explicitly for development context
+!src/
+!docs/
+!tests/
+!scripts/
+!*.md
+!*.ts
+!*.js
+!*.json
+!*.yaml
+!*.yml

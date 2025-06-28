@@ -359,4 +359,23 @@ export class LandmarkService {
       }))
     };
   }
+  
+  /**
+   * Close all provider connections
+   */
+  async close(): Promise<void> {
+    for (const provider of this.providers) {
+      if ('close' in provider && typeof provider.close === 'function') {
+        try {
+          await provider.close();
+          this.logger.debug(`Closed provider: ${provider.name}`);
+        } catch (error) {
+          this.logger.warn(`Failed to close provider ${provider.name}`, { 
+            error: (error as Error).message 
+          });
+        }
+      }
+    }
+    this.logger.info('All landmark provider connections closed');
+  }
 }

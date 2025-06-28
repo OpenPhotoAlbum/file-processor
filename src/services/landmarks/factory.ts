@@ -4,6 +4,8 @@
 
 import { LandmarkService, LandmarkServiceConfig } from './index.js';
 import { NationalParksProvider } from './providers/national-parks.js';
+import { GNISProvider } from './providers/gnis.js';
+import { RecreationProvider } from './providers/recreation.js';
 import { Logger } from '../../utils/logging/index.js';
 
 /**
@@ -23,7 +25,11 @@ export function createLandmarkService(): LandmarkService {
         apiKey: process.env.NPS_API_KEY
       },
       naturalFeatures: {
-        enabled: process.env.NATURAL_FEATURES_ENABLED === 'true' // Default disabled for now
+        enabled: process.env.GNIS_PROVIDER_ENABLED !== 'false' // Default enabled
+      },
+      recreation: {
+        enabled: process.env.RECREATION_GOV_PROVIDER_ENABLED !== 'false', // Default enabled
+        apiKey: process.env.RECREATION_GOV_API_KEY
       },
       stateParks: {
         enabled: process.env.STATE_PARKS_ENABLED === 'true' // Default disabled for now
@@ -44,10 +50,23 @@ export function createLandmarkService(): LandmarkService {
     logger.info('National Parks provider registered');
   }
 
+  // Register GNIS Provider for natural features
+  if (config.providers.naturalFeatures.enabled) {
+    const gnisProvider = new GNISProvider();
+    providers.push(gnisProvider);
+    logger.info('GNIS natural features provider registered');
+  }
+
+  // Register Recreation.gov Provider
+  if (config.providers.recreation.enabled && config.providers.recreation.apiKey) {
+    const recreationProvider = new RecreationProvider(config.providers.recreation.apiKey);
+    providers.push(recreationProvider);
+    logger.info('Recreation.gov facilities provider registered');
+  } else if (config.providers.recreation.enabled) {
+    logger.warn('Recreation.gov provider enabled but no API key provided');
+  }
+
   // TODO: Register additional providers as they're implemented
-  // if (config.providers.naturalFeatures.enabled) {
-  //   providers.push(new NaturalFeaturesProvider());
-  // }
   // if (config.providers.stateParks.enabled) {
   //   providers.push(new StateParksProvider());
   // }

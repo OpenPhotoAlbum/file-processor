@@ -36,7 +36,17 @@ export async function runCLI(): Promise<void> {
     .option('-o, --output <file>', 'output results to file (auto-adds .json extension)')
     .option('--overwrite', 'overwrite existing output file (default: auto-number)')
     .option('--json', 'output in JSON format')
-    .option('--quiet', 'minimal console output');
+    .option('--quiet', 'minimal console output')
+    .option('--timestamp-only', 'extract timestamp only (skip all processing)');
+
+  // Merge options
+  program
+    .option('--merge', 'merge with existing metadata instead of overwriting')
+    .option('--merge-sections <sections>', 
+      'specific sections to merge (comma-separated: location,timestamps,camera,settings,technical,media)')
+    .option('--preserve-enrichment', 'preserve expensive enrichment operations during merge (default: true)')
+    .option('--backup', 'create backup before overwriting/merging')
+    .option('--dry-run', 'show what would be changed without writing files');
 
   // Help examples
   program.addHelpText('after', `
@@ -52,6 +62,15 @@ Examples:
 
   # Recursive scan with quiet output and overwrite existing file
   $ media-processor -R media:photos --quiet -o summary.json --overwrite
+
+  # Add Live Photo detection while preserving existing landmarks
+  $ media-processor -f video.mov -o video.json --merge
+
+  # Update only media section with backup
+  $ media-processor -f video.mov -o video.json --merge-sections=media --backup
+
+  # Preview what would be merged without making changes
+  $ media-processor -f photo.jpg -o photo.json --merge --dry-run
 
 Path Formats:
   sample:path/file.jpg    # Uses SAMPLE_BASE_PATH environment variable

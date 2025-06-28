@@ -44,7 +44,9 @@ export enum SupportedMimeType {
   /** GIF images - basic support */
   GIF = 'image/gif',
   /** TIFF images - full support */
-  TIFF = 'image/tiff'
+  TIFF = 'image/tiff',
+  /** WEBP images - modern web format */
+  WEBP = 'image/webp'
 }
 
 /**
@@ -73,6 +75,18 @@ export interface MediaFile {
 /**
  * New consolidated processing result schema
  */
+export interface ProcessingEvent {
+  success: boolean;
+  processor: string;
+  extractedAt: string;
+  processingTimeMs?: number;
+  error?: string;
+  providersEnabled?: string[];
+  fieldsUpdated?: string[];
+  version?: string;
+  notes?: string;
+}
+
 export interface ProcessingResult {
   file: {
     path: string;
@@ -82,13 +96,8 @@ export interface ProcessingResult {
     created: string;
     modified: string;
   };
-  processing: {
-    success: boolean;
-    processor: string;
-    extractedAt: string;
-    processingTimeMs?: number;
-    error?: string;
-  };
+  processing: ProcessingEvent;
+  processingHistory?: ProcessingEvent[];
   media: {
     type: string;
     format: string;
@@ -97,6 +106,17 @@ export interface ProcessingResult {
       height: number;
       megapixels: number;
       orientation: string;
+    };
+    dominantColor?: string;
+    meanColor?: string;
+    salientColor?: string;
+    isLivePhoto?: boolean;
+    livePhotoInfo?: {
+      confidence: 'high' | 'medium' | 'low' | 'none';
+      hasMotionData: boolean;
+      motionDataCount: number;
+      duration: number | null;
+      correspondingImagePath?: string;
     };
   };
   timestamps: import('../utils/extractors/timestamp.js').TimestampExtractionResult;

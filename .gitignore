@@ -65,3 +65,25 @@ scratch/
 backup/
 
 # Sample media files are now in scratch/ directory (which is ignored)
+
+# MCP databases and caches
+*.db
+*.sqlite
+*.sqlite3
+embeddings.db
+project-embeddings.db
+file_cache.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# Generated files
+duplicates.json
+photo-metadata-*.html

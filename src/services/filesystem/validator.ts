@@ -89,6 +89,82 @@ export class FileSystemValidator {
   }
 
   /**
+   * Validate that an optional file exists and is accessible (uses INFO level logging for missing files)
+   */
+  async validateOptionalFile(filePath: string): Promise<FileValidationResult> {
+    const absolutePath = toAbsolutePath(filePath);
+    const safePath = sanitizePathForLogging(absolutePath);
+    
+    this.logger.debug(`Validating optional file: ${safePath}`);
+    
+    const result: FileValidationResult = {
+      isValid: false,
+      exists: false,
+      readable: false,
+      writable: false,
+      isFile: false,
+      errors: [],
+      warnings: []
+    };
+
+    try {
+      // Check if file exists and get stats
+      const stats = await stat(absolutePath);
+      result.exists = true;
+      result.isFile = stats.isFile();
+      
+      if (!result.isFile) {
+        result.errors.push('Path is not a regular file');
+        this.validationErrors.formatMismatch({
+          filePath: safePath,
+          expected: 'regular file',
+          actual: stats.isDirectory() ? 'directory' : 'other'
+        });
+      }
+
+      // Check readability
+      try {
+        await access(absolutePath, constants.R_OK);
+        result.readable = true;
+      } catch {
+        result.errors.push('File is not readable');
+        this.pathErrors.permissionDenied({
+          filePath: safePath,
+          operation: 'read access'
+        });
+      }
+
+      // Check writability
+      try {
+        await access(absolutePath, constants.W_OK);
+        result.writable = true;
+      } catch {
+        result.warnings.push('File is not writable');
+        // Not an error for read-only operations
+      }
+
+      // File is valid if it exists, is a file, and is readable
+      result.isValid = result.exists && result.isFile && result.readable;
+      
+      if (result.isValid) {
+        this.logger.debug(`Optional file validation passed: ${safePath}`);
+      } else {
+        this.logger.warn(`Optional file validation failed: ${safePath} - ${result.errors.join(', ')}`);
+      }
+
+    } catch (error) {
+      result.errors.push(`File access error: ${(error as Error).message}`);
+      // Use the new optional file error for missing optional files
+      this.pathErrors.optionalFileNotFound({
+        filePath: safePath,
+        operation: 'optional file validation'
+      }, error as Error);
+    }
+
+    return result;
+  }
+
+  /**
    * Validate and resolve a path (can be prefixed or absolute)
    */
   async validatePath(inputPath: string): Promise<PathValidationResult> {

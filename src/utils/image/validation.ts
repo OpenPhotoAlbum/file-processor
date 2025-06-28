@@ -150,16 +150,40 @@ export class ImageValidator {
     const buffer = Buffer.alloc(20); // Read more bytes for complex formats
     
     const stream = createReadStream(filePath, { start: 0, end: 19 });
-    await new Promise<void>((resolve, reject) => {
-      let offset = 0;
-      stream.on('data', (chunk) => {
-        const buf = chunk instanceof Buffer ? chunk : Buffer.from(chunk);
-        buf.copy(buffer, offset);
-        offset += buf.length;
+    
+    try {
+      await new Promise<void>((resolve, reject) => {
+        let offset = 0;
+        
+        const cleanup = () => {
+          if (!stream.destroyed) {
+            stream.destroy();
+          }
+        };
+        
+        stream.on('data', (chunk) => {
+          const buf = chunk instanceof Buffer ? chunk : Buffer.from(chunk);
+          buf.copy(buffer, offset);
+          offset += buf.length;
+        });
+        
+        stream.on('end', () => {
+          cleanup();
+          resolve();
+        });
+        
+        stream.on('error', (err) => {
+          cleanup();
+          reject(err);
+        });
       });
-      stream.on('end', () => resolve());
-      stream.on('error', reject);
-    });
+    } catch (error) {
+      // Ensure cleanup even if Promise creation fails
+      if (!stream.destroyed) {
+        stream.destroy();
+      }
+      throw error;
+    }
     
     return this.detectSignature(buffer);
   }
@@ -226,14 +250,36 @@ export class ImageValidator {
     const stream = createReadStream(filePath);
     let bytesRead = 0;
     
-    await new Promise<void>((resolve, reject) => {
-      stream.on('data', (chunk) => {
-        const buf = chunk instanceof Buffer ? chunk : Buffer.from(chunk);
-        bytesRead += buf.length;
+    try {
+      await new Promise<void>((resolve, reject) => {
+        const cleanup = () => {
+          if (!stream.destroyed) {
+            stream.destroy();
+          }
+        };
+        
+        stream.on('data', (chunk) => {
+          const buf = chunk instanceof Buffer ? chunk : Buffer.from(chunk);
+          bytesRead += buf.length;
+        });
+        
+        stream.on('end', () => {
+          cleanup();
+          resolve();
+        });
+        
+        stream.on('error', (err) => {
+          cleanup();
+          reject(err);
+        });
       });
-      stream.on('end', () => resolve());
-      stream.on('error', reject);
-    });
+    } catch (error) {
+      // Ensure cleanup even if Promise creation fails
+      if (!stream.destroyed) {
+        stream.destroy();
+      }
+      throw error;
+    }
     
     return bytesRead;
   }
