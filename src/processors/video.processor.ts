@@ -3,6 +3,7 @@ import { MediaFile, ProcessingResult } from '../types/media.js';
 import { ExifExtractor } from '../utils/extractors/exif.js';
 import { GPSExtractor } from '../utils/extractors/gps.js';
 import { TimestampExtractor } from '../utils/extractors/timestamp.js';
+import { LivePhotoDetector } from '../utils/video/live-photo-detector.js';
 import { Logger } from '../utils/logging/index.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { FileSystemService } from '../services/index.js';
@@ -18,6 +19,7 @@ export class VideoProcessor extends BaseProcessor {
   private exifExtractor = new ExifExtractor();
   private gpsExtractor = new GPSExtractor();
   private timestampExtractor = new TimestampExtractor();
+  private livePhotoDetector = new LivePhotoDetector();
   
   /**
    * Get supported video MIME types
@@ -103,6 +105,9 @@ export class VideoProcessor extends BaseProcessor {
         }
       });
       
+      // Detect if this is a Live Photo
+      const livePhotoResult = await this.livePhotoDetector.detectLivePhoto(file.absolutePath);
+      
       // For videos, we'll use a simpler approach for now
       const result: ProcessingResult = {
         file: {
@@ -126,7 +131,15 @@ export class VideoProcessor extends BaseProcessor {
             height: exifData?.image?.height || 0,
             megapixels: 0, // Not applicable for videos
             orientation: exifData?.image?.orientation || 'Unknown'
-          }
+          },
+          isLivePhoto: livePhotoResult.isLivePhoto,
+          livePhotoInfo: livePhotoResult.isLivePhoto ? {
+            confidence: livePhotoResult.confidence,
+            hasMotionData: livePhotoResult.indicators.hasLivePhotoInfo,
+            motionDataCount: livePhotoResult.indicators.livePhotoInfoCount,
+            duration: livePhotoResult.indicators.duration,
+            correspondingImagePath: livePhotoResult.indicators.correspondingImagePath
+          } : undefined
         },
         camera: exifData?.camera || {},
         settings: exifData?.settings || {},
@@ -173,7 +186,8 @@ export class VideoProcessor extends BaseProcessor {
             height: 0,
             megapixels: 0,
             orientation: 'Unknown'
-          }
+          },
+          isLivePhoto: false
         },
         timestamps: {
           primary: null,

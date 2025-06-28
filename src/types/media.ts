@@ -100,6 +100,14 @@ export interface ProcessingResult {
       megapixels: number;
       orientation: string;
     };
+    isLivePhoto?: boolean;
+    livePhotoInfo?: {
+      confidence: 'high' | 'medium' | 'low' | 'none';
+      hasMotionData: boolean;
+      motionDataCount: number;
+      duration: number | null;
+      correspondingImagePath?: string;
+    };
   };
   timestamps: import('../utils/extractors/timestamp.js').TimestampExtractionResult;
   location: import('../utils/extractors/gps.js').GPSExtractionResult;
