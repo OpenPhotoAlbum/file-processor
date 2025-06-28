@@ -10,6 +10,7 @@ import { sanitizePathForLogging } from '../utils/paths.js';
 import { OutputHandler } from './output.js';
 import { normalizeCliOptions } from './validators.js';
 import { extractTimestampOnly } from './timestamp-extractor.js';
+import { MetadataMerger, MergeOptions } from '../utils/metadata-merger.js';
 import { 
   CLIOptions, 
   ProcessingResult as CLIProcessingResult, 
@@ -25,6 +26,7 @@ const systemErrors = createSystemErrorFactory(logger);
 export class CLIHandler {
   private fs = new FileSystemService();
   private outputHandler = new OutputHandler();
+  private metadataMerger = new MetadataMerger();
 
   /**
    * Main command handler - processes CLI options and executes pipeline
@@ -238,7 +240,13 @@ export class CLIHandler {
           console.log(timestamp);
         } else {
           // Full processing pipeline
-          const metadata = await processFile(file);
+          let metadata = await processFile(file);
+          
+          // Handle merge logic if specified
+          if (options.merge || options.mergeSections || options.preserveEnrichment) {
+            metadata = await this.handleMetadataMerge(file, metadata, options);
+          }
+          
           processedData = metadata;
         }
         
@@ -355,6 +363,66 @@ export class CLIHandler {
       logger.debug('CLI cleanup completed - all database connections closed');
     } catch (error) {
       logger.warn('Cleanup warning', { error: (error as Error).message });
+    }
+  }
+  
+  /**
+   * Handle metadata merge when merge flags are specified
+   */
+  private async handleMetadataMerge(
+    filePath: string,
+    newMetadata: MediaProcessingResult,
+    options: CLIOptions & { mimeTypes?: string[]; outputPath?: string }
+  ): Promise<MediaProcessingResult> {
+    try {
+      // Determine output path for existing metadata
+      let metadataPath: string;
+      
+      if (options.outputPath) {
+        // Single file with specific output path
+        metadataPath = options.outputPath;
+      } else {
+        // Generate sidecar path
+        metadataPath = `${filePath}.json`;
+      }
+      
+      // Read existing metadata
+      const existingMetadata = this.metadataMerger.readExistingMetadata(metadataPath);
+      
+      if (!existingMetadata) {
+        logger.info('No existing metadata found - using new data', { 
+          path: sanitizePathForLogging(metadataPath) 
+        });
+        return newMetadata;
+      }
+      
+      // Create backup if requested
+      if (options.backup) {
+        this.metadataMerger.createBackup(metadataPath);
+      }
+      
+      // Configure merge options
+      const mergeOptions: MergeOptions = {
+        mode: options.mergeSections ? 'merge-selective' : 'merge',
+        sections: options.mergeSections as Array<'location' | 'timestamps' | 'camera' | 'settings' | 'technical' | 'media'> | undefined,
+        preserveEnrichment: options.preserveEnrichment !== false, // Default to true
+        createBackup: options.backup,
+        dryRun: options.dryRun
+      };
+      
+      // Perform merge
+      const mergeResult = this.metadataMerger.merge(existingMetadata, newMetadata, mergeOptions);
+      
+      // Log merge operation details
+      if (!options.quiet) {
+        this.metadataMerger.logMergeOperation(mergeResult, metadataPath);
+      }
+      
+      return mergeResult.merged;
+      
+    } catch (error) {
+      logger.error('Metadata merge failed - using new data only', error as Error);
+      return newMetadata;
     }
   }
 }

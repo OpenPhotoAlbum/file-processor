@@ -154,6 +154,10 @@ node dist/main.js -f "sample:vancouver-island.jpg" --json
 - **Filesystem Service** - File operations and validation: `docs/filesystem-service.md`
 - **CLI Documentation** - Command-line interface usage: `docs/cli.md`
 
+### Metadata & Storage
+- **Metadata Storage Architecture** - JSON sidecar files vs database storage: `docs/metadata-storage-architecture.md`
+- **Metadata Merge Strategy** - Intelligent merging with processing history: `docs/metadata-merge-strategy.md`
+
 ### Processing & Enrichment
 - **Live Photo Detection** - Apple Live Photo identification and metadata: `docs/live-photo-detection.md`
 - **Metadata Merge Strategy** - Preserve existing data when reprocessing: `docs/metadata-merge-strategy.md`
