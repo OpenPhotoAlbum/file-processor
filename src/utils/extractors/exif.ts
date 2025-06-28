@@ -233,26 +233,67 @@ throw new Error('Empty output from ExifTool');
     const latRef = rawExif['EXIF:GPSLatitudeRef'] || rawExif['GPS:GPSLatitudeRef'];
     const lonRef = rawExif['EXIF:GPSLongitudeRef'] || rawExif['GPS:GPSLongitudeRef'];
     
-    let latitude = this.parseNumber(lat) || 0;
-    let longitude = this.parseNumber(lon) || 0;
+    // Parse coordinates - handle both numeric values and coordinate strings with direction
+    const parsedLat = this.parseCoordinateWithDirection(lat, latRef);
+    const parsedLon = this.parseCoordinateWithDirection(lon, lonRef);
     
-    // Apply reference (North/South, East/West)
-    if (latRef === 'S' || latRef === 'South') {
-      latitude = -latitude;
-    }
-    if (lonRef === 'W' || lonRef === 'West') {
-      longitude = -longitude;
-    }
+    if (parsedLat === null || parsedLon === null) return undefined;
     
     return {
-      latitude,
-      longitude,
+      latitude: parsedLat,
+      longitude: parsedLon,
       altitude: this.parseNumber(rawExif['EXIF:GPSAltitude'] || rawExif['GPS:GPSAltitude']),
       timestamp: rawExif['EXIF:GPSTimeStamp'] || rawExif['GPS:GPSTimeStamp'],
       accuracy: rawExif['EXIF:GPSHPositioningError'] || rawExif['GPS:GPSHPositioningError']
     };
   }
   
+  /**
+   * Parse coordinate with direction handling
+   * Handles both separate reference fields and direction markers within coordinate strings
+   */
+  private parseCoordinateWithDirection(coordinate: any, referenceField: string | null): number | null {
+    if (typeof coordinate === 'number') {
+      // Pure numeric coordinate - apply reference if available
+      if (referenceField === 'S' || referenceField === 'South' || referenceField === 'W' || referenceField === 'West') {
+        return -coordinate;
+      }
+      return coordinate;
+    }
+    
+    if (typeof coordinate === 'string') {
+      // Parse coordinate string (e.g., "71 deg 3' 50.04\" W")
+      const coordinateStr = coordinate.trim();
+      
+      // Extract numeric value
+      const numericValue = parseFloat(coordinateStr);
+      if (isNaN(numericValue)) return null;
+      
+      // Check for direction markers in the string itself
+      const hasNorth = /[Nn]/.test(coordinateStr);
+      const hasSouth = /[Ss]/.test(coordinateStr);
+      const hasEast = /[Ee]/.test(coordinateStr);
+      const hasWest = /[Ww]/.test(coordinateStr);
+      
+      // Apply direction from coordinate string
+      if (hasSouth || hasWest) {
+        return -numericValue;
+      }
+      if (hasNorth || hasEast) {
+        return numericValue;
+      }
+      
+      // Fall back to reference field if no direction in string
+      if (referenceField === 'S' || referenceField === 'South' || referenceField === 'W' || referenceField === 'West') {
+        return -numericValue;
+      }
+      
+      return numericValue;
+    }
+    
+    return null;
+  }
+
   /**
    * Parse number from EXIF value
    */
