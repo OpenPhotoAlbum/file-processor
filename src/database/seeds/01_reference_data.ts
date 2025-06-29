@@ -9,9 +9,9 @@ export async function seed(knex: Knex): Promise<void> {
   await knex('imaging_trains').del();
   await knex('equipment').del();
 
-  // Insert equipment and get IDs
+  // Insert basic equipment entries - migration script will create equipment dynamically as needed
   const equipmentInserts = [
-    // Apple devices
+    // Apple devices - just a few key ones
     {
       equipment_type: EquipmentType.CAMERA,
       make: 'Apple',
@@ -20,7 +20,7 @@ export async function seed(knex: Knex): Promise<void> {
         sensor_type: 'CMOS',
         max_resolution: '4032x3024',
         video_capabilities: '4K',
-        notes: 'Standard iPhone with triple camera system'
+        notes: 'iPhone 13 Pro with triple camera system'
       }
     },
     {
@@ -31,38 +31,7 @@ export async function seed(knex: Knex): Promise<void> {
         sensor_type: 'CMOS',
         max_resolution: '4032x3024',
         video_capabilities: '4K',
-        notes: 'iPhone with improved cameras and Dynamic Island'
-      }
-    },
-    {
-      equipment_type: EquipmentType.CAMERA,
-      make: 'Apple',
-      model: 'iPhone 12 Pro',
-      equipment_metadata: {
-        sensor_type: 'CMOS',
-        max_resolution: '4032x3024',
-        video_capabilities: '4K',
-        notes: 'iPhone with LiDAR and triple camera system'
-      }
-    },
-    {
-      equipment_type: EquipmentType.CAMERA,
-      make: 'Apple',
-      model: 'iPhone 11 Pro',
-      equipment_metadata: {
-        sensor_type: 'CMOS',
-        max_resolution: '4032x3024',
-        video_capabilities: '4K',
-        notes: 'First iPhone with triple camera system'
-      }
-    },
-    {
-      equipment_type: EquipmentType.CAMERA,
-      make: 'Apple',
-      model: 'iPhone',
-      equipment_metadata: {
-        sensor_type: 'CMOS',
-        notes: 'Generic iPhone entry for older or unspecified models'
+        notes: 'iPhone 14 Pro with Dynamic Island'
       }
     },
     // Canon cameras
@@ -73,7 +42,7 @@ export async function seed(knex: Knex): Promise<void> {
       equipment_metadata: {
         sensor_type: 'CMOS',
         max_resolution: '4000x3000',
-        notes: 'Compact digital camera from Google Takeout data'
+        notes: 'Compact digital camera'
       }
     },
     {
@@ -86,7 +55,7 @@ export async function seed(knex: Knex): Promise<void> {
         notes: 'Fallback for Canon cameras not specifically identified'
       }
     },
-    // Generic entries
+    // Fallback entries
     {
       equipment_type: EquipmentType.CAMERA,
       make: 'Unknown',
@@ -110,7 +79,7 @@ export async function seed(knex: Knex): Promise<void> {
     equipmentMap[`${eq.make}-${eq.model}`] = eq.id;
   });
 
-  // Insert imaging trains
+  // Insert imaging trains - basic entries, migration will create more as needed
   await knex('imaging_trains').insert([
     {
       name: 'iPhone 13 Pro',
@@ -134,40 +103,6 @@ export async function seed(knex: Knex): Promise<void> {
         ultra_wide_focal_length: '13mm',
         telephoto_focal_length: '77mm',
         setup_type: 'integrated'
-      }
-    },
-    {
-      name: 'iPhone 12 Pro',
-      description: 'Apple iPhone 12 Pro with LiDAR scanner',
-      primary_camera_id: equipmentMap['Apple-iPhone 12 Pro'],
-      train_metadata: {
-        camera_system: 'triple_camera',
-        primary_focal_length: '26mm',
-        ultra_wide_focal_length: '13mm',
-        telephoto_focal_length: '52mm',
-        setup_type: 'integrated',
-        special_features: ['LiDAR']
-      }
-    },
-    {
-      name: 'iPhone 11 Pro',
-      description: 'Apple iPhone 11 Pro - first triple camera iPhone',
-      primary_camera_id: equipmentMap['Apple-iPhone 11 Pro'],
-      train_metadata: {
-        camera_system: 'triple_camera',
-        primary_focal_length: '26mm',
-        ultra_wide_focal_length: '13mm',
-        telephoto_focal_length: '52mm',
-        setup_type: 'integrated'
-      }
-    },
-    {
-      name: 'Generic iPhone',
-      description: 'Generic iPhone camera setup',
-      primary_camera_id: equipmentMap['Apple-iPhone'],
-      train_metadata: {
-        setup_type: 'integrated',
-        notes: 'Camera specifications vary by model'
       }
     },
     {

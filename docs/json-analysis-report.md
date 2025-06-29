@@ -1,0 +1,355 @@
+# JSON Metadata Analysis Report
+
+**Generated:** 2025-06-29T00:24:33.944Z
+
+## Overview
+- **Total JSON files:** 161,109
+- **Files with color analysis:** 0 (0.0%)
+- **Files with GPS data:** 0 (0.0%)
+- **Files with landmark data:** 23,351 (14.5%)
+- **Live Photos:** 2
+
+## MIME Types
+- **image/jpeg:** 86,214
+- **image/heic:** 48,310
+- **video/quicktime:** 12,197
+- **video/mp4:** 10,887
+- **image/png:** 3,501
+
+## Collections
+- **archive:** 161,109
+
+## Years
+- **1927:** 2
+- **1938:** 4
+- **1939:** 2
+- **1941:** 2
+- **1943:** 6
+- **1944:** 4
+- **1945:** 18
+- **1946:** 15
+- **1947:** 28
+- **1948:** 38
+- **1949:** 18
+- **1950:** 44
+- **1951:** 4
+- **1952:** 51
+- **1953:** 3
+- **1955:** 4
+- **1956:** 3
+- **1957:** 2
+- **1958:** 79
+- **1960:** 1
+- **1999:** 3
+- **2006:** 3
+- **2008:** 20
+- **2009:** 25
+- **2010:** 8
+- **2011:** 71
+- **2012:** 318
+- **2013:** 284
+- **2014:** 652
+- **2015:** 1,985
+- **2016:** 2,825
+- **2017:** 7,182
+- **2018:** 16,966
+- **2019:** 22,548
+- **2020:** 18,428
+- **2021:** 12,951
+- **2022:** 15,400
+- **2023:** 17,528
+- **2024:** 12,527
+- **2025:** 31,057
+
+## Processing Versions
+- **ImageProcessor:** 138,025
+- **VideoProcessor:** 23,084
+
+## Equipment Found (69 unique)
+- Apple-iPhone
+- Apple-iPhone 11
+- Apple-iPhone 11 Pro
+- Apple-iPhone 11 Pro Max
+- Apple-iPhone 12
+- Apple-iPhone 12 Pro
+- Apple-iPhone 12 Pro Max
+- Apple-iPhone 13
+- Apple-iPhone 13 Pro
+- Apple-iPhone 13 Pro Max
+- Apple-iPhone 14
+- Apple-iPhone 14 Pro
+- Apple-iPhone 14 Pro Max
+- Apple-iPhone 15 Pro Max
+- Apple-iPhone 16 Pro Max
+- Apple-iPhone 4
+- Apple-iPhone 4S
+- Apple-iPhone 5
+- Apple-iPhone 5s
+- Apple-iPhone 6
+- Apple-iPhone 6 Plus
+- Apple-iPhone 6s
+- Apple-iPhone 6s Plus
+- Apple-iPhone 7
+- Apple-iPhone 7 Plus
+- Apple-iPhone 8
+- Apple-iPhone 8 Plus
+- Apple-iPhone SE
+- Apple-iPhone SE (2nd generation)
+- Apple-iPhone SE (3rd generation)
+- Apple-iPhone X
+- Apple-iPhone XR
+- Apple-iPhone XS
+- Canon-Canon EOS 1000D
+- Canon-Canon EOS 30D
+- Canon-Canon EOS 350D DIGITAL
+- Canon-Canon EOS DIGITAL REBEL XT
+- Canon-Canon EOS R7
+- Canon-Canon EOS REBEL T2i
+- Canon-Canon EOS REBEL T3i
+- Canon-Canon EOS Rebel T6i
+- Canon-Canon EOS Rebel T8i
+- Canon-Canon PowerShot A610
+- Canon-Canon PowerShot A95
+- Canon-Canon PowerShot G9 X Mark II
+- Canon-Canon PowerShot SX100 IS
+- Canon-Canon PowerShot SX50 HS
+- DJI-FC1102
+- EPSON-XP-540/640 Series
+- FB Camera-iOS
+- Google-Pixel 6
+- Google-Pixel 7
+- HTC-ADR6300
+- HTC-ADR6400L
+- HTC-HTC One_M8
+- HUAWEI-EVA-AL00
+- NIKON CORPORATION-NIKON D3S
+- NIKON CORPORATION-NIKON D700
+- NIKON CORPORATION-NIKON D750
+- NIKON CORPORATION-NIKON D810
+- OLYMPUS IMAGING CORP.-STYLUS1
+- SAMSUNG-SGH-M919
+- SAMSUNG-SGH-T999L
+- SEIKO EPSON CORP.-PhotoPC 850Z
+- Samsung-CLX-3170 Series
+- Seek Thermal, Inc.-Compact, HW v7 TH:v4 TLID:v0
+- iPhone-iOS 16.6
+- samsung-SM-G950U
+- samsung-SM-G965U
+
+## Software Found (203 unique)
+- 10.0.1
+- 10.0.2
+- 10.1
+- 10.1.1
+- 10.2
+- 10.2.1
+- 10.3.1
+- 10.3.2
+- 10.3.3
+- 11.0.1
+- 11.0.3
+- 11.1
+- 11.1.1
+- 11.2.1
+- 11.2.2
+- 11.2.5
+- 11.2.6
+- 11.3
+- 11.3.1
+- 11.4
+- 11.4.1
+- 12
+- 12.0.1
+- 12.1
+- 12.1.2
+- 12.1.3
+- 12.1.4
+- 12.2
+- 12.3
+- 12.3.1
+- 12.4
+- 12.4.1
+- 13.1.2
+- 13.1.3
+- 13.2
+- 13.2.3
+- 13.3
+- 13.3.1
+- 13.4
+- 13.4.1
+- 13.5.1
+- 13.6.1
+- 13.7
+- 14.0.1
+- 14.1
+- 14.2
+- 14.3
+- 14.4
+- 14.4.1
+- 14.4.2
+- 14.6
+- 14.7.1
+- 14.8
+- 14.8.1
+- 15
+- 15.0.2
+- 15.1
+- 15.1.1
+- 15.2
+- 15.2.1
+- 15.3
+- 15.3.1
+- 15.4.1
+- 15.5
+- 15.6
+- 15.6.1
+- 16.0.2
+- 16.1.1
+- 16.1.2
+- 16.2
+- 16.3
+- 16.3.1
+- 16.4.1
+- 16.5
+- 16.5.1
+- 16.6
+- 16.6.1
+- 16.7.1
+- 17.0.2
+- 17.1.1
+- 17.1.2
+- 17.2.1
+- 17.3
+- 17.3.1
+- 17.4.1
+- 17.5.1
+- 17.6.1
+- 17.7
+- 17.7.1
+- 18.1.1
+- 18.3
+- 18.3.1
+- 18.3.2
+- 18.4.1
+- 18.5
+- 4.1
+- 5.0.1
+- 5.1.1
+- 6
+- 6.0.1
+- 6.1.2
+- 6.1.3
+- 7.0.2
+- 7.0.6
+- 7.1.1
+- 7.1.2
+- 8
+- 8.1.2
+- 8.2
+- 8.3
+- 8.4
+- 8.4.1
+- 9.0.1
+- 9.0.2
+- 9.1
+- 9.2
+- 9.2.1
+- 9.3.1
+- 9.3.2
+- 9.3.3
+- 9.3.4
+- 9.3.5
+- ASCIICanva
+- Adobe Illustrator CC (Windows)
+- Adobe Lightroom 4.4 (Macintosh)
+- Adobe Photoshop 21.0 (Windows)
+- Adobe Photoshop 21.2 (Macintosh)
+- Adobe Photoshop 25.13 (20240828.m.2753 dfda046)  (Macintosh)
+- Adobe Photoshop CC 2014 (Macintosh)
+- Adobe Photoshop CC 2015 (Macintosh)
+- Adobe Photoshop CC 2015.5 (Macintosh)
+- Adobe Photoshop CC 2018 (Macintosh)
+- Adobe Photoshop CS3 Windows
+- Adobe Photoshop CS5 (12.0x20100115 [20100115.m.998 2010/01/15:02:00:00 cutoff; m branch])  Windows
+- Adobe Photoshop CS5 Macintosh
+- Adobe Photoshop CS6 (Windows)
+- Adobe Photoshop Lightroom 5.0 (Macintosh)
+- Adobe Photoshop Lightroom 5.4 (Windows)
+- Adobe Photoshop Lightroom Classic 11.2 (Windows)
+- Adobe Photoshop Lightroom Classic 12.2.1 (Windows)
+- Apple Image Capture
+- Canva
+- Canva (Renderer) doc=DAGknQJyyyA user=UAFhax7MpCY brand=BAFha2fEaHU template=Gender Reveal Invitation in Pink Blue Beige Handdrawn Calligraphy Style
+- Centrics RPS
+- Corel Photo Album 6
+- Embettered by PicMonkey. http://www.picmonkey.com
+- Facebook
+- Focos
+- G950USQU7DSL3
+- G965USQS6CSH3
+- G965USQU4CSC7
+- G965USQU6CSI2
+- GIMP 2.10.34
+- GIMP 2.10.36
+- Google
+- GooglePhotoScan
+- HDR+ 1.0.440402506zd
+- HDR+ 1.0.440402506zdbh
+- HDR+ 1.0.450594208zd
+- HDR+ 1.0.450594208zdbh
+- HDR+ 1.0.520435816zd
+- HDR+ 1.0.540104767zd
+- HDR+ 1.0.641377693zd
+- HUJI CAM
+- Instagram
+- Layout from Instagram
+- M919UVUEMK2
+- M919UVUFNH7
+- M919UVUFNK2
+- Microsoft Windows Photo Gallery 6.0.6000.16386
+- Microsoft Windows Photo Gallery 6.0.6001.18000
+- Microsoft Windows Photo Viewer 6.1.7600.16385
+- P360
+- Photos 1.0.1
+- Photos 1.3
+- Photos 2.0
+- Photoshop Express 4.0.2.408
+- Photoshop Express 4.0.3.61
+- Photoshop Express 4.0.5.79
+- Photoshop Express 4.0.7.33
+- Photoshop Express 4.0.8.20
+- Photoshop Express 4.1.187
+- Picasa
+- ProCamera 12.2.1
+- QuickTime 6.0.1
+- QuickTime 7.6.6
+- RawTherapee 5.9
+- Seek Thermal App 2.1.9.1,SDK 2.1.6.0,FW 4.8.1.20,IP 2.6.1.12
+- Seek Thermal App 2.2.8.0,SDK 2.1.6.0,FW 4.8.1.20,IP 2.10.5.0
+- Slow Shutter Cam by Cogitap Software
+- Snapseed 2.18.168212136
+- T999LUVUBMK4
+- T999LUVUBNC1
+- Version 12.1.2 (Build 16C101)
+- Version 12.1.4 (Build 16D57)
+- Version 12.3.1 (Build 16F203)
+- Version 13.3 (Build 17C54)
+- Version 13.3.1 (Build 17D50)
+- Version 14.4.2 (Build 18D70)
+- Windows Photo Editor 10.0.10011.16384
+- v00.00.1634
+- v922-76
+- www.meitu.com
+
+## Processing Statistics
+- **Total processing runs:** 161,109
+- **Successful runs:** 161,109 (100.0%)
+- **Failed runs:** 0 (0.0%)
+- **Average duration:** 0ms
+
+## Migration Readiness
+- **Color analysis coverage:** 0.0%
+- **GPS coverage:** 0.0%
+- **Landmark enrichment:** 14.5%
+
+## Errors (0)
