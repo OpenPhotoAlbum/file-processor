@@ -41,6 +41,9 @@ export interface ImagingTrainMetadata {
   focal_ratio?: string;
   total_focal_length?: string;
   field_of_view?: string;
+  focal_length_range?: string;
+  zoom_range?: string;
+  special_features?: string[];
   notes?: string;
 }
 
