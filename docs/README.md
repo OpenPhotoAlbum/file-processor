@@ -18,7 +18,7 @@ This documentation covers the complete media processing pipeline that transforme
 ### Key Achievements
 - **150,000+ photos** processed and organized
 - **818GB storage** saved through deduplication
-- **24,243 enriched metadata** files created
+- **Database-first architecture** with normalized relational storage
 - **Zero data loss** throughout entire process
 
 ### Final Results

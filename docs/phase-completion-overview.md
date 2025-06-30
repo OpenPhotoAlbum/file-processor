@@ -93,19 +93,19 @@ This document provides a comprehensive overview of all phases completed during t
 
 ## Phase 5: Semantic Search Integration ✅
 
-### MCP Photo Search
-- **3.6GB embedding database** for 150,000+ photos
-- **Natural language queries** ("beach sunset", "family gathering")
-- **Metadata-based embeddings** using all enrichment data
-- **Automatic drift detection** and re-indexing
-- **Cost-optimized** with incremental updates
-
 ### MCP Project Context
-- **Codebase semantic search** for development
-- **371MB embedding database** for all project files
-- **Code-aware chunking** and embedding
-- **Same drift detection** as photo search
-- **Integrated with Claude** via MCP protocol
+- **Single MCP server** for development semantic search
+- **993 files indexed** with 38,383 chunks across codebase
+- **Comprehensive coverage** of src/, docs/, tests/, scripts/
+- **Code-aware chunking** and embedding with text-embedding-3-small
+- **Integrated with Claude** via MCP protocol for development queries
+
+### Photo Search Strategy
+- **Database-first approach** using MySQL for structured queries
+- **Rich SQL capabilities** for location, date, equipment filtering
+- **Spatial queries** for geographic proximity searches
+- **Cross-table joins** for complex metadata relationships
+- **No dedicated MCP server** - database handles photo search efficiently
 
 ## Phase 6: Photo Browser Foundation 🔄
 

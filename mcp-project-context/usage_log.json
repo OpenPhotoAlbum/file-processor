@@ -103,5 +103,20 @@
     "end_usage": null,
     "estimated_cost": 0.06292422,
     "duration_seconds": 377.726578
+  },
+  {
+    "session_id": "ingest_directory_1751322149",
+    "operation": "ingest_directory",
+    "description": "Processing /home/stephen/Documents/initial-media-processing (recursive=True)",
+    "start_time": "2025-06-30T18:22:29.735120",
+    "start_usage": null,
+    "tokens_processed": 3000073,
+    "api_calls": 819,
+    "texts_processed": 10281,
+    "model": "text-embedding-3-small",
+    "end_time": "2025-06-30T18:29:04.412777",
+    "end_usage": null,
+    "estimated_cost": 0.06000146,
+    "duration_seconds": 394.677657
   }
 ]

@@ -1,8 +1,8 @@
 # Metadata Storage Architecture
 
-## Current Implementation: JSON Sidecar Files
+## Current Implementation: Database-First Architecture
 
-The media processing pipeline currently uses a **JSON sidecar file approach** for storing all photo and video metadata. This architecture was chosen for portability, simplicity, and deduplication preservation.
+The media processing pipeline uses a **MySQL database-first approach** for storing all photo and video metadata. This architecture provides structured querying, relational integrity, and efficient storage while maintaining JSON sidecar generation capability for portability when needed.
 
 ## Storage Strategy
 
