@@ -8,6 +8,7 @@ import { Logger } from '../logging/index.js';
 import { createGPSErrorFactory } from '../errors/factories.js';
 import type { XMPData, GenericMetadata, CoordinateValue } from './types.js';
 import type { ExternalToolOutput } from '../../types/semantic-any.js';
+import { normalizeGPSCoordinate, normalizeGPSCoordinates } from './gps-utils.js';
 import { 
   getGeolocationService, 
   getLandmarkService, 
@@ -230,9 +231,11 @@ export class GPSExtractor {
       
       // Check if coordinates are already parsed (from our EXIF extractor)
       if (typeof gps.latitude === 'number' && typeof gps.longitude === 'number') {
+        // Normalize coordinates to prevent floating-point variations
+        const normalized = normalizeGPSCoordinates(gps.latitude, gps.longitude);
         return {
-          latitude: gps.latitude,
-          longitude: gps.longitude,
+          latitude: normalized.latitude,
+          longitude: normalized.longitude,
           altitude: gps.altitude,
           direction: gps.direction,
           speed: gps.speed,
@@ -249,9 +252,12 @@ export class GPSExtractor {
       
       if (lat === null || lon === null) return null;
       
+      // Normalize coordinates to prevent floating-point variations
+      const normalized = normalizeGPSCoordinates(lat, lon);
+      
       return {
-        latitude: lat,
-        longitude: lon,
+        latitude: normalized.latitude,
+        longitude: normalized.longitude,
         altitude: gps.GPSAltitude ? parseFloat(gps.GPSAltitude) : undefined,
         direction: gps.GPSImgDirection ? parseFloat(gps.GPSImgDirection) : undefined,
         speed: gps.GPSSpeed ? parseFloat(gps.GPSSpeed) : undefined,
@@ -301,9 +307,14 @@ export class GPSExtractor {
       const gpsRecord = gpsData as Record<string, unknown>;
       if (!gpsRecord.latitude || !gpsRecord.longitude) return null;
       
+      // Normalize coordinates to prevent floating-point variations
+      const lat = parseFloat(String(gpsRecord.latitude));
+      const lon = parseFloat(String(gpsRecord.longitude));
+      const normalized = normalizeGPSCoordinates(lat, lon);
+      
       return {
-        latitude: parseFloat(String(gpsRecord.latitude)),
-        longitude: parseFloat(String(gpsRecord.longitude)),
+        latitude: normalized.latitude,
+        longitude: normalized.longitude,
         altitude: gpsRecord.altitude ? parseFloat(String(gpsRecord.altitude)) : undefined,
         accuracy: gpsRecord.accuracy ? parseFloat(String(gpsRecord.accuracy)) : undefined,
         direction: gpsRecord.direction ? parseFloat(String(gpsRecord.direction)) : undefined,
@@ -342,9 +353,11 @@ export class GPSExtractor {
           const lon = parseFloat(match[2]);
           
           if (!isNaN(lat) && !isNaN(lon)) {
+            // Normalize coordinates to prevent floating-point variations
+            const normalized = normalizeGPSCoordinates(lat, lon);
             return {
-              latitude: lat,
-              longitude: lon,
+              latitude: normalized.latitude,
+              longitude: normalized.longitude,
               source: 'filename',
               sourceDetails: 'extracted from filename pattern'
             };
@@ -470,6 +483,7 @@ export class GPSExtractor {
         decimal = -decimal;
       }
       
+      // Return the raw value - normalization happens at the caller level
       return decimal;
       
     } catch {

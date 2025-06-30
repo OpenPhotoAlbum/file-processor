@@ -1,0 +1,700 @@
+{
+  "target": {
+    "table": "media_files",
+    "id": 51788,
+    "identifier": "2025/06/2025-06-24_20-58-12_001.JPG"
+  },
+  "media_files": {
+    "id": 51788,
+    "collection": "archive",
+    "relative_path": "2025/06/2025-06-24_20-58-12_001.JPG",
+    "file_hash": "d2a815e5d15fef53b63de8e04e77d1d8",
+    "file_size": 2922316,
+    "mime_type": "image/jpeg",
+    "media_type": "image",
+    "media_format": "jpeg",
+    "is_live_photo": 0,
+    "primary_timestamp": "2025-06-21T19:17:48.000Z",
+    "timestamp_source": "exif",
+    "timestamp_confidence": "high",
+    "imaging_train_id": 86,
+    "iso_value": 50,
+    "aperture_f_number": "1.6",
+    "shutter_speed_seconds": "0.000811",
+    "frame_count": 1,
+    "integration_time_seconds": "0.000810",
+    "focal_length_mm": 5,
+    "dominant_color_hex": "#121c11",
+    "mean_color_hex": "#667043",
+    "salient_color_hex": "#e6e2df",
+    "media_metadata": {
+      "media": {
+        "dimensions": {
+          "width": 3672,
+          "height": 2066,
+          "megapixels": 7.6,
+          "orientation": "Horizontal (normal)"
+        }
+      },
+      "camera": {},
+      "settings": {
+        "focalLength35mm": "42 mm"
+      },
+      "technical": {
+        "exifVersion": "0232",
+        "Composite:FOV": "46.4 deg",
+        "EXIF:GPSSpeed": 0,
+        "EXIF:LensInfo": "1.539999962-5.1mm f/1.6-2.4",
+        "EXIF:LensMake": "Apple",
+        "File:FileName": "2025-06-24_20-58-12_001.JPG",
+        "File:FileSize": "2.9 MB",
+        "EXIF:SceneType": "Directly photographed",
+        "File:Directory": "/photos/archive/2025/06",
+        "EXIF:OffsetTime": "-04:00",
+        "Composite:LensID": "iPhone 13 back dual wide camera 5.1mm f/1.6",
+        "EXIF:ExifVersion": "0232",
+        "EXIF:GPSAltitude": "10.59169579 m",
+        "EXIF:GPSLatitude": 42.78105278,
+        "EXIF:GPSSpeedRef": "km/h",
+        "EXIF:SubjectArea": "1831 1028 1751 787",
+        "EXIF:XResolution": 72,
+        "EXIF:YResolution": 72,
+        "EXIF:ExposureMode": "Auto",
+        "EXIF:GPSDateStamp": "2025:06:21",
+        "EXIF:GPSLongitude": 71.03292778,
+        "EXIF:GPSTimeStamp": "19:17:44",
+        "EXIF:HostComputer": "iPhone 13",
+        "EXIF:MeteringMode": "Multi-segment",
+        "EXIF:WhiteBalance": "Auto",
+        "Composite:Aperture": 1.6,
+        "EXIF:ApertureValue": 1.6,
+        "EXIF:SensingMethod": "One-chip color area",
+        "File:BitsPerSample": 8,
+        "File:ExifByteOrder": "Big-endian (Motorola, MM)",
+        "ICC_Profile:RedTRC": "(Binary data 32 bytes, use -b option to extract)",
+        "Composite:ImageSize": "2066x3672",
+        "EXIF:CustomRendered": "Custom",
+        "EXIF:GPSAltitudeRef": "Above Sea Level",
+        "EXIF:GPSLatitudeRef": "North",
+        "EXIF:ResolutionUnit": "inches",
+        "File:FileAccessDate": "2025:06:30 09:06:01-04:00",
+        "File:FileModifyDate": "2025:06:21 15:17:48-04:00",
+        "ICC_Profile:BlueTRC": "(Binary data 32 bytes, use -b option to extract)",
+        "MakerNotes:AEStable": "No",
+        "MakerNotes:AETarget": 179,
+        "MakerNotes:AFStable": "Yes",
+        "Composite:LightValue": 12.6,
+        "Composite:Megapixels": 7.6,
+        "EXIF:BrightnessValue": 8.413684819,
+        "EXIF:ExposureProgram": "Program AE",
+        "EXIF:FlashpixVersion": "0100",
+        "EXIF:GPSLongitudeRef": "West",
+        "File:ColorComponents": 3,
+        "File:EncodingProcess": "Baseline DCT, Huffman coding",
+        "File:FilePermissions": "-rw-r--r--",
+        "ICC_Profile:CMMFlags": "Not Embedded, Independent",
+        "ICC_Profile:GreenTRC": "(Binary data 32 bytes, use -b option to extract)",
+        "MakerNotes:AEAverage": 199,
+        "Composite:GPSAltitude": "10.5 m Above Sea Level",
+        "Composite:GPSDateTime": "2025:06:21 19:17:44Z",
+        "Composite:GPSLatitude": "42.78105278 N",
+        "Composite:GPSPosition": "42.78105278 N, 71.03292778 W",
+        "EXIF:DigitalZoomRatio": 1.366402116,
+        "EXIF:SceneCaptureType": "Standard",
+        "EXIF:YCbCrPositioning": "Centered",
+        "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+        "ICC_Profile:ProfileID": "ecfda38e388547c36db4bd4f7ada182f",
+        "Composite:GPSLongitude": "71.03292778 W",
+        "Composite:ShutterSpeed": "1/1233",
+        "EXIF:ShutterSpeedValue": "1/1233",
+        "EXIF:OffsetTimeOriginal": "-04:00",
+        "EXIF:SubSecTimeOriginal": 163,
+        "ICC_Profile:DeviceModel": "",
+        "MakerNotes:RunTimeEpoch": 0,
+        "MakerNotes:RunTimeFlags": "Valid",
+        "MakerNotes:RunTimeScale": 1000000000,
+        "MakerNotes:RunTimeValue": 246157002772916,
+        "EXIF:OffsetTimeDigitized": "-04:00",
+        "EXIF:SubSecTimeDigitized": 163,
+        "ExifTool:ExifToolVersion": 12.76,
+        "File:FileInodeChangeDate": "2025:06:26 17:33:19-04:00",
+        "ICC_Profile:ProfileClass": "Display Device Profile",
+        "MakerNotes:FocusPosition": 54,
+        "MakerNotes:SemanticStyle": "{_0=1,_1=0,_2=0}",
+        "EXIF:ExposureCompensation": 0,
+        "EXIF:GPSHPositioningError": "3.519322446 m",
+        "Composite:FocalLength35efl": "5.1 mm (35 mm equivalent: 42.0 mm)",
+        "Composite:ScaleFactor35efl": 8.2,
+        "Composite:SubSecCreateDate": "2025:06:21 15:17:48.163-04:00",
+        "Composite:SubSecModifyDate": "2025:06:21 15:17:48-04:00",
+        "ICC_Profile:ColorSpaceData": "RGB ",
+        "ICC_Profile:ProfileCMMType": "Apple Computer Inc.",
+        "ICC_Profile:ProfileCreator": "Apple Computer Inc.",
+        "ICC_Profile:ProfileVersion": "4.0.0",
+        "MakerNotes:PhotoIdentifier": "1DEFD1D9-62F7-4CBA-8977-21710C9D2D1A",
+        "Composite:CircleOfConfusion": "0.004 mm",
+        "ICC_Profile:MediaWhitePoint": "0.96419 1 0.82489",
+        "ICC_Profile:PrimaryPlatform": "Apple Computer Inc.",
+        "ICC_Profile:ProfileDateTime": "2022:01:01 00:00:00",
+        "ICC_Profile:RedMatrixColumn": "0.51512 0.2412 -0.00105",
+        "ICC_Profile:RenderingIntent": "Perceptual",
+        "MakerNotes:ImageCaptureType": "ProRAW",
+        "MakerNotes:MakerNoteVersion": 15,
+        "Composite:HyperfocalDistance": "4.46 m",
+        "EXIF:ComponentsConfiguration": "Y, Cb, Cr, -",
+        "ICC_Profile:BlueMatrixColumn": "0.1571 0.06657 0.78407",
+        "ICC_Profile:DeviceAttributes": "Reflective, Glossy, Positive, Color",
+        "ICC_Profile:ProfileCopyright": "Copyright Apple Inc., 2022",
+        "MakerNotes:FrontFacingCamera": "No",
+        "Composite:RunTimeSincePowerUp": "2 days 20:22:37",
+        "ICC_Profile:GreenMatrixColumn": "0.29198 0.69225 0.04189",
+        "MakerNotes:AccelerationVector": "0.04644396528 -0.9861562258 -0.2896431685",
+        "MakerNotes:FocusDistanceRange": "2.32 - 7.74 m",
+        "MakerNotes:SignalToNoiseRatio": 56.32014847,
+        "ICC_Profile:DeviceManufacturer": "Apple Computer Inc.",
+        "ICC_Profile:ProfileDescription": "Display P3",
+        "MakerNotes:LivePhotoVideoIndex": 1107296384,
+        "ICC_Profile:ChromaticAdaptation": "1.04788 0.02292 -0.0502 0.02959 0.99048 -0.01706 -0.00923 0.01508 0.75168",
+        "Composite:SubSecDateTimeOriginal": "2025:06:21 15:17:48.163-04:00",
+        "ICC_Profile:ProfileFileSignature": "acsp",
+        "ICC_Profile:ProfileConnectionSpace": "XYZ ",
+        "ICC_Profile:ConnectionSpaceIlluminant": "0.9642 1 0.82491"
+      }
+    },
+    "camera_exif": null,
+    "file_created_at": "2025-06-26T11:40:13.000Z",
+    "file_modified_at": "2025-06-21T23:17:48.000Z",
+    "created_at": "2025-06-30T21:51:42.000Z",
+    "updated_at": "2025-06-30T21:51:42.000Z"
+  },
+  "imaging_trains": {
+    "id": 86,
+    "name": "Apple iPhone 13",
+    "description": "Apple iPhone 13 camera system",
+    "primary_camera_id": 84,
+    "lens_id": null,
+    "telescope_id": null,
+    "mount_id": null,
+    "train_metadata": {
+      "notes": "Auto-created imaging train for Apple iPhone 13",
+      "setup_type": "integrated",
+      "camera_system": "single_camera",
+      "primary_focal_length": "28mm"
+    },
+    "is_active": 1
+  },
+  "equipment": [
+    {
+      "role": "primary_camera",
+      "id": 84,
+      "equipment_type": "camera",
+      "make": "Apple",
+      "model": "iPhone 13",
+      "equipment_metadata": {
+        "notes": "Auto-created during migration for Apple iPhone 13",
+        "sensor_type": "CMOS",
+        "max_resolution": "4032x3024",
+        "video_capabilities": "4K"
+      },
+      "is_active": 1
+    }
+  ],
+  "media_locations": [
+    {
+      "file_id": 51788,
+      "latitude": "42.78105300",
+      "longitude": "-71.03292800",
+      "gps_source": "exif",
+      "gps_confidence": "medium",
+      "city_id": 387,
+      "state_id": 89,
+      "country_id": 486,
+      "geolocation_data": {
+        "conflicts": [],
+        "alternatives": [],
+        "enrichmentStatus": {
+          "cacheHit": false,
+          "landmarks": "success",
+          "geolocation": "success",
+          "queryTimeMs": 561,
+          "providersUsed": [
+            "USGS GNIS",
+            "Recreation.gov"
+          ]
+        }
+      }
+    }
+  ],
+  "geo_cities": [
+    {
+      "id": 387,
+      "postal_code": "1830",
+      "latitude": "42.79590000",
+      "longitude": "-71.05323000",
+      "city": "Haverhill",
+      "state_code": "MA",
+      "county_name": "Essex",
+      "county_names_all": "Essex",
+      "timezone": "America/New_York",
+      "created_at": "2025-06-30T04:42:48.000Z",
+      "updated_at": "2025-06-30T04:42:48.000Z"
+    }
+  ],
+  "geo_states": [
+    {
+      "id": 89,
+      "code": "MA",
+      "name": "Massachusetts",
+      "country_code": "US",
+      "created_at": "2025-06-18T20:35:18.000Z",
+      "updated_at": "2025-06-18T20:35:18.000Z"
+    }
+  ],
+  "geo_countries": [
+    {
+      "id": 486,
+      "country_code": "US",
+      "iso3": "USA",
+      "country_name": "United States",
+      "phone_code": "1",
+      "created_at": "2025-06-18T20:35:12.000Z",
+      "updated_at": "2025-06-18T20:35:12.000Z"
+    }
+  ],
+  "media_landmarks": [
+    {
+      "id": 421492,
+      "file_id": 51788,
+      "landmark_id": 56,
+      "distance_meters": 768
+    },
+    {
+      "id": 421493,
+      "file_id": 51788,
+      "landmark_id": 57,
+      "distance_meters": 1017
+    },
+    {
+      "id": 421497,
+      "file_id": 51788,
+      "landmark_id": 61,
+      "distance_meters": 2093
+    },
+    {
+      "id": 421496,
+      "file_id": 51788,
+      "landmark_id": 60,
+      "distance_meters": 2108
+    },
+    {
+      "id": 421498,
+      "file_id": 51788,
+      "landmark_id": 62,
+      "distance_meters": 2676
+    },
+    {
+      "id": 421499,
+      "file_id": 51788,
+      "landmark_id": 63,
+      "distance_meters": 2691
+    },
+    {
+      "id": 421490,
+      "file_id": 51788,
+      "landmark_id": 54,
+      "distance_meters": 2910
+    },
+    {
+      "id": 421491,
+      "file_id": 51788,
+      "landmark_id": 55,
+      "distance_meters": 2926
+    },
+    {
+      "id": 421494,
+      "file_id": 51788,
+      "landmark_id": 58,
+      "distance_meters": 14031
+    },
+    {
+      "id": 421495,
+      "file_id": 51788,
+      "landmark_id": 59,
+      "distance_meters": 15129
+    }
+  ],
+  "landmarks": [
+    {
+      "id": 54,
+      "name": "Hales Island",
+      "category": "natural_feature",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 2910,
+        "landmark": {
+          "id": "gnis_617414",
+          "name": "Hales Island",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "natural_feature",
+          "fullName": "Hales Island (Island)",
+          "latitude": "42.76120190",
+          "longitude": "-71.05616790",
+          "description": "Land mass surrounded by water - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Island"
+        },
+        "confidence": 0.94,
+        "matchMethod": "spatial_query",
+        "relationship": "visible_from"
+      }
+    },
+    {
+      "id": 55,
+      "name": "Johnson Creek",
+      "category": "river",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 2926,
+        "landmark": {
+          "id": "gnis_612617",
+          "name": "Johnson Creek",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "river",
+          "fullName": "Johnson Creek (Stream)",
+          "latitude": "42.75564660",
+          "longitude": "-71.04227860",
+          "description": "River or stream - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Stream"
+        },
+        "confidence": 0.94,
+        "matchMethod": "spatial_query",
+        "relationship": "visible_from"
+      }
+    },
+    {
+      "id": 56,
+      "name": "East Meadow River",
+      "category": "river",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 768,
+        "landmark": {
+          "id": "gnis_612594",
+          "name": "East Meadow River",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "river",
+          "fullName": "East Meadow River (Stream)",
+          "latitude": "42.77842400",
+          "longitude": "-71.02422290",
+          "description": "River or stream - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Stream"
+        },
+        "confidence": 0.85,
+        "matchMethod": "spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 57,
+      "name": "Millvale Reservoir",
+      "category": "lake",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 1017,
+        "landmark": {
+          "id": "gnis_612637",
+          "name": "Millvale Reservoir",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "lake",
+          "fullName": "Millvale Reservoir (Reservoir)",
+          "latitude": "42.79000780",
+          "longitude": "-71.03040420",
+          "description": "Water reservoir - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Reservoir"
+        },
+        "confidence": 0.8,
+        "matchMethod": "spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 58,
+      "name": "Essex National Heritage Area",
+      "category": "recreation_facility",
+      "provider": "RECREATION_GOV",
+      "provider_data": {
+        "source": "Recreation.gov",
+        "distance": 14031,
+        "landmark": {
+          "id": "recreation_area_4071",
+          "name": "Essex National Heritage Area",
+          "state": "US",
+          "source": "recreation_gov",
+          "category": "recreation_facility",
+          "fullName": "Essex National Heritage Area",
+          "latitude": 42.667831421,
+          "longitude": -70.957107544,
+          "description": "The Essex National Heritage Area begins just 10 miles north of Boston and covers 500 square miles of eastern Massachusetts to the New Hampshire border. The Area includes hundreds of historical sites, miles of intact landscapes, glistening coastal regions and lifetimes of rich experiences that chronicle the history of our region and of our nation. - Phone: (978) 740-0444, Email: annieh@essexheritage.org",
+          "lastUpdated": "2021-09-23",
+          "subcategory": "Recreation Area"
+        },
+        "confidence": 0.7193869199112264,
+        "matchMethod": "recreation_area_spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 59,
+      "name": "Parker River National Wildlife Refuge",
+      "category": "national_recreation_area",
+      "provider": "RECREATION_GOV",
+      "provider_data": {
+        "source": "Recreation.gov",
+        "distance": 15129,
+        "landmark": {
+          "id": "recreation_area_1557",
+          "name": "Parker River National Wildlife Refuge",
+          "state": "US",
+          "source": "recreation_gov",
+          "category": "national_recreation_area",
+          "fullName": "Parker River National Wildlife Refuge",
+          "latitude": 42.7984367,
+          "longitude": -70.849043,
+          "description": "<p>The refuge was established in 1941, and today consists of more than 4,700 acres of diverse upland and wetland habitats including sandy beach and dune, maritime shrubs and forests, cranberry bogs, man-made impoundments, salt marsh and associated creek, river, and mud flat. These refuge habitats support varied and abundant populations of resident and migratory wildlife including more than 300 species of birds and additional species of mammals, reptiles, amphibians, insects, and plants. The refuge also provides critical habitat for the federally threatened piping plover.</p> - Phone: 978-465-5753, Email: parkerriver@fws.gov",
+          "lastUpdated": "2025-05-09",
+          "subcategory": "Recreation Area"
+        },
+        "confidence": 0.6974178413338475,
+        "matchMethod": "recreation_area_spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 60,
+      "name": "Kenoza Lake",
+      "category": "lake",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 2108,
+        "landmark": {
+          "id": "gnis_612619",
+          "name": "Kenoza Lake",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "lake",
+          "fullName": "Kenoza Lake (Reservoir)",
+          "latitude": "42.78990230",
+          "longitude": "-71.05577520",
+          "description": "Water reservoir - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Reservoir"
+        },
+        "confidence": 0.58,
+        "matchMethod": "spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 61,
+      "name": "Golden Hill",
+      "category": "mountain",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 2093,
+        "landmark": {
+          "id": "gnis_612605",
+          "name": "Golden Hill",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "mountain",
+          "fullName": "Golden Hill (Summit)",
+          "latitude": "42.77227970",
+          "longitude": "-71.05561180",
+          "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Summit"
+        },
+        "confidence": 0.52,
+        "matchMethod": "spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 62,
+      "name": "Lake Saltonstall",
+      "category": "lake",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 2676,
+        "landmark": {
+          "id": "gnis_612661",
+          "name": "Lake Saltonstall",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "lake",
+          "fullName": "Lake Saltonstall (Reservoir)",
+          "latitude": "42.78300170",
+          "longitude": "-71.06561590",
+          "description": "Water reservoir - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Reservoir"
+        },
+        "confidence": 0.55,
+        "matchMethod": "spatial_query",
+        "relationship": "nearby"
+      }
+    },
+    {
+      "id": 63,
+      "name": "Mount Perry",
+      "category": "mountain",
+      "provider": "GNIS",
+      "provider_data": {
+        "source": "USGS GNIS",
+        "distance": 2691,
+        "landmark": {
+          "id": "gnis_606298",
+          "name": "Mount Perry",
+          "state": "MA",
+          "county": "Essex",
+          "source": "usgs_gnis",
+          "category": "mountain",
+          "fullName": "Mount Perry (Summit)",
+          "latitude": "42.75821670",
+          "longitude": "-71.02200330",
+          "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "lastUpdated": "2025-06-30T21:51:42.058Z",
+          "subcategory": "Summit"
+        },
+        "confidence": 0.55,
+        "matchMethod": "spatial_query",
+        "relationship": "nearby"
+      }
+    }
+  ],
+  "media_software": [
+    {
+      "id": 15,
+      "file_id": 51788,
+      "software_id": 18,
+      "usage_role": "capture",
+      "usage_metadata": {
+        "source": "camera_metadata"
+      }
+    }
+  ],
+  "software": [
+    {
+      "id": 18,
+      "name": "iOS",
+      "software_type": "capture",
+      "version": "18.5",
+      "software_metadata": {
+        "vendor": "Apple"
+      }
+    }
+  ],
+  "processing_runs": [
+    {
+      "id": 51796,
+      "file_id": 51788,
+      "processor": "ImageProcessor",
+      "success": 1,
+      "extracted_at": "2025-07-01T01:51:42.000Z",
+      "processing_version": "1.0.0",
+      "providers_enabled": null,
+      "providers_with_results": null,
+      "provider_failures": null,
+      "processing_duration_ms": 0,
+      "notes": null
+    }
+  ],
+  "unknown_tables_checked": [],
+  "inspection_metadata": {
+    "timestamp": "2025-06-30T21:51:43.055Z",
+    "tables_inspected": [
+      "media_files",
+      "imaging_trains",
+      "equipment",
+      "media_locations",
+      "geo_cities",
+      "geo_states",
+      "geo_countries",
+      "media_landmarks",
+      "landmarks",
+      "media_software",
+      "software",
+      "processing_runs"
+    ],
+    "total_related_records": 28,
+    "database_connection": {
+      "host": "localhost",
+      "port": 3309,
+      "database": "kin"
+    }
+  },
+  "_results": {
+    "null_fields": {
+      "media_files": [
+        "camera_exif"
+      ],
+      "imaging_trains": [
+        "lens_id",
+        "telescope_id",
+        "mount_id"
+      ],
+      "processing_runs_providers": [
+        "run[0].providers_enabled",
+        "run[0].providers_with_results",
+        "run[0].provider_failures"
+      ]
+    },
+    "empty_associations": {},
+    "populated_associations": {
+      "equipment": "1 records",
+      "equipment_roles": [
+        "primary_camera"
+      ],
+      "media_locations": "1 records",
+      "geo_cities": "1 records",
+      "media_landmarks": "10 records",
+      "landmarks": "10 records",
+      "media_software": "1 records",
+      "software": "1 records",
+      "processing_runs": "1 records"
+    },
+    "data_completeness": {
+      "core_data": true,
+      "location_data": true,
+      "landmark_data": true,
+      "equipment_data": true,
+      "software_data": true,
+      "processing_data": true
+    },
+    "issues": [
+      "Processing runs missing provider tracking data"
+    ],
+    "completeness_score": "6/6 (100%)"
+  }
+}

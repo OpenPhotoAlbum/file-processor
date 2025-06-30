@@ -57,6 +57,17 @@ npm run dev -- [options]  # Note the -- separator
 | `--json` | Output in JSON format | `--json` |
 | `--quiet` | Minimal console output | `--quiet` |
 
+### Database Storage Options
+
+| Option | Description | Example |
+|--------|-------------|---------|
+| `--output-db` | Store results in database (requires MySQL connection) | `--output-db` |
+| `--db-collection <name>` | Database collection name (default: archive) | `--db-collection staging` |
+| `--colors` | Extract colors during database storage (default: true) | `--colors` |
+| `--no-colors` | Skip color extraction during database storage | `--no-colors` |
+| `--db-history` | Preserve existing database records (default: true) | `--db-history` |
+| `--no-db-history` | Overwrite existing database records | `--no-db-history` |
+
 ### Utility Options
 
 | Option | Description |
@@ -94,6 +105,42 @@ The CLI respects environment configuration:
 - `SAMPLE_BASE_PATH` - Base directory for `sample:` prefix
 - `MEDIA_BASE_PATH` - Base directory for `media:` prefix
 - `ENABLED_MIME_TYPES` - Default MIME type filtering (overridden by `--mime`)
+- MySQL connection settings for `--output-db` functionality
+
+## Database Storage
+
+The CLI can store processing results directly in a MySQL database using the `--output-db` flag. This provides structured storage for large collections and enables advanced analytics.
+
+### Database Services
+
+The database storage system uses several specialized services:
+
+- **MediaFileService** (`/src/services/database/MediaFileService.ts`) - Core media file storage with deduplication
+- **LocationService** (`/src/services/database/LocationService.ts`) - Geographic data with normalized foreign keys
+- **LandmarkService** (`/src/services/database/LandmarkService.ts`) - GNIS landmarks and Recreation.gov facilities
+- **EquipmentService** (`/src/services/database/EquipmentService.ts`) - Camera equipment and imaging chains
+
+### Database Features
+
+**Normalized Storage:**
+- Foreign key relationships for cities, states, countries
+- Equipment normalization (make/model → imaging train)
+- Structured metadata with JSON columns for flexibility
+
+**Deduplication:**
+- MD5 file hashing prevents duplicate storage
+- Configurable history preservation (`--db-history`)
+- Cache optimization for large batch operations
+
+**Color Analysis:**
+- Automatic dominant/mean/salient color extraction
+- Configurable with `--colors`/`--no-colors` flags
+- Uses Sharp and Vibrant libraries for image analysis
+
+**Processing Tracking:**
+- Complete processing run history
+- Provider usage tracking (GNIS, Recreation.gov, etc.)
+- Performance metrics and failure analysis
 
 ## Usage Examples
 
@@ -135,6 +182,25 @@ node main.js -f sample:test.heic --json -o heic-analysis.json
 
 # Process with specific filter for analysis
 node main.js -R /camera-roll --mime jpeg --json -o jpeg-only.json
+```
+
+### Database Storage
+
+```bash
+# Store results in database only
+node main.js -f photo.jpg --output-db
+
+# Store in both file and database with custom collection
+node main.js -f photo.jpg -o output.json --output-db --db-collection staging
+
+# Batch process with database storage (skip color extraction for speed)
+node main.js -R /photos --output-db --no-colors --quiet
+
+# Process archive with database storage and preserve history
+node main.js -R /photos/archive --output-db --db-collection archive --quiet
+
+# Fast processing without color extraction or history preservation
+node main.js -R /photos/archive --output-db --no-colors --no-db-history --quiet
 ```
 
 ## Output Formats

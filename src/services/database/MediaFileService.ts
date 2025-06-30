@@ -72,9 +72,11 @@ export class MediaFileService {
         );
       }
 
-      // Prepare media file data
+      // Prepare media file data  
+      const detectedCollection = this.determineCollection(result.file.path, collection);
+      logger.debug(`Collection detection: path=${result.file.path}, input=${collection}, detected=${detectedCollection}`);
       const mediaFileData = {
-        collection: collection as 'archive' | 'staging' | 'processed',
+        collection: detectedCollection,
         relative_path: this.getRelativePath(result.file.path),
         file_hash: fileHash,
         file_size: result.file.size || 0,
@@ -90,13 +92,16 @@ export class MediaFileService {
         aperture_f_number: result.settings?.aperture ? parseFloat(result.settings.aperture) : null,
         shutter_speed_seconds: this.parseShutterSpeed(result.settings?.shutterSpeed),
         frame_count: 1, // TODO: Add frameCount to media interface if needed
-        integration_time_seconds: null, // Not in current schema
+        integration_time_seconds: this.calculateIntegrationTime(
+          this.parseShutterSpeed(result.settings?.shutterSpeed),
+          1 // frame_count defaults to 1
+        ),
         focal_length_mm: this.parseFocalLength(result.settings?.focalLength),
         dominant_color_hex: colorData.dominant,
         mean_color_hex: colorData.mean,
         salient_color_hex: colorData.salient,
-        media_metadata: this.sanitizeMetadata(result),
-        camera_exif: result.technical || {},
+        media_metadata: JSON.stringify(this.sanitizeMetadata(result)),
+        // camera_exif: removed - same data stored in media_metadata.technical
         file_created_at: new Date(result.file.created),
         file_modified_at: new Date(result.file.modified)
       };
@@ -108,7 +113,7 @@ export class MediaFileService {
         const updateData = { ...mediaFileData };
         delete (updateData as any).created_at;
         delete (updateData as any).updated_at;
-        
+
         await this.db('media_files')
           .where('id', existingFile.id)
           .update(updateData as any);
@@ -248,6 +253,43 @@ export class MediaFileService {
   }
 
   /**
+   * Determine collection based on file path
+   */
+  private determineCollection(filePath: string, defaultCollection: string): 'archive' | 'staging' | 'processed' | 'sample' {
+    // Check for sample files first
+    if (filePath.startsWith('sample:')) {
+      logger.debug(`Sample file detected, using sample collection: ${filePath}`);
+      return 'sample';
+    }
+    
+    // Check for specific directory patterns
+    if (filePath.includes('/photos/archive/')) {
+      return 'archive';
+    }
+    
+    if (filePath.includes('/photos/staging/')) {
+      return 'staging';
+    }
+    
+    if (filePath.includes('/photos/processed/')) {
+      return 'processed';
+    }
+    
+    // Use provided default, but ensure it's valid (unless it's 'auto')
+    if (defaultCollection === 'auto') {
+      return 'staging'; // Default for auto-detection
+    }
+    
+    const validCollections = ['archive', 'staging', 'processed', 'sample'] as const;
+    if (validCollections.includes(defaultCollection as any)) {
+      return defaultCollection as 'archive' | 'staging' | 'processed' | 'sample';
+    }
+    
+    // Final fallback
+    return 'staging';
+  }
+
+  /**
    * Determine media type from MIME type
    */
   private determineMediaType(mimeType?: string): string {
@@ -278,15 +320,33 @@ export class MediaFileService {
 
   /**
    * Sanitize metadata for storage
+   * Excludes data that's stored in relational columns/tables to prevent duplication
    */
   private sanitizeMetadata(result: ProcessingResult): UnknownJsonContent {
+    // Create cleaned media object (exclude fields stored in columns)
+    const { type, format, dominantColor, meanColor, salientColor, ...cleanedMedia } = result.media || {};
+
+    // Create cleaned settings object (exclude fields stored in columns)  
+    const { iso, aperture, shutterSpeed, focalLength, flash, ...cleanedSettings } = result.settings || {};
+
+    // Create cleaned camera object (exclude fields stored in equipment/software tables)
+    const { make, model, software, lens, ...cleanedCamera } = result.camera || {};
+    // All camera info is stored in equipment/software tables
+
+    // Create cleaned technical object (exclude fields stored in columns)
+    const cleanedTechnical = result.technical ? { ...result.technical } : {};
+    delete (cleanedTechnical as any).fileType;    // stored in media_format column
+    delete (cleanedTechnical as any).mimeType;    // stored in mime_type column
+    delete (cleanedTechnical as any).SourceFile;  // stored in relative_path column
+    delete (cleanedTechnical as any)['EXIF:Flash']; // stored in settings.flash
+
     return {
-      media: result.media || {},
-      location: result.location || {},
-      camera: result.camera || {},
-      settings: result.settings || {},
-      technical: result.technical || {},
-      processing: result.processing || {}
+      media: cleanedMedia,
+      // location: excluded - stored in media_locations and media_landmarks tables
+      camera: cleanedCamera,
+      settings: cleanedSettings, 
+      technical: cleanedTechnical,
+      // processing: excluded - stored in processing_runs table
     };
   }
 
@@ -359,5 +419,22 @@ export class MediaFileService {
     // Extract numeric value (e.g., "50mm" -> 50)
     const match = focalLength.match(/(\d+)/);
     return match ? parseInt(match[1]) : null;
+  }
+
+  /**
+   * Calculate integration time as shutter_speed_seconds * frame_count
+   * Defaults to shutter speed if available, null if shutter speed is null
+   * Rounds to 5 decimal places for reasonable precision
+   */
+  private calculateIntegrationTime(shutterSpeedSeconds: number | null, frameCount: number): number | null {
+    if (shutterSpeedSeconds === null) return null;
+    
+    // Integration time = shutter speed * frame count
+    // For single frames (photos), this equals shutter speed
+    // For multiple frames (video/stacking), this is total exposure time
+    const integrationTime = shutterSpeedSeconds * frameCount;
+    
+    // Round to 5 decimal places (e.g., 0.00025)
+    return Math.round(integrationTime * 100000) / 100000;
   }
 }

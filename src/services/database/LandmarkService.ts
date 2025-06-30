@@ -122,9 +122,10 @@ export class LandmarkService {
       try {
         const landmark = landmarkData as UnknownJsonContent;
         
-        // Extract landmark info
-        const name = String(landmark.name || 'Unknown');
-        const category = String(landmark.type || landmark.category || 'generic');
+        // Extract landmark info from nested structure
+        const landmarkObj = landmark.landmark as UnknownJsonContent || {};
+        const name = String(landmarkObj.name || landmarkObj.fullName || landmark.name || 'Unknown');
+        const category = String(landmarkObj.category || landmarkObj.subcategory || landmark.type || landmark.category || 'generic');
         const distance = Number(landmark.distance || 0);
         
         // Auto-detect provider from landmark data

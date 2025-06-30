@@ -3,6 +3,7 @@ import { Logger } from '../utils/logging/index.js';
 import { MediaFileService } from '../services/database/MediaFileService.js';
 import { LocationService } from '../services/database/LocationService.js';
 import { LandmarkService } from '../services/database/LandmarkService.js';
+import { SoftwareService } from '../services/database/SoftwareService.js';
 
 const logger = new Logger('PostProcessor');
 
@@ -60,10 +61,11 @@ async function storeDatabaseRecords(
     const mediaFileService = new MediaFileService(knex);
     const locationService = new LocationService(knex);
     const landmarkService = new LandmarkService(knex);
+    const softwareService = new SoftwareService(knex);
 
     // Store main media file record
     const mediaFileId = await mediaFileService.upsertMediaFile(result, {
-      collection: options.dbCollection || 'archive',
+      collection: options.dbCollection || 'auto', // Let MediaFileService auto-detect based on path
       preserveHistory: options.preserveHistory !== false,
       extractColors: options.extractColors !== false
     });
@@ -76,6 +78,22 @@ async function storeDatabaseRecords(
     // Store landmark associations (if enrichment data exists)
     if (result.location?.landmarks && result.location.landmarks.length > 0) {
       await landmarkService.upsertLandmarkAssociations(mediaFileId, result);
+    }
+
+    // Store software associations (if software data exists)
+    logger.debug('Checking for software data', {
+      cameraSwOK: !!result.camera?.software,
+      technicalSwOK: !!result.technical?.Software,
+      creatorToolOK: !!result.technical?.CreatorTool,
+      processingSwOK: !!result.technical?.ProcessingSoftware
+    });
+    
+    if (result.camera?.software || result.technical?.Software || 
+        result.technical?.CreatorTool || result.technical?.ProcessingSoftware) {
+      logger.info('Found software data, storing associations');
+      await softwareService.upsertSoftwareAssociations(mediaFileId, result);
+    } else {
+      logger.debug('No software data found to store');
     }
 
     const duration = Date.now() - startTime;

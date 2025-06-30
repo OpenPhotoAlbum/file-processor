@@ -9,6 +9,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: America/New_York
     ports:
       - "${MYSQL_PORT}:3306"
     volumes:
@@ -19,11 +20,11 @@ services:
     deploy:
       resources:
         limits:
+          memory: 3G
+          cpus: 2
+        reservations:
           memory: 2G
           cpus: 1
-        reservations:
-          memory: 1G
-          cpus: .5
     logging:
       driver: "json-file"
       options:

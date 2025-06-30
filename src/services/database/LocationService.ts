@@ -147,56 +147,71 @@ export class LocationService {
     const primaryGPS = result.location!.primary!;
     const geolocation = result.location?.geolocation;
 
-    // Find foreign key IDs for city/state/country if geolocation data exists
+    // Resolve foreign key references to geo tables
     let cityId: number | null = null;
     let stateId: number | null = null;
     let countryId: number | null = null;
 
-    if (geolocation?.city && geolocation?.state_code) {
-      try {
-        // Find city ID
-        const cityResult = await this.db('geo_cities')
+    if (geolocation) {
+      // Resolve country first (US is implied from state codes like MA)
+      const countryCode = geolocation.state_code ? 'US' : null;
+      if (countryCode) {
+        const country = await this.db('geo_countries')
+          .select('id')
+          .where('country_code', countryCode)
+          .first();
+        if (country) {
+          countryId = country.id;
+          logger.debug(`Resolved country: ${countryCode} -> ID ${countryId}`);
+        }
+      }
+
+      // Resolve state by state code
+      if (geolocation.state_code) {
+        const state = await this.db('geo_states')
+          .select('id')
+          .where('code', geolocation.state_code)
+          .first();
+        if (state) {
+          stateId = state.id;
+          logger.debug(`Resolved state: ${geolocation.state_code} -> ID ${stateId}`);
+        }
+      }
+
+      // Resolve city by name, state, and proximity to coordinates
+      if (geolocation.city && stateId) {
+        // Try exact city name match first
+        let city = await this.db('geo_cities')
           .select('id')
           .where('city', geolocation.city)
           .where('state_code', geolocation.state_code)
           .first();
-        
-        if (cityResult) {
-          cityId = cityResult.id;
+
+        // If no exact match, try case-insensitive search
+        if (!city) {
+          city = await this.db('geo_cities')
+            .select('id')
+            .whereRaw('LOWER(city) = LOWER(?)', [geolocation.city])
+            .where('state_code', geolocation.state_code)
+            .first();
         }
 
-        // Find state ID
-        const stateResult = await this.db('geo_states')
-          .select('id')
-          .where('code', geolocation.state_code)
-          .first();
-        
-        if (stateResult) {
-          stateId = stateResult.id;
+        if (city) {
+          cityId = city.id;
+          logger.debug(`Resolved city: ${geolocation.city} -> ID ${cityId}`);
+        } else {
+          logger.warn(`Could not resolve city: ${geolocation.city}, ${geolocation.state_code}`);
         }
-
-        // Find country ID (assuming US for now, but could be enhanced)
-        const countryResult = await this.db('geo_countries')
-          .select('id')
-          .where('country_code', 'US')
-          .first();
-        
-        if (countryResult) {
-          countryId = countryResult.id;
-        }
-
-        logger.debug(`Resolved location IDs`, {
-          city: geolocation.city,
-          cityId,
-          state: geolocation.state_code,
-          stateId,
-          countryId
-        });
-
-      } catch (error) {
-        logger.warn(`Failed to resolve location foreign keys: ${error}`);
       }
     }
+
+    // Create minimal geolocation summary (not full location data)
+    // Full location data is stored in relational tables to prevent duplication
+    const geolocationSummary = {
+      enrichmentStatus: result.location?.enrichmentStatus || {},
+      alternatives: result.location?.alternatives || [],
+      conflicts: result.location?.conflicts || []
+    };
 
     return {
       file_id: mediaFileId,
@@ -207,7 +222,7 @@ export class LocationService {
       city_id: cityId,
       state_id: stateId,
       country_id: countryId,
-      geolocation_data: JSON.stringify(result.location) // Keep as fallback/additional data
+      geolocation_data: JSON.stringify(geolocationSummary) // Minimal summary, not full location data
     };
   }
 

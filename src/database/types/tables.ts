@@ -40,8 +40,9 @@ export enum EquipmentType {
 // Media enums
 export enum Collection {
   ARCHIVE = 'archive',
-  STAGING = 'staging',
-  PROCESSED = 'processed'
+  STAGING = 'staging', 
+  PROCESSED = 'processed',
+  SAMPLE = 'sample'
 }
 
 export enum MediaType {
