@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-06-28T19:55:23.339Z"
+    "extractedAt": "2025-06-30T22:18:33.580Z"
   },
   "media": {
     "type": "image",
@@ -21,9 +21,9 @@
       "megapixels": 12.2,
       "orientation": "Rotate 90 CW"
     },
-    "dominantColor": "#90887d",
-    "meanColor": "#8e877f",
-    "salientColor": "#000000"
+    "dominantColor": "#605d4e",
+    "meanColor": "#8f877f",
+    "salientColor": "#f0f3fd"
   },
   "timestamps": {
     "primary": {
@@ -95,8 +95,8 @@
   },
   "location": {
     "primary": {
-      "latitude": 42.81649444,
-      "longitude": -71.06389722,
+      "latitude": 42.816494,
+      "longitude": -71.063897,
       "altitude": 53.4172549,
       "timestamp": "19:33:43",
       "accuracy": "9.424075026 m",
@@ -130,7 +130,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 912,
         "confidence": 0.9,
@@ -151,7 +151,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 1120,
         "confidence": 0.9,
@@ -172,7 +172,7 @@
           "county": "Rockingham",
           "description": "Mountain peak - in Rockingham County, New Hampshire, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 1923,
         "confidence": 0.9,
@@ -193,7 +193,7 @@
           "county": "Essex",
           "description": "Water reservoir - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 3030,
         "confidence": 0.94,
@@ -214,7 +214,7 @@
           "county": "Essex",
           "description": "in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 2532,
         "confidence": 0.85,
@@ -235,7 +235,7 @@
           "county": "Rockingham",
           "description": "River or stream - in Rockingham County, New Hampshire, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 3518,
         "confidence": 0.84,
@@ -258,7 +258,7 @@
           "lastUpdated": "2025-05-09"
         },
         "distance": 17642,
-        "confidence": 0.6471632135122609,
+        "confidence": 0.6471636802500682,
         "relationship": "nearby",
         "source": "Recreation.gov",
         "matchMethod": "recreation_area_spatial_query"
@@ -278,7 +278,7 @@
           "lastUpdated": "2021-09-23"
         },
         "distance": 18690,
-        "confidence": 0.6262022302322885,
+        "confidence": 0.6262032630660151,
         "relationship": "nearby",
         "source": "Recreation.gov",
         "matchMethod": "recreation_area_spatial_query"
@@ -296,7 +296,7 @@
           "county": "Essex",
           "description": "Natural lake - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 2027,
         "confidence": 0.54,
@@ -317,7 +317,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:20.466Z"
+          "lastUpdated": "2025-06-30T22:18:33.184Z"
         },
         "distance": 2080,
         "confidence": 0.53,
@@ -334,7 +334,7 @@
         "Recreation.gov"
       ],
       "cacheHit": false,
-      "queryTimeMs": 964
+      "queryTimeMs": 486
     }
   },
   "camera": {
@@ -361,7 +361,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "7.5 MB",
     "File:FileModifyDate": "2025:06:23 16:24:51-04:00",
-    "File:FileAccessDate": "2025:06:28 10:21:52-04:00",
+    "File:FileAccessDate": "2025:06:30 18:17:05-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

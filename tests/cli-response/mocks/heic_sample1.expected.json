@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-06-28T19:55:11.123Z"
+    "extractedAt": "2025-06-30T22:18:30.324Z"
   },
   "media": {
     "type": "image",
@@ -20,7 +20,9 @@
       "height": 3024,
       "megapixels": 12.2,
       "orientation": "Rotate 180"
-    }
+    },
+    "dominantColor": "#000000",
+    "meanColor": "#000000"
   },
   "timestamps": {
     "primary": {
@@ -92,7 +94,7 @@
   },
   "location": {
     "primary": {
-      "latitude": 43.23502778,
+      "latitude": 43.235028,
       "longitude": -70.8237,
       "altitude": 37.03936348,
       "timestamp": "17:50:58",
@@ -127,7 +129,7 @@
           "county": "Strafford",
           "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 606,
         "confidence": 1,
@@ -148,7 +150,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 2048,
         "confidence": 0.96,
@@ -169,7 +171,7 @@
           "county": "York",
           "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 1655,
         "confidence": 0.9,
@@ -190,7 +192,7 @@
           "county": "Strafford",
           "description": "Mountain peak - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 1682,
         "confidence": 0.9,
@@ -211,7 +213,7 @@
           "county": "York",
           "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 1806,
         "confidence": 0.9,
@@ -232,7 +234,7 @@
           "county": "Strafford",
           "description": "River or stream - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 2287,
         "confidence": 0.86,
@@ -253,7 +255,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Somersworth quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 2551,
         "confidence": 0.85,
@@ -274,7 +276,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 589,
         "confidence": 0.79,
@@ -295,7 +297,7 @@
           "county": "Strafford",
           "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-28T19:55:10.867Z"
+          "lastUpdated": "2025-06-30T22:18:30.053Z"
         },
         "distance": 1370,
         "confidence": 0.73,
@@ -317,8 +319,8 @@
           "source": "recreation_gov",
           "lastUpdated": "2024-07-17"
         },
-        "distance": 16313,
-        "confidence": 0.6737301420895689,
+        "distance": 16314,
+        "confidence": 0.6737296552413732,
         "relationship": "nearby",
         "source": "Recreation.gov",
         "matchMethod": "recreation_area_spatial_query"
@@ -332,7 +334,7 @@
         "Recreation.gov"
       ],
       "cacheHit": false,
-      "queryTimeMs": 901
+      "queryTimeMs": 491
     }
   },
   "camera": {
@@ -359,7 +361,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "1010 kB",
     "File:FileModifyDate": "2025:06:23 16:24:01-04:00",
-    "File:FileAccessDate": "2025:06:27 22:57:16-04:00",
+    "File:FileAccessDate": "2025:06:30 11:15:54-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

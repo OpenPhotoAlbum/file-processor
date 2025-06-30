@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-06-28T19:55:18.049Z"
+    "extractedAt": "2025-06-30T22:18:32.179Z"
   },
   "media": {
     "type": "image",
@@ -22,8 +22,8 @@
       "orientation": "unknown"
     },
     "dominantColor": "#000000",
-    "meanColor": "#2d2021",
-    "salientColor": "#dad4ed"
+    "meanColor": "#2c1f21",
+    "salientColor": "#e4e2cc"
   },
   "timestamps": {
     "primary": {
@@ -104,7 +104,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "9.6 MB",
     "File:FileModifyDate": "2025:06:23 16:24:01-04:00",
-    "File:FileAccessDate": "2025:06:27 22:57:17-04:00",
+    "File:FileAccessDate": "2025:06:30 18:17:04-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "PNG:ImageWidth": 1125,

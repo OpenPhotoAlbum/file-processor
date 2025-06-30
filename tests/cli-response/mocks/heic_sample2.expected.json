@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-06-28T19:55:13.246Z"
+    "extractedAt": "2025-06-30T22:18:30.625Z"
   },
   "media": {
     "type": "image",
@@ -21,9 +21,9 @@
       "megapixels": 12.2,
       "orientation": "Rotate 90 CW"
     },
-    "dominantColor": "#fbeedc",
-    "meanColor": "#a88166",
-    "salientColor": "#fd9a3c"
+    "dominantColor": "#faecd9",
+    "meanColor": "#a98166",
+    "salientColor": "#290c0a"
   },
   "timestamps": {
     "primary": {
@@ -131,7 +131,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "1545 kB",
     "File:FileModifyDate": "2025:06:23 16:24:01-04:00",
-    "File:FileAccessDate": "2025:06:28 15:17:57-04:00",
+    "File:FileAccessDate": "2025:06:30 12:50:14-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",
