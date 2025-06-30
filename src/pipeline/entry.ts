@@ -17,7 +17,7 @@ export async function processFile(filePath: string): Promise<ProcessingResult> {
     const result = await processor.extract(file);
     
     // 3. Common post-processing (shared for all files)
-    await postProcess(file, result);
+    await postProcess(result);
     
     // Return the new consolidated schema directly from processor
     return result;

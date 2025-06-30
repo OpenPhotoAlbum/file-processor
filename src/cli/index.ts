@@ -39,6 +39,15 @@ export async function runCLI(): Promise<void> {
     .option('--quiet', 'minimal console output')
     .option('--timestamp-only', 'extract timestamp only (skip all processing)');
 
+  // Database options
+  program
+    .option('--output-db', 'store results in database (requires MySQL connection)')
+    .option('--db-collection <name>', 'database collection name (default: archive)')
+    .option('--colors', 'extract colors during database storage (default: true)')
+    .option('--no-colors', 'skip color extraction during database storage')
+    .option('--db-history', 'preserve existing database records (default: true)')
+    .option('--no-db-history', 'overwrite existing database records instead of preserving history');
+
   // Merge options
   program
     .option('--merge', 'merge with existing metadata instead of overwriting')
@@ -71,6 +80,15 @@ Examples:
 
   # Preview what would be merged without making changes
   $ media-processor -f photo.jpg -o photo.json --merge --dry-run
+
+  # Store results in database only
+  $ media-processor -f photo.jpg --output-db
+
+  # Store in both file and database with custom collection
+  $ media-processor -f photo.jpg -o output.json --output-db --db-collection staging
+
+  # Batch process with database storage (skip color extraction for speed)
+  $ media-processor -R /photos --output-db --no-colors --quiet
 
 Path Formats:
   sample:path/file.jpg    # Uses SAMPLE_BASE_PATH environment variable

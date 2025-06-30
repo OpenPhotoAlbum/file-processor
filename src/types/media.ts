@@ -149,4 +149,11 @@ export interface ProcessingResult {
     format: SidecarFormat;
     path: string;
   }[];
+  database?: {
+    stored: boolean;
+    mediaFileId?: number;
+    collection?: string;
+    duration?: number;
+    error?: string;
+  };
 }

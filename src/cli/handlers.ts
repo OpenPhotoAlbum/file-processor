@@ -6,6 +6,7 @@ import { Logger, LogLevel } from '../utils/logging/index.js';
 import { createSystemErrorFactory } from '../utils/errors/factories.js';
 import { FileSystemService } from '../services/index.js';
 import { processFile } from '../pipeline/entry.js';
+import { postProcess, PostProcessorOptions } from '../pipeline/post-processor.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { OutputHandler } from './output.js';
 import { normalizeCliOptions } from './validators.js';
@@ -247,6 +248,20 @@ export class CLIHandler {
           // eslint-disable-next-line no-await-in-loop
           let metadata = await processFile(file);
           
+          // Run post-processor (database storage, cleanup, etc.) if requested
+          if (options.outputDb) {
+            
+            const postProcessorOptions: PostProcessorOptions = {
+              outputDatabase: true,
+              dbCollection: options.dbCollection,
+              extractColors: options.colors !== false, // Default true, false only if explicitly --no-colors
+              preserveHistory: options.dbHistory !== false // Default true, false only if explicitly --no-db-history
+            };
+            
+            // eslint-disable-next-line no-await-in-loop
+            metadata = await postProcess(metadata, postProcessorOptions);
+          }
+          
           // Handle merge logic if specified
           if (options.merge || options.mergeSections || options.preserveEnrichment) {
             // Sequential merge maintains file processing order for consistency
@@ -366,6 +381,10 @@ export class CLIHandler {
       const { getLandmarkService } = await import('../services/landmarks/factory.js');
       const landmarkService = getLandmarkService();
       await landmarkService.close();
+      
+      // Close main database connection (used by post-processor)
+      const { closeDatabaseConnection } = await import('../database/connection.js');
+      await closeDatabaseConnection();
       
       logger.debug('CLI cleanup completed - all database connections closed');
     } catch (error) {

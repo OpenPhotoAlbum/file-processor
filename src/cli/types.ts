@@ -44,6 +44,18 @@ export interface CLIOptions {
   
   /** Extract timestamp only (skip all processing) */
   timestampOnly?: boolean;
+  
+  /** Store results in database */
+  outputDb?: boolean;
+  
+  /** Database collection name */
+  dbCollection?: string;
+  
+  /** Extract colors during database storage (default: true) */
+  colors?: boolean;
+  
+  /** Preserve existing database records (default: true) */
+  dbHistory?: boolean;
 }
 
 export interface ProcessingResult {
