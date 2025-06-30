@@ -5,6 +5,7 @@ import { Knex } from 'knex';
 import { Logger } from '../utils/logging/index.js';
 import { EquipmentService } from '../services/database/EquipmentService.js';
 import { initializeDatabase } from '../database/knex.js';
+import { extractColorAnalysis } from '../services/colorExtractor.js';
 
 const logger = new Logger('BatchMigration');
 
@@ -13,7 +14,10 @@ interface MigrationProgress {
   processedFiles: number;
   successfulMigrations: number;
   failedMigrations: number;
+  hashConflicts: number;
   skippedFiles: number;
+  colorsExtracted: number;
+  colorExtractionFailed: number;
   startTime: Date;
   currentBatch: number;
   totalBatches: number;
@@ -82,22 +86,20 @@ interface JSONMetadata {
         make?: string;
         model?: string;
         software?: string;
-        lens?: {
-          make?: string;
-          model?: string;
-          focalLength?: number;
-          aperture?: number;
-        };
-        settings?: {
-          iso?: number;
-          aperture?: number;
-          shutterSpeed?: string;
-          focalLength?: number;
-          flash?: boolean;
-          whiteBalance?: string;
-          meteringMode?: string;
-          exposureMode?: string;
-        };
+        lens?: string;
+      };
+      settings?: {
+        iso?: number;
+        aperture?: number;
+        shutterSpeed?: string;
+        focalLength?: string;
+        flash?: string;
+        whiteBalance?: string;
+        meteringMode?: string;
+        exposureMode?: string;
+      };
+      technical?: {
+        [key: string]: unknown;
       };
       timestamps?: {
         primary?: {
@@ -126,7 +128,10 @@ class BatchMigrationService {
       processedFiles: 0,
       successfulMigrations: 0,
       failedMigrations: 0,
+      hashConflicts: 0,
       skippedFiles: 0,
+      colorsExtracted: 0,
+      colorExtractionFailed: 0,
       startTime: new Date(),
       currentBatch: 0,
       totalBatches: 0
@@ -161,154 +166,181 @@ class BatchMigrationService {
   async migrateJSONFile(filePath: string): Promise<boolean> {
     try {
       const content = await fs.readFile(filePath, 'utf-8');
+      
+      // Skip empty files
+      if (!content.trim()) {
+        logger.debug(`Empty JSON file ${filePath}, skipping`);
+        this.progress.skippedFiles++;
+        return true;
+      }
+      
       const data: JSONMetadata = JSON.parse(content);
       
       if (!data.results || data.results.length === 0) {
         logger.debug(`No results in ${filePath}, skipping`);
-        return false;
+        this.progress.skippedFiles++;
+        return true;
       }
+
+      // Extract colors if missing before migrating to database
+      await this.extractAndUpdateColors(filePath, data);
 
       for (const item of data.results) {
         const metadata = item.metadata;
         if (!metadata) continue;
 
-        await this.db.transaction(async (trx) => {
+        try {
+          await this.db.transaction(async (trx) => {
           // 1. Get or create equipment
-          let equipmentId: number | null = null;
-          let imagingTrainId: number | null = null;
+            let equipmentId: number | null = null;
+            let imagingTrainId: number | null = null;
           
-          if (metadata.camera?.make && metadata.camera?.model) {
-            equipmentId = await this.equipmentService.getOrCreateEquipment(
-              metadata.camera.make,
-              metadata.camera.model
-            );
+            if (metadata.camera?.make && metadata.camera?.model) {
+              equipmentId = await this.equipmentService.getOrCreateEquipment(
+                metadata.camera.make,
+                metadata.camera.model
+              );
             
-            imagingTrainId = await this.equipmentService.getOrCreateImagingTrain(
-              equipmentId,
-              metadata.camera.make,
-              metadata.camera.model
-            );
-          }
+              imagingTrainId = await this.equipmentService.getOrCreateImagingTrain(
+                equipmentId,
+                metadata.camera.make,
+                metadata.camera.model
+              );
+            }
 
-          // 2. Insert media file record first
-          const mediaFileData: any = {
-            collection: this.determineCollection(metadata.file?.path || filePath),
-            relative_path: this.getRelativePath(metadata.file?.path || filePath),
-            file_hash: await this.generateFileHash(metadata.file?.path || filePath),
-            file_size: metadata.file?.size || 0,
-            mime_type: metadata.file?.mimeType || 'unknown',
+            // 2. Insert media file record first
+            const mediaFileData: any = {
+              collection: this.determineCollection(metadata.file?.path || filePath),
+              relative_path: this.getRelativePath(metadata.file?.path || filePath),
+              file_hash: await this.generateFileHash(metadata.file?.path || filePath),
+              file_size: metadata.file?.size || 0,
+              mime_type: metadata.file?.mimeType || 'unknown',
             
-            // Media classification
-            media_type: this.determineMediaType(metadata.file?.mimeType),
-            media_format: metadata.file?.extension || path.extname(filePath).slice(1),
-            is_live_photo: metadata.media?.livePhotoInfo?.isLivePhoto || false,
+              // Media classification
+              media_type: this.determineMediaType(metadata.file?.mimeType),
+              media_format: metadata.file?.extension || path.extname(filePath).slice(1),
+              is_live_photo: metadata.media?.livePhotoInfo?.isLivePhoto || false,
             
-            // Timestamps
-            primary_timestamp: this.parseTimestamp(metadata.timestamps?.primary?.timestamp) || new Date(),
-            timestamp_source: this.mapTimestampSource(metadata.timestamps?.primary?.source),
-            timestamp_confidence: this.mapConfidence(metadata.timestamps?.primary?.confidence),
+              // Timestamps
+              primary_timestamp: this.parseTimestamp(metadata.timestamps?.primary?.timestamp) || new Date(),
+              timestamp_source: this.mapTimestampSource(metadata.timestamps?.primary?.source),
+              timestamp_confidence: this.mapConfidence(metadata.timestamps?.primary?.confidence),
             
-            // Equipment
-            imaging_train_id: imagingTrainId,
+              // Equipment
+              imaging_train_id: imagingTrainId,
             
-            // Camera settings
-            iso_value: metadata.camera?.settings?.iso || null,
-            aperture_f_number: metadata.camera?.settings?.aperture || null,
-            shutter_speed_seconds: this.parseShutterSpeed(metadata.camera?.settings?.shutterSpeed),
-            frame_count: 1,
-            integration_time_seconds: this.parseShutterSpeed(metadata.camera?.settings?.shutterSpeed),
-            focal_length_mm: metadata.camera?.settings?.focalLength || null,
+              // Camera settings
+              iso_value: metadata.settings?.iso || null,
+              aperture_f_number: metadata.settings?.aperture || null,
+              shutter_speed_seconds: this.parseShutterSpeed(metadata.settings?.shutterSpeed),
+              frame_count: 1,
+              integration_time_seconds: this.parseShutterSpeed(metadata.settings?.shutterSpeed),
+              focal_length_mm: this.parseFocalLength(metadata.settings?.focalLength),
             
-            // Visual properties
-            dominant_color_hex: metadata.media?.dominantColor || null,
-            mean_color_hex: metadata.media?.meanColor || null,
-            salient_color_hex: metadata.media?.salientColor || null,
+              // Visual properties
+              dominant_color_hex: metadata.media?.dominantColor || null,
+              mean_color_hex: metadata.media?.meanColor || null,
+              salient_color_hex: metadata.media?.salientColor || null,
             
-            // Flexible metadata
-            media_metadata: {
-              technical: metadata.media?.technical || {},
-              dimensions: metadata.media?.dimensions || {}
-            },
-            camera_exif: {
-              settings: metadata.camera?.settings || {},
-              lens: metadata.camera?.lens || {}
-            },
+              // Flexible metadata
+              media_metadata: {
+                technical: metadata.media?.technical || {},
+                dimensions: metadata.media?.dimensions || {}
+              },
+              camera_exif: {
+                settings: metadata.settings || {},
+                camera: metadata.camera || {},
+                technical: metadata.technical || {}
+              },
             
-            // File system timestamps
-            file_created_at: this.parseTimestamp(metadata.timestamps?.created) || new Date(),
-            file_modified_at: this.parseTimestamp(metadata.timestamps?.modified) || new Date()
-          };
-
-          const [mediaFileId] = await trx('media_files').insert(mediaFileData) as [number];
-
-          // 3. Insert location if GPS data exists
-          if (metadata.location?.latitude && metadata.location?.longitude) {
-            const locationData: any = {
-              file_id: mediaFileId,
-              latitude: metadata.location.latitude,
-              longitude: metadata.location.longitude,
-              gps_source: 'exif',
-              gps_confidence: 'medium',
-              geolocation_data: metadata.location.geolocation || {}
+              // File system timestamps
+              file_created_at: this.parseTimestamp(metadata.timestamps?.created) || new Date(),
+              file_modified_at: this.parseTimestamp(metadata.timestamps?.modified) || new Date()
             };
 
-            await trx('media_locations').insert(locationData);
+            const [mediaFileId] = await trx('media_files').insert(mediaFileData) as [number];
 
-            // Insert landmarks if they exist
-            if (metadata.location.landmarks && metadata.location.landmarks.length > 0) {
-              for (const landmark of metadata.location.landmarks) {
-                if (landmark.name) {
+            // 3. Insert location if GPS data exists
+            if (metadata.location?.latitude && metadata.location?.longitude) {
+              const locationData: any = {
+                file_id: mediaFileId,
+                latitude: metadata.location.latitude,
+                longitude: metadata.location.longitude,
+                gps_source: 'exif',
+                gps_confidence: 'medium',
+                geolocation_data: metadata.location.geolocation || {}
+              };
+
+              await trx('media_locations').insert(locationData);
+
+              // Insert landmarks if they exist
+              if (metadata.location.landmarks && metadata.location.landmarks.length > 0) {
+                for (const landmark of metadata.location.landmarks) {
+                  if (landmark.name) {
                   // Check if landmark already exists
-                  const existingLandmark = await trx('landmarks')
-                    .select('id')
-                    .where('name', landmark.name)
-                    .where('provider', this.mapLandmarkProvider(landmark.source))
-                    .first();
+                    const existingLandmark = await trx('landmarks')
+                      .select('id')
+                      .where('name', landmark.name)
+                      .where('provider', this.mapLandmarkProvider(landmark.source))
+                      .first();
 
-                  let landmarkId: number;
-                  if (existingLandmark) {
-                    landmarkId = existingLandmark.id;
-                  } else {
-                    const landmarkData: any = {
-                      name: landmark.name,
-                      category: landmark.type || 'unknown',
-                      provider: this.mapLandmarkProvider(landmark.source),
-                      provider_data: landmark
-                    };
+                    let landmarkId: number;
+                    if (existingLandmark) {
+                      landmarkId = existingLandmark.id;
+                    } else {
+                      const landmarkData: any = {
+                        name: landmark.name,
+                        category: landmark.type || 'unknown',
+                        provider: this.mapLandmarkProvider(landmark.source),
+                        provider_data: landmark
+                      };
                     
-                    const [insertedLandmarkId] = await trx('landmarks').insert(landmarkData) as [number];
-                    landmarkId = insertedLandmarkId;
-                  }
+                      const [insertedLandmarkId] = await trx('landmarks').insert(landmarkData) as [number];
+                      landmarkId = insertedLandmarkId;
+                    }
 
-                  // Link media file to landmark
-                  const landmarkLinkData: any = {
-                    file_id: mediaFileId,
-                    landmark_id: landmarkId,
-                    distance_meters: Math.round(landmark.distance || 0)
-                  };
-                  await trx('media_landmarks').insert(landmarkLinkData);
+                    // Link media file to landmark
+                    const landmarkLinkData: any = {
+                      file_id: mediaFileId,
+                      landmark_id: landmarkId,
+                      distance_meters: Math.round(landmark.distance || 0)
+                    };
+                    await trx('media_landmarks').insert(landmarkLinkData);
+                  }
                 }
               }
             }
+
+
+            // 4. Record processing history
+            if (metadata.processing) {
+              const processingData: any = {
+                file_id: mediaFileId,
+                processor: metadata.processing.processor || 'unknown',
+                success: metadata.processing.success !== false,
+                extracted_at: this.parseTimestamp(metadata.processing.extractedAt) || new Date(),
+                processing_version: metadata.processing.version || '1.0.0',
+                processing_duration_ms: metadata.processing.duration || null
+              };
+
+              await trx('processing_runs').insert(processingData);
+            }
+
+            logger.debug(`Successfully migrated ${filePath}`);
+          });
+        } catch (transactionError: unknown) {
+          // Check if this is a duplicate hash error
+          const errorString = String(transactionError);
+          if (errorString.includes('Duplicate entry') && 
+              errorString.includes('media_files_file_hash_unique')) {
+            logger.warn(`Hash conflict for ${filePath} - skipping duplicate`);
+            this.progress.hashConflicts++;
+            return true; // Consider this successful since it's already in DB
           }
-
-
-          // 4. Record processing history
-          if (metadata.processing) {
-            const processingData: any = {
-              file_id: mediaFileId,
-              processor: metadata.processing.processor || 'unknown',
-              success: metadata.processing.success !== false,
-              extracted_at: this.parseTimestamp(metadata.processing.extractedAt) || new Date(),
-              processing_version: metadata.processing.version || '1.0.0',
-              processing_duration_ms: metadata.processing.duration || null
-            };
-
-            await trx('processing_runs').insert(processingData);
-          }
-
-          logger.debug(`Successfully migrated ${filePath}`);
-        });
+          
+          logger.error(`Transaction failed for ${filePath}: ${transactionError}`);
+          throw transactionError;
+        }
       }
 
       return true;
@@ -335,12 +367,41 @@ class BatchMigrationService {
     }
   }
 
+  private parseFocalLength(focalLength?: string): number | null {
+    if (!focalLength) return null;
+    
+    try {
+      // Handle formats like "4.2 mm", "26 mm", or just "4.2"
+      const numericValue = parseFloat(focalLength.toString().replace(/[^\d.]/g, ''));
+      return isNaN(numericValue) ? null : numericValue;
+    } catch {
+      return null;
+    }
+  }
+
   private parseTimestamp(timestamp?: string): Date | null {
     if (!timestamp) return null;
     
     try {
       const date = new Date(timestamp);
-      return isNaN(date.getTime()) ? null : date;
+      if (isNaN(date.getTime())) return null;
+      
+      // MySQL DATETIME range: 1000-01-01 00:00:00 to 9999-12-31 23:59:59
+      // Support historical dates like 1938 photos
+      const minDate = new Date('1000-01-01T00:00:00Z');
+      const maxDate = new Date('9999-12-31T23:59:59Z');
+      
+      if (date < minDate) {
+        logger.debug(`Date ${timestamp} too old, using 1000-01-01`);
+        return minDate;
+      }
+      
+      if (date > maxDate) {
+        logger.debug(`Date ${timestamp} too far in future, using 9999-12-31`);
+        return maxDate;
+      }
+      
+      return date;
     } catch {
       return null;
     }
@@ -406,6 +467,62 @@ class BatchMigrationService {
     return 'GNIS';
   }
 
+  private async extractAndUpdateColors(filePath: string, metadata: JSONMetadata): Promise<boolean> {
+    try {
+      // Check if colors are missing
+      const mediaData = metadata.results?.[0]?.metadata?.media;
+      if (mediaData?.dominantColor || mediaData?.meanColor || mediaData?.salientColor) {
+        // Colors already exist, skip extraction
+        return true;
+      }
+
+      // Get the original image file path (remove .json extension)
+      const imagePath = filePath.replace(/\.json$/, '');
+      
+      // Check if the image file exists
+      try {
+        await fs.access(imagePath);
+      } catch {
+        logger.debug(`Image file not found for ${imagePath}, skipping color extraction`);
+        return true;
+      }
+
+      logger.debug(`Extracting colors for ${imagePath}`);
+      const colorAnalysis = await extractColorAnalysis(imagePath);
+
+      // Update the metadata object
+      if (!metadata.results?.[0]?.metadata?.media) {
+        if (!metadata.results) metadata.results = [{}];
+        if (!metadata.results[0].metadata) metadata.results[0].metadata = {};
+        if (!metadata.results[0].metadata.media) metadata.results[0].metadata.media = {};
+      }
+
+      const media = metadata.results[0].metadata.media;
+      media.dominantColor = colorAnalysis.dominantColor;
+      media.meanColor = colorAnalysis.meanColor;
+      media.salientColor = colorAnalysis.salientColor || undefined;
+
+      // Add color analysis details
+      (media as any).colorAnalysis = {
+        topColors: colorAnalysis.topColors,
+        colorProfile: colorAnalysis.colorProfile,
+        extractedAt: new Date().toISOString()
+      };
+
+      // Write updated metadata back to JSON file
+      await fs.writeFile(filePath, JSON.stringify(metadata, null, 2), 'utf-8');
+      
+      this.progress.colorsExtracted++;
+      logger.debug(`Colors extracted and saved for ${imagePath}`);
+      return true;
+
+    } catch (error) {
+      logger.error(`Failed to extract colors for ${filePath}: ${error}`);
+      this.progress.colorExtractionFailed++;
+      return false;
+    }
+  }
+
   private logProgress(): void {
     const elapsed = Date.now() - this.progress.startTime.getTime();
     const rate = this.progress.processedFiles / (elapsed / 1000);
@@ -417,6 +534,9 @@ class BatchMigrationService {
       `(${(this.progress.processedFiles / this.progress.totalFiles * 100).toFixed(1)}%) ` +
       `| Success: ${this.progress.successfulMigrations} ` +
       `| Failed: ${this.progress.failedMigrations} ` +
+      `| Hash conflicts: ${this.progress.hashConflicts} ` +
+      `| Skipped: ${this.progress.skippedFiles} ` +
+      `| Colors: ${this.progress.colorsExtracted} ` +
       `| Rate: ${rate.toFixed(1)} files/sec ` +
       `| ETA: ${Math.round(eta)}s`);
   }
@@ -452,8 +572,8 @@ class BatchMigrationService {
       
       logger.info(`Processing batch ${i + 1}/${batches.length} (${batch.length} files)`);
       
-      // Process files in parallel within the batch
-      const batchPromises = batch.map(async (filePath) => {
+      // Process files sequentially within the batch to avoid connection overload
+      for (const filePath of batch) {
         const success = await this.migrateJSONFile(filePath);
         
         this.progress.processedFiles++;
@@ -461,12 +581,12 @@ class BatchMigrationService {
           this.progress.successfulMigrations++;
         } else {
           this.progress.failedMigrations++;
+          // Only stop on actual failures, not hash conflicts
+          if (this.progress.failedMigrations > this.progress.hashConflicts) {
+            throw new Error(`Migration failed for ${filePath}. Stopping migration to prevent data corruption.`);
+          }
         }
-        
-        return success;
-      });
-      
-      await Promise.all(batchPromises);
+      }
       
       // Log progress every 10 batches or at the end
       if ((i + 1) % 10 === 0 || i === batches.length - 1) {
@@ -485,6 +605,10 @@ class BatchMigrationService {
     logger.info(`Total files processed: ${this.progress.processedFiles.toLocaleString()}`);
     logger.info(`Successful migrations: ${this.progress.successfulMigrations.toLocaleString()}`);
     logger.info(`Failed migrations: ${this.progress.failedMigrations.toLocaleString()}`);
+    logger.info(`Hash conflicts (skipped): ${this.progress.hashConflicts.toLocaleString()}`);
+    logger.info(`Files skipped: ${this.progress.skippedFiles.toLocaleString()}`);
+    logger.info(`Colors extracted: ${this.progress.colorsExtracted.toLocaleString()}`);
+    logger.info(`Color extraction failed: ${this.progress.colorExtractionFailed.toLocaleString()}`);
     logger.info(`Total time: ${Math.round(totalTime)}s`);
     logger.info(`Average rate: ${(this.progress.processedFiles / totalTime).toFixed(1)} files/sec`);
   }

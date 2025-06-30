@@ -31,15 +31,16 @@ function colorDistance(r1: number, g1: number, b1: number, r2: number, g2: numbe
   );
 }
 
-// Quantize image to reduce color palette
-async function quantizeImage(imagePath: string, colors = 64): Promise<Buffer> {
+// Quantize image to reduce color palette (with performance optimization)
+async function quantizeImage(imagePath: string, colors = 32): Promise<Buffer> {
   return await sharp(imagePath)
+    .resize(300, 300, { fit: 'inside', withoutEnlargement: true }) // Resize for speed
     .png({ palette: true, colors })
     .toBuffer();
 }
 
 // Extract dominant color using quantized histogram
-async function extractDominantColor(imagePath: string, colors = 64): Promise<string> {
+async function extractDominantColor(imagePath: string, colors = 32): Promise<string> {
   const quantizedBuffer = await quantizeImage(imagePath, colors);
     
   const { data, info } = await sharp(quantizedBuffer)
@@ -63,7 +64,7 @@ async function extractDominantColor(imagePath: string, colors = 64): Promise<str
 }
 
 // Extract mean color from quantized image
-async function extractMeanColor(imagePath: string, colors = 64): Promise<string> {
+async function extractMeanColor(imagePath: string, colors = 32): Promise<string> {
   const quantizedBuffer = await quantizeImage(imagePath, colors);
     
   const stats = await sharp(quantizedBuffer).stats();
@@ -74,7 +75,7 @@ async function extractMeanColor(imagePath: string, colors = 64): Promise<string>
 
 // Extract top N colors with percentages
 type ExtractTopColors = Promise<Array<{color: string, percentage: number}>>;
-async function extractTopColors(imagePath: string, topN = 3, colors = 64): ExtractTopColors {
+async function extractTopColors(imagePath: string, topN = 3, colors = 32): ExtractTopColors {
   const quantizedBuffer = await quantizeImage(imagePath, colors);
     
   const { data, info } = await sharp(quantizedBuffer)
@@ -106,7 +107,7 @@ async function extractTopColors(imagePath: string, topN = 3, colors = 64): Extra
 async function extractSalientColor(imagePath: string, windowSize = 3): Promise<string | null> {
   try {
     const { data, info } = await sharp(imagePath)
-      .resize(80, 80, { fit: 'inside' }) // Smaller for performance
+      .resize(50, 50, { fit: 'inside' }) // Much smaller for performance
       .raw()
       .toBuffer({ resolveWithObject: true });
         
@@ -153,28 +154,33 @@ async function extractSalientColor(imagePath: string, windowSize = 3): Promise<s
     }
         
     return salientColor;
-  } catch (error) {
-    console.error('Error extracting salient color:', error);
+  } catch {
+    // Don't log the error here as it's handled upstream
     return null;
   }
 }
 
 // Main color extraction function
 export async function extractColorAnalysis(imagePath: string): Promise<ColorAnalysis> {
-  const quantizationLevel = 64; // Sweet spot of performance vs accuracy
+  const quantizationLevel = 32; // Reduced for performance
     
   try {
     // Get image dimensions for metadata
     const metadata = await sharp(imagePath).metadata();
     const imageSize = `${metadata.width}x${metadata.height}`;
         
-    // Extract all color information in parallel
-    const [dominantColor, meanColor, topColors, salientColor] = await Promise.all([
+    // Extract all color information in parallel with error handling
+    const results = await Promise.allSettled([
       extractDominantColor(imagePath, quantizationLevel),
       extractMeanColor(imagePath, quantizationLevel),
       extractTopColors(imagePath, 3, quantizationLevel),
       extractSalientColor(imagePath)
     ]);
+    
+    const dominantColor = results[0].status === 'fulfilled' ? results[0].value : '#000000';
+    const meanColor = results[1].status === 'fulfilled' ? results[1].value : '#000000';
+    const topColors = results[2].status === 'fulfilled' ? results[2].value : [];
+    const salientColor = results[3].status === 'fulfilled' ? results[3].value : null;
         
     return {
       dominantColor,
@@ -194,5 +200,5 @@ export async function extractColorAnalysis(imagePath: string): Promise<ColorAnal
 
 // Utility function to get just the dominant color (for database storage)
 export async function extractDominantColorOnly(imagePath: string): Promise<string> {
-  return await extractDominantColor(imagePath, 64);
+  return await extractDominantColor(imagePath, 32);
 }

@@ -16,9 +16,9 @@ const config: { [key: string]: Knex.Config } = {
     connection: {
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '3306'),
-      user: process.env.DB_USER || 'media_user',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'media_processing',
+      user: process.env.DB_USER || 'kin',
+      password: process.env.DB_PASSWORD || 'Dalekini21!',
+      database: process.env.DB_NAME || 'kin',
       supportBigNumbers: true,
       bigNumberStrings: true,
       dateStrings: false,

@@ -59,6 +59,20 @@
 
 **Failure to run these quality gates makes any coding task incomplete regardless of functionality.**
 
+### Database Management (CRITICAL)
+**NEVER delete or recreate the database without explicit user permission.**
+
+- **Database container name**: `mykin_db` (MySQL 8.0 on port 3309)
+- **Database preservation**: Contains migration tables, seed data, and potentially migrated records
+- **Volume persistence**: Uses Docker volume `mykin_db_data` for data persistence
+- **Recovery protocol**: If database issues occur, debug connection/permissions first - do NOT recreate container
+- **Migration state**: Track completed migrations to avoid data loss during troubleshooting
+
+**Before any database container operations, always:**
+1. Check existing tables: `docker exec mykin_db mysql -u kin -p'Dalekini21!' kin -e "SHOW TABLES;"`
+2. Backup critical data if recreation is absolutely necessary
+3. Get explicit user approval for destructive operations
+
 ### Semantic Any Types System (December 2024)
 - **Philosophy**: Eliminate `any` but acknowledge metadata heterogeneity reality
 - **Semantic aliases**: `ExternalToolOutput`, `UnknownSidecarData`, `UnknownJsonContent` etc.

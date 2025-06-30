@@ -107,9 +107,9 @@ export function createDatabaseConfig(): DatabaseConfig {
   return {
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT || '3306'),
-    user: process.env.DB_USER || 'media_user',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'media_processing',
+    user: process.env.DB_USER || 'kin',
+    password: process.env.DB_PASSWORD || 'Dalekini21!',
+    database: process.env.DB_NAME || 'kin',
     connectionLimit: parseInt(process.env.DB_CONNECTION_LIMIT || '10'),
     acquireTimeout: parseInt(process.env.DB_ACQUIRE_TIMEOUT || '60000'),
     timeout: parseInt(process.env.DB_TIMEOUT || '60000')

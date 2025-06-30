@@ -35,21 +35,38 @@ export class EquipmentService {
       return existing.id;
     }
 
-    // Create new equipment entry
-    logger.info(`Creating new equipment entry: ${make} ${model}`);
-    
-    const equipmentData = {
-      equipment_type: EquipmentType.CAMERA,
-      make,
-      model,
-      equipment_metadata: this.generateEquipmentMetadata(make, model),
-      is_active: true
-    };
+    // Create new equipment entry with race condition handling
+    try {
+      logger.info(`Creating new equipment entry: ${make} ${model}`);
+      
+      const equipmentData = {
+        equipment_type: EquipmentType.CAMERA,
+        make,
+        model,
+        equipment_metadata: this.generateEquipmentMetadata(make, model),
+        is_active: true
+      };
 
-    const [id] = await this.db('equipment').insert(equipmentData);
-    this.equipmentCache.set(key, id);
-    
-    return id;
+      const [id] = await this.db('equipment').insert(equipmentData);
+      this.equipmentCache.set(key, id);
+      
+      return id;
+    } catch (error) {
+      // Handle race condition - another process may have created it
+      if (error instanceof Error && error.message.includes('Duplicate entry')) {
+        logger.debug(`Equipment ${make} ${model} already exists, fetching ID`);
+        const existingAfterRace = await this.db('equipment')
+          .select('id')
+          .where({ make, model })
+          .first();
+        
+        if (existingAfterRace) {
+          this.equipmentCache.set(key, existingAfterRace.id);
+          return existingAfterRace.id;
+        }
+      }
+      throw error;
+    }
   }
 
   /**
@@ -74,21 +91,38 @@ export class EquipmentService {
       return existing.id;
     }
 
-    // Create new imaging train
-    logger.info(`Creating new imaging train: ${trainName}`);
-    
-    const trainData = {
-      name: trainName,
-      description: `${make} ${model} camera system`,
-      primary_camera_id: equipmentId,
-      train_metadata: this.generateTrainMetadata(make, model),
-      is_active: true
-    };
+    // Create new imaging train with race condition handling
+    try {
+      logger.info(`Creating new imaging train: ${trainName}`);
+      
+      const trainData = {
+        name: trainName,
+        description: `${make} ${model} camera system`,
+        primary_camera_id: equipmentId,
+        train_metadata: this.generateTrainMetadata(make, model),
+        is_active: true
+      };
 
-    const [id] = await this.db('imaging_trains').insert(trainData);
-    this.imagingTrainCache.set(trainName, id);
-    
-    return id;
+      const [id] = await this.db('imaging_trains').insert(trainData);
+      this.imagingTrainCache.set(trainName, id);
+      
+      return id;
+    } catch (error) {
+      // Handle race condition - another process may have created it
+      if (error instanceof Error && error.message.includes('Duplicate entry')) {
+        logger.debug(`Imaging train ${trainName} already exists, fetching ID`);
+        const existingAfterRace = await this.db('imaging_trains')
+          .select('id')
+          .where({ name: trainName })
+          .first();
+        
+        if (existingAfterRace) {
+          this.imagingTrainCache.set(trainName, existingAfterRace.id);
+          return existingAfterRace.id;
+        }
+      }
+      throw error;
+    }
   }
 
   /**

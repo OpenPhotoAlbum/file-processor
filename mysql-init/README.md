@@ -23,6 +23,13 @@ Files are numbered sequentially to ensure proper execution order:
 - `045_geo_states.seed.sql` - US states seed data
 - `050_geo_cities.seed.sql` - Cities seed data
 
+### Media Processing Pipeline Tables (December 2024)
+- `300_table_media_processing_core.sql` - Equipment, imaging trains, and media files tables
+- `301_table_media_locations.sql` - GPS coordinates and landmark associations
+- `302_table_media_software.sql` - Software tracking and processing history
+- `303_table_object_detection.sql` - Future enhancement tables for AI/ML features
+- `350_media_reference_data.seed.sql` - Basic equipment, software, and imaging train seed data
+
 ### Legacy/Specific Migrations
 - `101_nh_municipal_boundaries.sql` - Original NH-only boundaries (superseded by 035)
 
