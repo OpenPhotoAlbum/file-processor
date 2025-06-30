@@ -262,6 +262,7 @@ node dist/main.js -f "sample:vancouver-island.jpg" --json
 ### Metadata & Storage
 - **Metadata Storage Architecture** - JSON sidecar files vs database storage: `docs/metadata-storage-architecture.md`
 - **Metadata Merge Strategy** - Intelligent merging with processing history: `docs/metadata-merge-strategy.md`
+- **Normalized Location Architecture** - Foreign key relationships for geographic data: `docs/normalized-location-architecture.md`
 
 ### Processing & Enrichment
 - **Live Photo Detection** - Apple Live Photo identification and metadata: `docs/live-photo-detection.md`
@@ -285,6 +286,7 @@ node dist/main.js -f "sample:vancouver-island.jpg" --json
 - **Quick Start Organization** - Fast track setup: `docs/quick-start-organization.md`
 - **Linting** - ESLint configuration and rules: `docs/linting.md`
 - **Testing Guide** - Test structure and coverage: `docs/testing/README.md`
+- **Database Cleanup Script** - Reset media data while preserving reference data: `scripts/database-clean-media.sh`
 
 ### Future Plans & Vision
 - **Future Vision** - Opportunities and roadmap: `docs/future-vision-and-opportunities.md`
