@@ -5,6 +5,7 @@ import { EquipmentService } from './EquipmentService.js';
 import { extractColorAnalysis } from '../colorExtractor.js';
 import { ProcessingResult } from '../../types/media.js';
 import { UnknownJsonContent } from '../../types/semantic-any.js';
+import { MediaFile } from '../../database/types/tables.js';
 
 const logger = new Logger('MediaFileService');
 
@@ -14,34 +15,7 @@ export interface MediaFileStorageOptions {
   extractColors?: boolean;
 }
 
-export interface MediaFileRecord {
-  id: number;
-  collection: string;
-  relative_path: string;
-  file_hash: string;
-  file_size: number;
-  mime_type: string;
-  media_type: string;
-  media_format: string;
-  is_live_photo: boolean;
-  primary_timestamp: Date;
-  timestamp_source: string;
-  timestamp_confidence: string;
-  imaging_train_id?: number;
-  iso_value?: number;
-  aperture_f_number?: number;
-  shutter_speed_seconds?: number;
-  frame_count: number;
-  integration_time_seconds?: number;
-  focal_length_mm?: number;
-  dominant_color_hex?: string;
-  mean_color_hex?: string;
-  salient_color_hex?: string;
-  media_metadata: UnknownJsonContent;
-  camera_exif: UnknownJsonContent;
-  created_at: Date;
-  updated_at: Date;
-}
+export type MediaFileRecord = MediaFile;
 
 export class MediaFileService {
   private db: Knex;
@@ -68,13 +42,13 @@ export class MediaFileService {
 
     try {
       // Generate file hash for deduplication
-      const fileHash = await this.generateFileHash(result.filePath);
+      const fileHash = await this.generateFileHash(result.file.path);
       
       // Check if file already exists
       const existingFile = await this.findByHash(fileHash);
       
       if (existingFile && !preserveHistory) {
-        logger.debug(`File already exists, skipping: ${result.filePath}`);
+        logger.debug(`File already exists, skipping: ${result.file.path}`);
         return existingFile.id;
       }
 
@@ -100,53 +74,52 @@ export class MediaFileService {
 
       // Prepare media file data
       const mediaFileData = {
-        collection,
-        relative_path: this.getRelativePath(result.filePath),
+        collection: collection as 'archive' | 'staging' | 'processed',
+        relative_path: this.getRelativePath(result.file.path),
         file_hash: fileHash,
-        file_size: result.fileSize || 0,
-        mime_type: result.mimeType || 'unknown',
-        media_type: this.determineMediaType(result.mimeType),
-        media_format: result.format || 'unknown',
-        is_live_photo: result.isLivePhoto || false,
+        file_size: result.file.size || 0,
+        mime_type: result.file.mimeType || 'unknown',
+        media_type: this.determineMediaType(result.file.mimeType) as 'image' | 'video',
+        media_format: result.media.format || 'unknown',
+        is_live_photo: result.media.isLivePhoto || false,
         primary_timestamp: this.extractPrimaryTimestamp(result) || new Date(),
-        timestamp_source: result.timestamp?.source || 'unknown',
-        timestamp_confidence: result.timestamp?.confidence || 'low',
+        timestamp_source: (result.timestamps?.primary?.source || 'filesystem') as 'exif' | 'filename' | 'filesystem',
+        timestamp_confidence: (result.timestamps?.primary?.confidence || 'low') as 'high' | 'medium' | 'low',
         imaging_train_id: imagingTrainId,
-        iso_value: result.camera?.settings?.iso,
-        aperture_f_number: result.camera?.settings?.aperture,
-        shutter_speed_seconds: result.camera?.settings?.shutterSpeed,
-        frame_count: result.dimensions?.frameCount || 1,
-        integration_time_seconds: result.camera?.settings?.exposureTime,
-        focal_length_mm: result.camera?.settings?.focalLength,
+        iso_value: result.settings?.iso ? parseInt(String(result.settings.iso)) : null,
+        aperture_f_number: result.settings?.aperture ? parseFloat(result.settings.aperture) : null,
+        shutter_speed_seconds: this.parseShutterSpeed(result.settings?.shutterSpeed),
+        frame_count: 1, // TODO: Add frameCount to media interface if needed
+        integration_time_seconds: null, // Not in current schema
+        focal_length_mm: this.parseFocalLength(result.settings?.focalLength),
         dominant_color_hex: colorData.dominant,
         mean_color_hex: colorData.mean,
         salient_color_hex: colorData.salient,
         media_metadata: this.sanitizeMetadata(result),
-        camera_exif: result.exif || {}
+        camera_exif: result.technical || {},
+        file_created_at: new Date(result.file.created),
+        file_modified_at: new Date(result.file.modified)
       };
 
       let mediaFileId: number;
 
       if (existingFile) {
-        // Update existing record
+        // Update existing record (remove timestamps, let DB handle them)
+        const updateData = { ...mediaFileData };
+        delete (updateData as any).created_at;
+        delete (updateData as any).updated_at;
+        
         await this.db('media_files')
           .where('id', existingFile.id)
-          .update({
-            ...mediaFileData,
-            updated_at: new Date()
-          });
+          .update(updateData as any);
         mediaFileId = existingFile.id;
-        logger.info(`Updated media file: ${result.filePath}`);
+        logger.info(`Updated media file: ${result.file.path}`);
       } else {
-        // Insert new record
-        const [id] = await this.db('media_files').insert({
-          ...mediaFileData,
-          created_at: new Date(),
-          updated_at: new Date()
-        });
-        mediaFileId = id;
-        this.fileHashCache.set(fileHash, id);
-        logger.info(`Inserted new media file: ${result.filePath}`);
+        // Insert new record (let DB handle timestamps)
+        const [id] = await this.db('media_files').insert(mediaFileData as any);
+        mediaFileId = Number(id);
+        this.fileHashCache.set(fileHash, mediaFileId);
+        logger.info(`Inserted new media file: ${result.file.path}`);
       }
 
       // Create processing run record
@@ -155,7 +128,7 @@ export class MediaFileService {
       return mediaFileId;
 
     } catch (error) {
-      logger.error(`Failed to upsert media file ${result.filePath}: ${error}`);
+      logger.error(`Failed to upsert media file ${result.file.path}: ${error}`);
       throw error;
     }
   }
@@ -198,14 +171,27 @@ export class MediaFileService {
    * Generate file hash for deduplication
    */
   private async generateFileHash(filePath: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const hash = crypto.createHash('md5');
-      const fs = require('fs');
-      const stream = fs.createReadStream(filePath);
-      
-      stream.on('data', (data: Buffer) => hash.update(data));
-      stream.on('end', () => resolve(hash.digest('hex')));
-      stream.on('error', reject);
+    return new Promise(async (resolve, reject) => {
+      try {
+        const hash = crypto.createHash('md5');
+        const fs = await import('fs');
+        
+        // Resolve the absolute path if it's a special path
+        let absolutePath = filePath;
+        if (filePath.includes(':')) {
+          // This is a special path like "sample:file.jpg", resolve it
+          const { toAbsolutePath } = await import('../../utils/paths.js');
+          absolutePath = toAbsolutePath(filePath);
+        }
+        
+        const stream = fs.createReadStream(absolutePath);
+        
+        stream.on('data', (data: string | Buffer) => hash.update(data));
+        stream.on('end', () => resolve(hash.digest('hex')));
+        stream.on('error', reject);
+      } catch (error) {
+        reject(error);
+      }
     });
   }
 
@@ -218,23 +204,23 @@ export class MediaFileService {
     salient?: string;
   }> {
     try {
-      if (result.colors?.dominant || result.colors?.mean || result.colors?.salient) {
+      if (result.media?.dominantColor || result.media?.meanColor || result.media?.salientColor) {
         return {
-          dominant: result.colors.dominant,
-          mean: result.colors.mean,
-          salient: result.colors.salient
+          dominant: result.media.dominantColor,
+          mean: result.media.meanColor,
+          salient: result.media.salientColor || undefined
         };
       }
 
       // Extract colors if not already present
-      const colors = await extractColorAnalysis(result.filePath);
+      const colors = await extractColorAnalysis(result.file.path);
       return {
         dominant: colors.dominantColor,
         mean: colors.meanColor,
-        salient: colors.salientColor
+        salient: colors.salientColor || undefined
       };
     } catch (error) {
-      logger.warn(`Failed to extract colors for ${result.filePath}: ${error}`);
+      logger.warn(`Failed to extract colors for ${result.file.path}: ${error}`);
       return {};
     }
   }
@@ -244,7 +230,7 @@ export class MediaFileService {
    */
   private shouldExtractColors(result: ProcessingResult): boolean {
     // Only extract for images, not videos
-    return result.mimeType?.startsWith('image/') || false;
+    return result.file.mimeType?.startsWith('image/') || false;
   }
 
   /**
@@ -278,13 +264,13 @@ export class MediaFileService {
    * Extract primary timestamp from processing result
    */
   private extractPrimaryTimestamp(result: ProcessingResult): Date | null {
-    if (result.timestamp?.value) {
-      return new Date(result.timestamp.value);
+    if (result.timestamps?.primary?.timestamp) {
+      return new Date(result.timestamps.primary.timestamp);
     }
     
-    // Fallback to EXIF date
-    if (result.exif?.CreateDate) {
-      return new Date(result.exif.CreateDate as string);
+    // Fallback to file creation date
+    if (result.file.created) {
+      return new Date(result.file.created);
     }
     
     return null;
@@ -295,10 +281,12 @@ export class MediaFileService {
    */
   private sanitizeMetadata(result: ProcessingResult): UnknownJsonContent {
     return {
-      technical: result.technical || {},
-      dimensions: result.dimensions || {},
+      media: result.media || {},
       location: result.location || {},
-      enrichment: result.enrichment || {}
+      camera: result.camera || {},
+      settings: result.settings || {},
+      technical: result.technical || {},
+      processing: result.processing || {}
     };
   }
 
@@ -308,21 +296,19 @@ export class MediaFileService {
   private async createProcessingRun(mediaFileId: number, result: ProcessingResult): Promise<void> {
     try {
       const processingRunData = {
-        media_file_id: mediaFileId,
-        processor_name: result.processor || 'unknown',
-        processor_version: '1.0.0', // TODO: Get from package.json
-        processing_started_at: new Date(),
-        processing_completed_at: new Date(),
-        processing_duration_ms: result.processingTime || 0,
-        status: 'completed',
-        error_message: null,
-        run_metadata: {
-          enrichment_status: result.enrichment?.status || {},
-          provider_usage: result.enrichment?.providerUsage || {}
-        }
+        file_id: mediaFileId,
+        processor: result.processing.processor,
+        success: result.processing.success,
+        extracted_at: new Date(result.processing.extractedAt),
+        processing_version: result.processing.version || '1.0.0',
+        providers_enabled: result.processing.providersEnabled || null,
+        providers_with_results: null, // TODO: Extract from result
+        provider_failures: null, // TODO: Extract from result
+        processing_duration_ms: result.processing.processingTimeMs || 0,
+        notes: result.processing.notes || null
       };
 
-      await this.db('processing_runs').insert(processingRunData);
+      await this.db('processing_runs').insert(processingRunData as any);
     } catch (error) {
       logger.warn(`Failed to create processing run for media file ${mediaFileId}: ${error}`);
     }
@@ -346,5 +332,32 @@ export class MediaFileService {
       equipment: equipmentStats.equipment,
       imagingTrains: equipmentStats.imagingTrains
     };
+  }
+
+  /**
+   * Parse shutter speed string to decimal seconds
+   */
+  private parseShutterSpeed(shutterSpeed?: string): number | null {
+    if (!shutterSpeed) return null;
+    
+    // Handle fraction format (e.g., "1/125")
+    if (shutterSpeed.includes('/')) {
+      const [numerator, denominator] = shutterSpeed.split('/').map(Number);
+      return numerator / denominator;
+    }
+    
+    // Handle decimal format (e.g., "0.008")
+    return parseFloat(shutterSpeed);
+  }
+
+  /**
+   * Parse focal length string to mm integer
+   */
+  private parseFocalLength(focalLength?: string): number | null {
+    if (!focalLength) return null;
+    
+    // Extract numeric value (e.g., "50mm" -> 50)
+    const match = focalLength.match(/(\d+)/);
+    return match ? parseInt(match[1]) : null;
   }
 }

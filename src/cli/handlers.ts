@@ -383,8 +383,8 @@ export class CLIHandler {
       await landmarkService.close();
       
       // Close main database connection (used by post-processor)
-      const { closeDatabaseConnection } = await import('../database/connection.js');
-      await closeDatabaseConnection();
+      const { closeDatabase } = await import('../database/index.js');
+      await closeDatabase();
       
       logger.debug('CLI cleanup completed - all database connections closed');
     } catch (error) {
@@ -451,4 +451,5 @@ export class CLIHandler {
       return newMetadata;
     }
   }
+
 }

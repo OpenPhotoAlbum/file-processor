@@ -2,28 +2,11 @@ import { Knex } from 'knex';
 import { Logger } from '../../utils/logging/index.js';
 import { ProcessingResult } from '../../types/media.js';
 import { UnknownJsonContent } from '../../types/semantic-any.js';
+import { MediaLocation } from '../../database/types/tables.js';
 
 const logger = new Logger('LocationService');
 
-export interface LocationRecord {
-  id: number;
-  media_file_id: number;
-  latitude: number;
-  longitude: number;
-  altitude_meters?: number;
-  gps_precision_meters?: number;
-  coordinate_source: string;
-  coordinate_confidence: string;
-  timezone_offset?: string;
-  city_name?: string;
-  state_province?: string;
-  country_name?: string;
-  country_code?: string;
-  postal_code?: string;
-  location_metadata: UnknownJsonContent;
-  created_at: Date;
-  updated_at: Date;
-}
+export type LocationRecord = MediaLocation;
 
 export class LocationService {
   private db: Knex;
@@ -44,49 +27,27 @@ export class LocationService {
         return null;
       }
 
-      const locationData = this.extractLocationData(mediaFileId, result);
-      const locationKey = this.generateLocationKey(locationData.latitude, locationData.longitude);
-
-      // Check cache first
-      if (this.locationCache.has(locationKey)) {
-        const existingId = this.locationCache.get(locationKey)!;
-        logger.debug(`Using cached location ${existingId} for coordinates ${locationData.latitude}, ${locationData.longitude}`);
-        return existingId;
-      }
+      const locationData = await this.extractLocationData(mediaFileId, result);
 
       // Check if location already exists for this media file
       const existingLocation = await this.db('media_locations')
-        .select('id')
-        .where('media_file_id', mediaFileId)
+        .select('file_id')
+        .where('file_id', mediaFileId)
         .first();
-
-      let locationId: number;
 
       if (existingLocation) {
         // Update existing location
         await this.db('media_locations')
-          .where('id', existingLocation.id)
-          .update({
-            ...locationData,
-            updated_at: new Date()
-          });
-        locationId = existingLocation.id;
+          .where('file_id', mediaFileId)
+          .update(locationData);
         logger.debug(`Updated location for media file ${mediaFileId}`);
       } else {
         // Insert new location
-        const [id] = await this.db('media_locations').insert({
-          ...locationData,
-          created_at: new Date(),
-          updated_at: new Date()
-        });
-        locationId = id;
+        await this.db('media_locations').insert(locationData);
         logger.debug(`Created new location for media file ${mediaFileId}`);
       }
-
-      // Cache the location
-      this.locationCache.set(locationKey, locationId);
       
-      return locationId;
+      return mediaFileId; // Return the file ID since there's no separate location ID
 
     } catch (error) {
       logger.error(`Failed to upsert location for media file ${mediaFileId}: ${error}`);
@@ -100,7 +61,7 @@ export class LocationService {
   async findByMediaFileId(mediaFileId: number): Promise<LocationRecord | null> {
     const result = await this.db('media_locations')
       .select('*')
-      .where('media_file_id', mediaFileId)
+      .where('file_id', mediaFileId)
       .first();
 
     return result || null;
@@ -156,7 +117,7 @@ export class LocationService {
       .limit(20);
 
     return {
-      totalLocations: totalLocations?.count || 0,
+      totalLocations: Number((totalLocations as any)?.count) || 0,
       countryCounts: countryCounts.map(row => ({
         country: row.country,
         count: Number(row.count)
@@ -174,38 +135,79 @@ export class LocationService {
    */
   private hasGPSData(result: ProcessingResult): boolean {
     return !!(
-      result.location?.coordinates?.latitude && 
-      result.location?.coordinates?.longitude
+      result.location?.primary?.latitude && 
+      result.location?.primary?.longitude
     );
   }
 
   /**
    * Extract location data from processing result
    */
-  private extractLocationData(mediaFileId: number, result: ProcessingResult): Omit<LocationRecord, 'id' | 'created_at' | 'updated_at'> {
-    const location = result.location!;
-    const coordinates = location.coordinates!;
+   private async extractLocationData(mediaFileId: number, result: ProcessingResult): Promise<any> {
+    const primaryGPS = result.location!.primary!;
+    const geolocation = result.location?.geolocation;
+
+    // Find foreign key IDs for city/state/country if geolocation data exists
+    let cityId: number | null = null;
+    let stateId: number | null = null;
+    let countryId: number | null = null;
+
+    if (geolocation?.city && geolocation?.state_code) {
+      try {
+        // Find city ID
+        const cityResult = await this.db('geo_cities')
+          .select('id')
+          .where('city', geolocation.city)
+          .where('state_code', geolocation.state_code)
+          .first();
+        
+        if (cityResult) {
+          cityId = cityResult.id;
+        }
+
+        // Find state ID
+        const stateResult = await this.db('geo_states')
+          .select('id')
+          .where('code', geolocation.state_code)
+          .first();
+        
+        if (stateResult) {
+          stateId = stateResult.id;
+        }
+
+        // Find country ID (assuming US for now, but could be enhanced)
+        const countryResult = await this.db('geo_countries')
+          .select('id')
+          .where('country_code', 'US')
+          .first();
+        
+        if (countryResult) {
+          countryId = countryResult.id;
+        }
+
+        logger.debug(`Resolved location IDs`, {
+          city: geolocation.city,
+          cityId,
+          state: geolocation.state_code,
+          stateId,
+          countryId
+        });
+
+      } catch (error) {
+        logger.warn(`Failed to resolve location foreign keys: ${error}`);
+      }
+    }
 
     return {
-      media_file_id: mediaFileId,
-      latitude: coordinates.latitude,
-      longitude: coordinates.longitude,
-      altitude_meters: coordinates.altitude,
-      gps_precision_meters: coordinates.accuracy,
-      coordinate_source: coordinates.source || 'gps',
-      coordinate_confidence: coordinates.confidence || 'medium',
-      timezone_offset: location.timezone?.offset,
-      city_name: location.municipality?.city || location.geolocation?.city,
-      state_province: location.municipality?.state || location.geolocation?.state,
-      country_name: location.municipality?.country || location.geolocation?.country,
-      country_code: location.municipality?.countryCode || location.geolocation?.countryCode,
-      postal_code: location.geolocation?.postalCode,
-      location_metadata: {
-        timezone: location.timezone || {},
-        municipality: location.municipality || {},
-        geolocation: location.geolocation || {},
-        raw_coordinates: coordinates
-      }
+      file_id: mediaFileId,
+      latitude: primaryGPS.latitude,
+      longitude: primaryGPS.longitude,
+      gps_source: (primaryGPS.source || 'exif') as 'exif' | 'manual' | 'estimated',
+      gps_confidence: 'medium' as 'high' | 'medium' | 'low', // TODO: Add confidence to GPS data
+      city_id: cityId,
+      state_id: stateId,
+      country_id: countryId,
+      geolocation_data: JSON.stringify(result.location) // Keep as fallback/additional data
     };
   }
 

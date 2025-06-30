@@ -1,5 +1,8 @@
 import { ProcessingResult } from '../types/media.js';
 import { Logger } from '../utils/logging/index.js';
+import { MediaFileService } from '../services/database/MediaFileService.js';
+import { LocationService } from '../services/database/LocationService.js';
+import { LandmarkService } from '../services/database/LandmarkService.js';
 
 const logger = new Logger('PostProcessor');
 
@@ -50,23 +53,38 @@ async function storeDatabaseRecords(
     logger.info(`🔄 Database storage requested for ${result.file.path}`);
     const startTime = Date.now();
 
-    // For now, just demonstrate the integration points work
-    logger.info(`📊 Collection: ${options.dbCollection || 'archive'}`);
-    logger.info(`🎨 Extract colors: ${options.extractColors !== false}`);
-    logger.info(`📚 Preserve history: ${options.preserveHistory !== false}`);
+    // Get Knex instance from the database service
+    const { db: knex } = await import('../database/index.js');
 
-    // TODO: Implement actual database operations after type alignment
-    // const mediaFileId = await mediaFileService.upsertMediaFile(result, options);
-    // await locationService.upsertLocation(mediaFileId, result);  
-    // await landmarkService.upsertLandmarkAssociations(mediaFileId, result);
+    // Initialize services
+    const mediaFileService = new MediaFileService(knex);
+    const locationService = new LocationService(knex);
+    const landmarkService = new LandmarkService(knex);
+
+    // Store main media file record
+    const mediaFileId = await mediaFileService.upsertMediaFile(result, {
+      collection: options.dbCollection || 'archive',
+      preserveHistory: options.preserveHistory !== false,
+      extractColors: options.extractColors !== false
+    });
+
+    // Store location data (if GPS data exists)
+    if (result.location) {
+      await locationService.upsertLocation(mediaFileId, result);
+    }
+
+    // Store landmark associations (if enrichment data exists)
+    if (result.location?.landmarks && result.location.landmarks.length > 0) {
+      await landmarkService.upsertLandmarkAssociations(mediaFileId, result);
+    }
 
     const duration = Date.now() - startTime;
-    logger.info(`✅ Database storage simulation completed in ${duration}ms`);
+    logger.info(`✅ Database storage completed in ${duration}ms`);
 
     // Add database info to processing result
     result.database = {
       stored: true,
-      mediaFileId: 12345, // Mock ID for now
+      mediaFileId,
       collection: options.dbCollection || 'archive',
       duration
     };

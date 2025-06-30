@@ -1,11 +1,45 @@
 # Media Processing Pipeline - TODO & Current Plan
 
-**Last Updated:** 2025-06-26  
-**Status:** ALL MAJOR PHASES COMPLETE! 🎉 Ready for next initiatives
+**Last Updated:** 2025-06-30  
+**Status:** Phase 6 Database Migration In Progress
+
+## 🔄 Phase 6: Database Migration Architecture (June 30, 2024)
+
+### Current Work In Progress
+- **Clean Database Service Architecture:** Implementing self-contained database storage
+  - ✅ MediaFileService, LocationService, LandmarkService created
+  - ✅ CLI integration with --output-db, --db-collection flags  
+  - ✅ Post-processor sink pattern implemented
+  - ✅ Old standalone scripts removed (1500+ lines cleaned up)
+  - 🔄 Fixing services to match actual database schema
+  - 🔄 Testing full data insertion pipeline
+
+### Current Issues Being Resolved
+- **🔥 High Priority Issues:**
+  - CLI process hanging after database operations (cleanup method not fully working)
+  - MediaFileService "Unknown column 'location'" error during updates
+  - LandmarkService provider detection (partially fixed, auto-detection implemented)
+  
+- **📋 Medium Priority Tasks:**
+  - Geographic table foreign keys missing (media_locations needs state_id, city_id, country_id)
+  - Verify LocationService and LandmarkService are properly inserting data
+  - Complete end-to-end CLI database workflow testing
+
+### Database Infrastructure Status
+- **MySQL Container:** Fixed memory issues (now 2GB limit)
+- **All Tables Created:** 20 tables including media_files, landmarks, processing_runs
+- **GNIS Data Loaded:** 650,542 geographic features
+- **Ready for Data:** Schema matches expected structure
+
+### Architecture Benefits
+- **Self-contained:** Database code completely optional (--output-db flag)
+- **Clean separation:** No DB queries scattered in processing code
+- **Follows patterns:** Based on existing EquipmentService design
+- **Backward compatible:** Works perfectly without database
 
 ## Current Status Summary
 
-### ✅ COMPLETED (Phases 1, 2, & 3A-3B)
+### ✅ COMPLETED (Phases 1-5)
 - **Deduplication:** 288,000+ duplicates removed, 818GB recovered
 - **Directory Restructuring:** Photos organized in `/photos/archive/YYYY/MM/`
 - **Filename Standardization:** All files use `YYYY-MM-DD_HH-MM-SS_000.ext`
