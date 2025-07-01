@@ -110,3 +110,15 @@ mcp-project-context/embeddings.db
 !*.json
 !*.yaml
 !*.yml
+
+# === CACHE FILES ===
+drift_cache.json
+
+# === LARGE DATA/SAMPLE FILES ===
+sample11.json
+metadata.template.md
+municipal-boundaries-data/
+mysql-init/
+scratch/
+photo-browser-api/
+logs/

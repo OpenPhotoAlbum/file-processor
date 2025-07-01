@@ -15,103 +15,43 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Tuple, Set
 import argparse
+from file_processor import FileProcessor
 
 class DriftMonitor:
     def __init__(self, project_root: str, db_path: str = "embeddings.db"):
         self.project_root = Path(project_root)
         self.db_path = db_path
         self.cache_file = "drift_cache.json"
-        self.brainignore_patterns = self._load_brainignore()
+        self.file_processor = FileProcessor()  # Use same filtering as ingestion
         
-    def _load_brainignore(self) -> List[str]:
-        """Load patterns from .brainignore file."""
-        brainignore_path = Path(__file__).parent / ".brainignore"
-        if not brainignore_path.exists():
-            return []
-        
-        patterns = []
-        with open(brainignore_path, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    patterns.append(line)
-        return patterns
-    
-    def _should_ignore(self, file_path: Path) -> bool:
-        """Check if file should be ignored based on .brainignore patterns."""
-        relative_path = file_path.relative_to(self.project_root)
-        path_str = str(relative_path)
-        
-        for pattern in self.brainignore_patterns:
-            # Simple pattern matching (could be enhanced with glob)
-            if pattern.endswith('/'):
-                # Directory pattern
-                if path_str.startswith(pattern) or f"/{pattern}" in path_str:
-                    return True
-            elif pattern.startswith('*.'):
-                # Extension pattern
-                if path_str.endswith(pattern[1:]):
-                    return True
-            elif pattern in path_str:
-                # Contains pattern
-                return True
-        return False
     
     def get_current_file_state(self) -> Dict[str, Dict]:
-        """Get current state of all tracked files."""
+        """Get current state of all tracked files using FileProcessor filtering."""
         file_state = {}
         
         # Walk through project directory
         for root, dirs, files in os.walk(self.project_root):
-            # Skip ignored directories early
-            dirs[:] = [d for d in dirs if not self._should_ignore(Path(root) / d)]
+            # Skip ignored directories using FileProcessor logic
+            dirs[:] = [d for d in dirs if not self.file_processor._should_ignore(os.path.join(root, d)) and not d.startswith('.')]
             
             for file in files:
-                file_path = Path(root) / file
-                
-                # Skip ignored files
-                if self._should_ignore(file_path):
-                    continue
-                
-                # Only process text files that could contain code
-                if self._is_trackable_file(file_path):
-                    try:
-                        stat = file_path.stat()
-                        file_state[str(file_path)] = {
-                            'mtime': stat.st_mtime,
-                            'size': stat.st_size,
-                            'hash': self._get_file_hash(file_path)
-                        }
-                    except (OSError, IOError):
-                        continue
+                if not file.startswith('.'):
+                    file_path = os.path.join(root, file)
+                    
+                    # Use FileProcessor filtering (same as ingestion)
+                    if not self.file_processor._should_ignore(file_path):
+                        try:
+                            stat = Path(file_path).stat()
+                            file_state[file_path] = {
+                                'mtime': stat.st_mtime,
+                                'size': stat.st_size,
+                                'hash': self._get_file_hash(Path(file_path))
+                            }
+                        except (OSError, IOError):
+                            continue
         
         return file_state
     
-    def _is_trackable_file(self, file_path: Path) -> bool:
-        """Determine if file should be tracked for code search."""
-        # Skip binary files and non-code files
-        text_extensions = {
-            '.py', '.js', '.ts', '.tsx', '.jsx', '.java', '.cpp', '.c', '.h',
-            '.cs', '.php', '.rb', '.go', '.rs', '.swift', '.kt', '.scala',
-            '.md', '.txt', '.yml', '.yaml', '.json', '.xml', '.sql', '.sh',
-            '.bash', '.zsh', '.fish', '.ps1', '.dockerfile', '.makefile'
-        }
-        
-        ext = file_path.suffix.lower()
-        name = file_path.name.lower()
-        
-        # Include files with relevant extensions
-        if ext in text_extensions:
-            return True
-            
-        # Include common config files without extensions
-        config_files = {
-            'dockerfile', 'makefile', 'rakefile', 'gemfile', 'procfile'
-        }
-        if name in config_files:
-            return True
-            
-        return False
     
     def _get_file_hash(self, file_path: Path) -> str:
         """Get SHA256 hash of file content."""
@@ -193,9 +133,12 @@ class DriftMonitor:
             db_files = set()
             
             for (file_chunk,) in cursor.fetchall():
-                # Remove chunk suffix to get actual file path
+                # Remove chunk and summary suffixes to get actual file path
                 if '_chunk_' in file_chunk:
                     actual_file = file_chunk.split('_chunk_')[0]
+                    db_files.add(actual_file)
+                elif '_summary' in file_chunk:
+                    actual_file = file_chunk.split('_summary')[0]
                     db_files.add(actual_file)
                 else:
                     db_files.add(file_chunk)
@@ -241,11 +184,20 @@ class DriftMonitor:
         }
         
         # Determine if update is needed
-        total_drift = (drift_report['filesystem_changes']['total_changes'] + 
-                      drift_report['database_alignment']['alignment_issues'])
-        
-        if total_drift > 0:
-            drift_report['needs_update'] = True
+        # If database alignment is perfect, only count modified/deleted files as drift
+        # (new files without cache just means this is first run after rebuild)
+        if drift_report['database_alignment']['alignment_issues'] == 0:
+            # Database is in sync - only real changes matter
+            real_changes = (len(drift_report['filesystem_changes']['modified_files']) + 
+                           len(drift_report['filesystem_changes']['deleted_files']))
+            if real_changes > 0:
+                drift_report['needs_update'] = True
+        else:
+            # Database has alignment issues - full drift check
+            total_drift = (drift_report['filesystem_changes']['total_changes'] + 
+                          drift_report['database_alignment']['alignment_issues'])
+            if total_drift > 0:
+                drift_report['needs_update'] = True
         
         return drift_report
     

@@ -197,6 +197,11 @@ def main():
         print(f"🔍 Previewing files that would be processed from: {args.path}")
         print("=" * 60)
         
+        # Initialize processor if not already done
+        if brain.processor is None:
+            from file_processor import FileProcessor
+            brain.processor = FileProcessor()
+        
         if os.path.isfile(args.path):
             if brain.processor._should_ignore(args.path):
                 print(f"❌ IGNORED: {args.path}")
