@@ -43,6 +43,12 @@ Run this after implementing any new feature or making significant changes to ens
    ```
    Confirm no drift detected and system is synchronized.
 
+7. **Documentation**
+   - Check if LANDMARK_ARCHITECTURE.md needs updating
+   - Check if ACCOMPLISHMENTS.md needs updating
+   - Check if PROCESSING_ACRHITECTURE.md needs updating
+   - Check if TODO.md needs updating
+
 ## Success Criteria
 - ✅ Linting passes with zero warnings/errors
 - ✅ TypeScript compilation succeeds without errors  
