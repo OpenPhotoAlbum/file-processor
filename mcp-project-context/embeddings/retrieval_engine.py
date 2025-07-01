@@ -25,3 +25,10 @@ def search_embeddings(query, db_path="embeddings.db", top_n=5):
     conn.close()
     results.sort(reverse=True)
     return results[:top_n]
+
+class RetrievalEngine:
+    def __init__(self, db_path="embeddings.db"):
+        self.db_path = db_path
+        
+    def search(self, query, top_n=5):
+        return search_embeddings(query, self.db_path, top_n)
