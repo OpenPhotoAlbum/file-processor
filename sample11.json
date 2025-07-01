@@ -216,7 +216,7 @@
           "cacheHit": false,
           "landmarks": "success",
           "geolocation": "success",
-          "queryTimeMs": 561,
+          "queryTimeMs": 603,
           "providersUsed": [
             "USGS GNIS",
             "Recreation.gov"
@@ -263,61 +263,61 @@
   ],
   "media_landmarks": [
     {
-      "id": 421492,
+      "id": 421502,
       "file_id": 51788,
       "landmark_id": 56,
       "distance_meters": 768
     },
     {
-      "id": 421493,
+      "id": 421503,
       "file_id": 51788,
       "landmark_id": 57,
       "distance_meters": 1017
     },
     {
-      "id": 421497,
+      "id": 421507,
       "file_id": 51788,
       "landmark_id": 61,
       "distance_meters": 2093
     },
     {
-      "id": 421496,
+      "id": 421506,
       "file_id": 51788,
       "landmark_id": 60,
       "distance_meters": 2108
     },
     {
-      "id": 421498,
+      "id": 421508,
       "file_id": 51788,
       "landmark_id": 62,
       "distance_meters": 2676
     },
     {
-      "id": 421499,
+      "id": 421509,
       "file_id": 51788,
       "landmark_id": 63,
       "distance_meters": 2691
     },
     {
-      "id": 421490,
+      "id": 421500,
       "file_id": 51788,
       "landmark_id": 54,
       "distance_meters": 2910
     },
     {
-      "id": 421491,
+      "id": 421501,
       "file_id": 51788,
       "landmark_id": 55,
       "distance_meters": 2926
     },
     {
-      "id": 421494,
+      "id": 421504,
       "file_id": 51788,
       "landmark_id": 58,
       "distance_meters": 14031
     },
     {
-      "id": 421495,
+      "id": 421505,
       "file_id": 51788,
       "landmark_id": 59,
       "distance_meters": 15129
@@ -595,7 +595,7 @@
   ],
   "media_software": [
     {
-      "id": 15,
+      "id": 16,
       "file_id": 51788,
       "software_id": 18,
       "usage_role": "capture",
@@ -617,6 +617,19 @@
   ],
   "processing_runs": [
     {
+      "id": 51797,
+      "file_id": 51788,
+      "processor": "ImageProcessor",
+      "success": 1,
+      "extracted_at": "2025-07-01T04:17:50.000Z",
+      "processing_version": "1.0.0",
+      "providers_enabled": null,
+      "providers_with_results": null,
+      "provider_failures": null,
+      "processing_duration_ms": 0,
+      "notes": null
+    },
+    {
       "id": 51796,
       "file_id": 51788,
       "processor": "ImageProcessor",
@@ -632,7 +645,7 @@
   ],
   "unknown_tables_checked": [],
   "inspection_metadata": {
-    "timestamp": "2025-06-30T21:51:43.055Z",
+    "timestamp": "2025-07-01T00:17:50.190Z",
     "tables_inspected": [
       "media_files",
       "imaging_trains",
@@ -647,7 +660,7 @@
       "software",
       "processing_runs"
     ],
-    "total_related_records": 28,
+    "total_related_records": 29,
     "database_connection": {
       "host": "localhost",
       "port": 3309,
@@ -667,7 +680,10 @@
       "processing_runs_providers": [
         "run[0].providers_enabled",
         "run[0].providers_with_results",
-        "run[0].provider_failures"
+        "run[0].provider_failures",
+        "run[1].providers_enabled",
+        "run[1].providers_with_results",
+        "run[1].provider_failures"
       ]
     },
     "empty_associations": {},
@@ -682,7 +698,7 @@
       "landmarks": "10 records",
       "media_software": "1 records",
       "software": "1 records",
-      "processing_runs": "1 records"
+      "processing_runs": "2 records"
     },
     "data_completeness": {
       "core_data": true,

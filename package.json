@@ -17,6 +17,7 @@
     "lint:check": "eslint src/**/*.ts --max-warnings 25",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
+    "query:one": "node scripts/media-inspector.cjs complete",
     "etl:recreation": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js",
     "etl:recreation:incremental": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js --incremental",
     "mcp-project:start": "cd mcp-project-context && ./venv/bin/python mcp_server_simple.py",
