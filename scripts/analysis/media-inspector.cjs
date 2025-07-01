@@ -91,7 +91,16 @@ function analyzeResults(data) {
         (analysis.landmark_summary.by_provider[provider] || 0) + 1;
 
       // Count by type (from provider_data)
-      const provider_data = landmark.provider_data ? JSON.parse(landmark.provider_data) : {};
+      let provider_data = {};
+      if (landmark.provider_data) {
+        try {
+          provider_data = typeof landmark.provider_data === 'string' 
+            ? JSON.parse(landmark.provider_data) 
+            : landmark.provider_data;
+        } catch (e) {
+          console.warn('Failed to parse provider_data:', e.message);
+        }
+      }
       const type = provider_data.feature_class || provider_data.type || 'unknown';
       analysis.landmark_summary.by_type[type] = 
         (analysis.landmark_summary.by_type[type] || 0) + 1;
@@ -100,7 +109,14 @@ function analyzeResults(data) {
 
   // Enrichment status
   if (data.location && data.location.geolocation_data) {
-    const geo_data = JSON.parse(data.location.geolocation_data);
+    let geo_data = {};
+    try {
+      geo_data = typeof data.location.geolocation_data === 'string' 
+        ? JSON.parse(data.location.geolocation_data)
+        : data.location.geolocation_data;
+    } catch (e) {
+      console.warn('Failed to parse geolocation_data:', e.message);
+    }
     analysis.enrichment_status = {
       has_reverse_geocoding: !!geo_data.city,
       has_municipal_boundaries: !!geo_data.municipal_boundary,
@@ -169,7 +185,15 @@ async function technicalInspection(filePath) {
     
     // Parse media metadata
     if (mediaFile.media_metadata) {
-      const metadata = JSON.parse(mediaFile.media_metadata);
+      let metadata = {};
+      try {
+        metadata = typeof mediaFile.media_metadata === 'string' 
+          ? JSON.parse(mediaFile.media_metadata)
+          : mediaFile.media_metadata;
+      } catch (e) {
+        console.warn('Failed to parse media_metadata:', e.message);
+        return;
+      }
       console.log('  Media Properties:');
       if (metadata.media) {
         console.log(`    Type: ${metadata.media.type || 'N/A'}`);
@@ -244,8 +268,7 @@ async function completeInspection(filePath) {
       .first();
 
     const landmarks = await db('media_landmarks')
-      .join('media_locations', 'media_landmarks.location_id', 'media_locations.id')
-      .where('media_locations.file_id', mediaFile.id)
+      .where('file_id', mediaFile.id)
       .select('media_landmarks.*');
 
     const equipment = mediaFile.equipment_id ? 
@@ -256,7 +279,7 @@ async function completeInspection(filePath) {
 
     const processing_runs = await db('processing_runs')
       .where('file_id', mediaFile.id)
-      .orderBy('processed_at', 'desc');
+      .orderBy('extracted_at', 'desc');
 
     // Compile complete data
     const completeData = {

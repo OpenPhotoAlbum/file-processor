@@ -12,6 +12,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:generate-mocks": "npm run build && ./scripts/generate-test-mocks.sh",
+    "test:setup-fixtures": "node tests/setup-deduplication-fixture.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "lint:check": "eslint src/**/*.ts --max-warnings 25",
