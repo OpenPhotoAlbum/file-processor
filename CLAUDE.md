@@ -73,6 +73,11 @@
 2. Backup critical data if recreation is absolutely necessary
 3. Get explicit user approval for destructive operations
 
+**MySQL Command Execution Protocol:**
+- **Instead of attempting MySQL commands directly and failing repeatedly due to authentication issues, ask Stephen to run the commands**
+- **This avoids wasted cycles trying to execute Docker/MySQL commands that require specific authentication setup**
+- **Stephen can quickly execute the needed MySQL queries and provide the results back**
+
 ### Semantic Any Types System (December 2024)
 - **Philosophy**: Eliminate `any` but acknowledge metadata heterogeneity reality
 - **Semantic aliases**: `ExternalToolOutput`, `UnknownSidecarData`, `UnknownJsonContent` etc.
@@ -249,6 +254,16 @@ node dist/main.js -f "sample:vancouver-island.jpg" --json
 - **Environment variables**: Consistent provider configuration across test runs
 
 **Performance Improvement**: Tests now run ~10x faster with full mocking enabled
+
+## Source Code Documentation
+Each main directory in `/src/` contains a `CLAUDE.md` file with developer-focused helper notes:
+- **`src/cli/CLAUDE.md`** - CLI interface patterns, output modes, and usage examples
+- **`src/database/CLAUDE.md`** - Database integration, migration system, and preservation protocols
+- **`src/pipeline/CLAUDE.md`** - Processing orchestration and processor routing
+- **`src/processors/CLAUDE.md`** - Image/video processing and Live Photo detection
+- **`src/services/CLAUDE.md`** - Service layer architecture and provider integrations
+- **`src/types/CLAUDE.md`** - Type system design and semantic any usage
+- **`src/utils/CLAUDE.md`** - Error handling, logging, and extraction utilities
 
 ## Documentation Index
 
