@@ -28,7 +28,7 @@
     "mcp-project:check-drift": "cd mcp-project-context && ./venv/bin/python drift_monitor.py --check --project-root /home/stephen/Documents/initial-media-processing",
     "mcp-project:auto-update": "cd mcp-project-context && ./venv/bin/python drift_monitor.py --auto-update --project-root /home/stephen/Documents/initial-media-processing",
     "mcp-project:cleanup-db": "cd mcp-project-context && ./venv/bin/python cleanup_database.py",
-    "mcp-project:test": "cd mcp-project-context && ./venv/bin/python -c \"from embeddings.retrieval_engine import RetrievalEngine; engine = RetrievalEngine('project-embeddings.db'); print(engine.search('CLI implementation'))\"",
+    "mcp-project:test": "cd mcp-project-context && ./venv/bin/python -c \"from embeddings.retrieval_engine import RetrievalEngine; engine = RetrievalEngine('embeddings.db'); print(engine.search('CLI implementation'))\"",
     "db:setup": "npm run build:fast && node dist/scripts/setup-database.js",
     "db:migrate": "knex migrate:latest --knexfile src/database/knexfile.js",
     "db:rollback": "knex migrate:rollback --knexfile src/database/knexfile.js",
