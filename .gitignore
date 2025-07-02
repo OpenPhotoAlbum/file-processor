@@ -87,3 +87,6 @@ env/
 # Generated files
 duplicates.json
 photo-metadata-*.html
+
+# External tools
+whisper.cpp/
