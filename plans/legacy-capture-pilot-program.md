@@ -4,12 +4,50 @@
 **Goal:** Prove the immersive memory preservation concept with one family event  
 **Timeline:** Begin immediately, complete within 30-60 days
 
+## Phase 0: URGENT - Voice Recovery from Home Videos (Week 1)
+
+### BREAKTHROUGH DISCOVERY: Hidden Voice Treasures
+**You may already have the voices you thought were lost forever!**
+
+Your digitized home video collection likely contains:
+- **Holiday conversations** with natural speech patterns from deceased family members
+- **Storytelling moments** - relatives telling family stories on camera
+- **Casual wisdom sharing** - advice, life lessons, historical context
+- **Family recipe explanations** - cooking demonstrations with voice narration
+- **Natural family discussions** during gatherings, meals, road trips
+
+### Immediate Video Archive Assessment
+1. **Catalog video collection** - What years, events, and family members appear?
+2. **Identify deceased voices** - Focus on family members no longer available for interviews
+3. **Locate storytelling moments** - Videos where people are actively talking/sharing stories
+4. **Assess audio quality** - Which videos have clear enough audio for voice extraction?
+
+### Voice Extraction Process
+**Tools Needed:**
+- **Video editing software** (DaVinci Resolve - free, or Adobe Premiere)
+- **Audio extraction tools** (Audacity - free, or Adobe Audition)
+- **AI voice separation** (Spleeter, or similar AI tools)
+- **Audio enhancement** (Krisp, or noise reduction software)
+
+**Extraction Steps:**
+1. **Extract audio tracks** from promising videos
+2. **Isolate individual voices** using AI separation tools
+3. **Clean and enhance** audio quality for voice cloning
+4. **Transcribe conversations** to capture both voice and stories
+5. **Archive high-quality samples** for future AI voice synthesis
+
+### Priority Video Categories
+1. **URGENT:** Videos with deceased family members speaking
+2. **HIGH:** Holiday gatherings with natural family storytelling
+3. **MEDIUM:** Casual conversations with family wisdom/advice
+4. **ONGOING:** Recent videos with living family members
+
 ## Phase 1: Event Selection & Photo Timeline (Week 1)
 
 ### Choose Your Pilot Event
 **Recommended: Christmas** (typically has most photos across generations)
 - **Alternative: Easter** if more meaningful to your family
-- **Criteria:** Event that spans multiple decades with good photo coverage
+- **Criteria:** Event that spans multiple decades with good photo coverage AND potential video footage
 
 ### Create Photo Timeline
 1. **Gather all Christmas photos** from your archive spanning 1920s-2024
@@ -169,10 +207,20 @@ Week 4:
 ## Homework Assignments for Family Members
 
 ### Immediate Actions (Week 1)
+- [ ] **URGENT: Assess home video collection** for deceased family member voices
+- [ ] **Extract audio from promising videos** containing storytelling moments
 - [ ] **Choose Christmas or Easter** as pilot event
-- [ ] **Gather all photos** from chosen event across years
-- [ ] **Create family attendee list** with availability notes
+- [ ] **Gather all photos AND videos** from chosen event across years
+- [ ] **Create family attendee list** including both living and deceased voices available
 - [ ] **Schedule first interview** with oldest available family member
+
+### Video Archive Homework
+**Critical first step before all other activities:**
+1. **Create video inventory** - List all digitized home videos by year/event
+2. **Identify deceased voices** - Which family members appear speaking in videos?
+3. **Flag storytelling videos** - Mark videos where people tell family stories
+4. **Test audio extraction** - Try extracting audio from 1-2 sample videos
+5. **Assess voice quality** - Which extracted voices are clear enough for AI cloning?
 
 ### Family Member Homework
 **Send this list to each family member:**
@@ -196,10 +244,11 @@ Week 4:
 ## Success Metrics for Pilot
 
 ### Immediate Outcomes (30 days)
-- [ ] **Complete photo timeline** for chosen event across decades
-- [ ] **Voice samples collected** from available family members
-- [ ] **Initial interviews completed** with 3+ family members
-- [ ] **One pilot story created** demonstrating multi-voice approach
+- [ ] **Home video voice extraction** - Recovered voices from deceased family members
+- [ ] **Complete photo AND video timeline** for chosen event across decades
+- [ ] **Voice samples collected** from both living family members AND extracted from videos
+- [ ] **Initial interviews completed** with 3+ living family members
+- [ ] **One pilot story created** demonstrating multi-generational voice approach (living + deceased)
 
 ### Proof of Concept Validation
 - [ ] **Emotional impact** - Does the story bring tears/laughter?

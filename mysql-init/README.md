@@ -86,6 +86,22 @@ The `GeolocationService` uses this table in a three-tier approach:
 - **FIPS Codes** - Federal Information Processing Standards
 - **State Codes** - ISO 3166-2:US standard state abbreviations
 
+## TODO: Database Organization Cleanup
+
+**Review and potentially consolidate/remove duplicate database management locations:**
+
+1. **`/sql-migrations/`** - Check if still needed or if superseded by mysql-init files
+2. **`/src/database/seeds/`** - TypeScript seed files - may be redundant with mysql-init SQL files  
+3. **`/src/database/migrations/`** - Knex migration files - evaluate if Knex migrations or mysql-init approach is preferred
+
+**Questions to resolve:**
+- Are we using Knex migrations OR mysql-init files as the primary database management approach?
+- Can we consolidate to a single approach to avoid confusion?
+- Which seed data location should be the source of truth?
+- Should TypeScript migrations/seeds be converted to SQL files in mysql-init?
+
+**Goal:** Single, clear approach to database schema and data management.
+
 ## Backup and Recovery
 
 Municipal boundary data is expensive to regenerate:
