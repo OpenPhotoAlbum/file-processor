@@ -44,10 +44,11 @@ Your digitized home video collection likely contains:
 
 ## Phase 1: Event Selection & Photo Timeline (Week 1)
 
-### Choose Your Pilot Event
-**Recommended: Christmas** (typically has most photos across generations)
-- **Alternative: Easter** if more meaningful to your family
-- **Criteria:** Event that spans multiple decades with good photo coverage AND potential video footage
+### Choose Your Pilot Event ✅ COMPLETED
+**SELECTED: Christmas** - Perfect choice for pilot event
+- **Rationale:** Spans full 100-year timeline (1920s-2024), most photographed family event
+- **Video coverage:** 16 Christmas videos identified in archive spanning 1989-2020
+- **Multi-generational:** Covers DIDI House, My House, Sandown House eras
 
 ### Create Photo Timeline
 1. **Gather all Christmas photos** from your archive spanning 1920s-2024
@@ -207,20 +208,25 @@ Week 4:
 ## Homework Assignments for Family Members
 
 ### Immediate Actions (Week 1)
-- [ ] **URGENT: Assess home video collection** for deceased family member voices
-- [ ] **Extract audio from promising videos** containing storytelling moments
-- [ ] **Choose Christmas or Easter** as pilot event
-- [ ] **Gather all photos AND videos** from chosen event across years
-- [ ] **Create family attendee list** including both living and deceased voices available
-- [ ] **Schedule first interview** with oldest available family member
+- [x] **COMPLETED: Choose Christmas as pilot event** 
+- [x] **COMPLETED: Video collection cataloged** - 174 videos with dates/locations, 16 Christmas videos identified
+- [x] **STARTED: Audio extraction** - Began with Xmas Eve & Xmas 1989.mp4, transcript created
+- [ ] **URGENT: Systematic Christmas video voice assessment** - Identify deceased family voices in 16 Christmas videos
+- [ ] **Gather all Christmas photos** spanning 1920s-2024 and organize chronologically  
+- [ ] **Create Christmas attendee matrix** including both living and deceased voices available
+- [ ] **Schedule first Christmas interview** with oldest available family member
 
 ### Video Archive Homework
 **Critical first step before all other activities:**
-1. **Create video inventory** - List all digitized home videos by year/event
-2. **Identify deceased voices** - Which family members appear speaking in videos?
-3. **Flag storytelling videos** - Mark videos where people tell family stories
-4. **Test audio extraction** - Try extracting audio from 1-2 sample videos
-5. **Assess voice quality** - Which extracted voices are clear enough for AI cloning?
+1. [x] **COMPLETED: Create video inventory** - 174 videos cataloged with dates/locations in master file
+2. **PRIORITY CHRISTMAS VIDEOS IDENTIFIED:**
+   - Fish Tale Diner - Christmas 1989.mp4 (Salisbury, MA)
+   - Xmas Eve & Xmas 1989.mp4 (Lawrence, MA) - ✅ AUDIO EXTRACTED
+   - 1992 Xmas.mp4 through Holy Angels Christmas 2020.mp4 (16 total Christmas videos)
+3. [ ] **Identify deceased voices** - Systematic assessment of 16 Christmas videos for deceased family voices
+4. [ ] **Flag storytelling videos** - Mark Christmas videos where people tell family stories
+5. [x] **STARTED: Test audio extraction** - Successfully extracted from Xmas Eve & Xmas 1989.mp4
+6. [ ] **Assess voice quality** - Which extracted Christmas voices are clear enough for AI cloning?
 
 ### Family Member Homework
 **Send this list to each family member:**

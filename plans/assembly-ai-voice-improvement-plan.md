@@ -7,6 +7,66 @@
 
 ## Phase 1: Foundation Building (Week 1)
 
+### 1.0 Audio Pre-Processing Optimization
+Test whether audio enhancement improves Assembly AI results:
+
+#### Pre-Processing Tests
+```bash
+# Original audio (baseline)
+original: "Xmas Eve & Xmas 1989_extracted.wav"
+
+# Gentle optimization version
+ffmpeg -i input.wav -af "highpass=f=80,lowpass=f=8000,dynaudnorm=f=500,anlmdn=s=0.00001" optimized.wav
+
+# Noise reduction version  
+audacity: Noise Reduction -> Normalize -> Compress
+
+# AI noise reduction
+krisp or similar tools
+```
+
+#### A/B Testing Strategy
+1. **Baseline**: Original audio + basic Assembly AI
+2. **Enhanced**: Original audio + vocabulary boost
+3. **Optimized**: Pre-processed audio + vocabulary boost
+4. **Compare**: Accuracy, speaker separation, word recognition
+
+#### Audio Processing Guidelines
+- **Conservative approach**: Start with gentle processing
+- **Test incrementally**: One filter at a time
+- **Preserve voice characteristics**: Don't over-process
+- **Focus on common issues**: Noise, volume inconsistency
+
+#### Processing Options to Test
+```python
+AUDIO_FILTERS = {
+    "gentle": [
+        "highpass=f=80",      # Remove rumble
+        "normalize",          # Consistent volume
+        "dynaudnorm=f=500"    # Light compression
+    ],
+    "moderate": [
+        "highpass=f=80",
+        "lowpass=f=8000",     # Remove high-frequency noise
+        "anlmdn=s=0.00001",   # Denoise
+        "dynaudnorm=f=500"
+    ],
+    "aggressive": [
+        "highpass=f=100",
+        "lowpass=f=7000", 
+        "anlmdn=s=0.0001",    # Stronger denoise
+        "compand=0.3,1:6:-70,-60,-20", # Compression
+        "normalize"
+    ]
+}
+```
+
+#### Quality Metrics
+- Speaker separation accuracy
+- Word recognition for family names
+- Overall transcription quality
+- Processing time impact
+
 ### 1.1 Custom Vocabulary Database
 Create comprehensive word lists for Assembly AI boost:
 
@@ -253,8 +313,12 @@ def resolve_speaker_by_context(utterance, video_metadata):
 ## Implementation Checklist
 
 ### Week 1
-- [ ] Process Christmas 1989 video with Assembly AI
-- [ ] Create initial speaker mappings
+- [x] Process Christmas 1989 video with Assembly AI (baseline)
+- [ ] Test audio pre-processing optimization (gentle, moderate, aggressive)
+- [ ] Run enhanced script with vocabulary boost on original audio
+- [ ] Run enhanced script with vocabulary boost on optimized audio
+- [ ] Compare all results: baseline vs enhanced vs optimized
+- [ ] Create initial speaker mappings from best results
 - [ ] Extract 3-5 voice samples per identified speaker
 - [ ] Build custom vocabulary list from video collection
 
