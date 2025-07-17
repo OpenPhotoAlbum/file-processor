@@ -99,6 +99,13 @@
 - **Path prefixes**: `sample:`, `media:` prefixes for flexible file resolution
 - **Test integration**: CLI tests use direct JSON output format, normalized dynamic fields
 
+### Scanning & Photo Processing Tools (January 2025)
+- **Scan wrapper**: `scripts/scan.sh` - Complete scanning workflow with GPS integration
+- **Manual photo tools**: `scripts/manual-photo-tools/` (formerly find-dupes) for rotation and GPS tagging
+- **Multicrop integration**: Automated photo separation from flatbed scans with red/white backgrounds
+- **GPS coordinate support**: Direct coordinates, shortcuts from geotag-shortcuts.json, or place names
+- **Historical dating**: Proper EXIF date setting for vintage photos during scanning process
+
 ### CLI Commands & Environment Variables
 
 #### Environment Variables

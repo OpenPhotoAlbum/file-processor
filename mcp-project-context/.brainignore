@@ -47,6 +47,10 @@ coverage/
 *.log
 .env*
 
+# === PYTHON VIRTUAL ENVIRONMENTS ===
+.venv/
+venv/
+
 # === DATABASES ===
 *.db
 !embeddings.db
