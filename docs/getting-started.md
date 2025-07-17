@@ -258,10 +258,67 @@ mkdir -p logs
 ls -la logs/
 ```
 
+## Photo Scanning & Digitization
+
+### Set Up Scanning Tools
+
+The project includes comprehensive tools for digitizing physical photos:
+
+1. **Install multicrop-tool** (for scanning and separating photos)
+   ```bash
+   cd scripts/multicrop-tool
+   ./install.sh
+   ```
+
+2. **Set up duplicate detection** (Python environment)
+   ```bash
+   cd scripts/find-dupes
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+### Digitize Physical Photos
+
+**Scan multiple photos at once:**
+```bash
+# Scan photos on red background with historical date
+multicrop-scan \
+  -dest /photos/staging/scans/christmas-1985/ \
+  -r red \
+  -date "1985-12-25" \
+  -name "christmas morning, family photos" \
+  -M
+```
+
+**Find duplicates against existing archive:**
+```bash
+# Quick exact duplicate check
+./scripts/find-image-duplicates.sh
+
+# Comprehensive rotation-aware detection
+cd scripts/find-dupes
+source venv/bin/activate
+python rotation-aware-compare.py \
+  --archive /photos/archive \
+  --staging /photos/staging/scans/christmas-1985/
+```
+
+### Scanning Workflow Integration
+
+1. **Scan photos** → Multicrop automatically separates individual photos
+2. **Check duplicates** → Three-tier detection finds existing copies
+3. **Process metadata** → Main pipeline enriches with GPS/landmarks
+4. **Organize archive** → Move to final archive structure
+
+See [Multicrop Scanning Workflow](multicrop-scanning-workflow.md) and [Duplicate Detection System](duplicate-detection-system.md) for detailed guides.
+
 ## Next Steps
 
-- Read the [Path System Documentation](./path-system.md)
-- Explore the [Logging System Documentation](./logging-system.md)  
+- **For photo digitization**: [Multicrop Scanning Workflow](multicrop-scanning-workflow.md)
+- **For duplicate management**: [Duplicate Detection System](duplicate-detection-system.md)
+- **For core processing**: [Path System Documentation](./path-system.md)
+- **For development**: [Logging System Documentation](./logging-system.md)  
 - Check out sample files in `scratch/sample_media/`
 - Review test scripts in `scratch/` directory
 

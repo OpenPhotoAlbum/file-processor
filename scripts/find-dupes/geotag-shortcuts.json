@@ -1,0 +1,167 @@
+{
+  "shortcuts": {
+    "1": {
+      "name": "Didi's House",
+      "coordinates": [
+        42.78753947933341,
+        -71.07535399306435
+      ]
+    },
+    "2": {
+      "name": "Haverhill, MA",
+      "coordinates": [
+        42.7762,
+        -71.0773
+      ]
+    },
+    "3": {
+      "name": "Syracuse, NY",
+      "coordinates": [
+        43.04356,
+        -76.15065
+      ]
+    },
+    "4": {
+      "name": "Sandown, NH",
+      "coordinates": [
+        42.95810803039275,
+        -71.16796338799911
+      ]
+    },
+    "5": {
+      "name": "Miami, FL",
+      "coordinates": [
+        25.77976,
+        -80.19877
+      ]
+    },
+    "6": {
+      "name": "Lawrence Apartment",
+      "coordinates": [
+        42.71529189407338,
+        -71.14222435424018
+      ]
+    },
+    "7": {
+      "name": "Miller Field (Sandown, NH)",
+      "coordinates": [
+        42.917873829313336,
+        -71.1702357316245
+      ]
+    },
+    "8": {
+      "name": "Salisbury, MA",
+      "coordinates": [
+        42.84655,
+        -70.86163
+      ]
+    },
+    "9": {
+      "name": "My childhood Haverhill home (258 Water St)",
+      "coordinates": [
+        42.771836442400634,
+        -71.06555744172984
+      ]
+    },
+    "p": {
+      "name": "Plaistow House",
+      "coordinates": [
+        42.84339045809315,
+        -71.115378380353
+      ]
+    },
+    "b": {
+      "name": "Hampton Beach, NH",
+      "coordinates": [
+        42.90944123496645,
+        -70.81017259227838
+      ]
+    },
+    "c": {
+      "name": "Canobie Lake Park",
+      "coordinates": [
+        42.79387575655034,
+        -71.24894959371268
+      ]
+    }
+  },
+  "text_aliases": {
+    "didis": [
+      42.78753947933341,
+      -71.07535399306435
+    ],
+    "didi's": [
+      42.78753947933341,
+      -71.07535399306435
+    ],
+    "canobie": [
+      42.79387575655034,
+      -71.24894959371268
+    ],
+    "loon": [
+      44.03704819501079,
+      -71.62196912761196
+    ],
+    "miami": [
+      25.77976,
+      -80.19877
+    ],
+    "lawrence": [
+      42.71529189407338,
+      -71.14222435424018
+    ],
+    "plaistow": [
+      42.84339045809315,
+      -71.115378380353
+    ],
+    "miller": [
+      42.917873829313336,
+      -71.1702357316245
+    ]
+  },
+  "recent_coordinates": [
+    {
+      "name": "Salisbury, MA",
+      "coordinates": [
+        42.84655,
+        -70.86163
+      ],
+      "timestamp": "2025-07-16T11:21:08.438223"
+    },
+    {
+      "name": "Haverhill, MA",
+      "coordinates": [
+        42.7762,
+        -71.0773
+      ],
+      "timestamp": "2025-07-16T11:20:42.008310"
+    },
+    {
+      "name": "Didi's House",
+      "coordinates": [
+        42.78753947933341,
+        -71.07535399306435
+      ],
+      "timestamp": "2025-07-16T11:20:30.171224"
+    },
+    {
+      "name": "Newbury, MA",
+      "coordinates": [
+        42.77742,
+        -70.85022
+      ],
+      "timestamp": "2025-07-15T23:26:47.628195"
+    },
+    {
+      "name": "Newburyport, MA",
+      "coordinates": [
+        42.81237,
+        -70.88785
+      ],
+      "timestamp": "2025-07-15T23:26:27.852761"
+    }
+  ],
+  "settings": {
+    "max_recent": 5
+  }
+}

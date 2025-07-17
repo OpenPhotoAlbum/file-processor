@@ -90,3 +90,7 @@ photo-metadata-*.html
 
 # External tools
 whisper.cpp/
+
+# Multicrop-tool reference images
+scripts/multicrop-tool/backgrounds/
+scripts/multicrop-tool/samples/

@@ -180,6 +180,13 @@ node dist/main.js -f "sample:vancouver-island.jpg" --json
 - **Verification**: Fixed files correctly place locations in Western Hemisphere (negative longitude)
 - **Documentation**: `/docs/gps-coordinate-corruption-fix.md` - comprehensive technical analysis
 
+### Scanning & Digitization Tools (January 2025)
+- **Multicrop Scanning Workflow**: Complete toolkit for digitizing physical photos from flatbed scans
+- **Three-tier duplicate detection**: Fast exact matching → perceptual hashing → rotation-aware detection
+- **Historical date support**: Set proper dates on scanned old photos (e.g., 1985-12-25 on Christmas photos)
+- **Background-aware processing**: Red/white background detection for optimal photo separation
+- **Virtual environment isolation**: Python tools use isolated environments for dependency management
+
 ## Development Notes
 - This project treats media processing as a production system, not a prototype
 - Stephen values sustainable development practices for long-term maintenance
@@ -291,6 +298,10 @@ Each main directory in `/src/` contains a `CLAUDE.md` file with developer-focuse
 - **Deduplication Report** - Hash-based deduplication process: `docs/deduplication-report.md`
 - **Large Collection Strategy** - Handling 100k+ photo collections: `docs/large-collection-strategy.md`
 - **Google Takeout Processing** - Complete processing summary: `docs/google-takeout-complete-processing.md`
+
+### Scanning & Digitization
+- **Multicrop Scanning Workflow** - Complete photo scanning and separation toolkit: `docs/multicrop-scanning-workflow.md`
+- **Duplicate Detection System** - Multi-tier duplicate detection including rotation-aware: `docs/duplicate-detection-system.md`
 
 ### Browser & UI
 - **Photo Browser API** - Express.js metadata viewer: `docs/photo-browser-api.md`

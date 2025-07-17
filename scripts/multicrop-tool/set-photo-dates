@@ -1,0 +1,219 @@
+#!/bin/bash
+
+# set-photo-dates - Set EXIF and filesystem dates on image files
+# 
+# Usage: set-photo-dates -date <date> <file1> [file2] [file3] ...
+#
+# Date formats supported:
+#   1997           -> January 1, 1997 12:00:00
+#   12-1997        -> December 1, 1997 12:00:00  
+#   12-01-1997     -> December 1, 1997 12:00:00
+#
+# Required:
+#   -date   date to set (various formats supported)
+#   files   one or more image files to process
+
+# Default values
+date_input=""
+files=()
+
+# Function to show help
+show_help() {
+    echo "set-photo-dates - Set EXIF and filesystem dates on image files"
+    echo ""
+    echo "Usage: $0 -date <date> <file1> [file2] [file3] ..."
+    echo ""
+    echo "Date formats supported:"
+    echo "  1997           -> January 1, 1997 12:00:00"
+    echo "  12-1997        -> December 1, 1997 12:00:00"
+    echo "  12-01-1997     -> December 1, 1997 12:00:00"
+    echo ""
+    echo "Required:"
+    echo "  -date   date to set (various formats supported)"
+    echo "  files   one or more image files to process"
+    echo ""
+    echo "Examples:"
+    echo "  $0 -date \"1997\" photo1.jpg photo2.jpg"
+    echo "  $0 -date \"12-1997\" /path/to/photos/*.jpg"
+    echo "  $0 -date \"12-01-1997\" scan-output-000.jpg"
+}
+
+# Function to validate and parse date
+parse_date() {
+    local input="$1"
+    local year month day
+    
+    case "$input" in
+        # Format: 1997 (year only)
+        [0-9][0-9][0-9][0-9])
+            year="$input"
+            month="01"
+            day="01"
+            ;;
+        # Format: 12-1997 (month-year)
+        [0-9][0-9]-[0-9][0-9][0-9][0-9])
+            month="${input%-*}"
+            year="${input#*-}"
+            day="01"
+            ;;
+        # Format: 12-01-1997 (month-day-year)
+        [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9])
+            month="${input%%-*}"
+            day="${input#*-}"
+            day="${day%-*}"
+            year="${input##*-}"
+            ;;
+        *)
+            echo "Error: Invalid date format '$input'"
+            echo "Supported formats: 1997, 12-1997, 12-01-1997"
+            return 1
+            ;;
+    esac
+    
+    # Validate ranges
+    if [ "$year" -lt 1900 ] || [ "$year" -gt 2100 ]; then
+        echo "Error: Year must be between 1900 and 2100"
+        return 1
+    fi
+    
+    if [ "$month" -lt 1 ] || [ "$month" -gt 12 ]; then
+        echo "Error: Month must be between 01 and 12"
+        return 1
+    fi
+    
+    if [ "$day" -lt 1 ] || [ "$day" -gt 31 ]; then
+        echo "Error: Day must be between 01 and 31"
+        return 1
+    fi
+    
+    # Output in exiftool format (YYYY:MM:DD HH:MM:SS)
+    # Remove leading zeros to avoid octal interpretation
+    year=$((10#$year))
+    month=$((10#$month))
+    day=$((10#$day))
+    printf "%04d:%02d:%02d 12:00:00" "$year" "$month" "$day"
+}
+
+# Function to set dates on a single file
+set_file_dates() {
+    local file="$1"
+    local exif_date="$2"
+    local filesystem_date="$3"
+    
+    if [ ! -f "$file" ]; then
+        echo "  ⚠️  File not found: $file"
+        return 1
+    fi
+    
+    echo "  Processing: $(basename "$file")"
+    
+    # Set EXIF dates using exiftool
+    if command -v exiftool >/dev/null 2>&1; then
+        if exiftool -overwrite_original \
+            -DateTimeOriginal="$exif_date" \
+            -CreateDate="$exif_date" \
+            -DateTimeDigitized="$exif_date" \
+            "$file" >/dev/null 2>&1; then
+            echo "    ✓ EXIF dates set"
+        else
+            echo "    ⚠️  Failed to set EXIF dates"
+        fi
+    else
+        echo "    ⚠️  exiftool not found, skipping EXIF dates"
+    fi
+    
+    # Set filesystem dates using touch
+    # Convert YYYY-MM-DD HH:MM:SS to YYYYMMDDHHMM.SS format
+    touch_format=$(echo "$filesystem_date" | sed 's/[-: ]//g' | sed 's/\(..\)$/.\1/')
+    if touch -t "$touch_format" "$file" 2>/dev/null; then
+        echo "    ✓ Filesystem dates set"
+    else
+        echo "    ⚠️  Failed to set filesystem dates"
+    fi
+}
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -date)
+            date_input="$2"
+            shift 2
+            ;;
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        -*)
+            echo "Unknown option: $1"
+            show_help
+            exit 1
+            ;;
+        *)
+            files+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# Check required arguments
+if [ -z "$date_input" ]; then
+    echo "Error: -date is required"
+    echo ""
+    show_help
+    exit 1
+fi
+
+if [ ${#files[@]} -eq 0 ]; then
+    echo "Error: No files specified"
+    echo ""
+    show_help
+    exit 1
+fi
+
+# Parse and validate date
+echo "📅 Parsing date: $date_input"
+exif_date=$(parse_date "$date_input")
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+# Convert to filesystem date format (YYYY-MM-DD HH:MM:SS)
+filesystem_date=$(echo "$exif_date" | sed 's/:/-/g' | sed 's/^\([0-9-]*\) \(.*\)$/\1 \2/')
+
+echo "📅 Parsed date: $exif_date"
+echo "📁 Processing ${#files[@]} files..."
+echo ""
+
+# Check dependencies
+if ! command -v exiftool >/dev/null 2>&1; then
+    echo "⚠️  Warning: exiftool not found. Install with:"
+    echo "   Ubuntu/Debian: sudo apt install exiftool"
+    echo "   macOS: brew install exiftool"
+    echo "   Will only set filesystem dates."
+    echo ""
+fi
+
+# Process each file
+success_count=0
+failed_count=0
+
+for file in "${files[@]}"; do
+    if set_file_dates "$file" "$exif_date" "$filesystem_date"; then
+        ((success_count++))
+    else
+        ((failed_count++))
+    fi
+done
+
+echo ""
+echo "📊 Summary:"
+echo "  ✓ Successfully processed: $success_count files"
+echo "  ✗ Failed: $failed_count files"
+echo "  📅 Date set to: $exif_date"
+
+if [ $failed_count -eq 0 ]; then
+    echo "🎉 All files processed successfully!"
+    exit 0
+else
+    exit 1
+fi

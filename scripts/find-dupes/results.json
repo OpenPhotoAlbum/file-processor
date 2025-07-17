@@ -1,0 +1,91 @@
+{
+  "parameters": {
+    "archive_dir": "/photos/archive",
+    "staging_dir": "/photos/staging/scans/scan-test",
+    "threshold": 5,
+    "algorithm": "dhash",
+    "processing_time": 351.8032720088959
+  },
+  "matches": [
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_22-42-56_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 234991
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_01-15-59_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 108990
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_22-40-13_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 231733
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-01_21-23-37_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 887838
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_22-40-13_002.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 228286
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_22-40-12_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 215019
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_22-46-36_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 208570
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_22-42-47_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 232432
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_01-07-19_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 87136
+    },
+    {
+      "staging_file": "/photos/staging/scans/scan-test/1993-12-25-1752544872532-christmas-003.jpg",
+      "archive_file": "/photos/archive/2023/08/2023-08-02_01-15-24_001.JPG",
+      "distance": 0,
+      "similarity_score": 64,
+      "staging_size": 549,
+      "archive_size": 84242
+    }
+  ]
+}

@@ -108,6 +108,32 @@ Examples:
 
 ## Import Workflow
 
+### Physical Photo Digitization (New!)
+
+For digitizing physical photo collections, use the integrated scanning tools:
+
+```bash
+# 1. Scan multiple photos at once with multicrop-tool
+multicrop-scan \
+  -dest /photos/staging/scans/family-album-1985/ \
+  -r red \
+  -date "1985-12-25" \
+  -name "christmas morning photos" \
+  -M
+
+# 2. Check for duplicates against existing archive
+cd scripts/find-dupes
+source venv/bin/activate
+python rotation-aware-compare.py \
+  --archive /photos/archive \
+  --staging /photos/staging/scans/family-album-1985/
+
+# 3. Process metadata and organize
+npm run enrich -- --path /photos/staging/scans/family-album-1985/
+```
+
+See [Multicrop Scanning Workflow](multicrop-scanning-workflow.md) and [Duplicate Detection System](duplicate-detection-system.md) for detailed guides.
+
 ### Initial Bulk Import
 
 ```bash
