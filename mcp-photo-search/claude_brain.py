@@ -57,6 +57,11 @@ class ClaudeBrain:
     
     def ingest_directory(self, directory_path: str, recursive: bool = True) -> int:
         """Process and ingest all files in a directory."""
+        return self.ingest_directory_batched(directory_path, recursive, None, None)
+    
+    def ingest_directory_batched(self, directory_path: str, recursive: bool = True, 
+                                batch_size: int = None, max_files: int = None) -> int:
+        """Process and ingest files in a directory with memory-safe batching."""
         if not os.path.exists(directory_path):
             print(f"Error: Directory {directory_path} does not exist")
             return 0
@@ -66,23 +71,71 @@ class ClaudeBrain:
             self.processor = FileProcessor(project_root=directory_path)
         
         # Start tracking
-        tracker.start_session("ingest_directory", f"Processing {directory_path} (recursive={recursive})")
+        session_desc = f"Processing {directory_path} (recursive={recursive}, batch_size={batch_size}, max_files={max_files})"
+        tracker.start_session("ingest_directory_batched", session_desc)
         
-        print(f"Processing directory: {directory_path} (recursive={recursive})")
-        chunks = self.processor.process_directory(directory_path, recursive)
+        print(f"🔄 {session_desc}")
         
-        if chunks:
-            print(f"Processing {len(chunks)} chunks in batches...")
-            process_texts_batch(chunks, self.db_path)
-            print(f"Successfully ingested {len(chunks)} chunks")
-            
-            # End tracking
-            tracker.end_session()
-            return len(chunks)
+        # Collect all files first
+        all_files = []
+        if recursive:
+            for root, dirs, files in os.walk(directory_path):
+                # Skip directories that match ignore patterns
+                dirs[:] = [d for d in dirs if not self.processor._should_ignore(os.path.join(root, d)) and not d.startswith('.')]
+                
+                for file in files:
+                    if not file.startswith('.'):
+                        filepath = os.path.join(root, file)
+                        if not self.processor._should_ignore(filepath):
+                            all_files.append(filepath)
         else:
-            print("No content found to ingest")
+            for file in os.listdir(directory_path):
+                if not file.startswith('.') and os.path.isfile(os.path.join(directory_path, file)):
+                    filepath = os.path.join(directory_path, file)
+                    if not self.processor._should_ignore(filepath):
+                        all_files.append(filepath)
+        
+        # Apply max_files limit
+        if max_files and len(all_files) > max_files:
+            print(f"📊 Found {len(all_files)} files, limiting to {max_files}")
+            all_files = all_files[:max_files]
+        
+        if not all_files:
+            print("No files found to process")
             tracker.end_session()
             return 0
+        
+        print(f"📁 Processing {len(all_files)} files...")
+        
+        total_chunks = 0
+        
+        # Process in batches if batch_size specified
+        if batch_size:
+            for i in range(0, len(all_files), batch_size):
+                batch = all_files[i:i+batch_size]
+                print(f"🔄 Processing batch {i//batch_size + 1}/{(len(all_files) + batch_size - 1)//batch_size} ({len(batch)} files)")
+                
+                batch_chunks = []
+                for filepath in batch:
+                    file_chunks = self.processor.process_file(filepath)
+                    batch_chunks.extend(file_chunks)
+                
+                if batch_chunks:
+                    print(f"   📝 Ingesting {len(batch_chunks)} chunks...")
+                    process_texts_batch(batch_chunks, self.db_path)
+                    total_chunks += len(batch_chunks)
+                    print(f"   ✅ Batch complete ({total_chunks} total chunks so far)")
+        else:
+            # Process all at once (original behavior)
+            chunks = self.processor.process_directory(directory_path, recursive)
+            if chunks:
+                print(f"Processing {len(chunks)} chunks in batches...")
+                process_texts_batch(chunks, self.db_path)
+                total_chunks = len(chunks)
+        
+        print(f"✅ Successfully ingested {total_chunks} chunks from {len(all_files)} files")
+        tracker.end_session()
+        return total_chunks
     
     def search(self, query: str, top_n: int = 5) -> List[Tuple[float, str, str]]:
         """Search for relevant content."""
@@ -117,6 +170,10 @@ def main():
     ingest_parser.add_argument("path", help="File or directory path to ingest")
     ingest_parser.add_argument("--no-recursive", action="store_true", 
                               help="Don't process directories recursively")
+    ingest_parser.add_argument("--batch-size", type=int, default=None,
+                              help="Process files in batches to prevent memory issues")
+    ingest_parser.add_argument("--max-files", type=int, default=None,
+                              help="Maximum number of files to process (useful for large collections)")
     
     # Search command
     search_parser = subparsers.add_parser("search", help="Search for content")
@@ -156,7 +213,12 @@ def main():
         if os.path.isfile(args.path):
             count = brain.ingest_file(args.path)
         elif os.path.isdir(args.path):
-            count = brain.ingest_directory(args.path, not args.no_recursive)
+            count = brain.ingest_directory_batched(
+                args.path, 
+                recursive=not args.no_recursive,
+                batch_size=args.batch_size,
+                max_files=args.max_files
+            )
         else:
             print(f"Error: {args.path} is not a valid file or directory")
             return

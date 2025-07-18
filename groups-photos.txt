@@ -1,0 +1,940 @@
+=== SCANNED PHOTO GROUPS ===
+
+=== random (49 files) ===
+/photos/staging/scans/scanned/1987-01-01-1752034346797-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034346797-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034346797-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034390692-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034390692-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034390692-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034438486-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034438486-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034438486-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034472845-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034472845-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034472845-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034504957-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034504957-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034504957-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034540243-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034540243-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034540243-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034571115-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034571115-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034571115-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034598294-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034598294-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034598294-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034631632-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034631632-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034631632-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034659457-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034659457-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034659457-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034688068-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034688068-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034688068-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034718892-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034718892-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034718892-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034748254-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034748254-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034748254-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034777498-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034777498-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034777498-random-002.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034821623-random-000.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034821623-random-001.jpg
+/photos/staging/scans/scanned/1987-01-01-1752034821623-random-002.jpg
+
+# Copy this to set GPS for random 1987:
+# Apply GPS coords [lat,lng or location] to random 1987
+
+/photos/staging/scans/scanned/1988-07-01-1752005497271-random-000.jpg
+/photos/staging/scans/scanned/1988-07-01-1752005497271-random-001.jpg
+/photos/staging/scans/scanned/1988-07-01-1752005497271-random-002.jpg
+/photos/staging/scans/scanned/1988-07-01-1752005497271-random-003.jpg
+
+=== christmas (41 files) ===
+/photos/staging/scans/scanned/1982-12-25-1752550056469-christmas-000.jpg
+/photos/staging/scans/scanned/1982-12-25-1752550056469-christmas-001.jpg
+
+# Copy this to set GPS for christmas 1982:
+# Apply GPS coords [lat,lng or location] to christmas 1982
+
+/photos/staging/scans/scanned/1985-12-25-1752549481295-christmas-000.jpg
+/photos/staging/scans/scanned/1985-12-25-1752549481295-christmas-001.jpg
+/photos/staging/scans/scanned/1985-12-25-1752549481295-christmas-002.jpg
+/photos/staging/scans/scanned/1985-12-25-1752549597620-christmas-000.jpg
+/photos/staging/scans/scanned/1985-12-25-1752549759124-christmas-000.jpg
+/photos/staging/scans/scanned/1985-12-25-1752549759124-christmas-001.jpg
+
+# Copy this to set GPS for christmas 1985:
+# Apply GPS coords [lat,lng or location] to christmas 1985
+
+/photos/staging/scans/scanned/1990-12-25-1752207458448-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207458448-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207458448-christmas-002.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207526289-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207526289-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207526289-christmas-002.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207555183-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207555183-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207555183-christmas-002.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207585380-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207585380-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207585380-christmas-002.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207618599-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207618599-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207618599-christmas-002.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207647590-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207647590-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207647590-christmas-002.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207691991-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207691991-christmas-001.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207721436-christmas-000.jpg
+/photos/staging/scans/scanned/1990-12-25-1752207721436-christmas-001.jpg
+
+# Copy this to set GPS for christmas 1990:
+# Apply GPS coords [lat,lng or location] to christmas 1990
+
+/photos/staging/scans/scanned/1991-12-25-1752546208937-christmas-000.jpg
+/photos/staging/scans/scanned/1991-12-25-1752546208937-christmas-001.jpg
+/photos/staging/scans/scanned/1991-12-25-1752546241158-christmas-000.jpg
+/photos/staging/scans/scanned/1991-12-25-1752546241158-christmas-001.jpg
+/photos/staging/scans/scanned/1991-12-25-1752546272016-christmas-000.jpg
+
+# Copy this to set GPS for christmas 1991:
+# Apply GPS coords [lat,lng or location] to christmas 1991
+
+/photos/staging/scans/scanned/1993-12-25-1752544839341-christmas-000.jpg
+/photos/staging/scans/scanned/1993-12-25-1752544839341-christmas-001.jpg
+/photos/staging/scans/scanned/1993-12-25-1752544839341-christmas-002.jpg
+/photos/staging/scans/scanned/1993-12-25-1752544872532-christmas-000.jpg
+/photos/staging/scans/scanned/1993-12-25-1752544872532-christmas-001.jpg
+/photos/staging/scans/scanned/1993-12-25-1752544872532-christmas-002.jpg
+
+=== erica-birthday (29 files) ===
+/photos/staging/scans/scanned/1986-11-01-1752031797206-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031797206-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031797206-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031833981-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031833981-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031833981-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031893031-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031893031-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031893031-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031925599-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031925599-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031925599-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031991552-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031991552-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752031991552-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752032022557-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752032022557-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752032022557-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752032056505-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752032056505-erica-birthday-001.jpg
+
+# Copy this to set GPS for erica-birthday 1986:
+# Apply GPS coords [lat,lng or location] to erica-birthday 1986
+
+/photos/staging/scans/scanned/1990-11-01-1752208917140-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1990-11-01-1752208917140-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1990-11-01-1752208917140-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1990-11-01-1752209240101-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1990-11-01-1752209240101-erica-birthday-001.jpg
+/photos/staging/scans/scanned/1990-11-01-1752209240101-erica-birthday-002.jpg
+/photos/staging/scans/scanned/1990-11-01-1752209286502-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1990-11-01-1752209723934-erica-birthday-000.jpg
+/photos/staging/scans/scanned/1990-11-01-1752209723934-erica-birthday-001.jpg
+
+=== xmas-eve (27 files) ===
+/photos/staging/scans/scanned/1986-12-24-1752021762812-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1986-12-24-1752021762812-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1986-12-24-1752021762812-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1986-12-24-1752021762812-xmas-eve-003.jpg
+/photos/staging/scans/scanned/1986-12-24-1752021790380-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1986-12-24-1752021790380-xmas-eve-001.jpg
+
+# Copy this to set GPS for xmas-eve 1986:
+# Apply GPS coords [lat,lng or location] to xmas-eve 1986
+
+/photos/staging/scans/scanned/1987-12-24-1752026377664-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026377664-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026377664-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026413288-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026413288-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026413288-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026413288-xmas-eve-003.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026452662-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026452662-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026452662-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026452662-xmas-eve-003.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026897274-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026897274-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026897274-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026930827-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026930827-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026930827-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026960822-xmas-eve-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026960822-xmas-eve-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026960822-xmas-eve-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026988245-xmas-eve-000.jpg
+
+=== patty-steve-wedding (26 files) ===
+/photos/staging/scans/scanned/1986-05-01-1752298290542-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298290542-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298290542-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298320794-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298320794-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298320794-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298357239-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298357239-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298357239-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298389840-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298389840-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298389840-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298419330-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298419330-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298419330-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298453221-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298453221-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298453221-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298484936-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298484936-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298484936-patty-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298520397-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298520397-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298637806-patty-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298637806-patty-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1986-05-01-1752298637806-patty-steve-wedding-002.jpg
+
+=== halloween (24 files) ===
+/photos/staging/scans/scanned/1986-10-31-1752021515980-halloween-000.jpg
+/photos/staging/scans/scanned/1986-10-31-1752021515980-halloween-001.jpg
+
+# Copy this to set GPS for halloween 1986:
+# Apply GPS coords [lat,lng or location] to halloween 1986
+
+/photos/staging/scans/scanned/1989-10-31-1752207913695-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752207913695-halloween-001.jpg
+/photos/staging/scans/scanned/1989-10-31-1752207913695-halloween-002.jpg
+/photos/staging/scans/scanned/1989-10-31-1752207945232-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752207945232-halloween-001.jpg
+/photos/staging/scans/scanned/1989-10-31-1752207945232-halloween-002.jpg
+/photos/staging/scans/scanned/1989-10-31-1752207972612-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752208286236-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752208286236-halloween-001.jpg
+/photos/staging/scans/scanned/1989-10-31-1752208286236-halloween-002.jpg
+/photos/staging/scans/scanned/1989-10-31-1752208317069-halloween-000.jpg
+
+# Copy this to set GPS for halloween 1989:
+# Apply GPS coords [lat,lng or location] to halloween 1989
+
+/photos/staging/scans/scanned/1990-10-31-1752208963799-halloween-000.jpg
+/photos/staging/scans/scanned/1990-10-31-1752208963799-halloween-001.jpg
+/photos/staging/scans/scanned/1990-10-31-1752208963799-halloween-002.jpg
+/photos/staging/scans/scanned/1990-10-31-1752209004854-halloween-000.jpg
+/photos/staging/scans/scanned/1990-10-31-1752209004854-halloween-001.jpg
+/photos/staging/scans/scanned/1990-10-31-1752209004854-halloween-002.jpg
+/photos/staging/scans/scanned/1990-10-31-1752209042217-halloween-000.jpg
+/photos/staging/scans/scanned/1990-10-31-1752209042217-halloween-001.jpg
+/photos/staging/scans/scanned/1990-10-31-1752209042217-halloween-002.jpg
+
+# Copy this to set GPS for halloween 1990:
+# Apply GPS coords [lat,lng or location] to halloween 1990
+
+/photos/staging/scans/scanned/1991-10-31-1752546308766-halloween-000.jpg
+/photos/staging/scans/scanned/1991-10-31-1752546308766-halloween-001.jpg
+
+=== patty-and-steve-wedding (21 files) ===
+/photos/staging/scans/scanned/1985-06-01-1752029784822-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752029784822-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752029784822-patty-and-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030124914-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030124914-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030124914-patty-and-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030163931-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030163931-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030163931-patty-and-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030208498-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030208498-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030208498-patty-and-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030253496-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030253496-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030253496-patty-and-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030289835-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030289835-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030289835-patty-and-steve-wedding-002.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030322038-patty-and-steve-wedding-000.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030322038-patty-and-steve-wedding-001.jpg
+/photos/staging/scans/scanned/1985-06-01-1752030322038-patty-and-steve-wedding-002.jpg
+
+=== vermont (19 files) ===
+/photos/staging/scans/scanned/1986-06-01-1752017364774-vermont-000.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017364774-vermont-001.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017364774-vermont-002.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017364774-vermont-003.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017395248-vermont-000.jpg
+
+# Copy this to set GPS for vermont 1986:
+# Apply GPS coords [lat,lng or location] to vermont 1986
+
+/photos/staging/scans/scanned/1988-05-30-1752005070177-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005070177-vermont-001.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005070177-vermont-002.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005192578-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005192578-vermont-001.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005192578-vermont-002.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005239075-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005239075-vermont-001.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005239075-vermont-002.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005267943-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005267943-vermont-001.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005267943-vermont-002.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005293511-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752005293511-vermont-001.jpg
+
+=== roxannes-pool (15 files) ===
+/photos/staging/scans/scanned/1987-07-22-1752024724178-roxannes-pool-000.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024724178-roxannes-pool-001.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024724178-roxannes-pool-002.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024754406-roxannes-pool-000.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024754406-roxannes-pool-001.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024754406-roxannes-pool-002.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024782976-roxannes-pool-000.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024782976-roxannes-pool-001.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024782976-roxannes-pool-002.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024809665-roxannes-pool-000.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024809665-roxannes-pool-001.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024809665-roxannes-pool-002.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024839296-roxannes-pool-000.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024839296-roxannes-pool-001.jpg
+/photos/staging/scans/scanned/1987-07-22-1752024839296-roxannes-pool-002.jpg
+
+=== erica (15 files) ===
+/photos/staging/scans/scanned/1982-01-01-1752295248004-erica-000.jpg
+/photos/staging/scans/scanned/1982-01-01-1752295248004-erica-001.jpg
+/photos/staging/scans/scanned/1982-01-01-1752295248004-erica-002.jpg
+/photos/staging/scans/scanned/1982-01-01-1752295248004-erica-003.jpg
+
+# Copy this to set GPS for erica 1982:
+# Apply GPS coords [lat,lng or location] to erica 1982
+
+/photos/staging/scans/scanned/1985-01-01-1752549849865-erica-000.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549849865-erica-001.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549849865-erica-002.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549849865-erica-003.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549891808-erica-000.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549891808-erica-001.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549891808-erica-002.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549891808-erica-003.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549924582-erica-000.jpg
+/photos/staging/scans/scanned/1985-01-01-1752549924582-erica-001.jpg
+
+# Copy this to set GPS for erica 1985:
+# Apply GPS coords [lat,lng or location] to erica 1985
+
+/photos/staging/scans/scanned/1987-02-01-1752296778334-erica-000.jpg
+
+=== jimmy (14 files) ===
+/photos/staging/scans/scanned/1990-01-01-1752209440036-jimmy-000.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209440036-jimmy-001.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209440036-jimmy-002.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209494397-jimmy-000.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209494397-jimmy-001.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209494397-jimmy-002.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209531101-jimmy-000.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209531101-jimmy-001.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209531101-jimmy-002.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209566384-jimmy-000.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209566384-jimmy-001.jpg
+/photos/staging/scans/scanned/1990-01-01-1752209566384-jimmy-002.jpg
+
+# Copy this to set GPS for jimmy 1990:
+# Apply GPS coords [lat,lng or location] to jimmy 1990
+
+/photos/staging/scans/scanned/1991-01-01-1752209616950-jimmy-000.jpg
+/photos/staging/scans/scanned/1991-01-01-1752209616950-jimmy-001.jpg
+
+=== sesame-street-live (13 files) ===
+/photos/staging/scans/scanned/1989-12-29-1752112159859-sesame-street-live-000.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112159859-sesame-street-live-001.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112195662-sesame-street-live-000.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112195662-sesame-street-live-001.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112222694-sesame-street-live-000.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112222694-sesame-street-live-001.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112257606-sesame-street-live-000.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112257606-sesame-street-live-001.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112327432-sesame-street-live-000.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112327432-sesame-street-live-001.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112376768-sesame-street-live-000.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112376768-sesame-street-live-001.jpg
+/photos/staging/scans/scanned/1989-12-29-1752112407654-sesame-street-live-000.jpg
+
+=== easter (13 files) ===
+/photos/staging/scans/scanned/1988-04-03-1752027451712-easter-000.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027451712-easter-001.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027451712-easter-002.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027480904-easter-000.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027480904-easter-001.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027480904-easter-002.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027511963-easter-000.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027511963-easter-001.jpg
+/photos/staging/scans/scanned/1988-04-03-1752027511963-easter-002.jpg
+
+# Copy this to set GPS for easter 1988:
+# Apply GPS coords [lat,lng or location] to easter 1988
+
+/photos/staging/scans/scanned/1990-04-15-1752114446824-easter-000.jpg
+/photos/staging/scans/scanned/1990-04-15-1752114446824-easter-001.jpg
+
+# Copy this to set GPS for easter 1990:
+# Apply GPS coords [lat,lng or location] to easter 1990
+
+/photos/staging/scans/scanned/1997-01-01-1751995899950-easter-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751995899950-easter-001.jpg
+
+=== dj-is-born (12 files) ===
+/photos/staging/scans/scanned/1989-05-01-1752006841947-dj-is-born-000.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006841947-dj-is-born-001.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006871070-dj-is-born-000.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006871070-dj-is-born-001.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006871070-dj-is-born-002.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006907382-dj-is-born-000.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006907382-dj-is-born-001.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006907382-dj-is-born-002.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006940259-dj-is-born-000.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006940259-dj-is-born-001.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006940259-dj-is-born-002.jpg
+/photos/staging/scans/scanned/1989-05-01-1752006966514-dj-is-born-000.jpg
+
+=== dj-first-bday (12 files) ===
+/photos/staging/scans/scanned/1990-05-01-1752114092968-dj-first-bday-000.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114092968-dj-first-bday-001.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114092968-dj-first-bday-002.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114092968-dj-first-bday-003.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114132996-dj-first-bday-000.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114132996-dj-first-bday-001.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114132996-dj-first-bday-002.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114132996-dj-first-bday-003.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114178390-dj-first-bday-000.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114178390-dj-first-bday-001.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114178390-dj-first-bday-002.jpg
+/photos/staging/scans/scanned/1990-05-01-1752114207913-dj-first-bday-000.jpg
+
+=== xmas-day---debbie-and-dannys (11 files) ===
+/photos/staging/scans/scanned/1987-12-24-1752026502135-xmas-day---debbie-and-dannys-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026502135-xmas-day---debbie-and-dannys-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026502135-xmas-day---debbie-and-dannys-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026538484-xmas-day---debbie-and-dannys-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026538484-xmas-day---debbie-and-dannys-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026538484-xmas-day---debbie-and-dannys-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026577107-xmas-day---debbie-and-dannys-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026577107-xmas-day---debbie-and-dannys-001.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026577107-xmas-day---debbie-and-dannys-002.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026603483-xmas-day---debbie-and-dannys-000.jpg
+/photos/staging/scans/scanned/1987-12-24-1752026603483-xmas-day---debbie-and-dannys-001.jpg
+
+=== celebration (11 files) ===
+/photos/staging/scans/scanned/1985-05-01-1752547768781-celebration-000.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547768781-celebration-001.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547768781-celebration-002.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547814893-celebration-000.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547814893-celebration-001.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547814893-celebration-002.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547848787-celebration-000.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547848787-celebration-001.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547878522-celebration-000.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547878522-celebration-001.jpg
+/photos/staging/scans/scanned/1985-05-01-1752547978400-celebration-000.jpg
+
+=== christmas-1987 (9 files) ===
+/photos/staging/scans/scanned/1987-12-25-1752547555820-christmas-1987-000.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547555820-christmas-1987-001.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547555820-christmas-1987-002.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547591667-christmas-1987-000.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547591667-christmas-1987-001.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547591667-christmas-1987-002.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547621973-christmas-1987-000.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547621973-christmas-1987-001.jpg
+/photos/staging/scans/scanned/1987-12-25-1752547621973-christmas-1987-002.jpg
+
+=== stevie (8 files) ===
+/photos/staging/scans/scanned/1986-10-01-1752021581476-stevie-000.jpg
+/photos/staging/scans/scanned/1986-10-01-1752021581476-stevie-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021638280-stevie-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021638280-stevie-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021638280-stevie-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021681615-stevie-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021681615-stevie-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021681615-stevie-002.jpg
+
+=== mass (8 files) ===
+/photos/staging/scans/scanned/1986-06-01-1752017191320-mass-000.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017191320-mass-001.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017191320-mass-002.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017191320-mass-003.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017259456-mass-000.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017259456-mass-001.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017259456-mass-002.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017259456-mass-003.jpg
+
+=== ice-pond-in-backyard (8 files) ===
+/photos/staging/scans/scanned/1997-12-20-1751995465508-ice-pond-in-backyard-000.jpg
+/photos/staging/scans/scanned/1997-12-20-1751995465508-ice-pond-in-backyard-001.jpg
+/photos/staging/scans/scanned/1997-12-20-1751995465508-ice-pond-in-backyard-002.jpg
+/photos/staging/scans/scanned/1997-12-20-1751995565979-ice-pond-in-backyard-000.jpg
+/photos/staging/scans/scanned/1997-12-20-1751995565979-ice-pond-in-backyard-001.jpg
+/photos/staging/scans/scanned/1997-12-20-1752200931770-ice-pond-in-backyard-000.jpg
+/photos/staging/scans/scanned/1997-12-20-1752200931770-ice-pond-in-backyard-001.jpg
+/photos/staging/scans/scanned/1997-12-20-1752200931770-ice-pond-in-backyard-002.jpg
+
+=== deb-and-pauls (8 files) ===
+/photos/staging/scans/scanned/1987-07-07-1752025222585-deb-and-pauls-000.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025222585-deb-and-pauls-001.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025222585-deb-and-pauls-002.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025262594-deb-and-pauls-000.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025262594-deb-and-pauls-001.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025262594-deb-and-pauls-002.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025262594-deb-and-pauls-003.jpg
+/photos/staging/scans/scanned/1987-07-07-1752025347613-deb-and-pauls-000.jpg
+
+=== christmas-didis (8 files) ===
+/photos/staging/scans/scanned/1988-12-25-1752006165197-christmas-didis-000.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006165197-christmas-didis-001.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006194385-christmas-didis-000.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006194385-christmas-didis-001.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006194385-christmas-didis-002.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006227244-christmas-didis-000.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006227244-christmas-didis-001.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006227244-christmas-didis-002.jpg
+
+=== mountains-with-didi-jim-jim---storyland-santas-village (7 files) ===
+/photos/staging/scans/scanned/1989-07-01-1752007249317-mountains-with-didi-jim-jim---storyland-santas-village-000.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007249317-mountains-with-didi-jim-jim---storyland-santas-village-001.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007249317-mountains-with-didi-jim-jim---storyland-santas-village-002.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007274464-mountains-with-didi-jim-jim---storyland-santas-village-000.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007274464-mountains-with-didi-jim-jim---storyland-santas-village-001.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007300007-mountains-with-didi-jim-jim---storyland-santas-village-000.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007300007-mountains-with-didi-jim-jim---storyland-santas-village-001.jpg
+
+=== stowe-vermont (6 files) ===
+/photos/staging/scans/scanned/1988-05-30-1752004949217-stowe-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752004949217-stowe-vermont-001.jpg
+/photos/staging/scans/scanned/1988-05-30-1752004949217-stowe-vermont-002.jpg
+/photos/staging/scans/scanned/1988-05-30-1752004994290-stowe-vermont-000.jpg
+/photos/staging/scans/scanned/1988-05-30-1752004994290-stowe-vermont-001.jpg
+/photos/staging/scans/scanned/1988-05-30-1752004994290-stowe-vermont-002.jpg
+
+=== robins-house-halloween (6 files) ===
+/photos/staging/scans/scanned/1989-10-31-1752111819224-robins-house-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752111819224-robins-house-halloween-001.jpg
+/photos/staging/scans/scanned/1989-10-31-1752111849409-robins-house-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752111849409-robins-house-halloween-001.jpg
+/photos/staging/scans/scanned/1989-10-31-1752111877294-robins-house-halloween-000.jpg
+/photos/staging/scans/scanned/1989-10-31-1752111877294-robins-house-halloween-001.jpg
+
+=== lip-sync-5th-grade (6 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751996007290-lip-sync-5th-grade-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996007290-lip-sync-5th-grade-001.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996007290-lip-sync-5th-grade-002.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996080396-lip-sync-5th-grade-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996080396-lip-sync-5th-grade-001.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996080396-lip-sync-5th-grade-002.jpg
+
+=== house-build (6 files) ===
+/photos/staging/scans/scanned/1994-05-15-1752543568466-house-build-000.jpg
+/photos/staging/scans/scanned/1994-05-15-1752543568466-house-build-001.jpg
+/photos/staging/scans/scanned/1994-05-15-1752543598932-house-build-000.jpg
+/photos/staging/scans/scanned/1994-05-15-1752543598932-house-build-001.jpg
+/photos/staging/scans/scanned/1994-05-15-1752543629042-house-build-000.jpg
+/photos/staging/scans/scanned/1994-05-15-1752543629042-house-build-001.jpg
+
+=== first-fall---play-in-leaves (6 files) ===
+/photos/staging/scans/scanned/1991-11-01-1752546992570-first-fall---play-in-leaves-000.jpg
+/photos/staging/scans/scanned/1991-11-01-1752546992570-first-fall---play-in-leaves-001.jpg
+/photos/staging/scans/scanned/1991-11-01-1752547036383-first-fall---play-in-leaves-000.jpg
+/photos/staging/scans/scanned/1991-11-01-1752547036383-first-fall---play-in-leaves-001.jpg
+/photos/staging/scans/scanned/1991-11-01-1752547066017-first-fall---play-in-leaves-000.jpg
+/photos/staging/scans/scanned/1991-11-01-1752547066017-first-fall---play-in-leaves-001.jpg
+
+=== didi-office (6 files) ===
+/photos/staging/scans/scanned/1988-01-01-1752208689404-didi-office-000.jpg
+/photos/staging/scans/scanned/1988-01-01-1752208689404-didi-office-001.jpg
+/photos/staging/scans/scanned/1988-01-01-1752208689404-didi-office-002.jpg
+/photos/staging/scans/scanned/1988-01-01-1752208756769-didi-office-000.jpg
+/photos/staging/scans/scanned/1988-01-01-1752208756769-didi-office-001.jpg
+/photos/staging/scans/scanned/1988-01-01-1752208756769-didi-office-002.jpg
+
+=== david-karate---earning-yellow-belt (6 files) ===
+/photos/staging/scans/scanned/1997-11-01-1751999261373-david-karate---earning-yellow-belt-000.jpg
+/photos/staging/scans/scanned/1997-11-01-1751999261373-david-karate---earning-yellow-belt-001.jpg
+/photos/staging/scans/scanned/1997-11-01-1751999907942-david-karate---earning-yellow-belt-000.jpg
+/photos/staging/scans/scanned/1997-11-01-1751999907942-david-karate---earning-yellow-belt-001.jpg
+/photos/staging/scans/scanned/1997-11-01-1751999953511-david-karate---earning-yellow-belt-000.jpg
+/photos/staging/scans/scanned/1997-11-01-1751999953511-david-karate---earning-yellow-belt-001.jpg
+
+=== dad-first-buck (6 files) ===
+/photos/staging/scans/scanned/1997-11-01-1752000038778-dad-first-buck-000.jpg
+/photos/staging/scans/scanned/1997-11-01-1752000038778-dad-first-buck-001.jpg
+/photos/staging/scans/scanned/1997-11-01-1752000130613-dad-first-buck-000.jpg
+/photos/staging/scans/scanned/1997-11-01-1752000130613-dad-first-buck-001.jpg
+/photos/staging/scans/scanned/1997-11-01-1752000160509-dad-first-buck-000.jpg
+/photos/staging/scans/scanned/1997-11-01-1752000160509-dad-first-buck-001.jpg
+
+=== chicken-pox (6 files) ===
+/photos/staging/scans/scanned/1991-05-01-1752545811126-chicken-pox-000.jpg
+/photos/staging/scans/scanned/1991-05-01-1752545811126-chicken-pox-001.jpg
+
+# Copy this to set GPS for chicken-pox 1991:
+# Apply GPS coords [lat,lng or location] to chicken-pox 1991
+
+/photos/staging/scans/scanned/1992-05-01-1752545870278-chicken-pox-000.jpg
+/photos/staging/scans/scanned/1992-05-01-1752545870278-chicken-pox-001.jpg
+/photos/staging/scans/scanned/1992-05-01-1752545870278-chicken-pox-002.jpg
+/photos/staging/scans/scanned/1992-05-01-1752545870278-chicken-pox-003.jpg
+
+=== all-star-game (6 files) ===
+/photos/staging/scans/scanned/1994-08-01-1752543334798-all-star-game-000.jpg
+/photos/staging/scans/scanned/1994-08-01-1752543334798-all-star-game-001.jpg
+/photos/staging/scans/scanned/1994-08-01-1752543373017-all-star-game-000.jpg
+/photos/staging/scans/scanned/1994-08-01-1752543373017-all-star-game-001.jpg
+/photos/staging/scans/scanned/1994-08-01-1752543402579-all-star-game-000.jpg
+/photos/staging/scans/scanned/1994-08-01-1752543402579-all-star-game-001.jpg
+
+=== stevie-birthday-dids (5 files) ===
+/photos/staging/scans/scanned/1989-04-15-1752006717224-stevie-birthday-dids-000.jpg
+/photos/staging/scans/scanned/1989-04-15-1752006717224-stevie-birthday-dids-001.jpg
+/photos/staging/scans/scanned/1989-04-15-1752006717224-stevie-birthday-dids-002.jpg
+/photos/staging/scans/scanned/1989-04-15-1752006743018-stevie-birthday-dids-000.jpg
+/photos/staging/scans/scanned/1989-04-15-1752006743018-stevie-birthday-dids-001.jpg
+
+=== cape-cod-with-burns (5 files) ===
+/photos/staging/scans/scanned/1989-07-03-1752007629186-cape-cod-with-burns-000.jpg
+/photos/staging/scans/scanned/1989-07-03-1752007629186-cape-cod-with-burns-001.jpg
+/photos/staging/scans/scanned/1989-07-03-1752007629186-cape-cod-with-burns-002.jpg
+/photos/staging/scans/scanned/1989-07-03-1752007656173-cape-cod-with-burns-000.jpg
+/photos/staging/scans/scanned/1989-07-03-1752007656173-cape-cod-with-burns-001.jpg
+
+=== stevies-first-hair-cut (4 files) ===
+/photos/staging/scans/scanned/1987-07-16-1752025616738-stevies-first-hair-cut-000.jpg
+/photos/staging/scans/scanned/1987-07-16-1752025616738-stevies-first-hair-cut-001.jpg
+/photos/staging/scans/scanned/1987-07-16-1752025616738-stevies-first-hair-cut-002.jpg
+/photos/staging/scans/scanned/1987-07-16-1752025647223-stevies-first-hair-cut-000.jpg
+
+=== sandown-little-league-1997 (4 files) ===
+/photos/staging/scans/scanned/1997-07-01-1752000345090-sandown-little-league-1997-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1752000345090-sandown-little-league-1997-001.jpg
+/photos/staging/scans/scanned/1997-07-01-1752000406027-sandown-little-league-1997-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1752000406027-sandown-little-league-1997-001.jpg
+
+=== kancamangus-highway (4 files) ===
+/photos/staging/scans/scanned/1997-07-01-1751997171784-kancamangus-highway-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1751997171784-kancamangus-highway-001.jpg
+/photos/staging/scans/scanned/1997-07-01-1751997276201-kancamangus-highway-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1751997276201-kancamangus-highway-001.jpg
+
+=== hampton-beach-brady-bunch (4 files) ===
+/photos/staging/scans/scanned/1998-08-01-1752001408405-hampton-beach-brady-bunch-000.jpg
+/photos/staging/scans/scanned/1998-08-01-1752001408405-hampton-beach-brady-bunch-001.jpg
+/photos/staging/scans/scanned/1998-08-01-1752001548340-hampton-beach-brady-bunch-000.jpg
+/photos/staging/scans/scanned/1998-08-01-1752001548340-hampton-beach-brady-bunch-001.jpg
+
+=== first-grade (4 files) ===
+/photos/staging/scans/scanned/1992-09-01-1752545248588-first-grade-000.jpg
+/photos/staging/scans/scanned/1992-09-01-1752545524682-first-grade-000.jpg
+/photos/staging/scans/scanned/1992-09-01-1752545524682-first-grade-001.jpg
+/photos/staging/scans/scanned/1992-09-01-1752545524682-first-grade-002.jpg
+
+=== erica-bday-7-years-old (4 files) ===
+/photos/staging/scans/scanned/1986-11-01-1752021401110-erica-bday-7-years-old-000.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021401110-erica-bday-7-years-old-001.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021401110-erica-bday-7-years-old-002.jpg
+/photos/staging/scans/scanned/1986-11-01-1752021459653-erica-bday-7-years-old-000.jpg
+
+=== didis (4 files) ===
+/photos/staging/scans/scanned/1988-10-01-1752005812744-didis-000.jpg
+/photos/staging/scans/scanned/1988-10-01-1752005812744-didis-001.jpg
+/photos/staging/scans/scanned/1988-10-01-1752005835752-didis-000.jpg
+/photos/staging/scans/scanned/1988-10-01-1752005835752-didis-001.jpg
+
+=== zachary-1st (3 files) ===
+/photos/staging/scans/scanned/1991-11-01-1752545750230-zachary-1st-000.jpg
+/photos/staging/scans/scanned/1991-11-01-1752545750230-zachary-1st-001.jpg
+/photos/staging/scans/scanned/1991-11-01-1752545750230-zachary-1st-002.jpg
+
+=== travis-burns (3 files) ===
+/photos/staging/scans/scanned/1990-04-11-1752114284344-travis-burns-000.jpg
+/photos/staging/scans/scanned/1990-04-11-1752114284344-travis-burns-001.jpg
+/photos/staging/scans/scanned/1990-04-11-1752114284344-travis-burns-002.jpg
+
+=== toppsfield-fair (3 files) ===
+/photos/staging/scans/scanned/1989-07-25-1752007529258-toppsfield-fair-000.jpg
+/photos/staging/scans/scanned/1989-07-25-1752007529258-toppsfield-fair-001.jpg
+/photos/staging/scans/scanned/1989-07-25-1752007529258-toppsfield-fair-002.jpg
+
+=== stevie-birthday (3 files) ===
+/photos/staging/scans/scanned/1990-04-15-1752113742560-stevie-birthday-000.jpg
+/photos/staging/scans/scanned/1990-04-15-1752113742560-stevie-birthday-001.jpg
+/photos/staging/scans/scanned/1990-04-15-1752113742560-stevie-birthday-002.jpg
+
+=== riverside-bradford-baseball---stephen (3 files) ===
+/photos/staging/scans/scanned/1996-07-01-1751998460528-riverside-bradford-baseball---stephen-000.jpg
+/photos/staging/scans/scanned/1996-07-01-1751998460528-riverside-bradford-baseball---stephen-001.jpg
+/photos/staging/scans/scanned/1996-07-01-1751998460528-riverside-bradford-baseball---stephen-002.jpg
+
+=== oh-my-head__all-done (3 files) ===
+/photos/staging/scans/scanned/1987-04-19-1752024220997-oh-my-head__all-done-000.jpg
+/photos/staging/scans/scanned/1987-04-19-1752024220997-oh-my-head__all-done-001.jpg
+/photos/staging/scans/scanned/1987-04-19-1752024220997-oh-my-head__all-done-002.jpg
+
+=== middleton-nh-land (3 files) ===
+/photos/staging/scans/scanned/1988-10-01-1752005600366-middleton-nh-land-000.jpg
+/photos/staging/scans/scanned/1988-10-01-1752005600366-middleton-nh-land-001.jpg
+/photos/staging/scans/scanned/1988-10-01-1752005600366-middleton-nh-land-002.jpg
+
+=== looking-at-clouds (3 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751996801700-looking-at-clouds-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996801700-looking-at-clouds-001.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996801700-looking-at-clouds-002.jpg
+
+=== last-day-in-pa---deb-and-pauls-house (3 files) ===
+/photos/staging/scans/scanned/1986-06-01-1752017057796-last-day-in-pa---deb-and-pauls-house-000.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017057796-last-day-in-pa---deb-and-pauls-house-001.jpg
+/photos/staging/scans/scanned/1986-06-01-1752017057796-last-day-in-pa---deb-and-pauls-house-002.jpg
+
+=== jacob-david-and-stephen-seafood-festival (3 files) ===
+/photos/staging/scans/scanned/1997-07-01-1751998245164-jacob-david-and-stephen-seafood-festival-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1751998245164-jacob-david-and-stephen-seafood-festival-001.jpg
+/photos/staging/scans/scanned/1997-07-01-1751998245164-jacob-david-and-stephen-seafood-festival-002.jpg
+
+=== halloween-1997 (3 files) ===
+/photos/staging/scans/scanned/1997-10-31-1751999121697-halloween-1997-000.jpg
+/photos/staging/scans/scanned/1997-10-31-1751999121697-halloween-1997-001.jpg
+/photos/staging/scans/scanned/1997-10-31-1751999180031-halloween-1997-000.jpg
+
+=== fish (3 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751996251809-fish-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996251809-fish-001.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996251809-fish-002.jpg
+
+=== dj-first-day-grade-3rd (3 files) ===
+/photos/staging/scans/scanned/1997-07-01-1751998113175-dj-first-day-grade-3rd-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1751998113175-dj-first-day-grade-3rd-001.jpg
+/photos/staging/scans/scanned/1997-07-01-1751998113175-dj-first-day-grade-3rd-002.jpg
+
+=== dj-baptism (3 files) ===
+/photos/staging/scans/scanned/1989-07-01-1752007866823-dj-baptism-000.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007866823-dj-baptism-001.jpg
+/photos/staging/scans/scanned/1989-07-01-1752007866823-dj-baptism-002.jpg
+
+=== dj (3 files) ===
+/photos/staging/scans/scanned/1989-07-01-1752036368064-dj-001.jpg
+
+# Copy this to set GPS for dj 1989:
+# Apply GPS coords [lat,lng or location] to dj 1989
+
+/photos/staging/scans/scanned/1993-07-01-1752036368064-dj-000.jpg
+/photos/staging/scans/scanned/1993-07-01-1752036368064-dj-002.jpg
+
+=== didis-house (3 files) ===
+/photos/staging/scans/scanned/1988-06-15-1752004259057-didis-house-000.jpg
+/photos/staging/scans/scanned/1988-06-15-1752004259057-didis-house-001.jpg
+/photos/staging/scans/scanned/1988-06-15-1752004259057-didis-house-002.jpg
+
+=== didi (3 files) ===
+/photos/staging/scans/scanned/1952-08-01-1752538667518-didi-000.jpg
+/photos/staging/scans/scanned/1952-08-01-1752538667518-didi-001.jpg
+/photos/staging/scans/scanned/1952-08-01-1752538667518-didi-002.jpg
+
+=== december-1997-1st-week-in-sandown__-we-lost-power-for-2-days-some-people-for-4 (3 files) ===
+/photos/staging/scans/scanned/1997-12-15-1751994947465-december-1997-1st-week-in-sandown__-we-lost-power-for-2-days-some-people-for-4-000.jpg
+/photos/staging/scans/scanned/1997-12-15-1751994947465-december-1997-1st-week-in-sandown__-we-lost-power-for-2-days-some-people-for-4-001.jpg
+/photos/staging/scans/scanned/1997-12-15-1751994947465-december-1997-1st-week-in-sandown__-we-lost-power-for-2-days-some-people-for-4-002.jpg
+
+=== christmas-sturtevants (3 files) ===
+/photos/staging/scans/scanned/1988-12-25-1752006071824-christmas-sturtevants-000.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006071824-christmas-sturtevants-001.jpg
+/photos/staging/scans/scanned/1988-12-25-1752006100113-christmas-sturtevants-000.jpg
+
+=== xmas (2 files) ===
+/photos/staging/scans/scanned/1989-12-25-1752112478253-xmas-000.jpg
+/photos/staging/scans/scanned/1989-12-25-1752112478253-xmas-001.jpg
+
+=== stevies-8th---pilgrim-lanes (2 files) ===
+/photos/staging/scans/scanned/1994-04-15-1752543489101-stevies-8th---pilgrim-lanes-000.jpg
+/photos/staging/scans/scanned/1994-04-15-1752543489101-stevies-8th---pilgrim-lanes-001.jpg
+
+=== stevies-2nd-hair-cut (2 files) ===
+/photos/staging/scans/scanned/1988-01-01-1752026309265-stevies-2nd-hair-cut-000.jpg
+/photos/staging/scans/scanned/1988-01-01-1752026309265-stevies-2nd-hair-cut-001.jpg
+
+=== second-deer (2 files) ===
+/photos/staging/scans/scanned/1998-12-01-1752002457698-second-deer-000.jpg
+/photos/staging/scans/scanned/1998-12-01-1752002457698-second-deer-001.jpg
+
+=== sandown-random (2 files) ===
+/photos/staging/scans/scanned/1997-01-01-1752001284789-sandown-random-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1752001284789-sandown-random-001.jpg
+
+=== sandown-david-and-dad__-card-castle (2 files) ===
+/photos/staging/scans/scanned/1997-07-01-1751998297337-sandown-david-and-dad__-card-castle-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1751998297337-sandown-david-and-dad__-card-castle-001.jpg
+
+=== old-man-on-the-mountain (2 files) ===
+/photos/staging/scans/scanned/1997-07-01-1751998024269-old-man-on-the-mountain-000.jpg
+/photos/staging/scans/scanned/1997-07-01-1751998024269-old-man-on-the-mountain-001.jpg
+
+=== memorial-day (2 files) ===
+/photos/staging/scans/scanned/1989-05-29-1752007017190-memorial-day-000.jpg
+/photos/staging/scans/scanned/1989-05-29-1752007017190-memorial-day-001.jpg
+
+=== making-pickles (2 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751997077097-making-pickles-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751997077097-making-pickles-001.jpg
+
+=== jimmy-mack---comeaus__-ceasar__stephanie__al__ernesto__jimmy (2 files) ===
+/photos/staging/scans/scanned/1981-01-01-1752015456073-jimmy-mack---comeaus__-ceasar__stephanie__al__ernesto__jimmy-000.jpg
+/photos/staging/scans/scanned/1981-01-01-1752015482439-jimmy-mack---comeaus__-ceasar__stephanie__al__ernesto__jimmy-000.jpg
+
+=== haverhill-christmas-parade (2 files) ===
+/photos/staging/scans/scanned/1989-11-19-1752111719455-haverhill-christmas-parade-000.jpg
+/photos/staging/scans/scanned/1989-11-19-1752111719455-haverhill-christmas-parade-001.jpg
+
+=== halloween-sturtevants-exeter-nh (2 files) ===
+/photos/staging/scans/scanned/1988-10-31-1752005911130-halloween-sturtevants-exeter-nh-000.jpg
+/photos/staging/scans/scanned/1988-10-31-1752005911130-halloween-sturtevants-exeter-nh-001.jpg
+
+=== ericas-8th-bday (2 files) ===
+/photos/staging/scans/scanned/1987-12-01-1752026261441-ericas-8th-bday-000.jpg
+/photos/staging/scans/scanned/1987-12-01-1752026261441-ericas-8th-bday-001.jpg
+
+=== erica-first-day-of-school (2 files) ===
+/photos/staging/scans/scanned/1982-08-01-1752549040259-erica-first-day-of-school-000.jpg
+/photos/staging/scans/scanned/1982-09-01-1752549006995-erica-first-day-of-school-000.jpg
+
+=== easter-1986 (2 files) ===
+/photos/staging/scans/scanned/1986-01-01-1752336963534-easter-1986-000.jpg
+/photos/staging/scans/scanned/1986-01-01-1752336963534-easter-1986-001.jpg
+
+=== dj-sandown-house (2 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751996919887-dj-sandown-house-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751996919887-dj-sandown-house-001.jpg
+
+=== dj-riverside-bradford-1996 (2 files) ===
+/photos/staging/scans/scanned/1996-08-01-1751999021906-dj-riverside-bradford-1996-000.jpg
+/photos/staging/scans/scanned/1996-08-01-1751999021906-dj-riverside-bradford-1996-001.jpg
+
+=== dj-baseball-quality-machine-grade-2 (2 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751997029118-dj-baseball-quality-machine-grade-2-000.jpg
+/photos/staging/scans/scanned/1997-01-01-1751997029118-dj-baseball-quality-machine-grade-2-001.jpg
+
+=== didi-office-haverhill (2 files) ===
+/photos/staging/scans/scanned/1988-01-01-1752027379878-didi-office-haverhill-000.jpg
+/photos/staging/scans/scanned/1988-01-01-1752027379878-didi-office-haverhill-001.jpg
+
+=== 8th-grade-dj (2 files) ===
+/photos/staging/scans/scanned/2003-09-01-1752036445156-8th-grade-dj-000.jpg
+/photos/staging/scans/scanned/2003-09-01-1752036445156-8th-grade-dj-001.jpg
+
+=== unknown (1 files) ===
+/photos/staging/scans/scanned/1950-01-01-1752119283403-unknown-000.jpg
+
+=== tony-soccer-age-10_ (1 files) ===
+/photos/staging/scans/scanned/1996-10-01-1751998610328-tony-soccer-age-10_-000.jpg
+
+=== stevie-first-day-of-school-1st-grade (1 files) ===
+/photos/staging/scans/scanned/1992-09-01-1752116844903-stevie-first-day-of-school-1st-grade-000.jpg
+
+=== stephen-first-day-grade-6rd (1 files) ===
+/photos/staging/scans/scanned/1997-07-01-1751998178049-stephen-first-day-grade-6rd-000.jpg
+
+=== stephen-first-day-6rd-grade (1 files) ===
+/photos/staging/scans/scanned/1997-01-01-1752002263355-stephen-first-day-6rd-grade-000.jpg
+
+=== senior-photo-stephen.jpg (1 files) ===
+/photos/staging/scans/scanned/2004-09-01-1752013239935-senior-photo-stephen.jpg
+
+=== riverside-bradford-expos (1 files) ===
+/photos/staging/scans/scanned/1993-07-01-1752036519312-riverside-bradford-expos-000.jpg
+
+=== redwings-baseball-team---ed-chooljian (1 files) ===
+/photos/staging/scans/scanned/1939-07-15-1752286772688-redwings-baseball-team---ed-chooljian-000.jpg
+
+=== mean-face (1 files) ===
+/photos/staging/scans/scanned/1987-02-15-1752023874320-mean-face-000.jpg
+
+=== jacob (1 files) ===
+/photos/staging/scans/scanned/1997-11-01-1751998551093-jacob-000.jpg
+
+=== haverhill-350th-birthday-bash (1 files) ===
+/photos/staging/scans/scanned/1990-06-01-1752113975043-haverhill-350th-birthday-bash-000.jpg
+
+=== halloween-didis (1 files) ===
+/photos/staging/scans/scanned/1988-10-31-1752005940276-halloween-didis-000.jpg
+
+=== halloween-aunt-marys (1 files) ===
+/photos/staging/scans/scanned/1988-10-31-1752005968999-halloween-aunt-marys-000.jpg
+
+=== ericas-graduation (1 files) ===
+/photos/staging/scans/scanned/1997-01-01-1751996855436-ericas-graduation-000.jpg
+
+=== erica-4yo-childrens-house-nursery-school (1 files) ===
+/photos/staging/scans/scanned/1983-01-01-1752295300480-erica-4yo-childrens-house-nursery-school-000.jpg
+
+=== erica-3rd-grade (1 files) ===
+/photos/staging/scans/scanned/1987-09-01-1752295141050-erica-3rd-grade-000.jpg
+
+=== ed__dot__diane (1 files) ===
+/photos/staging/scans/scanned/1952-07-02-1752337933646-ed__dot__diane-000.jpg
+
+=== eddie-chooljian (1 files) ===
+/photos/staging/scans/scanned/1941-06-01-1752299798115-eddie-chooljian-000.jpg
+
+=== dorothy-chooljian (1 files) ===
+/photos/staging/scans/scanned/1988-01-08-1752288638774-dorothy-chooljian-000.jpg
+
+=== dezazzo (1 files) ===
+/photos/staging/scans/scanned/1983-06-01-1752288926991-dezazzo-000.jpg
+
+=== david-school.jpg (1 files) ===
+/photos/staging/scans/scanned/2004-09-01-1752013395597-david-school.jpg
+
+=== david-first-grade (1 files) ===
+/photos/staging/scans/scanned/1995-09-01-1751998938318-david-first-grade-000.jpg
+
+=== david-first-day-3rd-grade (1 files) ===
+/photos/staging/scans/scanned/1997-01-01-1752002223622-david-first-day-3rd-grade-000.jpg
+
+=== crematory-newpaper-haverhill (1 files) ===
+/photos/staging/scans/scanned/1995-07-01-1752003092864-crematory-newpaper-haverhill-000.jpg
+
+=== christmas-1997---travis-8__-caleb-5-and-a-half (1 files) ===
+/photos/staging/scans/scanned/1997-12-01-1751998732477-christmas-1997---travis-8__-caleb-5-and-a-half-000.jpg
+
+=== christmas-1996__-the-burns (1 files) ===
+/photos/staging/scans/scanned/1996-12-01-1751998796648-christmas-1996__-the-burns-000.jpg
+
+=== christmas-1996 (1 files) ===
+/photos/staging/scans/scanned/1996-12-01-1751998665583-christmas-1996-000.jpg
+
+=== casino-ballroom-air-supply-concert (1 files) ===
+/photos/staging/scans/scanned/1989-07-20-1752007406927-casino-ballroom-air-supply-concert-000.jpg
+
+=== brothers (1 files) ===
+/photos/staging/scans/scanned/2004-09-01-1752013523648-brothers-000.jpg
+
+=== billy-rozanne-wedding-newspaper (1 files) ===
+/photos/staging/scans/scanned/1987-10-03-1752027598811-billy-rozanne-wedding-newspaper-000.jpg
+
+=== 7th-grade-dj (1 files) ===
+/photos/staging/scans/scanned/2002-09-01-1752036410968-7th-grade-dj-000.jpg
+
+=== 4th-grade-school-pic---haverhill (1 files) ===
+/photos/staging/scans/scanned/1996-07-01-1751998391501-4th-grade-school-pic---haverhill-000.jpg
+
+=== 11th-grade-stephen (1 files) ===
+/photos/staging/scans/scanned/2003-09-01-1752036480692-11th-grade-stephen-000.jpg
+

@@ -1,7 +1,7 @@
 # Photo Search MCP - Ignore Patterns
-# Focus on indexing metadata, not media files themselves
+# Focus on indexing photo metadata JSON files in /photos
 
-# === MEDIA FILES (we index metadata, not the files) ===
+# === MEDIA FILES (we want metadata, not the actual images/videos) ===
 *.jpg
 *.jpeg
 *.png
@@ -15,28 +15,22 @@
 *.mov
 *.avi
 *.mkv
+*.raw
+*.dng
 
-# === BUILD & DEVELOPMENT ===
-node_modules/
-dist/
-build/
-coverage/
-*.log
-.env*
+# === KEEP METADATA FILES ===
+# Don't ignore: *.json (we want these for photo metadata)
 
-# === DATABASES (except our embeddings) ===
-*.db
-!embeddings.db
-*.sqlite
-*.sqlite3
-
-# === TEMPORARY FILES ===
-tmp/
-temp/
-cache/
+# === SYSTEM DIRECTORIES ===
+processing/
+.temp/
 .cache/
-*.tmp
-*.temp
+
+# === DUPLICATE DETECTION RESULTS ===
+duplicates/
+duplicate-*.json
+similar-*.json
+rotation-*.json
 
 # === OS FILES ===
 .DS_Store
@@ -45,33 +39,31 @@ Thumbs.db
 .idea/
 *.swp
 
-# === GIT ===
-.git/
-.gitignore
+# === BUILD ARTIFACTS ===
+node_modules/
+dist/
+build/
+coverage/
+*.log
 
-# === TEST FILES ===
-test-*/
-tests/
-*test*.json
-*mock*.json
+# === DATABASE FILES ===
+*.db
+*.sqlite
+*.sqlite3
 
-# === LARGE DATA FILES ===
-*.sql
-*.csv
-*.tsv
-duplicates.json
-controlled-test.json
-tiny-test.json
-
-# === BACKUP FILES ===
+# === BACKUP/TEMP FILES ===
 *.backup
+*.tmp
+*.temp
 backup/
 backups/
 
-# === PACKAGE FILES ===
-package-lock.json
-yarn.lock
+# === LARGE DATA DUMPS ===
+*.sql
+*.csv
+*.tsv
+all_photos.txt
+*batch*.txt
 
-# === SCRIPTS WE DON'T NEED TO INDEX ===
-scripts/*.sh
-!scripts/phase2-*.sh  # Keep restructuring scripts for reference
+# === VERSION CONTROL ===
+.git/
