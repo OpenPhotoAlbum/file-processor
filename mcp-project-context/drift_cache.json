@@ -1,0 +1,1386 @@
+{
+  "timestamp": "2025-07-17T23:50:58.544739",
+  "file_count": 277,
+  "files": {
+    "/home/stephen/Documents/initial-media-processing/docker-compose.yaml": {
+      "mtime": 1751312112.5912802,
+      "size": 1056,
+      "hash": "8a20163f3f8b70de21c5adfca16ba5bbaed02b2b4def5e0680ea444283200f73"
+    },
+    "/home/stephen/Documents/initial-media-processing/THE_CONVERSATION_THAT_CHANGED_EVERYTHING.md": {
+      "mtime": 1751350241.4184272,
+      "size": 14623,
+      "hash": "16550154713a0da9155f47acef88bf2bbc1d3f759e31f683f48fa0702b981805"
+    },
+    "/home/stephen/Documents/initial-media-processing/tsconfig.json": {
+      "mtime": 1750711388.9668145,
+      "size": 539,
+      "hash": "4973c11bd5171ceb3b3d3433e339823be8f810670d14e2e87972feb8374df541"
+    },
+    "/home/stephen/Documents/initial-media-processing/PERSONAL_MISSION_STATEMENT.md": {
+      "mtime": 1751349379.10533,
+      "size": 5411,
+      "hash": "a6719b69c5a0e39c1f05e6de8d4289b393f640de1d7a56fa9cf39953281f1c3a"
+    },
+    "/home/stephen/Documents/initial-media-processing/PROCESSING_ARCHITECTURE.md": {
+      "mtime": 1751121903.7204268,
+      "size": 6380,
+      "hash": "b40c05aeb49db3e883c002eccb4c549eb6010d05fe0d8c1f4cecfdaf736cb355"
+    },
+    "/home/stephen/Documents/initial-media-processing/setup-whisper.sh": {
+      "mtime": 1751420991.1961167,
+      "size": 3520,
+      "hash": "3cbe11113fde0ac2de19324cd944661f30059109185ae9e62cbe2e26f2aac496"
+    },
+    "/home/stephen/Documents/initial-media-processing/package.json": {
+      "mtime": 1752809380.7258027,
+      "size": 5243,
+      "hash": "4ffb5f3caf0562ad03e22065d9179148f5d880f2a6aad9aa9a3b48dd129b815d"
+    },
+    "/home/stephen/Documents/initial-media-processing/jest.config.js": {
+      "mtime": 1751121903.7464273,
+      "size": 386,
+      "hash": "f96097803721200fe53ec067b3a2343f744460925d94b0b6d3b5fb9f9a5badd5"
+    },
+    "/home/stephen/Documents/initial-media-processing/MEDIA_PROCESSING_PLAN.md": {
+      "mtime": 1751121903.7204268,
+      "size": 8404,
+      "hash": "cd3d6f6f47e270bab36d2d9d11047cbff65d54633875cfcec12dae4a9a10b56a"
+    },
+    "/home/stephen/Documents/initial-media-processing/groups-photos.txt": {
+      "mtime": 1752729418.305901,
+      "size": 56507,
+      "hash": "a3811f4c29e433a674fd60401e5ef972d3d222e64aebee3f57674579df4ce407"
+    },
+    "/home/stephen/Documents/initial-media-processing/README.md": {
+      "mtime": 1751121892.5062387,
+      "size": 894,
+      "hash": "da461d528e0b84af1155e1cb89c467890da3ce704abbc26d7dca3683aa5400bb"
+    },
+    "/home/stephen/Documents/initial-media-processing/CLAUDE.md": {
+      "mtime": 1752727676.1041644,
+      "size": 19960,
+      "hash": "f488a8a7fee33300773ae865d1df29da7679f0cc1571705ce488920976a6e18e"
+    },
+    "/home/stephen/Documents/initial-media-processing/TODO.md": {
+      "mtime": 1751419249.5895271,
+      "size": 3957,
+      "hash": "6a504de9631285f224587f5c85e3ba4f38f73044fdcd9a2022dbab995951fcdd"
+    },
+    "/home/stephen/Documents/initial-media-processing/TRANSCRIPTION-README.md": {
+      "mtime": 1751421026.1038172,
+      "size": 4106,
+      "hash": "b2d9aee4e5de9b39fab4fbcce3131bfd81b14d0887096c60c305eb27122b45eb"
+    },
+    "/home/stephen/Documents/initial-media-processing/run-migrations.sh": {
+      "mtime": 1751153678.0970438,
+      "size": 768,
+      "hash": "982b48c823ab758b4d1f95b707edb38fd9f51b58ca7f890df2711d18895df852"
+    },
+    "/home/stephen/Documents/initial-media-processing/transcribe-audio.sh": {
+      "mtime": 1751420915.0645878,
+      "size": 6450,
+      "hash": "06efe52af49ebeec327f844b7d69152eb5550a01788e948dccb4111de04f35bd"
+    },
+    "/home/stephen/Documents/initial-media-processing/LANDMARK_ARCHITECTURE.md": {
+      "mtime": 1751121903.7204268,
+      "size": 8158,
+      "hash": "8ebc8774eb09012b138b95ddcc6032785b0079bc807db6d4a437480a25fae214"
+    },
+    "/home/stephen/Documents/initial-media-processing/FINAL-VIDEO-DATES-WITH-ALL-LOCATIONS.txt": {
+      "mtime": 1751422010.9625432,
+      "size": 39696,
+      "hash": "dcd2978d0cbc614d62550506c1ac0c0c805938c7ad495bd653c68253d05c8973"
+    },
+    "/home/stephen/Documents/initial-media-processing/transcribe-simple.sh": {
+      "mtime": 1751422531.425274,
+      "size": 2869,
+      "hash": "dad6c2427dd6b14dc8b5cff0a334a234621cdf439fb7e5f916699784ea4779c5"
+    },
+    "/home/stephen/Documents/initial-media-processing/eslint.config.js": {
+      "mtime": 1751121903.7464273,
+      "size": 2483,
+      "hash": "4b68652180381b5a78380c0dc9d8a566f7a89081de7893380a19a37185cec3d2"
+    },
+    "/home/stephen/Documents/initial-media-processing/PROJECT_VISION_EVOLUTION.md": {
+      "mtime": 1751349348.598068,
+      "size": 4831,
+      "hash": "a126d83ca93217f8b7a0d71d9272c3602868bd8231ec9fd60b804e1b094c62f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/ACCOMPLISHMENTS.md": {
+      "mtime": 1751347632.5360887,
+      "size": 9404,
+      "hash": "6e49238552eebe15bfa88a169754b44e886acf871d16a98bb1d1652b047ee066"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/group-scanned-photos.sh": {
+      "mtime": 1752729393.4625483,
+      "size": 2184,
+      "hash": "9350805256df683e47555fbce51f9e686c5776e40ad6b2ce2faa346845de4e09"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/README.md": {
+      "mtime": 1752808584.922523,
+      "size": 5805,
+      "hash": "f327630ee05519ce4e1da670bd45e1fd56c61637be8fa41b483206cda326f287"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/phase3b-recreation-enrichment.sh": {
+      "mtime": 1751121904.1884346,
+      "size": 4446,
+      "hash": "e6d44b82d24a5772b89cf0410bf9849f33aa053688780459a83712af7a853e9e"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/scan.sh": {
+      "mtime": 1752726736.2268193,
+      "size": 12093,
+      "hash": "3c507b9717196d94b28519fbfbc309ad39dbdeecbe6f9e1f44e36f88a5d6dc7b"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/add-video-geolocation.sh": {
+      "mtime": 1751410732.125565,
+      "size": 6564,
+      "hash": "ea321de1be36e2c27963fa7793fdfad883807affd4750b0450a100132c8fe96e"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/add-video-metadata.sh": {
+      "mtime": 1751414002.7702074,
+      "size": 4647,
+      "hash": "ba153d4472ead34171242fa4fbe9c551f83a1656662a7fea34676cada58a8f4d"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/google-takeout/process-google-takeout-complete.sh": {
+      "mtime": 1751121904.1894345,
+      "size": 3990,
+      "hash": "cc104c93b80b54609082ec40baa86dc44ef360a6d6ba068f1923eccc834c8a10"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/google-takeout/process-iphone-external-imports.sh": {
+      "mtime": 1751121904.1894345,
+      "size": 4854,
+      "hash": "faca33b2344821560cef1894276b89c402c5e5a948e04ffb926a7fe231c9500c"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/document-cleanup/split-photos.sh": {
+      "mtime": 1751659526.2000577,
+      "size": 6999,
+      "hash": "87e6db95c9dd8ce1f85271362fd40326ee97841439f9f2b1d3f0097516e66967"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/document-cleanup/split-documents.sh": {
+      "mtime": 1751658995.780596,
+      "size": 8927,
+      "hash": "04d77bddc3019d484d781f99547741a3cdb59f31575f1e9b25e9612212730702"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/document-cleanup/split-photos-edge.sh": {
+      "mtime": 1751659643.7379243,
+      "size": 6825,
+      "hash": "1c01ec60c5a6a5296316292becc75c5f036e29ab87b5c4d4df8df6e350777cff"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/document-cleanup/README.md": {
+      "mtime": 1751658669.2323258,
+      "size": 1681,
+      "hash": "8ae2f9ef1453488313261f9108941d171678d0701f66252abf41ec6abb53e3d4"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/document-cleanup/cleanup-scans.sh": {
+      "mtime": 1751658840.2020938,
+      "size": 5843,
+      "hash": "7194e97de3082e6f70eef047c570d9d6a515f235ab51c960844341e9a258e5e4"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/multicrop": {
+      "mtime": 1751993496.9607172,
+      "size": 7614,
+      "hash": "48ba33fb39763b3ce026139147be471240742cd9b3c0a2d716e6d17d615f1c69"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/scan": {
+      "mtime": 1752552113.426733,
+      "size": 8957,
+      "hash": "9e77b61baea39cda39363ca3e1b461e9ea0b0c394c70a981df0616e3ba9e6b79"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/install.sh": {
+      "mtime": 1751994955.1220255,
+      "size": 6372,
+      "hash": "3870fa616094cd540b251a22f5b218710e2bab7eb650682b18d42c6abb63bda7"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/CLAUDE.md": {
+      "mtime": 1751994989.2046113,
+      "size": 5901,
+      "hash": "bba5ba7676aeeca1ea2d5619a4aa0ee015e2cf99ce3dc0b424e7d27e816a3ffd"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/TODO.md": {
+      "mtime": 1751995048.5646296,
+      "size": 5422,
+      "hash": "4e90233c6c60a0f96bd3ac73680539345ff108ca5265b98bfe79aedc9b0a17fe"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/multicrop-ref": {
+      "mtime": 1751993556.119686,
+      "size": 29908,
+      "hash": "fa9bc9e452ae20e5269d5a6cfd650d8649d5029123f2e8b3f5f638124dbde6de"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/set-photo-dates": {
+      "mtime": 1752213666.6351845,
+      "size": 5784,
+      "hash": "110d2ac92acec35b63e254cad749123ae36153d3376af965b6539f77fc22ad3c"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/utilities/create-file-batches.sh": {
+      "mtime": 1751121904.1864345,
+      "size": 1534,
+      "hash": "dce4644b28941460556a81a52c431d8d9ca5bcfc39c3c7bc0794317a33c019b4"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/utilities/generate-test-mocks.sh": {
+      "mtime": 1751140156.6211095,
+      "size": 2812,
+      "hash": "5b73fc1bfeaec0105e35107761c801334ddec41ed62b34f0aae403425f9590d7"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/utilities/etl-census-municipal-boundaries.sh": {
+      "mtime": 1751121904.1874347,
+      "size": 14084,
+      "hash": "c8115fd886e2de70eefb4f43fc1213d5ca75b429e20295f364ed366cb2a4fc9b"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/database/check-software.cjs": {
+      "mtime": 1751297458.8692117,
+      "size": 2048,
+      "hash": "290bf4ab34f1e45e19903dc3cfa11e1255c992f6600aa5bd98ea9a87c54121fb"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/database/check-file-in-db.js": {
+      "mtime": 1751289227.693067,
+      "size": 1604,
+      "hash": "e5c1a6f63a0da549fd85bdef1afe580ffde9c7a2a45e088ba8246e167ae872a9"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/database/database-clean-media.sh": {
+      "mtime": 1751260239.5356753,
+      "size": 3475,
+      "hash": "38b3a3f7911af27b668e0f05a21b45a340e1537f1b25dbf450d97c6d9bd6e362"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/database/check-timezone-conversion.cjs": {
+      "mtime": 1751298941.4814193,
+      "size": 1810,
+      "hash": "7646f568110fa47fa06e6faf8c1db10d715ed4553f9d830f66188155e75248e4"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/monitoring/monitor-batches.sh": {
+      "mtime": 1751121904.1874347,
+      "size": 1766,
+      "hash": "75a53fa5791709c87fd184fb4ef08d8518c1c894743e17fe9b4c262c05990d83"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/monitoring/video-stats.sh": {
+      "mtime": 1751121904.1904347,
+      "size": 1746,
+      "hash": "7e78ff8cfd7806e49ea438b9f0412346a7bf308e9baa6fc225912bab0a92e40b"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/monitoring/monitor-video-progress.sh": {
+      "mtime": 1751121904.1874347,
+      "size": 3282,
+      "hash": "89df49d4319da32472493094e6925e232977d45f679166a385169a7138817f40"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/monitoring/watch-google-takeout-progress.sh": {
+      "mtime": 1751121904.1904347,
+      "size": 3400,
+      "hash": "eff77f32569491888347ccef22147fb67a9f2e3820adfb2863a5a6af97cc867b"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/move-marked-files.sh": {
+      "mtime": 1752619991.491204,
+      "size": 636,
+      "hash": "0a3009d14b32846012b2b2c1d201b4c6dc337e7ba347266dc7e70d23dd92c64f"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/quick-rotation-review.py": {
+      "mtime": 1752720450.5510933,
+      "size": 9140,
+      "hash": "c6e30b27eefa54739e923813c67a466b19dde0ebe6774303d6777f5f8eef1d29"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/detect-rotation.py": {
+      "mtime": 1752619617.1078935,
+      "size": 9283,
+      "hash": "7ead844eee5c870f279d9e55789aeebf317085451a13243ace27ac85d72dd6bb"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/set-exif-orientation.py": {
+      "mtime": 1752621207.6713912,
+      "size": 3192,
+      "hash": "a62b9f8b47369223214ee85f9a4a6dfbbe148c66e856d67f7e1afa43eca8b338"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/geotag-gps.py": {
+      "mtime": 1752636887.2206528,
+      "size": 40460,
+      "hash": "425983a7dd8e01e716a0d061c95f0caadf1617f862c9f45b96b327fc87874ee9"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/compare-archive-scans.py": {
+      "mtime": 1752720426.021687,
+      "size": 8534,
+      "hash": "670436eb5314a005f7c163c392eec7c11d2f53364437db3caa3241aec80f5bcc"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/test-db-connection.py": {
+      "mtime": 1752629639.7579596,
+      "size": 2537,
+      "hash": "9b1fd96b0cc42e25c8d082fd77098388769bc23a73d15b41619ea2de0184cabd"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/web-rotate.py": {
+      "mtime": 1752620345.690863,
+      "size": 14337,
+      "hash": "342b9e6a5dda1f65a45bf183daeb693a57e5bee1ff88e095f7a9ac36954e9d54"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/setup.sh": {
+      "mtime": 1752618140.6549392,
+      "size": 414,
+      "hash": "029a3f07c3a670dc40ddb45c1b33b68e5c8d54d63525f624bcc2f02de376751f"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/cli-rotation-review.py": {
+      "mtime": 1752720442.7049634,
+      "size": 8625,
+      "hash": "54399abc80035529a594f9b65051ed80f74855c9385c629293e100230926e774"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/rotation-aware-compare.py": {
+      "mtime": 1752720433.5378115,
+      "size": 12725,
+      "hash": "587301f2c41def103990cca8edf859d932b5294bb923e63188f160c43fef0196"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/results.json": {
+      "mtime": 1752618960.3591766,
+      "size": 3191,
+      "hash": "3b9b3fedbbb3d05b4eead27f95f9391b2d1780ec7f728b46bf72559ad5979396"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/geotag-shortcuts.json": {
+      "mtime": 1752679268.437833,
+      "size": 3079,
+      "hash": "3cfa2025b853d1709a22f8c7aca4bae1475566e805cb2816d8040ca9dd8e6a94"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/parallel-compare.py": {
+      "mtime": 1752720418.1865573,
+      "size": 10269,
+      "hash": "cde42689798ab0ac09faf400ed0a41838c54d25948008f7119652395ee53a8a1"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/rotate-and-save.py": {
+      "mtime": 1752624498.488801,
+      "size": 19492,
+      "hash": "02a264e4c22c1d32130ac510bd94721f5d7b0ec37aa1330501b35fa1c805f03b"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/clean-compare.py": {
+      "mtime": 1752720410.0024219,
+      "size": 12636,
+      "hash": "234c3d742ccf54172603327a584df9951036b2fd4ba157d8be36d6ee53236574"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/geotag-images.py": {
+      "mtime": 1752630088.8829038,
+      "size": 21953,
+      "hash": "69edf6ad1bc7f7faa0ee4eb57a543a7cc9a6207bc529b5fe75c0c1c6204b4b81"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/manual-photo-tools/requirements.txt": {
+      "mtime": 1752721165.564424,
+      "size": 60,
+      "hash": "1196727050a838451567f96fc0de528aa0a9b574c806aeec428c708f16f431fd"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/processing/reorganize-existing.sh": {
+      "mtime": 1751121904.1904347,
+      "size": 2138,
+      "hash": "d3122f0d40109f03991a3e76ca73cd82e5bc373eb075dcad2fa60cb0d3bc20c6"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/processing/process-archive-to-database.sh": {
+      "mtime": 1751289138.0675914,
+      "size": 10950,
+      "hash": "3da2e26662e4029945e942200e1b354c2dc500484b82ef1ce33ff36d66fdc465"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/processing/process-archive-to-database-smart.sh": {
+      "mtime": 1751289300.2092626,
+      "size": 11700,
+      "hash": "1f1026d8df1ed57da71c6cd40ded64ea360c72a07748e0c76866fc6e4453d975"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/workers/process-stragglers-worker.js": {
+      "mtime": 1751121904.1894345,
+      "size": 9938,
+      "hash": "636b19179399ff350bda155b6df38e9a7b6680f981ede1161ff79d631c1a1dc5"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/workers/process-iphone-worker.js": {
+      "mtime": 1751121904.1894345,
+      "size": 7317,
+      "hash": "dba9fcb8cace6d3401f73336993578c77aaf7b20271568e035d9cc6d8f41d2ff"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/workers/process-gifs-worker.js": {
+      "mtime": 1751121904.1894345,
+      "size": 9934,
+      "hash": "428aa7f7525bf9555cc9f5ea37ac30f8f16929cc2b88298dee9afa25c99f604d"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/workers/process-videos-parallel.sh": {
+      "mtime": 1751121904.1904347,
+      "size": 3336,
+      "hash": "d9541c9eddffed53711007dba2b996027ac35b7a00839b27a25cdf62a6b039ba"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/workers/process-additional-worker.js": {
+      "mtime": 1751121904.1884346,
+      "size": 9940,
+      "hash": "430d60bf3a8324c4bc7e3e637f122ef7201662579c5b53e2d0588f50c5433a8a"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/workers/process-videos-worker.js": {
+      "mtime": 1751121904.1904347,
+      "size": 9947,
+      "hash": "5e4a7bbbe900be6e2969a3481435c5a77e9480acc9aed5565f04273f628e8047"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/README.md": {
+      "mtime": 1751483920.9508355,
+      "size": 8740,
+      "hash": "6c0aaca51c3f7d2d09c42b7c657bfb330cd91d0bf426aef28bdbb7f065f272f8"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/scripts/extract_audio.py": {
+      "mtime": 1751480103.685875,
+      "size": 7035,
+      "hash": "824d793c77f60ee12d244e7b9e0811969e7bd5839be9de9cee5b38803e804649"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/scripts/verify_speakers.py": {
+      "mtime": 1751491826.9712672,
+      "size": 29611,
+      "hash": "3c831127b4dc5fec2e120c3d0c2d88b114c38f8b32b331478b99ac81ebf3418b"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/scripts/process.sh": {
+      "mtime": 1751485133.2270243,
+      "size": 84,
+      "hash": "8ae7647e20472f3592c1f39a4384170e367abaab9f921d2bf7ac95c0e308cb1a"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/scripts/enhanced_assembly_ai.py": {
+      "mtime": 1751491577.7118187,
+      "size": 15653,
+      "hash": "6cca01cd079d088900ebf382deba3572f88f4d49004178cd075bc54385522ace"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/scripts/process_video.py": {
+      "mtime": 1751480293.038129,
+      "size": 7304,
+      "hash": "fb195f445a2d16a222f90bd337f0fa9cebd790ff95a24003ce462c7b220f8f8c"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/voice-processing/scripts/__pycache__/verify_speakers.cpython-312.pyc": {
+      "mtime": 1751495468.7600198,
+      "size": 32377,
+      "hash": "7dd22dde0207dd0d345f13e8d2a0edf521b8cdca5aa6e12a43ff50731af5dff9"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/analysis/duplicate-manager.sh": {
+      "mtime": 1751329326.5401032,
+      "size": 14410,
+      "hash": "681859171541ad0f28c2da11d2405bcbc2cbf1b9781571c28c126984674d4148"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/analysis/live-photo-manager.sh": {
+      "mtime": 1751329184.7479079,
+      "size": 9641,
+      "hash": "1fe7c98b01e709efa163270e98ffdaed6584aea01bae899feedf624e5b07d8a4"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/analysis/media-inspector.cjs": {
+      "mtime": 1751340093.7033947,
+      "size": 11928,
+      "hash": "64b110d9a22374fd725fa206ad2f3b99a1ddc8517d61c89bea76d8c6b65ff484"
+    },
+    "/home/stephen/Documents/initial-media-processing/tests/deduplication-validation.test.ts": {
+      "mtime": 1751340229.9356382,
+      "size": 9725,
+      "hash": "1aa9d6e2d056b7f67ca2f7ba9167110e3bb7049d4a75d81f9a086d64841e0e1b"
+    },
+    "/home/stephen/Documents/initial-media-processing/tests/setup.ts": {
+      "mtime": 1751147467.1785953,
+      "size": 2049,
+      "hash": "afec910b4ed03915d239743763a551a5a829c91abb94231b9cd9b5ffecbc1a2c"
+    },
+    "/home/stephen/Documents/initial-media-processing/tests/setup-deduplication-fixture.js": {
+      "mtime": 1751340129.790988,
+      "size": 3882,
+      "hash": "335e40d9be076a57f71411a89cd6bcc8cd9f92f839cf6b4243ca425f6859b1cd"
+    },
+    "/home/stephen/Documents/initial-media-processing/tests/mocks/modules/mysql.ts": {
+      "mtime": 1751147531.6484425,
+      "size": 2840,
+      "hash": "85866128635cf8bdd5485130cf4793fe8aa43c3de2be9d3f2491abee53993e4c"
+    },
+    "/home/stephen/Documents/initial-media-processing/tests/mocks/modules/fetch.ts": {
+      "mtime": 1751147573.2064567,
+      "size": 2391,
+      "hash": "30332a9f4f529808fbd8c579216620d0a726908159b4a27e6a5395acabf34eb1"
+    },
+    "/home/stephen/Documents/initial-media-processing/tests/cli-response/cli-responses.spec.ts": {
+      "mtime": 1751140495.6835697,
+      "size": 11971,
+      "hash": "1683802d84086800cf7e47441d9ccf2ecda770a03bc5e43be0b2465a6d8fb28d"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/demo_usage.py": {
+      "mtime": 1751121903.7614274,
+      "size": 2429,
+      "hash": "2b722cf7bf5ee1a8c925c2495cda4c9bae323df46c355221281b399395b2b2c1"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/usage_tracker.py": {
+      "mtime": 1751121903.7624276,
+      "size": 6918,
+      "hash": "644fe6244a8059ade13c44eed50b17b5e035b5e3c2ab8f50a7cba64deb674fa6"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/mcp_server_simple.py": {
+      "mtime": 1751121903.7624276,
+      "size": 6259,
+      "hash": "fa1bd301b8b1498a95d553dff54826e70de89f141d07f36a2d9d6b7ed0bd157d"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/example_usage.py": {
+      "mtime": 1751121903.7614274,
+      "size": 1632,
+      "hash": "482fbfedbeffaede30b5fc6abfcbab836b4381ad358cac9ff5460c63f8f4053e"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/text_chunker.py": {
+      "mtime": 1751121903.7624276,
+      "size": 4228,
+      "hash": "a5ab94e2a5a7b34eada3475f1ae697bc2f030c8469bcef33e310160ee9e34164"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/schedule_monitor.py": {
+      "mtime": 1751121903.7624276,
+      "size": 4076,
+      "hash": "d9fb5b0c707a7fba770018a486c97d79bb1c8bd21943c994b8ed291d3d8bbe3d"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/drift_monitor.py": {
+      "mtime": 1752810555.0330997,
+      "size": 14125,
+      "hash": "64356f9cb0232c9ffc49174fe8c7b67d61d8d7bb327c9749dbce6e4eceb36bed"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/setup.sh": {
+      "mtime": 1751121903.7624276,
+      "size": 1142,
+      "hash": "2bc5c1f8d8b054652a667d72746504c6a10364ef12d6646de1096a47f0e60e07"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/usage_log.json": {
+      "mtime": 1752810378.6981966,
+      "size": 12511,
+      "hash": "fb4a8acac9d3fba2af3923a490702e74a8dab1c2f94255df57334a6d7cce45df"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/file_processor.py": {
+      "mtime": 1751121903.7614274,
+      "size": 11741,
+      "hash": "c2023c80faefad924f378647153fa2c683779fd0bf39b6ffb087265251ee39f8"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/estimate_costs.py": {
+      "mtime": 1751121903.7614274,
+      "size": 2825,
+      "hash": "6dd0002dcd349427fa8de635b38da6c02e5019abfab94f87bf4a38e99953305e"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/project_context_config.json": {
+      "mtime": 1751121903.7624276,
+      "size": 897,
+      "hash": "4afdb7e4afd2bdaa18b433658c2844f585f8b44f087cf9a6ff30c639f5013656"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/cleanup_database.py": {
+      "mtime": 1752809315.5867684,
+      "size": 3333,
+      "hash": "b1f756ba3eb8ca39ef176966c899e537ebd131f827c2b1a820a054d7761e4ff4"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/requirements.txt": {
+      "mtime": 1751121903.7624276,
+      "size": 54,
+      "hash": "9a365b41ba56a19065826af2621a9e8aeb6be0e4f463e8b17a99994b68ca78f0"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/claude_brain.py": {
+      "mtime": 1751333320.3000584,
+      "size": 9882,
+      "hash": "2cc79fe3bac6c791eb4ebd8575685e1260de66197b4c515acd94bf16fbd5e5a2"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/embeddings/embedding_store.py": {
+      "mtime": 1751121903.7614274,
+      "size": 4909,
+      "hash": "9488b845dc0254ecc03a699003e7be155f5527be23885e937399583229b42788"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/embeddings/retrieval_engine.py": {
+      "mtime": 1751340668.0139024,
+      "size": 1061,
+      "hash": "fcca086fcea37ac39753fdb438eb615bb570bb9bf821d8a157779f1dae023677"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/embeddings/__pycache__/embedding_store.cpython-312.pyc": {
+      "mtime": 1751322149.2934208,
+      "size": 6557,
+      "hash": "9c880be3891509130b29b9723d408fbc92c57d462703e1d748920d639b978f8e"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/embeddings/__pycache__/retrieval_engine.cpython-312.pyc": {
+      "mtime": 1751340672.2159724,
+      "size": 2501,
+      "hash": "cbbeeb3dbd971c2deb34eddc7936931dfa7a1300eed583db344f1ddf3d0f8491"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/generator/claude_md_generator.py": {
+      "mtime": 1751121903.7614274,
+      "size": 950,
+      "hash": "0d35e97b0b7c1e7c5b00b639d38156a66347e67ce258e8a48c02476dcd7c6420"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/generator/__pycache__/claude_md_generator.cpython-312.pyc": {
+      "mtime": 1751322149.7324283,
+      "size": 2088,
+      "hash": "6b69c1ab5e290a9384e96d9842c9fc20944c326f63cbab549fd7f6d195c1aff7"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/__pycache__/file_processor.cpython-312.pyc": {
+      "mtime": 1751322149.7304282,
+      "size": 15343,
+      "hash": "08ff945b60fbb5f076185d8168c284f0d77d2e1022e33be3e64a59629f352129"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/__pycache__/text_chunker.cpython-312.pyc": {
+      "mtime": 1751322149.7314281,
+      "size": 4447,
+      "hash": "8d982c05c0b0f8f27228cbbb20f292616f87e61c2467e8d10bf7b07ea26e9a1f"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/__pycache__/claude_brain.cpython-312.pyc": {
+      "mtime": 1752810625.0512407,
+      "size": 12740,
+      "hash": "2590cd2415030209bbc542b4c17a901df4dd92e26f8d19a18fcf1eafd69cd322"
+    },
+    "/home/stephen/Documents/initial-media-processing/mcp-project-context/__pycache__/usage_tracker.cpython-312.pyc": {
+      "mtime": 1751322149.5584252,
+      "size": 9413,
+      "hash": "5894609911c77ca81bce04b47629815208bd31058657ce4e85774e5e9c1c57f0"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/gps-coordinate-corruption-fix.md": {
+      "mtime": 1751121903.739427,
+      "size": 12531,
+      "hash": "881a6ff144f54eacb77c6565b84eec56d1b5620a1a8447ce9b10ce38546bd3d3"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/file-structure-analysis.md": {
+      "mtime": 1751121903.7384272,
+      "size": 6158,
+      "hash": "1e1739d5a08d8e35e42161ec51c7a8ce5bf482728f0f87ef3baeea8a1c92a9db"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/json-analysis-report.md": {
+      "mtime": 1751156673.9451478,
+      "size": 6468,
+      "hash": "f718c6388d5c997d928a5f1b372ea69e918b0aa60954d51f2081e11e8b28c0b1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/cli.md": {
+      "mtime": 1751261427.4808614,
+      "size": 13748,
+      "hash": "93e3f72613d12a85d48345d67af8dceabffa1c93ad909e2cd5733269e786520d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/geolocation-system.md": {
+      "mtime": 1751121903.739427,
+      "size": 7055,
+      "hash": "447102be880d2c8771628fc7617b894931fc2e6eae2675e15b95927a32633f4c"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/enrichment-results-final.md": {
+      "mtime": 1751121903.737427,
+      "size": 4987,
+      "hash": "c9db1227c3dfcebda0730fca8eec727573398b65b92987c5267a70c9c68bb70a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/database-setup.md": {
+      "mtime": 1751151243.6533504,
+      "size": 2952,
+      "hash": "ec5a4e854cf21e759ba85f81b5865c094f9c19a48a64cc7594b5def98bb2edcd"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/getting-started.md": {
+      "mtime": 1752808101.8698595,
+      "size": 7668,
+      "hash": "92b162810aa538883de335fea7f5cdf37871dde1337578975378cdf3faba3f78"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/nas-migration-plan.md": {
+      "mtime": 1751121903.742427,
+      "size": 8543,
+      "hash": "58c4f2d510c6c72cdd0d678bc02af4250aa5b884f0c3287703925584dc5d7173"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/future-vision-and-opportunities.md": {
+      "mtime": 1751121903.7384272,
+      "size": 7698,
+      "hash": "3894e5148cd3e7a8d52d93e04a5481649bb4e5e3706cf86f6bb684fed7001085"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/database-migration-strategy.md": {
+      "mtime": 1751121903.736427,
+      "size": 12111,
+      "hash": "c736b28648a419d7d4710f4f6d17a9dade70caa8549fd3dd9ef5b3d7e95f42ee"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/normalized-location-architecture.md": {
+      "mtime": 1751261046.491517,
+      "size": 5408,
+      "hash": "3737ef1e0dbd6635956bd235325da08fd40cd7f533da9d840b7f9dd2bbea2e9d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/large-collection-strategy.md": {
+      "mtime": 1751121903.740427,
+      "size": 6628,
+      "hash": "0ef38abf3277fa859324ea8cc84aed0dcac4f44d4309b2fbdafd82ebd7ba7447"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/photo-browser-api.md": {
+      "mtime": 1751121903.7444272,
+      "size": 5399,
+      "hash": "6442812195b352a4d6376f7d3e1af4fe28539940b9bc2746936625a59cd588a4"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/hardware-specs.md": {
+      "mtime": 1751121903.740427,
+      "size": 4799,
+      "hash": "cb46079cb1271bc2722dc132d06759a4a29492b8240420d0c268eb0af44cff65"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/DOCUMENTATION-CLEANUP-PLAN.md": {
+      "mtime": 1751121903.732427,
+      "size": 5732,
+      "hash": "eabe12f118713825e0161d45814f0933c16d700f7c4600964457de92dd674116"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/phase3b-recreation-integration.md": {
+      "mtime": 1751121903.7444272,
+      "size": 8294,
+      "hash": "966a38db92822c2c4ad8fa1ba4e553d5ffd4806f8830e13aa065921f5fdf8bb6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/metadata-storage-architecture.md": {
+      "mtime": 1751326605.6320417,
+      "size": 9216,
+      "hash": "c54dd00298b7726d6cbd2a72ec88bb396da1f64b14b72502f68d833b7f186f75"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/json-to-relational-migration-findings.md": {
+      "mtime": 1751309813.8600776,
+      "size": 5093,
+      "hash": "0b2c75d8d5b2ca2840e080c2cf00d482823e7c7664c96fd4410f509b33340c02"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/database-schema-design.md": {
+      "mtime": 1751121903.736427,
+      "size": 27114,
+      "hash": "479a2c53e3499581906e23f2e3858e6feac9e666728763603eb297a0996a8c87"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/recreation-gov-etl.md": {
+      "mtime": 1751121903.7454271,
+      "size": 6080,
+      "hash": "82b10efa244ea3f50adf46ddaef85cf414a55810214d0f8145247ddf3a9de51a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/filesystem-service.md": {
+      "mtime": 1751121903.7384272,
+      "size": 12140,
+      "hash": "7c39c215ae4160fb1efacb7f18599595d3c2a9d812d1b69f521d44f1d09aab79"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/metadata-merge-strategy.md": {
+      "mtime": 1751121903.742427,
+      "size": 8168,
+      "hash": "3d717788c30c668e9a53f428b469d8f7788e30ac96a2796affe8a234d8a57935"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/README.md": {
+      "mtime": 1751326627.196411,
+      "size": 4156,
+      "hash": "46e2a4da3761050e7ca4936bf8f76a14571c46a727a711fa6d6ed2fde0bed40f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/phase-completion-overview.md": {
+      "mtime": 1751326617.5832465,
+      "size": 7687,
+      "hash": "140ca475d6f90b7f81a36bb8ae878f0cc520d0c4d0666478892c82f067af16fd"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/enrichment-flow.md": {
+      "mtime": 1751121903.737427,
+      "size": 11502,
+      "hash": "8f2e1fff6d5d89e87e7d3d2453d1ba428e1710b63470d52c16824d49bb88f573"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/live-photo-detection.md": {
+      "mtime": 1751121903.7414272,
+      "size": 4463,
+      "hash": "0e1dfa961b75bc3ce582026bb944362813dc433ee5b48e7c8f3a9bd481b08b1e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/multicrop-scanning-workflow.md": {
+      "mtime": 1752808280.9687023,
+      "size": 6786,
+      "hash": "fca25cf6799ff23b95172845cd14a0afcdbf3fc13c6debba2120a0752719f97f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/linting.md": {
+      "mtime": 1751121903.740427,
+      "size": 6080,
+      "hash": "3e72e319bddc040e8045e36c8adf92ae384d4d7278c3376abe4174721d97b208"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/logging-system.md": {
+      "mtime": 1751121903.7414272,
+      "size": 7611,
+      "hash": "4e6d69cb22eda9c725b3fc819c05c4008d3192fee8842a2ac99523df60df239e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/deduplication-report.md": {
+      "mtime": 1752808080.6753771,
+      "size": 12866,
+      "hash": "f162af84282bc2aeff6d2574804d3e7bea8ce6cfca33fd1ae9c106236baf8aa5"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/json-deduplication-complete.md": {
+      "mtime": 1751321358.3383393,
+      "size": 6788,
+      "hash": "3d36e92fee8a1b2a4bfdd8234d3568b45f153608c46b9beeb314f29413936ba7"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/error-system.md": {
+      "mtime": 1751121903.7384272,
+      "size": 9761,
+      "hash": "c29a416f5d87f5ddf14ecd023105aaf031025691e13835c090ad0ac9661f1e00"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/media-file-inspector-cli-integration.md": {
+      "mtime": 1751300182.4735858,
+      "size": 4320,
+      "hash": "28c9a467ea224b77ed97e63f54309f90a62be00a4c47564e16697b6c4e465202"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/duplicate-detection-system.md": {
+      "mtime": 1752808048.00262,
+      "size": 8666,
+      "hash": "337738e3b7ba58c928e260aec55b7992cbcbc92a8b8f60eef96fa36b7d9e4c7a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive-logger-system-design.md": {
+      "mtime": 1751121903.733427,
+      "size": 10709,
+      "hash": "497a4c50e8f4440bef2bbe718e2448f43b230b56b3b324a3610698b8cd2589c2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/timezone-handling.md": {
+      "mtime": 1751299713.6000938,
+      "size": 2977,
+      "hash": "556126acd1d50633b561ae5e77b347ea9c94695d79c3b406b0b1da043d10883b"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/photo-organization-strategy.md": {
+      "mtime": 1752808252.7021205,
+      "size": 9481,
+      "hash": "230334a89cc0d0a9b13eed45626aafd1d6bdbbb1709e839738de90535d3cb9c2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/quick-start-organization.md": {
+      "mtime": 1751121903.7454271,
+      "size": 6802,
+      "hash": "166718587d181ce5213fe44354ca923b3c9449e86ba842c37978df236955b2ff"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/heritage-photo-enrichment.md": {
+      "mtime": 1751121903.740427,
+      "size": 14116,
+      "hash": "26a5524d7e8eafe38eb67fb740b16c1c941b642daf3f5f438494724d721a1ab8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/google-takeout-complete-processing.md": {
+      "mtime": 1751121903.739427,
+      "size": 5959,
+      "hash": "d6a254c48a6ad818b6c97c13188d0b8b8bb4778baf6b499bd6036ce1c9738e19"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/path-system.md": {
+      "mtime": 1751121903.743427,
+      "size": 5234,
+      "hash": "570df9277f4b2e27e7a3168fbf49e75066da27e3607e53b4a0cc4e545022aeef"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/deprecated/photo-metadata-browser-plan.md": {
+      "mtime": 1751121903.736427,
+      "size": 17917,
+      "hash": "99556611dc8ff35ec9d4fb3aa74e7667c59f9200ecdfe965714b1995890e0093"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/deprecated/photo-metadata-browser-phase0.md": {
+      "mtime": 1751121903.735427,
+      "size": 6452,
+      "hash": "4082b17a858047d4b7a66cf67ec47252e24b01437b2d57704a8c084aef54350e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/google-takeout-completion-summary.md": {
+      "mtime": 1751121903.733427,
+      "size": 6741,
+      "hash": "fd8a5f3932f31c7b643a8b1e48cb851bbfdda69793f4e916638e899c09b6afd8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/google-takeout-stragglers-completion.md": {
+      "mtime": 1752808312.5913432,
+      "size": 8399,
+      "hash": "39d287736c5f22dda234fb102b9999dd1cb16d9b7829d18f01ff1e88ad8c32ab"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/sidecar-deduplication-strategy.md": {
+      "mtime": 1751121903.735427,
+      "size": 6861,
+      "hash": "8bdaa5e5f54ea29e72db6f2454ab7eb5f4c693c53e00e49371adfbf920ea0e27"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/post-deduplication-plan.md": {
+      "mtime": 1751121903.734427,
+      "size": 2202,
+      "hash": "f8c782115767347cf82dd9be7b769ba6b84c8025743abb7df6c4d33e4f5f6b6c"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/contextual-provider-strategy.md": {
+      "mtime": 1751121903.733427,
+      "size": 5152,
+      "hash": "717e8b621a1e9aae84827075e44411ffa490a7dba5d7a73e5101bc9c18b60a22"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/provider-investigation-plan.md": {
+      "mtime": 1751121903.735427,
+      "size": 9379,
+      "hash": "62445a47cc138deccab70b7f5c165d3ec9f5c921567d6697de5f50b351a1f642"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/archive/completed-plans/initial-organization-plan.md": {
+      "mtime": 1751121903.734427,
+      "size": 6606,
+      "hash": "cecb533756b530e7b58bf8156740e8480e6ccf6a06a1b0dd2217e4fd1556ffe8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/README.md": {
+      "mtime": 1751121903.7454271,
+      "size": 4274,
+      "hash": "4abf21e0650312b5bfc862d72293d59554830200997b26c6858e89d44a5f90dd"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/sample-coverage-report.md": {
+      "mtime": 1751121903.7464273,
+      "size": 8038,
+      "hash": "0444a56240aef974be5a0d8c30b6aff3d4aa11e060d931161dd3a7e8d0c8545e"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/compreface-integration.md": {
+      "mtime": 1751346285.991084,
+      "size": 11872,
+      "hash": "bc52fa6f54a94e3defd337e467c3014a1d07363605f27180e7257ac1827e5e5e"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/media-search-feature.md": {
+      "mtime": 1751345478.331014,
+      "size": 8805,
+      "hash": "cf17eeb55e9b8515b9a53877ca8d12e26b92e5c414957e42654c15a277310f31"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/trip-intelligence.md": {
+      "mtime": 1751347329.3902378,
+      "size": 23459,
+      "hash": "8136db73046c0615c2f0816b85b730643dd5ae8294043bb648a9b1fdc9a73777"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/creative-data-storytelling.md": {
+      "mtime": 1751380581.5889099,
+      "size": 50830,
+      "hash": "3feb3ead0c950f11fc99ed26c67581c32b5c2add8b57b33bc310e54e766b4d33"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/photo-browser-completion.md": {
+      "mtime": 1751346473.7231202,
+      "size": 14568,
+      "hash": "30ad4a0a9e5b53d732e253dbfbf381bfde31644649ac8b804d35f598bbf99ace"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/legacy-capture-pilot-program.md": {
+      "mtime": 1751424152.1297517,
+      "size": 14768,
+      "hash": "b45729c508ce7e622434674ab4580a5d61314d4b6f7db9a0efdb8ca4b272632a"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/custom-location-rules.md": {
+      "mtime": 1751347071.824792,
+      "size": 19634,
+      "hash": "9e2ac111734cddb8285c80836a0c20da931a0f543fc13cbde916ebd17084afb6"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/assembly-ai-voice-improvement-plan.md": {
+      "mtime": 1751425910.8948646,
+      "size": 10983,
+      "hash": "796c488aaa9c66bb220a160413867f00add867d73bdbd8dc211a8bc1fcb74232"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/silent-film-audio-simulation.md": {
+      "mtime": 1751548057.5765717,
+      "size": 6587,
+      "hash": "12907f25b731da406f51deb422117112ca01acec1721788bad27ed023e564414"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/scanned-document-integration.md": {
+      "mtime": 1751497373.6956704,
+      "size": 20641,
+      "hash": "2a854cd02d57fdcc678a5d0d8b9bf7c903b7321318fcbb2c4b11f8361dcd9ee8"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/main.ts": {
+      "mtime": 1751121904.1914346,
+      "size": 458,
+      "hash": "8e651e331619438382603b738d58000411513ccff4f149ee10c54706c9629488"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/scripts/etl-recreation-facilities.ts": {
+      "mtime": 1751137388.571194,
+      "size": 12901,
+      "hash": "05346050cbeb226552fb6dc6964ef35e23b9778b554eec6361a3b2e6b03b99bb"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/index.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 656,
+      "hash": "a9f27e32e889b194726b0cfa9c3ae9b61f03b74451fc7ea4c25c0c0cd2f806fc"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/CLAUDE.md": {
+      "mtime": 1751331057.1817582,
+      "size": 9292,
+      "hash": "10ee9e97e24c57444731e075370286af82a37c5be67c1afaff5a77442f87df32"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/colorExtractor.ts": {
+      "mtime": 1751165207.5734441,
+      "size": 7281,
+      "hash": "e49eee015990796348bf82df4cc900553269886fa56e8676a59c156365a7ff36"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/geolocation/factory.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 1245,
+      "hash": "da4f3c72434d44d26a044e230811f964fc994d5d51d4fad1c7ccbea447c7c82d"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/geolocation/index.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 11376,
+      "hash": "c3517e1f7b68f28e76a43de9d09adb2c7238c067f71ee6bac2200dee6354de50"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/factory.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 3616,
+      "hash": "87e8c67477fa90e6fcd7c0c560791eb5fff31d467a26a3b94e9156016d5f354f"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/types.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 4103,
+      "hash": "a37db20abb83634a6612c29e215b0c3149fa0a21a602649e58f968a139adde3a"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/index.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 10952,
+      "hash": "bc1a98812088226052bf3725f80009c2a1e6775a9490d815a0699afe944c0d0e"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/national-parks.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 7935,
+      "hash": "008a22edde09c1e9d9fee89346af37fbae3dd36d25487238badd6cb65be059ad"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/recreation.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 19156,
+      "hash": "18caa54449bd034b0b129774890c4786a586156060fdc6f2c8d3c088c5d3d1cc"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/national-parks.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 13742,
+      "hash": "b80e7cad8fcf93c382ee344b950a8bef8c4b717004ef5e7be5f01a82b6ee2847"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/gnis.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 11304,
+      "hash": "0071888d548345491d0327b6fd39a562bbc632ca9be18ddadec0da431175332d"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/recreation-db.ts": {
+      "mtime": 1751121904.1934347,
+      "size": 9873,
+      "hash": "c143ed76a932f30f13679f6b807ba110b1f1e580ba9180a4eaaff355c0de0bd2"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/database/MediaFileService.ts": {
+      "mtime": 1751319662.0276768,
+      "size": 15172,
+      "hash": "48bb0568f0cd8f6ad7e4ab309a26ddd031602f1d62f7b81fc451cb035d3ea27c"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/database/LandmarkService.ts": {
+      "mtime": 1751303293.696559,
+      "size": 8650,
+      "hash": "b86f3a2a03650efa38ac1fe8a6ba5ed6b72811ef2cf5c1ddf2755ea084afb149"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/database/EquipmentService.ts": {
+      "mtime": 1751157721.3241196,
+      "size": 7485,
+      "hash": "539306603c8a04d1196b81525f97658e1b25dcee2bff559503807b1f1b57aa54"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/database/SoftwareService.ts": {
+      "mtime": 1751297417.2855875,
+      "size": 8624,
+      "hash": "a0260bc30b54773f0361d4b1b4309d739678ac48965fb5faefd06c8d2c64572b"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/database/LocationService.ts": {
+      "mtime": 1751312507.576614,
+      "size": 7817,
+      "hash": "00627251b35c95fa65fc2f3ca078ead4da1634b8929aa71039a00eb3bf299b5f"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/metadata.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 6337,
+      "hash": "7698277306eddb5aa579f44690daa10e8ae497a41fe1991c5ba30bdce435f590"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/scanner.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 7340,
+      "hash": "71b14449350b1e452f0de980f0fc11463cdf89e7e03efd4dbc7925133fe05c50"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/demo.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 2407,
+      "hash": "1442236a7833efc45fb36923513fa43e847d98e2d64d28c60fa1c8c0dfd07840"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/types.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 3672,
+      "hash": "5d0db941a375e84547ebf1b4fe4069e64112b18120846ddf69baa89c7b41df6a"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/index.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 7003,
+      "hash": "7e6507bed6d3e53934ccef200de4e15f69c62439097c1f007828a96b62d905ba"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/validator.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 9215,
+      "hash": "92e3d1fb242b407fdffcf8d16c8de1a78d11cff65b93fd8131f24652fee8ebc5"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/knexfile.ts": {
+      "mtime": 1751161443.2744224,
+      "size": 1808,
+      "hash": "e58673f3595e150f841b5ea68b76a3c2031b9a91059fc930a2b131ab9a53d9f1"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/index.ts": {
+      "mtime": 1751151558.260565,
+      "size": 2818,
+      "hash": "9c6174966c5f20b99d48e02e12145651642681a3941d5853ad53249f52c2d8d6"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/connection.ts": {
+      "mtime": 1751161448.230505,
+      "size": 3790,
+      "hash": "071dff51beab64a7f1814f878856af827a4fb3e3d694b9f0cab7f06164425158"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/CLAUDE.md": {
+      "mtime": 1751330855.7905192,
+      "size": 7059,
+      "hash": "7c04f5269e20c8c1c09be124ac6cd708826ba10d692e31ad6ddd647f178a9eac"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/seeds/01_reference_data.ts": {
+      "mtime": 1751157066.4615018,
+      "size": 7073,
+      "hash": "3974df246285eea8cba3b8e80fefb636644ea31c6ad9f4aa00e55bd4ad145d7e"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/migrations/20241228_000001_create_media_tables.ts": {
+      "mtime": 1751153640.0240312,
+      "size": 9207,
+      "hash": "2a77a3bf739c8ef21f5a1f3665442edfabe4faab5d6f7ec604ebcafb3ef1ac1a"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/migrations/009_add_media_title.ts": {
+      "mtime": 1751411021.2463503,
+      "size": 515,
+      "hash": "d1b9e1130ea080a1ef13265bab36c66edef6ac14c8bebc0921feb28c6c2be142"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/migrations/20241228_000002_create_object_detection_tables.ts": {
+      "mtime": 1751151055.0037518,
+      "size": 3274,
+      "hash": "db9ef05fd04fc2a0838a8e5b3507339f9f36e7ab4f973f4c52bc5e473d8e0ae2"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/models/MediaFile.ts": {
+      "mtime": 1751132105.8834774,
+      "size": 3325,
+      "hash": "4197926be767153123b9ba33d90befb11e146bacc007742aaeaa5e74abafa8b5"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/types/metadata.ts": {
+      "mtime": 1751154061.458975,
+      "size": 3864,
+      "hash": "48cd1a2ad5202e578108131052765a5fbc0ef8c5078a59af3a821a1ac931a634"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/types/tables.ts": {
+      "mtime": 1751297013.0286698,
+      "size": 4575,
+      "hash": "1623c97d619d12eb4957caad84060d8ea3836a21b013be87e43cfb8ea4ac934a"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/database/types/shared.ts": {
+      "mtime": 1751132055.839651,
+      "size": 6738,
+      "hash": "f89f74ad06d0aa69ade17a6e09181a3decfeb289eaefcd17e013c8179150532c"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/processors/image.processor.ts": {
+      "mtime": 1751136697.4744973,
+      "size": 10043,
+      "hash": "a0ef15ad4b1d520b5f42cc0a7d15dc7b531dfcd01e7dd40ad8f973a13b667646"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/processors/CLAUDE.md": {
+      "mtime": 1751331000.121063,
+      "size": 8270,
+      "hash": "23058e10366458e584ff51c117a05224549b97f451c1ab7c3257aeebd5edf0eb"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/processors/base.processor.ts": {
+      "mtime": 1751121904.1924348,
+      "size": 564,
+      "hash": "bf084c805d6834bb2bdfdda4650a0c57b7c02bfe674822267d52ceb7ca27ed7c"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/processors/video.processor.ts": {
+      "mtime": 1751134749.2507553,
+      "size": 7369,
+      "hash": "2dc9356bea67f1d4eea49e47878afb64642e1b2c9f6be848ccab20bdf26a7368"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/pipeline/post-processor.ts": {
+      "mtime": 1751296587.8469818,
+      "size": 4416,
+      "hash": "01e3bb51b931c7b4a9159ff7ddb6fc112716c12366d99336d0d4de42796cbcf8"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/pipeline/CLAUDE.md": {
+      "mtime": 1751330899.8273194,
+      "size": 7637,
+      "hash": "f76c09d985038daf541d030eccbd399478ddb3ce154e316cfc8877d9d48f2f6f"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/pipeline/entry.ts": {
+      "mtime": 1751256364.3770506,
+      "size": 2193,
+      "hash": "29740fb6b554225c5bf1486a3c94002082af5c10d2e6e83a780b9c8e08722a25"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/pipeline/router.ts": {
+      "mtime": 1751121904.1914346,
+      "size": 1183,
+      "hash": "e8a00ad7889ab19c716690b8ddae0365863efda283ca86b9e6fb9deeaa46491d"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/pipeline/pre-processor.ts": {
+      "mtime": 1751136819.9104104,
+      "size": 7229,
+      "hash": "1f2e9df966bb5308fbe61a530fc8c96d8bd51b87fa52364571bb1259dda54b5d"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/mime.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 1085,
+      "hash": "ef3130de8b3cccac0a5cdb897c83bb9a92a43fbbfa7775f0014bfeda5f02023e"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/metadata-merger.ts": {
+      "mtime": 1751137299.0048802,
+      "size": 17352,
+      "hash": "39d904d9a1800d1b757ba6bdd49aff4d511bbc4dd167a208cd1b050ba47c2279"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/CLAUDE.md": {
+      "mtime": 1751331166.9984822,
+      "size": 10321,
+      "hash": "8e735f57cf16f1cad32605d4f6046e91f6fe1eeb34ba73837028153c9695f641"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/paths.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 4195,
+      "hash": "c082c21e9fadfc04c182468e64b7d59a1ef40d6873e06b49250e465b940fe45a"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/mime-config.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 3006,
+      "hash": "63739dd305f3cf9619f68be5926bb52c7e3fdac327febf19f16dd6cf552b8bb6"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/logging/types.ts": {
+      "mtime": 1751134920.6779633,
+      "size": 719,
+      "hash": "e0d2b66b4f104aa9e0708c07dc91978ea42dd23cdb1eafa085938b2b6ebf5eca"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/logging/index.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 181,
+      "hash": "25598b92466111c2e72fa6c46bae90b731f840f107c3f6a62e85c7105b645e2b"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/logging/logger.ts": {
+      "mtime": 1751136361.0133836,
+      "size": 7029,
+      "hash": "3c36d8b4914c31d30470443a2fabfda3da673f001bc7ea52c6f0079ce1c4392b"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/timestamp.ts": {
+      "mtime": 1751133910.0685413,
+      "size": 19030,
+      "hash": "e437f56b5dbe8ccca79e9a8ffa05ad386b18a3a076ae66f277c3c277927e34f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/types.ts": {
+      "mtime": 1751134027.7729034,
+      "size": 3100,
+      "hash": "206cd68b746c475636ba7cfdee88a0fc1ca7bbfe81ce285079efeb1347ff825e"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/index.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 193,
+      "hash": "97887b9ba17e405f787127a8606b876117c071b76c4362962eb576c4a3926f9f"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/exif.ts": {
+      "mtime": 1751133893.8432121,
+      "size": 12037,
+      "hash": "555e1e35554bb4febb85eaaedacf97ac1e0518c81065de28d3669ad21944e8ca"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/gps.ts": {
+      "mtime": 1751290443.700202,
+      "size": 18147,
+      "hash": "90fdef74942a0b82d4199d1b63ba77098752c4a57da47a3c0c8689466c373786"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/gps-utils.ts": {
+      "mtime": 1751290316.3256965,
+      "size": 1533,
+      "hash": "ec614a6e253e5d6d29f6af9785e5fc17b87bae2d54aedf29005647665040d499"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/factories.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 6248,
+      "hash": "d5a1665500a1ae218aa9a5b6374e0ca53de088068d657fd20a36972f7ea54c9b"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/codes.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 1081,
+      "hash": "2ae90329c57b810c1552ac9039d093af51724fbbd63999cce0095345b9815813"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/types.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 937,
+      "hash": "7d41f117bd822d0939106e9ca8ecb32703fe83fc28a4f4ccb6db8ec2299429c7"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/classes.ts": {
+      "mtime": 1751133945.6172595,
+      "size": 4100,
+      "hash": "d2d77a09de5ca0b75b38c9b5046a14dba6f2108ccc0205e4afdc4fd2b5943add"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/index.ts": {
+      "mtime": 1751133996.9762897,
+      "size": 4430,
+      "hash": "821b4acd2ab592bdfeec962ab159b9f74fad1ed9b2b9ccdf0d932b8a8c0256d9"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/metadata.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1379,
+      "hash": "873b407e731d1b60633deba73416df9ff13471d66e380f4e37086b28761c6ff6"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/timestamp.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 2070,
+      "hash": "dfaefc797294914895c5455a23f70827c5400268e00641ed402f2c6c74ea66dd"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/landmark-registry.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 6236,
+      "hash": "177e500d4811e92acd05d993ffc8bd6614f73994b8444482a77f7af61fab0722"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/system.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1365,
+      "hash": "fdd6446dd49ded759da970e1366423a095a51aff1c2ec2adc30068bea64454f4"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/validation.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1802,
+      "hash": "82e00afcb5c9da00d794a5d7cb235ba882396ceaa2a3d2f043e8d4041000494d"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/index.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1278,
+      "hash": "d5c94b879715d2020240489e7a2d4d6c7e5688be17c83bafda9b6862947b70b9"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/landmark.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1421,
+      "hash": "3cacf83337c16b6fd9343c7dc343667b24d502fbbc335603e7a0035b652c7ea1"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/exif.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 1745,
+      "hash": "7a0728ccd4c9e789be5371e8a24167adf16b60e61aa933501a3d79f2c287b7bb"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/config.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 1031,
+      "hash": "61d1dc4fef9769c47839a65d37213943225181b02939eef641366bde8f5bfd8c"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/gps.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1674,
+      "hash": "9ebb31f6c25fc67831917d8c5c8cec6a6eda0b7105a56c2022880210536d3d29"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/path.ts": {
+      "mtime": 1751121904.1954348,
+      "size": 1713,
+      "hash": "e9bbca1be50b1ffecfc57397c2f41b7e89e70f543590cc57bedb6f0ef88c3f6a"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/image/validation.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 8106,
+      "hash": "d8f786c8bbed1383448f26d3a0ae73868a90283addec3e03f72266b00aa28e19"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/video/index.ts": {
+      "mtime": 1751121904.1964347,
+      "size": 174,
+      "hash": "52dc93d864409d478689bed7bd02946685d20a2e466aa9ad966ac7ee9bd46125"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/video/live-photo-detector.ts": {
+      "mtime": 1751121904.1974347,
+      "size": 5554,
+      "hash": "c76f74f9f5482852b208a1ccc8e1862f652269f216c0fb8a8636840e5f0f0548"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/utils/config/logging.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 5553,
+      "hash": "566d689fb6b8607128b92c2cb7dbb094f76a3572a3fb4f4f4f79d332ee84c812"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/types.ts": {
+      "mtime": 1751256498.8857827,
+      "size": 3197,
+      "hash": "0457f64ee08559d5de464844fa3ae8e690dbb7f283e5facdbb55526f69b7e22d"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/timestamp-extractor.ts": {
+      "mtime": 1751121904.1914346,
+      "size": 3141,
+      "hash": "28ea335f2f05e0fd1be8cbd560d08898017eff79e26dc5bcc0c0184f76d9d88b"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/index.ts": {
+      "mtime": 1751256531.098628,
+      "size": 5085,
+      "hash": "82471f055023c5be99a79e70a0c7894baae02f5e7d4ee5584e09141f07570b44"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/CLAUDE.md": {
+      "mtime": 1751330807.932649,
+      "size": 5792,
+      "hash": "23022865c75af1e7858fb9f9e7a29d9eae7199675b27336263c46582e9f8e781"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/handlers.ts": {
+      "mtime": 1751260885.33975,
+      "size": 16066,
+      "hash": "7256ff1db2cdce49c0ed7fcb481c19ce69ddbf996d98e9701c785743371e8d71"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/output.ts": {
+      "mtime": 1751136948.840445,
+      "size": 7989,
+      "hash": "2da57718444eb29933a242518ab2ad0e540e05027da689e4217024a42f64be56"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/cli/validators.ts": {
+      "mtime": 1751121904.1914346,
+      "size": 6248,
+      "hash": "240a87c8af13328d75be5cf71527931ae422d0b03227ce26edf3febaac79d5ca"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/types/semantic-any.ts": {
+      "mtime": 1751134126.7238579,
+      "size": 2427,
+      "hash": "4bc9fa37e6135c2bb5d4e6820a8082f5fad7bfbaf28e0d4cfd75607dc5d37e1e"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/types/CLAUDE.md": {
+      "mtime": 1751331111.4885743,
+      "size": 8331,
+      "hash": "153ed08860e2525a1b2d370f1117ab7e9911d18e364d3720d4201cc25da6e358"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/types/media.ts": {
+      "mtime": 1751256058.3759646,
+      "size": 4080,
+      "hash": "64912becb3eaa1f5e5285da65ce99cdd66b108b86b482088de3de3733e60f4f7"
+    },
+    "/home/stephen/Documents/initial-media-processing/src/types/processors.ts": {
+      "mtime": 1751121904.1944346,
+      "size": 273,
+      "hash": "dc4a13456dc96c6c60b686ce3cdce4733e033313e37b9080ce21f4009636922a"
+    }
+  }
+}

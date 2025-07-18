@@ -117,4 +117,8 @@ def cleanup_database(db_path: str = "embeddings.db"):
     print(f"📦 Final database size: {size_mb:.1f} MB")
 
 if __name__ == "__main__":
-    cleanup_database()
+    import argparse
+    parser = argparse.ArgumentParser(description="Clean up Claude Brain database")
+    parser.add_argument("--db", default="embeddings.db", help="Database path")
+    args = parser.parse_args()
+    cleanup_database(args.db)

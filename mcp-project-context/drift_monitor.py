@@ -224,10 +224,68 @@ class DriftMonitor:
         
         if report['needs_update']:
             print(f"\n⚠️  UPDATE RECOMMENDED: Drift detected!")
-            print(f"   Run: npm run mcp:rebuild")
+            # Recommend auto-update for minor changes, rebuild for major alignment issues
+            if db_alignment['alignment_issues'] > 10:
+                print(f"   Run: npm run mcp-project:rebuild")
+            else:
+                print(f"   Run: npm run mcp-project:auto-update")
         else:
             print(f"\n✅ NO DRIFT: Database is up to date")
     
+    def remove_file_embeddings(self, file_path: str):
+        """Remove all embeddings for a specific file."""
+        db = sqlite3.connect(self.db_path)
+        cursor = db.cursor()
+        try:
+            # Remove all chunks for this file (handles both chunk and summary patterns)
+            cursor.execute("DELETE FROM embeddings WHERE file LIKE ?", (f"{file_path}%",))
+            deleted_count = cursor.rowcount
+            db.commit()
+            if deleted_count > 0:
+                print(f"  🗑️  Removed {deleted_count} embeddings for {file_path}")
+        finally:
+            db.close()
+    
+    def incremental_update(self, changed_files: List[str]):
+        """Update embeddings for only the specified changed files."""
+        if not changed_files:
+            print("📝 No files to update")
+            return
+            
+        print(f"🔄 Incrementally updating {len(changed_files)} changed files...")
+        
+        # Import here to avoid circular imports
+        from claude_brain import ClaudeBrain
+        brain = ClaudeBrain(self.db_path)
+        
+        # Initialize processor if not already done
+        if brain.processor is None:
+            from file_processor import FileProcessor
+            brain.processor = FileProcessor(project_root=str(self.project_root))
+        
+        total_chunks = 0
+        for file_path in changed_files:
+            if os.path.exists(file_path):
+                # Remove old embeddings for this file
+                self.remove_file_embeddings(file_path)
+                
+                # Re-process the file
+                print(f"  📄 Processing: {file_path}")
+                chunks = brain.processor.process_file(file_path)
+                if chunks:
+                    from embeddings.embedding_store import process_texts_batch
+                    process_texts_batch(chunks, self.db_path)
+                    total_chunks += len(chunks)
+                    print(f"    ✅ Added {len(chunks)} chunks")
+                else:
+                    print(f"    ⚠️  No chunks generated")
+            else:
+                # File was deleted, just remove its embeddings
+                print(f"  🗑️  Removing deleted file: {file_path}")
+                self.remove_file_embeddings(file_path)
+        
+        print(f"✅ Incremental update complete: {total_chunks} chunks processed")
+
     def update_cache(self):
         """Update the drift cache with current file state."""
         print("💾 Updating drift cache...")
@@ -259,7 +317,25 @@ def main():
         
         if args.auto_update and report['needs_update']:
             print("\n🚀 Auto-updating database...")
-            os.system(f"cd {os.path.dirname(__file__)} && ./venv/bin/python claude_brain.py ingest {args.project_root}")
+            
+            # Collect all files that need updating
+            changed_files = []
+            fs_changes = report['filesystem_changes']
+            
+            # Add new and modified files
+            changed_files.extend(fs_changes['new_files'])
+            changed_files.extend(fs_changes['modified_files'])
+            changed_files.extend(fs_changes['deleted_files'])
+            
+            # Add files missing from database
+            db_alignment = report['database_alignment']
+            changed_files.extend(db_alignment['missing_from_db'])
+            
+            # Remove duplicates
+            changed_files = list(set(changed_files))
+            
+            # Perform incremental update
+            monitor.incremental_update(changed_files)
             monitor.update_cache()
             print("✅ Auto-update complete!")
     

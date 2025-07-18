@@ -131,9 +131,7 @@ Successfully transformed a chaotic collection of 150,000+ photos scattered acros
 - **Monitoring:** Progress tracking and reporting
 
 ### MCP Servers
-- **mcp-photo-search:** Semantic photo search
-- **mcp-project-context:** Codebase search
-- Both with drift detection and auto-update
+- **mcp-project-context:** Codebase search with drift detection and auto-update
 
 ## 📚 Comprehensive Documentation
 

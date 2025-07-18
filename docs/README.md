@@ -41,8 +41,7 @@ This documentation covers the complete media processing pipeline that transforme
 - **[Recreation.gov ETL](recreation-gov-etl.md)** - Facility data integration
 
 ### Search & Discovery
-- **[MCP Semantic Search](mcp-semantic-search.md)** - AI-powered photo search
-- **[MCP Dual Context Plan](mcp-dual-context-plan.md)** - Photo + code search
+- **Database-based search** - Efficient photo search via MySQL database queries
 
 ## 📋 Planning & Strategy
 
