@@ -122,7 +122,7 @@ multicrop-scan \
   -M
 
 # 2. Check for duplicates against existing archive
-cd scripts/find-dupes
+cd scripts/manual-photo-tools
 source venv/bin/activate
 python rotation-aware-compare.py \
   --archive /photos/archive \

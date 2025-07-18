@@ -272,7 +272,7 @@ The project includes comprehensive tools for digitizing physical photos:
 
 2. **Set up duplicate detection** (Python environment)
    ```bash
-   cd scripts/find-dupes
+   cd scripts/manual-photo-tools
    python3 -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
@@ -294,10 +294,10 @@ multicrop-scan \
 **Find duplicates against existing archive:**
 ```bash
 # Quick exact duplicate check
-./scripts/find-image-duplicates.sh
+./scripts/analysis/duplicate-manager.sh
 
 # Comprehensive rotation-aware detection
-cd scripts/find-dupes
+cd scripts/manual-photo-tools
 source venv/bin/activate
 python rotation-aware-compare.py \
   --archive /photos/archive \

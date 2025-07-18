@@ -1,119 +1,78 @@
 # Duplicate Detection System
 
-A comprehensive multi-tier duplicate detection system for finding identical and similar photos across large collections, including rotation-aware detection.
+A comprehensive duplicate detection system for finding identical and similar photos across large collections, including rotation-aware detection.
 
 ## Overview
 
-The duplicate detection system provides three levels of detection sophistication:
-1. **Fast exact matching** - Byte-for-byte identical files
-2. **Perceptual similarity** - Visually similar images with different compression/cropping
-3. **Rotation-aware detection** - Finds duplicates even when photos are rotated
+The duplicate detection system provides two main approaches:
+1. **Consolidated duplicate management** - Complete workflow with unified interface
+2. **Specialized rotation-aware detection** - Advanced tools for complex duplicate scenarios
 
 ## System Architecture
 
-### Three-Tier Detection Pipeline
+### Current Detection Pipeline
 
 ```
 📁 Photo Collection
     ↓
-🔍 Tier 1: Fast Exact Matching (find-image-duplicates.sh)
-    ↓ (remaining files)
-🔍 Tier 2: Perceptual Hashing (find-duplicates.py)
-    ↓ (remaining files)  
-🔍 Tier 3: Rotation-Aware Detection (find-dupes/)
-    ↓
+🔍 Primary Tool: Duplicate Manager (scripts/analysis/duplicate-manager.sh)
+    ↓ (handles most cases)
+🔍 Advanced Tool: Rotation-Aware Detection (scripts/manual-photo-tools/)
+    ↓ (for complex scenarios)
 📋 Comprehensive Duplicate Report
 ```
 
 ## Tools Overview
 
-### Tier 1: Fast Exact Matching
-**Location:** `scripts/find-image-duplicates.sh`
-**Purpose:** Find byte-for-byte identical files quickly
-**Method:** File size comparison + MD5 hash verification
+### Primary Tool: Duplicate Manager
+**Location:** `scripts/analysis/duplicate-manager.sh`
+**Purpose:** Unified interface for duplicate detection workflows
+**Method:** Consolidated approach with multiple detection strategies
 
-### Tier 2: Basic Perceptual Hashing  
-**Location:** `scripts/find-duplicates.py`
-**Purpose:** Find visually similar images
-**Method:** Single perceptual hash comparison (dhash, phash, ahash, whash)
-
-### Tier 3: Advanced Rotation-Aware System
-**Location:** `scripts/find-dupes/`
-**Purpose:** Comprehensive duplicate detection including rotated images
+### Advanced Tools: Manual Photo Tools
+**Location:** `scripts/manual-photo-tools/`
+**Purpose:** Specialized rotation-aware and perceptual duplicate detection
 **Method:** Multi-rotation perceptual hashing with parallel processing
 
 ## Quick Start
 
 ### Simple Duplicate Check
-Find exact duplicates between archive and staging:
+Use the consolidated duplicate manager:
 ```bash
-./scripts/find-image-duplicates.sh
+./scripts/analysis/duplicate-manager.sh
 ```
 
-### Comprehensive Detection
-Find all types of duplicates including rotated images:
+### Advanced Rotation-Aware Detection
+For complex duplicate scenarios with rotation detection:
 ```bash
-cd scripts/find-dupes
+cd scripts/manual-photo-tools
 source venv/bin/activate
 python rotation-aware-compare.py --archive /photos/archive --staging /photos/staging/scans
 ```
 
-## Tier 1: Fast Exact Matching
+## Primary Tool: Duplicate Manager
 
-### find-image-duplicates.sh
-**Best for:** Quick identification of identical files
-
-```bash
-# Edit script to set your directories
-ARCHIVE_DIR="/photos/archive"
-STAGING_DIR="/photos/staging/scans"
-
-# Run the script
-./scripts/find-image-duplicates.sh
-```
-
-**Output:**
-- Files with matching sizes
-- MD5 hash verification for same-size files
-- Clear marking of exact duplicates
-
-**Advantages:**
-- ⚡ Very fast execution
-- 💾 Low memory usage
-- 🎯 100% accurate for identical files
-
-**Limitations:**
-- Only finds byte-identical files
-- Misses cropped or compressed versions
-
-## Tier 2: Basic Perceptual Hashing
-
-### find-duplicates.py
-**Best for:** Finding similar images with slight modifications
+### scripts/analysis/duplicate-manager.sh
+**Best for:** Most duplicate detection workflows
 
 ```bash
-cd scripts/
-python find-duplicates.py /photos/staging/scans -o duplicates.json
+# Run the consolidated duplicate manager
+./scripts/analysis/duplicate-manager.sh
 ```
 
-**Options:**
-- `-t, --threshold` - Similarity threshold (default: 5)
-- `-a, --algorithm` - Hash algorithm (dhash, phash, ahash, whash)
-- `-o, --output` - Save results to JSON
-- `-d, --delete` - Interactive deletion mode
+**Features:**
+- ⚡ Handles common duplicate scenarios
+- 🎯 Unified interface for detection workflows
+- 📊 Comprehensive reporting
 
 **Advantages:**
-- 🔍 Finds visually similar images
-- 📊 Multiple hash algorithms
-- 🎛️ Adjustable similarity threshold
+- 🔧 Consolidated tool reduces complexity
+- 🎛️ Handles multiple detection strategies
+- 📋 Clear workflow management
 
-**Limitations:**
-- No rotation detection
-- Single-directory operation
+## Advanced Tools: Manual Photo Tools
 
-## Tier 3: Advanced Rotation-Aware System
-
-### Location: scripts/find-dupes/
+### Location: scripts/manual-photo-tools/
 
 A sophisticated system with multiple specialized tools:
 
@@ -168,10 +127,9 @@ python rotate-and-save.py /photos/staging/scans/rotate/ --angle 90 --output /pho
 
 ### Virtual Environment Setup
 ```bash
-cd scripts/find-dupes
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+cd scripts/manual-photo-tools
+source venv/bin/activate  # Virtual environment already exists
+# Dependencies are already installed
 ```
 
 ## Advanced Features
@@ -222,24 +180,21 @@ The system detects duplicates across all rotation angles:
 
 ### Recommended Detection Workflow
 
-1. **Fast exact matching** to eliminate obvious duplicates
+1. **Start with duplicate manager** for most cases
 ```bash
-./scripts/find-image-duplicates.sh > exact_duplicates.txt
+./scripts/analysis/duplicate-manager.sh
 ```
 
-2. **Basic perceptual detection** for quick similarity check
+2. **Use advanced tools** for complex scenarios
 ```bash
-python scripts/find-duplicates.py /photos/staging/scans -t 5 -o similar.json
-```
-
-3. **Rotation-aware detection** for comprehensive analysis
-```bash
-cd scripts/find-dupes
+cd scripts/manual-photo-tools
+source venv/bin/activate
 python rotation-aware-compare.py --staging /photos/staging/scans -o rotation_duplicates.json
 ```
 
-4. **Manual review** of potential duplicates
+3. **Manual review** of potential duplicates
 ```bash
+cd scripts/manual-photo-tools
 python cli-rotation-review.py /photos/staging/scans
 ```
 
@@ -250,14 +205,18 @@ After scanning photos with multicrop-tool:
 # 1. Scan photos
 multicrop-scan -dest /photos/staging/scans/new_batch/ -r red -date "1985"
 
-# 2. Check for duplicates against archive
-cd scripts/find-dupes
+# 2. Check for duplicates using duplicate manager
+./scripts/analysis/duplicate-manager.sh
+
+# 3. For advanced cases, use manual photo tools
+cd scripts/manual-photo-tools
+source venv/bin/activate
 python rotation-aware-compare.py \
   --archive /photos/archive \
   --staging /photos/staging/scans/new_batch/ \
   -o new_batch_duplicates.json
 
-# 3. Review and clean duplicates
+# 4. Review and clean duplicates
 python cli-rotation-review.py /photos/staging/scans/new_batch/
 ```
 

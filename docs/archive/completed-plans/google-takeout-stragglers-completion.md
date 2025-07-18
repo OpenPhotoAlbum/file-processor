@@ -14,7 +14,7 @@ These are Google Takeout files in `/photos/staging/google-takeout/Takeout/Google
 
 ## Current Progress: Step 1 - Timestamp Extraction ✅ IN PROGRESS
 
-**Script:** `/scripts/process-google-takeout-complete.sh`  
+**Script:** `/scripts/google-takeout/process-google-takeout-complete.sh`  
 **Status:** Running with 45 parallel processes  
 **Performance:** Fixed `npm run dev` → `node dist/main.js` (massive speedup)
 
@@ -22,7 +22,7 @@ These are Google Takeout files in `/photos/staging/google-takeout/Takeout/Google
 - `/tmp/google_takeout_processing_complete/all_media.txt` - List of all media files
 - `/tmp/google_takeout_processing_complete/all_timestamps.json` - Extracted timestamps
 
-**Monitoring:** `/scripts/watch-google-takeout-progress.sh`
+**Monitoring:** `/scripts/monitoring/watch-google-takeout-progress.sh`
 
 ## Implementation Plan
 
@@ -46,7 +46,7 @@ These are Google Takeout files in `/photos/staging/google-takeout/Takeout/Google
 
 2. **Create directory structure** - Ensure all needed `/photos/archive/YYYY/MM/` directories exist
 
-**Worker Script Logic (`scripts/process-stragglers-worker.js`):**
+**Worker Script Logic (`scripts/workers/process-stragglers-worker.js`):**
 ```javascript
 while (true) {
   // 1. Acquire file lock (atomic operation)
@@ -80,7 +80,7 @@ while (true) {
 **Parallel Execution:**
 ```bash
 # Run 20 parallel workers
-parallel -j 20 node scripts/process-stragglers-worker.js ::: {1..20}
+parallel -j 20 node scripts/workers/process-stragglers-worker.js ::: {1..20}
 ```
 
 **Progress Monitoring:**

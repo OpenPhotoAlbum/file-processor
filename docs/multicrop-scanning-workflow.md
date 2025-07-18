@@ -196,7 +196,7 @@ multicrop-scan -device "hp:scanner" -dest output/
 The multicrop-tool integrates with the broader media processing system:
 
 1. **Scan photos** → multicrop-tool
-2. **Detect duplicates** → find-dupes system
+2. **Detect duplicates** → manual-photo-tools system
 3. **Process metadata** → main processing pipeline
 4. **Organize archive** → photo organization strategy
 

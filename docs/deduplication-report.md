@@ -288,21 +288,16 @@ This systematic approach ensures the photo collection is ready for advanced feat
 
 ## Enhanced Duplicate Detection System (January 2025)
 
-The project now includes an advanced **three-tier duplicate detection system** for comprehensive duplicate management:
+The project now includes a **consolidated duplicate detection system** for comprehensive duplicate management:
 
-**Tier 1: Fast Exact Matching** (`scripts/find-image-duplicates.sh`)
-- File size comparison + MD5 hash verification
-- Handles byte-for-byte identical files
-- Very fast execution for large collections
+**Primary Tool: Duplicate Manager** (`scripts/analysis/duplicate-manager.sh`)
+- Unified interface for most duplicate detection workflows
+- Consolidated approach handling common scenarios
+- Integrated reporting and workflow management
 
-**Tier 2: Perceptual Hashing** (`scripts/find-duplicates.py`)
-- Visual similarity detection using dhash/phash/ahash/whash
-- Finds cropped, compressed, or color-adjusted versions
-- Configurable similarity thresholds
-
-**Tier 3: Rotation-Aware Detection** (`scripts/find-dupes/`)
-- Advanced system detecting duplicates across all rotation angles (0°, 90°, 180°, 270°)
+**Advanced Tools: Manual Photo Tools** (`scripts/manual-photo-tools/`)
+- Specialized rotation-aware detection across all rotation angles (0°, 90°, 180°, 270°)
 - Parallel processing for large photo collections
-- Specialized tools for review, correction, and batch processing
+- Manual review tools and batch processing capabilities
 
 See [Duplicate Detection System](duplicate-detection-system.md) for comprehensive documentation and usage examples.
