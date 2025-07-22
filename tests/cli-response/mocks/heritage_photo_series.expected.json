@@ -1,0 +1,169 @@
+{
+  "file": {
+    "path": "sample:heritage_photo_series.jpg",
+    "hash": "placeholder-hash",
+    "size": 1616506,
+    "mimeType": "image/jpeg",
+    "created": "1998-01-01T12:00:00.000Z",
+    "modified": "2025-07-22T04:15:30.000Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "HeritageProcessor",
+    "extractedAt": "2025-07-22T04:17:27.059Z",
+    "notes": "Heritage photo processing - expensive landmark lookups skipped for performance"
+  },
+  "media": {
+    "type": "image",
+    "format": "JPEG",
+    "dimensions": {
+      "width": 2389,
+      "height": 3143,
+      "megapixels": 7.5,
+      "orientation": "Unknown"
+    }
+  },
+  "timestamps": {
+    "capture": {
+      "timestamp": "1998-12-16T00:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1998:12:16 00:00:00",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "creation": {
+      "timestamp": "1998-01-01T12:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1998:01:01 12:00:00",
+      "sourceDetails": "EXIF:CreateDate"
+    },
+    "modification": {
+      "timestamp": "2025-07-22T04:15:30.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:07:22 00:15:30-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "primary": {
+      "timestamp": "1998-12-16T00:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1998:12:16 00:00:00",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "alternatives": [
+      {
+        "timestamp": "1998-01-01T12:00:00.000Z",
+        "source": "exif",
+        "confidence": "high",
+        "originalFormat": "1998:01:01 12:00:00",
+        "sourceDetails": "EXIF:CreateDate"
+      },
+      {
+        "timestamp": "2025-07-22T04:15:30.000Z",
+        "source": "exif",
+        "confidence": "medium",
+        "originalFormat": "2025:07:22 00:15:30-04:00",
+        "sourceDetails": "EXIF:ModifyDate"
+      }
+    ],
+    "conflicts": [
+      "EXIF:DateTimeOriginal vs EXIF:CreateDate: 8364h difference"
+    ]
+  },
+  "location": {
+    "primary": {
+      "latitude": 42.9584,
+      "longitude": -71.168,
+      "source": "exif",
+      "sourceDetails": "EXIF GPS data"
+    },
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": {
+      "city": "Sandown",
+      "state_code": "NH",
+      "county_name": "Rockingham",
+      "timezone": "America/New_York",
+      "postal_code": "3873",
+      "distance": 3065,
+      "confidence": 0.69,
+      "source": "city_proximity",
+      "method": "Nearest city centroid"
+    },
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "success",
+      "landmarks": "disabled",
+      "providersUsed": [
+        "USGS GNIS"
+      ],
+      "cacheHit": false,
+      "queryTimeMs": 253
+    }
+  },
+  "camera": {},
+  "settings": {},
+  "technical": {
+    "fileType": "JPEG",
+    "mimeType": "image/jpeg",
+    "exifVersion": "0232",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/heritage_photo_series.jpg",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "heritage_photo_series.jpg",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "1617 kB",
+    "File:FileModifyDate": "2025:07:22 00:15:30-04:00",
+    "File:FileAccessDate": "2025:07:22 00:15:32-04:00",
+    "File:FileInodeChangeDate": "2025:07:22 00:15:30-04:00",
+    "File:FilePermissions": "-rw-rw-r--",
+    "File:ExifByteOrder": "Big-endian (Motorola, MM)",
+    "File:CurrentIPTCDigest": "f557088e4fb2a4760aca02a3498f0761",
+    "File:EncodingProcess": "Baseline DCT, Huffman coding",
+    "File:BitsPerSample": 8,
+    "File:ColorComponents": 3,
+    "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "JFIF:JFIFVersion": 1.01,
+    "JFIF:ResolutionUnit": "inches",
+    "JFIF:XResolution": 300,
+    "JFIF:YResolution": 300,
+    "EXIF:XResolution": 300,
+    "EXIF:YResolution": 300,
+    "EXIF:ResolutionUnit": "inches",
+    "EXIF:YCbCrPositioning": "Centered",
+    "EXIF:ExifVersion": "0232",
+    "EXIF:ComponentsConfiguration": "Y, Cb, Cr, -",
+    "EXIF:FlashpixVersion": "0100",
+    "EXIF:GPSVersionID": "2.3.0.0",
+    "EXIF:GPSLatitudeRef": "North",
+    "EXIF:GPSLatitude": 42.9584,
+    "EXIF:GPSLongitudeRef": "West",
+    "EXIF:GPSLongitude": 71.168,
+    "IPTC:Keywords": "Stephen Young, journal, 1998, bullying, UFO, sky lights, Christm",
+    "IPTC:ApplicationRecordVersion": 4,
+    "XMP:XMPToolkit": "Image::ExifTool 12.76",
+    "XMP:Creator": "Stephen Young",
+    "XMP:Description": "Stephen Young journal entry, December 16, 1998 (age 13): \"Dec 16, 98 - 8 days till, 2 weekdays till, 7 school days till Christmas. The kids that have been making fun of me just did it again this morning. They were boiling me things. Very bad and hate it. My mind is blank and I really cant think of anything to write about. Anyway the journal were doing about the thing in the sky. It was there again but even more noticeable and brighter. None knows what it is.\"",
+    "XMP:Subject": "Historical Documents",
+    "XMP:Title": "Stephen's Journal - Continued Bullying and Sky Mystery (December 16, 1998)",
+    "XMP:DateTimeDigitized": "1998:01:01 12:00:00",
+    "Composite:ImageSize": "2389x3143",
+    "Composite:Megapixels": 7.5,
+    "Composite:GPSLatitude": "42.95840000 N",
+    "Composite:GPSLongitude": "71.16800000 W",
+    "Composite:GPSPosition": "42.95840000 N, 71.16800000 W"
+  },
+  "sidecars": [],
+  "heritage": {
+    "seriesInfo": {
+      "seriesName": "Stephen Young Language Arts Journal - December 1998"
+    },
+    "creatorType": "unknown",
+    "metadata": {
+      "userComment": "Stephen continues to face bullying and reports seeing the mysterious lights in the sky again, even brighter than before. Shows the ongoing stress of harassment combined with unexplained phenomena adding to his anxiety.",
+      "documentName": "Stephen Young Language Arts Journal - December 1998",
+      "digitalSourceType": "Scanned from original"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "file": {
+    "path": "sample:heritage_photo_rich.jpg",
+    "hash": "placeholder-hash",
+    "size": 1218481,
+    "mimeType": "image/jpeg",
+    "created": "2025-07-22T04:17:26.561Z",
+    "modified": "2025-07-22T04:13:24.000Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "HeritageProcessor",
+    "extractedAt": "2025-07-22T04:17:26.561Z",
+    "notes": "Heritage photo processing - expensive landmark lookups skipped for performance"
+  },
+  "media": {
+    "type": "image",
+    "format": "JPEG",
+    "dimensions": {
+      "width": 3550,
+      "height": 2550,
+      "megapixels": 9.1,
+      "orientation": "Unknown"
+    }
+  },
+  "timestamps": {
+    "capture": {
+      "timestamp": "1989-06-15T12:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1989:06:15 12:00:00",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "creation": null,
+    "modification": {
+      "timestamp": "2025-07-22T04:13:24.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:07:22 00:13:24-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "primary": {
+      "timestamp": "1989-06-15T12:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1989:06:15 12:00:00",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2025-07-22T04:13:24.000Z",
+        "source": "exif",
+        "confidence": "medium",
+        "originalFormat": "2025:07:22 00:13:24-04:00",
+        "sourceDetails": "EXIF:ModifyDate"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "camera": {},
+  "settings": {},
+  "technical": {
+    "fileType": "JPEG",
+    "mimeType": "image/jpeg",
+    "exifVersion": "0232",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/heritage_photo_rich.jpg",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "heritage_photo_rich.jpg",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "1218 kB",
+    "File:FileModifyDate": "2025:07:22 00:13:24-04:00",
+    "File:FileAccessDate": "2025:07:22 00:13:25-04:00",
+    "File:FileInodeChangeDate": "2025:07:22 00:13:24-04:00",
+    "File:FilePermissions": "-rw-rw-r--",
+    "File:ExifByteOrder": "Big-endian (Motorola, MM)",
+    "File:CurrentIPTCDigest": "de649fb0f204d1d424487e208ddc6a33",
+    "File:EncodingProcess": "Baseline DCT, Huffman coding",
+    "File:BitsPerSample": 8,
+    "File:ColorComponents": 3,
+    "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "JFIF:JFIFVersion": 1.01,
+    "JFIF:ResolutionUnit": "inches",
+    "JFIF:XResolution": 300,
+    "JFIF:YResolution": 300,
+    "EXIF:XResolution": 300,
+    "EXIF:YResolution": 300,
+    "EXIF:ResolutionUnit": "inches",
+    "EXIF:YCbCrPositioning": "Centered",
+    "EXIF:ExifVersion": "0232",
+    "EXIF:ComponentsConfiguration": "Y, Cb, Cr, -",
+    "EXIF:FlashpixVersion": "0100",
+    "IPTC:Keywords": "handmade book,1989,picnic photo,indoor photo,green crayon drawin",
+    "IPTC:ApplicationRecordVersion": 4,
+    "XMP:XMPToolkit": "Image::ExifTool 12.76",
+    "XMP:Creator": "Stevie Young",
+    "XMP:Subject": "Child's Handmade Photo Album",
+    "XMP:Title": "Stevie's Photo Book - Second Spread with Activity Photos",
+    "XMP:Instructions": "Second spread with picnic and indoor activity photos",
+    "Composite:ImageSize": "3550x2550",
+    "Composite:Megapixels": 9.1
+  },
+  "sidecars": [],
+  "heritage": {
+    "seriesInfo": {
+      "seriesName": "Stevie-Handmade-Photo"
+    },
+    "creatorType": "unknown",
+    "metadata": {
+      "imageDescription": "Second spread of Stevie's handmade photo book from 1989. Top photo shows children at outdoor picnic table, bottom photo shows indoor scene with children around table. Right page features more green crayon artwork including figure drawings. Shows continued documentation of play activities and social interactions.",
+      "userComment": "Second spread documenting various childhood activities including outdoor picnics and indoor gatherings, with accompanying green crayon artwork",
+      "documentName": "Stevie-Handmade-Photo-Book-1989",
+      "digitalSourceType": "Scanned from original"
+    }
+  }
+}

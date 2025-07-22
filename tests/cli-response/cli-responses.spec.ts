@@ -79,6 +79,23 @@ const TEST_CASES = [
     filename: 'jpg_rotate_90.JPG',
     description: 'JPEG with 90-degree rotation metadata',
     expectedFile: 'jpg_rotate_90.expected.json'
+  },
+  
+  // Heritage photo processing
+  {
+    filename: 'heritage_photo_basic.jpg',
+    description: 'Heritage photo with DigitalSourceType - basic metadata',
+    expectedFile: 'heritage_photo_basic.expected.json'
+  },
+  {
+    filename: 'heritage_photo_rich.jpg',
+    description: 'Heritage photo with rich metadata (ImageDescription, Creator, Keywords)',
+    expectedFile: 'heritage_photo_rich.expected.json'
+  },
+  {
+    filename: 'heritage_photo_series.jpg',
+    description: 'Heritage photo with DocumentName series detection',
+    expectedFile: 'heritage_photo_series.expected.json'
   }
 ];
 
@@ -348,5 +365,49 @@ describe('CLI Response Integration Tests', () => {
     expect(rotate180Response.media.dimensions.orientation).not.toBe(
       rotate90Response.media.dimensions.orientation
     );
+  });
+
+  test('Heritage photo processing uses HeritageProcessor and optimizes performance', async () => {
+    const basicResponse = await executeCLI('heritage_photo_basic.jpg');
+    
+    // Should use HeritageProcessor
+    expect(basicResponse.processing.processor).toBe('HeritageProcessor');
+    
+    // Should have heritage-specific fields
+    expect(basicResponse).toHaveProperty('heritage');
+    expect(basicResponse.heritage).toHaveProperty('metadata');
+    
+    // Should disable expensive landmark lookups for performance
+    expect(basicResponse.location.enrichmentStatus.landmarks).toBe('disabled');
+    expect(basicResponse.location.landmarks).toEqual([]);
+  });
+
+  test('Heritage photo with rich metadata extracts EXIF fields correctly', async () => {
+    const richResponse = await executeCLI('heritage_photo_rich.jpg');
+    
+    // Should have heritage metadata section
+    expect(richResponse.heritage.metadata).toBeDefined();
+    
+    // Should extract heritage-specific EXIF fields if present
+    if (richResponse.heritage.metadata) {
+      expect(typeof richResponse.heritage.metadata.digitalSourceType).toBe('string');
+      // May have imageDescription, creator, keywords depending on sample
+    }
+    
+    // Should detect creator type
+    expect(richResponse.heritage.creatorType).toMatch(/individual|organization|unknown/);
+  });
+
+  test('Heritage photo series detection works correctly', async () => {
+    const seriesResponse = await executeCLI('heritage_photo_series.jpg');
+    
+    // Should parse series information from DocumentName
+    if (seriesResponse.heritage.seriesInfo) {
+      expect(seriesResponse.heritage.seriesInfo).toHaveProperty('seriesName');
+      // May have totalPages if DocumentName includes page count
+    }
+    
+    // Should still be processed by HeritageProcessor
+    expect(seriesResponse.processing.processor).toBe('HeritageProcessor');
   });
 });

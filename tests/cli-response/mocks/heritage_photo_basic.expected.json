@@ -1,0 +1,123 @@
+{
+  "file": {
+    "path": "sample:heritage_photo_basic.jpg",
+    "hash": "placeholder-hash",
+    "size": 2469399,
+    "mimeType": "image/jpeg",
+    "created": "2025-07-22T04:17:26.317Z",
+    "modified": "2025-07-22T04:13:20.000Z"
+  },
+  "processing": {
+    "success": true,
+    "processor": "HeritageProcessor",
+    "extractedAt": "2025-07-22T04:17:26.317Z",
+    "notes": "Heritage photo processing - expensive landmark lookups skipped for performance"
+  },
+  "media": {
+    "type": "image",
+    "format": "JPEG",
+    "dimensions": {
+      "width": 3285,
+      "height": 2485,
+      "megapixels": 8.2,
+      "orientation": "Unknown"
+    }
+  },
+  "timestamps": {
+    "capture": {
+      "timestamp": "1997-07-15T12:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1997:07:15 12:00:00",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "creation": null,
+    "modification": {
+      "timestamp": "2025-07-22T04:13:20.000Z",
+      "source": "exif",
+      "confidence": "medium",
+      "originalFormat": "2025:07:22 00:13:20-04:00",
+      "sourceDetails": "EXIF:ModifyDate"
+    },
+    "primary": {
+      "timestamp": "1997-07-15T12:00:00.000Z",
+      "source": "exif",
+      "confidence": "high",
+      "originalFormat": "1997:07:15 12:00:00",
+      "sourceDetails": "EXIF:DateTimeOriginal"
+    },
+    "alternatives": [
+      {
+        "timestamp": "2025-07-22T04:13:20.000Z",
+        "source": "exif",
+        "confidence": "medium",
+        "originalFormat": "2025:07:22 00:13:20-04:00",
+        "sourceDetails": "EXIF:ModifyDate"
+      }
+    ],
+    "conflicts": []
+  },
+  "location": {
+    "primary": null,
+    "alternatives": [],
+    "conflicts": [],
+    "geolocation": null,
+    "landmarks": [],
+    "enrichmentStatus": {
+      "geolocation": "disabled",
+      "landmarks": "disabled",
+      "providersUsed": [],
+      "cacheHit": false,
+      "queryTimeMs": 0
+    }
+  },
+  "camera": {},
+  "settings": {},
+  "technical": {
+    "fileType": "JPEG",
+    "mimeType": "image/jpeg",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/heritage_photo_basic.jpg",
+    "ExifTool:ExifToolVersion": 12.76,
+    "File:FileName": "heritage_photo_basic.jpg",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:FileSize": "2.5 MB",
+    "File:FileModifyDate": "2025:07:22 00:13:20-04:00",
+    "File:FileAccessDate": "2025:07:22 00:13:21-04:00",
+    "File:FileInodeChangeDate": "2025:07:22 00:13:20-04:00",
+    "File:FilePermissions": "-rw-rw-r--",
+    "File:ExifByteOrder": "Little-endian (Intel, II)",
+    "File:CurrentIPTCDigest": "af6bff410ba91653d772355b9b5c62ae",
+    "File:EncodingProcess": "Baseline DCT, Huffman coding",
+    "File:BitsPerSample": 8,
+    "File:ColorComponents": 3,
+    "File:YCbCrSubSampling": "YCbCr4:2:0 (2 2)",
+    "JFIF:JFIFVersion": 1.01,
+    "JFIF:ResolutionUnit": "inches",
+    "JFIF:XResolution": 300,
+    "JFIF:YResolution": 300,
+    "IPTC:Keywords": "Computer Museum,visitor information,exhibits,robots,virtual real",
+    "IPTC:City": "Boston",
+    "IPTC:ApplicationRecordVersion": 4,
+    "XMP:XMPToolkit": "Image::ExifTool 12.76",
+    "XMP:Creator": "The Computer Museum, Boston",
+    "XMP:Subject": "Museum Visit Documentation",
+    "XMP:Title": "Computer Museum Brochure - Visitor Information and Exhibits",
+    "XMP:Instructions": "Brochure inside spread with visitor info",
+    "XMP:State": "Massachusetts",
+    "Composite:ImageSize": "3285x2485",
+    "Composite:Megapixels": 8.2
+  },
+  "sidecars": [],
+  "heritage": {
+    "seriesInfo": {
+      "seriesName": "Stephen-Computer-Museum"
+    },
+    "creatorType": "unknown",
+    "metadata": {
+      "imageDescription": "Computer Museum brochure inside spread showing visitor information, hours, and exhibits. Features sections on robots, virtual reality, interactivities, and history exhibits. Shows admission prices, museum store info, and various educational programs. Demonstrates the museum's focus on hands-on computer education and technology exploration.",
+      "userComment": "Detailed museum information from Stephen's 1997 visit with Aunt Debbie, showing the variety of interactive computer exhibits available",
+      "documentName": "Stephen-Computer-Museum-Visit-1997",
+      "digitalSourceType": "Scanned from original"
+    }
+  }
+}

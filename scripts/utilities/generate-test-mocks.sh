@@ -59,5 +59,15 @@ node dist/main.js --files sample:jpg_rotate_180.JPG --json > tests/cli-response/
 echo "  ↩️  Generating jpg_rotate_90.expected.json..."
 node dist/main.js --files sample:jpg_rotate_90.JPG --json > tests/cli-response/mocks/jpg_rotate_90.expected.json
 
+# Heritage photo processing
+echo "  🏛️  Generating heritage_photo_basic.expected.json..."
+node dist/main.js --files sample:heritage_photo_basic.jpg --json > tests/cli-response/mocks/heritage_photo_basic.expected.json
+
+echo "  📚 Generating heritage_photo_rich.expected.json..."
+node dist/main.js --files sample:heritage_photo_rich.jpg --json > tests/cli-response/mocks/heritage_photo_rich.expected.json
+
+echo "  📖 Generating heritage_photo_series.expected.json..."
+node dist/main.js --files sample:heritage_photo_series.jpg --json > tests/cli-response/mocks/heritage_photo_series.expected.json
+
 echo "✅ Test mocks regenerated successfully!"
-echo "📁 Files updated in tests/cli-response/mocks/ (12 total mock files)"
+echo "📁 Files updated in tests/cli-response/mocks/ (15 total mock files)"
