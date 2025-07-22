@@ -7,10 +7,11 @@
     "docs/",
     "tests/", 
     "scripts/",
+    "/photos/tools/",
     "configuration files"
   ],
   "index_patterns": {
-    "source_code": ["*.ts", "*.js"],
+    "source_code": ["*.ts", "*.js", "*.py"],
     "documentation": ["*.md"],
     "configuration": ["*.yaml", "*.yml", "*.json"],
     "scripts": ["*.sh"],

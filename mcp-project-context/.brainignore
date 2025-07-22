@@ -33,9 +33,20 @@ scratch/sample_photos/
 samples/
 sample_media/
 
-# === PHOTOS DIRECTORY (exclude entirely) ===
+# === PHOTOS DIRECTORY (exclude entirely except tools) ===
 /photos/
 photos/
+!/photos/tools/
+
+# === PHOTOS TOOLS EXCLUSIONS ===
+/photos/tools/*/node_modules/
+/photos/tools/*/dist/
+/photos/tools/*/venv/
+/photos/tools/*/build/
+/photos/tools/*/*/node_modules/
+/photos/tools/*/*/dist/
+/photos/tools/*/*/venv/
+/photos/tools/*/*/build/
 
 # === BUILD & DEVELOPMENT ARTIFACTS ===
 node_modules/
