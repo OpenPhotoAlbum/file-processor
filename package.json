@@ -37,7 +37,9 @@
     "db:migrate": "knex migrate:latest --knexfile src/database/knexfile.js",
     "db:rollback": "knex migrate:rollback --knexfile src/database/knexfile.js",
     "db:seed": "knex seed:run --knexfile src/database/knexfile.js",
-    "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed"
+    "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed",
+    "transcribe": "node scripts/transcribe.js",
+    "scrapbook-treatment": "node scripts/scrapbook-treatment.js"
   },
   "keywords": [
     "media",
@@ -50,9 +52,11 @@
   "dependencies": {
     "@turf/turf": "^7.2.0",
     "commander": "^14.0.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
+    "form-data": "^4.0.4",
     "knex": "^3.1.0",
     "mysql2": "^3.14.1",
+    "node-fetch": "^3.3.2",
     "node-vibrant": "^4.0.3",
     "shapefile": "^0.6.6",
     "sharp": "^0.34.2"

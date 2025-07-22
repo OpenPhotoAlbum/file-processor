@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-06-30T22:18:33.580Z"
+    "extractedAt": "2025-07-22T04:17:26.081Z"
   },
   "media": {
     "type": "image",
@@ -130,7 +130,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 912,
         "confidence": 0.9,
@@ -151,7 +151,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 1120,
         "confidence": 0.9,
@@ -172,7 +172,7 @@
           "county": "Rockingham",
           "description": "Mountain peak - in Rockingham County, New Hampshire, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 1923,
         "confidence": 0.9,
@@ -193,7 +193,7 @@
           "county": "Essex",
           "description": "Water reservoir - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 3030,
         "confidence": 0.94,
@@ -214,7 +214,7 @@
           "county": "Essex",
           "description": "in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 2532,
         "confidence": 0.85,
@@ -235,53 +235,13 @@
           "county": "Rockingham",
           "description": "River or stream - in Rockingham County, New Hampshire, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 3518,
         "confidence": 0.84,
         "relationship": "visible_from",
         "source": "USGS GNIS",
         "matchMethod": "spatial_query"
-      },
-      {
-        "landmark": {
-          "id": "recreation_area_1557",
-          "name": "Parker River National Wildlife Refuge",
-          "fullName": "Parker River National Wildlife Refuge",
-          "category": "national_recreation_area",
-          "subcategory": "Recreation Area",
-          "latitude": 42.7984367,
-          "longitude": -70.849043,
-          "state": "US",
-          "description": "<p>The refuge was established in 1941, and today consists of more than 4,700 acres of diverse upland and wetland habitats including sandy beach and dune, maritime shrubs and forests, cranberry bogs, man-made impoundments, salt marsh and associated creek, river, and mud flat. These refuge habitats support varied and abundant populations of resident and migratory wildlife including more than 300 species of birds and additional species of mammals, reptiles, amphibians, insects, and plants. The refuge also provides critical habitat for the federally threatened piping plover.</p> - Phone: 978-465-5753, Email: parkerriver@fws.gov",
-          "source": "recreation_gov",
-          "lastUpdated": "2025-05-09"
-        },
-        "distance": 17642,
-        "confidence": 0.6471636802500682,
-        "relationship": "nearby",
-        "source": "Recreation.gov",
-        "matchMethod": "recreation_area_spatial_query"
-      },
-      {
-        "landmark": {
-          "id": "recreation_area_4071",
-          "name": "Essex National Heritage Area",
-          "fullName": "Essex National Heritage Area",
-          "category": "recreation_facility",
-          "subcategory": "Recreation Area",
-          "latitude": 42.667831421,
-          "longitude": -70.957107544,
-          "state": "US",
-          "description": "The Essex National Heritage Area begins just 10 miles north of Boston and covers 500 square miles of eastern Massachusetts to the New Hampshire border. The Area includes hundreds of historical sites, miles of intact landscapes, glistening coastal regions and lifetimes of rich experiences that chronicle the history of our region and of our nation. - Phone: (978) 740-0444, Email: annieh@essexheritage.org",
-          "source": "recreation_gov",
-          "lastUpdated": "2021-09-23"
-        },
-        "distance": 18690,
-        "confidence": 0.6262032630660151,
-        "relationship": "nearby",
-        "source": "Recreation.gov",
-        "matchMethod": "recreation_area_spatial_query"
       },
       {
         "landmark": {
@@ -296,7 +256,7 @@
           "county": "Essex",
           "description": "Natural lake - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 2027,
         "confidence": 0.54,
@@ -317,10 +277,52 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-06-30T22:18:33.184Z"
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
         },
         "distance": 2080,
         "confidence": 0.53,
+        "relationship": "nearby",
+        "source": "USGS GNIS",
+        "matchMethod": "spatial_query"
+      },
+      {
+        "landmark": {
+          "id": "gnis_612645",
+          "name": "Lake Pentucket",
+          "fullName": "Lake Pentucket (Lake)",
+          "category": "lake",
+          "subcategory": "Lake",
+          "latitude": "42.79123640",
+          "longitude": "-71.07373160",
+          "state": "MA",
+          "county": "Essex",
+          "description": "Natural lake - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "source": "usgs_gnis",
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
+        },
+        "distance": 2921,
+        "confidence": 0.55,
+        "relationship": "nearby",
+        "source": "USGS GNIS",
+        "matchMethod": "spatial_query"
+      },
+      {
+        "landmark": {
+          "id": "gnis_612615",
+          "name": "Job Hill",
+          "fullName": "Job Hill (Summit)",
+          "category": "mountain",
+          "subcategory": "Summit",
+          "latitude": "42.80285470",
+          "longitude": "-71.03616600",
+          "state": "MA",
+          "county": "Essex",
+          "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
+          "source": "usgs_gnis",
+          "lastUpdated": "2025-07-22T04:17:25.946Z"
+        },
+        "distance": 2723,
+        "confidence": 0.45,
         "relationship": "nearby",
         "source": "USGS GNIS",
         "matchMethod": "spatial_query"
@@ -330,11 +332,10 @@
       "geolocation": "success",
       "landmarks": "success",
       "providersUsed": [
-        "USGS GNIS",
-        "Recreation.gov"
+        "USGS GNIS"
       ],
       "cacheHit": false,
-      "queryTimeMs": 486
+      "queryTimeMs": 243
     }
   },
   "camera": {
@@ -361,7 +362,7 @@
     "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
     "File:FileSize": "7.5 MB",
     "File:FileModifyDate": "2025:06:23 16:24:51-04:00",
-    "File:FileAccessDate": "2025:06:30 18:17:05-04:00",
+    "File:FileAccessDate": "2025:07:22 00:13:13-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",
@@ -390,7 +391,6 @@
     "EXIF:ExposureCompensation": 0,
     "EXIF:MeteringMode": "Multi-segment",
     "EXIF:Flash": "Off, Did not fire",
-    "EXIF:SubjectArea": "2006 1508 2213 1330",
     "EXIF:SubSecTimeOriginal": 559,
     "EXIF:SubSecTimeDigitized": 559,
     "EXIF:FlashpixVersion": "0100",
