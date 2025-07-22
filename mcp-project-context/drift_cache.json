@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-07-17T23:50:58.544739",
-  "file_count": 277,
+  "timestamp": "2025-07-22T00:37:03.765920",
+  "file_count": 286,
   "files": {
     "/home/stephen/Documents/initial-media-processing/docker-compose.yaml": {
       "mtime": 1751312112.5912802,
@@ -33,9 +33,9 @@
       "hash": "3cbe11113fde0ac2de19324cd944661f30059109185ae9e62cbe2e26f2aac496"
     },
     "/home/stephen/Documents/initial-media-processing/package.json": {
-      "mtime": 1752809380.7258027,
-      "size": 5243,
-      "hash": "4ffb5f3caf0562ad03e22065d9179148f5d880f2a6aad9aa9a3b48dd129b815d"
+      "mtime": 1752987765.9532473,
+      "size": 4170,
+      "hash": "c1d31a7994941e291533f8d8a7e9e6fbbf19e9bb10c12d70dac0b7988d2a57f0"
     },
     "/home/stephen/Documents/initial-media-processing/jest.config.js": {
       "mtime": 1751121903.7464273,
@@ -63,9 +63,9 @@
       "hash": "f488a8a7fee33300773ae865d1df29da7679f0cc1571705ce488920976a6e18e"
     },
     "/home/stephen/Documents/initial-media-processing/TODO.md": {
-      "mtime": 1751419249.5895271,
-      "size": 3957,
-      "hash": "6a504de9631285f224587f5c85e3ba4f38f73044fdcd9a2022dbab995951fcdd"
+      "mtime": 1753156216.264811,
+      "size": 4494,
+      "hash": "57caa06099ad3071399fe9ca6fa972f51d33112e851b43b2f5513198d2aa9d53"
     },
     "/home/stephen/Documents/initial-media-processing/TRANSCRIPTION-README.md": {
       "mtime": 1751421026.1038172,
@@ -108,14 +108,19 @@
       "hash": "a126d83ca93217f8b7a0d71d9272c3602868bd8231ec9fd60b804e1b094c62f9"
     },
     "/home/stephen/Documents/initial-media-processing/ACCOMPLISHMENTS.md": {
-      "mtime": 1751347632.5360887,
-      "size": 9404,
-      "hash": "6e49238552eebe15bfa88a169754b44e886acf871d16a98bb1d1652b047ee066"
+      "mtime": 1752859990.275669,
+      "size": 9351,
+      "hash": "ae8b746ae313ffd8502c4557cd7f1c5da94e4e2dde657173ff57561840790c46"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/group-scanned-photos.sh": {
       "mtime": 1752729393.4625483,
       "size": 2184,
       "hash": "9350805256df683e47555fbce51f9e686c5776e40ad6b2ce2faa346845de4e09"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/transcribe.js": {
+      "mtime": 1752987620.2421763,
+      "size": 2163,
+      "hash": "f1791f290d8d3e79eb00a208feb6ae3da338b3019bdc695762c8e1454c7243af"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/README.md": {
       "mtime": 1752808584.922523,
@@ -128,9 +133,9 @@
       "hash": "e6d44b82d24a5772b89cf0410bf9849f33aa053688780459a83712af7a853e9e"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/scan.sh": {
-      "mtime": 1752726736.2268193,
-      "size": 12093,
-      "hash": "3c507b9717196d94b28519fbfbc309ad39dbdeecbe6f9e1f44e36f88a5d6dc7b"
+      "mtime": 1752883754.0308025,
+      "size": 12085,
+      "hash": "ac4815d90c7aa08577ec473956dac89f664b53767e06fd3264c12652a7e0d7e7"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/add-video-geolocation.sh": {
       "mtime": 1751410732.125565,
@@ -141,6 +146,11 @@
       "mtime": 1751414002.7702074,
       "size": 4647,
       "hash": "ba153d4472ead34171242fa4fbe9c551f83a1656662a7fea34676cada58a8f4d"
+    },
+    "/home/stephen/Documents/initial-media-processing/scripts/scrapbook-treatment.js": {
+      "mtime": 1753152160.0747428,
+      "size": 14094,
+      "hash": "83e4380db8de2caf5ed743c5fe0b65578ba193b550a7e8aa8f96a5e40a4a9298"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/google-takeout/process-google-takeout-complete.sh": {
       "mtime": 1751121904.1894345,
@@ -192,6 +202,11 @@
       "size": 6372,
       "hash": "3870fa616094cd540b251a22f5b218710e2bab7eb650682b18d42c6abb63bda7"
     },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/analyze-heritage-patterns": {
+      "mtime": 1753153214.9080431,
+      "size": 6918,
+      "hash": "c6b0b2d88d44e74d8b7ff3bedcc19dfc7cdb8c37b764dd8aa088592b1f95382a"
+    },
     "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/CLAUDE.md": {
       "mtime": 1751994989.2046113,
       "size": 5901,
@@ -207,6 +222,11 @@
       "size": 29908,
       "hash": "fa9bc9e452ae20e5269d5a6cfd650d8649d5029123f2e8b3f5f638124dbde6de"
     },
+    "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/multicrop-set-heritage": {
+      "mtime": 1753152399.545841,
+      "size": 6227,
+      "hash": "4a8c274e4ac114f247256e32d3499ad94bc8d2d3e78be65f2eed938f39183d6b"
+    },
     "/home/stephen/Documents/initial-media-processing/scripts/multicrop-tool/set-photo-dates": {
       "mtime": 1752213666.6351845,
       "size": 5784,
@@ -218,9 +238,9 @@
       "hash": "dce4644b28941460556a81a52c431d8d9ca5bcfc39c3c7bc0794317a33c019b4"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/utilities/generate-test-mocks.sh": {
-      "mtime": 1751140156.6211095,
-      "size": 2812,
-      "hash": "5b73fc1bfeaec0105e35107761c801334ddec41ed62b34f0aae403425f9590d7"
+      "mtime": 1753157752.0360913,
+      "size": 3417,
+      "hash": "9f1e9c86281b42c7c9282ddeb18450b5f238299f3e5663dbe763eec9d7c0eb7a"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/utilities/etl-census-municipal-boundaries.sh": {
       "mtime": 1751121904.1874347,
@@ -478,9 +498,9 @@
       "hash": "30332a9f4f529808fbd8c579216620d0a726908159b4a27e6a5395acabf34eb1"
     },
     "/home/stephen/Documents/initial-media-processing/tests/cli-response/cli-responses.spec.ts": {
-      "mtime": 1751140495.6835697,
-      "size": 11971,
-      "hash": "1683802d84086800cf7e47441d9ccf2ecda770a03bc5e43be0b2465a6d8fb28d"
+      "mtime": 1753157570.6200585,
+      "size": 14451,
+      "hash": "4907e27cda49e698b6a961f7d4f334b8f65a525cd99d508a620a2c1225bb8866"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/demo_usage.py": {
       "mtime": 1751121903.7614274,
@@ -518,14 +538,14 @@
       "hash": "64356f9cb0232c9ffc49174fe8c7b67d61d8d7bb327c9749dbce6e4eceb36bed"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/setup.sh": {
-      "mtime": 1751121903.7624276,
-      "size": 1142,
-      "hash": "2bc5c1f8d8b054652a667d72746504c6a10364ef12d6646de1096a47f0e60e07"
+      "mtime": 1752859979.7677448,
+      "size": 1205,
+      "hash": "7549268f930e5ed7040f27c389c95d688ac66b207aa6ed88f91bec197d161ce6"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/usage_log.json": {
-      "mtime": 1752810378.6981966,
-      "size": 12511,
-      "hash": "fb4a8acac9d3fba2af3923a490702e74a8dab1c2f94255df57334a6d7cce45df"
+      "mtime": 1753158999.904034,
+      "size": 14091,
+      "hash": "033b62031e14861938b93fe9ebf0bae8fdb11e8b5d41816a2779a98a3968361d"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/file_processor.py": {
       "mtime": 1751121903.7614274,
@@ -723,9 +743,9 @@
       "hash": "3d717788c30c668e9a53f428b469d8f7788e30ac96a2796affe8a234d8a57935"
     },
     "/home/stephen/Documents/initial-media-processing/docs/README.md": {
-      "mtime": 1751326627.196411,
-      "size": 4156,
-      "hash": "46e2a4da3761050e7ca4936bf8f76a14571c46a727a711fa6d6ed2fde0bed40f"
+      "mtime": 1752860018.6194832,
+      "size": 4080,
+      "hash": "5c95eeba8ccd307cee2c31f0b409432846f77a9ffaae2c573826a3c6b7efe632"
     },
     "/home/stephen/Documents/initial-media-processing/docs/phase-completion-overview.md": {
       "mtime": 1751326617.5832465,
@@ -751,6 +771,11 @@
       "mtime": 1751121903.740427,
       "size": 6080,
       "hash": "3e72e319bddc040e8045e36c8adf92ae384d4d7278c3376abe4174721d97b208"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/scrapbook-treatment.md": {
+      "mtime": 1753068946.653916,
+      "size": 11096,
+      "hash": "a7ce92226fe54c6990aa0ea62e95f4bf79a24b9b74b897b4b8c81c21b6bc4ddb"
     },
     "/home/stephen/Documents/initial-media-processing/docs/logging-system.md": {
       "mtime": 1751121903.7414272,
@@ -872,10 +897,20 @@
       "size": 8038,
       "hash": "0444a56240aef974be5a0d8c30b6aff3d4aa11e060d931161dd3a7e8d0c8545e"
     },
+    "/home/stephen/Documents/initial-media-processing/plans/heritage-photo-integration-plan.md": {
+      "mtime": 1753153816.3602588,
+      "size": 13046,
+      "hash": "56bb79631bd4edb4ba5d7ed1c26dd573e428dd6d6aa9ecc4c641ac9b7c6acee5"
+    },
     "/home/stephen/Documents/initial-media-processing/plans/compreface-integration.md": {
       "mtime": 1751346285.991084,
       "size": 11872,
       "hash": "bc52fa6f54a94e3defd337e467c3014a1d07363605f27180e7257ac1827e5e5e"
+    },
+    "/home/stephen/Documents/initial-media-processing/plans/claude-orchestration-system.md": {
+      "mtime": 1753158856.7024627,
+      "size": 15846,
+      "hash": "a20a564ee24e29996ee98b43b901b6fd3a5444e1cc4546e85a7ab583fe0dcfdd"
     },
     "/home/stephen/Documents/initial-media-processing/plans/media-search-feature.md": {
       "mtime": 1751345478.331014,
@@ -922,6 +957,16 @@
       "size": 20641,
       "hash": "2a854cd02d57fdcc678a5d0d8b9bf7c903b7321318fcbb2c4b11f8361dcd9ee8"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-init/claude-2-prompt.md": {
+      "mtime": 1753157894.8394015,
+      "size": 1812,
+      "hash": "cb942eca6cf3542e1260f368a13fbe4a977a08074b7d15a9eee501b2ba5cbf63"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-init/claude-1-prompt.md.txt": {
+      "mtime": 1753157984.8498309,
+      "size": 2126,
+      "hash": "09303204b47c2a862a881ad4e26868e56fc37d07846f8cd9dcf38dd1a06ac3e7"
+    },
     "/home/stephen/Documents/initial-media-processing/src/main.ts": {
       "mtime": 1751121904.1914346,
       "size": 458,
@@ -948,9 +993,9 @@
       "hash": "e49eee015990796348bf82df4cc900553269886fa56e8676a59c156365a7ff36"
     },
     "/home/stephen/Documents/initial-media-processing/src/services/geolocation/factory.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 1245,
-      "hash": "da4f3c72434d44d26a044e230811f964fc994d5d51d4fad1c7ccbea447c7c82d"
+      "mtime": 1753157212.5155616,
+      "size": 1292,
+      "hash": "f7c2dc42aa28d4170aa2bcee8c73ea093b4e75a9e8f86ed272e75fe3985d5836"
     },
     "/home/stephen/Documents/initial-media-processing/src/services/geolocation/index.ts": {
       "mtime": 1751121904.1934347,
@@ -1127,6 +1172,11 @@
       "size": 564,
       "hash": "bf084c805d6834bb2bdfdda4650a0c57b7c02bfe674822267d52ceb7ca27ed7c"
     },
+    "/home/stephen/Documents/initial-media-processing/src/processors/heritage.processor.ts": {
+      "mtime": 1753156991.435994,
+      "size": 5877,
+      "hash": "93b4aa4c03d898ecb494648884346101bb8cebfc96858b6289a1f3db5032aa9e"
+    },
     "/home/stephen/Documents/initial-media-processing/src/processors/video.processor.ts": {
       "mtime": 1751134749.2507553,
       "size": 7369,
@@ -1143,14 +1193,14 @@
       "hash": "f76c09d985038daf541d030eccbd399478ddb3ce154e316cfc8877d9d48f2f6f"
     },
     "/home/stephen/Documents/initial-media-processing/src/pipeline/entry.ts": {
-      "mtime": 1751256364.3770506,
-      "size": 2193,
-      "hash": "29740fb6b554225c5bf1486a3c94002082af5c10d2e6e83a780b9c8e08722a25"
+      "mtime": 1753155375.9483483,
+      "size": 2218,
+      "hash": "9d0615ca8b3df95d27d40d20ad7ea4af9377aecbde7c0646d21935897208be25"
     },
     "/home/stephen/Documents/initial-media-processing/src/pipeline/router.ts": {
-      "mtime": 1751121904.1914346,
-      "size": 1183,
-      "hash": "e8a00ad7889ab19c716690b8ddae0365863efda283ca86b9e6fb9deeaa46491d"
+      "mtime": 1753155392.7986808,
+      "size": 1934,
+      "hash": "bec2f169dde5a553f9e7ebc755af86435352d19ac3969f59bff809e7c82a1888"
     },
     "/home/stephen/Documents/initial-media-processing/src/pipeline/pre-processor.ts": {
       "mtime": 1751136819.9104104,
@@ -1173,9 +1223,9 @@
       "hash": "8e735f57cf16f1cad32605d4f6046e91f6fe1eeb34ba73837028153c9695f641"
     },
     "/home/stephen/Documents/initial-media-processing/src/utils/paths.ts": {
-      "mtime": 1751121904.1964347,
-      "size": 4195,
-      "hash": "c082c21e9fadfc04c182468e64b7d59a1ef40d6873e06b49250e465b940fe45a"
+      "mtime": 1753158850.1383424,
+      "size": 4284,
+      "hash": "3fce8dc2597a1b8405ee194045420a941252266cc33f53a3c264c8896b85f56b"
     },
     "/home/stephen/Documents/initial-media-processing/src/utils/mime-config.ts": {
       "mtime": 1751121904.1964347,
@@ -1213,9 +1263,9 @@
       "hash": "97887b9ba17e405f787127a8606b876117c071b76c4362962eb576c4a3926f9f"
     },
     "/home/stephen/Documents/initial-media-processing/src/utils/extractors/exif.ts": {
-      "mtime": 1751133893.8432121,
-      "size": 12037,
-      "hash": "555e1e35554bb4febb85eaaedacf97ac1e0518c81065de28d3669ad21944e8ca"
+      "mtime": 1753155872.9068651,
+      "size": 13836,
+      "hash": "357f458722a25dcc911ae71064ea46ef705cdddaf4eb923e875f94365f68feea"
     },
     "/home/stephen/Documents/initial-media-processing/src/utils/extractors/gps.ts": {
       "mtime": 1751290443.700202,
@@ -1373,9 +1423,9 @@
       "hash": "153ed08860e2525a1b2d370f1117ab7e9911d18e364d3720d4201cc25da6e358"
     },
     "/home/stephen/Documents/initial-media-processing/src/types/media.ts": {
-      "mtime": 1751256058.3759646,
-      "size": 4080,
-      "hash": "64912becb3eaa1f5e5285da65ce99cdd66b108b86b482088de3de3733e60f4f7"
+      "mtime": 1753155054.3120193,
+      "size": 4481,
+      "hash": "c7f751fa317364c7ed1717ca294d64d3855b8f17d73d13e4dcf23b64aee5e341"
     },
     "/home/stephen/Documents/initial-media-processing/src/types/processors.ts": {
       "mtime": 1751121904.1944346,
