@@ -1,0 +1,220 @@
+#!/bin/bash
+
+# multicrop-set-heritage - Add heritage markers to scanned photos
+# 
+# Usage: multicrop-set-heritage [options] <file1> [file2] [file3] ...
+#        multicrop-set-heritage [options] -dir <directory>
+#
+# Options:
+#   -dir <directory>    Process all JPG files in directory (recursive)
+#   -dry-run           Show what would be done without making changes
+#   -v, -verbose       Show detailed progress
+#   -help             Show this help
+#
+# Adds DigitalSourceType="Scanned from original" to photos for automatic
+# heritage detection by the media processing pipeline.
+
+# Default values
+target_dir=""
+files=()
+dry_run=false
+verbose=false
+
+# Function to show help
+show_help() {
+    echo "multicrop-set-heritage - Add heritage markers to scanned photos"
+    echo ""
+    echo "Usage: $0 [options] <file1> [file2] [file3] ..."
+    echo "       $0 [options] -dir <directory>"
+    echo ""
+    echo "Options:"
+    echo "  -dir <directory>    Process all JPG files in directory (recursive)"
+    echo "  -dry-run           Show what would be done without making changes"
+    echo "  -v, -verbose       Show detailed progress"
+    echo "  -help             Show this help"
+    echo ""
+    echo "Adds DigitalSourceType=\"Scanned from original\" to photos for automatic"
+    echo "heritage detection by the media processing pipeline."
+    echo ""
+    echo "Examples:"
+    echo "  $0 photo1.jpg photo2.jpg photo3.jpg"
+    echo "  $0 -dir /photos/staging/ready"
+    echo "  $0 -dry-run -dir /photos/staging/ready/photos"
+    echo "  $0 -verbose -dir /photos/staging/ready/scrapbook"
+    echo ""
+}
+
+# Function to check dependencies
+check_dependencies() {
+    if ! command -v exiftool &> /dev/null; then
+        echo "Error: exiftool is required but not installed."
+        echo "Install with: sudo apt-get install libimage-exiftool-perl"
+        exit 1
+    fi
+}
+
+# Function to process a single file
+process_file() {
+    local file_path="$1"
+    local filename=$(basename "$file_path")
+    
+    # Check if file exists and is a JPG
+    if [[ ! -f "$file_path" ]]; then
+        echo "⚠️  Skipping non-existent file: $filename"
+        return 1
+    fi
+    
+    if [[ ! "$file_path" =~ \.(jpg|jpeg|JPG|JPEG)$ ]]; then
+        if [[ "$verbose" == true ]]; then
+            echo "⚠️  Skipping non-JPG file: $filename"
+        fi
+        return 1
+    fi
+    
+    # Show what we're doing
+    if [[ "$dry_run" == true ]]; then
+        echo "🔍 Would add heritage marker to: $filename"
+        if [[ "$verbose" == true ]]; then
+            echo "   Command: exiftool -overwrite_original -DigitalSourceType=\"Scanned from original\" \"$file_path\""
+        fi
+    else
+        echo "📸 Adding heritage marker to: $filename"
+        if [[ "$verbose" == true ]]; then
+            echo "   Running: exiftool -overwrite_original -DigitalSourceType=\"Scanned from original\" \"$file_path\""
+        fi
+        
+        # Actually run the command
+        if exiftool -overwrite_original -DigitalSourceType="Scanned from original" "$file_path" &>/dev/null; then
+            if [[ "$verbose" == true ]]; then
+                echo "   ✅ Success"
+            fi
+        else
+            echo "   ❌ Failed to process $filename"
+            return 1
+        fi
+    fi
+    
+    return 0
+}
+
+# Function to process directory recursively
+process_directory() {
+    local dir_path="$1"
+    local processed=0
+    local skipped=0
+    local failed=0
+    
+    if [[ ! -d "$dir_path" ]]; then
+        echo "Error: Directory does not exist: $dir_path"
+        exit 1
+    fi
+    
+    echo "🔍 Scanning directory: $dir_path"
+    
+    # Find all JPG files recursively
+    while IFS= read -r -d '' file; do
+        if process_file "$file"; then
+            ((processed++))
+        else
+            if [[ "$file" =~ \.(jpg|jpeg|JPG|JPEG)$ ]]; then
+                ((failed++))
+            else
+                ((skipped++))
+            fi
+        fi
+    done < <(find "$dir_path" -type f \( -iname "*.jpg" -o -iname "*.jpeg" \) -print0)
+    
+    # Summary
+    echo ""
+    if [[ "$dry_run" == true ]]; then
+        echo "📊 Dry-run complete:"
+        echo "   Would process: $processed files"
+    else
+        echo "📊 Processing complete:"
+        echo "   Processed: $processed files"
+        echo "   Failed: $failed files"
+    fi
+    echo "   Skipped: $skipped non-JPG files"
+}
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -dir)
+            target_dir="$2"
+            shift 2
+            ;;
+        -dry-run)
+            dry_run=true
+            shift
+            ;;
+        -v|-verbose)
+            verbose=true
+            shift
+            ;;
+        -help|--help|-h)
+            show_help
+            exit 0
+            ;;
+        -*)
+            echo "Error: Unknown option $1"
+            echo "Use -help for usage information"
+            exit 1
+            ;;
+        *)
+            files+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# Check dependencies
+check_dependencies
+
+# Validate arguments
+if [[ -n "$target_dir" && ${#files[@]} -gt 0 ]]; then
+    echo "Error: Cannot specify both -dir and individual files"
+    echo "Use -help for usage information"
+    exit 1
+fi
+
+if [[ -z "$target_dir" && ${#files[@]} -eq 0 ]]; then
+    echo "Error: Must specify either -dir <directory> or individual files"
+    echo "Use -help for usage information"
+    exit 1
+fi
+
+# Show mode
+if [[ "$dry_run" == true ]]; then
+    echo "🔍 DRY-RUN MODE: No files will be modified"
+    echo ""
+fi
+
+# Process files or directory
+if [[ -n "$target_dir" ]]; then
+    process_directory "$target_dir"
+else
+    processed=0
+    failed=0
+    
+    for file in "${files[@]}"; do
+        if process_file "$file"; then
+            ((processed++))
+        else
+            ((failed++))
+        fi
+    done
+    
+    echo ""
+    if [[ "$dry_run" == true ]]; then
+        echo "📊 Dry-run complete: would process $processed files"
+    else
+        echo "📊 Processing complete: $processed files processed, $failed failed"
+    fi
+fi
+
+echo ""
+if [[ "$dry_run" == false ]]; then
+    echo "✅ Heritage markers added! Photos will now be automatically detected"
+    echo "   as heritage documents by the media processing pipeline."
+fi

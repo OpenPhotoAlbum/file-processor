@@ -314,8 +314,8 @@ if [ -n "$LOCATION" ]; then
         print_info "GPS coordinates: $GPS_LAT, $GPS_LNG"
     else
         # Try to lookup as shortcut
-        SHORTCUT_COORDS=$(lookup_shortcut "$LOCATION")
-        if [ $? -eq 0 ] && [ -n "$SHORTCUT_COORDS" ]; then
+        SHORTCUT_COORDS=$(lookup_shortcut "$LOCATION" || true)
+        if [ -n "$SHORTCUT_COORDS" ]; then
             HAS_GPS=true
             GPS_LAT=$(echo "$SHORTCUT_COORDS" | cut -d',' -f1)
             GPS_LNG=$(echo "$SHORTCUT_COORDS" | cut -d',' -f2)
