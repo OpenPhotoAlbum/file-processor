@@ -9,7 +9,7 @@ import { GeolocationService, GeolocationConfig } from './index.js';
  */
 export function createGeolocationService(): GeolocationService {
   const config: GeolocationConfig = {
-    enabled: process.env.GEOLOCATION_ENABLED === 'true',
+    enabled: process.env.GEOLOCATION_ENABLED !== 'false', // Default to true unless explicitly disabled
     maxRadiusKm: parseInt(process.env.GEOLOCATION_MAX_RADIUS_KM || '10'),
     confidenceThreshold: parseFloat(process.env.GEOLOCATION_CONFIDENCE_THRESHOLD || '0.7'),
     cacheEnabled: true,

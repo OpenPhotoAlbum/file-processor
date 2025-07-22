@@ -13,7 +13,7 @@ export async function processFile(filePath: string): Promise<ProcessingResult> {
     const file = await preProcess(filePath);
     
     // 2. Route to specific processor based on MIME type
-    const processor = getProcessor(file.mimeType);
+    const processor = await getProcessor(file.mimeType, file.absolutePath);
     const result = await processor.extract(file);
     
     // 3. Common post-processing (shared for all files)
