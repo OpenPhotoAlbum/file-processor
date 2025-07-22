@@ -149,6 +149,24 @@ export interface ProcessingResult {
     format: SidecarFormat;
     path: string;
   }[];
+  heritage?: {
+    seriesInfo?: {
+      seriesName?: string;
+      totalPages?: number;
+    };
+    transcription?: string;
+    creatorType?: string;
+    metadata?: {
+      imageDescription?: string;
+      userComment?: string;
+      creator?: string;
+      keywords?: string;
+      copyright?: string;
+      subject?: string;
+      documentName?: string;
+      digitalSourceType?: string;
+    };
+  };
   database?: {
     stored: boolean;
     mediaFileId?: number;

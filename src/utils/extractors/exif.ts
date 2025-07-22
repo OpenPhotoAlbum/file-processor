@@ -53,6 +53,16 @@ export interface ExifData {
     encoding?: string;
     [key: string]: unknown; // For additional technical fields
   };
+  heritage?: {
+    imageDescription?: string;
+    userComment?: string;
+    creator?: string;
+    keywords?: string;
+    copyright?: string;
+    subject?: string;
+    documentName?: string;
+    digitalSourceType?: string;
+  };
 }
 
 /**
@@ -194,6 +204,22 @@ throw new Error('Empty output from ExifTool');
     exif.technical.exifVersion = rawExif['EXIF:ExifVersion'];
     exif.technical.encoding = rawExif['EXIF:EncodingProcess'];
     
+    // Heritage-specific fields (only extract if this is a heritage photo)
+    if (this.isHeritagePhoto(rawExif)) {
+      exif.heritage = {
+        imageDescription: rawExif['EXIF:ImageDescription'] || rawExif['IFD0:ImageDescription'],
+        userComment: rawExif['EXIF:UserComment'] || rawExif['IFD0:UserComment'],
+        creator: rawExif['EXIF:Creator'] || rawExif['IFD0:Creator'],
+        keywords: rawExif['EXIF:Keywords'] || rawExif['IFD0:Keywords'],
+        copyright: rawExif['EXIF:Copyright'] || rawExif['IFD0:Copyright'],
+        subject: rawExif['EXIF:Subject'] || rawExif['IFD0:Subject'],
+        documentName: rawExif['EXIF:DocumentName'] || rawExif['IFD0:DocumentName'],
+        digitalSourceType: rawExif['EXIF:DigitalSourceType'] ||
+                          rawExif['IFD0:DigitalSourceType'] ||
+                          rawExif['XMP:DigitalSourceType']
+      };
+    }
+    
     // Store any additional fields that might be useful
     Object.keys(rawExif).forEach(key => {
       if (!this.isStandardField(key)) {
@@ -317,6 +343,16 @@ throw new Error('Empty output from ExifTool');
   }
   
   /**
+   * Check if photo is heritage/scanned based on DigitalSourceType field
+   */
+  private isHeritagePhoto(rawExif: ExternalToolOutput): boolean {
+    const digitalSourceType = rawExif['EXIF:DigitalSourceType'] ||
+                             rawExif['IFD0:DigitalSourceType'] ||
+                             rawExif['XMP:DigitalSourceType'];
+    return digitalSourceType?.includes('Scanned') || digitalSourceType?.includes('scanned');
+  }
+  
+  /**
    * Check if field is already handled in structured parsing
    */
   private isStandardField(key: string): boolean {
@@ -326,7 +362,12 @@ throw new Error('Empty output from ExifTool');
       'EXIF:ExifImageWidth', 'EXIF:ExifImageHeight', 'EXIF:Orientation',
       'EXIF:ColorSpace', 'EXIF:Compression', 'EXIF:DateTimeOriginal',
       'EXIF:CreateDate', 'EXIF:ModifyDate', 'GPS:', 'File:FileType',
-      'File:MIMEType', 'File:ImageWidth', 'File:ImageHeight'
+      'File:MIMEType', 'File:ImageWidth', 'File:ImageHeight',
+      // Heritage fields
+      'EXIF:ImageDescription', 'EXIF:UserComment', 'EXIF:Creator',
+      'EXIF:Keywords', 'EXIF:Copyright', 'EXIF:Subject',
+      'EXIF:DocumentName', 'EXIF:DigitalSourceType',
+      'XMP:DigitalSourceType'
     ];
     
     return standardPrefixes.some(prefix => key.startsWith(prefix));
