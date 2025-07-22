@@ -403,5 +403,50 @@
     "end_usage": null,
     "estimated_cost": 0.01429408,
     "duration_seconds": 102.632583
+  },
+  {
+    "session_id": "ingest_directory_1753199470",
+    "operation": "ingest_directory",
+    "description": "Processing /home/stephen/Documents/initial-media-processing (recursive=True)",
+    "start_time": "2025-07-22T11:51:10.564226",
+    "start_usage": null,
+    "tokens_processed": 527333,
+    "api_calls": 153,
+    "texts_processed": 2932,
+    "model": "text-embedding-3-small",
+    "end_time": "2025-07-22T11:52:42.359394",
+    "end_usage": null,
+    "estimated_cost": 0.01054666,
+    "duration_seconds": 91.795168
+  },
+  {
+    "session_id": "ingest_directory_1753213434",
+    "operation": "ingest_directory",
+    "description": "Processing /home/stephen/Documents/initial-media-processing (recursive=True)",
+    "start_time": "2025-07-22T15:43:54.891673",
+    "start_usage": null,
+    "tokens_processed": 531002,
+    "api_calls": 153,
+    "texts_processed": 2954,
+    "model": "text-embedding-3-small",
+    "end_time": "2025-07-22T15:45:21.932818",
+    "end_usage": null,
+    "estimated_cost": 0.01062004,
+    "duration_seconds": 87.041145
+  },
+  {
+    "session_id": "ingest_directory_1753226471",
+    "operation": "ingest_directory",
+    "description": "Processing /home/stephen/Documents/initial-media-processing (recursive=True)",
+    "start_time": "2025-07-22T19:21:11.571737",
+    "start_usage": null,
+    "tokens_processed": 531433,
+    "api_calls": 154,
+    "texts_processed": 2956,
+    "model": "text-embedding-3-small",
+    "end_time": "2025-07-22T19:22:32.775720",
+    "end_usage": null,
+    "estimated_cost": 0.01062866,
+    "duration_seconds": 81.203983
   }
 ]
