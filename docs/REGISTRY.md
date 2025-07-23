@@ -302,9 +302,9 @@
 
 ### 🤖 Claude Orchestration System
 - **Topic:** Multi-Claude Team Coordination
-  - **Primary Doc:** **MISSING** - Needs creation
-  - **Status:** Active - Phase 3 development, no user documentation
-  - **Keywords:** Claude orchestration, multi-agent, team coordination, role specialization
+  - **Primary Doc:** `/docs/architecture/claude-orchestration.md`
+  - **Status:** Complete - Phase 3 operational with full documentation
+  - **Keywords:** Claude orchestration, multi-agent, team coordination, role specialization, personality system
   - **Owner:** Claude 1 (Architect)
   - **Last Updated:** 2025-07-23
 
@@ -313,6 +313,21 @@
   - **Status:** Active - Operational role definitions for specialist Claudes
   - **Keywords:** Claude roles, templates, specialization, architect, implementation, qa, documentation, photo-intern
   - **Owner:** Claude 1 (Architect)
+  - **Last Updated:** 2025-07-23
+
+- **Topic:** Claude Slash Commands
+  - **Primary Doc:** `/docs/cli/slash-commands.md`
+  - **Status:** Complete - /mail and /summon commands documented
+  - **Keywords:** slash commands, mail command, summon command, inter-claude communication, team initialization
+  - **Owner:** Claude 1 (Architect)
+  - **Last Updated:** 2025-07-23
+
+- **Topic:** Misunderstanding Tracking System
+  - **Primary Doc:** `/.claude/commands/misunderstood.md`
+  - **Supporting Data:** `/claude-orchestration/feedback/` (misunderstandings, data, reports)
+  - **Status:** Active - Comprehensive feedback system for Claude performance improvement
+  - **Keywords:** misunderstanding tracking, feedback system, pattern analysis, Claude improvement, error categorization
+  - **Owner:** Claude 2 (Builder) - implementation
   - **Last Updated:** 2025-07-23
 
 ### 🎬 Video Processing

@@ -1,0 +1,42 @@
+{
+  "wrong-action": {
+    "description": "Did something different than requested",
+    "severity": "medium",
+    "examples": ["Implemented X when asked for Y", "Created file instead of editing"]
+  },
+  "incomplete": {
+    "description": "Partially completed task without finishing",
+    "severity": "medium", 
+    "examples": ["Started implementation but didn't finish", "Missing required components"]
+  },
+  "overreach": {
+    "description": "Did more than asked or exceeded scope",
+    "severity": "low",
+    "examples": ["Added extra features not requested", "Refactored beyond requirements"]
+  },
+  "misinterpret": {
+    "description": "Misunderstood the intent or requirements",
+    "severity": "high",
+    "examples": ["Thought user wanted X but meant Y", "Misread technical specifications"]
+  },
+  "wrong-role": {
+    "description": "Claude acting outside their designated role",
+    "severity": "high",
+    "examples": ["Architect writing code", "Builder making architecture decisions"]
+  },
+  "process-skip": {
+    "description": "Skipped required processes or protocols",
+    "severity": "high",
+    "examples": ["Didn't log communication", "Skipped documentation requirements"]
+  },
+  "assumption": {
+    "description": "Made incorrect assumptions without clarification",
+    "severity": "medium",
+    "examples": ["Assumed technology choice", "Assumed user preferences"]
+  },
+  "context-loss": {
+    "description": "Lost important context from conversation",
+    "severity": "high",
+    "examples": ["Forgot previous requirements", "Ignored earlier decisions"]
+  }
+}
