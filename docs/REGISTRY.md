@@ -81,9 +81,9 @@
 
 ### 🚀 CLI & User Interface
 - **Topic:** MMP Unified CLI Tool
-  - **Primary Doc:** `/docs/cli.md`
-  - **Status:** Active - GPS, CROP, SCAN working; DATES, ROTATE, TRANSCRIBE pending
-  - **Keywords:** MMP, unified CLI, command line, photo tools, timestamps, rotation
+  - **Primary Doc:** `/docs/cli/README.md`
+  - **Status:** Complete - Full CLI with comprehensive help system, 49/49 tests passing
+  - **Keywords:** MMP, unified CLI, command line, photo tools, timestamps, rotation, JSON output, database storage
   - **Owner:** Claude 2 (Implementation)
   - **Last Updated:** 2025-07-23
 
@@ -251,11 +251,11 @@
 
 ### 🧪 Development & Testing
 - **Topic:** Getting Started Guide
-  - **Primary Doc:** `/docs/getting-started.md`
-  - **Status:** Complete - Installation and setup guide
-  - **Keywords:** getting started, installation, setup, quick start
+  - **Primary Doc:** `/docs/deployment/getting-started.md`
+  - **Status:** Complete - Installation and setup guide with scanning tool integration
+  - **Keywords:** getting started, installation, setup, quick start, scanning, multicrop
   - **Owner:** Stable - setup procedures finalized
-  - **Last Updated:** 2024-12-24
+  - **Last Updated:** 2025-07-23
 
 - **Topic:** Quick Start Organization
   - **Primary Doc:** `/docs/quick-start-organization.md`
@@ -270,6 +270,13 @@
   - **Keywords:** testing, Jest, mocking, test coverage, CI/CD
   - **Owner:** Stable - framework established
   - **Last Updated:** 2024-12-24
+
+- **Topic:** MMP Documentation Production Readiness
+  - **Primary Doc:** `/docs/MMP-DOCUMENTATION-PRODUCTION-READINESS.md`
+  - **Status:** Complete - Comprehensive verification report for heritage photo/video processing
+  - **Keywords:** MMP documentation verification, production readiness, heritage photos, video processing, quality assurance
+  - **Owner:** Claude 4 (Chronicler) - documentation quality verification
+  - **Last Updated:** 2025-07-23
 
 - **Topic:** ESLint Configuration
   - **Primary Doc:** `/docs/linting.md`
@@ -342,7 +349,7 @@
 
 These topics are covered by existing documentation - do NOT create new docs:
 
-- ❌ **CLI Tool Documentation** → Use `/docs/cli.md`
+- ❌ **CLI Tool Documentation** → Use `/docs/cli/README.md`
 - ❌ **Error Handling** → Use `/docs/error-system.md`
 - ❌ **Database Documentation** → Use existing database-*.md files
 - ❌ **Photo Processing** → Use `/docs/photo-organization-strategy.md`
