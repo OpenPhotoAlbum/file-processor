@@ -1,0 +1,43 @@
+# Standard Feature Implementation Chain Template
+template_name: "standard_feature_implementation"
+description: "Complete feature development workflow: Implementation → QA → Documentation"
+version: "1.0"
+
+# Default phases for standard feature implementation
+phases:
+  - phase_id: "implementation"
+    phase_name: "Feature Implementation"
+    assigned_to: "claude-2"
+    status: "pending"
+    depends_on: []
+    completion_evidence: "Code implemented, builds successfully, basic manual testing complete"
+    estimated_duration: "2-4 hours"
+    
+  - phase_id: "qa_validation"
+    phase_name: "Quality Assurance Validation"
+    assigned_to: "claude-3"
+    status: "pending"
+    depends_on: ["implementation"]
+    completion_evidence: "All tests pass, quality gates met, no regressions detected"
+    estimated_duration: "1-2 hours"
+    
+  - phase_id: "documentation_update"
+    phase_name: "Documentation Update"
+    assigned_to: "claude-4"
+    status: "pending" 
+    depends_on: ["qa_validation"]
+    completion_evidence: "Documentation reflects new feature, examples updated, registry maintained"
+    estimated_duration: "1 hour"
+
+# Success criteria for entire chain
+success_criteria:
+  - "Feature is fully implemented and tested"
+  - "All quality gates pass"
+  - "Documentation is current and accurate"
+  - "No breaking changes introduced"
+
+# Common variables that can be customized per chain instance
+variables:
+  feature_name: "{{FEATURE_NAME}}"
+  component_area: "{{COMPONENT_AREA}}"
+  priority_level: "{{PRIORITY_LEVEL}}"

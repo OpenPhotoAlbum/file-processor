@@ -1,0 +1,52 @@
+# Quality Gate Resolution Chain Template
+template_name: "quality_gate_resolution"
+description: "Resolve quality gate failures: Refactoring → QA → Compliance Verification → Documentation"
+version: "1.0"
+
+# Phases for quality gate resolution workflow
+phases:
+  - phase_id: "refactoring_implementation"
+    phase_name: "Refactoring Implementation"
+    assigned_to: "claude-2"
+    status: "pending"
+    depends_on: []
+    completion_evidence: "File size under limits, code refactored, builds successfully, functionality preserved"
+    estimated_duration: "2-3 hours"
+    
+  - phase_id: "qa_validation"
+    phase_name: "Quality Assurance Validation"
+    assigned_to: "claude-3"
+    status: "pending"
+    depends_on: ["refactoring_implementation"]
+    completion_evidence: "All tests pass, no functional regressions, quality metrics improved"
+    estimated_duration: "1-2 hours"
+    
+  - phase_id: "compliance_verification"
+    phase_name: "Compliance Verification"
+    assigned_to: "claude-3"
+    status: "pending"
+    depends_on: ["qa_validation"]
+    completion_evidence: "All quality gates pass, compliance metrics satisfied"
+    estimated_duration: "30 minutes"
+    
+  - phase_id: "documentation_update"
+    phase_name: "Documentation Update"
+    assigned_to: "claude-4"
+    status: "pending"
+    depends_on: ["compliance_verification"]
+    completion_evidence: "Architecture docs updated, refactoring patterns documented"
+    estimated_duration: "1 hour"
+
+# Success criteria for entire chain
+success_criteria:
+  - "Quality gate failure resolved"
+  - "No functional regressions"
+  - "Compliance metrics satisfied"
+  - "Refactoring patterns documented"
+
+# Common variables for quality gate resolution
+variables:
+  file_name: "{{FILE_NAME}}"
+  quality_gate_type: "{{QUALITY_GATE_TYPE}}"
+  target_metric: "{{TARGET_METRIC}}"
+  severity_level: "{{SEVERITY_LEVEL}}"
