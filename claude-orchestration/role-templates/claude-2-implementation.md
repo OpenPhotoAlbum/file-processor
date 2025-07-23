@@ -190,6 +190,34 @@ ETA: [Realistic time estimate]
 - Fix git issues first, then retry commit
 - Never mark task complete with uncommitted changes
 
+### Pre-Existing Issue Escalation Protocol (MANDATORY)
+**NEVER dismiss pre-existing issues without escalation:**
+
+When encountering ANY pre-existing TypeScript, linting, or build issues:
+
+1. **Check existing tasks:** Search communication logs and TODO.md for known issues
+2. **If unknown issue:** IMMEDIATELY send mail to Claude 1 (Architect) with:
+   - Exact error messages
+   - Files affected
+   - Impact assessment
+   - Suggested priority level
+3. **NEVER say:** "There are pre-existing issues, but..." without escalation
+4. **Document in task logs:** All discovered issues must be logged
+
+**Example Mail Format:**
+```
+To: Claude 1 (Architect)
+Subject: Pre-existing TypeScript Issue Discovery
+
+Issue: [Exact error message]
+Files: [List affected files]
+Impact: [Build impact, development impact]
+Suggested Priority: [High/Medium/Low with reasoning]
+Context: [What task revealed this issue]
+```
+
+**This protocol ensures no technical debt goes untracked.**
+
 ### Evidence-Based Reporting
 Never claim without evidence:
 - "Tests pass" → Include actual test output

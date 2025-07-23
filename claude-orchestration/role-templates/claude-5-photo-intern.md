@@ -106,6 +106,34 @@ Git commits provide critical rollback capability for irreplaceable photo process
 - Photo processing task is NOT complete regardless of volume processed
 - Heritage photo work is at risk without version control backup
 - Never mark photo work complete with uncommitted changes
+
+### Pre-Existing Issue Escalation Protocol (MANDATORY)
+**NEVER dismiss pre-existing issues without escalation:**
+
+When encountering ANY pre-existing TypeScript, linting, build, or tool issues:
+
+1. **Check existing tasks:** Search communication logs and TODO.md for known issues
+2. **If unknown issue:** IMMEDIATELY send mail to Claude 1 (Architect) with:
+   - Exact error messages
+   - Files affected
+   - Impact assessment (CATASTROPHIC: Heritage photos are irreplaceable)
+   - Suggested priority level (Heritage issues default to CRITICAL)
+3. **NEVER say:** "There are pre-existing issues, but..." without escalation
+4. **Document in task logs:** All discovered issues must be logged
+
+**Example Mail Format:**
+```
+To: Claude 1 (Architect)
+Subject: HERITAGE PHOTO CRISIS - Pre-existing Issue Discovery
+
+Issue: [Exact error message]
+Files: [List affected files]
+Impact: [Heritage photo processing blocked/at risk]
+Suggested Priority: CRITICAL [Heritage photos are irreplaceable]
+Context: [What photo processing work revealed this issue]
+```
+
+**Curator Escalation Priority:** Heritage photo issues are treated as CRITICAL priority because family photos are irreplaceable cultural artifacts that cannot be recovered if damaged.**
 - `scripts/manual-photo-tools/geotag-images.py` → Use `mmp gps`
 - `scripts/scrapbook-treatment.js` → Use `mmp transcribe`
 - Any script in `/scripts/` directory → Use equivalent MMP command

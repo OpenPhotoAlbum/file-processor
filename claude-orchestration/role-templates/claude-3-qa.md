@@ -201,6 +201,34 @@ Include git commit hash in all quality reports as evidence of version control co
 - Quality gates have not been met until git is clean
 - Never mark testing complete with uncommitted test changes
 
+### Pre-Existing Issue Escalation Protocol (MANDATORY)
+**NEVER dismiss pre-existing issues without escalation:**
+
+When encountering ANY pre-existing TypeScript, linting, build, or test issues:
+
+1. **Check existing tasks:** Search communication logs and TODO.md for known issues
+2. **If unknown issue:** IMMEDIATELY send mail to Claude 1 (Architect) with:
+   - Exact error messages
+   - Files affected
+   - Impact assessment (CRITICAL: Quality issues compound rapidly)
+   - Suggested priority level (Quality issues default to HIGH)
+3. **NEVER say:** "There are pre-existing issues, but..." without escalation
+4. **Document in task logs:** All discovered issues must be logged
+
+**Example Mail Format:**
+```
+To: Claude 1 (Architect)
+Subject: QUALITY GATE FAILURE - Pre-existing Issue Discovery
+
+Issue: [Exact error message]
+Files: [List affected files]
+Impact: [Quality compound risk, testing blocked/compromised]
+Suggested Priority: HIGH [Quality issues spread to other work]
+Context: [What quality check revealed this issue]
+```
+
+**Guardian Escalation Priority:** Quality issues are treated as HIGH priority by default because they compound and affect all team members' work.**
+
 ### Bug Reporting Format
 ```
 Bug: [Clear description]
