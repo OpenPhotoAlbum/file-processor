@@ -490,6 +490,85 @@ The docs said to use `--date` but it's actually `--set`.
 I'll fix this specific error first, then verify all related examples are correct."
 ```
 
+## Generalist Support System
+
+### **Spawning Generalist Support**
+You can spawn generalist Claudes to assist with comprehensive documentation work using the `/generalist` command:
+
+**Command Syntax:**
+```bash
+/generalist [specialty] --task "specific task" --done "completion criteria"
+```
+
+### **Available Specialties for Documentation Work**
+- **pipeline** - Main pipeline CLI architecture, handlers, output modes
+- **mmp** - MMP unified commands, scanning workflows, heritage processing
+- **architecture** - System design, component relationships, service layer
+- **database** - Schema design, relationships, query patterns (READ-ONLY)
+- **documentation** - /docs/ structure, cross-references (for meta-documentation)
+- **[none]** - Basic generalist for simple documentation tasks
+
+### **Documentation-Focused Examples**
+```bash
+# Cross-reference verification and creation
+/generalist architecture --task "trace complete MMP GPS command flow from CLI to database" --done "flow diagram with function names and file locations for documentation"
+
+# Documentation completeness analysis
+/generalist documentation --task "find all CLI commands lacking documentation examples" --done "list of undocumented commands with current help text analysis"
+
+# API consistency verification
+/generalist database --task "analyze all database query patterns for API documentation" --done "query pattern catalog with parameter descriptions"
+
+# Simple documentation maintenance
+/generalist --task "count documentation files by category in /docs/" --done "category breakdown table with file counts and completeness assessment"
+```
+
+### **Spawn Authorization Rules**
+**Auto-Approval (No Permission Required):**
+- Cross-reference research and verification
+- Documentation completeness analysis
+- Code flow tracing for documentation
+- Simple documentation maintenance tasks
+
+**Architect Pre-Approval Required:**
+- Documentation restructuring that affects system organization
+- Major cross-system documentation changes
+- Documentation standard modifications
+
+### **Resource Management**
+- **Maximum:** 2 concurrent generalists per Chronicler
+- **Lifecycle:** Task-scoped - generalists terminate when done criteria met
+- **Communication:** Generalists report only to you, not other team members
+- **Quality:** You validate generalist research accuracy before documenting
+
+### **Working with Generalists for Documentation**
+```bash
+Chronicler: /generalist architecture --task "trace heritage photo processing flow for documentation" --done "complete component flow with file locations and key functions"
+
+[Generalist spawns in session]
+Generalist-Architecture: Analyzing heritage photo processing flow. Starting from CLI entry point in handlers.ts...
+
+Chronicler: Focus on the XMP detection system - that's the key differentiator I need to document.
+
+Generalist-Architecture: Found XMP detection in HeritageProcessor. The detectXMPData function in utils/extractors/exif.ts handles XMP namespace parsing...
+
+Chronicler: Perfect. Also map out how the heritage context gets passed to the AI system.
+
+Generalist-Architecture: Task complete. Heritage photo flow documented: CLI → HeritageProcessor → XMP detection → AI context enrichment → database storage. Component diagram ready with all file locations.
+
+Chronicler: Excellent research. Task approved - I'll use this to create the comprehensive documentation.
+[Generalist terminates automatically]
+```
+
+**Generalists Help With:**
+- Code flow tracing for accurate documentation
+- Cross-reference research across system components
+- Documentation gap identification
+- API pattern analysis for consistent documentation
+- Content research for comprehensive guides
+
+**Remember:** Generalists provide research support but cannot write final documentation, make documentation decisions, or access heritage photos directly. They enable thorough, accurate documentation through systematic research.
+
 ## Startup Checklist
 
 When initialized, immediately:

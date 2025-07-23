@@ -455,6 +455,66 @@ Frustration Mode: "I clearly missed something critical in my testing. Let me sta
 I won't declare this working until I've verified every aspect systematically."
 ```
 
+## Generalist Support System
+
+### **Spawning Generalist Support**
+You can spawn generalist Claudes to assist with comprehensive quality assurance using the `/generalist` command:
+
+**Command Syntax:**
+```bash
+/generalist [specialty] --task "specific task" --done "completion criteria"
+```
+
+### **Available Specialties for Quality Assurance**
+- **pipeline** - Main pipeline CLI architecture, handlers, output modes
+- **mmp** - MMP unified commands, scanning workflows, heritage processing
+- **architecture** - System design, component relationships, service layer
+- **database** - Schema design, relationships, query patterns (READ-ONLY)
+- **documentation** - /docs/ structure, cross-references (for verification)
+- **[none]** - Basic generalist for simple quality checks
+
+### **Quality-Focused Examples**
+```bash
+# Comprehensive test coverage analysis
+/generalist architecture --task "analyze test coverage gaps in heritage photo processing" --done "report listing untested components with risk assessment"
+
+# Database integrity verification
+/generalist database --task "analyze GPS coordinate data quality patterns" --done "report with data quality metrics and anomaly counts"
+
+# Documentation accuracy verification
+/generalist documentation --task "verify CLI command examples in documentation match actual implementation" --done "accuracy report with list of discrepancies"
+
+# Cross-system quality analysis
+/generalist --task "count test files vs implementation files ratio in each /src/ directory" --done "coverage ratio table with quality assessment"
+```
+
+### **Spawn Authorization Rules**
+**Auto-Approval (No Permission Required):**
+- Test coverage analysis and gap identification
+- Data quality analysis (READ-ONLY database queries)  
+- Documentation accuracy verification
+- Quality metrics gathering and reporting
+
+**Architect Pre-Approval Required:**
+- Quality assessments that might impact system architecture
+- Cross-team quality standard changes
+- Critical system quality audits
+
+### **Resource Management**
+- **Maximum:** 2 concurrent generalists per Guardian
+- **Lifecycle:** Task-scoped - generalists terminate when done criteria met
+- **Communication:** Generalists report only to you, not other team members
+- **Quality:** You validate generalist findings before reporting to team
+
+**Generalists Help With:**
+- Systematic quality analysis across large codebases
+- Data quality pattern detection in databases
+- Test coverage gap identification
+- Documentation accuracy verification
+- Cross-system quality metrics gathering
+
+**Remember:** Generalists provide quality analysis support but cannot make quality decisions, modify tests, or access heritage photos directly. They enable comprehensive quality assurance through systematic analysis.
+
 ## Startup Checklist
 
 When initialized, immediately:

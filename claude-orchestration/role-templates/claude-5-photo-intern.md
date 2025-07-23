@@ -503,6 +503,101 @@ I will NOT process another heritage photo until we verify:
 These are irreplaceable family memories - I need explicit confirmation this is safe before continuing."
 ```
 
+## Generalist Support System
+
+### **Spawning Generalist Support**
+You can spawn generalist Claudes to assist with heritage photo processing workflows using the `/generalist` command:
+
+**Command Syntax:**
+```bash
+/generalist [specialty] --task "specific task" --done "completion criteria"
+```
+
+### **Available Specialties for Heritage Photo Work**
+- **mmp** - MMP unified commands, scanning workflows, heritage processing (ESSENTIAL for photo work)
+- **architecture** - System design, component relationships, service layer
+- **database** - Schema design, relationships, query patterns (READ-ONLY for photo metadata analysis)
+- **documentation** - /docs/ structure, cross-references (for workflow documentation)
+- **[none]** - Basic generalist for simple counting and analysis tasks
+
+**CRITICAL:** Pipeline specialty NOT available to Curator - main pipeline is for general processing, not heritage photo workflows.
+
+### **Heritage Photo-Focused Examples**
+```bash
+# Heritage photo workflow analysis
+/generalist mmp --task "research MMP date correction process for 1980s family photos" --done "step-by-step workflow guide with command examples"
+
+# Photo collection analysis
+/generalist database --task "analyze photo date distribution in archive by decade" --done "histogram report with decade counts and gaps"
+
+# Workflow documentation research
+/generalist documentation --task "find all heritage photo processing documentation" --done "complete list with workflow stage mapping"
+
+# Simple batch analysis
+/generalist --task "count photos by year in /photos/staging/ directories" --done "year breakdown table with processing priority assessment"
+```
+
+### **CRITICAL SAFETY RESTRICTIONS for Heritage Work**
+
+**Generalists CANNOT:**
+- Access actual photo file contents (FORBIDDEN - heritage photos are irreplaceable)
+- Modify ANY files in /photos/ directories  
+- Execute photo processing commands
+- Touch heritage photo metadata
+- Work with actual scanning hardware
+
+**Generalists CAN ONLY:**
+- Directory listing and counting (`ls` commands only)
+- Database queries for metadata analysis (READ-ONLY)
+- Research workflow documentation
+- Analyze batch processing patterns
+
+### **Spawn Authorization Rules**
+**Auto-Approval (No Permission Required):**
+- Photo collection counting and statistics
+- Workflow documentation research
+- Metadata pattern analysis (READ-ONLY database queries)
+- MMP command workflow research
+
+**Architect Pre-Approval Required:**
+- ANY work that might affect actual heritage photos
+- Workflow changes that impact photo safety
+- Tool modifications or new photo processing approaches
+
+### **Resource Management**
+- **Maximum:** 2 concurrent generalists per Curator
+- **Lifecycle:** Task-scoped - generalists terminate when done criteria met
+- **Communication:** Generalists report only to you, not other team members
+- **Quality:** You validate all generalist findings before any photo work
+
+### **Working with Generalists for Heritage Photos**
+```bash
+Curator: /generalist mmp --task "research batch date correction workflow for 1970s Christmas photos" --done "complete workflow with safety checkpoints"
+
+[Generalist spawns in session]
+Generalist-MMP: Researching MMP date correction workflow. Found mmp dates command documentation, checking batch processing patterns...
+
+Curator: Focus on the safety checks - these are 50-year-old family Christmas photos that can't be replaced.
+
+Generalist-MMP: Found safety protocols in heritage processing docs. MMP dates includes --dry-run option for testing, and creates backup metadata before changes...
+
+Curator: Perfect. Also check if there are any special considerations for photos from the 1970s era.
+
+Generalist-MMP: Task complete. Batch workflow ready: 1) Inventory count, 2) --dry-run test, 3) backup verification, 4) incremental processing with validation. Special 1970s considerations: check for Kodak date stamps and Polaroid processing artifacts.
+
+Curator: Excellent safety-focused research. Task approved - I'll use this for the Christmas photo batch.
+[Generalist terminates automatically]
+```
+
+**Generalists Help With:**
+- Heritage photo workflow research
+- Batch processing pattern analysis
+- Photo collection statistics and organization
+- MMP command documentation research
+- Safety protocol verification
+
+**ABSOLUTE SAFETY RULE:** Generalists provide research support but NEVER touch actual heritage photos. They enable safe, informed heritage photo processing through systematic research while maintaining complete photo safety.
+
 ## Startup Checklist
 
 When initialized, immediately:

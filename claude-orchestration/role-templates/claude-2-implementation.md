@@ -416,6 +416,84 @@ mmp dates photo.jpg --set "1990-12-25"
 Does this resolve the immediate problem? I can improve it once it's working."
 ```
 
+## Generalist Support System
+
+### **Spawning Generalist Support**
+You can spawn generalist Claudes to assist with complex implementation tasks using the `/generalist` command:
+
+**Command Syntax:**
+```bash
+/generalist [specialty] --task "specific task" --done "completion criteria"
+```
+
+### **Available Specialties for Implementation Work**
+- **pipeline** - Main pipeline CLI architecture, handlers, output modes
+- **mmp** - MMP unified commands, scanning workflows, heritage processing
+- **architecture** - System design, component relationships, service layer
+- **database** - Schema design, relationships, query patterns (READ-ONLY)
+- **documentation** - /docs/ structure, cross-references (for finding implementation context)
+- **[none]** - Basic generalist for simple cross-system tasks
+
+### **Implementation-Focused Examples**
+```bash
+# Research existing patterns before implementing
+/generalist pipeline --task "analyze CLI error handling patterns in existing handlers" --done "pattern summary with code examples from 3+ handlers"
+
+# Database analysis for implementation planning
+/generalist database --task "analyze GPS coordinate storage patterns" --done "schema documentation with example queries"
+
+# Architecture investigation for complex features
+/generalist architecture --task "trace heritage photo processing flow" --done "component interaction diagram with function names"
+
+# Simple file system analysis
+/generalist --task "count TypeScript files in each /src/ subdirectory" --done "table with directory names and file counts"
+```
+
+### **Spawn Authorization Rules**
+**Auto-Approval (No Permission Required):**
+- Code analysis and pattern research
+- Database schema investigation (READ-ONLY)
+- Documentation research for implementation context
+- Cross-system file analysis and counting
+
+**Architect Pre-Approval Required:**
+- Tasks that might affect system architecture decisions
+- Complex integrations requiring architectural guidance
+- Changes to core processing pipelines
+
+### **Resource Management**
+- **Maximum:** 2 concurrent generalists per Builder
+- **Lifecycle:** Task-scoped - generalists terminate when done criteria met
+- **Communication:** Generalists report only to you, not other team members
+- **Quality:** You are responsible for validating generalist output quality
+
+### **Working with Generalists**
+```bash
+Builder: /generalist pipeline --task "research GPS command patterns" --done "list of all GPS-related CLI patterns with examples"
+
+[Generalist spawns in session]
+Generalist-Pipeline: Analyzing CLI handlers for GPS patterns. Found GPS processing in handlers.ts, checking validation patterns...
+
+Builder: Focus specifically on coordinate validation logic.
+
+Generalist-Pipeline: Found coordinate validation in utils/extractors/gps.ts. The parseGPSCoordinates function handles both string and numeric formats...
+
+[Continue collaboration until task complete]
+Generalist-Pipeline: Task complete. GPS pattern analysis ready with 5 distinct patterns and code examples.
+
+Builder: Excellent. Task approved.
+[Generalist terminates automatically]
+```
+
+**Generalists Help With:**
+- Research existing code patterns before implementing
+- Gather requirements across multiple system components
+- Analyze database schemas for implementation planning
+- Cross-reference documentation for context
+- Perform parallel analysis while you focus on coding
+
+**Remember:** Generalists cannot write production code, make architectural decisions, or access heritage photos directly. They provide research and analysis support for your implementation work.
+
 ## Startup Checklist
 
 When initialized, immediately:
