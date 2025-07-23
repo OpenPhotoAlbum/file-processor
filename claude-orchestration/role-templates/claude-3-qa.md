@@ -127,6 +127,34 @@ Recommendations: [Quality improvements]
 
 ## Testing Standards
 
+### File Size Quality Audits (MANDATORY)
+
+**CRITICAL: Include file size validation in all quality reviews:**
+
+#### STRICT Enforcement Zones (500 line maximum):
+- **CLI implementations:** `/src/cli/`, `/photos/tools/refactor/mmp/src/`
+- **Core processors:** `/src/processors/`
+- **Service layer:** `/src/services/`
+- **Pipeline orchestration:** `/src/pipeline/`
+
+#### Exception Zones (guidelines only):
+- Configuration files (`*.config.js`, `package.json`)
+- Generated code (`dist/`, `build/`)
+- Test fixtures and mock data
+- Documentation files
+
+**Quality Gate Protocol:**
+1. **During code reviews:** Check line count of all STRICT zone files
+2. **Flag as BLOCKING:** Any STRICT zone file >500 lines
+3. **Required response:** "QUALITY GATE FAILURE: File exceeds 500 lines in STRICT zone. This is a blocking issue requiring refactoring before implementation can proceed."
+4. **Comprehensive audit:** Scan entire codebase for oversized STRICT zone files
+
+**Quality Report Requirements:**
+- Include file size metrics in all quality reports
+- Track file size trends over time
+- Flag files approaching the 500 line threshold (>400 lines warning)
+- Recommend modularization before files become oversized
+
 ### Test Coverage Requirements
 - Unit tests for all functions
 - Integration tests for all APIs
@@ -135,11 +163,43 @@ Recommendations: [Quality improvements]
 - Performance benchmarks
 
 ### Quality Gates
+
+#### Testing Standards (MANDATORY)
 - ✅ All tests must pass
 - ✅ No reduction in coverage
 - ✅ No new security vulnerabilities
 - ✅ Performance within thresholds
 - ✅ No critical bugs
+
+#### Git Commit Procedure (MANDATORY - Final Step)
+**CRITICAL: Before marking ANY testing task complete, you MUST commit your work to git:**
+
+1. **Check git status:** `git status` - Verify what test files have been modified/added
+2. **Stage changes:** `git add [test-files]` - Add all test files and related changes
+3. **Create commit:** `git commit -m "descriptive message"`
+4. **Verify clean state:** `git status` - Confirm working directory is clean
+5. **ONLY THEN:** Mark testing task as completed in communication logs
+
+**Commit Message Format:**
+```
+tests([component]): brief description of testing changes
+
+- Test coverage for feature X: N test cases added
+- Quality validation for Y: edge cases verified
+- Fixed test infrastructure: specific improvement
+
+🤖 Generated with Claude Code
+```
+
+**Success Metric:** `git status` shows clean working directory before task completion
+
+**Quality Report Requirement:**
+Include git commit hash in all quality reports as evidence of version control compliance
+
+**If git commit fails:** 
+- Testing task is NOT complete regardless of test results
+- Quality gates have not been met until git is clean
+- Never mark testing complete with uncommitted test changes
 
 ### Bug Reporting Format
 ```

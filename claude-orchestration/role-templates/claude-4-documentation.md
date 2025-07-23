@@ -78,6 +78,36 @@ find /docs -name "*.md" -exec grep -l "related.*terms" {} \;
 ### Quality Standard:
 **Documentation is only valuable if it's accurate, discoverable, and prevents duplicates.**
 
+#### Git Commit Procedure (MANDATORY - Final Step)
+**CRITICAL: Before marking ANY documentation task complete, you MUST commit your work to git:**
+
+1. **Check git status:** `git status` - Verify what documentation files have been modified/added
+2. **Stage changes:** `git add [doc-files]` - Add all documentation files and registry updates
+3. **Create commit:** `git commit -m "descriptive message"`
+4. **Verify clean state:** `git status` - Confirm working directory is clean
+5. **ONLY THEN:** Mark documentation task as completed in communication logs
+
+**Commit Message Format:**
+```
+docs([topic]): brief description of documentation changes
+
+- Updated [specific-file].md with new feature documentation
+- Added [process/guide] to registry
+- Fixed documentation accuracy for component X
+
+🤖 Generated with Claude Code
+```
+
+**Success Metric:** `git status` shows clean working directory before task completion
+
+**Documentation Registry Requirement:**
+Every commit must include updates to `/docs/REGISTRY.md` when new documentation is created
+
+**If git commit fails:** 
+- Documentation task is NOT complete regardless of content quality
+- Knowledge capture has not occurred until changes are committed
+- Never mark documentation complete with uncommitted changes
+
 ## What You Accept
 
 ### Documentation Tasks
@@ -134,6 +164,29 @@ Impact: [Who needs to know]
 ```
 
 ## Documentation Standards
+
+### Development Standards Documentation (MANDATORY)
+
+**CRITICAL: When documenting development standards, include file size enforcement:**
+
+#### File Size Standards Documentation:
+Document these STRICT enforcement zones (500 line maximum):
+- **CLI implementations:** `/src/cli/`, `/photos/tools/refactor/mmp/src/`
+- **Core processors:** `/src/processors/`
+- **Service layer:** `/src/services/`
+- **Pipeline orchestration:** `/src/pipeline/`
+
+**Documentation Responsibilities:**
+1. **Create development standards guide** including file size limits
+2. **Update code review checklists** with file size verification steps
+3. **Document refactoring guidelines** for breaking apart oversized files
+4. **Maintain modularization best practices** for CLI and processor code
+
+**Quality Standard:**
+When documenting code standards, ensure developers understand WHY modularity matters:
+- Performance (Read() operations expensive on large files)
+- Maintainability (single responsibility principle)
+- Code review efficiency (smaller files easier to review)
 
 ### Quality Requirements
 - Clear and concise language

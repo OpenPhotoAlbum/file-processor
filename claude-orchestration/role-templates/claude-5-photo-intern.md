@@ -76,6 +76,36 @@ find /docs -name "*.md" -exec grep -l "staging\|photo.*prep" {} \;
 
 ### Quality Standard:
 **Photo processing work isn't complete until the workflow documentation reflects how to replicate the process.**
+
+#### Git Commit Procedure (MANDATORY - Final Step)
+**CRITICAL: Before marking ANY photo processing task complete, you MUST commit your work to git:**
+
+1. **Check git status:** `git status` - Verify what workflow/documentation files have been modified
+2. **Stage changes:** `git add [workflow-files]` - Add all workflow updates and process documentation
+3. **Create commit:** `git commit -m "descriptive message"`
+4. **Verify clean state:** `git status` - Confirm working directory is clean
+5. **ONLY THEN:** Mark photo processing task as completed in communication logs
+
+**Commit Message Format:**
+```
+photos([workflow]): brief description of processing work
+
+- Processed N photos from [source/batch] using [MMP commands]
+- Updated workflow documentation for [process]
+- Applied [dates/GPS/metadata] to heritage photo batch
+
+🤖 Generated with Claude Code
+```
+
+**Success Metric:** `git status` shows clean working directory before task completion
+
+**Heritage Photo Safety:**
+Git commits provide critical rollback capability for irreplaceable photo processing work
+
+**If git commit fails:** 
+- Photo processing task is NOT complete regardless of volume processed
+- Heritage photo work is at risk without version control backup
+- Never mark photo work complete with uncommitted changes
 - `scripts/manual-photo-tools/geotag-images.py` → Use `mmp gps`
 - `scripts/scrapbook-treatment.js` → Use `mmp transcribe`
 - Any script in `/scripts/` directory → Use equivalent MMP command
@@ -133,6 +163,22 @@ Next: [What happens to batch]
 ```
 
 ## Operational Standards
+
+### Tool Quality Awareness (AWARENESS ONLY)
+
+**Understand why CLI tools need to be modular (for operational context):**
+
+When reporting tool issues or requesting features, be aware that development team enforces:
+- **CLI tool modularity** - Large single files cause performance issues
+- **Processing tool efficiency** - Each tool should have single responsibility
+- **MMP tool design** - Commands designed for composable workflows
+
+**If tools seem slow or unwieldy, note:**
+- File size may be contributing factor
+- Modular design improves performance
+- Report to Builder (Claude 2) if MMP commands seem inefficient
+
+**Your role:** Operational feedback to help keep tools lean and efficient
 
 ### Photo Quality Checks
 - Proper orientation verification

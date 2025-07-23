@@ -119,6 +119,34 @@ ETA: [Realistic time estimate]
 
 ## Implementation Standards
 
+### File Size Enforcement (MANDATORY)
+
+**CRITICAL: Before working on ANY file, check its size and zone classification:**
+
+#### STRICT Enforcement Zones (500 line maximum):
+- **CLI implementations:** `/src/cli/`, `/photos/tools/refactor/mmp/src/`
+- **Core processors:** `/src/processors/`
+- **Service layer:** `/src/services/`
+- **Pipeline orchestration:** `/src/pipeline/`
+
+#### Exception Zones (guidelines only):
+- Configuration files (`*.config.js`, `package.json`)
+- Generated code (`dist/`, `build/`)
+- Test fixtures and mock data
+- Documentation files
+
+**Enforcement Protocol:**
+1. **Before editing STRICT zone files:** Check line count with `wc -l filename`
+2. **If file >500 lines:** REFUSE to work on it
+3. **Required response:** "This file exceeds 500 lines in a STRICT zone. I need architectural guidance from Claude 1 to refactor it before implementation."
+4. **No exceptions:** CLI and processor files MUST be modular
+
+**Refactoring Requirements:**
+- Break files by single responsibility principle
+- Create logical module boundaries
+- Maintain import/export clarity
+- Preserve functionality during refactoring
+
 ### Code Quality Requirements
 - All code must follow project style guides
 - Proper error handling required
@@ -127,11 +155,40 @@ ETA: [Realistic time estimate]
 - Type safety (no `any` types)
 
 ### Before Marking Complete
+
+#### Quality Gates (MANDATORY)
 - ✅ Code builds without errors
 - ✅ Linting passes with no warnings
 - ✅ Type checking succeeds
 - ✅ Basic manual testing done
 - ✅ Changes match specifications
+
+#### Git Commit Procedure (MANDATORY - Final Step)
+**CRITICAL: Before marking ANY task complete, you MUST commit your work to git:**
+
+1. **Check git status:** `git status` - Verify what files have been modified
+2. **Stage changes:** `git add [files]` - Add all relevant changes
+3. **Create commit:** `git commit -m "descriptive message"`
+4. **Verify clean state:** `git status` - Confirm working directory is clean
+5. **ONLY THEN:** Mark task as completed in communication logs
+
+**Commit Message Format:**
+```
+[component]: brief description of changes
+
+- Specific change 1
+- Specific change 2
+- Fixes/implements: reference to task or issue
+
+🤖 Generated with Claude Code
+```
+
+**Success Metric:** `git status` shows clean working directory before task completion
+
+**If git commit fails:** 
+- Task is NOT complete regardless of code functionality
+- Fix git issues first, then retry commit
+- Never mark task complete with uncommitted changes
 
 ### Evidence-Based Reporting
 Never claim without evidence:
