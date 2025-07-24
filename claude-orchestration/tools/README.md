@@ -148,18 +148,41 @@ success_criteria:
 
 ## Integration with Communication System
 
-### Automatic Inbox Updates
+### Automatic Inbox Updates & Phase Notifications
 When phases are completed or started, the system automatically:
 - Updates assigned Claude's inbox with chain progress
 - Includes completion evidence
 - Provides chain file reference
-- Notifies next phase assignee when ready
+- **AUTOMATICALLY notifies next phase assignee when dependencies are complete**
+- Handles both successful completion and blocked phase scenarios
+- Queues notifications and delivers them immediately after phase updates
 
-### Inbox Entry Format
+### Inbox Entry Formats
+
+**Phase Update Entry:**
 ```
 [timestamp] [chain-system] [medium] [update] Phase complete: chain-id/phase-id
 Evidence: User-provided completion evidence
 📄 Chain details: /path/to/chain.yaml
+```
+
+**Automatic Phase Assignment Notification:**
+```
+[timestamp] [chain-system] [medium] [phase-ready] 🔗 YOUR TURN: Phase Name
+Previous phase "Completed Phase Name" completed successfully.
+YOU ARE NOW ASSIGNED: Phase Name
+📄 Task Chain: chain-id
+📋 Use: ./update-phase.sh chain-id phase-id start
+```
+
+**Blocked Dependency Notification:**
+```
+[timestamp] [chain-system] [medium] [phase-ready] 🔗 YOUR TURN: Phase Name
+Previous phase "Blocked Phase Name (BLOCKED)" - continuing chain despite blockage.
+YOU ARE NOW ASSIGNED: Phase Name
+⚠️ SPECIAL NOTE: Previous phase blocked: reason
+📄 Task Chain: chain-id
+📋 Use: ./update-phase.sh chain-id phase-id start
 ```
 
 ### Chain-Aware Communication
@@ -187,6 +210,65 @@ All communication tools recognize chain references:
 **Phases:** Research → Planning → Implementation → QA  
 **Duration:** 8-12 hours typical  
 **Variables:** `research_topic`, `complexity_level`, `stakeholder`
+
+## Automatic Notification System
+
+### How It Works
+The update-phase.sh script includes automatic notification logic that triggers when phases complete or get blocked:
+
+1. **Dependency Check:** When a phase is marked complete, the system checks all other phases for dependencies
+2. **Status Update:** If all dependencies for a waiting phase are complete, that phase status changes from "waiting" to "ready"
+3. **Notification Queue:** A notification is queued for the assigned Claude with phase details and instructions
+4. **Immediate Delivery:** Notifications are sent to the target Claude's inbox immediately after the phase update
+5. **Status Tracking:** The system tracks when phases become ready and prevents duplicate notifications
+
+### Supported Scenarios
+
+**Successful Completion Chain:**
+```bash
+# Builder completes implementation
+./update-phase.sh my-chain implementation complete "Feature working"
+# → Guardian automatically notified for QA phase
+
+# Guardian completes QA
+./update-phase.sh my-chain qa_validation complete "All tests pass"
+# → Chronicler automatically notified for documentation phase
+```
+
+**Blocked Phase Handling:**
+```bash
+# If QA phase is blocked but can be skipped
+./update-phase.sh my-chain qa_validation block "Test environment unavailable"
+# → Chronicler still notified if QA phase has can_skip_on_failure: true
+```
+
+### Configuration Requirements
+
+**Specialist Claude Requirements:**
+All task specifications for specialist Claudes MUST include mandatory usage of update-phase.sh commands:
+
+```markdown
+## MANDATORY: Task is NOT complete until chain status is updated
+Upon completion, you MUST run:
+./update-phase.sh [chain-id] [phase-id] complete "Evidence of completion"
+```
+
+**Phase Schema Requirements:**
+```yaml
+phases:
+  - phase_id: "implementation"
+    assigned_to: "claude-2"
+    depends_on: []  # List of phase IDs this depends on
+    can_skip_on_failure: false  # Optional: allow chain continuation if blocked
+```
+
+### Notification Behavior
+
+**Timing:** Notifications sent immediately after phase update, not batched  
+**Delivery:** Written to target Claude's inbox.log file  
+**Cleanup:** Pending notifications cleared after successful delivery  
+**Error Handling:** Failed notifications remain queued for retry  
+**Duplicate Prevention:** System tracks notification status to prevent spam
 
 ## Best Practices
 

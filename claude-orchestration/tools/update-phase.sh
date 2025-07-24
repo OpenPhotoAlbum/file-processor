@@ -98,7 +98,7 @@ elif action == 'complete':
     target_phase['completed'] = current_time
     target_phase['completion_evidence'] = evidence
     
-    # Check if we can advance dependent phases
+    # Check if we can advance dependent phases and notify assigned Claudes
     for phase in chain.get('phases', []):
         if '$PHASE_ID' in phase.get('depends_on', []):
             # Check if all dependencies are complete
@@ -110,8 +110,27 @@ elif action == 'complete':
                     break
             
             if all_deps_complete and phase['status'] == 'waiting':
-                phase['status'] = 'pending'
+                phase['status'] = 'ready'
+                phase['became_ready'] = current_time
                 print(f"✅ Phase '{phase['phase_name']}' is now ready to start")
+                
+                # Add notification to assigned Claude's inbox
+                assigned_to = phase.get('assigned_to')
+                if assigned_to:
+                    # Store notification info for later processing outside Python
+                    if 'pending_notifications' not in chain:
+                        chain['pending_notifications'] = []
+                    
+                    notification = {
+                        'target_claude': assigned_to,
+                        'phase_id': phase['phase_id'],
+                        'phase_name': phase['phase_name'],
+                        'completed_phase': target_phase['phase_name'],
+                        'chain_id': chain['id'],
+                        'timestamp': current_time
+                    }
+                    chain['pending_notifications'].append(notification)
+                    print(f"📧 Notification queued for {assigned_to}")
     
     print(f"✅ Phase '{target_phase['phase_name']}' completed")
 
@@ -124,6 +143,43 @@ elif action == 'block':
     target_phase['block_reason'] = evidence
     target_phase['blocked_at'] = current_time
     print(f"🚫 Phase '{target_phase['phase_name']}' blocked")
+    
+    # Check if blocked phase can be skipped and notify dependent phases
+    if target_phase.get('can_skip_on_failure', False):
+        for phase in chain.get('phases', []):
+            if '$PHASE_ID' in phase.get('depends_on', []):
+                # Check if all other dependencies are complete (ignoring blocked phase)
+                all_deps_complete = True
+                for dep_id in phase.get('depends_on', []):
+                    if dep_id == '$PHASE_ID':
+                        continue  # Skip the blocked dependency
+                    dep_phase = next((p for p in chain['phases'] if p['phase_id'] == dep_id), None)
+                    if not dep_phase or dep_phase['status'] != 'completed':
+                        all_deps_complete = False
+                        break
+                
+                if all_deps_complete and phase['status'] == 'waiting':
+                    phase['status'] = 'ready'
+                    phase['became_ready'] = current_time
+                    print(f"✅ Phase '{phase['phase_name']}' ready despite blocked dependency")
+                    
+                    # Queue notification for blocked phase recovery
+                    assigned_to = phase.get('assigned_to')
+                    if assigned_to:
+                        if 'pending_notifications' not in chain:
+                            chain['pending_notifications'] = []
+                        
+                        notification = {
+                            'target_claude': assigned_to,
+                            'phase_id': phase['phase_id'],
+                            'phase_name': phase['phase_name'],
+                            'completed_phase': f"{target_phase['phase_name']} (BLOCKED)",
+                            'chain_id': chain['id'],
+                            'timestamp': current_time,
+                            'special_instructions': f"Previous phase blocked: {evidence}"
+                        }
+                        chain['pending_notifications'].append(notification)
+                        print(f"📧 Notification queued for {assigned_to} (blocked dependency)")
 
 elif action == 'reset':
     target_phase['status'] = 'pending'
@@ -163,6 +219,77 @@ with open('$CHAIN_FILE', 'w') as f:
 
 print(f"Chain status: {chain['status']} ({completed_phases}/{total_phases} phases complete)")
 EOF
+
+# Process pending notifications
+if [ "$ACTION" = "complete" ] || [ "$ACTION" = "block" ]; then
+    echo ""
+    echo "Processing pending notifications..."
+    
+    # Extract and send notifications
+    CHAINS_DIR="$CHAINS_DIR" CHAIN_FILE="$CHAIN_FILE" python3 << EOF
+import yaml
+import os
+from datetime import datetime
+
+chain_file = os.environ['CHAIN_FILE']
+chains_dir = os.environ['CHAINS_DIR']
+
+with open(chain_file, 'r') as f:
+    chain = yaml.safe_load(f)
+
+notifications = chain.get('pending_notifications', [])
+if notifications:
+    communication_dir = os.path.dirname(chains_dir)
+    
+    for notification in notifications:
+        target_claude = notification['target_claude']
+        inbox_file = f"{communication_dir}/{target_claude}/inbox.log"
+        
+        # Ensure inbox directory exists
+        inbox_dir = os.path.dirname(inbox_file)
+        os.makedirs(inbox_dir, exist_ok=True)
+        
+        # Create notification message
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        if 'special_instructions' in notification:
+            # Handle blocked dependency case
+            message = f"""
+[{timestamp}] [chain-system] [medium] [phase-ready] 🔗 YOUR TURN: {notification['phase_name']}
+Previous phase "{notification['completed_phase']}" - continuing chain despite blockage.
+YOU ARE NOW ASSIGNED: {notification['phase_name']}
+⚠️ SPECIAL NOTE: {notification['special_instructions']}
+📄 Task Chain: {notification['chain_id']}
+📋 Use: ./update-phase.sh {notification['chain_id']} {notification['phase_id']} start
+
+"""
+        else:
+            # Normal completion case
+            message = f"""
+[{timestamp}] [chain-system] [medium] [phase-ready] 🔗 YOUR TURN: {notification['phase_name']}
+Previous phase "{notification['completed_phase']}" completed successfully.
+YOU ARE NOW ASSIGNED: {notification['phase_name']}
+📄 Task Chain: {notification['chain_id']}
+📋 Use: ./update-phase.sh {notification['chain_id']} {notification['phase_id']} start
+
+"""
+        
+        # Write to inbox
+        with open(inbox_file, 'a') as f:
+            f.write(message)
+        
+        print(f"📧 Notification sent to {target_claude}")
+    
+    # Clear pending notifications
+    chain['pending_notifications'] = []
+    with open(chain_file, 'w') as f:
+        yaml.dump(chain, f, default_flow_style=False, sort_keys=False)
+    
+    print(f"✅ Sent {len(notifications)} notification(s)")
+else:
+    print("No pending notifications")
+EOF
+fi
 
 # Log the update to appropriate Claude inbox if phase completed or started
 if [ "$ACTION" = "complete" ] || [ "$ACTION" = "start" ]; then
