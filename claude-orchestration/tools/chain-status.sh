@@ -825,17 +825,27 @@ for chain_file in glob.glob(os.path.join(chains_dir, "*.yaml")):
     current_assignee = None
     current_phase_type = None
     
-    for phase in chain.get('phases', []):
-        if phase['status'] in ['ready', 'in_progress']:
-            current_assignee = phase.get('assigned_to', 'unassigned')
-            current_phase_type = phase.get('phase_name', phase['phase_id'])
-            break
-        elif phase['status'] == 'pending':
-            # If no active phase, show who should start the first pending phase
-            if current_assignee is None:
+    # For completed chains, show under the assignee who completed the work
+    if chain.get('status', '').lower() == 'completed':
+        # Find the last completed phase to determine assignee
+        for phase in reversed(chain.get('phases', [])):
+            if phase['status'] == 'completed':
                 current_assignee = phase.get('assigned_to', 'unassigned')
-                current_phase_type = phase.get('phase_name', phase['phase_id'])
+                current_phase_type = phase.get('phase_name', phase.get('phase_id', 'unknown'))
                 break
+    else:
+        # For active/pending chains, find who's currently responsible
+        for phase in chain.get('phases', []):
+            if phase['status'] in ['ready', 'in_progress']:
+                current_assignee = phase.get('assigned_to', 'unassigned')
+                current_phase_type = phase.get('phase_name', phase.get('phase_id', 'unknown'))
+                break
+            elif phase['status'] == 'pending':
+                # If no active phase, show who should start the first pending phase
+                if current_assignee is None:
+                    current_assignee = phase.get('assigned_to', 'unassigned')
+                    current_phase_type = phase.get('phase_name', phase.get('phase_id', 'unknown'))
+                    break
     
     if current_assignee is None:
         current_assignee = 'unassigned'
