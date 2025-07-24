@@ -15,6 +15,7 @@ ACTIVE_DIR="$CHAINS_DIR/active"
 # Parse command line arguments
 CHAIN_ARG=""
 ROLE_FILTERS=()
+SHOW_COMPLETED=false
 
 # Process all arguments
 while [[ $# -gt 0 ]]; do
@@ -27,6 +28,28 @@ while [[ $# -gt 0 ]]; do
                 echo "Error: --role requires an argument"
                 exit 1
             fi
+            ;;
+        --completed)
+            SHOW_COMPLETED=true
+            shift
+            ;;
+        --help)
+            echo "Usage: $0 [OPTIONS] [CHAIN_ID]"
+            echo ""
+            echo "Show task chain status information"
+            echo ""
+            echo "OPTIONS:"
+            echo "  --role ROLE        Filter by role (architect, builder, guardian, chronicler, curator, data, 1-6)"
+            echo "  --completed        Show completed chains (hidden by default)"
+            echo "  --help            Show this help message"
+            echo ""
+            echo "EXAMPLES:"
+            echo "  $0                    # Show all active chains"
+            echo "  $0 --completed       # Show all chains including completed ones"
+            echo "  $0 --role builder    # Show only Builder's tasks"
+            echo "  $0 chain-id-123      # Show detailed view of specific chain"
+            echo "  $0 2                 # Show detailed view using numeric shortcut"
+            exit 0
             ;;
         all)
             # Support legacy 'all' syntax but it's no longer needed
@@ -44,6 +67,9 @@ done
 
 # Convert ROLE_FILTERS array to comma-separated string for Python
 ROLE_FILTER=$(IFS=,; echo "${ROLE_FILTERS[*]}")
+
+# Pass SHOW_COMPLETED to Python as environment variable
+export SHOW_COMPLETED="$SHOW_COMPLETED"
 
 # Colors for output
 RED='\033[0;31m'
@@ -820,6 +846,11 @@ chains_dir = "$ACTIVE_DIR"
 for chain_file in glob.glob(os.path.join(chains_dir, "*.yaml")):
     with open(chain_file, 'r') as f:
         chain = yaml.safe_load(f)
+    
+    # Skip completed chains unless --completed flag is used
+    show_completed = os.environ.get('SHOW_COMPLETED', 'false').lower() == 'true'
+    if not show_completed and chain.get('status', '').lower() == 'completed':
+        continue
     
     # Find current assignee (who's "up to bat")
     current_assignee = None

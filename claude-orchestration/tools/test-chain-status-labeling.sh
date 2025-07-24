@@ -41,11 +41,12 @@ EOF
 
 echo "Created test chain: test-completed-chain"
 
-# Run chain-status.sh and capture output
-OUTPUT=$("$SCRIPT_DIR/chain-status.sh" 2>&1)
+# Run chain-status.sh with --completed flag to see completed chains
+OUTPUT=$("$SCRIPT_DIR/chain-status.sh" --completed 2>&1)
 
 # Check if completed chain appears under correct section
-if echo "$OUTPUT" | grep -A 10 "Builder" | grep -q "Test Completed Chain"; then
+# Look for the test chain in the Builder section by checking the area after "Builder" header
+if echo "$OUTPUT" | sed -n '/Builder.*Tasks/,/Tasks\|═══════════/p' | grep -q "Test Completed Chain"; then
     echo "✅ PASS: Completed chain correctly shows under Builder section"
     TEST_PASSED=true
 else
