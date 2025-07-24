@@ -1,0 +1,117 @@
+# Sequential Auto-Cascade Template
+# Template for linear workflows through multiple specialists
+
+id: "[REPLACE_WITH_CHAIN_ID]"
+title: "[REPLACE_WITH_DESCRIPTIVE_TITLE]"
+status: pending
+created: "[REPLACE_WITH_TIMESTAMP]"
+updated: "[REPLACE_WITH_TIMESTAMP]"
+template_id: sequential-auto-cascade
+description: "[REPLACE_WITH_WORKFLOW_DESCRIPTION]"
+version: '2.0'
+
+# Auto-cascade configuration - REQUIRED for all auto-cascade chains
+auto_cascade:
+  enabled: true
+  mode: "sequential"
+  initiated_by: "stephen"                    # Stephen must manually start first phase
+  requires_stephen_approval: true            # Final phase requires Stephen approval
+  emergency_stop_enabled: true              # Stephen can interrupt at any point
+  
+  # Identity override authorization
+  identity_protocol_override: true
+  authorized_roles: ["claude-1", "claude-2", "claude-3", "claude-4", "claude-5", "claude-6"]
+  
+  # Audit and safety
+  audit_logging: true
+  cascade_log: []                           # Runtime cascade actions logged here
+  safety_checks:
+    - "verify_next_role_assignment"
+    - "confirm_phase_completion"
+    - "validate_evidence_provided"
+    - "check_emergency_stop_status"
+
+use_cases:
+- "[REPLACE_WITH_USE_CASE_1]"
+- "[REPLACE_WITH_USE_CASE_2]"
+
+variables:
+  feature_name: "[REPLACE_WITH_FEATURE_NAME]"
+  system_component: "[REPLACE_WITH_COMPONENT]"
+  complexity_level: "[REPLACE_WITH_COMPLEXITY]"
+  priority_level: "[REPLACE_WITH_PRIORITY]"
+
+success_criteria:
+- "[REPLACE_WITH_SUCCESS_CRITERION_1]"
+- "[REPLACE_WITH_SUCCESS_CRITERION_2]"
+- "Auto-cascade executes smoothly with proper role transitions"
+- "Comprehensive audit logging of all identity switches"
+- "Stephen approval gates function correctly"
+
+# Phase definitions with auto-cascade configuration
+phases:
+- phase_id: "[REPLACE_WITH_PHASE_1_ID]"
+  phase_name: "[REPLACE_WITH_PHASE_1_NAME]"
+  assigned_to: "[REPLACE_WITH_ROLE_1]"
+  depends_on: []
+  description: "[REPLACE_WITH_PHASE_1_DESCRIPTION]"
+  deliverable: "[REPLACE_WITH_DELIVERABLE_1] + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_DURATION_1]"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: "[REPLACE_WITH_NEXT_ROLE_1]"
+    summon_command: "/summon [REPLACE_WITH_NEXT_NICKNAME_1]"
+    context_message: "Auto-cascade from Phase 1 - your Phase 2 is ready for [REPLACE_WITH_CONTEXT_1]"
+
+- phase_id: "[REPLACE_WITH_PHASE_2_ID]"
+  phase_name: "[REPLACE_WITH_PHASE_2_NAME]"
+  assigned_to: "[REPLACE_WITH_ROLE_2]"
+  depends_on:
+  - "[REPLACE_WITH_PHASE_1_ID]"
+  description: "[REPLACE_WITH_PHASE_2_DESCRIPTION]"
+  deliverable: "[REPLACE_WITH_DELIVERABLE_2] + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_DURATION_2]"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: "[REPLACE_WITH_NEXT_ROLE_2]"
+    summon_command: "/summon [REPLACE_WITH_NEXT_NICKNAME_2]"
+    context_message: "Auto-cascade from Phase 2 - your Phase 3 is ready for [REPLACE_WITH_CONTEXT_2]"
+
+- phase_id: "[REPLACE_WITH_PHASE_3_ID]"
+  phase_name: "[REPLACE_WITH_PHASE_3_NAME]"
+  assigned_to: "[REPLACE_WITH_ROLE_3]"
+  depends_on:
+  - "[REPLACE_WITH_PHASE_2_ID]"
+  description: "[REPLACE_WITH_PHASE_3_DESCRIPTION]"
+  deliverable: "[REPLACE_WITH_DELIVERABLE_3] + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_DURATION_3]"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: false                           # Final phase requires Stephen approval
+    stephen_approval_required: true
+    next_role: "stephen_approval_required"
+
+template_notes:
+- "Sequential auto-cascade reduces coordination overhead for linear workflows"
+- "Each phase automatically transitions to next specialist upon completion"
+- "Stephen maintains control through manual initiation and final approval"
+- "Emergency stop can interrupt cascade at any point"
+- "Comprehensive audit logging tracks all role transitions"
+
+pending_notifications: []
+priority: "[REPLACE_WITH_PRIORITY_LEVEL]"
+
+# Template Usage Instructions
+# 1. Replace all [REPLACE_WITH_*] placeholders with actual values
+# 2. Customize phase definitions for your specific workflow
+# 3. Verify role assignments match your team configuration
+# 4. Test with emergency stop before production use
+# 5. Ensure Stephen approval for initial deployment

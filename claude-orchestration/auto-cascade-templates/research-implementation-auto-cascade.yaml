@@ -1,0 +1,206 @@
+# Research-Implementation Auto-Cascade Template
+# Template for Research → Architecture → Build → Validate → Document workflow
+
+id: "[REPLACE_WITH_CHAIN_ID]"
+title: "[REPLACE_WITH_DESCRIPTIVE_TITLE]"
+status: pending
+created: "[REPLACE_WITH_TIMESTAMP]"
+updated: "[REPLACE_WITH_TIMESTAMP]"
+template_id: research-implementation-auto-cascade
+description: "Research-driven development: Investigation → Design → Implementation → Validation → Documentation"
+version: '2.0'
+
+# Auto-cascade configuration for research workflows
+auto_cascade:
+  enabled: true
+  mode: "sequential"
+  initiated_by: "stephen"
+  requires_stephen_approval: true
+  emergency_stop_enabled: true
+  
+  # Identity override authorization
+  identity_protocol_override: true
+  authorized_roles: ["claude-1", "claude-2", "claude-3", "claude-4", "claude-5", "claude-6"]
+  
+  # Research-focused audit logging
+  audit_logging: true
+  cascade_log: []
+  safety_checks:
+    - "verify_next_role_assignment"
+    - "confirm_phase_completion"
+    - "validate_evidence_provided"
+    - "check_emergency_stop_status"
+    - "verify_research_completeness"     # Research-specific validation
+
+use_cases:
+- "Complex feature development requiring investigation and design"
+- "Technical feasibility analysis followed by implementation"
+- "System integration projects with unknown requirements"
+- "Legacy system modernization with research phase"
+
+variables:
+  feature_name: "[REPLACE_WITH_FEATURE_NAME]"
+  system_component: "[REPLACE_WITH_COMPONENT]"
+  complexity_level: "High - Research and Investigation Required"
+  priority_level: "[REPLACE_WITH_PRIORITY]"
+  research_scope: "[REPLACE_WITH_RESEARCH_SCOPE]"
+
+success_criteria:
+- "Comprehensive research provides clear implementation direction"
+- "Architecture design addresses all discovered requirements"
+- "Implementation follows researched best practices"
+- "Validation confirms research assumptions were correct"
+- "Documentation captures research findings and implementation details"
+
+phases:
+- phase_id: research_investigation
+  phase_name: "Research & Investigation"
+  assigned_to: "[REPLACE_WITH_RESEARCH_ROLE]"
+  depends_on: []
+  description: "[REPLACE_WITH_RESEARCH_DESCRIPTION]"
+  deliverable: "Comprehensive research report with findings, options analysis, and implementation recommendations + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_RESEARCH_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  research_requirements:
+    - "Technical feasibility analysis"
+    - "Best practices investigation"
+    - "Integration requirements assessment"
+    - "Risk and complexity evaluation"
+  cascade_action:
+    enabled: true
+    next_role: "claude-1-architect"
+    summon_command: "/summon architect"
+    context_message: "Auto-cascade from Research - architecture design phase ready with comprehensive research findings"
+
+- phase_id: architecture_design
+  phase_name: "Architecture & System Design"
+  assigned_to: claude-1-architect
+  depends_on:
+  - research_investigation
+  description: "Design system architecture based on research findings and requirements"
+  deliverable: "Complete architectural specification with component design, integration patterns, and implementation plan + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_ARCHITECTURE_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  design_requirements:
+    - "Architecture addresses all research findings"
+    - "Component relationships clearly defined"
+    - "Integration patterns specified"
+    - "Implementation approach validated"
+  cascade_action:
+    enabled: true
+    next_role: "claude-2-builder"
+    summon_command: "/summon builder"
+    context_message: "Auto-cascade from Architecture - implementation phase ready with complete design specification"
+
+- phase_id: implementation_phase
+  phase_name: "Implementation & Development"
+  assigned_to: claude-2-builder
+  depends_on:
+  - architecture_design
+  description: "Implement the researched and designed solution following architectural specifications"
+  deliverable: "Working implementation following research recommendations and architectural design + quality gates passed + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_IMPLEMENTATION_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  implementation_requirements:
+    - "Follows architectural specifications exactly"
+    - "Implements research-recommended patterns"
+    - "Passes all quality gates (lint, typecheck, build, test)"
+    - "Integration points work as designed"
+  cascade_action:
+    enabled: true
+    next_role: "claude-3-guardian"
+    summon_command: "/summon guardian"
+    context_message: "Auto-cascade from Implementation - validation phase ready to verify research assumptions and implementation quality"
+
+- phase_id: validation_testing
+  phase_name: "Validation & Testing"
+  assigned_to: claude-3-guardian
+  depends_on:
+  - implementation_phase
+  description: "Comprehensive validation that implementation meets research objectives and quality standards"
+  deliverable: "Complete validation report confirming research assumptions, implementation quality, and system integration + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_VALIDATION_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  validation_requirements:
+    - "Implementation matches research recommendations"
+    - "All architectural requirements validated"
+    - "Integration testing confirms design assumptions"
+    - "Performance meets research-based expectations"
+  cascade_action:
+    enabled: true
+    next_role: "claude-4-chronicler"
+    summon_command: "/summon chronicler"
+    context_message: "Auto-cascade from Validation - documentation phase ready to capture complete research-to-implementation journey"
+
+- phase_id: documentation_capture
+  phase_name: "Knowledge Capture & Documentation"
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - validation_testing
+  description: "Document complete research-to-implementation journey including findings, design decisions, and implementation details"
+  deliverable: "Comprehensive documentation covering research findings, architectural decisions, implementation details, and validation results + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_DOCUMENTATION_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  documentation_requirements:
+    - "Research findings and decision rationale documented"
+    - "Architecture design and trade-offs explained"
+    - "Implementation approach and patterns documented"
+    - "Validation results and lessons learned captured"
+  cascade_action:
+    enabled: false
+    stephen_approval_required: true
+    next_role: "stephen_approval_required"
+
+- phase_id: stephen_approval_gate
+  phase_name: "Research-Implementation Approval"
+  assigned_to: claude-1-architect
+  depends_on:
+  - documentation_capture
+  description: "Present complete research-to-implementation workflow to Stephen for approval and production authorization"
+  deliverable: "Stephen's explicit approval for research-driven implementation + architectural validation + mark entire task chain as completed"
+  estimated_duration: "30 minutes (Stephen approval required)"
+  started: null
+  completed: null
+  status: waiting
+  approval_requirements:
+    - "Research objectives achieved"
+    - "Implementation follows research recommendations"
+    - "Validation confirms research assumptions"
+    - "Documentation captures institutional knowledge"
+
+template_notes:
+- "Research phase provides foundation for all subsequent work"
+- "Architecture phase translates research into actionable design"
+- "Implementation phase executes research-driven design"
+- "Validation phase confirms research assumptions were correct"
+- "Documentation captures complete research-to-production journey"
+- "Each phase builds on previous research and design decisions"
+
+pending_notifications: []
+priority: "[REPLACE_WITH_PRIORITY_LEVEL]"
+
+# Research Workflow Characteristics
+research_workflow_features:
+  investigation_depth: "Comprehensive analysis before design"
+  decision_traceability: "Clear path from research findings to implementation"
+  assumption_validation: "Testing confirms research assumptions"
+  knowledge_capture: "Complete documentation of research journey"
+  iterative_refinement: "Each phase can refine previous assumptions"
+
+# Template Usage Instructions
+# 1. Replace all [REPLACE_WITH_*] placeholders with project-specific values
+# 2. Customize research scope and investigation requirements
+# 3. Adjust phase assignments based on research complexity
+# 4. Define specific research deliverables and validation criteria
+# 5. Ensure documentation captures institutional knowledge
+# 6. Test emergency stop capability during research phases

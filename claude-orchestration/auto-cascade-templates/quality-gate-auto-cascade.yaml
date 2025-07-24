@@ -1,0 +1,170 @@
+# Quality Gate Auto-Cascade Template
+# Template for Build → Test → Document → Approve workflow pattern
+
+id: "[REPLACE_WITH_CHAIN_ID]"
+title: "[REPLACE_WITH_DESCRIPTIVE_TITLE]"
+status: pending
+created: "[REPLACE_WITH_TIMESTAMP]"
+updated: "[REPLACE_WITH_TIMESTAMP]"
+template_id: quality-gate-auto-cascade
+description: "Quality-focused workflow: Implementation → Testing → Documentation → Approval"
+version: '2.0'
+
+# Auto-cascade configuration optimized for quality gates
+auto_cascade:
+  enabled: true
+  mode: "sequential"
+  initiated_by: "stephen"
+  requires_stephen_approval: true
+  emergency_stop_enabled: true
+  
+  # Identity override authorization
+  identity_protocol_override: true
+  authorized_roles: ["claude-1", "claude-2", "claude-3", "claude-4"]
+  
+  # Enhanced audit for quality tracking
+  audit_logging: true
+  cascade_log: []
+  safety_checks:
+    - "verify_next_role_assignment"
+    - "confirm_phase_completion"
+    - "validate_evidence_provided"
+    - "check_emergency_stop_status"
+    - "verify_quality_gates_passed"      # Additional quality check
+
+use_cases:
+- "Feature implementation with comprehensive quality validation"
+- "Bug fixes requiring full testing and documentation cycle"
+- "Code changes affecting critical system components"
+
+variables:
+  feature_name: "[REPLACE_WITH_FEATURE_NAME]"
+  system_component: "[REPLACE_WITH_COMPONENT]"
+  complexity_level: "Medium-High - Quality Gate Validation"
+  priority_level: "[REPLACE_WITH_PRIORITY]"
+  quality_standard: "Production-Ready"
+
+success_criteria:
+- "Implementation passes all quality gates"
+- "Comprehensive test coverage validates functionality"
+- "Documentation accurately reflects implemented changes"
+- "Stephen approval confirms production readiness"
+- "Auto-cascade maintains quality standards throughout workflow"
+
+phases:
+- phase_id: implementation_phase
+  phase_name: "Core Implementation"
+  assigned_to: claude-2-builder
+  depends_on: []
+  description: "[REPLACE_WITH_IMPLEMENTATION_DESCRIPTION]"
+  deliverable: "Working implementation with quality gates (lint, typecheck, build, test) + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_IMPLEMENTATION_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  quality_requirements:
+    - "npm run lint:check passes with zero warnings"
+    - "npm run typecheck passes with zero errors"
+    - "npm run build succeeds completely"
+    - "npm test passes all existing tests"
+  cascade_action:
+    enabled: true
+    next_role: "claude-3-guardian"
+    summon_command: "/summon guardian"
+    context_message: "Auto-cascade from Implementation - comprehensive testing phase ready for quality validation"
+
+- phase_id: testing_validation
+  phase_name: "Comprehensive Testing & Quality Validation"
+  assigned_to: claude-3-guardian
+  depends_on:
+  - implementation_phase
+  description: "Comprehensive testing, quality validation, and regression testing"
+  deliverable: "Complete test validation report with coverage analysis + quality gate certification + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_TESTING_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  quality_requirements:
+    - "All existing tests continue to pass"
+    - "New functionality has appropriate test coverage"
+    - "Edge cases and error conditions tested"
+    - "Performance impact assessed"
+  cascade_action:
+    enabled: true
+    next_role: "claude-4-chronicler"
+    summon_command: "/summon chronicler"
+    context_message: "Auto-cascade from Testing - documentation phase ready for tested and validated implementation"
+
+- phase_id: documentation_update
+  phase_name: "Documentation & Knowledge Capture"
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - testing_validation
+  description: "Update documentation, API references, and usage guides for validated implementation"
+  deliverable: "Complete documentation update with examples and troubleshooting + registry updates + mark this phase complete in task chain"
+  estimated_duration: "[REPLACE_WITH_DOCUMENTATION_DURATION]"
+  started: null
+  completed: null
+  status: waiting
+  quality_requirements:
+    - "API documentation reflects actual implementation"
+    - "Code examples tested and working"
+    - "Documentation registry updated"
+    - "Migration guides provided if needed"
+  cascade_action:
+    enabled: false
+    stephen_approval_required: true
+    next_role: "stephen_approval_required"
+
+- phase_id: stephen_approval_gate
+  phase_name: "Production Readiness Approval"
+  assigned_to: claude-1-architect
+  depends_on:
+  - documentation_update
+  description: "Present complete implementation to Stephen for production approval"
+  deliverable: "Stephen's explicit approval for production deployment + architectural sign-off + mark entire task chain as completed"
+  estimated_duration: "30 minutes (Stephen approval required)"
+  started: null
+  completed: null
+  status: waiting
+  approval_requirements:
+    - "Implementation meets all quality standards"
+    - "Testing validation comprehensive and passing"
+    - "Documentation accurate and complete"
+    - "Production deployment plan approved"
+
+template_notes:
+- "Quality gate cascade ensures no phase skips validation requirements"
+- "Each specialist validates quality before auto-cascading to next phase"
+- "Builder must pass all quality gates before Guardian testing begins"
+- "Guardian certification required before Chronicler documentation"
+- "Stephen approval validates entire quality workflow"
+- "Emergency stop maintains safety if quality issues discovered"
+
+pending_notifications: []
+priority: "[REPLACE_WITH_PRIORITY_LEVEL]"
+
+# Quality Gate Requirements
+quality_gate_standards:
+  implementation:
+    - "Zero ESLint warnings/errors"
+    - "TypeScript compilation clean"
+    - "Build pipeline success"
+    - "All tests passing"
+  testing:
+    - "Regression test coverage"
+    - "Edge case validation"
+    - "Performance impact assessment"
+    - "Error handling verification"
+  documentation:
+    - "API accuracy validation"
+    - "Working code examples"
+    - "Complete troubleshooting guides"
+    - "Registry maintenance"
+
+# Template Usage Instructions
+# 1. Replace all [REPLACE_WITH_*] placeholders
+# 2. Customize quality requirements for your specific feature
+# 3. Adjust phase durations based on implementation complexity
+# 4. Ensure quality gate standards match your project requirements
+# 5. Test emergency stop capability before production use
