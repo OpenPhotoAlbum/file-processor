@@ -704,7 +704,12 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     else:
         print(f"  \033[1;96m{i}.\033[0m {specialist_icon} {specialist} \033[90m<{specialist_key}>\033[0m")
     print()
-    print(f"     {dim_start}{status_boxed} \033[1m{phase_name}\033[0m{dim_end}")
+    # Format status badge with completion date if completed
+    if status.upper() == 'COMPLETED' and phase.get('completed'):
+        completed_time = format_relative_time_detail(phase['completed'])
+        print(f"     {dim_start}{status_boxed} {completed_time} \033[1m{phase_name}\033[0m{dim_end}")
+    else:
+        print(f"     {dim_start}{status_boxed} \033[1m{phase_name}\033[0m{dim_end}")
     # Add description in a simple box with dependencies
     description = phase.get('description', 'No description available')
     
@@ -738,11 +743,25 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     if phase.get('started'):
         print(f"     {dim_start}Started: {phase['started']}{dim_end}")
     
-    if phase.get('completed'):
-        print(f"     {dim_start}Completed: {phase['completed']}{dim_end}")
+    # Completion date is now shown in status badge - remove separate line
     
     if phase.get('completion_evidence'):
-        print(f"     {dim_start}Evidence: {phase['completion_evidence']}{dim_end}")
+        # Create evidence box similar to description box
+        evidence_text = phase['completion_evidence']
+        
+        # Wrap evidence text to fit inside box
+        evidence_lines = textwrap.wrap(evidence_text, width=box_width)
+        
+        # Create evidence box with dim styling for waiting tasks
+        print(f"     {dim_start}┌ Evidence: " + "─" * (box_width - 9) + "┐" + f"{dim_end}")
+        for line in evidence_lines:
+            # Calculate visual width (excluding ANSI color codes)
+            import re
+            visual_line = re.sub(r'\033\[[0-9;]*m', '', line)
+            padding_needed = box_width - len(visual_line)
+            padded_line = line + ' ' * max(0, padding_needed)
+            print(f"     {dim_start}│{dim_end} {dim_start}{padded_line}{dim_end} {dim_start}│{dim_end}")
+        print(f"     {dim_start}└" + "─" * (box_width + 2) + "┘" + f"{dim_end}")
     
     if phase.get('block_reason'):
         print(f"     {dim_start}Block reason: {phase['block_reason']}{dim_end}")
