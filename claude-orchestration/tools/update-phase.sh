@@ -185,13 +185,16 @@ elif action == 'reset':
     target_phase['status'] = 'pending'
     target_phase['started'] = None
     target_phase['completed'] = None
+    target_phase['attempt_counter'] = 0  # Reset attempt counter
     if 'completion_evidence' in target_phase:
         del target_phase['completion_evidence']
     if 'block_reason' in target_phase:
         del target_phase['block_reason']
     if 'blocked_at' in target_phase:
         del target_phase['blocked_at']
-    print(f"🔄 Phase '{target_phase['phase_name']}' reset to pending")
+    if 'became_ready' in target_phase:
+        del target_phase['became_ready']  # CRITICAL: Clear stale became_ready timestamp
+    print(f"🔄 Phase '{target_phase['phase_name']}' reset to pending (all metadata cleared)")
 
 else:
     print(f"Error: Unknown action '{action}'")
