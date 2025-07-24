@@ -682,7 +682,9 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     elif status.upper() == 'PENDING':
         status_colored = "\033[1;33m" + status.upper() + "\033[0m"  # Yellow
     elif status.upper() == 'WAITING':
-        status_colored = "\033[1;33m" + status.upper() + "\033[0m"  # Yellow
+        status_colored = "\033[0;33m" + status.upper() + "\033[0m"  # Darker Yellow
+    elif status.upper() == 'READY':
+        status_colored = "\033[1;93m" + status.upper() + "\033[0m"  # Bright Yellow
     elif status.upper() == 'BLOCKED':
         status_colored = "\033[0;31m" + status.upper() + "\033[0m"  # Red
     elif status.upper() == 'FAILED':
