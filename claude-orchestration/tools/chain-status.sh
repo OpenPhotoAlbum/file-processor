@@ -1,10 +1,49 @@
 #!/bin/bash
 # Task Chain Status Display Tool
-# Usage: ./chain-status.sh [chain_id|all]
+# Usage: ./chain-status.sh [chain_id] [--role role_name]...
+# Examples:
+#   ./chain-status.sh                        # Show all chains
+#   ./chain-status.sh --role claude-6        # Show only Claude 6's tasks
+#   ./chain-status.sh --role 2 --role 6      # Show Builder and Data tasks
+#   ./chain-status.sh --role architect       # Show only Architect's tasks
+#   ./chain-status.sh template-system-doc    # Show specific chain details
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CHAINS_DIR="$(dirname "$SCRIPT_DIR")/communication/task-chains"
 ACTIVE_DIR="$CHAINS_DIR/active"
+
+# Parse command line arguments
+CHAIN_ARG=""
+ROLE_FILTERS=()
+
+# Process all arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --role)
+            if [[ -n "$2" ]]; then
+                ROLE_FILTERS+=("$2")
+                shift 2
+            else
+                echo "Error: --role requires an argument"
+                exit 1
+            fi
+            ;;
+        all)
+            # Support legacy 'all' syntax but it's no longer needed
+            shift
+            ;;
+        *)
+            # If not a flag, assume it's a chain ID
+            if [[ -z "$CHAIN_ARG" ]]; then
+                CHAIN_ARG="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+# Convert ROLE_FILTERS array to comma-separated string for Python
+ROLE_FILTER=$(IFS=,; echo "${ROLE_FILTERS[*]}")
 
 # Colors for output
 RED='\033[0;31m'
@@ -653,9 +692,17 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     
     status_boxed = f"[{status_colored}]"
     
-    print(f"  \033[1;96m{i}.\033[0m {specialist_icon} {specialist} \033[90m<{specialist_key}>\033[0m")
+    # Add dim styling for waiting tasks using same gray as header
+    is_waiting = status.upper() == 'WAITING'  
+    dim_start = "\033[90m" if is_waiting else ""  # Same gray as header text
+    dim_end = "\033[0m" if is_waiting else ""
+    
+    if is_waiting:
+        print(f"  \033[90m{i}. {specialist_icon} {specialist} <{specialist_key}>\033[0m")
+    else:
+        print(f"  \033[1;96m{i}.\033[0m {specialist_icon} {specialist} \033[90m<{specialist_key}>\033[0m")
     print()
-    print(f"     {status_boxed} \033[1m{phase_name}\033[0m")
+    print(f"     {dim_start}{status_boxed} \033[1m{phase_name}\033[0m{dim_end}")
     # Add description in a simple box with dependencies
     description = phase.get('description', 'No description available')
     
@@ -675,28 +722,28 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     wrapped_lines = textwrap.wrap(description, width=box_width)
     box_lines.extend(wrapped_lines)
     
-    # Create box
-    print("     ┌" + "─" * (box_width + 2) + "┐")
+    # Create box with dim styling for waiting tasks
+    print(f"     {dim_start}┌" + "─" * (box_width + 2) + "┐" + f"{dim_end}")
     for line in box_lines:
         # Calculate visual width (excluding ANSI color codes)
         import re
         visual_line = re.sub(r'\033\[[0-9;]*m', '', line)
         padding_needed = box_width - len(visual_line)
         padded_line = line + ' ' * max(0, padding_needed)
-        print(f"     │ {padded_line} │")
-    print("     └" + "─" * (box_width + 2) + "┘")
+        print(f"     {dim_start}│{dim_end} {dim_start}{padded_line}{dim_end} {dim_start}│{dim_end}")
+    print(f"     {dim_start}└" + "─" * (box_width + 2) + "┘" + f"{dim_end}")
     
     if phase.get('started'):
-        print(f"     Started: {phase['started']}")
+        print(f"     {dim_start}Started: {phase['started']}{dim_end}")
     
     if phase.get('completed'):
-        print(f"     Completed: {phase['completed']}")
+        print(f"     {dim_start}Completed: {phase['completed']}{dim_end}")
     
     if phase.get('completion_evidence'):
-        print(f"     Evidence: {phase['completion_evidence']}")
+        print(f"     {dim_start}Evidence: {phase['completion_evidence']}{dim_end}")
     
     if phase.get('block_reason'):
-        print(f"     Block reason: {phase['block_reason']}")
+        print(f"     {dim_start}Block reason: {phase['block_reason']}{dim_end}")
     
     print()
 
@@ -713,7 +760,8 @@ EOF
 }
 
 # Main execution
-if [ $# -eq 0 ] || [ "$1" = "all" ]; then
+if [[ -z "$CHAIN_ARG" ]]; then
+    # Show all chains (optionally filtered by role)
     echo
     
     if [ ! -d "$ACTIVE_DIR" ] || [ -z "$(ls -A "$ACTIVE_DIR"/*.yaml 2>/dev/null)" ]; then
@@ -725,12 +773,19 @@ if [ $# -eq 0 ] || [ "$1" = "all" ]; then
     # Create temporary file to process chains by assignee
     TEMP_FILE=$(mktemp)
     
+    # Pass role filter to Python if provided
+    export ROLE_FILTER="$ROLE_FILTER"
+    
     # Group chains by assignee
     python3 << EOF > "$TEMP_FILE"
 import yaml
 import os
 import glob
 from collections import defaultdict
+
+# Get role filters from environment (comma-separated)
+role_filter_str = os.environ.get('ROLE_FILTER', '')
+role_filters = [r.strip() for r in role_filter_str.split(',') if r.strip()]
 
 # Load all chains and group by current assignee
 chains_by_assignee = defaultdict(list)
@@ -789,6 +844,51 @@ icons = {
     'claude-6': '🗄️'    # Data - Database/Stack
 }
 
+# Apply role filters if provided
+if role_filters:
+    # Normalize the filters (architect -> claude-1, etc.)
+    filter_mapping = {
+        'architect': 'claude-1',
+        'builder': 'claude-2',
+        'guardian': 'claude-3', 
+        'chronicler': 'claude-4',
+        'curator': 'claude-5',
+        'data': 'claude-6',
+        'dev': 'claude-2',
+        'qa': 'claude-3',
+        'docs': 'claude-4',
+        'intern': 'claude-5',
+        '1': 'claude-1',
+        '2': 'claude-2', 
+        '3': 'claude-3',
+        '4': 'claude-4',
+        '5': 'claude-5',
+        '6': 'claude-6'
+    }
+    
+    normalized_filters = []
+    for role_filter in role_filters:
+        normalized = filter_mapping.get(role_filter.lower(), role_filter.lower())
+        if normalized in assignee_order:
+            normalized_filters.append(normalized)
+        else:
+            print(f"Warning: Unknown role '{role_filter}'")
+    
+    # Filter assignee_order to only show requested roles
+    assignee_order = [role for role in assignee_order if role in normalized_filters]
+
+# Handle case where filtered roles have no tasks
+if role_filters and len(assignee_order) == 0:
+    print("NO_TASKS:No matching roles found or no active tasks for specified roles")
+elif role_filters and all(role not in chains_by_assignee or not chains_by_assignee[role] for role in assignee_order):
+    if len(assignee_order) == 1:
+        role_display = nicknames.get(assignee_order[0], assignee_order[0])  
+        icon = icons.get(assignee_order[0], '🎯')
+        print(f"NO_TASKS:{icon} {role_display} ({assignee_order[0]}) - No active tasks")
+    else:
+        role_names = [nicknames.get(role, role) for role in assignee_order]
+        print(f"NO_TASKS:No active tasks for: {', '.join(role_names)}")
+
 # Output chains grouped by assignee
 for assignee in assignee_order:
     if assignee in chains_by_assignee and chains_by_assignee[assignee]:
@@ -814,7 +914,11 @@ EOF
 
     # Process the grouped output
     while IFS= read -r line; do
-        if [[ $line == HEADER:* ]]; then
+        if [[ $line == NO_TASKS:* ]]; then
+            message="${line#NO_TASKS:}"
+            echo -e "\n${GREEN}${message}${NC}"
+            echo -e "✨ All clear! Ready for new assignments.\n"
+        elif [[ $line == HEADER:* ]]; then
             header="${line#HEADER:}"
             echo -e "${CYAN}${header}${NC}"
             echo -e "${CYAN}$(printf '─%.0s' $(seq 1 ${#header}))${NC}"
@@ -836,7 +940,8 @@ EOF
     echo "  ./archive-chain.sh <chain_id>"
     
 else
-    CHAIN_ID="$1"
+    # Show specific chain detail
+    CHAIN_ID="$CHAIN_ARG"
     
     # Check if it's a numeric shortcut
     if [[ "$CHAIN_ID" =~ ^[0-9]+$ ]]; then
