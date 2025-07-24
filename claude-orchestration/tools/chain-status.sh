@@ -752,8 +752,26 @@ for i, phase in enumerate(chain.get('phases', []), 1):
         # Wrap evidence text to fit inside box
         evidence_lines = textwrap.wrap(evidence_text, width=box_width)
         
-        # Create evidence box with dim styling for waiting tasks
-        print(f"     {dim_start}┌ Evidence: " + "─" * (box_width - 9) + "┐" + f"{dim_end}")
+        # Create evidence box with dim styling for waiting tasks and colored label matching status
+        evidence_label_colored = f"Evidence:"
+        if not is_waiting:  # Only color if not dimmed
+            if status.upper() == 'COMPLETED':
+                evidence_label_colored = f"\033[0;32mEvidence:\033[0m"  # Green
+            elif status.upper() == 'ACTIVE':
+                evidence_label_colored = f"\033[0;34mEvidence:\033[0m"  # Blue
+            elif status.upper() == 'IN_PROGRESS':
+                evidence_label_colored = f"\033[0;34mEvidence:\033[0m"  # Blue
+            elif status.upper() == 'PENDING':
+                evidence_label_colored = f"\033[1;33mEvidence:\033[0m"  # Yellow
+            elif status.upper() == 'WAITING':
+                evidence_label_colored = f"\033[0;33mEvidence:\033[0m"  # Darker Yellow
+            elif status.upper() == 'READY':
+                evidence_label_colored = f"\033[1;93mEvidence:\033[0m"  # Bright Yellow
+            elif status.upper() == 'BLOCKED':
+                evidence_label_colored = f"\033[0;31mEvidence:\033[0m"  # Red
+            elif status.upper() == 'FAILED':
+                evidence_label_colored = f"\033[0;31mEvidence:\033[0m"  # Red
+        print(f"     {dim_start}┌ {evidence_label_colored} " + "─" * (box_width - 10) + "┐" + f"{dim_end}")
         for line in evidence_lines:
             # Calculate visual width (excluding ANSI color codes)
             import re
