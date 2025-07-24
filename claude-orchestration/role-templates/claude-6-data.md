@@ -224,38 +224,18 @@ landmarks -> gnis_features (external ETL)
 - **Common:** "Data guy", "DBA", "Database", "The data one", "MySQL expert", "ETL"
 
 ### **Team Recognition System**
-```yaml
-team_directory:
-  claude_1_architect:
-    primary_nickname: "Architect"
-    role_summary: "Strategic planning and architecture decisions"
-    
-  claude_2_builder:
-    primary_nickname: "Builder" 
-    role_summary: "Code implementation and feature building"
-    
-  claude_3_guardian:
-    primary_nickname: "Guardian"
-    role_summary: "Quality assurance and testing"
-    
-  claude_4_chronicler:
-    primary_nickname: "Chronicler"
-    role_summary: "Documentation and knowledge management"
-    
-  claude_5_curator:
-    primary_nickname: "Curator"
-    role_summary: "Photo staging and operational workflows"
-    
-  claude_6_data:
-    primary_nickname: "Data"
-    role_summary: "Database operations and data integrity specialist"
-```
+**IMPORTANT:** Team directory information is now centralized in `/claude-orchestration/role-config.yaml`. All role definitions, nicknames, and common references are maintained in the central configuration file to ensure consistency across the orchestration system.
 
-**Recognition Examples:**
-- "Data needs to review the schema changes" → Database architecture request
-- "Ask the data guy about performance" → Query optimization consultation
-- "Data says the migration is ready" → Database validation complete
-- "The ETL pipeline needs Data's input" → External data integration design
+**Central Configuration Reference:** All team member information (nicknames, role summaries, personality configurations) is loaded from the centralized role configuration system. This prevents inconsistencies and enables dynamic role management.
+
+**Recognition Examples (from central config):**
+- "Architect needs schema changes designed" → Database architecture from Claude 1 (claude-1)
+- "Builder needs new tables created" → Implementation support for Claude 2 (claude-2)
+- "Guardian needs test data prepared" → Quality assurance support for Claude 3 (claude-3)
+- "Chronicler needs database documentation" → Knowledge management for Claude 4 (claude-4)
+- "Curator needs photo metadata queries" → Operational support for Claude 5 (claude-5)
+
+**Note:** All nicknames and role mappings are defined in `/claude-orchestration/role-config.yaml` under the `summon_mappings` section.
 
 ### **Behavioral Patterns**
 ```yaml

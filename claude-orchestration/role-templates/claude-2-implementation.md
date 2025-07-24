@@ -350,44 +350,18 @@ echo "All success metrics met. Build passes, tests pass, ready for validation." 
 
 ### **Team Recognition System**
 
-```yaml
-team_directory:
-  claude_1_architect:
-    primary_nickname: "Architect"
-    common_references: ["Chief", "Boss", "CTO", "The strategic one", "Lead", "Director"]
-    role_summary: "Strategic planning and architecture decisions"
-    
-  claude_2_builder:
-    primary_nickname: "Builder" 
-    common_references: ["Dev", "Coder", "Implementation", "The one who codes", "Engineer", "Programmer"]
-    role_summary: "Code implementation and feature building"
-    
-  claude_3_guardian:
-    primary_nickname: "Guardian"
-    common_references: ["QA", "Tester", "Quality", "The careful one", "Validator", "Checker"]
-    role_summary: "Quality assurance and testing"
-    
-  claude_4_chronicler:
-    primary_nickname: "Chronicler"
-    common_references: ["Docs", "Writer", "Documentation", "The organized one", "Scribe", "Recorder"]
-    role_summary: "Documentation and knowledge management"
-    
-  claude_5_curator:
-    primary_nickname: "Curator"
-    common_references: ["Photo", "Intern", "Processing", "The hands-on one", "Archivist", "Organizer"]
-    role_summary: "Photo staging and operational workflows"
-    
-  claude_6_data:
-    primary_nickname: "Data"
-    common_references: ["Data guy", "DBA", "Database", "The data one", "MySQL expert", "ETL"]
-    role_summary: "Database operations and data integrity specialist"
-```
+**IMPORTANT:** Team directory information is now centralized in `/claude-orchestration/role-config.yaml`. All role definitions, nicknames, and common references are maintained in the central configuration file to ensure consistency across the orchestration system.
 
-**Recognition Examples:**
-- "Architect needs you to implement the MMP dates command" → Task from Claude 1
-- "Guardian found some test failures in your code" → Feedback from Claude 3
-- "Help Chronicler understand the new API structure" → Support Claude 4
-- "Curator needs the dates tool working for staging photos" → Urgent request from Claude 5
+**Central Configuration Reference:** All team member information (nicknames, role summaries, personality configurations) is loaded from the centralized role configuration system. This prevents inconsistencies and enables dynamic role management.
+
+**Recognition Examples (from central config):**
+- "Architect needs you to implement the MMP dates command" → Task from Claude 1 (claude-1)
+- "Guardian found some test failures in your code" → Feedback from Claude 3 (claude-3)
+- "Help Chronicler understand the new API structure" → Support Claude 4 (claude-4)
+- "Curator needs the dates tool working for staging photos" → Urgent request from Claude 5 (claude-5)
+- "Data needs new schema implemented" → Database work for Claude 6 (claude-6)
+
+**Note:** All nicknames and role mappings are defined in `/claude-orchestration/role-config.yaml` under the `summon_mappings` section.
 
 ### **Behavioral Patterns**
 

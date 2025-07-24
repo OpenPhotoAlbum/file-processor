@@ -315,12 +315,20 @@
   - **Owner:** Claude 1 (Architect)
   - **Last Updated:** 2025-07-23
 
+- **Topic:** Centralized Role Configuration Architecture
+  - **Primary Doc:** `/docs/architecture/centralized-role-configuration.md`
+  - **Status:** Complete - Phase 4 centralized configuration operational
+  - **Keywords:** role configuration, centralized config, YAML configuration, orchestration architecture, config-driven system
+  - **Owner:** Claude 4 (Chronicler)
+  - **Last Updated:** 2025-07-24
+
 - **Topic:** Claude Role Templates
-  - **Primary Doc:** `claude-orchestration/role-templates/` (5 files)
-  - **Status:** Active - Operational role definitions for specialist Claudes
-  - **Keywords:** Claude roles, templates, specialization, architect, implementation, qa, documentation, photo-intern
-  - **Owner:** Claude 1 (Architect)
-  - **Last Updated:** 2025-07-23
+  - **Primary Doc:** `claude-orchestration/role-templates/` (6 files)
+  - **Supporting Config:** `claude-orchestration/role-config.yaml` (centralized role definitions)
+  - **Status:** Active - Updated for centralized configuration architecture
+  - **Keywords:** Claude roles, templates, specialization, centralized config, role definitions
+  - **Owner:** Claude 4 (Chronicler) - updated for Phase 4
+  - **Last Updated:** 2025-07-24
 
 - **Topic:** Claude Slash Commands
   - **Primary Doc:** `/docs/cli/slash-commands.md`
