@@ -1,0 +1,128 @@
+template_name: ETL Pipeline Integration
+template_id: etl-pipeline
+description: External data source integration with comprehensive validation and error
+  handling
+version: '2.0'
+use_cases:
+- Recreation.gov facility data integration
+- GNIS geographic feature data loading
+- Geolocation service integration
+- External API data synchronization
+- Bulk data import and normalization
+- Third-party service integration
+variables:
+  data_source: '{{DATA_SOURCE}}'
+  data_volume: '{{DATA_VOLUME}}'
+  update_frequency: '{{UPDATE_FREQUENCY}}'
+  api_endpoint: '{{API_ENDPOINT}}'
+  data_format: '{{DATA_FORMAT}}'
+  integration_complexity: '{{INTEGRATION_COMPLEXITY}}'
+success_criteria:
+- External data successfully integrated with data quality validation
+- ETL pipeline handles errors gracefully without corrupting existing data
+- Data normalization maintains referential integrity with heritage photos
+- Performance impact on existing operations is minimal
+- Pipeline monitoring and alerting operational
+- Complete rollback capability if integration fails
+phases:
+- phase_id: business_impact_triage
+  phase_name: Business Impact Triage
+  assigned_to: claude-1
+  depends_on: []
+  description: 'Quick assessment: Does this ETL involve API costs, rate limits, or
+    vendor dependencies? Flag for Guardian attention if yes. No deep research required.'
+  deliverable: Business impact flag (HIGH/MEDIUM/LOW) with brief reasoning + cost/rate
+    limit concerns noted for Guardian + mark this phase complete in task chain (next
+    Claude automatically notified)
+  estimated_duration: 15-30 minutes
+- phase_id: data_architecture_design
+  phase_name: ETL Data Architecture Design
+  assigned_to: claude-6
+  depends_on:
+  - business_impact_triage
+  description: Design ETL pipeline architecture, assess data quality risks, plan schema
+    integration with existing heritage photo database
+  deliverable: RISK ANALYSIS for data integration + ETL architecture design + schema
+    mapping + error handling strategy + mark this phase complete in task chain (next
+    Claude automatically notified)
+  estimated_duration: 3-4 hours
+- phase_id: etl_validation_testing
+  phase_name: ETL Pipeline Validation Testing
+  assigned_to: claude-3
+  depends_on:
+  - data_architecture_design
+  description: 'Design comprehensive ETL tests: data quality validation, error handling,
+    performance benchmarks, rollback procedures. EXTRA ATTENTION to cost/rate limit
+    testing if flagged by Architect.'
+  deliverable: Complete ETL test suite including data quality checks, error scenario
+    testing, performance benchmarks + (if flagged) rate limit testing and cost monitoring
+    + mark this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 2-3 hours
+- phase_id: etl_implementation
+  phase_name: ETL Pipeline Implementation
+  assigned_to: claude-2
+  depends_on:
+  - etl_validation_testing
+  description: Implement ETL pipeline following Data's architecture, include error
+    handling, monitoring, and rollback capabilities
+  deliverable: Working ETL pipeline with passing validation tests + error handling
+    + monitoring integration + mark this phase complete in task chain (next Claude
+    automatically notified)
+  estimated_duration: 4-6 hours
+- phase_id: data_integration_validation
+  phase_name: Data Integration Validation
+  assigned_to: claude-6
+  depends_on:
+  - etl_implementation
+  description: Validate ETL pipeline preserves data integrity, confirm heritage photo
+    relationships intact, verify performance acceptable
+  deliverable: Data integrity validation report + heritage photo relationship verification
+    + performance analysis + mark this phase complete in task chain (next Claude automatically
+    notified)
+  estimated_duration: 2-3 hours
+- phase_id: production_readiness_testing
+  phase_name: Production Readiness Testing
+  assigned_to: claude-3
+  depends_on:
+  - data_integration_validation
+  description: Execute comprehensive ETL testing with real data volumes, validate
+    monitoring, test error scenarios and recovery procedures
+  deliverable: Production readiness report with full ETL validation + error recovery
+    testing + monitoring verification + mark this phase complete in task chain (next
+    Claude automatically notified)
+  estimated_duration: 2-3 hours
+- phase_id: etl_documentation
+  phase_name: ETL Pipeline Documentation
+  assigned_to: claude-4
+  depends_on:
+  - production_readiness_testing
+  description: Document ETL architecture, operational procedures, monitoring setup,
+    troubleshooting guides, rollback procedures
+  deliverable: Complete ETL documentation including architecture diagrams, operational
+    runbooks, troubleshooting guides + mark this phase complete in task chain (next
+    Claude automatically notified)
+  estimated_duration: 2-3 hours
+- phase_id: final_integration_approval
+  phase_name: Final ETL Integration Approval
+  assigned_to: claude-1
+  depends_on:
+  - etl_documentation
+  description: Review complete ETL integration, validate architecture quality, approve
+    production deployment
+  deliverable: Final architectural approval for ETL pipeline production deployment
+    + mark entire task chain as completed
+  estimated_duration: 1 hour
+template_notes:
+- Architect performs quick business impact triage - no deep research, just flag cost/rate
+  limit concerns
+- Guardian gets extra attention on cost/rate limit testing when flagged by Architect
+- Data specialist leads architecture design AND final validation - double involvement
+  for data safety
+- Guardian creates comprehensive ETL testing including error scenarios and rollback
+  procedures
+- Heritage photo relationship integrity is paramount - ETL cannot corrupt existing
+  photo data
+- Error handling and rollback capabilities are mandatory - external data integration
+  is inherently risky
+- Performance monitoring ensures ETL doesn't impact photo processing workflows
+- Complete documentation required for ongoing operational maintenance

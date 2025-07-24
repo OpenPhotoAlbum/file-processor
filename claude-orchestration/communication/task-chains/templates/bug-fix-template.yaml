@@ -1,0 +1,109 @@
+template_name: Bug Fix Resolution
+template_id: bug-fix
+description: Systematic bug resolution with comprehensive testing and regression prevention
+version: '2.0'
+use_cases:
+- Application crashes or errors
+- Incorrect CLI command behavior
+- Data processing failures
+- Performance issues
+- Database inconsistencies
+- Integration failures
+variables:
+  bug_description: '{{BUG_DESCRIPTION}}'
+  affected_component: '{{AFFECTED_COMPONENT}}'
+  severity_level: '{{SEVERITY_LEVEL}}'
+  reproduction_steps: '{{REPRODUCTION_STEPS}}'
+  user_impact: '{{USER_IMPACT}}'
+success_criteria:
+- 'MANDATORY: Test written that catches this exact bug - no exceptions'
+- Test fails before fix, passes after fix (proven TDD cycle)
+- Same bug appearing twice indicates system failure - this prevents recurrence
+- Fix does not introduce regressions in existing functionality
+- Database integrity maintained if data layer involved
+- Root cause identified and documented to prevent similar bugs
+phases:
+- phase_id: database_impact_analysis
+  phase_name: Database Impact Analysis
+  assigned_to: claude-6
+  depends_on: []
+  description: Assess if bug involves database layer, analyze data integrity risks,
+    determine if schema changes needed
+  deliverable: Database impact assessment with risk analysis OR confirmation of no
+    database involvement + mark this phase complete in task chain (next Claude automatically
+    notified)
+  estimated_duration: 30-60 minutes
+- phase_id: reproduction_test
+  phase_name: 'CRITICAL: Bug Reproduction Test (MANDATORY)'
+  assigned_to: claude-3
+  depends_on:
+  - database_impact_analysis
+  description: 'MANDATORY: Create failing test that reproduces this exact bug. NO
+    BUG FIX WITHOUT TEST. If same bug appears twice, we have failed as a system.'
+  deliverable: FAILING test that catches this exact bug + proof test fails consistently
+    + baseline behavior documentation + mark this phase complete in task chain (next
+    Claude automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: bug_fix_implementation
+  phase_name: Bug Fix Implementation
+  assigned_to: claude-2
+  depends_on:
+  - reproduction_test
+  description: Implement fix to resolve bug, ensure reproduction test passes, maintain
+    existing functionality
+  deliverable: Bug fix implementation with passing reproduction test and no broken
+    existing tests + mark this phase complete in task chain (next Claude automatically
+    notified)
+  estimated_duration: 2-4 hours
+- phase_id: database_validation
+  phase_name: Database Validation
+  assigned_to: claude-6
+  depends_on:
+  - bug_fix_implementation
+  description: Validate database operations if applicable, confirm data integrity,
+    check performance impact
+  deliverable: Database validation sign-off confirming fix maintains data integrity
+    and performance + mark this phase complete in task chain (next Claude automatically
+    notified)
+  estimated_duration: 30 minutes
+- phase_id: regression_testing
+  phase_name: 'CRITICAL: Regression Prevention Testing'
+  assigned_to: claude-3
+  depends_on:
+  - database_validation
+  description: 'MANDATORY: Verify reproduction test now PASSES + run full regression
+    suite + confirm no new bugs introduced. Guardian is the final quality gatekeeper.'
+  deliverable: PROOF that reproduction test now passes + complete regression test
+    results showing zero new failures + comprehensive validation report + mark this
+    phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: fix_documentation
+  phase_name: Bug Fix Documentation
+  assigned_to: claude-4
+  depends_on:
+  - regression_testing
+  description: Document root cause, fix implementation, prevention measures, troubleshooting
+    guidance
+  deliverable: Complete bug fix documentation with root cause analysis and prevention
+    guidance + mark this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 1 hour
+- phase_id: final_validation
+  phase_name: Final Bug Resolution Validation
+  assigned_to: claude-1
+  depends_on:
+  - fix_documentation
+  description: Validate complete bug resolution, review fix quality, confirm system
+    stability
+  deliverable: Final architectural approval confirming bug is resolved and system
+    stability maintained + mark entire task chain as completed
+  estimated_duration: 30 minutes
+template_notes:
+- 'CRITICAL: Guardian is the quality gatekeeper - NO bug fix without mandatory test'
+- Guardian must create FAILING test that catches exact bug before any fix attempt
+- Guardian must verify test PASSES after fix - proves bug is actually resolved
+- If same bug appears twice, our testing system has failed - this prevents recurrence
+- Data specialist analyzes database impact first, even for seemingly non-database
+  bugs
+- Double Data validation ensures database integrity if data layer involved
+- Documentation captures root cause analysis for future prevention
+- Architect provides final validation only after Guardian proves bug is resolved

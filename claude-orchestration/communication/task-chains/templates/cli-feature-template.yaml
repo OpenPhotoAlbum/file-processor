@@ -1,0 +1,81 @@
+template_name: CLI Feature Implementation
+template_id: cli-feature
+description: Standard workflow for implementing new CLI commands or features
+version: '2.0'
+use_cases:
+- Adding new MMP CLI commands
+- Extending existing CLI functionality
+- CLI option additions or modifications
+variables:
+  feature_name: '{{FEATURE_NAME}}'
+  cli_command: '{{CLI_COMMAND}}'
+  complexity_level: '{{COMPLEXITY_LEVEL}}'
+  priority_level: '{{PRIORITY_LEVEL}}'
+success_criteria:
+- CLI command implemented and tested end-to-end
+- Database operations validated for safety and performance
+- Integration tests pass with real command execution
+- Documentation includes working examples and troubleshooting
+- No regressions in existing CLI functionality
+phases:
+- phase_id: database_assessment
+  phase_name: Database Impact Assessment
+  assigned_to: claude-6
+  depends_on: []
+  description: Analyze if CLI feature requires database changes, assess risks
+  deliverable: Risk analysis + database specifications OR no-DB-changes confirmation
+    + mark this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 30-60 minutes
+- phase_id: integration_tests
+  phase_name: CLI Integration Tests (TDD)
+  assigned_to: claude-3
+  depends_on:
+  - database_assessment
+  description: Write failing CLI command tests - focus on actual command execution
+    and expected output, not unit test coverage
+  deliverable: Failing CLI tests that validate end-to-end command behavior + mark
+    this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: implementation
+  phase_name: Implement CLI Feature
+  assigned_to: claude-2
+  depends_on:
+  - integration_tests
+  description: Build feature to make CLI tests pass, following any database specifications
+    from Data
+  deliverable: Working CLI feature with passing integration tests + mark this phase
+    complete in task chain (next Claude automatically notified)
+  estimated_duration: 2-4 hours
+- phase_id: database_validation
+  phase_name: Validate Database Operations
+  assigned_to: claude-6
+  depends_on:
+  - implementation
+  description: Verify database interactions work correctly if applicable, validate
+    performance and data integrity
+  deliverable: Database validation sign-off + mark this phase complete in task chain
+    (next Claude automatically notified)
+  estimated_duration: 30 minutes
+- phase_id: documentation
+  phase_name: Document CLI Usage
+  assigned_to: claude-4
+  depends_on:
+  - database_validation
+  description: Document command syntax, examples, help text, troubleshooting guides
+  deliverable: CLI documentation with working examples + mark this phase complete
+    in task chain (next Claude automatically notified)
+  estimated_duration: 1 hour
+- phase_id: final_validation
+  phase_name: End-to-End Validation
+  assigned_to: claude-1
+  depends_on:
+  - documentation
+  description: Manually test documented examples, verify complete workflow, validate
+    task chain completion
+  deliverable: Final architectural approval + mark entire task chain as completed
+  estimated_duration: 30 minutes
+template_notes:
+- Data leads with risk assessment even for potentially non-database features
+- Guardian focuses on CLI integration tests, not unit test coverage
+- Double Data validation ensures database safety throughout process
+- Architect performs final end-to-end validation and sign-off

@@ -1,0 +1,96 @@
+template_name: Database Migration
+template_id: database-migration
+description: Safe database schema changes with comprehensive validation and rollback
+  procedures
+version: '2.0'
+use_cases:
+- Adding new tables or columns
+- Modifying existing schema structure
+- Database performance optimizations
+- Data migration between systems
+- Index creation or modification
+variables:
+  migration_name: '{{MIGRATION_NAME}}'
+  affected_tables: '{{AFFECTED_TABLES}}'
+  risk_level: '{{RISK_LEVEL}}'
+  rollback_complexity: '{{ROLLBACK_COMPLEXITY}}'
+  data_volume: '{{DATA_VOLUME}}'
+success_criteria:
+- Database changes applied safely with zero data loss
+- Full rollback procedure tested and documented
+- Performance impact validated within acceptable limits
+- All data integrity constraints maintained
+- Heritage photo data (150k+ records) completely protected
+- Migration procedures documented for future reference
+phases:
+- phase_id: risk_assessment
+  phase_name: Database Risk Assessment & Design
+  assigned_to: claude-6
+  depends_on: []
+  description: Comprehensive risk analysis, backup verification, migration design
+    with rollback strategy
+  deliverable: RISK ANALYSIS document with backup verification, migration scripts,
+    and tested rollback procedure + mark this phase complete in task chain (next Claude
+    automatically notified)
+  estimated_duration: 2-4 hours
+- phase_id: migration_testing
+  phase_name: Migration Testing Strategy
+  assigned_to: claude-3
+  depends_on:
+  - risk_assessment
+  description: Design comprehensive tests for migration validation, data integrity
+    checks, performance benchmarks
+  deliverable: Migration test suite including data integrity validation, performance
+    benchmarks, rollback testing + mark this phase complete in task chain (next Claude
+    automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: test_environment_migration
+  phase_name: Test Environment Migration
+  assigned_to: claude-2
+  depends_on:
+  - migration_testing
+  description: Execute migration on test data copy, validate functionality, run comprehensive
+    test suite
+  deliverable: Successful test migration with passing validation tests and performance
+    benchmarks + mark this phase complete in task chain (next Claude automatically
+    notified)
+  estimated_duration: 2-3 hours
+- phase_id: production_validation
+  phase_name: Production Migration Validation
+  assigned_to: claude-6
+  depends_on:
+  - test_environment_migration
+  description: Final production readiness check, backup verification, migration approval
+    with specific risk acknowledgment
+  deliverable: Production migration approval with final risk assessment and backup
+    confirmation + mark this phase complete in task chain (next Claude automatically
+    notified)
+  estimated_duration: 1 hour
+- phase_id: migration_documentation
+  phase_name: Migration Documentation
+  assigned_to: claude-4
+  depends_on:
+  - production_validation
+  description: Document migration procedure, rollback steps, troubleshooting guide,
+    schema changes
+  deliverable: Complete migration documentation with rollback procedures and troubleshooting
+    guide + mark this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: final_approval
+  phase_name: Architecture Migration Approval
+  assigned_to: claude-1
+  depends_on:
+  - migration_documentation
+  description: Review complete migration package, validate documentation accuracy,
+    approve production execution
+  deliverable: Final architectural approval for production migration execution + mark
+    entire task chain as completed
+  estimated_duration: 30 minutes
+template_notes:
+- Data specialist handles both initial risk assessment and final production validation
+- Guardian creates comprehensive migration testing strategy before any execution
+- Test environment migration must pass completely before production approval
+- Documentation includes both forward migration and rollback procedures
+- Architect provides final approval only after complete validation package
+- Heritage photo protection is paramount - any risk to 150k+ photos requires explicit
+  approval
