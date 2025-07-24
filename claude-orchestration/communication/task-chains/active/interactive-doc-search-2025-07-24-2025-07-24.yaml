@@ -1,0 +1,97 @@
+id: interactive-doc-search-2025-07-24-2025-07-24
+title: Interactive Documentation Search Tool
+status: in_progress
+created: '2025-07-24T17:11:52-04:00'
+updated: '2025-07-24T17:13:12.865531'
+template_id: cli-feature
+description: Implement interactive doc-search.sh script for multi-keyword documentation
+  search with ranked results and clean display
+version: '2.0'
+use_cases:
+- Fast multi-keyword search across 52 documentation files
+- Interactive result selection and browsing
+- Clean markdown display for both Stephen and Claudes
+- Make Claude 4's documentation easily accessible
+variables:
+  feature_name: Interactive Documentation Search
+  cli_command: ./doc-search.sh "keyword1" "keyword2"
+  complexity_level: Medium - Interactive bash script with ranking
+  priority_level: Medium - Quality of life improvement
+success_criteria:
+- Multi-keyword search works with AND logic across all docs
+- Results ranked by relevance (keyword density/proximity)
+- Interactive menu allows clean selection of results
+- Markdown display is readable with proper formatting
+- Works for both Stephen and all Claude specialists
+- No external dependencies beyond standard Unix tools
+phases:
+- phase_id: search_architecture_design
+  phase_name: Documentation Search Architecture Design
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Design interactive documentation search system with multi-keyword ranking,
+    result display, and user experience architecture
+  deliverable: Complete design specification covering search algorithm, ranking system,
+    interactive menu, and markdown display + mark this phase complete in task chain
+  estimated_duration: 45-60 minutes
+  started: '2025-07-24T17:13:12.865531'
+  completed: null
+  status: in_progress
+- phase_id: script_implementation
+  phase_name: Doc Search Script Implementation
+  assigned_to: claude-2-builder
+  depends_on:
+  - search_architecture_design
+  description: Implement doc-search.sh with multi-keyword search, relevance ranking,
+    interactive selection menu, and clean markdown display
+  deliverable: Working doc-search.sh script with all features functional + comprehensive
+    testing + mark this phase complete in task chain
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: usability_testing
+  phase_name: Documentation Search Usability Testing
+  assigned_to: claude-3-guardian
+  depends_on:
+  - script_implementation
+  description: Test doc-search.sh across all 52 documentation files with various keyword
+    combinations to ensure reliability and user experience
+  deliverable: Comprehensive testing results with edge case validation + performance
+    benchmarks + usability feedback + mark this phase complete in task chain
+  estimated_duration: 1-2 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: documentation_creation
+  phase_name: Doc Search Tool Documentation
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - usability_testing
+  description: Create comprehensive documentation for doc-search.sh including usage
+    examples, keyword search patterns, and integration with existing workflows
+  deliverable: Complete documentation with examples + integration into docs/cli/ section
+    + mark this phase complete in task chain
+  estimated_duration: 45-60 minutes
+  started: null
+  completed: null
+  status: waiting
+- phase_id: final_validation
+  phase_name: Doc Search Tool Final Validation
+  assigned_to: claude-1-architect
+  depends_on:
+  - documentation_creation
+  description: Test complete doc-search.sh workflow with real documentation searches,
+    validate user experience meets requirements
+  deliverable: Final architectural approval confirming tool works correctly for both
+    Stephen and Claudes + mark entire task chain as completed
+  estimated_duration: 30 minutes
+  started: null
+  completed: null
+  status: waiting
+template_notes:
+- Architect designs user experience and interaction patterns
+- Builder implements with focus on performance and Unix tool integration
+- Guardian ensures reliability across all documentation files and edge cases
+- Chronicler creates comprehensive usage documentation
+- Architect provides final validation with real-world testing

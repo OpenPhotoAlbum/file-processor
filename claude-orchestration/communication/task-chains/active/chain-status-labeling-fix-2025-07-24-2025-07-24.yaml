@@ -1,0 +1,70 @@
+id: chain-status-labeling-fix-2025-07-24-2025-07-24
+title: Clean chain-status.sh interface - hide completed chains
+status: completed
+created: '2025-07-24T15:57:30-04:00'
+updated: '2025-07-24T16:09:09.297484'
+template_id: bug-fix
+description: Clean interface by hiding completed chains from default output - show
+  only active/pending work, add --completed flag for finished chains
+version: '2.0'
+use_cases:
+- Application crashes or errors
+- Incorrect CLI command behavior
+- Data processing failures
+- Performance issues
+- Database inconsistencies
+- Integration failures
+variables:
+  bug_description: '{{BUG_DESCRIPTION}}'
+  affected_component: '{{AFFECTED_COMPONENT}}'
+  severity_level: '{{SEVERITY_LEVEL}}'
+  reproduction_steps: '{{REPRODUCTION_STEPS}}'
+  user_impact: '{{USER_IMPACT}}'
+success_criteria:
+- 'MANDATORY: Test written that catches this exact bug - no exceptions'
+- Test fails before fix, passes after fix (proven TDD cycle)
+- Same bug appearing twice indicates system failure - this prevents recurrence
+- Fix does not introduce regressions in existing functionality
+- Database integrity maintained if data layer involved
+- Root cause identified and documented to prevent similar bugs
+phases:
+- phase_id: interface_fix_implementation
+  phase_name: Chain Status Interface Fix
+  assigned_to: claude-2-builder
+  depends_on: []
+  description: Fix section labeling in chain-status.sh where completed tasks incorrectly
+    show under "unassigned Tasks" header
+  deliverable: Updated chain-status.sh with proper section labeling - replace "unassigned
+    Tasks" with appropriate category name + test visual output
+  estimated_duration: 15-30 minutes
+  started: '2025-07-24T15:59:11.852889'
+  completed: '2025-07-24T16:01:57.876055'
+  status: completed
+  completion_evidence: --evidence
+- phase_id: architectural_validation
+  phase_name: Hide Completed Chains Implementation
+  assigned_to: claude-2-builder
+  depends_on:
+  - interface_fix_implementation
+  description: Completed chains should NOT show in default chain-status.sh output
+    - they're clutter. Only show active/pending work by default. Add --completed flag
+    if user specifically wants to see finished chains.
+  deliverable: Updated chain-status.sh that hides completed chains by default + optional
+    --completed flag to show them + test clean output showing only active work
+  estimated_duration: 20-30 minutes
+  started: '2025-07-24T16:05:00.190551'
+  completed: '2025-07-24T16:09:09.297484'
+  status: completed
+  became_ready: '2025-07-24T16:01:57.876055'
+  completion_evidence: --evidence
+template_notes:
+- 'CRITICAL: Guardian is the quality gatekeeper - NO bug fix without mandatory test'
+- Guardian must create FAILING test that catches exact bug before any fix attempt
+- Guardian must verify test PASSES after fix - proves bug is actually resolved
+- If same bug appears twice, our testing system has failed - this prevents recurrence
+- Data specialist analyzes database impact first, even for seemingly non-database
+  bugs
+- Double Data validation ensures database integrity if data layer involved
+- Documentation captures root cause analysis for future prevention
+- Architect provides final validation only after Guardian proves bug is resolved
+pending_notifications: []

@@ -94,6 +94,9 @@ EOF
 mv /tmp/merged_chain.yaml "$CHAIN_FILE"
 rm -f /tmp/chain_header.yaml
 
+# Auto-commit new chain creation
+git add "$CHAIN_FILE" && git commit -m "orchestration: Create chain $(basename "$CHAIN_FILE" .yaml)" || true
+
 # Apply variable substitutions
 for var_assignment in "$@"; do
     if [[ "$var_assignment" =~ ^([^=]+)=(.*)$ ]]; then

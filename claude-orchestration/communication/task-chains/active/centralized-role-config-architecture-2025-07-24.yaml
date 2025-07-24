@@ -1,0 +1,104 @@
+id: centralized-role-config-architecture-2025-07-24
+title: Centralized Role Configuration Architecture
+status: completed
+created: '2025-07-24T14:15:00-04:00'
+updated: '2025-07-24T17:14:48.147856'
+template_name: Architecture Refactoring
+template_id: architecture-refactoring
+template_version: '1.0'
+description: Design and implement centralized role configuration system to eliminate
+  350+ hardcoded role name references across the entire codebase
+version: '1.0'
+use_cases:
+- Making role names configurable instead of hardcoded
+- Enabling easy role name changes without codebase modifications
+- Centralizing role definitions for maintainability
+phases:
+- phase_id: config_design
+  phase_name: Role Configuration Schema Design
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Design YAML configuration schema to capture all role data currently
+    scattered across 350+ locations
+  deliverable: Complete roles.yaml schema with all role attributes (names, nicknames,
+    file paths, personality archetypes)
+  acceptance_criteria: Schema captures all hardcoded role data found in audit
+  estimated_duration: 30 minutes
+  status: completed
+  started: null
+  completed: '2025-07-24T16:01:28.179407'
+  became_ready: '2025-07-24T14:15:00-04:00'
+  completion_evidence: Centralized role-config.yaml schema created with comprehensive
+    role definitions, personality configuration, display formatting, and migration
+    mapping for 350+ references
+- phase_id: core_infrastructure
+  phase_name: Core System Script Refactoring
+  assigned_to: claude-2-builder
+  depends_on:
+  - config_design
+  description: Refactor chain-status.sh, summon.md, and validation scripts to read
+    from centralized config
+  deliverable: Updated scripts that dynamically load role names from config file
+  acceptance_criteria: All core scripts work with configurable role names, backward
+    compatibility maintained
+  estimated_duration: 2 hours
+  status: completed
+  started: '2025-07-24T16:11:50.079838'
+  completed: '2025-07-24T16:14:39.914257'
+  became_ready: '2025-07-24T16:01:28.179407'
+  completion_evidence: --evidence
+- phase_id: template_migration
+  phase_name: YAML Template System Migration
+  assigned_to: claude-2-builder
+  depends_on:
+  - core_infrastructure
+  description: Update 47+ YAML task chain templates to use config-driven role assignments
+  deliverable: All templates use dynamic role assignment from config
+  acceptance_criteria: Templates work with any role names defined in config
+  estimated_duration: 1 hour
+  status: completed
+  started: '2025-07-24T16:22:24.547128'
+  completed: '2025-07-24T16:25:24.622002'
+  became_ready: '2025-07-24T16:14:39.914257'
+  completion_evidence: --evidence
+- phase_id: documentation_update
+  phase_name: Documentation and Display Updates
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - template_migration
+  description: Update all role template content and documentation to use configurable
+    role names
+  deliverable: All documentation reflects configurable architecture
+  acceptance_criteria: No hardcoded role names remain in documentation
+  estimated_duration: 1 hour
+  status: completed
+  started: null
+  completed: '2025-07-24T16:41:04.881567'
+  became_ready: '2025-07-24T16:25:24.622002'
+  completion_evidence: --evidence
+- phase_id: testing_validation
+  phase_name: System Testing and Validation
+  assigned_to: claude-3-guardian
+  depends_on:
+  - documentation_update
+  description: Test entire orchestration system with modified role names to ensure
+    complete refactoring
+  deliverable: Comprehensive test results showing system works with any configured
+    role names
+  acceptance_criteria: All orchestration features function correctly with test role
+    name changes
+  estimated_duration: 45 minutes
+  status: completed
+  started: null
+  completed: '2025-07-24T17:14:48.147856'
+  became_ready: '2025-07-24T16:41:04.881567'
+  completion_evidence: --evidence
+priority: medium
+estimated_total_duration: 5 hours 15 minutes
+notes: "Critical architectural change affecting entire orchestration system.\nAudit\
+  \ found 350+ hardcoded references across:\n- Core system scripts (chain-status.sh,\
+  \ summon.md)\n- 47+ YAML task chain templates  \n- Role template files and content\n\
+  - Documentation and help text\n- Shell script logic and validation\n\nWill enable\
+  \ easy role name customization without codebase changes.\nMaintains backward compatibility\
+  \ during transition."
+pending_notifications: []

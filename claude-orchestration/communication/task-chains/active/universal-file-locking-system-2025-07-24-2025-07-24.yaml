@@ -1,0 +1,110 @@
+id: universal-file-locking-system-2025-07-24-2025-07-24
+title: Universal File Locking System Implementation
+status: pending
+created: '2025-07-24T17:25:27-04:00'
+updated: '2025-07-24T17:25:27-04:00'
+template_id: cli-feature
+description: Implement comprehensive file locking system with Read-Lock-Read-Write pattern to prevent race conditions and concurrent modification conflicts
+version: '2.0'
+use_cases:
+- Prevent race conditions in concurrent file modifications
+- Eliminate file corruption from simultaneous writes
+- Force fresh reads after lock acquisition to prevent stale data writes
+- Provide universal file safety for all Claude operations
+variables:
+  feature_name: 'Universal File Locking System'
+  system_component: 'File Safety & Concurrency Control'
+  complexity_level: 'High - System-wide infrastructure change'
+  priority_level: 'Critical - Prevents data corruption'
+success_criteria:
+- All file write operations use Read-Lock-Read-Write pattern
+- Concurrent modification scenarios handled gracefully
+- Stale data writes are impossible (always fresh read after lock)
+- Lock timeouts and recovery mechanisms work correctly
+- Claude tools automatically retry with fresh reads after lock conflicts
+- Comprehensive testing validates all race condition scenarios
+phases:
+- phase_id: locking_architecture_design
+  phase_name: File Locking Architecture Design
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Design comprehensive file locking system with Read-Lock-Read-Write pattern, deadlock prevention, timeout mechanisms, and Claude tool integration
+  deliverable: Complete architectural specification covering lock acquisition, stale data prevention, retry mechanisms, and tool integration patterns + mark this phase complete in task chain
+  estimated_duration: 1-2 hours
+  started: null
+  completed: null
+  status: pending
+- phase_id: race_condition_tests
+  phase_name: Race Condition Test Suite Creation
+  assigned_to: claude-3-guardian
+  depends_on:
+  - locking_architecture_design
+  description: Create comprehensive test suite for race conditions - concurrent writes, stale reads, lock timeouts, deadlock scenarios, and recovery mechanisms
+  deliverable: Complete test suite that validates all race condition scenarios with failing tests demonstrating current unsafe behavior + mark this phase complete in task chain
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: locking_infrastructure
+  phase_name: File Locking Infrastructure Implementation
+  assigned_to: claude-2-builder
+  depends_on:
+  - race_condition_tests
+  description: Implement core file locking system with Read-Lock-Read-Write pattern, atomic operations, timeout handling, and integration with all file operations
+  deliverable: Working file locking infrastructure that passes all race condition tests + universal file operation wrappers + mark this phase complete in task chain
+  estimated_duration: 3-4 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: claude_tool_integration
+  phase_name: Claude Tool Integration & Testing
+  assigned_to: claude-2-builder
+  depends_on:
+  - locking_infrastructure
+  description: Integrate file locking with Read, Write, Edit, MultiEdit tools - ensure automatic retry with fresh reads after lock conflicts
+  deliverable: All Claude tools use safe file operations with automatic retry and fresh read mechanisms + comprehensive testing + mark this phase complete in task chain
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: comprehensive_testing
+  phase_name: Comprehensive Race Condition Validation
+  assigned_to: claude-3-guardian
+  depends_on:
+  - claude_tool_integration
+  description: Execute complete test suite against implemented locking system - validate all race conditions are prevented, timeout recovery works, and concurrent scenarios are safe
+  deliverable: Complete test validation confirming all race conditions eliminated + performance benchmarks + edge case validation + mark this phase complete in task chain
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: system_documentation
+  phase_name: File Locking System Documentation
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - comprehensive_testing
+  description: Create comprehensive documentation for file locking system including usage patterns, troubleshooting, and integration guidelines
+  deliverable: Complete documentation covering locking patterns, Claude tool integration, and troubleshooting guides + mark this phase complete in task chain
+  estimated_duration: 1-2 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: final_architectural_approval
+  phase_name: Final System Validation & Approval
+  assigned_to: claude-1-architect
+  depends_on:
+  - system_documentation
+  description: Final validation of complete file locking system - verify all race conditions eliminated, Claude tools work correctly, and system is ready for production
+  deliverable: Final architectural approval confirming universal file locking system is production-ready + mark entire task chain as completed
+  estimated_duration: 45 minutes
+  started: null
+  completed: null
+  status: waiting
+template_notes:
+- Architect designs comprehensive locking architecture with deadlock prevention
+- Guardian creates exhaustive race condition test suite BEFORE implementation
+- Builder implements both core locking infrastructure AND Claude tool integration
+- Guardian validates all race conditions are eliminated through comprehensive testing
+- Chronicler documents complete usage patterns and troubleshooting
+- Architect provides final production readiness validation
+- CRITICAL: No opt-out - ALL file operations must use locking system

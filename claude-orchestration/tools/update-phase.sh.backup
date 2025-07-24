@@ -135,13 +135,7 @@ elif action == 'complete':
                     chain['pending_notifications'].append(notification)
                     print(f"📧 Notification queued for {assigned_to}")
     
-    print(f"✅ Phase '{target_phase['phase_name']}' completed")
-    
-    # Set flag for auto-cascade processing after Python block
-    import os
-    os.environ['AUTO_CASCADE_NEEDED'] = 'true'
-    os.environ['AUTO_CASCADE_PHASE_ID'] = '$PHASE_ID'
-    os.environ['AUTO_CASCADE_EVIDENCE'] = evidence
+    print(f"✅ Phase '{target_phase['phase_name']}' completed")\n    \n    # Set flag for auto-cascade processing after Python block\n    import os\n    os.environ['AUTO_CASCADE_NEEDED'] = 'true'\n    os.environ['AUTO_CASCADE_PHASE_ID'] = '$PHASE_ID'\n    os.environ['AUTO_CASCADE_EVIDENCE'] = evidence
 
 elif action == 'block':
     if not evidence:
@@ -435,13 +429,3 @@ echo ""
 echo "Next steps:"
 echo "1. Check chain status: ./chain-status.sh $CHAIN_ID"
 echo "2. View full chain: cat $CHAIN_FILE"
-
-# Auto-commit phase update
-git add "$CHAIN_FILE" && git commit -m "orchestration: Update $(basename "$CHAIN_FILE" .yaml) phase $PHASE_ID to $ACTION" || true
-
-# Handle auto-cascade if completion triggered it
-if [ "$ACTION" = "complete" ] && [ "$AUTO_CASCADE_NEEDED" = "true" ]; then
-    echo ""
-    echo -e "${YELLOW}🔄 Checking for auto-cascade configuration...${NC}"
-    execute_auto_cascade "$CHAIN_FILE" "$AUTO_CASCADE_PHASE_ID" "$AUTO_CASCADE_EVIDENCE"
-fi

@@ -1,0 +1,64 @@
+id: mail-deprecation-documentation-2025-07-24-2025-07-24
+title: Document communication system changes - deprecate /mail command
+status: completed
+created: '2025-07-24T16:06:04-04:00'
+updated: '2025-07-24T16:52:00.693900'
+template_id: cli-feature
+description: Update documentation to reflect communication system overhaul - chain-status.sh
+  replaced /mail check command
+version: '2.0'
+use_cases:
+- Adding new MMP CLI commands
+- Extending existing CLI functionality
+- CLI option additions or modifications
+variables:
+  feature_name: '{{FEATURE_NAME}}'
+  cli_command: '{{CLI_COMMAND}}'
+  complexity_level: '{{COMPLEXITY_LEVEL}}'
+  priority_level: '{{PRIORITY_LEVEL}}'
+success_criteria:
+- CLI command implemented and tested end-to-end
+- Database operations validated for safety and performance
+- Integration tests pass with real command execution
+- Documentation includes working examples and troubleshooting
+- No regressions in existing CLI functionality
+phases:
+- phase_id: documentation_update
+  phase_name: Update Communication System Documentation
+  assigned_to: claude-4-chronicler
+  depends_on: []
+  description: Update docs to reflect communication system overhaul - chain-status.sh
+    replaced /mail check. Document new workflow for specialists to check tasks and
+    deprecate old mail command usage.
+  deliverable: Updated documentation showing chain-status.sh --role commands, deprecated
+    /mail check usage, and new specialist workflow + mark this phase complete in task
+    chain (next Claude automatically notified)
+  estimated_duration: 45-60 minutes
+  started: '2025-07-24T16:43:28.870280'
+  completed: '2025-07-24T16:48:55.800890'
+  status: completed
+  completion_evidence: --evidence
+- phase_id: architectural_review
+  phase_name: Documentation Review and Approval
+  assigned_to: claude-1-architect
+  depends_on:
+  - documentation_update
+  description: Review documentation updates ensure accuracy and completeness of communication
+    system changes
+  deliverable: Architectural approval confirming documentation accurately reflects
+    new chain-status.sh workflow + mark entire task chain as completed
+  estimated_duration: 15 minutes
+  started: '2025-07-24T16:51:19.988156'
+  completed: '2025-07-24T16:52:00.693900'
+  status: completed
+  became_ready: '2025-07-24T16:48:55.800890'
+  completion_evidence: Documentation comprehensively updated - all role templates,
+    CLI docs, architecture docs, and migration guides reflect new chain-status.sh
+    workflow. Mail command properly deprecated with clear replacement instructions.
+    System tested and working correctly.
+template_notes:
+- Data leads with risk assessment even for potentially non-database features
+- Guardian focuses on CLI integration tests, not unit test coverage
+- Double Data validation ensures database safety throughout process
+- Architect performs final end-to-end validation and sign-off
+pending_notifications: []
