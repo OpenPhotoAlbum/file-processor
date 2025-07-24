@@ -19,10 +19,12 @@ NC='\033[0m' # No Color
 status_color() {
     case "$1" in
         "completed") echo -e "${GREEN}$1${NC}" ;;
+        "active") echo -e "${BLUE}$1${NC}" ;;
         "in_progress") echo -e "${BLUE}$1${NC}" ;;
         "pending") echo -e "${YELLOW}$1${NC}" ;;
         "waiting") echo -e "${CYAN}$1${NC}" ;;
         "blocked") echo -e "${RED}$1${NC}" ;;
+        "failed") echo -e "${RED}$1${NC}" ;;
         *) echo "$1" ;;
     esac
 }
@@ -34,7 +36,7 @@ show_chain_summary() {
     python3 << EOF
 import yaml
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Load chain
 with open('$chain_file', 'r') as f:
@@ -45,17 +47,404 @@ total_phases = len(chain.get('phases', []))
 completed = sum(1 for p in chain['phases'] if p['status'] == 'completed')
 in_progress = sum(1 for p in chain['phases'] if p['status'] == 'in_progress')
 blocked = sum(1 for p in chain['phases'] if p['status'] == 'blocked')
+failed = sum(1 for p in chain['phases'] if p['status'] == 'failed')
+ready = sum(1 for p in chain['phases'] if p['status'] == 'ready')
 
-print(f"📋 {chain.get('title', 'Untitled Chain')}")
-print(f"   ID: {chain.get('id', '$chain_id')}")
-print(f"   Status: {chain.get('status', 'unknown')}")
-print(f"   Progress: {completed}/{total_phases} phases complete")
+# Build progress summary like update-phase.sh
+status_parts = []
+if completed > 0:
+    status_parts.append(f"{completed} completed")
 if in_progress > 0:
-    print(f"   Active: {in_progress} phase(s) in progress")
+    status_parts.append(f"{in_progress} in progress")
+if ready > 0:
+    status_parts.append(f"{ready} ready")
 if blocked > 0:
-    print(f"   Blocked: {blocked} phase(s) blocked")
-print(f"   Created: {chain.get('created', 'unknown')}")
-print(f"   Updated: {chain.get('updated', 'unknown')}")
+    status_parts.append(f"{blocked} blocked")
+if failed > 0:
+    status_parts.append(f"{failed} failed")
+
+progress_detail = ", ".join(status_parts) if status_parts else "no phases started"
+
+# Create status-aware progress bar
+def create_status_progress_bar(phases):
+    if not phases:
+        return "[░]"
+    
+    total_phases = len(phases)
+    
+    # Always use standard bracket format - one slot per phase
+    bar = "["
+    for phase in phases:
+        status = phase.get('status', 'pending')
+        if status == 'completed':
+            bar += '\033[32m█\033[0m'      # Green
+        elif status == 'in_progress':
+            bar += '\033[34m█\033[0m'      # Blue
+        elif status == 'ready':
+            bar += '\033[93m█\033[0m'      # Bright Yellow
+        elif status in ['blocked', 'failed']:
+            bar += '\033[31m█\033[0m'      # Red
+        else:
+            bar += '\033[90m░\033[0m'      # Gray
+    bar += "]"
+    
+    return bar
+
+progress_bar = create_status_progress_bar(chain.get('phases', []))
+
+# Determine weather icon based on chain health
+def get_weather_icon(completed, in_progress, ready, blocked, failed, total):
+    if total == 0:
+        return "☀️"  # Sunny - no phases to worry about
+    
+    # Calculate percentages
+    blocked_pct = (blocked / total) * 100 if total > 0 else 0
+    failed_pct = (failed / total) * 100 if total > 0 else 0
+    problem_pct = blocked_pct + failed_pct
+    
+    # Stormy weather - significant problems
+    if failed > 0 or blocked_pct >= 30:
+        return "⛈️"  # Thunderstorm - failures or major blockages
+    
+    # Cloudy weather - some problems
+    elif blocked > 0 or problem_pct >= 15:
+        return "☁️"  # Cloudy - some blockages
+    
+    # Partly sunny - minor concerns or just getting started
+    elif in_progress == 0 and completed == 0:
+        return "⛅"  # Partly cloudy - not started yet
+    elif (completed / total) < 0.3:
+        return "⛅"  # Partly cloudy - early stages
+    
+    # Sunny - all good
+    else:
+        return "☀️"  # Sunny - progressing well
+
+weather_icon = get_weather_icon(completed, in_progress, ready, blocked, failed, total_phases)
+
+# Find current assignee (who's "up to bat")
+current_assignee = None
+current_phase_name = None
+for phase in chain.get('phases', []):
+    if phase['status'] in ['ready', 'in_progress']:
+        current_assignee = phase.get('assigned_to', 'Unassigned')
+        current_phase_name = phase.get('phase_name', phase['phase_id'])
+        break
+    elif phase['status'] == 'pending':
+        # If no active phase, show who should start the first pending phase
+        if current_assignee is None:
+            current_assignee = phase.get('assigned_to', 'Unassigned')
+            current_phase_name = phase.get('phase_name', phase['phase_id'])
+            break
+
+# Color-code status
+status = chain.get('status', 'unknown').upper()
+if status == 'COMPLETED':
+    status_colored = "\033[0;32m" + status + "\033[0m"  # Green
+elif status == 'ACTIVE':
+    status_colored = "\033[0;34m" + status + "\033[0m"  # Blue
+elif status == 'IN_PROGRESS':
+    status_colored = "\033[0;34m" + status + "\033[0m"  # Blue
+elif status == 'PENDING':
+    status_colored = "\033[1;33m" + status + "\033[0m"  # Yellow
+elif status == 'BLOCKED':
+    status_colored = "\033[0;31m" + status + "\033[0m"  # Red
+elif status == 'FAILED':
+    status_colored = "\033[0;31m" + status + "\033[0m"  # Red
+else:
+    status_colored = status
+
+# Make title bold and bright
+title = chain.get('title', 'Untitled Chain')
+title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
+
+# Create boxed status
+status_boxed = f"[{status_colored}]"
+
+# Add shortcut numbering based on order in active directory
+import glob
+import os
+
+all_chains = sorted(glob.glob(os.path.join("$ACTIVE_DIR", "*.yaml")))
+current_chain_idx = None
+for i, chain_path in enumerate(all_chains, 1):
+    if chain_path == '$chain_file':
+        current_chain_idx = i
+        break
+
+# Include shortcut in title line if available
+if current_chain_idx:
+    shortcut_colored = f"\033[1;96m{current_chain_idx}\033[0m"  # Bold bright cyan
+    print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored}")
+    print(f"   \033[90m{chain.get('id', '$chain_id')}\033[0m")
+else:
+    print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored}")
+    print(f"   {chain.get('id', '$chain_id')}")
+
+if current_assignee:
+    assignee_colored = "\033[1;36m" + current_assignee + "\033[0m"  # Bright cyan
+    print(f"   🎯 Up next: {assignee_colored} ({current_phase_name})")
+
+# Format timestamps with relative time
+def format_relative_time(timestamp_str):
+    if timestamp_str == 'unknown':
+        return 'unknown'
+    
+    try:
+        # Parse timestamp - handle multiple formats
+        if 'T' in timestamp_str:
+            # ISO format: "2025-07-23T22:36:38-04:00" or "2025-07-23T22:39:30.476198"
+            # Strip timezone and microseconds
+            clean_timestamp = timestamp_str.split('T')[0] + ' ' + timestamp_str.split('T')[1].split('-')[0].split('.')[0]
+            ts = datetime.strptime(clean_timestamp, "%Y-%m-%d %H:%M:%S")
+        elif ' ' in timestamp_str:
+            # Format: "2025-07-24 22:30"
+            ts = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M")
+        else:
+            # Format: "2025-07-24-22-30"
+            ts = datetime.strptime(timestamp_str, "%Y-%m-%d-%H-%M")
+        
+        now = datetime.now()
+        diff = now - ts
+        
+        # Handle future timestamps (shouldn't happen but just in case)
+        if diff.total_seconds() < 0:
+            return timestamp_str
+        
+        total_seconds = diff.total_seconds()
+        total_minutes = total_seconds / 60
+        total_hours = total_minutes / 60
+        total_days = diff.days
+        
+        if total_seconds < 60:
+            return "just now"
+        elif total_minutes < 60:
+            minutes = int(total_minutes)
+            return f"{minutes} min ago"
+        elif total_hours < 24:
+            hours = int(total_hours)
+            if hours == 1:
+                return "1 hour ago"
+            else:
+                return f"{hours} hours ago"
+        elif total_days == 1:
+            return f"yesterday at {ts.strftime('%I:%M%p').lower()}"
+        elif total_days < 30:
+            return f"{total_days} days ago"
+        else:
+            return ts.strftime("%m-%d-%y %I:%M%p").lower()
+    except:
+        return timestamp_str
+
+created_time = format_relative_time(chain.get('created', 'unknown'))
+updated_time = format_relative_time(chain.get('updated', 'unknown'))
+
+# Make timestamps dim (using gray color)
+created_dim = f"\033[90m{created_time}\033[0m"
+updated_dim = f"\033[90m{updated_time}\033[0m"
+
+print(f"   \033[90mCreated:\033[0m {created_dim}     \033[90mUpdated:\033[0m {updated_dim}")
+print()
+EOF
+}
+
+show_chain_summary_no_assignee() {
+    local chain_file="$1"
+    local chain_id=$(basename "$chain_file" .yaml)
+    
+    python3 << EOF
+import yaml
+import sys
+from datetime import datetime, timedelta
+
+# Load chain
+with open('$chain_file', 'r') as f:
+    chain = yaml.safe_load(f)
+
+# Calculate summary stats
+total_phases = len(chain.get('phases', []))
+completed = sum(1 for p in chain['phases'] if p['status'] == 'completed')
+in_progress = sum(1 for p in chain['phases'] if p['status'] == 'in_progress')
+blocked = sum(1 for p in chain['phases'] if p['status'] == 'blocked')
+failed = sum(1 for p in chain['phases'] if p['status'] == 'failed')
+ready = sum(1 for p in chain['phases'] if p['status'] == 'ready')
+
+# Build progress summary like update-phase.sh
+status_parts = []
+if completed > 0:
+    status_parts.append(f"{completed} completed")
+if in_progress > 0:
+    status_parts.append(f"{in_progress} in progress")
+if ready > 0:
+    status_parts.append(f"{ready} ready")
+if blocked > 0:
+    status_parts.append(f"{blocked} blocked")
+if failed > 0:
+    status_parts.append(f"{failed} failed")
+
+progress_detail = ", ".join(status_parts) if status_parts else "no phases started"
+
+# Create status-aware progress bar
+def create_status_progress_bar(phases):
+    if not phases:
+        return "[░]"
+    
+    total_phases = len(phases)
+    
+    # Always use standard bracket format - one slot per phase
+    bar = "["
+    for phase in phases:
+        status = phase.get('status', 'pending')
+        if status == 'completed':
+            bar += '\033[32m█\033[0m'      # Green
+        elif status == 'in_progress':
+            bar += '\033[34m█\033[0m'      # Blue
+        elif status == 'ready':
+            bar += '\033[93m█\033[0m'      # Bright Yellow
+        elif status in ['blocked', 'failed']:
+            bar += '\033[31m█\033[0m'      # Red
+        else:
+            bar += '\033[90m░\033[0m'      # Gray
+    bar += "]"
+    
+    return bar
+
+progress_bar = create_status_progress_bar(chain.get('phases', []))
+
+# Determine weather icon based on chain health
+def get_weather_icon(completed, in_progress, ready, blocked, failed, total):
+    if total == 0:
+        return "☀️"  # Sunny - no phases to worry about
+    
+    # Calculate percentages
+    blocked_pct = (blocked / total) * 100 if total > 0 else 0
+    failed_pct = (failed / total) * 100 if total > 0 else 0
+    problem_pct = blocked_pct + failed_pct
+    
+    # Stormy weather - significant problems
+    if failed > 0 or blocked_pct >= 30:
+        return "⛈️"  # Thunderstorm - failures or major blockages
+    
+    # Cloudy weather - some problems
+    elif blocked > 0 or problem_pct >= 15:
+        return "☁️"  # Cloudy - some blockages
+    
+    # Partly sunny - minor concerns or just getting started
+    elif in_progress == 0 and completed == 0:
+        return "⛅"  # Partly cloudy - not started yet
+    elif (completed / total) < 0.3:
+        return "⛅"  # Partly cloudy - early stages
+    
+    # Sunny - all good
+    else:
+        return "☀️"  # Sunny - progressing well
+
+weather_icon = get_weather_icon(completed, in_progress, ready, blocked, failed, total_phases)
+
+# Color-code status
+status = chain.get('status', 'unknown').upper()
+if status == 'COMPLETED':
+    status_colored = "\033[0;32m" + status + "\033[0m"  # Green
+elif status == 'ACTIVE':
+    status_colored = "\033[0;34m" + status + "\033[0m"  # Blue
+elif status == 'IN_PROGRESS':
+    status_colored = "\033[0;34m" + status + "\033[0m"  # Blue
+elif status == 'PENDING':
+    status_colored = "\033[1;33m" + status + "\033[0m"  # Yellow
+elif status == 'BLOCKED':
+    status_colored = "\033[0;31m" + status + "\033[0m"  # Red
+elif status == 'FAILED':
+    status_colored = "\033[0;31m" + status + "\033[0m"  # Red
+else:
+    status_colored = status
+
+# Make title bold and bright
+title = chain.get('title', 'Untitled Chain')
+title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
+
+# Create boxed status
+status_boxed = f"[{status_colored}]"
+
+# Add shortcut numbering based on order in active directory
+import glob
+import os
+
+all_chains = sorted(glob.glob(os.path.join("$ACTIVE_DIR", "*.yaml")))
+current_chain_idx = None
+for i, chain_path in enumerate(all_chains, 1):
+    if chain_path == '$chain_file':
+        current_chain_idx = i
+        break
+
+# Include shortcut in title line if available
+if current_chain_idx:
+    shortcut_colored = f"\033[1;96m{current_chain_idx}\033[0m"  # Bold bright cyan
+    print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored}")
+    print(f"   \033[90m{chain.get('id', '$chain_id')}\033[0m")
+else:
+    print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored}")
+    print(f"   {chain.get('id', '$chain_id')}")
+
+
+# Format timestamps with relative time
+def format_relative_time(timestamp_str):
+    if timestamp_str == 'unknown':
+        return 'unknown'
+    
+    try:
+        # Parse timestamp - handle multiple formats
+        if 'T' in timestamp_str:
+            # ISO format: "2025-07-23T22:36:38-04:00" or "2025-07-23T22:39:30.476198"
+            # Strip timezone and microseconds
+            clean_timestamp = timestamp_str.split('T')[0] + ' ' + timestamp_str.split('T')[1].split('-')[0].split('.')[0]
+            ts = datetime.strptime(clean_timestamp, "%Y-%m-%d %H:%M:%S")
+        elif ' ' in timestamp_str:
+            # Format: "2025-07-24 22:30"
+            ts = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M")
+        else:
+            # Format: "2025-07-24-22-30"
+            ts = datetime.strptime(timestamp_str, "%Y-%m-%d-%H-%M")
+        
+        now = datetime.now()
+        diff = now - ts
+        
+        # Handle future timestamps (shouldn't happen but just in case)
+        if diff.total_seconds() < 0:
+            return timestamp_str
+        
+        total_seconds = diff.total_seconds()
+        total_minutes = total_seconds / 60
+        total_hours = total_minutes / 60
+        total_days = diff.days
+        
+        if total_seconds < 60:
+            return "just now"
+        elif total_minutes < 60:
+            minutes = int(total_minutes)
+            return f"{minutes} min ago"
+        elif total_hours < 24:
+            hours = int(total_hours)
+            if hours == 1:
+                return "1 hour ago"
+            else:
+                return f"{hours} hours ago"
+        elif total_days == 1:
+            return f"yesterday at {ts.strftime('%I:%M%p').lower()}"
+        elif total_days < 30:
+            return f"{total_days} days ago"
+        else:
+            return ts.strftime("%m-%d-%y %I:%M%p").lower()
+    except:
+        return timestamp_str
+
+created_time = format_relative_time(chain.get('created', 'unknown'))
+updated_time = format_relative_time(chain.get('updated', 'unknown'))
+
+# Make timestamps dim (using gray color)
+created_dim = f"\033[90m{created_time}\033[0m"
+updated_dim = f"\033[90m{updated_time}\033[0m"
+
+print(f"   \033[90mCreated:\033[0m {created_dim}     \033[90mUpdated:\033[0m {updated_dim}")
 print()
 EOF
 }
@@ -65,46 +454,237 @@ show_chain_detail() {
     local chain_id=$(basename "$chain_file" .yaml)
     
     echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════════════════${NC}"
+    echo
     
     python3 << EOF
 import yaml
 import sys
-from datetime import datetime
+import textwrap
+from datetime import datetime, timedelta
 
 # Load chain
 with open('$chain_file', 'r') as f:
     chain = yaml.safe_load(f)
 
-print(f"📋 {chain.get('title', 'Untitled Chain')}")
-print(f"   ID: {chain.get('id', '$chain_id')}")
-print(f"   Status: {chain.get('status', 'unknown')}")
-print(f"   Created: {chain.get('created', 'unknown')}")
-print(f"   Updated: {chain.get('updated', 'unknown')}")
+# Color-code status for detailed view
+status = chain.get('status', 'unknown').upper()
+if status == 'COMPLETED':
+    status_colored = "\033[0;32m" + status + "\033[0m"  # Green
+elif status == 'ACTIVE':
+    status_colored = "\033[0;34m" + status + "\033[0m"  # Blue
+elif status == 'IN_PROGRESS':
+    status_colored = "\033[0;34m" + status + "\033[0m"  # Blue
+elif status == 'PENDING':
+    status_colored = "\033[1;33m" + status + "\033[0m"  # Yellow
+elif status == 'BLOCKED':
+    status_colored = "\033[0;31m" + status + "\033[0m"  # Red
+elif status == 'FAILED':
+    status_colored = "\033[0;31m" + status + "\033[0m"  # Red
+else:
+    status_colored = status
+
+# Make title bold and bright for detailed view
+title = chain.get('title', 'Untitled Chain')
+title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
+
+# Create boxed status for detailed view
+status_boxed = f"[{status_colored}]"
+
+# Calculate weather icon for overall chain health
+total_phases = len(chain.get('phases', []))
+completed = sum(1 for p in chain['phases'] if p['status'] == 'completed')
+in_progress = sum(1 for p in chain['phases'] if p['status'] == 'in_progress')
+blocked = sum(1 for p in chain['phases'] if p['status'] == 'blocked')
+failed = sum(1 for p in chain['phases'] if p['status'] == 'failed')
+ready = sum(1 for p in chain['phases'] if p['status'] == 'ready')
+
+def get_weather_icon_detail(completed, in_progress, ready, blocked, failed, total):
+    if total == 0:
+        return "☀️"  # Sunny - no phases to worry about
+    
+    # Calculate percentages
+    blocked_pct = (blocked / total) * 100 if total > 0 else 0
+    failed_pct = (failed / total) * 100 if total > 0 else 0
+    problem_pct = blocked_pct + failed_pct
+    
+    # Stormy weather - significant problems
+    if failed > 0 or blocked_pct >= 30:
+        return "⛈️"  # Thunderstorm - failures or major blockages
+    
+    # Cloudy weather - some problems
+    elif blocked > 0 or problem_pct >= 15:
+        return "☁️"  # Cloudy - some blockages
+    
+    # Partly sunny - minor concerns or just getting started
+    elif in_progress == 0 and completed == 0:
+        return "⛅"  # Partly cloudy - not started yet
+    elif (completed / total) < 0.3:
+        return "⛅"  # Partly cloudy - early stages
+    
+    # Sunny - all good
+    else:
+        return "☀️"  # Sunny - progressing well
+
+weather_icon_detail = get_weather_icon_detail(completed, in_progress, ready, blocked, failed, total_phases)
+
+# Add status dot - green for normal, red for problems
+status_dot = "\033[32m●\033[0m" if failed == 0 and blocked == 0 else "\033[31m●\033[0m"
+
+# Print header with weather icon and status dot on the right
+print(f"     {status_boxed}                                                    {status_dot} {weather_icon_detail}")
+print(f"     {title_colored}")
+print()
+print(f"     \033[90m{chain.get('id', '$chain_id')}\033[0m")
+
+# Format timestamps with relative time (detailed view)
+def format_relative_time_detail(timestamp_str):
+    if timestamp_str == 'unknown':
+        return 'unknown'
+    
+    try:
+        # Parse timestamp - handle multiple formats
+        if 'T' in timestamp_str:
+            # ISO format: "2025-07-23T22:36:38-04:00" or "2025-07-23T22:39:30.476198"
+            # Strip timezone and microseconds
+            clean_timestamp = timestamp_str.split('T')[0] + ' ' + timestamp_str.split('T')[1].split('-')[0].split('.')[0]
+            ts = datetime.strptime(clean_timestamp, "%Y-%m-%d %H:%M:%S")
+        elif ' ' in timestamp_str:
+            # Format: "2025-07-24 22:30"
+            ts = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M")
+        else:
+            # Format: "2025-07-24-22-30"
+            ts = datetime.strptime(timestamp_str, "%Y-%m-%d-%H-%M")
+        
+        now = datetime.now()
+        diff = now - ts
+        
+        # Handle future timestamps (shouldn't happen but just in case)
+        if diff.total_seconds() < 0:
+            return timestamp_str
+        
+        total_seconds = diff.total_seconds()
+        total_minutes = total_seconds / 60
+        total_hours = total_minutes / 60
+        total_days = diff.days
+        
+        if total_seconds < 60:
+            return "just now"
+        elif total_minutes < 60:
+            minutes = int(total_minutes)
+            return f"{minutes} min ago"
+        elif total_hours < 24:
+            hours = int(total_hours)
+            if hours == 1:
+                return "1 hour ago"
+            else:
+                return f"{hours} hours ago"
+        elif total_days == 1:
+            return f"yesterday at {ts.strftime('%I:%M%p').lower()}"
+        elif total_days < 30:
+            return f"{total_days} days ago"
+        else:
+            return ts.strftime("%m-%d-%y %I:%M%p").lower()
+    except:
+        return timestamp_str
+
+created_time_detail = format_relative_time_detail(chain.get('created', 'unknown'))
+updated_time_detail = format_relative_time_detail(chain.get('updated', 'unknown'))
+
+# Make timestamps dim in detailed view (using gray color)
+created_detail_dim = f"\033[90m{created_time_detail}\033[0m"
+updated_detail_dim = f"\033[90m{updated_time_detail}\033[0m"
+
+print(f"     \033[90mCreated:\033[0m {created_detail_dim}     \033[90mUpdated:\033[0m {updated_detail_dim}")
+print()
+print(f"\033[0;35m{'═' * 79}\033[0m")
 print()
 
 # Show phases
-print("📊 PHASES:")
 for i, phase in enumerate(chain.get('phases', []), 1):
     status = phase.get('status', 'unknown')
     phase_name = phase.get('phase_name', 'Unnamed Phase')
     assigned_to = phase.get('assigned_to', 'unassigned')
     depends_on = phase.get('depends_on', [])
     
-    # Status icon
-    status_icon = {
-        'completed': '✅',
-        'in_progress': '🔄', 
-        'pending': '⏳',
-        'waiting': '⏸️',
-        'blocked': '🚫'
-    }.get(status, '❓')
+    # Extract specialist info for consistent formatting
+    specialist_key = assigned_to
+    if assigned_to.startswith('claude-') and '-' in assigned_to[7:]:
+        parts = assigned_to.split('-')
+        if len(parts) >= 2:
+            specialist_key = parts[0] + '-' + parts[1]
     
-    print(f"  {i}. {status_icon} {phase_name}")
-    print(f"     Status: {status}")
-    print(f"     Assigned: {assigned_to}")
+    nicknames = {
+        'claude-1': 'Architect',
+        'claude-2': 'Builder', 
+        'claude-3': 'Guardian',
+        'claude-4': 'Chronicler',
+        'claude-5': 'Curator',
+        'claude-6': 'Data '
+    }
+    icons = {
+        'claude-1': '🏗️',
+        'claude-2': '💻',
+        'claude-3': '🧪',
+        'claude-4': '📝',
+        'claude-5': '📸',
+        'claude-6': '🗄️'
+    }
     
+    specialist = nicknames.get(specialist_key, assigned_to)
+    specialist_icon = icons.get(specialist_key, '')
+    
+    # Format status like the overall chain status
+    if status.upper() == 'COMPLETED':
+        status_colored = "\033[0;32m" + status.upper() + "\033[0m"  # Green
+    elif status.upper() == 'ACTIVE':
+        status_colored = "\033[0;34m" + status.upper() + "\033[0m"  # Blue
+    elif status.upper() == 'IN_PROGRESS':
+        status_colored = "\033[0;34m" + status.upper() + "\033[0m"  # Blue
+    elif status.upper() == 'PENDING':
+        status_colored = "\033[1;33m" + status.upper() + "\033[0m"  # Yellow
+    elif status.upper() == 'WAITING':
+        status_colored = "\033[1;33m" + status.upper() + "\033[0m"  # Yellow
+    elif status.upper() == 'BLOCKED':
+        status_colored = "\033[0;31m" + status.upper() + "\033[0m"  # Red
+    elif status.upper() == 'FAILED':
+        status_colored = "\033[0;31m" + status.upper() + "\033[0m"  # Red
+    else:
+        status_colored = status.upper()
+    
+    status_boxed = f"[{status_colored}]"
+    
+    print(f"  \033[1;96m{i}.\033[0m {specialist_icon} {specialist} \033[90m<{specialist_key}>\033[0m")
+    print()
+    print(f"     {status_boxed} \033[1m{phase_name}\033[0m")
+    # Add description in a simple box with dependencies
+    description = phase.get('description', 'No description available')
+    
+    # Wrap text to fit inside box (accounting for box padding)
+    box_width = 65
+    
+    # Create box content
+    box_lines = []
+    
+    # Add dependencies first if they exist
     if depends_on:
-        print(f"     Depends on: {', '.join(depends_on)}")
+        depends_text = f"\033[90mDepends on: {', '.join(depends_on)}\033[0m"
+        box_lines.append(depends_text)
+        box_lines.append("")  # Empty line after dependencies
+    
+    # Add wrapped description
+    wrapped_lines = textwrap.wrap(description, width=box_width)
+    box_lines.extend(wrapped_lines)
+    
+    # Create box
+    print("     ┌" + "─" * (box_width + 2) + "┐")
+    for line in box_lines:
+        # Calculate visual width (excluding ANSI color codes)
+        import re
+        visual_line = re.sub(r'\033\[[0-9;]*m', '', line)
+        padding_needed = box_width - len(visual_line)
+        padded_line = line + ' ' * max(0, padding_needed)
+        print(f"     │ {padded_line} │")
+    print("     └" + "─" * (box_width + 2) + "┘")
     
     if phase.get('started'):
         print(f"     Started: {phase['started']}")
@@ -117,9 +697,6 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     
     if phase.get('block_reason'):
         print(f"     Block reason: {phase['block_reason']}")
-    
-    if phase.get('estimated_duration'):
-        print(f"     Estimated duration: {phase['estimated_duration']}")
     
     print()
 
@@ -137,8 +714,6 @@ EOF
 
 # Main execution
 if [ $# -eq 0 ] || [ "$1" = "all" ]; then
-    echo -e "${BLUE}📊 All Active Task Chains${NC}"
-    echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════════════════${NC}"
     echo
     
     if [ ! -d "$ACTIVE_DIR" ] || [ -z "$(ls -A "$ACTIVE_DIR"/*.yaml 2>/dev/null)" ]; then
@@ -147,11 +722,112 @@ if [ $# -eq 0 ] || [ "$1" = "all" ]; then
         exit 0
     fi
     
-    for chain_file in "$ACTIVE_DIR"/*.yaml; do
-        if [ -f "$chain_file" ]; then
-            show_chain_summary "$chain_file"
+    # Create temporary file to process chains by assignee
+    TEMP_FILE=$(mktemp)
+    
+    # Group chains by assignee
+    python3 << EOF > "$TEMP_FILE"
+import yaml
+import os
+import glob
+from collections import defaultdict
+
+# Load all chains and group by current assignee
+chains_by_assignee = defaultdict(list)
+chains_dir = "$ACTIVE_DIR"
+
+for chain_file in glob.glob(os.path.join(chains_dir, "*.yaml")):
+    with open(chain_file, 'r') as f:
+        chain = yaml.safe_load(f)
+    
+    # Find current assignee (who's "up to bat")
+    current_assignee = None
+    current_phase_type = None
+    
+    for phase in chain.get('phases', []):
+        if phase['status'] in ['ready', 'in_progress']:
+            current_assignee = phase.get('assigned_to', 'unassigned')
+            current_phase_type = phase.get('phase_name', phase['phase_id'])
+            break
+        elif phase['status'] == 'pending':
+            # If no active phase, show who should start the first pending phase
+            if current_assignee is None:
+                current_assignee = phase.get('assigned_to', 'unassigned')
+                current_phase_type = phase.get('phase_name', phase['phase_id'])
+                break
+    
+    if current_assignee is None:
+        current_assignee = 'unassigned'
+        current_phase_type = 'unknown'
+    
+    # Normalize assignee (claude-6-data -> claude-6)
+    normalized_assignee = current_assignee
+    if current_assignee.startswith('claude-') and '-' in current_assignee[7:]:
+        # Extract claude-X from claude-X-role
+        parts = current_assignee.split('-')
+        if len(parts) >= 2:
+            normalized_assignee = parts[0] + '-' + parts[1]
+    
+    chains_by_assignee[normalized_assignee].append((chain_file, current_phase_type))
+
+# Define assignee order and nicknames
+assignee_order = ['claude-1', 'claude-2', 'claude-3', 'claude-4', 'claude-5', 'claude-6', 'unassigned']
+nicknames = {
+    'claude-1': 'Architect',
+    'claude-2': 'Builder', 
+    'claude-3': 'Guardian',
+    'claude-4': 'Chronicler',
+    'claude-5': 'Curator',
+    'claude-6': 'Data'
+}
+icons = {
+    'claude-1': '🏗️',  # Architect - Building/Construction
+    'claude-2': '💻',   # Builder - Laptop/Coding
+    'claude-3': '🧪',   # Guardian - Test beaker
+    'claude-4': '📝',   # Chronicler - Page/Document
+    'claude-5': '📸',   # Curator - Camera for photos
+    'claude-6': '🗄️'    # Data - Database/Stack
+}
+
+# Output chains grouped by assignee
+for assignee in assignee_order:
+    if assignee in chains_by_assignee and chains_by_assignee[assignee]:
+        # Get the phase type from the first chain (they should be similar for same assignee)
+        _, phase_type = chains_by_assignee[assignee][0]
+        
+        # Create header
+        if assignee in nicknames:
+            nickname = nicknames[assignee]
+            icon = icons.get(assignee, '🎯')
+            header = f"{icon} {assignee} {nickname} ({phase_type}) Tasks"
+        else:
+            header = f"🎯 {assignee} Tasks"
+        
+        print(f"HEADER:{header}")
+        
+        # Show all chains for this assignee
+        for chain_file, _ in chains_by_assignee[assignee]:
+            print(f"CHAIN:{chain_file}")
+        
+        print("SEPARATOR")
+EOF
+
+    # Process the grouped output
+    while IFS= read -r line; do
+        if [[ $line == HEADER:* ]]; then
+            header="${line#HEADER:}"
+            echo -e "${CYAN}${header}${NC}"
+            echo -e "${CYAN}$(printf '─%.0s' $(seq 1 ${#header}))${NC}"
+            echo
+        elif [[ $line == CHAIN:* ]]; then
+            chain_file="${line#CHAIN:}"
+            show_chain_summary_no_assignee "$chain_file"
+        elif [[ $line == "SEPARATOR" ]]; then
+            echo
         fi
-    done
+    done < "$TEMP_FILE"
+    
+    rm "$TEMP_FILE"
     
     echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════════════════${NC}"
     echo "Use './chain-status.sh <chain_id>' for detailed view"
@@ -161,13 +837,32 @@ if [ $# -eq 0 ] || [ "$1" = "all" ]; then
     
 else
     CHAIN_ID="$1"
-    CHAIN_FILE="$ACTIVE_DIR/$CHAIN_ID.yaml"
     
-    if [ ! -f "$CHAIN_FILE" ]; then
-        echo -e "${RED}Error: Chain '$CHAIN_ID' not found${NC}"
-        echo "Available chains:"
-        ls "$ACTIVE_DIR"/*.yaml 2>/dev/null | xargs -n1 basename | sed 's/.yaml$//' || echo "No active chains found"
-        exit 1
+    # Check if it's a numeric shortcut
+    if [[ "$CHAIN_ID" =~ ^[0-9]+$ ]]; then
+        # Get the nth chain file (sorted by name)
+        CHAIN_FILES=($(ls "$ACTIVE_DIR"/*.yaml 2>/dev/null | sort))
+        CHAIN_INDEX=$((CHAIN_ID - 1))
+        
+        if [ $CHAIN_INDEX -ge 0 ] && [ $CHAIN_INDEX -lt ${#CHAIN_FILES[@]} ]; then
+            CHAIN_FILE="${CHAIN_FILES[$CHAIN_INDEX]}"
+        else
+            echo -e "${RED}Error: Shortcut '$CHAIN_ID' not found${NC}"
+            echo "Available shortcuts: 1-${#CHAIN_FILES[@]}"
+            echo "Use './chain-status.sh' to see all chains with shortcuts"
+            exit 1
+        fi
+    else
+        # Use full chain ID
+        CHAIN_FILE="$ACTIVE_DIR/$CHAIN_ID.yaml"
+        
+        if [ ! -f "$CHAIN_FILE" ]; then
+            echo -e "${RED}Error: Chain '$CHAIN_ID' not found${NC}"
+            echo "Available chains:"
+            ls "$ACTIVE_DIR"/*.yaml 2>/dev/null | xargs -n1 basename | sed 's/.yaml$//' || echo "No active chains found"
+            echo "Or use numeric shortcuts: ./chain-status.sh 1, ./chain-status.sh 2, etc."
+            exit 1
+        fi
     fi
     
     show_chain_detail "$CHAIN_FILE"
