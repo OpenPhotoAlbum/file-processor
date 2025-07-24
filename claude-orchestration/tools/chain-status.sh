@@ -11,6 +11,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CHAINS_DIR="$(dirname "$SCRIPT_DIR")/communication/task-chains"
 ACTIVE_DIR="$CHAINS_DIR/active"
+ROLE_CONFIG="$(dirname "$SCRIPT_DIR")/role-config.yaml"
 
 # Parse command line arguments
 CHAIN_ARG=""
@@ -678,22 +679,16 @@ for i, phase in enumerate(chain.get('phases', []), 1):
         if len(parts) >= 2:
             specialist_key = parts[0] + '-' + parts[1]
     
-    nicknames = {
-        'claude-1': 'Architect',
-        'claude-2': 'Builder', 
-        'claude-3': 'Guardian',
-        'claude-4': 'Chronicler',
-        'claude-5': 'Curator',
-        'claude-6': 'Data '
-    }
-    icons = {
-        'claude-1': '🏗️',
-        'claude-2': '💻',
-        'claude-3': '🧪',
-        'claude-4': '📝',
-        'claude-5': '📸',
-        'claude-6': '🗄️'
-    }
+    # Load role configuration
+    with open('$ROLE_CONFIG', 'r') as f:
+        role_config = yaml.safe_load(f)
+
+    # Extract role mappings from config
+    nicknames = {}
+    icons = {}
+    for role_id, role_data in role_config['roles'].items():
+        nicknames[role_id] = role_data['nicknames']['primary']
+        icons[role_id] = role_data['display']['emoji']
     
     specialist = nicknames.get(specialist_key, assigned_to)
     specialist_icon = icons.get(specialist_key, '')
@@ -892,46 +887,23 @@ for chain_file in glob.glob(os.path.join(chains_dir, "*.yaml")):
     
     chains_by_assignee[normalized_assignee].append((chain_file, current_phase_type))
 
-# Define assignee order and nicknames
-assignee_order = ['claude-1', 'claude-2', 'claude-3', 'claude-4', 'claude-5', 'claude-6', 'unassigned']
-nicknames = {
-    'claude-1': 'Architect',
-    'claude-2': 'Builder', 
-    'claude-3': 'Guardian',
-    'claude-4': 'Chronicler',
-    'claude-5': 'Curator',
-    'claude-6': 'Data'
-}
-icons = {
-    'claude-1': '🏗️',  # Architect - Building/Construction
-    'claude-2': '💻',   # Builder - Laptop/Coding
-    'claude-3': '🧪',   # Guardian - Test beaker
-    'claude-4': '📝',   # Chronicler - Page/Document
-    'claude-5': '📸',   # Curator - Camera for photos
-    'claude-6': '🗄️'    # Data - Database/Stack
-}
+# Load role configuration
+with open('$ROLE_CONFIG', 'r') as f:
+    role_config = yaml.safe_load(f)
+
+# Extract assignee order and role mappings from config
+assignee_order = role_config['global']['assignee_order']
+nicknames = {}
+icons = {}
+
+for role_id, role_data in role_config['roles'].items():
+    nicknames[role_id] = role_data['nicknames']['primary']
+    icons[role_id] = role_data['display']['emoji']
 
 # Apply role filters if provided
 if role_filters:
-    # Normalize the filters (architect -> claude-1, etc.)
-    filter_mapping = {
-        'architect': 'claude-1',
-        'builder': 'claude-2',
-        'guardian': 'claude-3', 
-        'chronicler': 'claude-4',
-        'curator': 'claude-5',
-        'data': 'claude-6',
-        'dev': 'claude-2',
-        'qa': 'claude-3',
-        'docs': 'claude-4',
-        'intern': 'claude-5',
-        '1': 'claude-1',
-        '2': 'claude-2', 
-        '3': 'claude-3',
-        '4': 'claude-4',
-        '5': 'claude-5',
-        '6': 'claude-6'
-    }
+    # Use summon mappings from config for filter normalization
+    filter_mapping = role_config['global']['summon_mappings']
     
     normalized_filters = []
     for role_filter in role_filters:
