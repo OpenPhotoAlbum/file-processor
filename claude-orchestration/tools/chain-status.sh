@@ -721,7 +721,9 @@ for i, phase in enumerate(chain.get('phases', []), 1):
     
     # Add dependencies first if they exist
     if depends_on:
-        depends_text = f"\033[90mDepends on: {', '.join(depends_on)}\033[0m"
+        # Use past tense for completed tasks
+        depends_label = "Depended on:" if status.upper() == 'COMPLETED' else "Depends on:"
+        depends_text = f"\033[90m{depends_label} {', '.join(depends_on)}\033[0m"
         box_lines.append(depends_text)
         box_lines.append("")  # Empty line after dependencies
     
