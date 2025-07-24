@@ -332,10 +332,18 @@
 
 - **Topic:** Claude Slash Commands
   - **Primary Doc:** `/docs/cli/slash-commands.md`
-  - **Status:** Complete - /mail and /summon commands documented
-  - **Keywords:** slash commands, mail command, summon command, inter-claude communication, team initialization
-  - **Owner:** Claude 1 (Architect)
-  - **Last Updated:** 2025-07-23
+  - **Supporting Migration:** `/docs/migration/mail-to-chain-status-migration.md`
+  - **Status:** Updated - /mail deprecated, chain-status.sh documented
+  - **Keywords:** slash commands, mail deprecation, chain-status, task management, communication migration
+  - **Owner:** Claude 4 (Chronicler) - updated for communication system changes
+  - **Last Updated:** 2025-07-24
+
+- **Topic:** Communication System Migration 
+  - **Primary Doc:** `/docs/migration/mail-to-chain-status-migration.md`
+  - **Status:** Complete - Migration from /mail to chain-status.sh task management
+  - **Keywords:** mail deprecation, chain-status migration, communication system overhaul, task chain workflow
+  - **Owner:** Claude 4 (Chronicler) - migration documentation
+  - **Last Updated:** 2025-07-24
 
 - **Topic:** Misunderstanding Tracking System
   - **Primary Doc:** `/.claude/commands/misunderstood.md`

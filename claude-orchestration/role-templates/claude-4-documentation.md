@@ -363,10 +363,15 @@ Links to relevant docs
 ### Inbox/Outbox Architecture
 **Location:** `/claude-orchestration/communication/`
 
-#### Check for New Tasks
-1. **Review inbox:** Read `/communication/claude-4/inbox.log` for documentation assignments
-2. **Read task details:** Follow links to specifications in `/communication/tasks/`
-3. **Acknowledge receipt:** Log task acceptance in `/communication/claude-4/outbox.log`
+#### Check for New Tasks ⚠️ **DEPRECATED - Use chain-status.sh**
+1. **Use task chains:** Execute `./chain-status.sh --role chronicler` to see current assignments
+2. **Review task details:** Task chains show complete specifications and dependencies
+3. **Update progress:** Use `./update-phase.sh` to report progress and completions
+
+**Legacy Method (No longer used):**
+1. ~~Review inbox: Read `/communication/claude-4/inbox.log` for documentation assignments~~
+2. ~~Read task details: Follow links to specifications in `/communication/tasks/`~~
+3. ~~Acknowledge receipt: Log task acceptance in `/communication/claude-4/outbox.log`~~
 
 #### Report Documentation Status
 1. **Writing progress:** Log status to `/communication/claude-4/outbox.log`

@@ -1,14 +1,18 @@
 # Claude Slash Commands
 
-**Last Updated:** 2025-07-23  
-**Status:** Active - `/mail`, `/summon`, and `/misunderstood` operational  
+**Last Updated:** 2025-07-24  
+**Status:** Active - `/summon` and `/misunderstood` operational, `/mail` deprecated  
 **Purpose:** Specialized commands for Claude orchestration, team coordination, and performance improvement
 
 ## Available Slash Commands
 
-### `/mail` - Inter-Claude Communication System
+### `/mail` - Inter-Claude Communication System ⚠️ **DEPRECATED**
 
-**Purpose:** Enable structured communication between Claude team members for task coordination and status reporting.
+**⚠️ DEPRECATION NOTICE:** The `/mail` command has been replaced by the `chain-status.sh` script for task checking and management. This section is preserved for historical reference.
+
+**Replacement:** Use `./claude-orchestration/tools/chain-status.sh --role [your-role]` to check your assigned tasks.
+
+**Purpose:** Previously enabled structured communication between Claude team members for task coordination and status reporting.
 
 **Command Syntax:**
 - `/mail` or `/mail check` - Check your inbox for new messages
@@ -126,14 +130,103 @@
 - **Specialization Focus:** GPS and geolocation features
 ```
 
+### `chain-status.sh` - Task Chain Management System 🆕
+
+**Purpose:** The replacement for `/mail check` - provides real-time view of active task chains and assigned work.
+
+**Command Syntax:**
+- `./claude-orchestration/tools/chain-status.sh` - Show all active task chains
+- `./chain-status.sh --role [role]` - Show tasks assigned to specific role
+- `./chain-status.sh [chain-id]` - Show detailed view of specific task chain
+- `./chain-status.sh --completed` - Include completed chains (hidden by default)
+
+#### Role-Specific Usage
+
+##### Check Your Assigned Tasks
+```bash
+# Each role checks their specific assignments
+./chain-status.sh --role architect     # Claude 1 (Architect)
+./chain-status.sh --role builder       # Claude 2 (Builder)  
+./chain-status.sh --role guardian      # Claude 3 (Guardian)
+./chain-status.sh --role chronicler    # Claude 4 (Chronicler)
+./chain-status.sh --role curator       # Claude 5 (Curator)
+./chain-status.sh --role data          # Claude 6 (Data)
+
+# Can also use numbers or nicknames
+./chain-status.sh --role 1            # Same as architect
+./chain-status.sh --role qa           # Same as guardian
+```
+
+##### Example Output - Role Filter
+```
+📝 claude-4 Chronicler (Documentation and Display Updates) Tasks
+───────────────────────────────────────────────────────────────
+
+☀️ 1 [ACTIVE] [████░] Centralized Role Configuration Architecture
+   centralized-role-config-architecture-2025-07-24
+   Created: 2 hours ago     Updated: 4 min ago
+
+⛅ 3 [PENDING] [░░] Document communication system changes - deprecate /mail command  
+   mail-deprecation-documentation-2025-07-24-2025-07-24
+   Created: 23 min ago     Updated: 23 min ago
+```
+
+##### Example Output - Detailed Chain View
+```bash
+./chain-status.sh centralized-role-config-architecture-2025-07-24
+
+# Shows complete task chain with:
+# - All phases and their current status
+# - Assigned roles for each phase  
+# - Dependencies between phases
+# - Evidence and completion criteria
+# - Progress indicators
+```
+
+#### Migration from `/mail check`
+
+**Before (deprecated):**
+```bash
+/mail check              # Check inbox for new messages
+/mail status            # Report current work status
+```
+
+**After (current approach):**
+```bash
+./chain-status.sh --role [your-role]    # Check your assigned tasks
+# Status is reported by updating task chains, not mail
+```
+
+#### Key Differences
+
+| `/mail check` | `chain-status.sh --role [role]` |
+|---------------|----------------------------------|
+| Inbox-based messaging | Task chain assignment view |
+| Manual message acknowledgment | Automatic task visibility |
+| Status via separate `/mail status` | Status via task chain updates |
+| Communication scattered across files | Centralized task chain management |
+| Role-to-role messaging | Systematic task assignment |
+
+#### Integration with Role Templates
+
+All role templates now include startup protocols using chain-status.sh:
+
+```bash
+# Standard startup sequence for all roles
+1. ✅ Acknowledge role and boundaries
+2. ✅ Execute `./chain-status.sh --role [your-role]` to check current task assignments  
+3. ✅ Process and respond to task status results
+4. ✅ State readiness based on actual task assignments
+```
+
 ### `/summon` - Claude Team Initialization
 
 **Purpose:** Initialize specialist Claudes with role-specific context and current project state.
 
 **Command Syntax:**
 - `/summon` - Display available Claudes and their status
-- `/summon [1-5]` - Initialize specific Claude by number
-- `/summon [role]` - Initialize by role name (architect, builder, guardian, chronicler, curator)
+- `/summon [1-6]` - Initialize specific Claude by number
+- `/summon [role]` - Initialize by role name (architect, builder, guardian, chronicler, curator, data)
 - `/summon all` - Generate all Claude initializations
 
 #### Initialization Process
@@ -274,7 +367,7 @@ Commands include git information to ensure Claudes understand current code state
 ### Communication Directory
 ```
 claude-orchestration/communication/
-├── claude-1/ through claude-5/
+├── claude-1/ through claude-6/
 │   ├── inbox.log     # Incoming messages
 │   └── outbox.log    # Sent messages
 ├── tasks/            # Detailed task specifications
@@ -292,12 +385,19 @@ claude-orchestration/communication/
 
 ## Best Practices
 
-### For `/mail` Usage
-1. **Check inbox at session start** - Never miss important tasks
-2. **Update status when blocked** - Keep team informed
-3. **Use appropriate priority** - Don't mark everything as high
-4. **Include context in messages** - Reference specific files or issues
-5. **Close the loop** - Report completion when done
+### For `chain-status.sh` Usage (Current)
+1. **Check tasks at session start** - Use `./chain-status.sh --role [your-role]` to see current assignments
+2. **Update task chains for status** - Use `./update-phase.sh` to report progress and completions
+3. **Focus on assigned tasks first** - Prioritize work shown in your role filter
+4. **Check dependencies** - Review detailed chain view to understand task relationships
+5. **Provide evidence for completions** - Include completion evidence when marking phases complete
+
+### For `/mail` Usage ⚠️ **DEPRECATED**
+1. **Check inbox at session start** - Never miss important tasks *(Now: use chain-status.sh)*
+2. **Update status when blocked** - Keep team informed *(Now: update task chains)*
+3. **Use appropriate priority** - Don't mark everything as high *(Now: managed by task chains)*
+4. **Include context in messages** - Reference specific files or issues *(Now: evidence in task chains)*
+5. **Close the loop** - Report completion when done *(Now: mark phases complete)*
 
 ### For `/summon` Usage  
 1. **Use for session initialization** - Start with proper context

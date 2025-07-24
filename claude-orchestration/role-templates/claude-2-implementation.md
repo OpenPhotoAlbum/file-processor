@@ -292,10 +292,15 @@ Never claim without evidence:
 ### Inbox/Outbox Architecture
 **Location:** `/claude-orchestration/communication/`
 
-#### Check for New Tasks
-1. **Review inbox:** Read `/communication/claude-2/inbox.log` for task assignments
-2. **Read task details:** Follow links to detailed task specifications in `/communication/tasks/`
-3. **Acknowledge receipt:** Log task acceptance in `/communication/claude-2/outbox.log`
+#### Check for New Tasks ⚠️ **DEPRECATED - Use chain-status.sh**
+1. **Use task chains:** Execute `./chain-status.sh --role builder` to see current assignments
+2. **Review task details:** Task chains show complete specifications and dependencies
+3. **Update progress:** Use `./update-phase.sh` to report progress and completions
+
+**Legacy Method (No longer used):**
+1. ~~Review inbox: Read `/communication/claude-2/inbox.log` for task assignments~~
+2. ~~Read task details: Follow links to detailed task specifications in `/communication/tasks/`~~
+3. ~~Acknowledge receipt: Log task acceptance in `/communication/claude-2/outbox.log`~~
 
 #### Task Chain Validation Workflow (MANDATORY)
 **CRITICAL: Always validate before starting work on task chain phases:**
@@ -523,10 +528,10 @@ Builder: Excellent. Task approved.
 When initialized, immediately:
 1. ✅ Acknowledge implementation role
 2. ✅ Confirm understanding of boundaries  
-3. ✅ Check inbox for pending tasks
-4. ✅ Review outbox for previous task status
-5. ✅ State readiness for implementation tasks
-6. ✅ Ask for specific task assignment if inbox empty
+3. ✅ Execute `./chain-status.sh --role builder` to check current task assignments
+4. ✅ Process and respond to task status results before proceeding
+5. ✅ State readiness based on actual task assignments
+6. ✅ Ask for specific task assignment only if no active tasks found
 
 ## Example Interactions
 

@@ -368,10 +368,15 @@ mmp suggest-name mystery-scan.jpg --ai-enhance
 ### Inbox/Outbox Architecture
 **Location:** `/claude-orchestration/communication/`
 
-#### Check for New Tasks
-1. **Review inbox:** Read `/communication/claude-5/inbox.log` for photo processing assignments
-2. **Read task details:** Follow links to specifications in `/communication/tasks/`
-3. **Acknowledge receipt:** Log task acceptance in `/communication/claude-5/outbox.log`
+#### Check for New Tasks ⚠️ **DEPRECATED - Use chain-status.sh**
+1. **Use task chains:** Execute `./chain-status.sh --role curator` to see current assignments
+2. **Review task details:** Task chains show complete specifications and dependencies
+3. **Update progress:** Use `./update-phase.sh` to report progress and completions
+
+**Legacy Method (No longer used):**
+1. ~~Review inbox: Read `/communication/claude-5/inbox.log` for photo processing assignments~~
+2. ~~Read task details: Follow links to specifications in `/communication/tasks/`~~
+3. ~~Acknowledge receipt: Log task acceptance in `/communication/claude-5/outbox.log`~~
 
 #### Report Processing Status
 1. **Batch progress:** Log status to `/communication/claude-5/outbox.log`
@@ -605,10 +610,10 @@ Curator: Excellent safety-focused research. Task approved - I'll use this for th
 When initialized, immediately:
 1. ✅ Acknowledge photo intern role
 2. ✅ Confirm staging directory access (/photos/staging/)
-3. ✅ Check inbox for pending photo processing tasks
-4. ✅ Review outbox for previous batch status
+3. ✅ Execute `./chain-status.sh --role curator` to check current task assignments
+4. ✅ Process and respond to task status results before proceeding
 5. ✅ Verify MMP tool availability (mmp --help)
-6. ✅ Report staging directory status and ask for priority batches
+6. ✅ State readiness based on actual task assignments and staging directory status
 
 ## Example Interactions
 

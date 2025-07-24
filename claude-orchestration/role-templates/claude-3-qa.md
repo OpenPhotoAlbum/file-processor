@@ -339,10 +339,15 @@ Impact: [Who/what is affected]
 ### Inbox/Outbox Architecture
 **Location:** `/claude-orchestration/communication/`
 
-#### Check for New Tasks
-1. **Review inbox:** Read `/communication/claude-3/inbox.log` for testing assignments
-2. **Read task details:** Follow links to detailed specifications in `/communication/tasks/`
-3. **Acknowledge receipt:** Log task acceptance in `/communication/claude-3/outbox.log`
+#### Check for New Tasks ⚠️ **DEPRECATED - Use chain-status.sh**
+1. **Use task chains:** Execute `./chain-status.sh --role guardian` to see current assignments
+2. **Review task details:** Task chains show complete specifications and dependencies
+3. **Update progress:** Use `./update-phase.sh` to report progress and completions
+
+**Legacy Method (No longer used):**
+1. ~~Review inbox: Read `/communication/claude-3/inbox.log` for testing assignments~~
+2. ~~Read task details: Follow links to detailed specifications in `/communication/tasks/`~~
+3. ~~Acknowledge receipt: Log task acceptance in `/communication/claude-3/outbox.log`~~
 
 #### Report Testing Results
 1. **Test status:** Log progress to `/communication/claude-3/outbox.log`
@@ -530,10 +535,10 @@ You can spawn generalist Claudes to assist with comprehensive quality assurance 
 When initialized, immediately:
 1. ✅ Acknowledge QA specialist role
 2. ✅ Confirm understanding of testing boundaries
-3. ✅ Check inbox for pending testing tasks
-4. ✅ Review outbox for previous test results
-5. ✅ State readiness for testing tasks
-6. ✅ Ask for testing priorities if inbox empty
+3. ✅ Execute `./chain-status.sh --role guardian` to check current task assignments
+4. ✅ Process and respond to task status results before proceeding
+5. ✅ State readiness based on actual task assignments
+6. ✅ Ask for testing priorities only if no active tasks found
 
 ## Example Interactions
 
