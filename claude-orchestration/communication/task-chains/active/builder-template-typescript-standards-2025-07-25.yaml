@@ -1,0 +1,98 @@
+id: builder-template-typescript-standards-2025-07-25
+title: Builder Template TypeScript Standards Update
+status: in_progress
+created: '2025-07-25T17:00:00-04:00'
+updated: '2025-07-24T23:14:37.176105'
+template_id: communication-flow-test
+description: Update Claude 2 Builder role template to enforce no-any TypeScript rule
+  and semantic type alias usage
+version: '1.0'
+use_cases:
+- Ensure consistent TypeScript code quality across all Builder implementations
+- Enforce semantic type alias usage instead of any types
+- Maintain project's strict type safety standards
+- Prevent any type usage in MMP CLI and main pipeline CLI
+variables:
+  feature_name: Builder Template TypeScript Standards
+  template_file: claude-2-implementation.md
+  complexity_level: Low - Template documentation update
+  priority_level: MEDIUM - Code quality enforcement
+success_criteria:
+- Builder template explicitly prohibits any type usage
+- Template includes semantic type alias guidelines
+- Template provides clear examples of proper vs improper usage
+- Quality checklist updated with TypeScript standards
+- Template changes reviewed and approved
+phases:
+- phase_id: template_analysis
+  phase_name: Current Template Analysis
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Review current Builder template and identify where TypeScript standards
+    should be added
+  deliverable: Analysis of current template structure and recommended insertion points
+    for TypeScript standards + mark this phase complete
+  estimated_duration: 30 minutes
+  started: '2025-07-24T23:14:37.176105'
+  completed: null
+  status: in_progress
+- phase_id: standards_documentation
+  phase_name: TypeScript Standards Documentation
+  assigned_to: claude-1-architect
+  depends_on:
+  - template_analysis
+  description: Write comprehensive TypeScript standards section including no-any rule,
+    semantic aliases, and examples
+  deliverable: Complete TypeScript standards section with examples, quality checklist
+    updates, and enforcement guidelines + mark this phase complete
+  estimated_duration: 45 minutes
+  started: null
+  completed: null
+  status: waiting
+- phase_id: template_integration
+  phase_name: Template Integration and Update
+  assigned_to: claude-1-architect
+  depends_on:
+  - standards_documentation
+  description: Integrate TypeScript standards into Builder template at appropriate
+    locations
+  deliverable: Updated claude-2-implementation.md template with TypeScript standards
+    integrated + mark this phase complete
+  estimated_duration: 30 minutes
+  started: null
+  completed: null
+  status: waiting
+- phase_id: template_validation
+  phase_name: Template Validation and Testing
+  assigned_to: claude-3-guardian
+  depends_on:
+  - template_integration
+  description: Review updated template for clarity, completeness, and effectiveness
+    of TypeScript standards
+  deliverable: Template validation report with any recommended improvements + mark
+    this phase complete
+  estimated_duration: 30 minutes
+  started: null
+  completed: null
+  status: waiting
+template_notes:
+- Architect handles analysis, documentation, and integration phases
+- Guardian validates template effectiveness and clarity
+- Focus on practical enforcement rather than theoretical guidelines
+- Include specific examples from project codebase
+critical_constraints:
+- Must align with existing project CLAUDE.md standards
+- Should reference types/semantic-any.ts system
+- Must be practical and enforceable during implementation
+- Cannot conflict with existing Builder role responsibilities
+technical_context:
+- Project already has semantic-any.ts system in place
+- ESLint enforces @typescript-eslint/no-explicit-any rule
+- Builder works on both MMP CLI and main pipeline CLI
+- Type safety is critical project standard
+integration_points:
+- claude-2-implementation.md role template
+- Project CLAUDE.md standards alignment
+- ESLint configuration consistency
+- Existing semantic type alias system
+priority: MEDIUM
