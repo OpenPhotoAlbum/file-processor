@@ -1,0 +1,48 @@
+{
+  "name": "mmp",
+  "version": "1.0.0",
+  "description": "Media Processing Pipeline - Unified CLI for photo and video operations",
+  "main": "dist/cli.js",
+  "type": "module",
+  "bin": {
+    "mmp": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc && node dist/cli.js",
+    "test": "jest",
+    "install-global": "./install.sh"
+  },
+  "keywords": [
+    "media",
+    "photos",
+    "videos",
+    "processing",
+    "cli",
+    "scanning",
+    "gps",
+    "metadata"
+  ],
+  "author": "Stephen Young",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "dotenv": "^17.2.1",
+    "execa": "^8.0.1",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.0",
+    "inquirer": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
