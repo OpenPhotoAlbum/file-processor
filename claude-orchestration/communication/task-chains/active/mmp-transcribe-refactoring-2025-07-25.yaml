@@ -1,0 +1,157 @@
+id: mmp-transcribe-refactoring-2025-07-25
+title: MMP Transcribe Feature Refactoring with AI Enhancement
+status: in_progress
+created: '2025-07-25T16:45:00-04:00'
+updated: '2025-07-24T22:47:20.847636'
+template_id: cli-feature
+description: Refactor MMP transcribe command with modular CLI architecture, Whisper.cpp
+  integration, and AI-enhanced image analysis
+version: '1.1'
+use_cases:
+- Seamless audio/video transcription within MMP unified tool
+- OCR text extraction from images and documents
+- AI-enhanced transcription using Claude for image comparison and correction
+- Support for multiple output formats (txt, srt, vtt, json)
+- Batch transcription capabilities for heritage collections
+- Intelligent analysis of heritage photos with text overlays
+variables:
+  feature_name: MMP Transcribe Refactoring with AI Enhancement
+  cli_command: mmp transcribe <media-file> [options] [--ai-enhance]
+  complexity_level: High - External tool integration with AI enhancement
+  priority_level: HIGH - Part of critical CLI refactoring effort
+success_criteria:
+- Transcribe command fully integrated into modular MMP CLI structure
+- Whisper.cpp functionality for audio/video transcription
+- OCR capability for image text extraction
+- AI-enhanced mode that uses Claude to verify and improve transcriptions
+- Clean separation between CLI interface and transcription logic
+- Proper error handling for missing dependencies
+- Support for all media formats (audio, video, images)
+- Progress indication for long operations
+- Batch processing capability maintained
+phases:
+- phase_id: transcribe_architecture_design
+  phase_name: Transcribe Feature Architecture Design
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Design modular architecture including CLI integration, whisper.cpp
+    wrapper, OCR system, and AI enhancement workflow
+  deliverable: Complete architecture specification covering command structure, module
+    boundaries, AI enhancement flow, and integration patterns + mark this phase complete
+  estimated_duration: 90-120 minutes
+  started: '2025-07-24T22:47:20.847636'
+  completed: null
+  status: in_progress
+- phase_id: core_transcribe_implementation
+  phase_name: Core Transcribe Module Implementation
+  assigned_to: claude-2-builder
+  depends_on:
+  - transcribe_architecture_design
+  description: Implement base transcribe module with whisper.cpp integration for audio/video
+    and OCR for images
+  deliverable: Working transcribe module with audio/video/image support, clean interfaces,
+    proper error handling + unit tests + mark this phase complete
+  estimated_duration: 3-4 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: ai_enhancement_implementation
+  phase_name: AI Enhancement Feature Implementation
+  assigned_to: claude-2-builder
+  depends_on:
+  - core_transcribe_implementation
+  description: Implement --ai-enhance flag that uses Claude API to analyze images
+    and improve OCR results through comparison
+  deliverable: Working AI enhancement with Claude image analysis, transcription comparison
+    logic, improved output generation + mark this phase complete
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: cli_integration
+  phase_name: CLI Integration and Refactoring
+  assigned_to: claude-2-builder
+  depends_on:
+  - ai_enhancement_implementation
+  description: Integrate complete transcribe module into refactored MMP CLI structure,
+    ensure 500-line compliance
+  deliverable: Fully integrated transcribe command in modular CLI + file size verification
+    + mark this phase complete
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: comprehensive_testing
+  phase_name: Transcription Feature Testing
+  assigned_to: claude-3-guardian
+  depends_on:
+  - cli_integration
+  description: Test all transcription modes including whisper.cpp, OCR, and AI enhancement
+    with various media formats
+  deliverable: Comprehensive test results for audio/video/image transcription, AI
+    enhancement validation, edge cases + mark this phase complete
+  estimated_duration: 3-4 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: documentation_update
+  phase_name: Transcribe Documentation Update
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - comprehensive_testing
+  description: Document transcribe feature including setup, usage examples, AI enhancement
+    benefits, and troubleshooting
+  deliverable: Complete documentation with examples for all modes, whisper.cpp setup,
+    AI enhancement guide + mark this phase complete
+  estimated_duration: 90-120 minutes
+  started: null
+  completed: null
+  status: waiting
+- phase_id: heritage_validation
+  phase_name: Heritage Collection Transcription Validation
+  assigned_to: claude-5-curator
+  depends_on:
+  - documentation_update
+  description: Test with heritage photos containing text, handwritten notes, and mixed
+    media for preservation workflows
+  deliverable: Heritage transcription validation, AI enhancement effectiveness report,
+    operational feedback + mark this phase complete
+  estimated_duration: 2-3 hours
+  started: null
+  completed: null
+  status: waiting
+template_notes:
+- Architect designs comprehensive system including AI enhancement workflow
+- Builder implements in phases: core functionality, then AI enhancement
+- Guardian ensures all transcription modes work reliably
+- Chronicler documents the enhanced capabilities thoroughly
+- Curator validates real-world heritage preservation effectiveness
+critical_constraints:
+- Must maintain backward compatibility with existing workflows
+- File size limits: No file >500 lines (STRICT zone enforcement)
+- Graceful degradation if whisper.cpp or Claude API unavailable
+- Heritage media safety: No data loss or corruption
+- Performance: Must handle large batches efficiently
+technical_context:
+- Current transcribe-audio.sh uses whisper.cpp directly
+- OCR capability needed for image text extraction
+- AI enhancement compares OCR results with Claude's image analysis
+- Support for correcting problematic or missing transcriptions
+- Output formats: txt, srt, vtt, json
+- Language detection and specification support
+ai_enhancement_details:
+- --ai-enhance flag triggers Claude image analysis (images only, not video)
+- Claude reads image directly to understand text content
+- System compares OCR output with Claude's interpretation
+- Replaces missing or problematic transcriptions with Claude's analysis
+- Particularly useful for handwritten text, damaged photos, or complex layouts
+- Provides context-aware transcription improvements
+integration_points:
+- MMP CLI modular structure (cli/commands/transcribe.ts)
+- Whisper.cpp installation for audio/video
+- OCR library integration for image text extraction
+- Claude API for AI-enhanced image analysis
+- Output directory management and file naming
+- Progress tracking with MMP output system
+- Consistent error handling across all modes
+priority: HIGH
