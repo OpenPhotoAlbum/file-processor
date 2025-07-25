@@ -1,8 +1,8 @@
 id: mmp-transcribe-refactoring-2025-07-25
 title: MMP Transcribe Feature Refactoring with AI Enhancement
-status: active
+status: in_progress
 created: '2025-07-25T16:45:00-04:00'
-updated: '2025-07-24T22:52:31.960769'
+updated: '2025-07-24T22:57:08.355243'
 template_id: cli-feature
 description: Refactor MMP transcribe command with modular CLI architecture, Whisper.cpp
   integration, and AI-enhanced image analysis
@@ -56,9 +56,9 @@ phases:
   deliverable: Working transcribe module with audio/video/image support, clean interfaces,
     proper error handling + unit tests + mark this phase complete
   estimated_duration: 3-4 hours
-  started: null
+  started: '2025-07-24T22:57:08.355243'
   completed: null
-  status: ready
+  status: in_progress
   became_ready: '2025-07-24T22:52:31.960769'
 - phase_id: ai_enhancement_implementation
   phase_name: AI Enhancement Feature Implementation
