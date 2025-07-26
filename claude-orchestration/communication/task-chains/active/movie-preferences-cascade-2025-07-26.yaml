@@ -1,0 +1,177 @@
+id: movie-preferences-cascade-2025-07-26
+title: Movie Preferences Auto-Cascade Test
+status: in_progress
+created: '2025-07-26T16:58:00-04:00'
+updated: '2025-07-26T17:00:05.889296'
+template_id: sequential-auto-cascade
+description: Auto-cascade through all 6 Claude personas to write movie preferences,
+  then QA validation
+version: '2.0'
+auto_cascade:
+  enabled: true
+  mode: sequential
+  initiated_by: stephen
+  requires_stephen_approval: true
+  emergency_stop_enabled: true
+  identity_protocol_override: true
+  authorized_roles:
+  - claude-1
+  - claude-2
+  - claude-3
+  - claude-4
+  - claude-5
+  - claude-6
+  audit_logging: true
+  cascade_log: []
+  safety_checks:
+  - verify_next_role_assignment
+  - confirm_phase_completion
+  - validate_evidence_provided
+  - check_emergency_stop_status
+use_cases:
+- Test auto-cascade through all 6 Claude personas
+- Validate each Claude can write files to specific directory
+- Test QA validation at the end
+variables:
+  feature_name: Movie Preferences Cascade
+  system_component: Task Chain Orchestra Framework
+  complexity_level: Medium - Full Role Cascade
+  priority_level: Medium - Fun Test
+  output_directory: /home/stephen/Documents/initial-media-processing/TEST_HERE
+success_criteria:
+- Each Claude writes their movie preferences file
+- Auto-cascade flows through all 6 roles
+- QA validates all files exist
+- No other files in the system are modified
+phases:
+- phase_id: architect_movie
+  phase_name: Architect Movie Preferences
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Write claude-1-architect.md with timestamp and 2 sentences about movie
+    preferences
+  deliverable: claude-1-architect.md file created in TEST_HERE directory + mark this
+    phase complete in task chain
+  estimated_duration: 3 minutes
+  started: '2025-07-26T17:00:05.889296'
+  completed: null
+  status: in_progress
+  cascade_action:
+    enabled: true
+    next_role: claude-2-builder
+    summon_command: ./claude-summon.sh 2
+    context_message: Auto-cascade to Builder - please write your movie preferences
+      file next
+- phase_id: builder_movie
+  phase_name: Builder Movie Preferences
+  assigned_to: claude-2-builder
+  depends_on:
+  - architect_movie
+  description: Write claude-2-builder.md with timestamp and 2 sentences about movie
+    preferences
+  deliverable: claude-2-builder.md file created in TEST_HERE directory + mark this
+    phase complete in task chain
+  estimated_duration: 3 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: claude-3-guardian
+    summon_command: ./claude-summon.sh 3
+    context_message: Auto-cascade to Guardian - please write your movie preferences
+      file next
+- phase_id: guardian_movie
+  phase_name: Guardian Movie Preferences
+  assigned_to: claude-3-guardian
+  depends_on:
+  - builder_movie
+  description: Write claude-3-guardian.md with timestamp and 2 sentences about movie
+    preferences
+  deliverable: claude-3-guardian.md file created in TEST_HERE directory + mark this
+    phase complete in task chain
+  estimated_duration: 3 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: claude-4-chronicler
+    summon_command: ./claude-summon.sh 4
+    context_message: Auto-cascade to Chronicler - please write your movie preferences
+      file next
+- phase_id: chronicler_movie
+  phase_name: Chronicler Movie Preferences
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - guardian_movie
+  description: Write claude-4-chronicler.md with timestamp and 2 sentences about movie
+    preferences
+  deliverable: claude-4-chronicler.md file created in TEST_HERE directory + mark this
+    phase complete in task chain
+  estimated_duration: 3 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: claude-5-curator
+    summon_command: ./claude-summon.sh 5
+    context_message: Auto-cascade to Curator - please write your movie preferences
+      file next
+- phase_id: curator_movie
+  phase_name: Curator Movie Preferences
+  assigned_to: claude-5-curator
+  depends_on:
+  - chronicler_movie
+  description: Write claude-5-curator.md with timestamp and 2 sentences about movie
+    preferences
+  deliverable: claude-5-curator.md file created in TEST_HERE directory + mark this
+    phase complete in task chain
+  estimated_duration: 3 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: claude-6-data
+    summon_command: ./claude-summon.sh 6
+    context_message: Auto-cascade to Data - please write your movie preferences file
+      next
+- phase_id: data_movie
+  phase_name: Data Movie Preferences
+  assigned_to: claude-6-data
+  depends_on:
+  - curator_movie
+  description: Write claude-6-data.md with timestamp and 2 sentences about movie preferences
+  deliverable: claude-6-data.md file created in TEST_HERE directory + mark this phase
+    complete in task chain
+  estimated_duration: 3 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: claude-3-guardian
+    summon_command: ./claude-summon.sh 3
+    context_message: Auto-cascade back to Guardian for QA validation - check all 6
+      movie preference files exist and create results.md
+- phase_id: qa_validation
+  phase_name: QA Validation of Movie Files
+  assigned_to: claude-3-guardian
+  depends_on:
+  - data_movie
+  description: Validate all 6 Claude movie preference files exist and create results.md
+    with pass/fail status
+  deliverable: results.md file with validation results + mark this phase complete
+    in task chain
+  estimated_duration: 5 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: false
+    stephen_approval_required: true
+    next_role: stephen_approval_required
+pending_notifications: []
+priority: MEDIUM
