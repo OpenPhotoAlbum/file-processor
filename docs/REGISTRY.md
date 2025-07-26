@@ -271,6 +271,13 @@
   - **Owner:** Stable - framework established
   - **Last Updated:** 2024-12-24
 
+- **Topic:** Quality Gate Validation Reports
+  - **Primary Doc:** `/docs/testing/reports/` (directory)
+  - **Status:** Active - Guardian formal validation reports for major features
+  - **Keywords:** quality gates, validation reports, Claude 3, Guardian, testing evidence
+  - **Owner:** Claude 3 (Guardian)
+  - **Last Updated:** 2025-07-26
+
 - **Topic:** MMP Documentation Production Readiness
   - **Primary Doc:** `/docs/MMP-DOCUMENTATION-PRODUCTION-READINESS.md`
   - **Status:** Complete - Comprehensive verification report for heritage photo/video processing

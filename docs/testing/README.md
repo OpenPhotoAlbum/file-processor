@@ -4,6 +4,22 @@ This directory contains comprehensive testing documentation for the Media Proces
 
 ## Testing Reports
 
+### Quality Gate Validation Reports
+**Location:** `/reports/` directory  
+**Owner:** Claude 3 (Guardian)  
+**Purpose:** Formal validation evidence for major system changes
+
+#### Current Reports
+- `centralized-role-config-validation-2025-07-24.md` - Role configuration system validation
+- `auto-cascade-safety-validation-2025-07-24.md` - Auto-cascade safety testing
+
+#### Report Standards
+All validation reports include:
+- ✅ **Executive Summary** - Pass/fail status with key findings
+- ✅ **Test Coverage** - Detailed breakdown of tested components  
+- ✅ **Evidence** - Specific test results and validation proof
+- ✅ **Recommendations** - Improvements or follow-up actions
+
 ### [Sample Coverage Report](./sample-coverage-report.md)
 **Status**: ✅ Complete (June 25, 2025)  
 **Coverage**: 15/15 Components (100%)

@@ -125,6 +125,18 @@ find /docs -name "*.md" -exec grep -l "testing\|test.*plan" {} \;
 3. **Document test procedures** for others to follow
 4. **Update `/docs/README.md`** with testing status if needed
 
+### Quality Gate Validation Reports (MANDATORY):
+**For major feature testing (task chain quality gates):**
+1. **Create formal validation report** documenting comprehensive testing evidence
+2. **Save to:** `/docs/testing/reports/[feature-name]-validation-[YYYY-MM-DD].md`
+3. **Include required sections:**
+   - Executive Summary (Pass/Fail with key findings)
+   - Test Coverage (Detailed breakdown of tested components)
+   - Evidence (Specific test results and validation proof)
+   - Recommendations (Improvements or follow-up actions)
+4. **Update** `/docs/testing/README.md` to reference the new report
+5. **Register** in `/docs/REGISTRY.md` if it's a new testing category
+
 ### Testing Documentation Protocol:
 **Test documentation must include:**
 - [ ] How to run the tests
