@@ -295,6 +295,12 @@ if failed_phases > 0:
 
 status_detail = ", ".join(status_parts) if status_parts else "no phases started"
 print(f"Chain status: {chain['status']} ({status_detail} of {total_phases} phases)")
+
+# Check if chain was just completed and needs archiving
+if chain['status'] == 'completed':
+    # Only print this once when it becomes completed
+    # (Note: archive-chain.sh checks status before archiving)
+    print("✅ Chain completed! Will auto-archive after notifications.")
 EOF
 
 # Process pending notifications
@@ -439,9 +445,23 @@ echo "2. View full chain: cat $CHAIN_FILE"
 # Auto-commit phase update
 git add "$CHAIN_FILE" && git commit -m "orchestration: Update $(basename "$CHAIN_FILE" .yaml) phase $PHASE_ID to $ACTION" || true
 
-# Handle auto-cascade if completion triggered it
-if [ "$ACTION" = "complete" ] && [ "$AUTO_CASCADE_NEEDED" = "true" ]; then
+# Check if chain is now completed and should be auto-archived
+CHAIN_STATUS=$(python3 -c "
+import yaml
+with open('$CHAIN_FILE', 'r') as f:
+    chain = yaml.safe_load(f)
+print(chain.get('status', 'unknown'))
+")
+
+if [ "$CHAIN_STATUS" = "completed" ]; then
     echo ""
-    echo -e "${YELLOW}🔄 Checking for auto-cascade configuration...${NC}"
-    execute_auto_cascade "$CHAIN_FILE" "$AUTO_CASCADE_PHASE_ID" "$AUTO_CASCADE_EVIDENCE"
+    echo -e "${GREEN}🎉 Chain completed! Auto-archiving...${NC}"
+    "$SCRIPT_DIR/archive-chain.sh" "$CHAIN_ID"
+else
+    # Handle auto-cascade if completion triggered it
+    if [ "$ACTION" = "complete" ] && [ "$AUTO_CASCADE_NEEDED" = "true" ]; then
+        echo ""
+        echo -e "${YELLOW}🔄 Checking for auto-cascade configuration...${NC}"
+        execute_auto_cascade "$CHAIN_FILE" "$AUTO_CASCADE_PHASE_ID" "$AUTO_CASCADE_EVIDENCE"
+    fi
 fi
