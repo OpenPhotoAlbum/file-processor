@@ -1,0 +1,74 @@
+id: test-auto-cascade-full-2025-07-26
+title: Complete Auto-Cascade System Test
+status: in_progress
+created: '2025-07-26T16:52:00-04:00'
+updated: '2025-07-26T16:52:52.647660'
+template_id: sequential-auto-cascade
+description: Full test of auto-cascade system with Claude-executable summon implementation
+version: '2.0'
+auto_cascade:
+  enabled: true
+  mode: sequential
+  initiated_by: stephen
+  requires_stephen_approval: true
+  emergency_stop_enabled: true
+  identity_protocol_override: true
+  authorized_roles:
+  - claude-1
+  - claude-2
+  - claude-3
+  - claude-4
+  audit_logging: true
+  cascade_log: []
+  safety_checks:
+  - verify_next_role_assignment
+  - confirm_phase_completion
+  - validate_evidence_provided
+  - check_emergency_stop_status
+use_cases:
+- Test complete auto-cascade with Claude-executable summon
+- Validate controlled identity switching works end-to-end
+variables:
+  feature_name: Complete Auto-Cascade Test
+  system_component: Task Chain Orchestra Framework
+  complexity_level: Medium - Full Integration Test
+  priority_level: High - System Validation
+success_criteria:
+- Auto-cascade triggers automatically on phase completion
+- Claude-executable summon function works correctly
+- Role template loads with proper context
+- Complete audit trail maintained
+phases:
+- phase_id: architect_phase
+  phase_name: Architect Planning Phase
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Create a simple plan that will be handed off via auto-cascade
+  deliverable: Simple implementation plan + mark this phase complete in task chain
+  estimated_duration: 5 minutes
+  started: '2025-07-26T16:52:52.647660'
+  completed: null
+  status: in_progress
+  cascade_action:
+    enabled: true
+    next_role: claude-4-chronicler
+    summon_command: ./claude-summon.sh 4
+    context_message: Auto-cascade from Architect - documentation phase ready. Please
+      document the plan created in previous phase.
+- phase_id: documentation_phase
+  phase_name: Documentation Phase
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - architect_phase
+  description: Document the plan created by architect
+  deliverable: Documentation of the plan + mark this phase complete in task chain
+  estimated_duration: 5 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: false
+    stephen_approval_required: true
+    next_role: stephen_approval_required
+pending_notifications: []
+priority: HIGH
