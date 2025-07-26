@@ -1,91 +1,122 @@
-# Task Chain: Documentation Static Website Implementation
-# Generated: 2025-07-26T17:29:46-04:00
-# Template: cli-feature-template
-# Chain ID: documentation-static-website-implementation-2025-07-26
-
-id: "documentation-static-website-implementation-2025-07-26"
-title: "Documentation Static Website Implementation"
-status: "pending"
-created: "2025-07-26T17:29:46-04:00"
-updated: "2025-07-26T17:29:46-04:00"
-
-template_id: cli-feature
-description: Standard workflow for implementing new CLI commands or features
-version: '2.0'
+id: documentation-static-website-implementation-2025-07-26
+title: Documentation Static Website Implementation
+status: in_progress
+created: '2025-07-26T17:29:46-04:00'
+updated: '2025-07-26T17:32:27.245989'
+template_id: documentation-website
+description: Create Docusaurus 3.0 static website for 88 markdown documentation files
+  with local development server and GitHub Pages deployment readiness
+version: '1.0'
+priority: MEDIUM
 use_cases:
-- Adding new MMP CLI commands
-- Extending existing CLI functionality
-- CLI option additions or modifications
+- Transform existing /docs/ markdown files into professional static website
+- Enable local development server with hot reload for documentation access
+- Prepare GitHub Pages deployment configuration (not deployed initially)
+- Provide search functionality across all 88 documentation files
 variables:
-  feature_name: '{{FEATURE_NAME}}'
-  cli_command: '{{CLI_COMMAND}}'
-  complexity_level: '{{COMPLEXITY_LEVEL}}'
-  priority_level: '{{PRIORITY_LEVEL}}'  # Legacy field for backwards compatibility
+  technology_stack: Docusaurus 3.0
+  total_files: 88
+  content_size: 980KB
+  target_directory: docs-website
+  deployment_ready: true
+  deployment_active: false
 success_criteria:
-- CLI command implemented and tested end-to-end
-- Database operations validated for safety and performance
-- Integration tests pass with real command execution
-- Documentation includes working examples and troubleshooting
-- No regressions in existing CLI functionality
+- Local development server accessible via npm run docs:dev with hot reload
+- All 88 markdown files render correctly with preserved formatting and links
+- Auto-generated navigation from REGISTRY.md structure
+- Full-text search functionality across all documentation
+- GitHub Pages deployment configuration prepared but not deployed
+- Professional, responsive design suitable for external viewing
+- Integration with existing Node.js/TypeScript/ESLint ecosystem
 phases:
-- phase_id: database_assessment
-  phase_name: Database Impact Assessment
-  assigned_to: claude-6
+- phase_id: architecture_setup
+  phase_name: Architecture & Docusaurus Setup
+  assigned_to: claude-1
   depends_on: []
-  description: Analyze if CLI feature requires database changes, assess risks
-  deliverable: Risk analysis + database specifications OR no-DB-changes confirmation
-    + mark this phase complete in task chain (next Claude automatically notified)
-  estimated_duration: 30-60 minutes
-- phase_id: integration_tests
-  phase_name: CLI Integration Tests (TDD)
-  assigned_to: claude-3
-  depends_on:
-  - database_assessment
-  description: Write failing CLI command tests - focus on actual command execution
-    and expected output, not unit test coverage
-  deliverable: Failing CLI tests that validate end-to-end command behavior + mark
-    this phase complete in task chain (next Claude automatically notified)
-  estimated_duration: 1-2 hours
-- phase_id: implementation
-  phase_name: Implement CLI Feature
+  description: Design overall website architecture and coordinate Docusaurus 3.0 setup
+    with Claude 2. Define integration strategy with existing Node.js ecosystem and
+    establish REGISTRY.md to sidebar auto-generation system.
+  deliverable: Complete architectural specifications and oversee initial Docusaurus
+    setup in /docs-website/ subdirectory + mark this phase complete in task chain
+  estimated_duration: 45 minutes
+  started: '2025-07-26T17:32:27.245989'
+  completed: null
+  status: in_progress
+- phase_id: content_migration
+  phase_name: Content Migration & Structure
   assigned_to: claude-2
   depends_on:
-  - integration_tests
-  description: Build feature to make CLI tests pass, following any database specifications
-    from Data
-  deliverable: Working CLI feature with passing integration tests + mark this phase
-    complete in task chain (next Claude automatically notified)
-  estimated_duration: 2-4 hours
-- phase_id: database_validation
-  phase_name: Validate Database Operations
-  assigned_to: claude-6
+  - architecture_setup
+  description: Implement automated markdown migration from /docs/ to Docusaurus structure.
+    Build REGISTRY.md parser for navigation generation and configure all 88 markdown
+    files with proper frontmatter while preserving existing cross-reference links.
+  deliverable: All 88 markdown files successfully migrated with working navigation
+    and preserved cross-references + mark this phase complete in task chain
+  estimated_duration: 2 hours
+  started: null
+  completed: null
+  status: waiting
+- phase_id: professional_features
+  phase_name: Professional Features Implementation
+  assigned_to: claude-2
   depends_on:
-  - implementation
-  description: Verify database interactions work correctly if applicable, validate
-    performance and data integrity
-  deliverable: Database validation sign-off + mark this phase complete in task chain
-    (next Claude automatically notified)
-  estimated_duration: 30 minutes
-- phase_id: documentation
-  phase_name: Document CLI Usage
+  - content_migration
+  description: Implement search functionality with Algolia DocSearch configuration,
+    apply professional theme with project branding, create responsive design with
+    mobile optimization, and configure GitHub Pages deployment (prepared but not deployed).
+  deliverable: Professional static website with search, responsive design, and deployment
+    readiness + mark this phase complete in task chain
+  estimated_duration: 90 minutes
+  started: null
+  completed: null
+  status: waiting
+- phase_id: quality_assurance
+  phase_name: Quality Assurance & Testing
+  assigned_to: claude-3
+  depends_on:
+  - professional_features
+  description: Test local development server performance, verify all 88 markdown files
+    render correctly with formatting preserved, validate search functionality across
+    entire documentation corpus, and test GitHub Pages build process.
+  deliverable: Comprehensive quality validation report with all issues identified
+    and resolved + mark this phase complete in task chain
+  estimated_duration: 60 minutes
+  started: null
+  completed: null
+  status: waiting
+- phase_id: documentation_integration
+  phase_name: Documentation & Integration
   assigned_to: claude-4
   depends_on:
-  - database_validation
-  description: Document command syntax, examples, help text, troubleshooting guides
-  deliverable: CLI documentation with working examples + mark this phase complete
-    in task chain (next Claude automatically notified)
-  estimated_duration: 1 hour
+  - quality_assurance
+  description: Create setup and maintenance documentation, document deployment process
+    for future publishing, update main project README with documentation website information,
+    and add npm scripts to main package.json for seamless workflow.
+  deliverable: Complete documentation and integration with existing project workflow
+    + mark this phase complete in task chain
+  estimated_duration: 45 minutes
+  started: null
+  completed: null
+  status: waiting
 - phase_id: final_validation
-  phase_name: End-to-End Validation
+  phase_name: End-to-End Validation & Sign-off
   assigned_to: claude-1
   depends_on:
-  - documentation
-  description: Manually test documented examples, verify complete workflow, validate
-    task chain completion
-  deliverable: Final architectural approval + mark entire task chain as completed
+  - documentation_integration
+  description: Test complete documentation website workflow, verify all success criteria
+    met, validate npm script integration, and provide final architectural approval
+    for the static website implementation.
+  deliverable: Final architectural approval confirming all success criteria met +
+    mark entire task chain as completed
   estimated_duration: 30 minutes
+  started: null
+  completed: null
+  status: waiting
 template_notes:
-- Data leads with risk assessment even for potentially non-database features
-- Guardian focuses on CLI integration tests, not unit test coverage
-- Double Data validation ensures database safety throughout process
-- Architect performs final end-to-end validation and sign-off
+- Architect leads with comprehensive architecture design and coordinates Builder implementation
+- Builder handles dual phases - content migration and professional features implementation
+- Guardian focuses on quality assurance across all 88 documentation files and website
+  functionality
+- Chronicler provides integration documentation and workflow setup
+- No database involvement required - pure static website generation
+- Architect performs final end-to-end validation and architectural sign-off
