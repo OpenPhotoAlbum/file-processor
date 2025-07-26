@@ -1,6 +1,7 @@
 import { BaseProcessor } from './base.processor.js';
 import { MediaFile, ProcessingResult } from '../types/media.js';
 import { ExifExtractor, TimestampExtractor, GPSExtractor } from '../utils/extractors/index.js';
+import { extractColorAnalysis } from '../utils/extractors/color.js';
 import { Logger } from '../utils/logging/index.js';
 import { createValidationErrorFactory, createSystemErrorFactory } from '../utils/errors/factories.js';
 import { readFile } from 'fs/promises';
@@ -61,7 +62,29 @@ export class HeritageProcessor extends BaseProcessor {
         }
       };
 
-      // 7. Build processing result
+      // 7. Extract color analysis
+      let colorAnalysis: { dominantColor?: string; meanColor?: string; salientColor?: string } = {};
+      try {
+        const fullColorAnalysis = await extractColorAnalysis(file.absolutePath);
+        colorAnalysis = {
+          dominantColor: fullColorAnalysis.dominantColor,
+          meanColor: fullColorAnalysis.meanColor,
+          salientColor: fullColorAnalysis.salientColor || undefined
+        };
+        this.logger.info(
+          `Extracted colors - dominant: ${colorAnalysis.dominantColor}` +
+          `, mean: ${colorAnalysis.meanColor}, salient: ${colorAnalysis.salientColor || 'none'}`,
+          { filename: file.path }
+        );
+      } catch (error) {
+        this.logger.warn('Color extraction failed for heritage photo', {
+          path: file.path,
+          error: error instanceof Error ? error.message : 'Unknown error'
+        });
+        // Continue processing without colors
+      }
+
+      // 8. Build processing result
       const result: ProcessingResult = {
         file: {
           path: file.path,
@@ -85,7 +108,10 @@ export class HeritageProcessor extends BaseProcessor {
             height: exifData.image.height || 0,
             megapixels: exifData.image.megapixels || 0,
             orientation: exifData.image.orientation || 'Unknown'
-          }
+          },
+          dominantColor: colorAnalysis.dominantColor,
+          meanColor: colorAnalysis.meanColor,
+          salientColor: colorAnalysis.salientColor
         },
         timestamps: timestampResult,
         location: locationResult,
