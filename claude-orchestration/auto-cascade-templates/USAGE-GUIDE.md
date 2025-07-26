@@ -117,9 +117,9 @@ Write clear, informative context messages:
 #### Implementation Quality Gates
 ```yaml
 quality_requirements:
-  - "npm run lint:check passes with zero warnings"
-  - "npm run typecheck passes with zero errors"
-  - "npm run build succeeds completely"
+  - "cd pipeline-cli && npm run lint:check passes with zero warnings"
+  - "cd pipeline-cli && npm run typecheck passes with zero errors"
+  - "cd pipeline-cli && npm run build succeeds completely"
   - "npm test passes all existing tests"
   - "OAuth2 integration tests validate token flow"
 ```

@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:jpg_with_gps_iphone.JPG",
+    "path": "relative:scratch/sample_media/jpg_with_gps_iphone.JPG",
     "hash": "placeholder-hash",
     "size": 1740252,
     "mimeType": "image/jpeg",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-07-22T04:17:21.726Z"
+    "extractedAt": "2025-07-26T17:08:13.642Z"
   },
   "media": {
     "type": "image",
@@ -130,7 +130,7 @@
           "county": "Strafford",
           "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 601,
         "confidence": 1,
@@ -151,7 +151,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 2059,
         "confidence": 0.96,
@@ -172,7 +172,7 @@
           "county": "York",
           "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 1652,
         "confidence": 0.9,
@@ -193,7 +193,7 @@
           "county": "Strafford",
           "description": "Mountain peak - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 1675,
         "confidence": 0.9,
@@ -214,7 +214,7 @@
           "county": "York",
           "description": "Mountain peak - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 1809,
         "confidence": 0.9,
@@ -235,7 +235,7 @@
           "county": "Strafford",
           "description": "River or stream - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 2292,
         "confidence": 0.86,
@@ -256,7 +256,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Somersworth quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 2541,
         "confidence": 0.85,
@@ -277,7 +277,7 @@
           "county": "York",
           "description": "River or stream - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 590,
         "confidence": 0.79,
@@ -298,7 +298,7 @@
           "county": "Strafford",
           "description": "Water reservoir - in Strafford County, New Hampshire, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 1379,
         "confidence": 0.72,
@@ -319,7 +319,7 @@
           "county": "York",
           "description": "Water reservoir - in York County, Maine, (USGS Dover East quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:21.636Z"
+          "lastUpdated": "2025-07-26T17:08:13.554Z"
         },
         "distance": 2148,
         "confidence": 0.51,
@@ -335,7 +335,7 @@
         "USGS GNIS"
       ],
       "cacheHit": false,
-      "queryTimeMs": 249
+      "queryTimeMs": 259
     }
   },
   "camera": {
@@ -356,13 +356,13 @@
     "fileType": "JPEG",
     "mimeType": "image/jpeg",
     "exifVersion": "0221",
-    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/jpg_with_gps_iphone.JPG",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media/jpg_with_gps_iphone.JPG",
     "ExifTool:ExifToolVersion": 12.76,
     "File:FileName": "jpg_with_gps_iphone.JPG",
-    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media",
     "File:FileSize": "1740 kB",
     "File:FileModifyDate": "2025:06:23 16:23:22-04:00",
-    "File:FileAccessDate": "2025:07:22 00:17:21-04:00",
+    "File:FileAccessDate": "2025:07:26 12:56:48-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

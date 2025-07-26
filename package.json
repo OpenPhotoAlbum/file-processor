@@ -4,13 +4,6 @@
   "description": "Media processing development environment and workflow tools",
   "type": "module",
   "scripts": {
-    "scan": "./scripts/scan.sh",
-    "manual-photo:gps-tagging": "./scripts/manual-photo-tools/venv/bin/python3 ./scripts/manual-photo-tools/geotag-gps.py --skip-gps --skip-processed",
-    "manual-photo:rotation-resume": "./scripts/manual-photo-tools/venv/bin/python3 ./scripts/manual-photo-tools/rotate-and-save.py --skip-processed",
-    "manual-photo:rotation": "./scripts/manual-photo-tools/venv/bin/python3 ./scripts/manual-photo-tools/rotate-and-save.py",
-    "query:one": "node scripts/media-inspector.cjs complete",
-    "etl:recreation": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js",
-    "etl:recreation:incremental": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js --incremental",
     "mcp-project:setup": "cd mcp-project-context && ./venv/bin/python claude_brain.py --db project-embeddings.db init",
     "mcp-project:start": "cd mcp-project-context && ./venv/bin/python mcp_server_simple.py",
     "mcp-project:preview": "cd mcp-project-context && ./venv/bin/python claude_brain.py --db project-embeddings.db preview /home/stephen/Documents/initial-media-processing",
@@ -23,9 +16,7 @@
     "db:migrate": "knex migrate:latest --knexfile src/database/knexfile.js",
     "db:rollback": "knex migrate:rollback --knexfile src/database/knexfile.js",
     "db:seed": "knex seed:run --knexfile src/database/knexfile.js",
-    "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed",
-    "transcribe": "node scripts/transcribe.js",
-    "scrapbook-treatment": "node scripts/scrapbook-treatment.js"
+    "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed"
   },
   "keywords": [
     "media",

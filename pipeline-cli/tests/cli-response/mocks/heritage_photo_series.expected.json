@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:heritage_photo_series.jpg",
+    "path": "relative:scratch/sample_media/heritage_photo_series.jpg",
     "hash": "placeholder-hash",
     "size": 1616506,
     "mimeType": "image/jpeg",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "HeritageProcessor",
-    "extractedAt": "2025-07-22T04:17:27.059Z",
+    "extractedAt": "2025-07-26T17:08:19.166Z",
     "notes": "Heritage photo processing - expensive landmark lookups skipped for performance"
   },
   "media": {
@@ -21,7 +21,10 @@
       "height": 3143,
       "megapixels": 7.5,
       "orientation": "Unknown"
-    }
+    },
+    "dominantColor": "#f8edf1",
+    "meanColor": "#f2e3e6",
+    "salientColor": "#e36b64"
   },
   "timestamps": {
     "capture": {
@@ -100,7 +103,7 @@
         "USGS GNIS"
       ],
       "cacheHit": false,
-      "queryTimeMs": 253
+      "queryTimeMs": 251
     }
   },
   "camera": {},
@@ -109,13 +112,13 @@
     "fileType": "JPEG",
     "mimeType": "image/jpeg",
     "exifVersion": "0232",
-    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/heritage_photo_series.jpg",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media/heritage_photo_series.jpg",
     "ExifTool:ExifToolVersion": 12.76,
     "File:FileName": "heritage_photo_series.jpg",
-    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media",
     "File:FileSize": "1617 kB",
     "File:FileModifyDate": "2025:07:22 00:15:30-04:00",
-    "File:FileAccessDate": "2025:07:22 00:15:32-04:00",
+    "File:FileAccessDate": "2025:07:26 12:56:54-04:00",
     "File:FileInodeChangeDate": "2025:07:22 00:15:30-04:00",
     "File:FilePermissions": "-rw-rw-r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

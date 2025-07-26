@@ -119,7 +119,7 @@
 
 **Basic Processing (single file)**
 ```bash
-node dist/main.js -f "/photos/archive/2023/07/photo.jpg" -o "photo.jpg.json"
+node pipeline-cli/dist/main.js -f "/photos/archive/2023/07/photo.jpg" -o "photo.jpg.json"
 ```
 
 **Full Enrichment (all providers)**
@@ -128,29 +128,29 @@ GEOLOCATION_ENABLED=true \
 RECREATION_GOV_PROVIDER_ENABLED=true \
 NPS_PROVIDER_ENABLED=true \
 GNIS_PROVIDER_ENABLED=true \
-  node dist/main.js -f "/photos/archive/2023/07/photo.jpg" -o "output.json"
+  node pipeline-cli/dist/main.js -f "/photos/archive/2023/07/photo.jpg" -o "output.json"
 ```
 
 **JSON Output (pipeable)**
 ```bash
-node dist/main.js -f "photo.jpg" --json | jq '.location.landmarks'
+node pipeline-cli/dist/main.js -f "photo.jpg" --json | jq '.location.landmarks'
 ```
 
 **Timestamp Only Mode**
 ```bash
-node dist/main.js -f "photo.jpg" --timestamp-only
+node pipeline-cli/dist/main.js -f "photo.jpg" --timestamp-only
 # Output: 2023-07-15_14-32-45
 ```
 
 **Batch Processing**
 ```bash
 find /photos -name "*.jpg" | xargs -P 8 -I {} \
-  node dist/main.js -f {} -o {}.json
+  node pipeline-cli/dist/main.js -f {} -o {}.json
 ```
 
 **Disable Geolocation (faster processing)**
 ```bash
-GEOLOCATION_ENABLED=false node dist/main.js -f "photo.jpg" -o "output.json"
+GEOLOCATION_ENABLED=false node pipeline-cli/dist/main.js -f "photo.jpg" -o "output.json"
 ```
 
 **Testing/Development**
@@ -159,10 +159,10 @@ GEOLOCATION_ENABLED=false node dist/main.js -f "photo.jpg" -o "output.json"
 npm run build
 
 # Run with source maps for debugging
-node --enable-source-maps dist/main.js -f "photo.jpg" --json
+node --enable-source-maps pipeline-cli/dist/main.js -f "photo.jpg" --json
 
 # Process sample photos
-node dist/main.js -f "sample:vancouver-island.jpg" --json
+node pipeline-cli/dist/main.js -f "sample:vancouver-island.jpg" --json
 ```
 
 #### Output Modes
@@ -270,14 +270,14 @@ node dist/main.js -f "sample:vancouver-island.jpg" --json
 **Performance Improvement**: Tests now run ~10x faster with full mocking enabled
 
 ## Source Code Documentation
-Each main directory in `/src/` contains a `CLAUDE.md` file with developer-focused helper notes:
-- **`src/cli/CLAUDE.md`** - CLI interface patterns, output modes, and usage examples
-- **`src/database/CLAUDE.md`** - Database integration, migration system, and preservation protocols
-- **`src/pipeline/CLAUDE.md`** - Processing orchestration and processor routing
-- **`src/processors/CLAUDE.md`** - Image/video processing and Live Photo detection
-- **`src/services/CLAUDE.md`** - Service layer architecture and provider integrations
-- **`src/types/CLAUDE.md`** - Type system design and semantic any usage
-- **`src/utils/CLAUDE.md`** - Error handling, logging, and extraction utilities
+Each main directory in `/pipeline-cli/src/` contains a `CLAUDE.md` file with developer-focused helper notes:
+- **`pipeline-cli/src/cli/CLAUDE.md`** - CLI interface patterns, output modes, and usage examples
+- **`pipeline-cli/src/database/CLAUDE.md`** - Database integration, migration system, and preservation protocols
+- **`pipeline-cli/src/pipeline/CLAUDE.md`** - Processing orchestration and processor routing
+- **`pipeline-cli/src/processors/CLAUDE.md`** - Image/video processing and Live Photo detection
+- **`pipeline-cli/src/services/CLAUDE.md`** - Service layer architecture and provider integrations
+- **`pipeline-cli/src/types/CLAUDE.md`** - Type system design and semantic any usage
+- **`pipeline-cli/src/utils/CLAUDE.md`** - Error handling, logging, and extraction utilities
 
 ## Documentation Index
 

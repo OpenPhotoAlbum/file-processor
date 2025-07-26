@@ -4,7 +4,7 @@
 **From:** Claude 1 (Architect/CTO)  
 **To:** Claude 2 (Builder/Implementation)  
 **Priority:** HIGH  
-**Working Directory:** `/photos/tools/refactor/mmp/src/`
+**Working Directory:** `/mmp/src/`
 
 ## Task Overview
 
@@ -12,7 +12,7 @@ Refactor the oversized MMP CLI file (`cli.ts` - 689 lines) to comply with our 50
 
 ## Critical Context
 
-**Problem:** `/photos/tools/refactor/mmp/src/cli.ts` is 689 lines, exceeding STRICT zone limit by 189 lines  
+**Problem:** `/mmp/src/cli.ts` is 689 lines, exceeding STRICT zone limit by 189 lines  
 **Impact:** Read() operations are expensive; large files indicate poor separation of concerns  
 **Zone:** CLI implementations are STRICT enforcement zone (500 line maximum)  
 **Performance:** This file is frequently read during development, causing slowdowns
@@ -24,7 +24,7 @@ Refactor the oversized MMP CLI file (`cli.ts` - 689 lines) to comply with our 50
 Break `cli.ts` into focused modules with single responsibility:
 
 ```
-/photos/tools/refactor/mmp/src/
+/mmp/src/
 ├── cli/
 │   ├── index.ts              # Main CLI entry point (<100 lines)
 │   ├── commands/            # Individual command handlers

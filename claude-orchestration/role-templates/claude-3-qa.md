@@ -192,7 +192,7 @@ Recommendations: [Quality improvements]
 **CRITICAL: Include file size validation in all quality reviews:**
 
 #### STRICT Enforcement Zones (500 line maximum):
-- **CLI implementations:** `/src/cli/`, `/mmp/src/`
+- **CLI implementations:** `/pipeline-cli/src/cli/`, `/mmp/src/`
 - **Core processors:** `/src/processors/`
 - **Service layer:** `/src/services/`
 - **Pipeline orchestration:** `/src/pipeline/`

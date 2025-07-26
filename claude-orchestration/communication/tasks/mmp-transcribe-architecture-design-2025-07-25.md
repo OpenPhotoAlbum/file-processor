@@ -36,7 +36,7 @@ MediaType Detection:
 ### Directory Structure
 
 ```
-/photos/tools/refactor/mmp/src/
+/mmp/src/
 ├── cli/
 │   └── commands/
 │       └── transcribe.ts              # CLI command handler (<150 lines)

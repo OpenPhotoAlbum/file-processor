@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:png_sample.PNG",
+    "path": "relative:scratch/sample_media/png_sample.PNG",
     "hash": "placeholder-hash",
     "size": 9583643,
     "mimeType": "image/png",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-07-22T04:17:24.687Z"
+    "extractedAt": "2025-07-26T17:08:16.580Z"
   },
   "media": {
     "type": "image",
@@ -98,13 +98,13 @@
   "technical": {
     "fileType": "PNG",
     "mimeType": "image/png",
-    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/png_sample.PNG",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media/png_sample.PNG",
     "ExifTool:ExifToolVersion": 12.76,
     "File:FileName": "png_sample.PNG",
-    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media",
     "File:FileSize": "9.6 MB",
     "File:FileModifyDate": "2025:06:23 16:24:01-04:00",
-    "File:FileAccessDate": "2025:07:22 00:17:24-04:00",
+    "File:FileAccessDate": "2025:07:26 12:56:51-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "PNG:ImageWidth": 1125,

@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:IMG_6645.jpg",
+    "path": "relative:scratch/sample_media/IMG_6645.jpg",
     "hash": "placeholder-hash",
     "size": 1828494,
     "mimeType": "image/jpeg",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-07-22T04:17:21.077Z"
+    "extractedAt": "2025-07-26T17:08:12.992Z"
   },
   "media": {
     "type": "image",
@@ -129,7 +129,7 @@
           "county": "Hancock",
           "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.972Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 164,
         "confidence": 1,
@@ -150,7 +150,7 @@
           "county": "Hancock",
           "description": "Rock formation - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.972Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 437,
         "confidence": 1,
@@ -171,7 +171,7 @@
           "county": "Hancock",
           "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.972Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 490,
         "confidence": 1,
@@ -192,7 +192,7 @@
           "county": "Hancock",
           "description": "Mountain peak - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.972Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 700,
         "confidence": 1,
@@ -213,7 +213,7 @@
           "county": "Hancock",
           "description": "Land mass surrounded by water - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.972Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 767,
         "confidence": 1,
@@ -234,7 +234,7 @@
           "county": "Hancock",
           "description": "Water body - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.972Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 834,
         "confidence": 1,
@@ -255,7 +255,7 @@
           "county": "Hancock",
           "description": "in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.973Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 979,
         "confidence": 1,
@@ -276,7 +276,7 @@
           "county": "Hancock",
           "description": "Natural lake - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.973Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 1054,
         "confidence": 0.85,
@@ -297,7 +297,7 @@
           "county": "Hancock",
           "description": "River or stream - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.973Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 1049,
         "confidence": 0.79,
@@ -318,7 +318,7 @@
           "county": "Hancock",
           "description": "Rock formation - in Hancock County, Maine, (USGS Seal Harbor quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:20.973Z"
+          "lastUpdated": "2025-07-26T17:08:12.891Z"
         },
         "distance": 1242,
         "confidence": 0.75,
@@ -335,7 +335,7 @@
         "USGS GNIS"
       ],
       "cacheHit": false,
-      "queryTimeMs": 249
+      "queryTimeMs": 246
     }
   },
   "camera": {
@@ -356,13 +356,13 @@
     "fileType": "JPEG",
     "mimeType": "image/jpeg",
     "exifVersion": "0232",
-    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/IMG_6645.jpg",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media/IMG_6645.jpg",
     "ExifTool:ExifToolVersion": 12.76,
     "File:FileName": "IMG_6645.jpg",
-    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media",
     "File:FileSize": "1828 kB",
     "File:FileModifyDate": "2025:06:24 10:52:38-04:00",
-    "File:FileAccessDate": "2025:07:22 00:13:13-04:00",
+    "File:FileAccessDate": "2025:07:26 12:56:35-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-rw-r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

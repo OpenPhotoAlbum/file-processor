@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:mp4_sample.mp4",
+    "path": "relative:scratch/sample_media/mp4_sample.mp4",
     "hash": "placeholder-hash",
     "size": 2753149,
     "mimeType": "video/mp4",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "VideoProcessor",
-    "extractedAt": "2025-07-22T04:17:23.506Z"
+    "extractedAt": "2025-07-26T17:08:15.427Z"
   },
   "media": {
     "type": "video",

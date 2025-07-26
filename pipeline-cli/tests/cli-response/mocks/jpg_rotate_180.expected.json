@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:jpg_rotate_180.JPG",
+    "path": "relative:scratch/sample_media/jpg_rotate_180.JPG",
     "hash": "placeholder-hash",
     "size": 348570,
     "mimeType": "image/jpeg",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-07-22T04:17:25.386Z"
+    "extractedAt": "2025-07-26T17:08:17.299Z"
   },
   "media": {
     "type": "image",
@@ -125,13 +125,13 @@
     "fileType": "JPEG",
     "mimeType": "image/jpeg",
     "exifVersion": "0231",
-    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/jpg_rotate_180.JPG",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media/jpg_rotate_180.JPG",
     "ExifTool:ExifToolVersion": 12.76,
     "File:FileName": "jpg_rotate_180.JPG",
-    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media",
     "File:FileSize": "349 kB",
     "File:FileModifyDate": "2025:06:23 16:23:22-04:00",
-    "File:FileAccessDate": "2025:07:22 00:17:25-04:00",
+    "File:FileAccessDate": "2025:07:26 12:56:52-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",

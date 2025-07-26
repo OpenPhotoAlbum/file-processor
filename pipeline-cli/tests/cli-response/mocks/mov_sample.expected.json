@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:mov_sample.MOV",
+    "path": "relative:scratch/sample_media/mov_sample.MOV",
     "hash": "placeholder-hash",
     "size": 10988654,
     "mimeType": "video/quicktime",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "VideoProcessor",
-    "extractedAt": "2025-07-22T04:17:23.125Z"
+    "extractedAt": "2025-07-26T17:08:15.037Z"
   },
   "media": {
     "type": "video",

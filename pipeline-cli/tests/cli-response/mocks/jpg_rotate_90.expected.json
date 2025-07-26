@@ -1,6 +1,6 @@
 {
   "file": {
-    "path": "sample:jpg_rotate_90.JPG",
+    "path": "relative:scratch/sample_media/jpg_rotate_90.JPG",
     "hash": "placeholder-hash",
     "size": 7507971,
     "mimeType": "image/jpeg",
@@ -10,7 +10,7 @@
   "processing": {
     "success": true,
     "processor": "ImageProcessor",
-    "extractedAt": "2025-07-22T04:17:26.081Z"
+    "extractedAt": "2025-07-26T17:08:18.000Z"
   },
   "media": {
     "type": "image",
@@ -130,7 +130,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 912,
         "confidence": 0.9,
@@ -151,7 +151,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 1120,
         "confidence": 0.9,
@@ -172,7 +172,7 @@
           "county": "Rockingham",
           "description": "Mountain peak - in Rockingham County, New Hampshire, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 1923,
         "confidence": 0.9,
@@ -193,7 +193,7 @@
           "county": "Essex",
           "description": "Water reservoir - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 3030,
         "confidence": 0.94,
@@ -214,7 +214,7 @@
           "county": "Essex",
           "description": "in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 2532,
         "confidence": 0.85,
@@ -235,7 +235,7 @@
           "county": "Rockingham",
           "description": "River or stream - in Rockingham County, New Hampshire, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 3518,
         "confidence": 0.84,
@@ -256,7 +256,7 @@
           "county": "Essex",
           "description": "Natural lake - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 2027,
         "confidence": 0.54,
@@ -277,7 +277,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 2080,
         "confidence": 0.53,
@@ -298,7 +298,7 @@
           "county": "Essex",
           "description": "Natural lake - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 2921,
         "confidence": 0.55,
@@ -319,7 +319,7 @@
           "county": "Essex",
           "description": "Mountain peak - in Essex County, Massachusetts, (USGS Haverhill quad)",
           "source": "usgs_gnis",
-          "lastUpdated": "2025-07-22T04:17:25.946Z"
+          "lastUpdated": "2025-07-26T17:08:17.864Z"
         },
         "distance": 2723,
         "confidence": 0.45,
@@ -335,7 +335,7 @@
         "USGS GNIS"
       ],
       "cacheHit": false,
-      "queryTimeMs": 243
+      "queryTimeMs": 246
     }
   },
   "camera": {
@@ -356,13 +356,13 @@
     "fileType": "JPEG",
     "mimeType": "image/jpeg",
     "exifVersion": "0232",
-    "SourceFile": "/home/stephen/Documents/initial-media-processing/scratch/sample_media/jpg_rotate_90.JPG",
+    "SourceFile": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media/jpg_rotate_90.JPG",
     "ExifTool:ExifToolVersion": 12.76,
     "File:FileName": "jpg_rotate_90.JPG",
-    "File:Directory": "/home/stephen/Documents/initial-media-processing/scratch/sample_media",
+    "File:Directory": "/home/stephen/Documents/initial-media-processing/pipeline-cli/scratch/sample_media",
     "File:FileSize": "7.5 MB",
     "File:FileModifyDate": "2025:06:23 16:24:51-04:00",
-    "File:FileAccessDate": "2025:07:22 00:13:13-04:00",
+    "File:FileAccessDate": "2025:07:26 12:56:52-04:00",
     "File:FileInodeChangeDate": "2025:06:24 13:10:35-04:00",
     "File:FilePermissions": "-rw-r--r--",
     "File:ExifByteOrder": "Big-endian (Motorola, MM)",
