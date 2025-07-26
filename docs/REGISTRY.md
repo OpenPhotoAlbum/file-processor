@@ -2,7 +2,7 @@
 
 **Purpose:** Prevent duplicate documentation creation  
 **Rule:** Check this registry BEFORE creating ANY new documentation  
-**Last Updated:** 2025-07-23
+**Last Updated:** 2025-07-26
 
 ## How to Use This Registry
 
@@ -23,6 +23,86 @@
 ```
 
 ## Registered Topics
+
+### 🚀 Quick Start & User Onboarding (NEW STRUCTURE)
+- **Topic:** Enhanced User Journey Documentation
+  - **Primary Doc:** `/docs/quick-start/README.md`
+  - **Supporting Docs:** 
+    - `/docs/quick-start/installation.md` (15-minute installation guide)
+    - `/docs/quick-start/first-photos.md` (First success workflow)
+  - **Status:** Active - New user onboarding system
+  - **Keywords:** quick start, user journey, installation, first photos, onboarding, 15 minutes
+  - **Owner:** Claude 4 (Chronicler) - user experience documentation
+  - **Last Updated:** 2025-07-26
+
+### 💾 Data Layer Architecture (REORGANIZED)
+- **Topic:** Database Design & Schema Architecture
+  - **Primary Doc:** `/docs/data-layer/schema/design.md`
+  - **Former Location:** `/docs/architecture/database-schema-design.md`
+  - **Supporting Docs:**
+    - `/docs/data-layer/schema/location-normalization.md` (Geographic foreign keys)
+    - `/docs/data-layer/schema/storage-architecture.md` (JSON vs database analysis)
+  - **Status:** Active - Consolidated database schema documentation
+  - **Keywords:** database design, schema architecture, query optimization, MySQL, normalized design
+  - **Owner:** Claude 6 (Data Specialist) - data architecture authority
+  - **Last Updated:** 2025-07-26
+
+- **Topic:** Database Setup & Operations
+  - **Primary Doc:** `/docs/data-layer/setup/installation.md`
+  - **Former Location:** `/docs/architecture/database-setup.md`
+  - **Supporting Docs:**
+    - `/docs/data-layer/setup/migration.md` (Schema migration procedures)
+  - **Status:** Active - Operational database procedures
+  - **Keywords:** database installation, MySQL setup, migration procedures, container operations
+  - **Owner:** Claude 6 (Data Specialist) - operational procedures
+  - **Last Updated:** 2025-07-26
+
+- **Topic:** ETL Pipeline Documentation
+  - **Primary Doc:** `/docs/data-layer/etl/recreation-gov.md`
+  - **Former Location:** `/docs/architecture/recreation-gov-etl.md`
+  - **Status:** Active - External data integration pipelines
+  - **Keywords:** ETL pipelines, Recreation.gov, GNIS, data integration, external APIs
+  - **Owner:** Claude 6 (Data Specialist) - data integration authority
+  - **Last Updated:** 2025-07-26
+
+### 🤖 Claude Orchestration System (REORGANIZED)
+- **Topic:** Multi-Claude Team Coordination System
+  - **Primary Doc:** `/docs/claude-orchestration/README.md`
+  - **Former Location:** `/docs/architecture/claude-orchestration.md`
+  - **Supporting Docs:**
+    - `/docs/claude-orchestration/roles/README.md` (Individual Claude role documentation)
+    - `/docs/claude-orchestration/protocols/README.md` (Communication protocols)
+    - `/docs/claude-orchestration/development/README.md` (System extension guides)
+  - **Status:** Active - Phase 3 operational multi-Claude system
+  - **Keywords:** Claude orchestration, multi-agent development, role specialization, team coordination
+  - **Owner:** Claude 1 (Architect) - team coordination authority
+  - **Last Updated:** 2025-07-26
+
+- **Topic:** Claude Role Specialization
+  - **Primary Doc:** `/docs/claude-orchestration/roles/README.md`
+  - **Status:** Active - 6 specialist Claude roles documented
+  - **Keywords:** Claude roles, Architect, Builder, Guardian, Chronicler, Curator, Data Specialist
+  - **Owner:** Claude 4 (Chronicler) - role documentation
+  - **Last Updated:** 2025-07-26
+
+- **Topic:** Orchestration Communication Protocols
+  - **Primary Doc:** `/docs/claude-orchestration/protocols/slash-commands.md`
+  - **Former Location:** `/docs/cli/slash-commands.md`
+  - **Supporting Protocols:** Referenced from `/claude-orchestration/protocols/` directory
+  - **Status:** Active - Multi-Claude communication system
+  - **Keywords:** slash commands, /mail, /summon, inter-Claude communication, task delegation
+  - **Owner:** Claude 4 (Chronicler) - protocol documentation
+  - **Last Updated:** 2025-07-26
+
+- **Topic:** Orchestration Development System
+  - **Primary Doc:** `/docs/claude-orchestration/development/centralized-configuration.md`
+  - **Former Location:** `/docs/architecture/centralized-role-configuration.md`
+  - **Supporting Docs:**
+    - `/docs/claude-orchestration/development/auto-cascade/` (Auto-cascade system documentation)
+  - **Status:** Active - Phase 4 development architecture
+  - **Keywords:** centralized configuration, YAML config, auto-cascade templates, system extension
+  - **Owner:** Claude 4 (Chronicler) - development documentation
+  - **Last Updated:** 2025-07-26
 
 ### 🏆 Project Accomplishments
 - **Topic:** Master Accomplishments Overview
@@ -139,27 +219,30 @@
   - **Owner:** Stable - no regular updates needed
   - **Last Updated:** 2024-12-24
 
-### 📊 Data & Processing
+### 📊 Data & Processing (ARCHIVED - See Data Layer Section Above)
 - **Topic:** Database Schema Design
-  - **Primary Doc:** `/docs/database-schema-design.md`
-  - **Status:** Complete - Normalized relational design with foreign keys
+  - **Primary Doc:** `/docs/data-layer/schema/design.md`
+  - **Former Location:** `/docs/database-schema-design.md`
+  - **Status:** RELOCATED - See Data Layer Architecture section above
   - **Keywords:** database, schema, MySQL, normalized, relational
-  - **Owner:** Stable - schema frozen
-  - **Last Updated:** 2024-12-28
+  - **Owner:** Claude 6 (Data Specialist) - data architecture authority
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Database Setup & Migration
-  - **Primary Doc:** `/docs/database-setup.md`
-  - **Status:** Complete - Installation and migration procedures
+  - **Primary Doc:** `/docs/data-layer/setup/installation.md`
+  - **Former Location:** `/docs/database-setup.md`
+  - **Status:** RELOCATED - See Data Layer Architecture section above
   - **Keywords:** database setup, migration, MySQL, installation
-  - **Owner:** Stable - no regular updates needed
-  - **Last Updated:** 2024-12-28
+  - **Owner:** Claude 6 (Data Specialist) - operational procedures
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Metadata Storage Architecture
-  - **Primary Doc:** `/docs/metadata-storage-architecture.md`
-  - **Status:** Complete - JSON sidecar files vs database storage analysis
+  - **Primary Doc:** `/docs/data-layer/schema/storage-architecture.md`
+  - **Former Location:** `/docs/metadata-storage-architecture.md`
+  - **Status:** RELOCATED - See Data Layer Architecture section above
   - **Keywords:** metadata storage, JSON sidecars, database storage, architecture
-  - **Owner:** Stable - architecture decisions finalized
-  - **Last Updated:** 2024-12-24
+  - **Owner:** Claude 6 (Data Specialist) - data architecture authority
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Metadata Merge Strategy
   - **Primary Doc:** `/docs/metadata-merge-strategy.md`
@@ -177,18 +260,20 @@
   - **Last Updated:** 2024-12-24
 
 - **Topic:** Normalized Location Architecture
-  - **Primary Doc:** `/docs/normalized-location-architecture.md`
-  - **Status:** Complete - Foreign key relationships for geographic data
+  - **Primary Doc:** `/docs/data-layer/schema/location-normalization.md`
+  - **Former Location:** `/docs/normalized-location-architecture.md`
+  - **Status:** RELOCATED - See Data Layer Architecture section above
   - **Keywords:** location normalization, geographic database, foreign keys
-  - **Owner:** Stable - architecture finalized
-  - **Last Updated:** 2024-12-24
+  - **Owner:** Claude 6 (Data Specialist) - data architecture authority
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Recreation.gov Data Integration
-  - **Primary Doc:** `/docs/recreation-gov-etl.md`
-  - **Status:** Complete - Facility data extraction and loading
+  - **Primary Doc:** `/docs/data-layer/etl/recreation-gov.md`
+  - **Former Location:** `/docs/recreation-gov-etl.md`
+  - **Status:** RELOCATED - See Data Layer Architecture section above
   - **Keywords:** Recreation.gov, ETL, facility data, landmarks, camping
-  - **Owner:** Stable - data loaded
-  - **Last Updated:** 2024-12-24
+  - **Owner:** Claude 6 (Data Specialist) - data integration authority
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** GPS Coordinate Corruption Fix
   - **Primary Doc:** `/docs/gps-coordinate-corruption-fix.md`
@@ -314,48 +399,53 @@
   - **Owner:** Claude 1 (Architect)
   - **Last Updated:** 2024-12-24
 
-### 🤖 Claude Orchestration System
+### 🤖 Claude Orchestration System (ARCHIVED - See Claude Orchestration Section Above)
 - **Topic:** Multi-Claude Team Coordination
-  - **Primary Doc:** `/docs/architecture/claude-orchestration.md`
-  - **Status:** Complete - Phase 3 operational with full documentation
+  - **Primary Doc:** `/docs/claude-orchestration/README.md`
+  - **Former Location:** `/docs/architecture/claude-orchestration.md`
+  - **Status:** RELOCATED - See Claude Orchestration System section above
   - **Keywords:** Claude orchestration, multi-agent, team coordination, role specialization, personality system
-  - **Owner:** Claude 1 (Architect)
-  - **Last Updated:** 2025-07-23
+  - **Owner:** Claude 1 (Architect) - team coordination authority
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Centralized Role Configuration Architecture
-  - **Primary Doc:** `/docs/architecture/centralized-role-configuration.md`
-  - **Status:** Complete - Phase 4 centralized configuration operational
+  - **Primary Doc:** `/docs/claude-orchestration/development/centralized-configuration.md`
+  - **Former Location:** `/docs/architecture/centralized-role-configuration.md`
+  - **Status:** RELOCATED - See Claude Orchestration System section above
   - **Keywords:** role configuration, centralized config, YAML configuration, orchestration architecture, config-driven system
-  - **Owner:** Claude 4 (Chronicler)
-  - **Last Updated:** 2025-07-24
+  - **Owner:** Claude 4 (Chronicler) - development documentation
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Auto-Cascade Task Chain System
-  - **Primary Doc:** `/docs/orchestration/auto-cascade/templates-overview.md`
+  - **Primary Doc:** `/docs/claude-orchestration/development/auto-cascade/templates-overview.md`
+  - **Former Location:** `/docs/orchestration/auto-cascade/templates-overview.md`
   - **Supporting Docs:** 
     - `/claude-orchestration/auto-cascade-architecture-spec.md` (Architecture specification)
-    - `/docs/orchestration/auto-cascade/usage-guide.md` (Implementation guide)
-    - `/docs/orchestration/auto-cascade/safety-guidelines.md` (Safety procedures)
+    - `/docs/claude-orchestration/development/auto-cascade/usage-guide.md` (Implementation guide)
+    - `/docs/claude-orchestration/development/auto-cascade/safety-guidelines.md` (Safety procedures)
   - **Template Library:** `/claude-orchestration/communication/task-chains/templates/` (Auto-cascade YAML templates)
-  - **Status:** Complete - Phase 4 template library and documentation complete, ready for Phase 5 pilot testing
+  - **Status:** RELOCATED - See Claude Orchestration System section above
   - **Keywords:** auto-cascade, controlled identity switching, workflow automation, template library, safety mechanisms, Stephen approval gates
-  - **Owner:** Claude 4 (Chronicler) - Phase 4 template creation and documentation
+  - **Owner:** Claude 4 (Chronicler) - development documentation
   - **Last Updated:** 2025-07-26
 
 - **Topic:** Claude Role Templates
   - **Primary Doc:** `claude-orchestration/role-templates/` (6 files)
   - **Supporting Config:** `claude-orchestration/role-config.yaml` (centralized role definitions)
-  - **Status:** Active - Updated for centralized configuration architecture
+  - **Supporting Docs:** `/docs/claude-orchestration/roles/README.md` (Role documentation)
+  - **Status:** RELOCATED - See Claude Orchestration System section above
   - **Keywords:** Claude roles, templates, specialization, centralized config, role definitions
-  - **Owner:** Claude 4 (Chronicler) - updated for Phase 4
-  - **Last Updated:** 2025-07-24
+  - **Owner:** Claude 4 (Chronicler) - role documentation
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Claude Slash Commands
-  - **Primary Doc:** `/docs/cli/slash-commands.md`
+  - **Primary Doc:** `/docs/claude-orchestration/protocols/slash-commands.md`
+  - **Former Location:** `/docs/cli/slash-commands.md`
   - **Supporting Migration:** `/docs/migration/mail-to-chain-status-migration.md`
-  - **Status:** Updated - /mail deprecated, chain-status.sh documented
+  - **Status:** RELOCATED - See Claude Orchestration System section above
   - **Keywords:** slash commands, mail deprecation, chain-status, task management, communication migration
-  - **Owner:** Claude 4 (Chronicler) - updated for communication system changes
-  - **Last Updated:** 2025-07-24
+  - **Owner:** Claude 4 (Chronicler) - protocol documentation
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Communication System Migration 
   - **Primary Doc:** `/docs/migration/mail-to-chain-status-migration.md`
@@ -384,9 +474,12 @@
 
 These topics are covered by existing documentation - do NOT create new docs:
 
-- ❌ **CLI Tool Documentation** → Use `/docs/cli/README.md`
+- ❌ **Quick Start Documentation** → Use `/docs/quick-start/README.md`
+- ❌ **Database Documentation** → Use `/docs/data-layer/` (schema, setup, ETL)
+- ❌ **Claude Orchestration** → Use `/docs/claude-orchestration/` (roles, protocols, development)
+- ❌ **CLI Tool Documentation** → Use `/docs/cli/README.md` or `/docs/mmp/` (for MMP tools)
+- ❌ **Pipeline Architecture** → Use `/docs/pipeline-cli/architecture/`
 - ❌ **Error Handling** → Use `/docs/error-system.md`
-- ❌ **Database Documentation** → Use existing database-*.md files
 - ❌ **Photo Processing** → Use `/docs/photo-organization-strategy.md`
 - ❌ **Heritage Photos** → Use `/docs/heritage-photo-enrichment.md`
 - ❌ **GPS/Location** → Use `/docs/geolocation-system.md`
@@ -397,12 +490,21 @@ These topics are covered by existing documentation - do NOT create new docs:
 
 ### Check for Existing Documentation
 ```bash
-# Search for topic keywords
-grep -r "heritage\|historical" /docs/ --include="*.md"
-grep -r "CLI\|command.*line" /docs/ --include="*.md"
-grep -r "database\|schema" /docs/ --include="*.md"
+# Search for topic keywords by component
+grep -r "quick.*start\|installation" /docs/quick-start/ --include="*.md"
+grep -r "database\|schema\|MySQL" /docs/data-layer/ --include="*.md"
+grep -r "claude\|orchestration\|roles" /docs/claude-orchestration/ --include="*.md"
+grep -r "MMP\|command.*line" /docs/mmp/ /docs/cli/ --include="*.md"
+grep -r "pipeline\|processing" /docs/pipeline-cli/ --include="*.md"
 
-# Find all documentation files
+# Search across all documentation
+grep -r "heritage\|historical" /docs/ --include="*.md"
+grep -r "your-search-term" /docs/ --include="*.md"
+
+# Find all documentation files by component
+find /docs/quick-start -name "*.md" | sort
+find /docs/data-layer -name "*.md" | sort
+find /docs/claude-orchestration -name "*.md" | sort
 find /docs -name "*.md" | sort
 
 # Search registry for topic

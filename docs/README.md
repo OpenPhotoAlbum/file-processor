@@ -1,14 +1,33 @@
 # Media Processing Pipeline - Documentation Index
 
-**Last Updated:** July 23, 2025 - All documentation verified current  
+**Last Updated:** July 26, 2025 - Documentation reorganized with component-based structure  
 **Status:** ✅ Core pipeline complete, advanced features operational  
 **Registry:** All topics registered in [REGISTRY.md](REGISTRY.md) to prevent duplicates
 
 ## 🚀 Quick Start
 
-- **[Getting Started](deployment/getting-started.md)** - Installation and setup
-- **[CLI Reference](cli/README.md)** - Complete command reference with MMP unification status
-- **[Quick Organization Workflow](workflows/quick-start.md)** - Fast track photo processing
+**New to the system?** Start here for fastest path to processing your first photos:
+
+- **[Quick Start Guide](quick-start/README.md)** - 15-minute installation + first photo success
+- **[Installation](quick-start/installation.md)** - Get system running quickly  
+- **[First Photos](quick-start/first-photos.md)** - Process your first photos successfully
+
+## 📂 Documentation by System Component
+
+### Essential User Journeys
+- **[Quick Start](quick-start/)** - Fast onboarding for new users (15 minutes to first success)
+- **[Workflows](workflows/)** - Complete processing workflows for different use cases
+- **[Deployment](deployment/)** - System installation and configuration
+
+### Core Processing Systems  
+- **[MMP CLI Tools](mmp/)** - MMP unified CLI for photo processing, GPS tagging, scanning
+- **[Pipeline CLI](pipeline-cli/)** - Core processing engine and architecture
+- **[Data Layer](data-layer/)** - Database, schema, and ETL pipeline documentation
+
+### Advanced Features
+- **[Claude Orchestration](claude-orchestration/)** - Multi-Claude development system (6 specialist roles)
+- **[API Documentation](api/)** - Web interface and API references
+- **[Testing](testing/)** - Test framework and quality assurance
 
 ## 📋 Current Features [VERIFIED CURRENT - July 2025]
 
@@ -16,13 +35,13 @@
 - **MMP Unified CLI** 
   - ✅ Working: GPS tagging, Photo cropping, Scanning workflow
   - 🔄 Pending: Date correction, Photo rotation, Audio transcription, Filename suggestions
-  - 📖 Docs: [cli/README.md](cli/README.md)
+  - 📖 Docs: [mmp/README.md](mmp/README.md)
 
 - **Heritage Photo Integration** - Complete (49/49 tests passing)
   - ✅ XMP detection system operational
   - ✅ AI-powered historical analysis via Claude
   - ✅ Series linking and context enrichment
-  - 📖 Docs: [workflows/heritage-processing.md](workflows/heritage-processing.md)
+  - 📖 Docs: [workflows/heritage-photos/README.md](workflows/heritage-photos/README.md)
 
 - **Video Analysis System** - 174 videos analyzed and ready
   - ✅ Multi-source date assignment (1955-2025 spanning 100 years)
@@ -36,49 +55,43 @@
   - ✅ Inter-Claude communication system active
   - ✅ Task assignment and handoff protocols
   - ✅ Slash commands: `/mail` and `/summon` documented
-  - 📖 Docs: [architecture/claude-orchestration.md](architecture/claude-orchestration.md), [cli/slash-commands.md](cli/slash-commands.md)
+  - 📖 Docs: [claude-orchestration/README.md](claude-orchestration/README.md)
 
 - **Photo Organization Pipeline** - Production grade (150,000+ photos processed)
   - ✅ Hash-based deduplication (818GB saved, 54% reduction)
   - ✅ GPS and landmark enrichment (Recreation.gov, GNIS, NPS integration)
   - ✅ Database-first architecture with normalized schema
   - ✅ Zero data loss throughout entire process
-  - 📖 Docs: [workflows/photo-organization.md](workflows/photo-organization.md)
+  - 📖 Docs: [workflows/organization/README.md](workflows/organization/README.md)
 
 - **Scanning & Digitization Toolkit** - Complete
   - ✅ Multicrop photo separation from flatbed scans
   - ✅ Background-aware processing (red/white detection)
   - ✅ Multi-tier duplicate detection including rotation-aware
   - ✅ Historical date assignment for vintage photos
-  - 📖 Docs: [workflows/scanning-workflow.md](workflows/scanning-workflow.md)
+  - 📖 Docs: [workflows/scanning/README.md](workflows/scanning/README.md)
 
-## 🏗️ Architecture & Technical Docs
+## 🔍 Component Navigation Guide
 
-### Core Systems
-- **[Error System](architecture/error-system.md)** - Structured MPP-* error codes
-- **[Logging System](architecture/logging-system.md)** - Component-scoped colored logging
-- **[Filesystem Service](architecture/filesystem-service.md)** - Centralized file operations
-- **[Path System](architecture/path-system.md)** - Security-first path management
+### For New Users (Fast Track)
+1. **[Quick Start Guide](quick-start/README.md)** - 15-minute setup to first photo success
+2. **[Choose Your Workflow](workflows/README.md)** - Pick the right process for your needs
+3. **[MMP Tools](mmp/README.md)** - Essential photo processing commands
 
-### Processing Pipeline
-- **[Enrichment Flow](architecture/enrichment-flow.md)** - GPS and landmark pipeline
-- **[Geolocation System](architecture/geolocation-system.md)** - Location services
-- **[Metadata Merge Strategy](architecture/metadata-merge-strategy.md)** - Processing history preservation
-- **[Live Photo Detection](architecture/live-photo-detection.md)** - Apple Live Photo system
+### For Photo Organization Projects
+1. **[Photo Organization Workflow](workflows/organization/README.md)** - Complete photo collection processing
+2. **[Heritage Photos](workflows/heritage-photos/README.md)** - Historical photo processing with AI analysis
+3. **[Scanning Workflow](workflows/scanning/README.md)** - Digitizing physical photos
 
-### Team Coordination
-- **[Claude Orchestration System](architecture/claude-orchestration.md)** - Multi-agent development workflow
-- **[Slash Commands](cli/slash-commands.md)** - /mail and /summon command reference
+### For Developers and Advanced Users
+1. **[Pipeline CLI Architecture](pipeline-cli/architecture/README.md)** - Core processing system design
+2. **[Data Layer](data-layer/README.md)** - Database, schema, and ETL documentation
+3. **[Claude Orchestration](claude-orchestration/README.md)** - Multi-agent development system
 
-### Database Architecture
-- **[Database Schema Design](architecture/database-schema-design.md)** - Normalized relational design
-- **[Database Migration Strategy](architecture/database-migration-strategy.md)** - Schema evolution
-- **[Normalized Location Architecture](architecture/normalized-location-architecture.md)** - Geographic foreign keys
-- **[Metadata Storage Architecture](architecture/metadata-storage-architecture.md)** - JSON vs database
-
-### Geographic Integration
-- **[Recreation.gov ETL](architecture/recreation-gov-etl.md)** - Facility data integration
-- **[GPS Coordinate Corruption Fix](gps-coordinate-corruption-fix.md)** - Video GPS longitude fix
+### For System Administration
+1. **[Deployment Guide](deployment/getting-started.md)** - Complete installation and configuration
+2. **[Data Layer Setup](data-layer/setup/README.md)** - Database installation and operations
+3. **[Testing Framework](testing/README.md)** - Quality assurance and validation
 
 ## 🛠️ Development & Deployment
 
@@ -123,60 +136,85 @@
 
 ## 📁 Documentation Organization
 
-### New Hierarchical Structure (July 2025)
+### Component-Based Structure (July 2025 Reorganization)
 ```
 /docs/
-├── README.md              # This master index (always current)
-├── REGISTRY.md            # Central topic registry (prevents duplicates)
-├── cli/                   # Command line interfaces
-│   ├── README.md          # MMP unified CLI documentation
-│   └── media-file-inspector.md
-├── api/                   # API documentation
-│   ├── README.md          # API overview
-│   └── photo-browser.md   # Web interface API
-├── workflows/             # User workflows and guides
-│   ├── README.md          # Workflow overview
-│   ├── heritage-processing.md
-│   ├── photo-organization.md
-│   ├── scanning-workflow.md
-│   └── quick-start.md
-├── architecture/          # System design and patterns
-│   ├── README.md          # Architecture overview
-│   ├── database-*.md      # Database architecture
-│   ├── *-system.md        # Core systems
-│   └── enrichment-flow.md
-├── deployment/            # Installation and setup
-│   ├── README.md          # Deployment overview
-│   ├── getting-started.md
-│   └── linting.md
-└── archive/               # Historical/completed documentation
-    ├── completed-plans/   # Successfully implemented features
-    └── deprecated/        # Removed/moved features
+├── README.md                    # This master index (component navigation)
+├── REGISTRY.md                  # Central topic registry (prevents duplicates)
+├── quick-start/                 # Fast user onboarding (NEW)
+│   ├── README.md               # 15-minute installation + first success
+│   ├── installation.md         # Quick setup guide
+│   └── first-photos.md         # First photo processing workflow
+├── mmp/                        # MMP unified CLI tools (NEW)
+│   ├── README.md               # MMP tool overview and status
+│   ├── commands/               # Individual command documentation
+│   └── workflows/              # User workflows with MMP tools
+├── pipeline-cli/               # Core processing system (NEW)
+│   ├── README.md               # Pipeline overview
+│   ├── architecture/           # System design and patterns
+│   ├── apis/                   # API documentation
+│   └── development/            # Developer guides
+├── claude-orchestration/       # Multi-Claude system (NEW)
+│   ├── README.md               # Orchestration overview
+│   ├── roles/                  # Claude role documentation
+│   ├── protocols/              # Communication protocols
+│   └── development/            # System extension guides
+├── data-layer/                 # Database and storage (NEW)
+│   ├── README.md               # Data architecture overview
+│   ├── schema/                 # Database design documentation
+│   ├── setup/                  # Installation and migration
+│   └── etl/                    # ETL pipeline documentation
+├── workflows/                  # Cross-system workflows (ENHANCED)
+│   ├── README.md               # Workflow navigation
+│   ├── heritage-photos/        # Heritage processing workflows
+│   ├── organization/           # Photo organization workflows
+│   └── scanning/               # Digitization workflows
+├── reference/                  # Technical reference (NEW)
+│   ├── error-codes.md          # Consolidated error reference
+│   ├── configuration.md        # All configuration options
+│   └── troubleshooting.md      # Consolidated troubleshooting
+└── deployment/                 # System deployment (UNCHANGED)
+    ├── getting-started.md      # Complete installation guide
+    └── linting.md              # Code quality configuration
 ```
+
+### Reorganization Benefits (July 2025)
+- **Component-based navigation** mirrors actual project structure
+- **User journey optimization** from quick start through advanced usage
+- **Consolidated information** eliminates scattered documentation
+- **Clear audience targeting** (new users, developers, administrators)
+- **Enhanced findability** through logical grouping and comprehensive navigation
 
 ### Documentation Standards (Enforced)
 - **Registry Check Required:** Must check [REGISTRY.md](REGISTRY.md) before creating new docs
+- **Component-based organization:** New docs must fit component structure
 - **Status Indicators:** Current/Active/Pending/Complete status required
 - **Last Updated Dates:** Mandatory for currency tracking
 - **Cross-References:** Bidirectional linking where relevant
 - **Duplicate Prevention:** Central registry prevents topic duplication
 
-## 🔍 Navigation Guide
+## 🔍 Updated Navigation Paths
 
-### For New Users
-1. **Start:** [Getting Started](deployment/getting-started.md) for installation
-2. **Process Photos:** [Quick Start Workflow](workflows/quick-start.md)
-3. **Advanced Features:** [CLI Reference](cli/README.md) for all capabilities
+### For New Users (Updated)
+1. **Start:** [Quick Start Guide](quick-start/README.md) for 15-minute setup to first success
+2. **Process Photos:** [Quick Start Workflow](quick-start/first-photos.md) 
+3. **Advanced Features:** [MMP Tools](mmp/README.md) for all photo processing capabilities
 
-### For Developers
-1. **Architecture:** [Architecture Overview](architecture/README.md)
+### For Developers (Updated)
+1. **Architecture:** [Pipeline CLI Architecture](pipeline-cli/architecture/README.md) and [Data Layer](data-layer/README.md)
 2. **Code Quality:** [Deployment Standards](deployment/README.md)
 3. **Testing:** [Testing Framework](testing/README.md)
+4. **Multi-Claude Development:** [Claude Orchestration](claude-orchestration/README.md)
+
+### For System Operations (Updated)
+1. **Installation:** [Deployment Guide](deployment/getting-started.md) and [Data Layer Setup](data-layer/setup/README.md)
+2. **User Workflows:** [Workflows Overview](workflows/README.md) 
+3. **System Monitoring:** [Testing Framework](testing/README.md)
 
 ### For Feature Planning
-1. **Current Status:** This index shows all operational systems
+1. **Current Status:** This index shows all operational systems with new component organization
 2. **Future Plans:** `/plans/` directory contains implementation-ready features
-3. **Registry:** [REGISTRY.md](REGISTRY.md) prevents duplicate documentation
+3. **Registry:** [REGISTRY.md](REGISTRY.md) prevents duplicate documentation with component mappings
 
 ## 📝 Documentation Maintenance Protocol
 
@@ -208,6 +246,13 @@ When adding new features or documentation:
 
 ---
 
-**Documentation System Status:** ✅ Standardization complete - Prevents documentation drift through registry system and mandatory update protocol
+**Documentation System Status:** ✅ Component-based reorganization complete (July 26, 2025)
 
-*This documentation system ensures Stephen's requirement: "Documentation NEVER goes out of date" through systematic prevention and enforcement.*
+**Major Improvements:**
+- Component-based structure mirrors project architecture
+- Enhanced user journey from quick start through advanced usage
+- Consolidated scattered documentation (database, orchestration)
+- Clear audience targeting and navigation paths
+- Preserved registry system and content quality
+
+*This reorganization maintains Stephen's requirement: "Documentation NEVER goes out of date" while dramatically improving findability and user experience.*
