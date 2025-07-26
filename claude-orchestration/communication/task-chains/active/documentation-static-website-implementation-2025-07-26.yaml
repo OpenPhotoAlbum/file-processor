@@ -1,117 +1,91 @@
 # Task Chain: Documentation Static Website Implementation
-# Generated: 2025-07-26T17:24:12-04:00
-# Template: communication-flow-test
+# Generated: 2025-07-26T17:29:46-04:00
+# Template: cli-feature-template
 # Chain ID: documentation-static-website-implementation-2025-07-26
 
 id: "documentation-static-website-implementation-2025-07-26"
 title: "Documentation Static Website Implementation"
 status: "pending"
-created: "2025-07-26T17:24:12-04:00"
-updated: "2025-07-26T17:24:12-04:00"
+created: "2025-07-26T17:29:46-04:00"
+updated: "2025-07-26T17:29:46-04:00"
 
-template_id: communication-flow-test
-template_version: '1.0'
-description: Test complete communication flow through all 6 specialists using project-related jokes
-version: '1.0'
+template_id: cli-feature
+description: Standard workflow for implementing new CLI commands or features
+version: '2.0'
 use_cases:
-- Testing task chain communication system after changes
-- Validating orchestration system health
-- QA validation of multi-Claude workflows
+- Adding new MMP CLI commands
+- Extending existing CLI functionality
+- CLI option additions or modifications
 variables:
-  test_id: comm-flow-test
-  initiated_by: stephen
-  test_purpose: validate communication system
+  feature_name: '{{FEATURE_NAME}}'
+  cli_command: '{{CLI_COMMAND}}'
+  complexity_level: '{{COMPLEXITY_LEVEL}}'
+  priority_level: '{{PRIORITY_LEVEL}}'  # Legacy field for backwards compatibility
 success_criteria:
-- Each specialist successfully receives their task assignment
-- Each specialist tells a project-related joke
-- Stephen responds to each joke (acceptance criteria)
-- Communication flows properly from phase to phase
-- Task chain completes full round-trip back to Architect
+- CLI command implemented and tested end-to-end
+- Database operations validated for safety and performance
+- Integration tests pass with real command execution
+- Documentation includes working examples and troubleshooting
+- No regressions in existing CLI functionality
 phases:
-- phase_id: architect_initiation
-  phase_name: Architect Test Initiation
-  assigned_to: claude-1
+- phase_id: database_assessment
+  phase_name: Database Impact Assessment
+  assigned_to: claude-6
   depends_on: []
-  description: Architect initiates communication test by creating task assignments
-    for all specialists
-  deliverable: Create joke request tasks for all specialists + mark this phase complete
-  estimated_duration: 5 minutes
-  status: pending
-- phase_id: builder_joke
-  phase_name: Builder Code Joke
-  assigned_to: claude-2
-  depends_on:
-  - architect_initiation
-  description: Builder tells a code/implementation joke about the media processing
-    project
-  deliverable: Tell joke + wait for Stephen's response + mark phase complete after
-    response received
-  acceptance_criteria: Stephen's response to the joke
-  estimated_duration: 5 minutes
-  status: waiting
-- phase_id: guardian_joke
-  phase_name: Guardian Testing Joke
+  description: Analyze if CLI feature requires database changes, assess risks
+  deliverable: Risk analysis + database specifications OR no-DB-changes confirmation
+    + mark this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 30-60 minutes
+- phase_id: integration_tests
+  phase_name: CLI Integration Tests (TDD)
   assigned_to: claude-3
   depends_on:
-  - builder_joke
-  description: Guardian tells a testing/quality joke about the media processing project
-  deliverable: Tell joke + wait for Stephen's response + mark phase complete after
-    response received
-  acceptance_criteria: Stephen's response to the joke
-  estimated_duration: 5 minutes
-  status: waiting
-- phase_id: chronicler_joke
-  phase_name: Chronicler Documentation Joke
-  assigned_to: claude-4
+  - database_assessment
+  description: Write failing CLI command tests - focus on actual command execution
+    and expected output, not unit test coverage
+  deliverable: Failing CLI tests that validate end-to-end command behavior + mark
+    this phase complete in task chain (next Claude automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: implementation
+  phase_name: Implement CLI Feature
+  assigned_to: claude-2
   depends_on:
-  - guardian_joke
-  description: Chronicler tells a documentation joke about the media processing project
-  deliverable: Tell joke + wait for Stephen's response + mark phase complete after
-    response received
-  acceptance_criteria: Stephen's response to the joke
-  estimated_duration: 5 minutes
-  status: waiting
-- phase_id: curator_joke
-  phase_name: Curator Photo Processing Joke
-  assigned_to: claude-5
-  depends_on:
-  - chronicler_joke
-  description: Curator tells a photo processing joke about the heritage photo project
-  deliverable: Tell joke + wait for Stephen's response + mark phase complete after
-    response received
-  acceptance_criteria: Stephen's response to the joke
-  estimated_duration: 5 minutes
-  status: waiting
-- phase_id: data_joke
-  phase_name: Data Specialist Database Joke
+  - integration_tests
+  description: Build feature to make CLI tests pass, following any database specifications
+    from Data
+  deliverable: Working CLI feature with passing integration tests + mark this phase
+    complete in task chain (next Claude automatically notified)
+  estimated_duration: 2-4 hours
+- phase_id: database_validation
+  phase_name: Validate Database Operations
   assigned_to: claude-6
   depends_on:
-  - curator_joke
-  description: Data specialist tells a database joke about protecting 150k heritage
-    photos
-  deliverable: Tell joke + wait for Stephen's response + mark phase complete after
-    response received
-  acceptance_criteria: Stephen's response to the joke
-  estimated_duration: 5 minutes
-  status: waiting
-- phase_id: architect_completion
-  phase_name: Architect Test Completion
+  - implementation
+  description: Verify database interactions work correctly if applicable, validate
+    performance and data integrity
+  deliverable: Database validation sign-off + mark this phase complete in task chain
+    (next Claude automatically notified)
+  estimated_duration: 30 minutes
+- phase_id: documentation
+  phase_name: Document CLI Usage
+  assigned_to: claude-4
+  depends_on:
+  - database_validation
+  description: Document command syntax, examples, help text, troubleshooting guides
+  deliverable: CLI documentation with working examples + mark this phase complete
+    in task chain (next Claude automatically notified)
+  estimated_duration: 1 hour
+- phase_id: final_validation
+  phase_name: End-to-End Validation
   assigned_to: claude-1
   depends_on:
-  - data_joke
-  description: Architect receives all joke completions and closes the communication
-    test
-  deliverable: Verify all specialists completed their jokes + close task chain
-  estimated_duration: 5 minutes
-  status: waiting
+  - documentation
+  description: Manually test documented examples, verify complete workflow, validate
+    task chain completion
+  deliverable: Final architectural approval + mark entire task chain as completed
+  estimated_duration: 30 minutes
 template_notes:
-- This is a DIAGNOSTIC template - no code changes allowed
-- Each specialist must wait for Stephen's response before marking complete
-- Jokes should relate to each specialist's domain in the project
-- Use this template to test communication flow after system changes
-- QA can use this as part of orchestration system validation
-- If any phase fails, it indicates a communication system issue
-example_usage:
-  test_id: comm-test-001
-  initiated_by: Stephen
-  test_purpose: Validate communication system after Claude 6 task awareness issue
+- Data leads with risk assessment even for potentially non-database features
+- Guardian focuses on CLI integration tests, not unit test coverage
+- Double Data validation ensures database safety throughout process
+- Architect performs final end-to-end validation and sign-off
