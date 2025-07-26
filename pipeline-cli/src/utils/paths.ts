@@ -44,10 +44,9 @@ const PATH_PREFIX_CONFIG = {
 
 // Get base paths from environment variables (loaded dynamically)
 function getBasePaths() {
-  const projectRoot = '/home/stephen/Documents/initial-media-processing';
   return {
     MEDIA_BASE_PATH: process.env.MEDIA_BASE_PATH || '/default/media/path',
-    SAMPLE_BASE_PATH: process.env.SAMPLE_BASE_PATH || `${projectRoot}/scratch/sample_media`
+    SAMPLE_BASE_PATH: process.env.SAMPLE_BASE_PATH || './scratch/sample_media'
   };
 }
 

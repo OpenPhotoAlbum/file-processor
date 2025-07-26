@@ -1,0 +1,64 @@
+{
+  "name": "media-processing-pipeline-cli",
+  "version": "1.0.0",
+  "description": "Media Processing Pipeline CLI Tool",
+  "type": "module",
+  "main": "dist/main.js",
+  "bin": {
+    "mpp": "dist/main.js"
+  },
+  "scripts": {
+    "build": "npm run lint:check && npm run typecheck && tsc",
+    "build:fast": "tsc",
+    "start": "node dist/main.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:generate-mocks": "npm run build && ./scripts/utilities/generate-test-mocks.sh",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "lint:check": "eslint src/**/*.ts --max-warnings 25",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "etl:recreation": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js",
+    "etl:recreation:incremental": "npm run build:fast && node dist/scripts/etl-recreation-facilities.js --incremental"
+  },
+  "keywords": [
+    "media",
+    "processing",
+    "cli",
+    "metadata",
+    "exif",
+    "photos",
+    "videos"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@turf/turf": "^7.2.0",
+    "commander": "^14.0.0",
+    "dotenv": "^16.6.1",
+    "form-data": "^4.0.4",
+    "knex": "^3.1.0",
+    "mysql2": "^3.14.1",
+    "node-fetch": "^3.3.2",
+    "node-vibrant": "^4.0.3",
+    "shapefile": "^0.6.6",
+    "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/knex": "^0.15.2",
+    "@types/node": "^24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "jest": "^30.0.2",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
