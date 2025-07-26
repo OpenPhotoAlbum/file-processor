@@ -1,56 +1,26 @@
 {
-  "timestamp": "2025-07-24T00:58:22.158690",
-  "file_count": 301,
+  "timestamp": "2025-07-26T14:30:29.425297",
+  "file_count": 366,
   "files": {
     "/home/stephen/Documents/initial-media-processing/docker-compose.yaml": {
       "mtime": 1751312112.5912802,
       "size": 1056,
       "hash": "8a20163f3f8b70de21c5adfca16ba5bbaed02b2b4def5e0680ea444283200f73"
     },
-    "/home/stephen/Documents/initial-media-processing/THE_CONVERSATION_THAT_CHANGED_EVERYTHING.md": {
-      "mtime": 1751350241.4184272,
-      "size": 14623,
-      "hash": "16550154713a0da9155f47acef88bf2bbc1d3f759e31f683f48fa0702b981805"
-    },
     "/home/stephen/Documents/initial-media-processing/tsconfig.json": {
       "mtime": 1750711388.9668145,
       "size": 539,
       "hash": "4973c11bd5171ceb3b3d3433e339823be8f810670d14e2e87972feb8374df541"
     },
-    "/home/stephen/Documents/initial-media-processing/PERSONAL_MISSION_STATEMENT.md": {
-      "mtime": 1751349379.10533,
-      "size": 5411,
-      "hash": "a6719b69c5a0e39c1f05e6de8d4289b393f640de1d7a56fa9cf39953281f1c3a"
-    },
-    "/home/stephen/Documents/initial-media-processing/PROCESSING_ARCHITECTURE.md": {
-      "mtime": 1751121903.7204268,
-      "size": 6380,
-      "hash": "b40c05aeb49db3e883c002eccb4c549eb6010d05fe0d8c1f4cecfdaf736cb355"
-    },
-    "/home/stephen/Documents/initial-media-processing/setup-whisper.sh": {
-      "mtime": 1751420991.1961167,
-      "size": 3520,
-      "hash": "3cbe11113fde0ac2de19324cd944661f30059109185ae9e62cbe2e26f2aac496"
-    },
     "/home/stephen/Documents/initial-media-processing/package.json": {
-      "mtime": 1752987765.9532473,
-      "size": 4170,
-      "hash": "c1d31a7994941e291533f8d8a7e9e6fbbf19e9bb10c12d70dac0b7988d2a57f0"
+      "mtime": 1753551110.4528174,
+      "size": 2729,
+      "hash": "f0d960a39a328887834dd58586eb8fe8387ae5a87c7ea8afe7ec733d2a14782e"
     },
     "/home/stephen/Documents/initial-media-processing/jest.config.js": {
       "mtime": 1751121903.7464273,
       "size": 386,
       "hash": "f96097803721200fe53ec067b3a2343f744460925d94b0b6d3b5fb9f9a5badd5"
-    },
-    "/home/stephen/Documents/initial-media-processing/MEDIA_PROCESSING_PLAN.md": {
-      "mtime": 1751121903.7204268,
-      "size": 8404,
-      "hash": "cd3d6f6f47e270bab36d2d9d11047cbff65d54633875cfcec12dae4a9a10b56a"
-    },
-    "/home/stephen/Documents/initial-media-processing/groups-photos.txt": {
-      "mtime": 1752729418.305901,
-      "size": 56507,
-      "hash": "a3811f4c29e433a674fd60401e5ef972d3d222e64aebee3f57674579df4ce407"
     },
     "/home/stephen/Documents/initial-media-processing/README.md": {
       "mtime": 1751121892.5062387,
@@ -58,59 +28,24 @@
       "hash": "da461d528e0b84af1155e1cb89c467890da3ce704abbc26d7dca3683aa5400bb"
     },
     "/home/stephen/Documents/initial-media-processing/CLAUDE.md": {
-      "mtime": 1752727676.1041644,
-      "size": 19960,
-      "hash": "f488a8a7fee33300773ae865d1df29da7679f0cc1571705ce488920976a6e18e"
+      "mtime": 1753550993.5684798,
+      "size": 20168,
+      "hash": "72c30b3ccf05f6198ec3369f34aee798a297607ccefa9bcb7451773de32dd50a"
     },
     "/home/stephen/Documents/initial-media-processing/TODO.md": {
       "mtime": 1753156216.264811,
       "size": 4494,
       "hash": "57caa06099ad3071399fe9ca6fa972f51d33112e851b43b2f5513198d2aa9d53"
     },
-    "/home/stephen/Documents/initial-media-processing/TRANSCRIPTION-README.md": {
-      "mtime": 1751421026.1038172,
-      "size": 4106,
-      "hash": "b2d9aee4e5de9b39fab4fbcce3131bfd81b14d0887096c60c305eb27122b45eb"
-    },
     "/home/stephen/Documents/initial-media-processing/run-migrations.sh": {
       "mtime": 1751153678.0970438,
       "size": 768,
       "hash": "982b48c823ab758b4d1f95b707edb38fd9f51b58ca7f890df2711d18895df852"
     },
-    "/home/stephen/Documents/initial-media-processing/transcribe-audio.sh": {
-      "mtime": 1751420915.0645878,
-      "size": 6450,
-      "hash": "06efe52af49ebeec327f844b7d69152eb5550a01788e948dccb4111de04f35bd"
-    },
-    "/home/stephen/Documents/initial-media-processing/LANDMARK_ARCHITECTURE.md": {
-      "mtime": 1751121903.7204268,
-      "size": 8158,
-      "hash": "8ebc8774eb09012b138b95ddcc6032785b0079bc807db6d4a437480a25fae214"
-    },
-    "/home/stephen/Documents/initial-media-processing/FINAL-VIDEO-DATES-WITH-ALL-LOCATIONS.txt": {
-      "mtime": 1751422010.9625432,
-      "size": 39696,
-      "hash": "dcd2978d0cbc614d62550506c1ac0c0c805938c7ad495bd653c68253d05c8973"
-    },
-    "/home/stephen/Documents/initial-media-processing/transcribe-simple.sh": {
-      "mtime": 1751422531.425274,
-      "size": 2869,
-      "hash": "dad6c2427dd6b14dc8b5cff0a334a234621cdf439fb7e5f916699784ea4779c5"
-    },
     "/home/stephen/Documents/initial-media-processing/eslint.config.js": {
       "mtime": 1751121903.7464273,
       "size": 2483,
       "hash": "4b68652180381b5a78380c0dc9d8a566f7a89081de7893380a19a37185cec3d2"
-    },
-    "/home/stephen/Documents/initial-media-processing/PROJECT_VISION_EVOLUTION.md": {
-      "mtime": 1751349348.598068,
-      "size": 4831,
-      "hash": "a126d83ca93217f8b7a0d71d9272c3602868bd8231ec9fd60b804e1b094c62f9"
-    },
-    "/home/stephen/Documents/initial-media-processing/ACCOMPLISHMENTS.md": {
-      "mtime": 1753246661.311479,
-      "size": 9668,
-      "hash": "c1b76d31b5f2645451608855097a2034881abb361bdddaa49a559ebeaf058e66"
     },
     "/home/stephen/Documents/initial-media-processing/scripts/README.md": {
       "mtime": 1752808584.922523,
@@ -151,36 +86,6 @@
       "mtime": 1751298941.4814193,
       "size": 1810,
       "hash": "7646f568110fa47fa06e6faf8c1db10d715ed4553f9d830f66188155e75248e4"
-    },
-    "/home/stephen/Documents/initial-media-processing/tests/deduplication-validation.test.ts": {
-      "mtime": 1751340229.9356382,
-      "size": 9725,
-      "hash": "1aa9d6e2d056b7f67ca2f7ba9167110e3bb7049d4a75d81f9a086d64841e0e1b"
-    },
-    "/home/stephen/Documents/initial-media-processing/tests/setup.ts": {
-      "mtime": 1751147467.1785953,
-      "size": 2049,
-      "hash": "afec910b4ed03915d239743763a551a5a829c91abb94231b9cd9b5ffecbc1a2c"
-    },
-    "/home/stephen/Documents/initial-media-processing/tests/setup-deduplication-fixture.js": {
-      "mtime": 1751340129.790988,
-      "size": 3882,
-      "hash": "335e40d9be076a57f71411a89cd6bcc8cd9f92f839cf6b4243ca425f6859b1cd"
-    },
-    "/home/stephen/Documents/initial-media-processing/tests/mocks/modules/mysql.ts": {
-      "mtime": 1751147531.6484425,
-      "size": 2840,
-      "hash": "85866128635cf8bdd5485130cf4793fe8aa43c3de2be9d3f2491abee53993e4c"
-    },
-    "/home/stephen/Documents/initial-media-processing/tests/mocks/modules/fetch.ts": {
-      "mtime": 1751147573.2064567,
-      "size": 2391,
-      "hash": "30332a9f4f529808fbd8c579216620d0a726908159b4a27e6a5395acabf34eb1"
-    },
-    "/home/stephen/Documents/initial-media-processing/tests/cli-response/cli-responses.spec.ts": {
-      "mtime": 1753157570.6200585,
-      "size": 14451,
-      "hash": "4907e27cda49e698b6a961f7d4f334b8f65a525cd99d508a620a2c1225bb8866"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/demo_usage.py": {
       "mtime": 1751121903.7614274,
@@ -223,9 +128,9 @@
       "hash": "7549268f930e5ed7040f27c389c95d688ac66b207aa6ed88f91bec197d161ce6"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/usage_log.json": {
-      "mtime": 1753314896.5179746,
-      "size": 17795,
-      "hash": "7f501744ea91ac84b7652cd2ceac98a0909375c6a46a2fb1d617ea9560e09314"
+      "mtime": 1753545082.523278,
+      "size": 18846,
+      "hash": "e780279115169cb85617562e74f6e1eb16c85b8f5d61e82bf1e943de753aa4ec"
     },
     "/home/stephen/Documents/initial-media-processing/mcp-project-context/file_processor.py": {
       "mtime": 1751121903.7614274,
@@ -318,9 +223,9 @@
       "hash": "712f577347385b1966b6d1fda31bc66f5998d03bca43c160b980769d7401a954"
     },
     "/home/stephen/Documents/initial-media-processing/docs/REGISTRY.md": {
-      "mtime": 1753309406.4582727,
-      "size": 18405,
-      "hash": "51662b3c2e694448b7e5686ff4975275dd20bcfa14094a3e5add056e3e0f81ff"
+      "mtime": 1753554331.5878942,
+      "size": 20676,
+      "hash": "7787aea10a4f6bdc0a873688fc972a856cd956a294835c30d15164612471fb9f"
     },
     "/home/stephen/Documents/initial-media-processing/docs/MMP-DOCUMENTATION-VERIFICATION-COMPLETE-2025-07-23.md": {
       "mtime": 1753311709.3647525,
@@ -342,6 +247,11 @@
       "size": 6158,
       "hash": "1e1739d5a08d8e35e42161ec51c7a8ce5bf482728f0f87ef3baeea8a1c92a9db"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/architecture/centralized-role-configuration.md": {
+      "mtime": 1753389596.7946112,
+      "size": 11508,
+      "hash": "cc1b865019b7d252b984813397600735c8b44b41649c806ceb8bb1deb8cf0bd3"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/geolocation-system.md": {
       "mtime": 1751121903.739427,
       "size": 7055,
@@ -353,9 +263,9 @@
       "hash": "ec5a4e854cf21e759ba85f81b5865c094f9c19a48a64cc7594b5def98bb2edcd"
     },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/claude-orchestration.md": {
-      "mtime": 1753280277.2367187,
-      "size": 7923,
-      "hash": "3c84d9802d8f032f2fbe53077687dd64af9eef7ac11ecd1421d0f76e39c70809"
+      "mtime": 1753389932.6947546,
+      "size": 9560,
+      "hash": "526267c0ec2bb5ce96847f65b019f5a9bcc3ff1ff56ef155b8325395df23c16c"
     },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/database-migration-strategy.md": {
       "mtime": 1751121903.736427,
@@ -452,6 +362,11 @@
       "size": 5399,
       "hash": "6442812195b352a4d6376f7d3e1af4fe28539940b9bc2746936625a59cd588a4"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/migration/mail-to-chain-status-migration.md": {
+      "mtime": 1753390081.6088045,
+      "size": 9471,
+      "hash": "05462df9ac97cdcb9fe0e01466d0614b850b94d48907b4b7452fc47ef0f88f6a"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/accomplishments/google-takeout-completion-summary.md": {
       "mtime": 1751121903.733427,
       "size": 6741,
@@ -518,9 +433,9 @@
       "hash": "9695ed788258c8bf168a2d21502c6ffd25e72047cd8e6c1b820a15ea1cf08490"
     },
     "/home/stephen/Documents/initial-media-processing/docs/cli/slash-commands.md": {
-      "mtime": 1753332970.1178653,
-      "size": 11038,
-      "hash": "01dd9607c079cfb73eaecc2568178514482917617b453ba6e9419bd45421f2a6"
+      "mtime": 1753389888.0610735,
+      "size": 15419,
+      "hash": "80fb49b4578f1b5d8faf03d4b5537a5286cd08539fca9684a7b6150a9b3a2785"
     },
     "/home/stephen/Documents/initial-media-processing/docs/deployment/getting-started.md": {
       "mtime": 1752808101.8698595,
@@ -548,14 +463,24 @@
       "hash": "3e72e319bddc040e8045e36c8adf92ae384d4d7278c3376abe4174721d97b208"
     },
     "/home/stephen/Documents/initial-media-processing/docs/testing/README.md": {
-      "mtime": 1751121903.7454271,
-      "size": 4274,
-      "hash": "4abf21e0650312b5bfc862d72293d59554830200997b26c6858e89d44a5f90dd"
+      "mtime": 1753554314.96462,
+      "size": 4954,
+      "hash": "0f308ef8800da4b0ae287105d7a6ef303aba3e2c2027c34df9d3ed5489a76f27"
     },
     "/home/stephen/Documents/initial-media-processing/docs/testing/sample-coverage-report.md": {
       "mtime": 1751121903.7464273,
       "size": 8038,
       "hash": "0444a56240aef974be5a0d8c30b6aff3d4aa11e060d931161dd3a7e8d0c8545e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/reports/auto-cascade-safety-validation-2025-07-24.md": {
+      "mtime": 1753394106.4364927,
+      "size": 10964,
+      "hash": "2c8cbc89bfe7079a452f6c7c388ebf6e3365481937d01834c4dbc51c45c7b7e3"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/reports/centralized-role-config-validation-2025-07-24.md": {
+      "mtime": 1753391671.1322143,
+      "size": 4841,
+      "hash": "1c215bb45ab6815ca94a61f4a70f4a3e7e1ddba1b7627d07c5525e4b15c7d744"
     },
     "/home/stephen/Documents/initial-media-processing/plans/heritage-photo-integration-plan.md": {
       "mtime": 1753153816.3602588,
@@ -637,20 +562,35 @@
       "size": 20641,
       "hash": "2a854cd02d57fdcc678a5d0d8b9bf7c903b7321318fcbb2c4b11f8361dcd9ee8"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-init/claude-1-prompt.md": {
-      "mtime": 1753159478.654148,
-      "size": 3228,
-      "hash": "d346183cc38aef9fc15a780568a8a4097f84189ff5626f262ddc5fcd2d0315a1"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/doc-search-architecture-spec.md": {
+      "mtime": 1753391653.0619612,
+      "size": 10705,
+      "hash": "8d360277411f3509c4d1f9b3d4144f0696c1895a1bc69427421607274a411ad6"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-init/claude-2-prompt.md": {
-      "mtime": 1753157894.8394015,
-      "size": 1812,
-      "hash": "cb942eca6cf3542e1260f368a13fbe4a977a08074b7d15a9eee501b2ba5cbf63"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/pilot-auto-cascade-test-report.md": {
+      "mtime": 1753545652.1113427,
+      "size": 3643,
+      "hash": "31b5febba88b10fbb19d6a759308a8ca84657028d9871e45e12350ac42f43723"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-architecture-spec.md": {
+      "mtime": 1753391023.8192735,
+      "size": 10669,
+      "hash": "05d7ae700501fc30f59d79b659f0ed480673c87707bbe7225facfad333904c72"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-config.yaml": {
+      "mtime": 1753387278.9699044,
+      "size": 16624,
+      "hash": "e6935feeeb28bca56c910d6a402016cb70c005c2a19e760c2364f4854387726c"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-demo-config.yaml": {
+      "mtime": 1753545612.4717014,
+      "size": 1531,
+      "hash": "b47253b4d404874c7a0aa8a816d547223b8a3591ba83100818c98d7fc3df05ff"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-5-photo-intern.md": {
-      "mtime": 1753332943.1704671,
-      "size": 24549,
-      "hash": "e0fd304c43a1793cdc07153346ee01f5ea92d3aaae967a1a8353c3529ebf9f0e"
+      "mtime": 1753446866.9782264,
+      "size": 25369,
+      "hash": "4e8bbc4d8c67bcc4bd52d30cb6629e67a95b9a524b38513172aca75ed79a0492"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-generalist.md": {
       "mtime": 1753309643.6426966,
@@ -658,29 +598,29 @@
       "hash": "f9f44ba9fc2ff32ea9e073db2e7dacdb534d7604a5a2934e09839a570dac9f48"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-2-implementation.md": {
-      "mtime": 1753332925.9952142,
-      "size": 20853,
-      "hash": "8da92326580f32d88453afb5679e258ae7ef3d0be4218155815a61907a276f70"
+      "mtime": 1753550780.9713354,
+      "size": 21692,
+      "hash": "7c92fb3e28fdb1e962e96f4d4cb4efca574ed12519ebee75890fd44b59d9dbbd"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-1-architect.md": {
-      "mtime": 1753332908.8249614,
-      "size": 13949,
-      "hash": "d74e05c1409834b5ee15d4d1b387dfe9c53768f4b96639b5ba1522b263c5607f"
+      "mtime": 1753549302.2872705,
+      "size": 15456,
+      "hash": "cfd692d21e27f278fec6736d382b58a923df55a41fe8e679ac74e40b88953b7b"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-6-data.md": {
-      "mtime": 1753330213.4434447,
-      "size": 16514,
-      "hash": "5a8f6ae411f88a50c56d14aadfde17a002ee7067dc05999f33fc262ec05e50e0"
+      "mtime": 1753393737.5168426,
+      "size": 19606,
+      "hash": "dccd650d09745a5c1b2e4ed49b0ee7aa7a79a757ac19a618058297baa77bf3b4"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-4-documentation.md": {
-      "mtime": 1753332937.8923893,
-      "size": 22607,
-      "hash": "b12fd0aba6fc284ba440e172068f887f620aa0a3700b2898ba7c87debfa710bb"
+      "mtime": 1753550804.366723,
+      "size": 23367,
+      "hash": "0951efedf7e6b5721fe8bb1b89f5c9ddc7c52c12d4131618aa5d8da3e854f01f"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-3-qa.md": {
-      "mtime": 1753332932.366308,
-      "size": 20952,
-      "hash": "4f2e33f2a4809665449cfa1e1b25d9b925016d35f6ff5d26e7711628be8012bf"
+      "mtime": 1753554364.7114408,
+      "size": 24050,
+      "hash": "3c362f8ecd60c527e9379cbc70330fdead16b3f74d4395f98501fbcd871d0101"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/critical-mmp-documentation-understates-capabilities-2025-07-23.md": {
       "mtime": 1753311649.6879926,
@@ -692,10 +632,25 @@
       "size": 8402,
       "hash": "8d0382599d09b99ddeb75e247d97bea761037678c74e05f0558695d7c471ce6d"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/identity-lock-protocol-integration-2025-07-24.md": {
+      "mtime": 1753385073.4414523,
+      "size": 4392,
+      "hash": "4f79cb37f8f21f96bd84562a354a822c150855143008b5d79dcfdcfd448369dc"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/orchestration-docs-update-2025-07-24.md": {
+      "mtime": 1753385369.360203,
+      "size": 6384,
+      "hash": "7525b992c7c69b30cad7ff0286ad08a5df83fe808e5a3d032ae17352d21f9678"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/task-chain-reset-cleanup-fix-2025-07-23.md": {
       "mtime": 1753320055.3708081,
       "size": 7951,
       "hash": "b820d3c959c76a7c948eee5098bfff4467e2158e162c7df0c7e0d86cf8ece325"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/chain-status-visual-enhancement-2025-07-24.md": {
+      "mtime": 1753382397.5442588,
+      "size": 2761,
+      "hash": "c6a8e7dc633134f7ed0f29160dc346844abb83529fbf4ca44da9b20b2caf4d1f"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/legacy-tool-migration-planning-2025-07-23.md": {
       "mtime": 1753311636.0828207,
@@ -707,20 +662,30 @@
       "size": 6320,
       "hash": "c84938c64f6c521e9d8cea1ad822b41bd0d47ba124262c6f83820d38f3c261e9"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/builder-template-no-any-rule-2025-07-25.md": {
+      "mtime": 1753413117.4527395,
+      "size": 3192,
+      "hash": "35d796dd16ad78e670308bd49179d3bf9f74812d05e05e2dd3482a7c72cef3fa"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/cli-documentation-creation-2025-07-23.md": {
       "mtime": 1753311181.4214976,
       "size": 2867,
       "hash": "b9da449ec30f4331d43a58822441b1876fc258b80c5cc227851bc273fa4973d0"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/mmp-cli-refactoring-2025-07-23.md": {
-      "mtime": 1753287638.1075287,
-      "size": 6286,
-      "hash": "3938012baa8dc37e63167bde782b526e6e99604a42854f8cb722abd0500b581f"
+      "mtime": 1753551115.0289075,
+      "size": 6220,
+      "hash": "f0b163913c3535f3de46f7c4efe438febf478c0820f8892cedb1a9b5a732c7a0"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/comedy-test-delegation-2025-07-23.md": {
       "mtime": 1753315361.0365067,
       "size": 4904,
       "hash": "2a8a6f510897ffa75a8bc6cc2c801b25050d6f85512ee451a0d643ec964e0ab0"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/mmp-transcribe-architecture-design-2025-07-25.md": {
+      "mtime": 1753551124.1250863,
+      "size": 15068,
+      "hash": "c88735516494250989a3f656c30b5f6f83fc3eb2bc2f4bc0af200021487e5e45"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/mmp-tool-documentation-verification-2025-07-23.md": {
       "mtime": 1753293082.138855,
@@ -751,6 +716,11 @@
       "mtime": 1753291146.6910615,
       "size": 5675,
       "hash": "825c6c748687792bfbe3f1d594b2861019496df34930a716df3aaa01a878764d"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/testing-continuity-institutional-memory-2025-07-24.md": {
+      "mtime": 1753392665.8166602,
+      "size": 7682,
+      "hash": "48990c21d33e10a36985744970ca178196f6896d232c5fa4ad42cce4e875fdde"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/github-projects-mcp-research-2025-07-23.md": {
       "mtime": 1753293249.5557392,
@@ -822,10 +792,20 @@
       "size": 814,
       "hash": "48b92d3041a6f0cfa1d7240791ea87f4aca8f225b6cb85bba36b7cf18ae04d80"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-26-16-59-quick-ref.md": {
+      "mtime": 1753549180.645719,
+      "size": 993,
+      "hash": "d7caf23f35769c9ee0aa4015c040a2e3309d826c4867c48862218a2b606cc4c7"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/restore-2025-07-23-18-45.md": {
       "mtime": 1753247960.8664217,
       "size": 1161,
       "hash": "fdccb052252e34b098fc3624e474716a9790dd7d81132c4a08b93d559d150e1b"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/restore-2025-07-24-13-37.md": {
+      "mtime": 1753378687.2168484,
+      "size": 880,
+      "hash": "61814013b94bd342bb0bdd81831bf1792f64f0e68abe51798e2385d48601b999"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-23-18-45-quick-ref.md": {
       "mtime": 1753247941.6781883,
@@ -857,6 +837,11 @@
       "size": 1190,
       "hash": "f81a91f2bdc2fa5a07f9bcf0abca8542ec877ab1f5389e679d76aaa4497eda76"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-13-37-quick-ref.md": {
+      "mtime": 1753378675.360665,
+      "size": 1166,
+      "hash": "f2cf2d05ea050c6d2ce76ac409894b561a2cff00e09f69ff4b61e4209a0029a6"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-23-00-13-checkpoint.md": {
       "mtime": 1753244056.2447734,
       "size": 5362,
@@ -867,10 +852,30 @@
       "size": 5547,
       "hash": "247885be4fa7be28db7177665f4d3c2794fe5012874d4693922204fca49976ae"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-01-03-quick-ref.md": {
+      "mtime": 1753333624.4217536,
+      "size": 1195,
+      "hash": "91436bdbcbacb395fcb277cfcdb13d4bcab7b886ddfc932e227073cce833f889"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/restore-2025-07-24-01-03.md": {
+      "mtime": 1753333636.981946,
+      "size": 855,
+      "hash": "281054e3693eb79d9e6dc3b0298cdddc1e0565a5d84510ba11be73d1d496c60a"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-01-03-checkpoint.md": {
+      "mtime": 1753333614.5046015,
+      "size": 5470,
+      "hash": "3929ac500d1fb23202c969b13ba7e57f8fc9261201f33b78f0a69ba3c90f6c04"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-23-16-22-checkpoint.md": {
       "mtime": 1753247276.7022161,
       "size": 3904,
       "hash": "67c36c0072176f5342d5f83e37c2537db0ce48fd85aa3c6fb810e568aa67c0e1"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/restore-2025-07-26-16-59.md": {
+      "mtime": 1753549197.0289211,
+      "size": 727,
+      "hash": "582002b74c1b7825b51fc88e0059edbd75f9726d5e46abe9e64bcd23d166a8bf"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-22-50-quick-ref.md": {
       "mtime": 1753325543.150871,
@@ -887,6 +892,11 @@
       "size": 5492,
       "hash": "121027fc4f93c777586f006e7b5feef27617741f25fcdf6e9825ed1c99e24a96"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-13-37-checkpoint.md": {
+      "mtime": 1753378666.3215253,
+      "size": 5898,
+      "hash": "33f6b385c8cef3341ac4b5da5e9cf2784a8c32b1606ab88ff65fe215ae313c44"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-23-18-45-checkpoint.md": {
       "mtime": 1753247933.9690964,
       "size": 5471,
@@ -902,75 +912,110 @@
       "size": 757,
       "hash": "94b50ce569f000b99b55e30c2e969b38aa2fc60890aaa350801144adbf1e5cc0"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-26-16-59-checkpoint.md": {
+      "mtime": 1753549168.594572,
+      "size": 3785,
+      "hash": "2d9643ad74b292b3902252626d7255e81249d3b563636ee916639af228ce0f5a"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-22-23-08-checkpoint.md": {
       "mtime": 1753240215.3344228,
       "size": 3919,
       "hash": "c7833ca6e6e8a511e77b504f69f9bae60fd20d83d60deb39c34c9f3f0b90ca56"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/misunderstanding-command-implementation-2025-07-23.yaml": {
-      "mtime": 1753324770.475923,
-      "size": 1566,
-      "hash": "82570a87f60806b9148027a3019761ced7f65abe12486901831669facaf416e9"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/notifications/critical-interactive-doc-search-2025-07-24-2025-07-24-2025-07-24_17-50-29.md": {
+      "mtime": 1753393829.0585113,
+      "size": 1359,
+      "hash": "a67edafe3f4946d9806f03f6bfe10f307532e18bdef1fc92c4d0091db2b8fd08"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/task-chain-reset-process-complete-cleanup-2025-07-23.yaml": {
-      "mtime": 1753324782.935085,
-      "size": 1725,
-      "hash": "3e7c62a2ac706b2f320e35441d5a60815d3e91b4f061694d1ae2ace8928be8be"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/notifications/critical-universal-file-locking-system-2025-07-24-2025-07-24-2025-07-24_17-50-11.md": {
+      "mtime": 1753393811.8321984,
+      "size": 1424,
+      "hash": "2a43e3faed4272090dfea423e6613db7eb6db62a4ca6a153e5b0088376f56207"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/template-system-documentation-2025-07-24.yaml": {
-      "mtime": 1753332564.3390205,
-      "size": 4220,
-      "hash": "788ed621afbb5460771523b48238d46d4941516133ab5e564e1e8f92a372ab59"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/chain-status-labeling-fix-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753387749.2979188,
+      "size": 3254,
+      "hash": "8063e46c74b5c0f945d3aa295cf0787777075a147150405e955557b2fc77ceaf"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/task-chain-notification-system-enhancement-2025-07-23.yaml": {
-      "mtime": 1753324776.2889986,
-      "size": 1751,
-      "hash": "591ee2de204ccd04f66073e4a41d4a688d0b275c952c188905cdb36e64b2cdba"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/centralized-role-config-architecture-2025-07-24.yaml": {
+      "mtime": 1753391688.149453,
+      "size": 4477,
+      "hash": "d6090c51fc80281f7243dce24c0a218d961bd4600018927de8aa469ed18d8aae"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/claude-6-optimizer-role-template-creation-2025-07-23.yaml": {
-      "mtime": 1753324599.0007763,
-      "size": 1541,
-      "hash": "79180775633263e3fa5fd326e21d0ded48ee655225dfa75eb8529447b486691f"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/pilot-auto-cascade-demo-2025-07-26.yaml": {
+      "mtime": 1753545530.1843734,
+      "size": 4923,
+      "hash": "15a310150a1543c6a319247948f1e0bfeef363cda1dcf1993b481d9da0eee04b"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/mmp-cli-refactoring-for-performance-2025-07-23.yaml": {
-      "mtime": 1753324764.5118458,
-      "size": 1710,
-      "hash": "6e7035fea6d767afbea779e79ee59e8ec584ab8368d3c5dbf2b25543f9423211"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/universal-file-locking-system-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753392390.3159409,
+      "size": 5800,
+      "hash": "cfe643fc8f28043bccdbf1f5c31aec82735a72f1ebf0eb0ad66397ace59c2171"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/task-chain-stephen-notification-enhancement-2025-07-23.yaml": {
-      "mtime": 1753324603.793834,
-      "size": 1552,
-      "hash": "e97761c93566306f71d23a16118140dd4baa89957ebb1f9a6dbfb2b60c0c447f"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/mail-deprecation-documentation-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753390320.6943493,
+      "size": 2911,
+      "hash": "33984ee7f53254da40044ff92f899c7d93d0b5c41dd3d846f218424cba27ff41"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/mmp-gps-command-implementation-2025-07-23.yaml": {
-      "mtime": 1753324745.1215956,
-      "size": 1627,
-      "hash": "5fdc7ef72ac1f5ebd5f88c959a7291227abd5c9f182d51c5ab4ae2aaa91839cb"
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/auto-cascading-task-system-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753545659.3324597,
+      "size": 6021,
+      "hash": "123d0b34bc296dce18b15e12c1f06ee7297cc36157e64f4ddf0b2d5d8c442c3c"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/test-communication-flow-2025-07-24.yaml": {
+      "mtime": 1753385092.9828322,
+      "size": 6995,
+      "hash": "c5f61d2ce07b123cbdd89de80185d57d5cb174263caf637231eccab11a123ed4"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/builder-template-typescript-standards-2025-07-25.yaml": {
+      "mtime": 1753413277.1765075,
+      "size": 3972,
+      "hash": "034f155e74e3c8af8b7964d91ab4ee0d13f2de64ab82e6a6a7fadd771ab8d95a"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/testing-continuity--institutional-memory-solution-2025-07-24.yaml": {
+      "mtime": 1753393623.1647348,
+      "size": 1880,
+      "hash": "f987ea06d77640ac7b35144386bf41367a1be360a76a15775170ecff7f5e46a3"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/interactive-doc-search-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753394073.2559013,
+      "size": 4240,
+      "hash": "9289aaab47020a1874ad8c0cfbb8b93280978fbb39df980165f3eb2e99d2fc00"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/cli-feature-template.yaml": {
-      "mtime": 1753331373.0685198,
-      "size": 3729,
-      "hash": "fa4c5fc849969a21472171cc28b460217c5ad26349d2332b1a549460075b95e6"
+      "mtime": 1753393502.961485,
+      "size": 3642,
+      "hash": "b9f80d8f3c87e66a68c0a57e606c14d17f122a5b41ba2fd1627bc5eb4e457d4b"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/legacy-quality-gate-resolution.yaml": {
       "mtime": 1753314707.9531708,
       "size": 1865,
       "hash": "f1add72520b4a797f98ed9845ee615c47671f4be0258af2d5a763ef2b0408443"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/intake-request-template.yaml": {
+      "mtime": 1753393508.5515904,
+      "size": 2661,
+      "hash": "28e7f31f4ec5f9687c911ec03195a549dce6e7272ef4a4aac18a5a9263d47616"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/bug-fix-template.yaml": {
-      "mtime": 1753331956.259481,
-      "size": 5358,
-      "hash": "881c04b6cc31bc938695d6c7decba388f62a412c2254b0098bd241b1c6db935d"
+      "mtime": 1753393517.53876,
+      "size": 5332,
+      "hash": "ea695d4ad2120dafeadb9516cb1a288ef857fc89193242a572ed7c0b3bd91039"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/legacy-standard-feature-implementation.yaml": {
       "mtime": 1753314697.7838986,
       "size": 1527,
       "hash": "583002ec8339d03195129749c06325a7ea93bb136ccaf802455d68757a2aaab1"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/communication-flow-test.yaml": {
+      "mtime": 1753393548.3963401,
+      "size": 4329,
+      "hash": "24e9091f0a0b318a1215289dfbb1411776f9075f5e72adfdb761d4d160a56b25"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/database-migration-template.yaml": {
-      "mtime": 1753331646.8879507,
-      "size": 4468,
-      "hash": "50ca7b7311da439e8443c01f0f646681b3d653a965bbfe2008373b8946c2f131"
+      "mtime": 1753393527.1629412,
+      "size": 4487,
+      "hash": "9d527b1f58be82514f4a3eb33e59da9aa8101b4a827c912747bd2a65db378893"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/legacy-research-driven-development.yaml": {
       "mtime": 1753314717.4534235,
@@ -978,39 +1023,69 @@
       "hash": "e66ac94e411c70bcd38966ceb9331ef2b1881057d09bf09943dfe760f8fb727b"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/etl-pipeline-template.yaml": {
-      "mtime": 1753332300.2214825,
-      "size": 6339,
-      "hash": "39c8e2d1b0489e4fe8533b92156023be8cf2f56d0cbcd9b95806ec019b0b42f7"
+      "mtime": 1753393539.8441796,
+      "size": 6279,
+      "hash": "8c0f6b3c3dc2c4b2389c74a2776e346a25f5fa587f43a7c957c469a0e6a20b22"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/test-hide-completed-chains.sh": {
+      "mtime": 1753387522.5899389,
+      "size": 2926,
+      "hash": "fd67f07440a9407493c55e134d654c48e106264f86c943edfff868cec35d68de"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/create-chain.sh": {
-      "mtime": 1753314748.239234,
-      "size": 4019,
-      "hash": "7f88d483044ac8dca66b3c34fdfbabf2a7c22ce06725aa67931da64a1997f292"
+      "mtime": 1753392357.1368916,
+      "size": 4162,
+      "hash": "339016a96705721b39019a53d7a6f25cb1f5fdf015b6e95cbfbc0c1d5c09f640"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/notify-critical.sh": {
+      "mtime": 1753393794.6898866,
+      "size": 6188,
+      "hash": "01134725116cf69a8a8446cd1ffadb10eae82e2d7dde6cfac0b7416028baad41"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/validate-before-start.sh": {
-      "mtime": 1753323482.256939,
-      "size": 8827,
-      "hash": "1e86569aa51a450e189134e5498a7a5c4307788b3260617534c9becbcdd696b4"
+      "mtime": 1753380183.047601,
+      "size": 9577,
+      "hash": "393f28d8bfcab34e7df7a4b27df73668f87622ef91f098da84ff57398ed8b36a"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/chain-status.sh": {
-      "mtime": 1753332871.0274072,
-      "size": 27054,
-      "hash": "bf3d94ff2c77832a712ba135813ce41c053c28b10fca34d0e8461a072ce6b027"
+      "mtime": 1753394348.6588898,
+      "size": 46500,
+      "hash": "64bc20ae1abbb2ac864b6d9d53039c4cede57ddc7f7c7cd132a52b7881020d8a"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/test-chain-status-labeling.sh": {
+      "mtime": 1753387710.2523975,
+      "size": 2565,
+      "hash": "b10eb7379dfca4184eade397e205a3e0593ce88ebb067c91ccc7aa8980352877"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/archive-chain.sh": {
       "mtime": 1753314839.8075736,
       "size": 4737,
       "hash": "32d2a1c6a0bd37230b3789b565efc1a4d7ebbe50491771ff34308b25ea6e8f9a"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/auto-cascade-functions.sh": {
+      "mtime": 1753391651.8149436,
+      "size": 5145,
+      "hash": "f41a5e266bf9cca0c73aab05df39ad4cd75f24535865554f53d9522723ec9a59"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/README.md": {
       "mtime": 1753318444.0102801,
       "size": 12088,
       "hash": "f34cc62ee8e37ef4af12347c05321734bf45f9586566644f1ad65854895316ca"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-template-roles.py": {
+      "mtime": 1753388612.0789194,
+      "size": 5262,
+      "hash": "f73d4a009750b2d4c28f6acdf3ca56aa5b72bef08b6d2ee2e2dc1d45faa8a507"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-phase.sh": {
-      "mtime": 1753324175.1957042,
-      "size": 16875,
-      "hash": "6af168f60395abfc39512273c896375bba815768459e2037f8326bbcac7ae456"
+      "mtime": 1753392366.8402016,
+      "size": 17696,
+      "hash": "7608de4b88f6abf2d7a5427048e9af8f0eb89680837ed6a0ee2758f1763b85ec"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-priority.sh": {
+      "mtime": 1753393824.641431,
+      "size": 6230,
+      "hash": "565ebead51d98e90a58b93a0b38f6449f61100a76108b25403477380ac83aeb1"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/feedback/data/patterns.json": {
       "mtime": 1753292390.6578846,
@@ -1027,482 +1102,732 @@
       "size": 256,
       "hash": "666f21f008b1454194e0bfee4b2e4ee021618c5bc8c0d89399bfd748b56b65a0"
     },
-    "/home/stephen/Documents/initial-media-processing/src/main.ts": {
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/quality-gate-auto-cascade.yaml": {
+      "mtime": 1753551438.619073,
+      "size": 6518,
+      "hash": "9d21af9f70926ec8ce0e17b23b0f0cf394b100abde9e9fb7a7d86f8b01920a75"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/USAGE-GUIDE.md": {
+      "mtime": 1753551426.335845,
+      "size": 12910,
+      "hash": "7f747e193767c3a74ecb936aa25686fe5f7cb15c002a8f8ba24a49ee7976a52f"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/SAFETY-GUIDELINES.md": {
+      "mtime": 1753398812.5922313,
+      "size": 11841,
+      "hash": "4fe060363d7ceb060959d99e2dac6bdb0af123941bf769e8c6bd768223eb5318"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/README.md": {
+      "mtime": 1753398697.0954366,
+      "size": 9868,
+      "hash": "5336f16ebe2ef8c4243989d4a9d59ff678a32df28753a698becedc65a84c8bfe"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/sequential-auto-cascade.yaml": {
+      "mtime": 1753398588.1577804,
+      "size": 4399,
+      "hash": "637053e5a340454877970c91d35da8b5a9fd3a67b1ca07050f60c212c0c6310f"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/research-implementation-auto-cascade.yaml": {
+      "mtime": 1753398651.7047417,
+      "size": 8877,
+      "hash": "f59d5435fa3b4ccbfb8d3ad9b75eaa0e5b8af98d2f1284ef983d7bb82066c0f0"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/THE_CONVERSATION_THAT_CHANGED_EVERYTHING.md": {
+      "mtime": 1751350241.4184272,
+      "size": 14623,
+      "hash": "16550154713a0da9155f47acef88bf2bbc1d3f759e31f683f48fa0702b981805"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/PERSONAL_MISSION_STATEMENT.md": {
+      "mtime": 1751349379.10533,
+      "size": 5411,
+      "hash": "a6719b69c5a0e39c1f05e6de8d4289b393f640de1d7a56fa9cf39953281f1c3a"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/PROCESSING_ARCHITECTURE.md": {
+      "mtime": 1751121903.7204268,
+      "size": 6380,
+      "hash": "b40c05aeb49db3e883c002eccb4c549eb6010d05fe0d8c1f4cecfdaf736cb355"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/setup-whisper.sh": {
+      "mtime": 1751420991.1961167,
+      "size": 3520,
+      "hash": "3cbe11113fde0ac2de19324cd944661f30059109185ae9e62cbe2e26f2aac496"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/MEDIA_PROCESSING_PLAN.md": {
+      "mtime": 1751121903.7204268,
+      "size": 8404,
+      "hash": "cd3d6f6f47e270bab36d2d9d11047cbff65d54633875cfcec12dae4a9a10b56a"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/TRANSCRIPTION-README.md": {
+      "mtime": 1751421026.1038172,
+      "size": 4106,
+      "hash": "b2d9aee4e5de9b39fab4fbcce3131bfd81b14d0887096c60c305eb27122b45eb"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/transcribe-audio.sh": {
+      "mtime": 1751420915.0645878,
+      "size": 6450,
+      "hash": "06efe52af49ebeec327f844b7d69152eb5550a01788e948dccb4111de04f35bd"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/LANDMARK_ARCHITECTURE.md": {
+      "mtime": 1751121903.7204268,
+      "size": 8158,
+      "hash": "8ebc8774eb09012b138b95ddcc6032785b0079bc807db6d4a437480a25fae214"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/FINAL-VIDEO-DATES-WITH-ALL-LOCATIONS.txt": {
+      "mtime": 1751422010.9625432,
+      "size": 39696,
+      "hash": "dcd2978d0cbc614d62550506c1ac0c0c805938c7ad495bd653c68253d05c8973"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/transcribe-simple.sh": {
+      "mtime": 1751422531.425274,
+      "size": 2869,
+      "hash": "dad6c2427dd6b14dc8b5cff0a334a234621cdf439fb7e5f916699784ea4779c5"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/PROJECT_VISION_EVOLUTION.md": {
+      "mtime": 1751349348.598068,
+      "size": 4831,
+      "hash": "a126d83ca93217f8b7a0d71d9272c3602868bd8231ec9fd60b804e1b094c62f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/stephen/ACCOMPLISHMENTS.md": {
+      "mtime": 1753246661.311479,
+      "size": 9668,
+      "hash": "c1b76d31b5f2645451608855097a2034881abb361bdddaa49a559ebeaf058e66"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/tsconfig.json": {
+      "mtime": 1753446314.422185,
+      "size": 797,
+      "hash": "2cd5d2419dfbf64538fb22776328c7e62edb78c86ba1137ff03b16b96d14e5b9"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/package.json": {
+      "mtime": 1753446314.4211848,
+      "size": 977,
+      "hash": "428cdf6b2d9c383472b8bc5b2dff011a2c946c1e9fb3f4b6c85aea7d08406556"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/install.sh": {
+      "mtime": 1753446313.7391722,
+      "size": 4243,
+      "hash": "2699d1839ee92f3400f39898a4319472a236d31eb6f542fcdc7d54c7c724e754"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/README.md": {
+      "mtime": 1753447392.176484,
+      "size": 4799,
+      "hash": "559281a01e0aff23e70bf73d621475269662ddc8d7a0cc122baafe0dba923f1f"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/bundled-tools/multicrop": {
+      "mtime": 1753446313.7391722,
+      "size": 7614,
+      "hash": "48ba33fb39763b3ce026139147be471240742cd9b3c0a2d716e6d17d615f1c69"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/bundled-tools/multicrop-ref": {
+      "mtime": 1753446313.7391722,
+      "size": 29908,
+      "hash": "fa9bc9e452ae20e5269d5a6cfd650d8649d5029123f2e8b3f5f638124dbde6de"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/cli.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 26420,
+      "hash": "4b490f78f48d4677cad30c6fa08c7923ffd9c35852942875056a4425d467da10"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/commands/understand.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 3951,
+      "hash": "6a863c773ea981fb0af7033ee5f36434f4c26a5cbab1a87cd63398bbf28d904c"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/commands/prepare.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 5264,
+      "hash": "e4afd8bdebac328a845b98fad1952d7c0958114a5ac615ac27c24d3f7cdcda2e"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/commands/process.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 4880,
+      "hash": "64777e91a0ef6b5a96f9411534c5f4a54d713c9a42b41cecfc17afe42deeba1b"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/commands/capture.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 5627,
+      "hash": "90b861f98fea97163cc36a6af8ce2d433a20b1e7ca3e0d22b80718da7cfb8120"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/commands/date.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 4570,
+      "hash": "6adda9ef69d7a7e95dc63c2aaaf3f8e0751a47ad6847dd4ec8c539752355a0f8"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/commands/locate.ts": {
+      "mtime": 1753446314.4211848,
+      "size": 4019,
+      "hash": "c115d97887b7f1be267af6501858eb13990e1dc29c38ecace9295e7cac0399b3"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/services/EXIFDateService.ts": {
+      "mtime": 1753446314.422185,
+      "size": 3124,
+      "hash": "6e332929ccdad1e94884fa8aa9fc5e621ae0270f19d983e81406b46aa86abf51"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/services/DateService.ts": {
+      "mtime": 1753446314.422185,
+      "size": 5827,
+      "hash": "26d0a771e5e980f56b1e296d8d29f795120393f6cc157be87071b046fd36dfcb"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/services/GPSService.ts": {
+      "mtime": 1753446314.422185,
+      "size": 5238,
+      "hash": "d0411d630cdf58a6a3beaa7bbfe4f6546e6463a4aefd4d5ec2d8599a9d9d7abb"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/services/LocationService.ts": {
+      "mtime": 1753446314.422185,
+      "size": 3858,
+      "hash": "45d40b3ce210bcb9bca5da4af58ebf4db572ae6d6d3219de61a54fa113a5198b"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/services/PhotoSeparationService.ts": {
+      "mtime": 1753446314.422185,
+      "size": 18688,
+      "hash": "ccfccae842c20674d2d36173732d01c38658b34b08db914fa793d4651731fdcf"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/core/tool-paths.ts": {
+      "mtime": 1753446314.422185,
+      "size": 2735,
+      "hash": "5467a372ff3918cc1117305686f2677e0432929b5adfd1174a9db252fea8609a"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/core/config.ts": {
+      "mtime": 1753446314.422185,
+      "size": 3735,
+      "hash": "30c879ab547480972a13fa84c0c3506f5d7be6b53e5d7475f7761fd49463036e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tsconfig.json": {
+      "mtime": 1753548257.8670352,
+      "size": 539,
+      "hash": "4973c11bd5171ceb3b3d3433e339823be8f810670d14e2e87972feb8374df541"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/database-setup.md": {
+      "mtime": 1753548561.0345645,
+      "size": 6430,
+      "hash": "d76a97bde1f28cb652196405b37fb5040cee93235709832919bf24a66104d19b"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/package.json": {
+      "mtime": 1753548211.0511758,
+      "size": 1843,
+      "hash": "be7a381a30092f14a24caaddc244b9d3365902a196abfcc3542eee963b5ad3c9"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/install.sh": {
+      "mtime": 1753548865.7803998,
+      "size": 5267,
+      "hash": "e3959ef9ef02b840f6cd7c74161dce3c143d22c4d05fca94117555c53d5a50dc"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/jest.config.js": {
+      "mtime": 1753548261.4131002,
+      "size": 386,
+      "hash": "f96097803721200fe53ec067b3a2343f744460925d94b0b6d3b5fb9f9a5badd5"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/README.md": {
+      "mtime": 1753548444.9124527,
+      "size": 5758,
+      "hash": "bd40f1d6daf4135cc0d4642ed26a9386a6b5ed692420e57703d15a58e5f6ad44"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/eslint.config.js": {
+      "mtime": 1753548264.5741582,
+      "size": 2483,
+      "hash": "4b68652180381b5a78380c0dc9d8a566f7a89081de7893380a19a37185cec3d2"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/scripts/utilities/generate-test-mocks.sh": {
+      "mtime": 1753548185.048698,
+      "size": 3417,
+      "hash": "9f1e9c86281b42c7c9282ddeb18450b5f238299f3e5663dbe763eec9d7c0eb7a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/deduplication-validation.test.ts": {
+      "mtime": 1751340229.9356382,
+      "size": 9725,
+      "hash": "1aa9d6e2d056b7f67ca2f7ba9167110e3bb7049d4a75d81f9a086d64841e0e1b"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/setup.ts": {
+      "mtime": 1751147467.1785953,
+      "size": 2049,
+      "hash": "afec910b4ed03915d239743763a551a5a829c91abb94231b9cd9b5ffecbc1a2c"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/setup-deduplication-fixture.js": {
+      "mtime": 1751340129.790988,
+      "size": 3882,
+      "hash": "335e40d9be076a57f71411a89cd6bcc8cd9f92f839cf6b4243ca425f6859b1cd"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/mocks/modules/mysql.ts": {
+      "mtime": 1751147531.6484425,
+      "size": 2840,
+      "hash": "85866128635cf8bdd5485130cf4793fe8aa43c3de2be9d3f2491abee53993e4c"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/mocks/modules/fetch.ts": {
+      "mtime": 1751147573.2064567,
+      "size": 2391,
+      "hash": "30332a9f4f529808fbd8c579216620d0a726908159b4a27e6a5395acabf34eb1"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/cli-response/cli-responses.spec.ts": {
+      "mtime": 1753157570.6200585,
+      "size": 14451,
+      "hash": "4907e27cda49e698b6a961f7d4f334b8f65a525cd99d508a620a2c1225bb8866"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/main.ts": {
       "mtime": 1751121904.1914346,
       "size": 458,
       "hash": "8e651e331619438382603b738d58000411513ccff4f149ee10c54706c9629488"
     },
-    "/home/stephen/Documents/initial-media-processing/src/scripts/etl-recreation-facilities.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/scripts/etl-recreation-facilities.ts": {
       "mtime": 1751137388.571194,
       "size": 12901,
       "hash": "05346050cbeb226552fb6dc6964ef35e23b9778b554eec6361a3b2e6b03b99bb"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/EXIFDateService.ts": {
-      "mtime": 1753292549.7856522,
-      "size": 3499,
-      "hash": "663455a5373337731ea5b4f63adc3e03cffbf1f24bc509ee152093adaf3ac57a"
-    },
-    "/home/stephen/Documents/initial-media-processing/src/services/DateService.ts": {
-      "mtime": 1753287599.3374991,
-      "size": 5346,
-      "hash": "59996c33ab76268c3a98215cc0ebe7732c2e47096ba029129bb364a2f8fdac48"
-    },
-    "/home/stephen/Documents/initial-media-processing/src/services/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/index.ts": {
       "mtime": 1751121904.1934347,
       "size": 656,
       "hash": "a9f27e32e889b194726b0cfa9c3ae9b61f03b74451fc7ea4c25c0c0cd2f806fc"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/CLAUDE.md": {
       "mtime": 1751331057.1817582,
       "size": 9292,
       "hash": "10ee9e97e24c57444731e075370286af82a37c5be67c1afaff5a77442f87df32"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/colorExtractor.ts": {
-      "mtime": 1751165207.5734441,
-      "size": 7281,
-      "hash": "e49eee015990796348bf82df4cc900553269886fa56e8676a59c156365a7ff36"
-    },
-    "/home/stephen/Documents/initial-media-processing/src/services/geolocation/factory.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/factory.ts": {
       "mtime": 1753157212.5155616,
       "size": 1292,
       "hash": "f7c2dc42aa28d4170aa2bcee8c73ea093b4e75a9e8f86ed272e75fe3985d5836"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/geolocation/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/index.ts": {
       "mtime": 1751121904.1934347,
       "size": 11376,
       "hash": "c3517e1f7b68f28e76a43de9d09adb2c7238c067f71ee6bac2200dee6354de50"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/factory.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/factory.ts": {
       "mtime": 1751121904.1934347,
       "size": 3616,
       "hash": "87e8c67477fa90e6fcd7c0c560791eb5fff31d467a26a3b94e9156016d5f354f"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/types.ts": {
       "mtime": 1751121904.1944346,
       "size": 4103,
       "hash": "a37db20abb83634a6612c29e215b0c3149fa0a21a602649e58f968a139adde3a"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/index.ts": {
       "mtime": 1751121904.1934347,
       "size": 10952,
       "hash": "bc1a98812088226052bf3725f80009c2a1e6775a9490d815a0699afe944c0d0e"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/national-parks.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/national-parks.ts": {
       "mtime": 1751121904.1934347,
       "size": 7935,
       "hash": "008a22edde09c1e9d9fee89346af37fbae3dd36d25487238badd6cb65be059ad"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/recreation.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation.ts": {
       "mtime": 1753306756.4178574,
       "size": 16940,
       "hash": "fef363870cb64c4ac004d80297490d1968228a30c9dc489f15ae401511809de9"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/national-parks.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/national-parks.ts": {
       "mtime": 1751121904.1934347,
       "size": 13742,
       "hash": "b80e7cad8fcf93c382ee344b950a8bef8c4b717004ef5e7be5f01a82b6ee2847"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/gnis.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/gnis.ts": {
       "mtime": 1751121904.1934347,
       "size": 11304,
       "hash": "0071888d548345491d0327b6fd39a562bbc632ca9be18ddadec0da431175332d"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/landmarks/providers/recreation-db.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation-db.ts": {
       "mtime": 1751121904.1934347,
       "size": 9873,
       "hash": "c143ed76a932f30f13679f6b807ba110b1f1e580ba9180a4eaaff355c0de0bd2"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/database/MediaFileService.ts": {
-      "mtime": 1751319662.0276768,
-      "size": 15172,
-      "hash": "48bb0568f0cd8f6ad7e4ab309a26ddd031602f1d62f7b81fc451cb035d3ea27c"
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/MediaFileService.ts": {
+      "mtime": 1753448359.8155203,
+      "size": 15183,
+      "hash": "75277b65bfd915bf52cb9cefe408cc1bdcf9e7d2d7760fca498be26a92221c54"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/database/LandmarkService.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/LandmarkService.ts": {
       "mtime": 1751303293.696559,
       "size": 8650,
       "hash": "b86f3a2a03650efa38ac1fe8a6ba5ed6b72811ef2cf5c1ddf2755ea084afb149"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/database/EquipmentService.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/EquipmentService.ts": {
       "mtime": 1751157721.3241196,
       "size": 7485,
       "hash": "539306603c8a04d1196b81525f97658e1b25dcee2bff559503807b1f1b57aa54"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/database/SoftwareService.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/SoftwareService.ts": {
       "mtime": 1751297417.2855875,
       "size": 8624,
       "hash": "a0260bc30b54773f0361d4b1b4309d739678ac48965fb5faefd06c8d2c64572b"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/database/LocationService.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/LocationService.ts": {
       "mtime": 1751312507.576614,
       "size": 7817,
       "hash": "00627251b35c95fa65fc2f3ca078ead4da1634b8929aa71039a00eb3bf299b5f"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/metadata.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/metadata.ts": {
       "mtime": 1751121904.1924348,
       "size": 6337,
       "hash": "7698277306eddb5aa579f44690daa10e8ae497a41fe1991c5ba30bdce435f590"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/scanner.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/scanner.ts": {
       "mtime": 1751121904.1924348,
       "size": 7340,
       "hash": "71b14449350b1e452f0de980f0fc11463cdf89e7e03efd4dbc7925133fe05c50"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/demo.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/demo.ts": {
       "mtime": 1751121904.1924348,
       "size": 2407,
       "hash": "1442236a7833efc45fb36923513fa43e847d98e2d64d28c60fa1c8c0dfd07840"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/types.ts": {
       "mtime": 1751121904.1924348,
       "size": 3672,
       "hash": "5d0db941a375e84547ebf1b4fe4069e64112b18120846ddf69baa89c7b41df6a"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/index.ts": {
       "mtime": 1751121904.1924348,
       "size": 7003,
       "hash": "7e6507bed6d3e53934ccef200de4e15f69c62439097c1f007828a96b62d905ba"
     },
-    "/home/stephen/Documents/initial-media-processing/src/services/filesystem/validator.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/validator.ts": {
       "mtime": 1751121904.1924348,
       "size": 9215,
       "hash": "92e3d1fb242b407fdffcf8d16c8de1a78d11cff65b93fd8131f24652fee8ebc5"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/knexfile.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/knexfile.ts": {
       "mtime": 1751161443.2744224,
       "size": 1808,
       "hash": "e58673f3595e150f841b5ea68b76a3c2031b9a91059fc930a2b131ab9a53d9f1"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/index.ts": {
       "mtime": 1751151558.260565,
       "size": 2818,
       "hash": "9c6174966c5f20b99d48e02e12145651642681a3941d5853ad53249f52c2d8d6"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/connection.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/connection.ts": {
       "mtime": 1751161448.230505,
       "size": 3790,
       "hash": "071dff51beab64a7f1814f878856af827a4fb3e3d694b9f0cab7f06164425158"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/CLAUDE.md": {
       "mtime": 1751330855.7905192,
       "size": 7059,
       "hash": "7c04f5269e20c8c1c09be124ac6cd708826ba10d692e31ad6ddd647f178a9eac"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/seeds/01_reference_data.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/seeds/01_reference_data.ts": {
       "mtime": 1751157066.4615018,
       "size": 7073,
       "hash": "3974df246285eea8cba3b8e80fefb636644ea31c6ad9f4aa00e55bd4ad145d7e"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/migrations/20241228_000001_create_media_tables.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/migrations/20241228_000001_create_media_tables.ts": {
       "mtime": 1751153640.0240312,
       "size": 9207,
       "hash": "2a77a3bf739c8ef21f5a1f3665442edfabe4faab5d6f7ec604ebcafb3ef1ac1a"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/migrations/009_add_media_title.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/migrations/009_add_media_title.ts": {
       "mtime": 1751411021.2463503,
       "size": 515,
       "hash": "d1b9e1130ea080a1ef13265bab36c66edef6ac14c8bebc0921feb28c6c2be142"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/migrations/20241228_000002_create_object_detection_tables.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/migrations/20241228_000002_create_object_detection_tables.ts": {
       "mtime": 1751151055.0037518,
       "size": 3274,
       "hash": "db9ef05fd04fc2a0838a8e5b3507339f9f36e7ab4f973f4c52bc5e473d8e0ae2"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/models/MediaFile.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/models/MediaFile.ts": {
       "mtime": 1751132105.8834774,
       "size": 3325,
       "hash": "4197926be767153123b9ba33d90befb11e146bacc007742aaeaa5e74abafa8b5"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/types/metadata.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/types/metadata.ts": {
       "mtime": 1751154061.458975,
       "size": 3864,
       "hash": "48cd1a2ad5202e578108131052765a5fbc0ef8c5078a59af3a821a1ac931a634"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/types/tables.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/types/tables.ts": {
       "mtime": 1751297013.0286698,
       "size": 4575,
       "hash": "1623c97d619d12eb4957caad84060d8ea3836a21b013be87e43cfb8ea4ac934a"
     },
-    "/home/stephen/Documents/initial-media-processing/src/database/types/shared.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/types/shared.ts": {
       "mtime": 1751132055.839651,
       "size": 6738,
       "hash": "f89f74ad06d0aa69ade17a6e09181a3decfeb289eaefcd17e013c8179150532c"
     },
-    "/home/stephen/Documents/initial-media-processing/src/processors/image.processor.ts": {
-      "mtime": 1751136697.4744973,
-      "size": 10043,
-      "hash": "a0ef15ad4b1d520b5f42cc0a7d15dc7b531dfcd01e7dd40ad8f973a13b667646"
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/image.processor.ts": {
+      "mtime": 1753448358.283496,
+      "size": 10042,
+      "hash": "2c6bd71294a15f299fd102b94cd2245e74acc6940ad96880e266fb9c79deccee"
     },
-    "/home/stephen/Documents/initial-media-processing/src/processors/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/CLAUDE.md": {
       "mtime": 1751331000.121063,
       "size": 8270,
       "hash": "23058e10366458e584ff51c117a05224549b97f451c1ab7c3257aeebd5edf0eb"
     },
-    "/home/stephen/Documents/initial-media-processing/src/processors/base.processor.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/base.processor.ts": {
       "mtime": 1751121904.1924348,
       "size": 564,
       "hash": "bf084c805d6834bb2bdfdda4650a0c57b7c02bfe674822267d52ceb7ca27ed7c"
     },
-    "/home/stephen/Documents/initial-media-processing/src/processors/heritage.processor.ts": {
-      "mtime": 1753156991.435994,
-      "size": 5877,
-      "hash": "93b4aa4c03d898ecb494648884346101bb8cebfc96858b6289a1f3db5032aa9e"
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/heritage.processor.ts": {
+      "mtime": 1753546371.236102,
+      "size": 7048,
+      "hash": "dd0492aa8f61b3923ca8fcb316ba462fd16a1b9d8ddfd003b15ce8ddb9588f09"
     },
-    "/home/stephen/Documents/initial-media-processing/src/processors/video.processor.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/video.processor.ts": {
       "mtime": 1751134749.2507553,
       "size": 7369,
       "hash": "2dc9356bea67f1d4eea49e47878afb64642e1b2c9f6be848ccab20bdf26a7368"
     },
-    "/home/stephen/Documents/initial-media-processing/src/pipeline/post-processor.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/post-processor.ts": {
       "mtime": 1751296587.8469818,
       "size": 4416,
       "hash": "01e3bb51b931c7b4a9159ff7ddb6fc112716c12366d99336d0d4de42796cbcf8"
     },
-    "/home/stephen/Documents/initial-media-processing/src/pipeline/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/CLAUDE.md": {
       "mtime": 1751330899.8273194,
       "size": 7637,
       "hash": "f76c09d985038daf541d030eccbd399478ddb3ce154e316cfc8877d9d48f2f6f"
     },
-    "/home/stephen/Documents/initial-media-processing/src/pipeline/entry.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/entry.ts": {
       "mtime": 1753155375.9483483,
       "size": 2218,
       "hash": "9d0615ca8b3df95d27d40d20ad7ea4af9377aecbde7c0646d21935897208be25"
     },
-    "/home/stephen/Documents/initial-media-processing/src/pipeline/router.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/router.ts": {
       "mtime": 1753155392.7986808,
       "size": 1934,
       "hash": "bec2f169dde5a553f9e7ebc755af86435352d19ac3969f59bff809e7c82a1888"
     },
-    "/home/stephen/Documents/initial-media-processing/src/pipeline/pre-processor.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/pre-processor.ts": {
       "mtime": 1751136819.9104104,
       "size": 7229,
       "hash": "1f2e9df966bb5308fbe61a530fc8c96d8bd51b87fa52364571bb1259dda54b5d"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/mime.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime.ts": {
       "mtime": 1751121904.1964347,
       "size": 1085,
       "hash": "ef3130de8b3cccac0a5cdb897c83bb9a92a43fbbfa7775f0014bfeda5f02023e"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/metadata-merger.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/metadata-merger.ts": {
       "mtime": 1751137299.0048802,
       "size": 17352,
       "hash": "39d904d9a1800d1b757ba6bdd49aff4d511bbc4dd167a208cd1b050ba47c2279"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/CLAUDE.md": {
       "mtime": 1751331166.9984822,
       "size": 10321,
       "hash": "8e735f57cf16f1cad32605d4f6046e91f6fe1eeb34ba73837028153c9695f641"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/paths.ts": {
-      "mtime": 1753158850.1383424,
-      "size": 4284,
-      "hash": "3fce8dc2597a1b8405ee194045420a941252266cc33f53a3c264c8896b85f56b"
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/paths.ts": {
+      "mtime": 1753548984.7995105,
+      "size": 4197,
+      "hash": "870c74f2103ca95732276eeaab2dbbfaf454646de1dc3f05e7741f58871e3490"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/mime-config.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime-config.ts": {
       "mtime": 1751121904.1964347,
       "size": 3006,
       "hash": "63739dd305f3cf9619f68be5926bb52c7e3fdac327febf19f16dd6cf552b8bb6"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/logging/types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/types.ts": {
       "mtime": 1751134920.6779633,
       "size": 719,
       "hash": "e0d2b66b4f104aa9e0708c07dc91978ea42dd23cdb1eafa085938b2b6ebf5eca"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/logging/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/index.ts": {
       "mtime": 1751121904.1964347,
       "size": 181,
       "hash": "25598b92466111c2e72fa6c46bae90b731f840f107c3f6a62e85c7105b645e2b"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/logging/logger.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/logger.ts": {
       "mtime": 1751136361.0133836,
       "size": 7029,
       "hash": "3c36d8b4914c31d30470443a2fabfda3da673f001bc7ea52c6f0079ce1c4392b"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/timestamp.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/timestamp.ts": {
       "mtime": 1751133910.0685413,
       "size": 19030,
       "hash": "e437f56b5dbe8ccca79e9a8ffa05ad386b18a3a076ae66f277c3c277927e34f9"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/types.ts": {
       "mtime": 1751134027.7729034,
       "size": 3100,
       "hash": "206cd68b746c475636ba7cfdee88a0fc1ca7bbfe81ce285079efeb1347ff825e"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/index.ts": {
-      "mtime": 1751121904.1964347,
-      "size": 193,
-      "hash": "97887b9ba17e405f787127a8606b876117c071b76c4362962eb576c4a3926f9f"
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/index.ts": {
+      "mtime": 1753448117.3136976,
+      "size": 221,
+      "hash": "8061bef2d49e1b5a4384f9b6e30b3175c813eaa45924d4f806414d7346da8c51"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/exif.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/color.ts": {
+      "mtime": 1751165207.5734441,
+      "size": 7281,
+      "hash": "e49eee015990796348bf82df4cc900553269886fa56e8676a59c156365a7ff36"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/exif.ts": {
       "mtime": 1753155872.9068651,
       "size": 13836,
       "hash": "357f458722a25dcc911ae71064ea46ef705cdddaf4eb923e875f94365f68feea"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/gps.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps.ts": {
       "mtime": 1751290443.700202,
       "size": 18147,
       "hash": "90fdef74942a0b82d4199d1b63ba77098752c4a57da47a3c0c8689466c373786"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/extractors/gps-utils.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps-utils.ts": {
       "mtime": 1751290316.3256965,
       "size": 1533,
       "hash": "ec614a6e253e5d6d29f6af9785e5fc17b87bae2d54aedf29005647665040d499"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/factories.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/factories.ts": {
       "mtime": 1751121904.1944346,
       "size": 6248,
       "hash": "d5a1665500a1ae218aa9a5b6374e0ca53de088068d657fd20a36972f7ea54c9b"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/codes.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/codes.ts": {
       "mtime": 1751121904.1944346,
       "size": 1081,
       "hash": "2ae90329c57b810c1552ac9039d093af51724fbbd63999cce0095345b9815813"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/types.ts": {
       "mtime": 1751121904.1954348,
       "size": 937,
       "hash": "7d41f117bd822d0939106e9ca8ecb32703fe83fc28a4f4ccb6db8ec2299429c7"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/classes.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/classes.ts": {
       "mtime": 1751133945.6172595,
       "size": 4100,
       "hash": "d2d77a09de5ca0b75b38c9b5046a14dba6f2108ccc0205e4afdc4fd2b5943add"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/index.ts": {
       "mtime": 1751133996.9762897,
       "size": 4430,
       "hash": "821b4acd2ab592bdfeec962ab159b9f74fad1ed9b2b9ccdf0d932b8a8c0256d9"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/metadata.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/metadata.ts": {
       "mtime": 1751121904.1954348,
       "size": 1379,
       "hash": "873b407e731d1b60633deba73416df9ff13471d66e380f4e37086b28761c6ff6"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/timestamp.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/timestamp.ts": {
       "mtime": 1751121904.1954348,
       "size": 2070,
       "hash": "dfaefc797294914895c5455a23f70827c5400268e00641ed402f2c6c74ea66dd"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/landmark-registry.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark-registry.ts": {
       "mtime": 1751121904.1954348,
       "size": 6236,
       "hash": "177e500d4811e92acd05d993ffc8bd6614f73994b8444482a77f7af61fab0722"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/system.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/system.ts": {
       "mtime": 1751121904.1954348,
       "size": 1365,
       "hash": "fdd6446dd49ded759da970e1366423a095a51aff1c2ec2adc30068bea64454f4"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/validation.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/validation.ts": {
       "mtime": 1751121904.1954348,
       "size": 1802,
       "hash": "82e00afcb5c9da00d794a5d7cb235ba882396ceaa2a3d2f043e8d4041000494d"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/index.ts": {
       "mtime": 1751121904.1954348,
       "size": 1278,
       "hash": "d5c94b879715d2020240489e7a2d4d6c7e5688be17c83bafda9b6862947b70b9"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/landmark.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark.ts": {
       "mtime": 1751121904.1954348,
       "size": 1421,
       "hash": "3cacf83337c16b6fd9343c7dc343667b24d502fbbc335603e7a0035b652c7ea1"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/exif.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/exif.ts": {
       "mtime": 1751121904.1944346,
       "size": 1745,
       "hash": "7a0728ccd4c9e789be5371e8a24167adf16b60e61aa933501a3d79f2c287b7bb"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/config.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/config.ts": {
       "mtime": 1751121904.1944346,
       "size": 1031,
       "hash": "61d1dc4fef9769c47839a65d37213943225181b02939eef641366bde8f5bfd8c"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/gps.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/gps.ts": {
       "mtime": 1751121904.1954348,
       "size": 1674,
       "hash": "9ebb31f6c25fc67831917d8c5c8cec6a6eda0b7105a56c2022880210536d3d29"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/errors/registry/path.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/path.ts": {
       "mtime": 1751121904.1954348,
       "size": 1713,
       "hash": "e9bbca1be50b1ffecfc57397c2f41b7e89e70f543590cc57bedb6f0ef88c3f6a"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/image/validation.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/image/validation.ts": {
       "mtime": 1751121904.1964347,
       "size": 8106,
       "hash": "d8f786c8bbed1383448f26d3a0ae73868a90283addec3e03f72266b00aa28e19"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/video/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/index.ts": {
       "mtime": 1751121904.1964347,
       "size": 174,
       "hash": "52dc93d864409d478689bed7bd02946685d20a2e466aa9ad966ac7ee9bd46125"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/video/live-photo-detector.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/live-photo-detector.ts": {
       "mtime": 1751121904.1974347,
       "size": 5554,
       "hash": "c76f74f9f5482852b208a1ccc8e1862f652269f216c0fb8a8636840e5f0f0548"
     },
-    "/home/stephen/Documents/initial-media-processing/src/utils/config/logging.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/config/logging.ts": {
       "mtime": 1751121904.1944346,
       "size": 5553,
       "hash": "566d689fb6b8607128b92c2cb7dbb094f76a3572a3fb4f4f4f79d332ee84c812"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/types.ts": {
       "mtime": 1751256498.8857827,
       "size": 3197,
       "hash": "0457f64ee08559d5de464844fa3ae8e690dbb7f283e5facdbb55526f69b7e22d"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/timestamp-extractor.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/timestamp-extractor.ts": {
       "mtime": 1751121904.1914346,
       "size": 3141,
       "hash": "28ea335f2f05e0fd1be8cbd560d08898017eff79e26dc5bcc0c0184f76d9d88b"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/index.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/index.ts": {
       "mtime": 1751256531.098628,
       "size": 5085,
       "hash": "82471f055023c5be99a79e70a0c7894baae02f5e7d4ee5584e09141f07570b44"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/CLAUDE.md": {
       "mtime": 1751330807.932649,
       "size": 5792,
       "hash": "23022865c75af1e7858fb9f9e7a29d9eae7199675b27336263c46582e9f8e781"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/handlers.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/handlers.ts": {
       "mtime": 1751260885.33975,
       "size": 16066,
       "hash": "7256ff1db2cdce49c0ed7fcb481c19ce69ddbf996d98e9701c785743371e8d71"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/output.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/output.ts": {
       "mtime": 1751136948.840445,
       "size": 7989,
       "hash": "2da57718444eb29933a242518ab2ad0e540e05027da689e4217024a42f64be56"
     },
-    "/home/stephen/Documents/initial-media-processing/src/cli/validators.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/validators.ts": {
       "mtime": 1751121904.1914346,
       "size": 6248,
       "hash": "240a87c8af13328d75be5cf71527931ae422d0b03227ce26edf3febaac79d5ca"
     },
-    "/home/stephen/Documents/initial-media-processing/src/types/recreation.types.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/recreation.types.ts": {
       "mtime": 1753306736.2914412,
       "size": 2682,
       "hash": "414816c5456af86d9991f33bb31dac7f69b00ccacb1d9caf6a5e61d5ee715ea1"
     },
-    "/home/stephen/Documents/initial-media-processing/src/types/semantic-any.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/semantic-any.ts": {
       "mtime": 1751134126.7238579,
       "size": 2427,
       "hash": "4bc9fa37e6135c2bb5d4e6820a8082f5fad7bfbaf28e0d4cfd75607dc5d37e1e"
     },
-    "/home/stephen/Documents/initial-media-processing/src/types/CLAUDE.md": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/CLAUDE.md": {
       "mtime": 1751331111.4885743,
       "size": 8331,
       "hash": "153ed08860e2525a1b2d370f1117ab7e9911d18e364d3720d4201cc25da6e358"
     },
-    "/home/stephen/Documents/initial-media-processing/src/types/media.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/media.ts": {
       "mtime": 1753155054.3120193,
       "size": 4481,
       "hash": "c7f751fa317364c7ed1717ca294d64d3855b8f17d73d13e4dcf23b64aee5e341"
     },
-    "/home/stephen/Documents/initial-media-processing/src/types/processors.ts": {
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/processors.ts": {
       "mtime": 1751121904.1944346,
       "size": 273,
       "hash": "dc4a13456dc96c6c60b686ce3cdce4733e033313e37b9080ce21f4009636922a"

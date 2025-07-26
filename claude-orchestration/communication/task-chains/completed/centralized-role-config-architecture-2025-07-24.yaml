@@ -102,3 +102,5 @@ notes: "Critical architectural change affecting entire orchestration system.\nAu
   \ easy role name customization without codebase changes.\nMaintains backward compatibility\
   \ during transition."
 pending_notifications: []
+archived: '2025-07-26T14:35:46.813104'
+archived_from: active

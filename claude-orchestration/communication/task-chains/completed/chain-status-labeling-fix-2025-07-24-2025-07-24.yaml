@@ -68,3 +68,5 @@ template_notes:
 - Documentation captures root cause analysis for future prevention
 - Architect provides final validation only after Guardian proves bug is resolved
 pending_notifications: []
+archived: '2025-07-26T14:35:32.156006'
+archived_from: active
