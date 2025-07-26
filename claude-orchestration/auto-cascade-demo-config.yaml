@@ -1,0 +1,52 @@
+# Auto-Cascade Demo Configuration
+# This file demonstrates a simple configuration for the pilot auto-cascade test
+
+demo_config:
+  name: "Auto-Cascade Pilot Demo"
+  version: "1.0.0"
+  created: "2025-07-26T12:00:00-04:00"
+  purpose: "Demonstrate controlled identity switching workflow"
+  
+  # Demo settings
+  settings:
+    enable_demo_mode: true
+    demo_message: "This is a pilot auto-cascade demonstration"
+    cascade_test_value: 42
+    
+  # Workflow configuration
+  workflow:
+    type: "sequential"
+    phases_count: 4
+    auto_cascade_enabled: true
+    
+  # Feature flags for demo
+  features:
+    audit_logging: true
+    safety_checks: true
+    emergency_stop: true
+    stephen_approval_required: true
+    
+  # Success indicators
+  validation:
+    config_loaded: true
+    syntax_valid: true
+    demo_ready: true
+    
+# Demo metadata
+metadata:
+  description: |
+    This configuration file is part of the auto-cascade pilot test.
+    It demonstrates how a simple feature can flow through multiple
+    Claude specialists automatically while maintaining safety controls.
+  
+  expected_flow:
+    - "Builder creates this configuration"
+    - "Chronicler documents how it works"
+    - "Guardian validates it functions correctly"
+    - "Architect reviews and seeks Stephen's approval"
+    
+  safety_notes:
+    - "Stephen must manually initiate the chain"
+    - "Each phase completion triggers automatic transition"
+    - "Emergency stop can halt the cascade at any time"
+    - "Final approval always requires Stephen's explicit consent"

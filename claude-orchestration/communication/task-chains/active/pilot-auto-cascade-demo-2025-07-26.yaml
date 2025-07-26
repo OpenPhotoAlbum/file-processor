@@ -1,0 +1,129 @@
+# Pilot Auto-Cascade Demo - Simple Feature Implementation
+# Demonstrates controlled identity switching workflow
+
+id: pilot-auto-cascade-demo-2025-07-26
+title: "Pilot Auto-Cascade Demo: Simple Configuration Feature"
+status: pending
+created: "2025-07-26T11:58:00-04:00"
+updated: "2025-07-26T11:58:00-04:00"
+template_id: sequential-auto-cascade
+description: "Demonstrate auto-cascade workflow with a simple configuration feature implementation"
+version: '2.0'
+
+# Auto-cascade configuration - REQUIRED for all auto-cascade chains
+auto_cascade:
+  enabled: true
+  mode: "sequential"
+  initiated_by: "stephen"                    # Stephen must manually start first phase
+  requires_stephen_approval: true            # Final phase requires Stephen approval
+  emergency_stop_enabled: true              # Stephen can interrupt at any point
+  
+  # Identity override authorization
+  identity_protocol_override: true
+  authorized_roles: ["claude-1", "claude-2", "claude-3", "claude-4"]
+  
+  # Audit and safety
+  audit_logging: true
+  cascade_log: []                           # Runtime cascade actions logged here
+  safety_checks:
+    - "verify_next_role_assignment"
+    - "confirm_phase_completion"
+    - "validate_evidence_provided"
+    - "check_emergency_stop_status"
+
+use_cases:
+- "Demonstrate controlled identity switching in action"
+- "Validate auto-cascade safety mechanisms"
+- "Test streamlined workflow coordination"
+
+variables:
+  feature_name: "Auto-Cascade Demo Configuration"
+  system_component: "Claude Orchestration System"
+  complexity_level: "Low - Demo Feature"
+  priority_level: "Demo/Test"
+
+success_criteria:
+- "Configuration file created and functional"
+- "Documentation accurately describes the feature"
+- "Tests validate the configuration works"
+- "Auto-cascade executes smoothly with proper role transitions"
+- "Comprehensive audit logging of all identity switches"
+- "Stephen approval gates function correctly"
+
+# Phase definitions with auto-cascade configuration
+phases:
+- phase_id: implementation
+  phase_name: "Implement Demo Configuration"
+  assigned_to: claude-2-builder
+  depends_on: []
+  description: "Create a simple configuration file for the auto-cascade demo system"
+  deliverable: "Working demo configuration file (auto-cascade-demo-config.yaml) + mark this phase complete in task chain"
+  estimated_duration: "15 minutes"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: "claude-4-chronicler"
+    summon_command: "/summon chronicler"
+    context_message: "Auto-cascade from Implementation - your Documentation phase is ready. Please document the auto-cascade demo configuration."
+
+- phase_id: documentation
+  phase_name: "Document Demo Feature"
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - implementation
+  description: "Create documentation for the auto-cascade demo configuration"
+  deliverable: "Documentation file (auto-cascade-demo-guide.md) explaining the demo + mark this phase complete in task chain"
+  estimated_duration: "20 minutes"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: "claude-3-guardian"
+    summon_command: "/summon guardian"
+    context_message: "Auto-cascade from Documentation - your Testing phase is ready. Please validate the auto-cascade demo."
+
+- phase_id: testing
+  phase_name: "Test Demo Configuration"
+  assigned_to: claude-3-guardian
+  depends_on:
+  - documentation
+  description: "Validate the auto-cascade demo configuration works correctly"
+  deliverable: "Test report confirming demo functionality + mark this phase complete in task chain"
+  estimated_duration: "15 minutes"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: true
+    next_role: "claude-1-architect"
+    summon_command: "/summon architect"
+    context_message: "Auto-cascade from Testing - your Final Review phase is ready. All phases completed successfully."
+
+- phase_id: final_review
+  phase_name: "Final Review and Stephen Approval"
+  assigned_to: claude-1-architect
+  depends_on:
+  - testing
+  description: "Review complete auto-cascade demo and prepare summary for Stephen's approval"
+  deliverable: "Executive summary of demo results + request Stephen's approval + mark this phase complete in task chain"
+  estimated_duration: "10 minutes"
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: false                           # Final phase requires Stephen approval
+    stephen_approval_required: true
+    next_role: "stephen_approval_required"
+
+template_notes:
+- "This pilot demonstrates a complete auto-cascade workflow"
+- "Simple feature chosen to focus on cascade mechanics"
+- "Each phase automatically transitions upon completion"
+- "Stephen maintains control through manual initiation and final approval"
+- "Emergency stop can interrupt cascade at any point"
+
+pending_notifications: []
+priority: "DEMO"
