@@ -1,8 +1,8 @@
 id: test-auto-cascade-demo-2025-07-26
 title: Test Auto-Cascade Demo - Simple Documentation Update
-status: active
+status: in_progress
 created: '2025-07-26T16:35:00-04:00'
-updated: '2025-07-26T16:34:25.600671'
+updated: '2025-07-26T16:36:01.386534'
 template_id: sequential-auto-cascade
 description: Simple test of auto-cascade system with documentation update workflow
 version: '2.0'
@@ -92,9 +92,9 @@ phases:
   deliverable: Quality validation report for test documentation + mark this phase
     complete in task chain
   estimated_duration: 10 minutes
-  started: null
+  started: '2025-07-26T16:36:01.386534'
   completed: null
-  status: ready
+  status: in_progress
   cascade_action:
     enabled: false
     stephen_approval_required: true
