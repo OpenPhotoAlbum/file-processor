@@ -1,8 +1,8 @@
 id: test-auto-cascade-full-2025-07-26
 title: Complete Auto-Cascade System Test
-status: active
+status: in_progress
 created: '2025-07-26T16:52:00-04:00'
-updated: '2025-07-26T16:53:02.651930'
+updated: '2025-07-26T16:53:35.241407'
 template_id: sequential-auto-cascade
 description: Full test of auto-cascade system with Claude-executable summon implementation
 version: '2.0'
@@ -64,9 +64,9 @@ phases:
   description: Document the plan created by architect
   deliverable: Documentation of the plan + mark this phase complete in task chain
   estimated_duration: 5 minutes
-  started: null
+  started: '2025-07-26T16:53:35.241407'
   completed: null
-  status: ready
+  status: in_progress
   cascade_action:
     enabled: false
     stephen_approval_required: true
