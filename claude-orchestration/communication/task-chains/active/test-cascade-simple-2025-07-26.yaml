@@ -1,0 +1,72 @@
+id: test-cascade-simple-2025-07-26
+title: Simple Auto-Cascade Test
+status: in_progress
+created: '2025-07-26T16:40:00-04:00'
+updated: '2025-07-26T16:39:52.343777'
+template_id: sequential-auto-cascade
+description: Minimal test to debug auto-cascade functionality
+version: '2.0'
+auto_cascade:
+  enabled: true
+  mode: sequential
+  initiated_by: stephen
+  requires_stephen_approval: true
+  emergency_stop_enabled: true
+  identity_protocol_override: true
+  authorized_roles:
+  - claude-1
+  - claude-2
+  - claude-3
+  - claude-4
+  audit_logging: true
+  cascade_log: []
+  safety_checks:
+  - verify_next_role_assignment
+  - confirm_phase_completion
+  - validate_evidence_provided
+  - check_emergency_stop_status
+use_cases:
+- Debug auto-cascade trigger mechanism
+variables:
+  feature_name: Auto-Cascade Debug Test
+  system_component: Task Chain Orchestra Framework
+  complexity_level: Low - Debug Test
+  priority_level: High - System Validation
+success_criteria:
+- Auto-cascade triggers on phase completion
+- Cascade log shows actual entries
+- Automatic role transition occurs
+phases:
+- phase_id: test_phase_1
+  phase_name: Test Phase 1
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Simple first phase to test cascade trigger
+  deliverable: Complete phase 1 and trigger cascade + mark this phase complete in
+    task chain
+  estimated_duration: 5 minutes
+  started: '2025-07-26T16:39:52.343777'
+  completed: null
+  status: in_progress
+  cascade_action:
+    enabled: true
+    next_role: claude-4-chronicler
+    summon_command: /summon 4
+    context_message: Auto-cascade triggered from Phase 1 - Phase 2 is ready
+- phase_id: test_phase_2
+  phase_name: Test Phase 2
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - test_phase_1
+  description: Second phase to receive auto-cascade
+  deliverable: Complete phase 2 + mark this phase complete in task chain
+  estimated_duration: 5 minutes
+  started: null
+  completed: null
+  status: waiting
+  cascade_action:
+    enabled: false
+    stephen_approval_required: true
+    next_role: stephen_approval_required
+pending_notifications: []
+priority: HIGH
