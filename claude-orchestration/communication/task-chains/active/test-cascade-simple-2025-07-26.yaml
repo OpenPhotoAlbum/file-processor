@@ -1,8 +1,8 @@
 id: test-cascade-simple-2025-07-26
 title: Simple Auto-Cascade Test
-status: active
+status: in_progress
 created: '2025-07-26T16:40:00-04:00'
-updated: '2025-07-26T16:46:07.261705'
+updated: '2025-07-26T16:51:05.361583'
 template_id: sequential-auto-cascade
 description: Minimal test to debug auto-cascade functionality
 version: '2.0'
@@ -92,9 +92,9 @@ phases:
   description: Second phase to receive auto-cascade
   deliverable: Complete phase 2 + mark this phase complete in task chain
   estimated_duration: 5 minutes
-  started: null
+  started: '2025-07-26T16:51:05.361583'
   completed: null
-  status: ready
+  status: in_progress
   cascade_action:
     enabled: false
     stephen_approval_required: true
