@@ -269,7 +269,7 @@ When reporting tool issues or requesting features, be aware that development tea
 # Verify installation:
 mmp --help
 
-# IMPORTANT: Always use 'mmp' command directly, never run from /photos/tools/refactor/mmp/
+# IMPORTANT: Always use 'mmp' command directly, never run from /mmp/
 ```
 
 ### MMP Scanning Commands

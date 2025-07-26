@@ -1,59 +1,56 @@
-# Task Chain: Testing Continuity & Institutional Memory Solution
-# Generated: 2025-07-24T17:31:50-04:00
-# Template: legacy-research-driven-development
-# Chain ID: testing-continuity--institutional-memory-solution-2025-07-24
-
-id: "testing-continuity--institutional-memory-solution-2025-07-24"
-title: "Testing Continuity & Institutional Memory Solution"
-status: "pending"
-created: "2025-07-24T17:31:50-04:00"
-updated: "2025-07-24T17:31:50-04:00"
-
-template_name: "research_driven_development"
-description: "Research → Planning → Implementation → QA workflow for complex features"
-version: "1.0"
-
+id: testing-continuity--institutional-memory-solution-2025-07-24
+title: Testing Continuity & Institutional Memory Solution
+status: pending
+created: '2025-07-24T17:31:50-04:00'
+updated: '2025-07-24T17:47:03.165276'
+template_name: research_driven_development
+description: "Research \u2192 Planning \u2192 Implementation \u2192 QA workflow for\
+  \ complex features"
+version: '1.0'
 phases:
-  - phase_id: "research_analysis"
-    phase_name: "Research and Analysis"
-    assigned_to: "claude-1"
-    status: "pending"
-    depends_on: []
-    completion_evidence: "Research findings documented, technical approach defined, risks identified"
-    estimated_duration: "2-3 hours"
-    
-  - phase_id: "implementation_planning"
-    phase_name: "Implementation Planning"
-    assigned_to: "claude-1"
-    status: "pending"
-    depends_on: ["research_analysis"]
-    completion_evidence: "Architecture design complete, implementation plan documented, success criteria defined"
-    estimated_duration: "1-2 hours"
-    
-  - phase_id: "implementation"
-    phase_name: "Feature Implementation"
-    assigned_to: "claude-2"
-    status: "pending"
-    depends_on: ["implementation_planning"]
-    completion_evidence: "Feature implemented per specification, builds successfully, basic testing complete"
-    estimated_duration: "3-6 hours"
-    
-  - phase_id: "qa_validation"
-    phase_name: "Quality Assurance Validation"
-    assigned_to: "claude-3"
-    status: "pending"
-    depends_on: ["implementation"]
-    completion_evidence: "Comprehensive testing complete, quality gates pass, performance validated"
-    estimated_duration: "2-3 hours"
-
+- phase_id: research_analysis
+  phase_name: Research and Analysis
+  assigned_to: claude-1
+  status: pending
+  depends_on: []
+  completion_evidence: Research findings documented, technical approach defined, risks
+    identified
+  estimated_duration: 2-3 hours
+- phase_id: implementation_planning
+  phase_name: Implementation Planning
+  assigned_to: claude-1
+  status: pending
+  depends_on:
+  - research_analysis
+  completion_evidence: Architecture design complete, implementation plan documented,
+    success criteria defined
+  estimated_duration: 1-2 hours
+- phase_id: implementation
+  phase_name: Feature Implementation
+  assigned_to: claude-2
+  status: pending
+  depends_on:
+  - implementation_planning
+  completion_evidence: Feature implemented per specification, builds successfully,
+    basic testing complete
+  estimated_duration: 3-6 hours
+- phase_id: qa_validation
+  phase_name: Quality Assurance Validation
+  assigned_to: claude-3
+  status: pending
+  depends_on:
+  - implementation
+  completion_evidence: Comprehensive testing complete, quality gates pass, performance
+    validated
+  estimated_duration: 2-3 hours
 success_criteria:
-  - "Research findings validate approach"
-  - "Implementation matches architectural design"
-  - "All quality gates pass"
-  - "Feature ready for production use"
-
+- Research findings validate approach
+- Implementation matches architectural design
+- All quality gates pass
+- Feature ready for production use
 variables:
-  research_topic: "{{RESEARCH_TOPIC}}"
-  complexity_level: "{{COMPLEXITY_LEVEL}}"
-  stakeholder: "{{STAKEHOLDER}}"
-  success_metrics: "{{SUCCESS_METRICS}}"
+  research_topic: Guardian testing institutional memory problem
+  complexity_level: '{{COMPLEXITY_LEVEL}}'
+  stakeholder: '{{STAKEHOLDER}}'
+  success_metrics: '{{SUCCESS_METRICS}}'
+priority: HIGH

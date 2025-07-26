@@ -35,8 +35,8 @@
   - ✅ Role-based specialist Claude templates operational
   - ✅ Inter-Claude communication system active
   - ✅ Task assignment and handoff protocols
-  - 🔄 Active: Multi-Claude team coordination development
-  - 📖 Docs: User documentation needed for orchestration system
+  - ✅ Slash commands: `/mail` and `/summon` documented
+  - 📖 Docs: [architecture/claude-orchestration.md](architecture/claude-orchestration.md), [cli/slash-commands.md](cli/slash-commands.md)
 
 - **Photo Organization Pipeline** - Production grade (150,000+ photos processed)
   - ✅ Hash-based deduplication (818GB saved, 54% reduction)
@@ -65,6 +65,10 @@
 - **[Geolocation System](architecture/geolocation-system.md)** - Location services
 - **[Metadata Merge Strategy](architecture/metadata-merge-strategy.md)** - Processing history preservation
 - **[Live Photo Detection](architecture/live-photo-detection.md)** - Apple Live Photo system
+
+### Team Coordination
+- **[Claude Orchestration System](architecture/claude-orchestration.md)** - Multi-agent development workflow
+- **[Slash Commands](cli/slash-commands.md)** - /mail and /summon command reference
 
 ### Database Architecture
 - **[Database Schema Design](architecture/database-schema-design.md)** - Normalized relational design

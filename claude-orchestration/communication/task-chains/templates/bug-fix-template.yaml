@@ -12,9 +12,12 @@ use_cases:
 variables:
   bug_description: '{{BUG_DESCRIPTION}}'
   affected_component: '{{AFFECTED_COMPONENT}}'
-  severity_level: '{{SEVERITY_LEVEL}}'
+  severity_level: '{{SEVERITY_LEVEL}}'  # Legacy field for backwards compatibility
   reproduction_steps: '{{REPRODUCTION_STEPS}}'
   user_impact: '{{USER_IMPACT}}'
+# PRIORITY FIELD (required when creating task chain)
+# Set based on severity: CRITICAL (data loss), URGENT (blocks work), HIGH (major impact), MEDIUM (standard), LOW (minor), TRIVIAL (cosmetic)
+# priority: HIGH  # Uncomment and set when creating task from template
 success_criteria:
 - 'MANDATORY: Test written that catches this exact bug - no exceptions'
 - Test fails before fix, passes after fix (proven TDD cycle)

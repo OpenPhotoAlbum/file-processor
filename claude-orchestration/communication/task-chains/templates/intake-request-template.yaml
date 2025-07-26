@@ -1,0 +1,67 @@
+# Intake Request Template
+# Purpose: Single-task chains for Claude-to-Architect feature/issue requests
+# Usage: Any Claude can create an intake request for architectural review
+# Assignment: Always assigned to Claude 1 (Architect) for evaluation
+
+task_chain:
+  id: "intake-[brief-topic]-[date]"
+  title: "[Feature/Issue] Request - [Brief Description]"
+  created_by: "[requesting-claude-role]"
+  priority: MEDIUM  # Set to: CRITICAL, URGENT, HIGH, MEDIUM, LOW, TRIVIAL
+  assigned_to: claude-1
+  type: intake
+  
+  # Context for the requesting Claude
+  request_context:
+    requesting_claude: "[claude-2/claude-3/claude-4/claude-5/claude-6]"
+    request_type: "[feature/enhancement/issue/architecture]"
+    urgency: "[low/medium/high/critical]"
+    
+  # Single task structure
+  tasks:
+    1:
+      title: "Architectural Review: [Request Description]"
+      phase: review
+      assigned_to: claude-1
+      status: pending
+      
+      description: |
+        Review incoming request from [requesting-claude] and provide architectural evaluation.
+        
+        **Original Request:**
+        [Copy the full request context here]
+        
+        **Current System Context:**
+        [Any relevant background about existing systems]
+        
+        **Technical Considerations:**
+        [Known constraints, dependencies, or impacts]
+      
+      acceptance_criteria:
+        - "Request evaluated for technical feasibility"
+        - "Architectural impact assessment completed"
+        - "Resource requirements estimated"
+        - "Integration complexity analyzed"
+        - "Discussion with founder scheduled/completed"
+        - "Decision documented: approve/defer/reject/needs-clarification"
+        - "If approved: formal task chain specification created"
+        - "If rejected: reasoning documented for requesting Claude"
+      
+      evidence_requirements:
+        - "Technical feasibility analysis"
+        - "Impact assessment on existing systems"
+        - "Resource/timeline estimates"
+        - "Founder discussion summary"
+        - "Final decision with rationale"
+        - "Next steps defined"
+
+# Template Usage Instructions:
+# 1. Copy template to: /communication/task-chains/active/intake-[topic]-[date].yaml
+# 2. Replace all [bracketed] placeholders with actual values
+# 3. Fill in request_context section completely
+# 4. Update task description with full request details
+# 5. Save file - chain-status.sh will automatically pick up the new task
+# 6. Claude 1 will see the intake request in their task list
+
+# Example filename: intake-video-transcription-2025-07-24.yaml
+# Example title: "Feature Request - Video Transcription for Heritage Processor"

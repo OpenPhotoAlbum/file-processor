@@ -147,7 +147,7 @@ ETA: [Realistic time estimate]
 **CRITICAL: Before working on ANY file, check its size and zone classification:**
 
 #### STRICT Enforcement Zones (500 line maximum):
-- **CLI implementations:** `/src/cli/`, `/photos/tools/refactor/mmp/src/`
+- **CLI implementations:** `/src/cli/`, `/mmp/src/`
 - **Core processors:** `/src/processors/`
 - **Service layer:** `/src/services/`
 - **Pipeline orchestration:** `/src/pipeline/`

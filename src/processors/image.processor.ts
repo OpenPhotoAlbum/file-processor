@@ -7,7 +7,7 @@ import { Logger } from '../utils/logging/index.js';
 import { createValidationErrorFactory, createSystemErrorFactory } from '../utils/errors/factories.js';
 import { sanitizePathForLogging } from '../utils/paths.js';
 import { FileSystemService } from '../services/index.js';
-import { extractColorAnalysis } from '../services/colorExtractor.js';
+import { extractColorAnalysis } from '../utils/extractors/color.js';
 
 /**
  * Processor for image files (JPEG, PNG, HEIC, GIF, etc.)

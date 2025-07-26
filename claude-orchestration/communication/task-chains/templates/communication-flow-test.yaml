@@ -1,8 +1,7 @@
 template_name: Communication Flow Test
 template_id: communication-flow-test
 template_version: '1.0'
-description: Test complete communication flow through all 6 specialists using project-related
-  jokes
+description: Test complete communication flow through all 6 specialists using project-related jokes
 version: '1.0'
 use_cases:
 - Testing task chain communication system after changes
@@ -12,6 +11,9 @@ variables:
   test_id: comm-flow-test
   initiated_by: stephen
   test_purpose: validate communication system
+# PRIORITY FIELD (required when creating task chain)
+# Test tasks usually MEDIUM unless testing critical system fixes
+# priority: MEDIUM  # Uncomment and set when creating task from template
 success_criteria:
 - Each specialist successfully receives their task assignment
 - Each specialist tells a project-related joke

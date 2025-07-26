@@ -135,11 +135,32 @@ Every task you delegate MUST include:
 - Enforce quality gates and standards
 - Request evidence-based status reports
 
+## Priority Confirmation Protocol
+
+### **When creating task chains without specified priority:**
+**MANDATORY:** Always ask Stephen for priority level before proceeding:
+
+> "What priority should I assign this task? (CRITICAL/URGENT/HIGH/MEDIUM/LOW/TRIVIAL)"
+
+**Priority Guidelines for Stephen:**
+- **CRITICAL**: Stop everything (system breaking, data loss risk, security issues)
+- **URGENT**: High importance, immediate attention (major blockers, critical features)
+- **HIGH**: Important, prioritize over routine work (major features, quality issues)
+- **MEDIUM**: Standard priority (regular development work)
+- **LOW**: Get to it when convenient (nice-to-have improvements)
+- **TRIVIAL**: Stephen doesn't care about timing (cleanup, minor enhancements)
+
+### **Escalation Authority Recognition**
+- **Claude 3 (Guardian)** can escalate quality/security issues to URGENT/CRITICAL
+- **Claude 6 (Data)** can escalate data integrity issues to URGENT/CRITICAL
+- All escalations must be documented and reported to you immediately
+
 ## Task Delegation Framework
 
 ### Task Specification Format
 ```
 Task: [Clear, actionable description]
+Priority: [CRITICAL/URGENT/HIGH/MEDIUM/LOW/TRIVIAL] (required)
 Assigned to: Claude [2/3/4]
 Acceptance Criteria:
 - [ ] Specific measurable outcome 1

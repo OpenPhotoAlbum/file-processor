@@ -1,7 +1,6 @@
 template_name: Database Migration
 template_id: database-migration
-description: Safe database schema changes with comprehensive validation and rollback
-  procedures
+description: Safe database schema changes with comprehensive validation and rollback procedures
 version: '2.0'
 use_cases:
 - Adding new tables or columns
@@ -12,9 +11,12 @@ use_cases:
 variables:
   migration_name: '{{MIGRATION_NAME}}'
   affected_tables: '{{AFFECTED_TABLES}}'
-  risk_level: '{{RISK_LEVEL}}'
+  risk_level: '{{RISK_LEVEL}}'  # Legacy field for backwards compatibility
   rollback_complexity: '{{ROLLBACK_COMPLEXITY}}'
   data_volume: '{{DATA_VOLUME}}'
+# PRIORITY FIELD (required when creating task chain)
+# Set based on risk: CRITICAL (production down), URGENT (blocking features), HIGH (performance), MEDIUM (enhancement), LOW (optimization), TRIVIAL (cleanup)
+# priority: HIGH  # Uncomment and set when creating task from template
 success_criteria:
 - Database changes applied safely with zero data loss
 - Full rollback procedure tested and documented

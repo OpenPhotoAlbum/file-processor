@@ -10,7 +10,10 @@ variables:
   feature_name: '{{FEATURE_NAME}}'
   cli_command: '{{CLI_COMMAND}}'
   complexity_level: '{{COMPLEXITY_LEVEL}}'
-  priority_level: '{{PRIORITY_LEVEL}}'
+  priority_level: '{{PRIORITY_LEVEL}}'  # Legacy field for backwards compatibility
+# PRIORITY FIELD (required when creating task chain)
+# Set to one of: CRITICAL, URGENT, HIGH, MEDIUM, LOW, TRIVIAL
+# priority: MEDIUM  # Uncomment and set when creating task from template
 success_criteria:
 - CLI command implemented and tested end-to-end
 - Database operations validated for safety and performance

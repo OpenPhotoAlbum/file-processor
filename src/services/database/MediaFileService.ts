@@ -2,7 +2,7 @@ import { Knex } from 'knex';
 import crypto from 'crypto';
 import { Logger } from '../../utils/logging/index.js';
 import { EquipmentService } from './EquipmentService.js';
-import { extractColorAnalysis } from '../colorExtractor.js';
+import { extractColorAnalysis } from '../../utils/extractors/color.js';
 import { ProcessingResult } from '../../types/media.js';
 import { UnknownJsonContent } from '../../types/semantic-any.js';
 import { MediaFile } from '../../database/types/tables.js';

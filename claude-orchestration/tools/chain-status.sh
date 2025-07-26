@@ -81,6 +81,19 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+# Priority color mapping
+priority_color() {
+    case "$1" in
+        "CRITICAL") echo -e "\033[91;5m$1\033[0m" ;;  # Blinking bright red
+        "URGENT") echo -e "\033[91m$1\033[0m" ;;      # Bright red
+        "HIGH") echo -e "\033[93m$1\033[0m" ;;         # Bright yellow
+        "MEDIUM") echo -e "\033[37m$1\033[0m" ;;       # White (default)
+        "LOW") echo -e "\033[90m$1\033[0m" ;;          # Gray (dimmed)
+        "TRIVIAL") echo -e "\033[90m$1\033[0m" ;;      # Gray (dimmed)
+        *) echo "$1" ;;
+    esac
+}
+
 # Status color mapping
 status_color() {
     case "$1" in
@@ -107,6 +120,26 @@ from datetime import datetime, timedelta
 # Load chain
 with open('$chain_file', 'r') as f:
     chain = yaml.safe_load(f)
+
+# Get priority for sorting and display - handle both new 'priority' field and legacy variables
+priority = chain.get('priority', 'MEDIUM').upper()
+if priority == 'MEDIUM':
+    # Check if there's a priority_level in variables (legacy format)
+    variables = chain.get('variables', {})
+    priority_level = variables.get('priority_level', '')
+    if 'Critical' in priority_level or 'CRITICAL' in priority_level:
+        priority = 'CRITICAL'
+    elif 'Urgent' in priority_level or 'URGENT' in priority_level:
+        priority = 'URGENT'
+    elif 'High' in priority_level or 'HIGH' in priority_level:
+        priority = 'HIGH'
+    elif 'Low' in priority_level or 'LOW' in priority_level:
+        priority = 'LOW'
+    elif 'Trivial' in priority_level or 'TRIVIAL' in priority_level:
+        priority = 'TRIVIAL'
+
+priority_order = {'CRITICAL': 0, 'URGENT': 1, 'HIGH': 2, 'MEDIUM': 3, 'LOW': 4, 'TRIVIAL': 5}
+priority_value = priority_order.get(priority, 3)
 
 # Calculate summary stats
 total_phases = len(chain.get('phases', []))
@@ -220,9 +253,12 @@ elif status == 'FAILED':
 else:
     status_colored = status
 
-# Make title bold and bright
+# Make title bold and bright - red for CRITICAL priority
 title = chain.get('title', 'Untitled Chain')
-title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
+if priority == 'CRITICAL':
+    title_colored = "\033[1;91m" + title + "\033[0m"  # Bold bright red for CRITICAL
+else:
+    title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
 
 # Create boxed status
 status_boxed = f"[{status_colored}]"
@@ -238,18 +274,39 @@ for i, chain_path in enumerate(all_chains, 1):
         current_chain_idx = i
         break
 
-# Include shortcut in title line if available
+# Priority display
+def get_priority_display(priority):
+    if priority == 'CRITICAL':
+        return '\033[91;5m🚨CRITICAL\033[0m'  # Blinking red with icon
+    elif priority == 'URGENT':
+        return '\033[91m🔥URGENT\033[0m'     # Bright red with icon
+    elif priority == 'HIGH':
+        return '\033[93m⚡HIGH\033[0m'       # Bright yellow with icon
+    elif priority == 'MEDIUM':
+        return '\033[37m📋MEDIUM\033[0m'     # White with icon
+    elif priority == 'LOW':
+        return '\033[90m⬇️LOW\033[0m'        # Gray with icon
+    elif priority == 'TRIVIAL':
+        return '\033[90m💤TRIVIAL\033[0m'   # Gray with icon
+    return ''
+
+priority_display = get_priority_display(priority)
+
+# Include shortcut in title line with priority if available
 if current_chain_idx:
     shortcut_colored = f"\033[1;96m{current_chain_idx}\033[0m"  # Bold bright cyan
-    print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored}")
+    if priority_display:
+        print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored} {priority_display}")
+    else:
+        print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored}")
     print(f"   \033[90m{chain.get('id', '$chain_id')}\033[0m")
 else:
-    print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored}")
+    if priority_display:
+        print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored} {priority_display}")
+    else:
+        print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored}")
     print(f"   {chain.get('id', '$chain_id')}")
 
-if current_assignee:
-    assignee_colored = "\033[1;36m" + current_assignee + "\033[0m"  # Bright cyan
-    print(f"   🎯 Up next: {assignee_colored} ({current_phase_name})")
 
 # Format timestamps with relative time
 def format_relative_time(timestamp_str):
@@ -326,6 +383,26 @@ from datetime import datetime, timedelta
 # Load chain
 with open('$chain_file', 'r') as f:
     chain = yaml.safe_load(f)
+
+# Get priority for sorting and display - handle both new 'priority' field and legacy variables
+priority = chain.get('priority', 'MEDIUM').upper()
+if priority == 'MEDIUM':
+    # Check if there's a priority_level in variables (legacy format)
+    variables = chain.get('variables', {})
+    priority_level = variables.get('priority_level', '')
+    if 'Critical' in priority_level or 'CRITICAL' in priority_level:
+        priority = 'CRITICAL'
+    elif 'Urgent' in priority_level or 'URGENT' in priority_level:
+        priority = 'URGENT'
+    elif 'High' in priority_level or 'HIGH' in priority_level:
+        priority = 'HIGH'
+    elif 'Low' in priority_level or 'LOW' in priority_level:
+        priority = 'LOW'
+    elif 'Trivial' in priority_level or 'TRIVIAL' in priority_level:
+        priority = 'TRIVIAL'
+
+priority_order = {'CRITICAL': 0, 'URGENT': 1, 'HIGH': 2, 'MEDIUM': 3, 'LOW': 4, 'TRIVIAL': 5}
+priority_value = priority_order.get(priority, 3)
 
 # Calculate summary stats
 total_phases = len(chain.get('phases', []))
@@ -424,9 +501,12 @@ elif status == 'FAILED':
 else:
     status_colored = status
 
-# Make title bold and bright
+# Make title bold and bright - red for CRITICAL priority
 title = chain.get('title', 'Untitled Chain')
-title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
+if priority == 'CRITICAL':
+    title_colored = "\033[1;91m" + title + "\033[0m"  # Bold bright red for CRITICAL
+else:
+    title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
 
 # Create boxed status
 status_boxed = f"[{status_colored}]"
@@ -442,15 +522,38 @@ for i, chain_path in enumerate(all_chains, 1):
         current_chain_idx = i
         break
 
-# Include shortcut in title line if available
+# Priority display
+def get_priority_display(priority):
+    if priority == 'CRITICAL':
+        return '\033[91;5m🚨CRITICAL\033[0m'  # Blinking red with icon
+    elif priority == 'URGENT':
+        return '\033[91m🔥URGENT\033[0m'     # Bright red with icon
+    elif priority == 'HIGH':
+        return '\033[93m⚡HIGH\033[0m'       # Bright yellow with icon
+    elif priority == 'MEDIUM':
+        return '\033[37m📋MEDIUM\033[0m'     # White with icon
+    elif priority == 'LOW':
+        return '\033[90m⬇️LOW\033[0m'        # Gray with icon
+    elif priority == 'TRIVIAL':
+        return '\033[90m💤TRIVIAL\033[0m'   # Gray with icon
+    return ''
+
+priority_display = get_priority_display(priority)
+
+# Include shortcut in title line with priority if available
 if current_chain_idx:
     shortcut_colored = f"\033[1;96m{current_chain_idx}\033[0m"  # Bold bright cyan
-    print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored}")
+    if priority_display:
+        print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored} {priority_display}")
+    else:
+        print(f"{weather_icon} {shortcut_colored} {status_boxed} {progress_bar} {title_colored}")
     print(f"   \033[90m{chain.get('id', '$chain_id')}\033[0m")
 else:
-    print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored}")
+    if priority_display:
+        print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored} {priority_display}")
+    else:
+        print(f"{weather_icon} {status_boxed} {progress_bar} {title_colored}")
     print(f"   {chain.get('id', '$chain_id')}")
-
 
 # Format timestamps with relative time
 def format_relative_time(timestamp_str):
@@ -532,6 +635,23 @@ from datetime import datetime, timedelta
 with open('$chain_file', 'r') as f:
     chain = yaml.safe_load(f)
 
+# Get priority for display - handle both new 'priority' field and legacy variables
+priority = chain.get('priority', 'MEDIUM').upper()
+if priority == 'MEDIUM':
+    # Check if there's a priority_level in variables (legacy format)
+    variables = chain.get('variables', {})
+    priority_level = variables.get('priority_level', '')
+    if 'Critical' in priority_level or 'CRITICAL' in priority_level:
+        priority = 'CRITICAL'
+    elif 'Urgent' in priority_level or 'URGENT' in priority_level:
+        priority = 'URGENT'
+    elif 'High' in priority_level or 'HIGH' in priority_level:
+        priority = 'HIGH'
+    elif 'Low' in priority_level or 'LOW' in priority_level:
+        priority = 'LOW'
+    elif 'Trivial' in priority_level or 'TRIVIAL' in priority_level:
+        priority = 'TRIVIAL'
+
 # Color-code status for detailed view
 status = chain.get('status', 'unknown').upper()
 if status == 'COMPLETED':
@@ -549,9 +669,12 @@ elif status == 'FAILED':
 else:
     status_colored = status
 
-# Make title bold and bright for detailed view
+# Make title bold and bright for detailed view - red for CRITICAL priority
 title = chain.get('title', 'Untitled Chain')
-title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
+if priority == 'CRITICAL':
+    title_colored = "\033[1;91m" + title + "\033[0m"  # Bold bright red for CRITICAL
+else:
+    title_colored = "\033[1;37m" + title + "\033[0m"  # Bold white
 
 # Create boxed status for detailed view
 status_boxed = f"[{status_colored}]"
@@ -596,9 +719,30 @@ weather_icon_detail = get_weather_icon_detail(completed, in_progress, ready, blo
 # Add status dot - green for normal, red for problems
 status_dot = "\033[32m●\033[0m" if failed == 0 and blocked == 0 else "\033[31m●\033[0m"
 
+# Priority display for detailed view
+def get_priority_display_detail(priority):
+    if priority == 'CRITICAL':
+        return '\033[91;5m🚨CRITICAL\033[0m'  # Blinking red with icon
+    elif priority == 'URGENT':
+        return '\033[91m🔥URGENT\033[0m'     # Bright red with icon
+    elif priority == 'HIGH':
+        return '\033[93m⚡HIGH\033[0m'       # Bright yellow with icon
+    elif priority == 'MEDIUM':
+        return '\033[37m📋MEDIUM\033[0m'     # White with icon
+    elif priority == 'LOW':
+        return '\033[90m⬇️LOW\033[0m'        # Gray with icon
+    elif priority == 'TRIVIAL':
+        return '\033[90m💤TRIVIAL\033[0m'   # Gray with icon
+    return ''
+
+priority_display_detail = get_priority_display_detail(priority)
+
 # Print header with weather icon and status dot on the right
 print(f"     {status_boxed}                                                    {status_dot} {weather_icon_detail}")
-print(f"     {title_colored}")
+if priority_display_detail:
+    print(f"     {title_colored} {priority_display_detail}")
+else:
+    print(f"     {title_colored}")
 print()
 print(f"     \033[90m{chain.get('id', '$chain_id')}\033[0m")
 
@@ -944,8 +1088,35 @@ for assignee in assignee_order:
         
         print(f"HEADER:{header}")
         
-        # Show all chains for this assignee
-        for chain_file, _ in chains_by_assignee[assignee]:
+        # Sort chains by priority before displaying
+        chains_with_priority = []
+        for chain_file, phase_type in chains_by_assignee[assignee]:
+            with open(chain_file, 'r') as f:
+                chain_data = yaml.safe_load(f)
+            # Get priority - handle both new 'priority' field and legacy variables
+            priority = chain_data.get('priority', 'MEDIUM').upper()
+            if priority == 'MEDIUM':
+                variables = chain_data.get('variables', {})
+                priority_level = variables.get('priority_level', '')
+                if 'Critical' in priority_level or 'CRITICAL' in priority_level:
+                    priority = 'CRITICAL'
+                elif 'Urgent' in priority_level or 'URGENT' in priority_level:
+                    priority = 'URGENT'
+                elif 'High' in priority_level or 'HIGH' in priority_level:
+                    priority = 'HIGH'
+                elif 'Low' in priority_level or 'LOW' in priority_level:
+                    priority = 'LOW'
+                elif 'Trivial' in priority_level or 'TRIVIAL' in priority_level:
+                    priority = 'TRIVIAL'
+            priority_order_value = {'CRITICAL': 0, 'URGENT': 1, 'HIGH': 2, 'MEDIUM': 3, 'LOW': 4, 'TRIVIAL': 5}
+            priority_value = priority_order_value.get(priority, 3)
+            chains_with_priority.append((priority_value, chain_file, phase_type))
+        
+        # Sort by priority (lower values = higher priority)
+        chains_with_priority.sort(key=lambda x: x[0])
+        
+        # Show all chains for this assignee (now sorted by priority)
+        for _, chain_file, _ in chains_with_priority:
             print(f"CHAIN:{chain_file}")
         
         print("SEPARATOR")

@@ -222,7 +222,7 @@ Impact: [Who needs to know]
 
 #### File Size Standards Documentation:
 Document these STRICT enforcement zones (500 line maximum):
-- **CLI implementations:** `/src/cli/`, `/photos/tools/refactor/mmp/src/`
+- **CLI implementations:** `/src/cli/`, `/mmp/src/`
 - **Core processors:** `/src/processors/`
 - **Service layer:** `/src/services/`
 - **Pipeline orchestration:** `/src/pipeline/`

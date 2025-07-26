@@ -5,6 +5,14 @@
 
 ## Command Line Interfaces
 
+### Claude Slash Commands
+**Status:** Operational - Team coordination commands  
+**Purpose:** Multi-Claude orchestration and communication
+
+See [slash-commands.md](slash-commands.md) for detailed usage of:
+- `/mail` - Inter-Claude communication system
+- `/summon` - Claude role initialization system
+
 ### MMP Unified CLI Tool
 **Status:** GPS, CROP, SCAN working; DATES, ROTATE, TRANSCRIBE pending  
 **Location:** Main pipeline CLI interface

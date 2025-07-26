@@ -1,7 +1,6 @@
 template_name: ETL Pipeline Integration
 template_id: etl-pipeline
-description: External data source integration with comprehensive validation and error
-  handling
+description: External data source integration with comprehensive validation and error handling
 version: '2.0'
 use_cases:
 - Recreation.gov facility data integration
@@ -13,6 +12,9 @@ use_cases:
 variables:
   data_source: '{{DATA_SOURCE}}'
   data_volume: '{{DATA_VOLUME}}'
+# PRIORITY FIELD (required when creating task chain)
+# Set based on data importance: CRITICAL (core data), URGENT (blocking analysis), HIGH (business critical), MEDIUM (standard), LOW (enhancement), TRIVIAL (optimization)
+# priority: MEDIUM  # Uncomment and set when creating task from template
   update_frequency: '{{UPDATE_FREQUENCY}}'
   api_endpoint: '{{API_ENDPOINT}}'
   data_format: '{{DATA_FORMAT}}'
