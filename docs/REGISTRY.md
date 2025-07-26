@@ -330,16 +330,16 @@
   - **Last Updated:** 2025-07-24
 
 - **Topic:** Auto-Cascade Task Chain System
-  - **Primary Doc:** `/claude-orchestration/auto-cascade-templates/README.md`
+  - **Primary Doc:** `/docs/orchestration/auto-cascade/templates-overview.md`
   - **Supporting Docs:** 
     - `/claude-orchestration/auto-cascade-architecture-spec.md` (Architecture specification)
-    - `/claude-orchestration/auto-cascade-templates/USAGE-GUIDE.md` (Implementation guide)
-    - `/claude-orchestration/auto-cascade-templates/SAFETY-GUIDELINES.md` (Safety procedures)
-  - **Template Library:** `/claude-orchestration/auto-cascade-templates/` (3 template files)
+    - `/docs/orchestration/auto-cascade/usage-guide.md` (Implementation guide)
+    - `/docs/orchestration/auto-cascade/safety-guidelines.md` (Safety procedures)
+  - **Template Library:** `/claude-orchestration/communication/task-chains/templates/` (Auto-cascade YAML templates)
   - **Status:** Complete - Phase 4 template library and documentation complete, ready for Phase 5 pilot testing
   - **Keywords:** auto-cascade, controlled identity switching, workflow automation, template library, safety mechanisms, Stephen approval gates
   - **Owner:** Claude 4 (Chronicler) - Phase 4 template creation and documentation
-  - **Last Updated:** 2025-07-24
+  - **Last Updated:** 2025-07-26
 
 - **Topic:** Claude Role Templates
   - **Primary Doc:** `claude-orchestration/role-templates/` (6 files)

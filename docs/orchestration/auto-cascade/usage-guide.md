@@ -10,9 +10,9 @@
 ### 1. Choose Your Template
 ```bash
 # View available templates
-ls /claude-orchestration/auto-cascade-templates/
+ls /claude-orchestration/communication/task-chains/templates/
 
-# Templates available:
+# Auto-cascade templates available:
 # - sequential-auto-cascade.yaml (linear workflows)
 # - quality-gate-auto-cascade.yaml (build→test→doc→approve)
 # - research-implementation-auto-cascade.yaml (research→build→validate)
@@ -21,8 +21,8 @@ ls /claude-orchestration/auto-cascade-templates/
 ### 2. Create Your Chain
 ```bash
 # Copy template and customize
-cp auto-cascade-templates/quality-gate-auto-cascade.yaml \
-   task-chains/active/my-feature-auto-cascade-2025-07-24.yaml
+cp communication/task-chains/templates/quality-gate-auto-cascade.yaml \
+   communication/task-chains/active/my-feature-auto-cascade-2025-07-24.yaml
 
 # Edit with your specific values
 # Replace all [REPLACE_WITH_*] placeholders
