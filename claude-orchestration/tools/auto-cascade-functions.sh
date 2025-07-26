@@ -61,7 +61,7 @@ with open('$chain_file', 'r') as f:
 auto_cascade = chain.get('auto_cascade', {})
 
 # Check 1: Emergency stop
-if auto_cascade.get('emergency_stop_enabled', False):
+if auto_cascade.get('emergency_stop_activated', False):
     print('false')  # Emergency stop activated
     exit()
 
@@ -161,8 +161,17 @@ execute_auto_cascade() {
         echo -e "${GREEN}✅ Auto-cascade completed successfully${NC}"
         echo ""
         
-        # Execute the actual summon command
-        eval "$summon_command"
+        # Execute the Claude-executable summon command with context
+        local chain_id=$(basename "$chain_file" .yaml)
+        
+        # Enhanced summon execution with full context
+        if [[ "$summon_command" == "./claude-summon.sh"* ]]; then
+            # New Claude-executable summon with context
+            eval "$summon_command \"$context_message\" \"$evidence\" \"$chain_id\""
+        else
+            # Fallback to original command
+            eval "$summon_command"
+        fi
         
     elif [[ "$next_role" == "stephen_approval_required" ]]; then
         log_cascade_action "$chain_file" "$phase_id" "stephen_approval_gate_reached" ""

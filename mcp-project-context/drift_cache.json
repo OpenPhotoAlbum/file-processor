@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-07-26T14:30:29.425297",
-  "file_count": 366,
+  "timestamp": "2025-07-26T15:17:30.237416",
+  "file_count": 372,
   "files": {
     "/home/stephen/Documents/initial-media-processing/docker-compose.yaml": {
       "mtime": 1751312112.5912802,
@@ -223,9 +223,9 @@
       "hash": "712f577347385b1966b6d1fda31bc66f5998d03bca43c160b980769d7401a954"
     },
     "/home/stephen/Documents/initial-media-processing/docs/REGISTRY.md": {
-      "mtime": 1753554331.5878942,
+      "mtime": 1753554753.7758923,
       "size": 20676,
-      "hash": "7787aea10a4f6bdc0a873688fc972a856cd956a294835c30d15164612471fb9f"
+      "hash": "dbfcd749e9db8b5eb42355f2ac9d3fb9696768803e0c54e37cf490201cb34150"
     },
     "/home/stephen/Documents/initial-media-processing/docs/MMP-DOCUMENTATION-VERIFICATION-COMPLETE-2025-07-23.md": {
       "mtime": 1753311709.3647525,
@@ -462,6 +462,21 @@
       "size": 6080,
       "hash": "3e72e319bddc040e8045e36c8adf92ae384d4d7278c3376abe4174721d97b208"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/orchestration/auto-cascade/templates-overview.md": {
+      "mtime": 1753398697.0954366,
+      "size": 9868,
+      "hash": "5336f16ebe2ef8c4243989d4a9d59ff678a32df28753a698becedc65a84c8bfe"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/orchestration/auto-cascade/usage-guide.md": {
+      "mtime": 1753554728.0034635,
+      "size": 12963,
+      "hash": "971c3b88ea7f19b6a4bb4a73009444a7d4aac24deb13397978f9a24bbfebc1d2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/orchestration/auto-cascade/safety-guidelines.md": {
+      "mtime": 1753398812.5922313,
+      "size": 11841,
+      "hash": "4fe060363d7ceb060959d99e2dac6bdb0af123941bf769e8c6bd768223eb5318"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/testing/README.md": {
       "mtime": 1753554314.96462,
       "size": 4954,
@@ -587,10 +602,40 @@
       "size": 1531,
       "hash": "b47253b4d404874c7a0aa8a816d547223b8a3591ba83100818c98d7fc3df05ff"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/GENERALIST_SUPPORT_SYSTEM.md": {
+      "mtime": 1753557177.832293,
+      "size": 5172,
+      "hash": "89dad41af337f96c117adab6ce99f678b44975bc2c2f5e0d290cb2498f3ab860"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/IDENTITY_LOCK.md": {
+      "mtime": 1753555932.0702856,
+      "size": 835,
+      "hash": "23f4851ea0bc97cf7221e1ac97df6acb5d96bc6a4839ae960f1cf6e883653b6d"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/DOCUMENTATION_REQUIREMENTS.md": {
+      "mtime": 1753556906.0786812,
+      "size": 2729,
+      "hash": "b1000eb36adc353d7e7c7eaf9e928dc6789c82359e45310cdcc27a4fe0e328af"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/TEAM_RECOGNITION.md": {
+      "mtime": 1753556712.8855996,
+      "size": 1230,
+      "hash": "914ec797c47712c1892633aacf971aea88663e978d1f9bd2322e0c839da35ca7"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/PRE_EXISTING_ISSUE_ESCALATION.md": {
+      "mtime": 1753556280.775745,
+      "size": 2692,
+      "hash": "94edcebb8435fbd1541fa99f8bad35a83f21c5ae0642272bd993bfff90e1be93"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/GIT_STANDARDS.md": {
+      "mtime": 1753556108.8920424,
+      "size": 2170,
+      "hash": "f7d87860d501fbb5e70dc61bfb5cb8914b4d4c3e232aae7530cf572cf62aae36"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-5-photo-intern.md": {
-      "mtime": 1753446866.9782264,
-      "size": 25369,
-      "hash": "4e8bbc4d8c67bcc4bd52d30cb6629e67a95b9a524b38513172aca75ed79a0492"
+      "mtime": 1753557354.5287163,
+      "size": 16181,
+      "hash": "fa7a392d44ee368371c8d2764fdc09c76a229528b0b1c9992c3985f51c15dbaa"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-generalist.md": {
       "mtime": 1753309643.6426966,
@@ -598,29 +643,29 @@
       "hash": "f9f44ba9fc2ff32ea9e073db2e7dacdb534d7604a5a2934e09839a570dac9f48"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-2-implementation.md": {
-      "mtime": 1753550780.9713354,
-      "size": 21692,
-      "hash": "7c92fb3e28fdb1e962e96f4d4cb4efca574ed12519ebee75890fd44b59d9dbbd"
+      "mtime": 1753557204.5349917,
+      "size": 13564,
+      "hash": "05a89278437f6448294cbe690f3ae4f1f75383fed346c1e15df5147f3b038ccd"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-1-architect.md": {
-      "mtime": 1753549302.2872705,
-      "size": 15456,
-      "hash": "cfd692d21e27f278fec6736d382b58a923df55a41fe8e679ac74e40b88953b7b"
+      "mtime": 1753556932.9141097,
+      "size": 11741,
+      "hash": "952a12df97af7417a14d500f523aaaf9bb149be200c88fae2a94d72f7b34a8ba"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-6-data.md": {
-      "mtime": 1753393737.5168426,
-      "size": 19606,
-      "hash": "dccd650d09745a5c1b2e4ed49b0ee7aa7a79a757ac19a618058297baa77bf3b4"
+      "mtime": 1753556792.0958622,
+      "size": 17698,
+      "hash": "29d462aef860ba8c8d57e25ead8527595fee9b712d609725845ba8644272f753"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-4-documentation.md": {
-      "mtime": 1753550804.366723,
-      "size": 23367,
-      "hash": "0951efedf7e6b5721fe8bb1b89f5c9ddc7c52c12d4131618aa5d8da3e854f01f"
+      "mtime": 1753557326.0800333,
+      "size": 14792,
+      "hash": "053fc418452627ec3de6b72f5b6d5cc90f56244ab60f3077b4a53e555d34435e"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-3-qa.md": {
-      "mtime": 1753554364.7114408,
-      "size": 24050,
-      "hash": "3c362f8ecd60c527e9379cbc70330fdead16b3f74d4395f98501fbcd871d0101"
+      "mtime": 1753557244.355012,
+      "size": 16219,
+      "hash": "8639bdcfd8de0a4f0ae83f19f59d0b5d47c209abcc84c705cf1e17912acbb9a6"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/critical-mmp-documentation-understates-capabilities-2025-07-23.md": {
       "mtime": 1753311649.6879926,
@@ -932,16 +977,6 @@
       "size": 1424,
       "hash": "2a43e3faed4272090dfea423e6613db7eb6db62a4ca6a153e5b0088376f56207"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/chain-status-labeling-fix-2025-07-24-2025-07-24.yaml": {
-      "mtime": 1753387749.2979188,
-      "size": 3254,
-      "hash": "8063e46c74b5c0f945d3aa295cf0787777075a147150405e955557b2fc77ceaf"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/centralized-role-config-architecture-2025-07-24.yaml": {
-      "mtime": 1753391688.149453,
-      "size": 4477,
-      "hash": "d6090c51fc80281f7243dce24c0a218d961bd4600018927de8aa469ed18d8aae"
-    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/pilot-auto-cascade-demo-2025-07-26.yaml": {
       "mtime": 1753545530.1843734,
       "size": 4923,
@@ -952,20 +987,10 @@
       "size": 5800,
       "hash": "cfe643fc8f28043bccdbf1f5c31aec82735a72f1ebf0eb0ad66397ace59c2171"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/mail-deprecation-documentation-2025-07-24-2025-07-24.yaml": {
-      "mtime": 1753390320.6943493,
-      "size": 2911,
-      "hash": "33984ee7f53254da40044ff92f899c7d93d0b5c41dd3d846f218424cba27ff41"
-    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/auto-cascading-task-system-2025-07-24-2025-07-24.yaml": {
       "mtime": 1753545659.3324597,
       "size": 6021,
       "hash": "123d0b34bc296dce18b15e12c1f06ee7297cc36157e64f4ddf0b2d5d8c442c3c"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/test-communication-flow-2025-07-24.yaml": {
-      "mtime": 1753385092.9828322,
-      "size": 6995,
-      "hash": "c5f61d2ce07b123cbdd89de80185d57d5cb174263caf637231eccab11a123ed4"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/builder-template-typescript-standards-2025-07-25.yaml": {
       "mtime": 1753413277.1765075,
@@ -981,6 +1006,11 @@
       "mtime": 1753394073.2559013,
       "size": 4240,
       "hash": "9289aaab47020a1874ad8c0cfbb8b93280978fbb39df980165f3eb2e99d2fc00"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/quality-gate-auto-cascade.yaml": {
+      "mtime": 1753551438.619073,
+      "size": 6518,
+      "hash": "9d21af9f70926ec8ce0e17b23b0f0cf394b100abde9e9fb7a7d86f8b01920a75"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/cli-feature-template.yaml": {
       "mtime": 1753393502.961485,
@@ -1001,6 +1031,11 @@
       "mtime": 1753393517.53876,
       "size": 5332,
       "hash": "ea695d4ad2120dafeadb9516cb1a288ef857fc89193242a572ed7c0b3bd91039"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/sequential-auto-cascade.yaml": {
+      "mtime": 1753398588.1577804,
+      "size": 4399,
+      "hash": "637053e5a340454877970c91d35da8b5a9fd3a67b1ca07050f60c212c0c6310f"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/legacy-standard-feature-implementation.yaml": {
       "mtime": 1753314697.7838986,
@@ -1026,6 +1061,31 @@
       "mtime": 1753393539.8441796,
       "size": 6279,
       "hash": "8c0f6b3c3dc2c4b2389c74a2776e346a25f5fa587f43a7c957c469a0e6a20b22"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/research-implementation-auto-cascade.yaml": {
+      "mtime": 1753398651.7047417,
+      "size": 8877,
+      "hash": "f59d5435fa3b4ccbfb8d3ad9b75eaa0e5b8af98d2f1284ef983d7bb82066c0f0"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/chain-status-labeling-fix-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753554932.1568627,
+      "size": 3315,
+      "hash": "aec1f8c5eb65494a8d5040542c7061708cef073c9f82da811b82dc02d62eec46"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/centralized-role-config-architecture-2025-07-24.yaml": {
+      "mtime": 1753554946.8140943,
+      "size": 4538,
+      "hash": "b7f283bc36416d021cb49c520fd93fb917182627fb82627ed700f493cdc07f4a"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/mail-deprecation-documentation-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753554916.5926034,
+      "size": 2972,
+      "hash": "fd5dc4422a04779e4a4492de6fafec4e8c1a89726fb142d406467d3ddf21b6ae"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-communication-flow-2025-07-24.yaml": {
+      "mtime": 1753554926.106762,
+      "size": 7056,
+      "hash": "16b9b8516c832fd23558d7528164acbb103352db0b4642e2075080474f4ef9cf"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/test-hide-completed-chains.sh": {
       "mtime": 1753387522.5899389,
@@ -1068,9 +1128,9 @@
       "hash": "f41a5e266bf9cca0c73aab05df39ad4cd75f24535865554f53d9522723ec9a59"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/README.md": {
-      "mtime": 1753318444.0102801,
-      "size": 12088,
-      "hash": "f34cc62ee8e37ef4af12347c05321734bf45f9586566644f1ad65854895316ca"
+      "mtime": 1753555077.061758,
+      "size": 12527,
+      "hash": "4e07032741375c8b8460389558578666a592f7780a2da3d9c5477d72cfed52ae"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-template-roles.py": {
       "mtime": 1753388612.0789194,
@@ -1078,9 +1138,9 @@
       "hash": "f73d4a009750b2d4c28f6acdf3ca56aa5b72bef08b6d2ee2e2dc1d45faa8a507"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-phase.sh": {
-      "mtime": 1753392366.8402016,
-      "size": 17696,
-      "hash": "7608de4b88f6abf2d7a5427048e9af8f0eb89680837ed6a0ee2758f1763b85ec"
+      "mtime": 1753555041.794297,
+      "size": 18387,
+      "hash": "9de57a6b0dd403c487c91d664d9b43872db7662dfcd2ca8ca58c344e4e35923c"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-priority.sh": {
       "mtime": 1753393824.641431,
@@ -1101,36 +1161,6 @@
       "mtime": 1753292387.1628237,
       "size": 256,
       "hash": "666f21f008b1454194e0bfee4b2e4ee021618c5bc8c0d89399bfd748b56b65a0"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/quality-gate-auto-cascade.yaml": {
-      "mtime": 1753551438.619073,
-      "size": 6518,
-      "hash": "9d21af9f70926ec8ce0e17b23b0f0cf394b100abde9e9fb7a7d86f8b01920a75"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/USAGE-GUIDE.md": {
-      "mtime": 1753551426.335845,
-      "size": 12910,
-      "hash": "7f747e193767c3a74ecb936aa25686fe5f7cb15c002a8f8ba24a49ee7976a52f"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/SAFETY-GUIDELINES.md": {
-      "mtime": 1753398812.5922313,
-      "size": 11841,
-      "hash": "4fe060363d7ceb060959d99e2dac6bdb0af123941bf769e8c6bd768223eb5318"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/README.md": {
-      "mtime": 1753398697.0954366,
-      "size": 9868,
-      "hash": "5336f16ebe2ef8c4243989d4a9d59ff678a32df28753a698becedc65a84c8bfe"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/sequential-auto-cascade.yaml": {
-      "mtime": 1753398588.1577804,
-      "size": 4399,
-      "hash": "637053e5a340454877970c91d35da8b5a9fd3a67b1ca07050f60c212c0c6310f"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/auto-cascade-templates/research-implementation-auto-cascade.yaml": {
-      "mtime": 1753398651.7047417,
-      "size": 8877,
-      "hash": "f59d5435fa3b4ccbfb8d3ad9b75eaa0e5b8af98d2f1284ef983d7bb82066c0f0"
     },
     "/home/stephen/Documents/initial-media-processing/stephen/THE_CONVERSATION_THAT_CHANGED_EVERYTHING.md": {
       "mtime": 1751350241.4184272,

@@ -21,8 +21,31 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            Get Started - 5min ⏱️
           </Link>
+          <Link
+            className="button button--primary button--lg margin-left--md"
+            to="/docs/quick-start/installation">
+            Quick Start Guide
+          </Link>
+        </div>
+        <div className={styles.features}>
+          <div className={styles.feature}>
+            <span className="mmp-badge mpp-badge--photo">Photos</span>
+            <span>EXIF + GPS + AI Enhancement</span>
+          </div>
+          <div className={styles.feature}>
+            <span className="mmp-badge mpp-badge--video">Videos</span>
+            <span>Metadata + Location + Analysis</span>
+          </div>
+          <div className={styles.feature}>
+            <span className="mmp-badge mpp-badge--gps">GPS</span>
+            <span>Recreation.gov + GNIS + Landmarks</span>
+          </div>
+          <div className={styles.feature}>
+            <span className="mmp-badge mpp-badge--metadata">Heritage</span>
+            <span>Family Collections + Archives</span>
+          </div>
         </div>
       </div>
     </header>
@@ -33,8 +56,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title} - Professional Media Processing`}
+      description="Comprehensive photo and video metadata enrichment platform with GPS, landmarks, and heritage photo processing">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

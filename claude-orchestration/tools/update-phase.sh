@@ -138,10 +138,9 @@ elif action == 'complete':
     print(f"✅ Phase '{target_phase['phase_name']}' completed")
     
     # Set flag for auto-cascade processing after Python block
-    import os
-    os.environ['AUTO_CASCADE_NEEDED'] = 'true'
-    os.environ['AUTO_CASCADE_PHASE_ID'] = '$PHASE_ID'
-    os.environ['AUTO_CASCADE_EVIDENCE'] = evidence
+    with open('/tmp/auto_cascade_trigger', 'w') as f:
+        f.write('$PHASE_ID\\n')
+        f.write(evidence)
 
 elif action == 'block':
     if not evidence:
@@ -459,9 +458,12 @@ if [ "$CHAIN_STATUS" = "completed" ]; then
     "$SCRIPT_DIR/archive-chain.sh" "$CHAIN_ID"
 else
     # Handle auto-cascade if completion triggered it
-    if [ "$ACTION" = "complete" ] && [ "$AUTO_CASCADE_NEEDED" = "true" ]; then
+    if [ "$ACTION" = "complete" ] && [ -f "/tmp/auto_cascade_trigger" ]; then
         echo ""
-        echo -e "${YELLOW}🔄 Checking for auto-cascade configuration...${NC}"
+        echo -e "${YELLOW}🔄 Auto-cascade trigger detected...${NC}"
+        AUTO_CASCADE_PHASE_ID=$(head -n 1 /tmp/auto_cascade_trigger)
+        AUTO_CASCADE_EVIDENCE=$(tail -n +2 /tmp/auto_cascade_trigger)
         execute_auto_cascade "$CHAIN_FILE" "$AUTO_CASCADE_PHASE_ID" "$AUTO_CASCADE_EVIDENCE"
+        rm -f /tmp/auto_cascade_trigger
     fi
 fi

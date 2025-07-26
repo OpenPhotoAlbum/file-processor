@@ -1,15 +1,30 @@
 {
-  "totalReports": 0,
-  "periodStart": null,
-  "periodEnd": null,
-  "byCategory": {},
-  "byClaudeRole": {},
+  "totalReports": 1,
+  "periodStart": "2025-07-26T16:37:00-04:00",
+  "periodEnd": "2025-07-26T16:37:00-04:00",
+  "byCategory": {
+    "wrong-action": {
+      "count": 1,
+      "percentage": 100.0,
+      "severityBreakdown": {
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      }
+    }
+  },
+  "byClaudeRole": {
+    "claude-1-architect": {
+      "count": 1,
+      "percentage": 100.0
+    }
+  },
   "bySeverity": {
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0
   },
-  "lastUpdated": null,
-  "recentTrend": "stable",
-  "mostCommonPattern": null
+  "lastUpdated": "2025-07-26T16:37:00-04:00",
+  "recentTrend": "new_data",
+  "mostCommonPattern": "verification-failure"
 }

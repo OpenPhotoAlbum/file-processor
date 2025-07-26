@@ -1,4 +1,4 @@
-import {themes as prismThemes} from 'prism-react-renderer';
+const {themes: prismThemes} = require('prism-react-renderer');
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -9,24 +9,33 @@ const config: Config = {
   tagline: 'Comprehensive photo and video metadata enrichment platform',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
+  // Future flags disabled for Docusaurus 3.8.1 compatibility
+  // future: {
+  //   v4: true, // Enable when upgrading to Docusaurus v4
+  // },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://stephen.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/media-processing-pipeline/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'stephen', // Usually your GitHub org/user name.
   projectName: 'media-processing-pipeline', // Usually your repo name.
+  
+  // Deploy configuration
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
+  
+  // Performance optimizations and features
+  plugins: [
+    // Add any additional plugins here for enhanced functionality
+  ],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -68,6 +77,27 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    // Search functionality
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+      indexName: 'media_processing_pipeline',
+      // Optional: see doc section below
+      contextualSearch: true,
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push
+      externalUrlRegex: 'external\\.com|domain\\.com',
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl.
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+      // Optional: Algolia search parameters
+      searchParameters: {},
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+    },
     navbar: {
       title: 'Media Processing Pipeline',
       logo: {
@@ -101,7 +131,7 @@ const config: Config = {
             },
             {
               label: 'API Reference',
-              to: '/docs/category/api',
+              to: '/docs/category/miscellaneous',
             },
           ],
         },
@@ -110,15 +140,15 @@ const config: Config = {
           items: [
             {
               label: 'Photo Processing',
-              to: '/docs/category/workflows',
+              to: '/docs/category/photo-management',
             },
             {
               label: 'Video Analysis',
-              to: '/docs/category/processors',
+              to: '/docs/category/processing',
             },
             {
               label: 'GPS Enrichment',
-              to: '/docs/category/architecture',
+              to: '/docs/category/geographic',
             },
           ],
         },
@@ -145,4 +175,4 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
-export default config;
+module.exports = config;

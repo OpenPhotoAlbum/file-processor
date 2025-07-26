@@ -1,0 +1,107 @@
+id: test-cascade-simple-2025-07-26
+title: Simple Auto-Cascade Test
+status: completed
+created: '2025-07-26T16:40:00-04:00'
+updated: '2025-07-26T16:51:45.999518'
+template_id: sequential-auto-cascade
+description: Minimal test to debug auto-cascade functionality
+version: '2.0'
+auto_cascade:
+  enabled: true
+  mode: sequential
+  initiated_by: stephen
+  requires_stephen_approval: true
+  emergency_stop_enabled: true
+  identity_protocol_override: true
+  authorized_roles:
+  - claude-1
+  - claude-2
+  - claude-3
+  - claude-4
+  audit_logging: true
+  cascade_log:
+  - timestamp: '2025-07-26T16:45:27.059541'
+    phase_id: test_phase_1
+    action: checking_cascade_eligibility
+    from_role: claude-2-builder
+    to_role: none
+    safety_checks_passed: true
+  - timestamp: '2025-07-26T16:45:27.105444'
+    phase_id: test_phase_1
+    action: cascade_safety_check_failed
+    from_role: claude-2-builder
+    to_role: none
+    safety_checks_passed: true
+  - timestamp: '2025-07-26T16:45:56.298359'
+    phase_id: test_phase_1
+    action: checking_cascade_eligibility
+    from_role: claude-2-builder
+    to_role: none
+    safety_checks_passed: true
+  - timestamp: '2025-07-26T16:45:56.419535'
+    phase_id: test_phase_1
+    action: initiating_cascade
+    from_role: claude-2-builder
+    to_role: claude-4-chronicler
+    safety_checks_passed: true
+  - timestamp: '2025-07-26T16:45:56.444691'
+    phase_id: test_phase_1
+    action: cascade_executed
+    from_role: claude-2-builder
+    to_role: claude-4-chronicler
+    safety_checks_passed: true
+  safety_checks:
+  - verify_next_role_assignment
+  - confirm_phase_completion
+  - validate_evidence_provided
+  - check_emergency_stop_status
+use_cases:
+- Debug auto-cascade trigger mechanism
+variables:
+  feature_name: Auto-Cascade Debug Test
+  system_component: Task Chain Orchestra Framework
+  complexity_level: Low - Debug Test
+  priority_level: High - System Validation
+success_criteria:
+- Auto-cascade triggers on phase completion
+- Cascade log shows actual entries
+- Automatic role transition occurs
+phases:
+- phase_id: test_phase_1
+  phase_name: Test Phase 1
+  assigned_to: claude-1-architect
+  depends_on: []
+  description: Simple first phase to test cascade trigger
+  deliverable: Complete phase 1 and trigger cascade + mark this phase complete in
+    task chain
+  estimated_duration: 5 minutes
+  started: '2025-07-26T16:39:52.343777'
+  completed: '2025-07-26T16:46:07.261705'
+  status: completed
+  cascade_action:
+    enabled: true
+    next_role: claude-4-chronicler
+    summon_command: /summon 4
+    context_message: Auto-cascade triggered from Phase 1 - Phase 2 is ready
+  completion_evidence: --evidence
+- phase_id: test_phase_2
+  phase_name: Test Phase 2
+  assigned_to: claude-4-chronicler
+  depends_on:
+  - test_phase_1
+  description: Second phase to receive auto-cascade
+  deliverable: Complete phase 2 + mark this phase complete in task chain
+  estimated_duration: 5 minutes
+  started: '2025-07-26T16:51:05.361583'
+  completed: '2025-07-26T16:51:45.999518'
+  status: completed
+  cascade_action:
+    enabled: false
+    stephen_approval_required: true
+    next_role: stephen_approval_required
+  became_ready: '2025-07-26T16:46:07.261705'
+  completion_evidence: --evidence-stdin
+pending_notifications: []
+priority: HIGH
+archived: '2025-07-26T16:51:46.144005'
+archived_from: active
