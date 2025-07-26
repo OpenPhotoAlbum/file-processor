@@ -157,6 +157,14 @@ When phases are completed or started, the system automatically:
 - Handles both successful completion and blocked phase scenarios
 - Queues notifications and delivers them immediately after phase updates
 
+### Automatic Chain Archiving
+When the final phase of a chain is completed:
+- **AUTOMATICALLY archives the completed chain** from `active/` to `completed/` directory
+- Displays success message: "🎉 Chain completed! Auto-archiving..."
+- Calls `archive-chain.sh` to move files and clean up inbox entries
+- Keeps active chain list clean and focused on current work
+- **No manual archiving required** - happens immediately after completion
+
 ### Inbox Entry Formats
 
 **Phase Update Entry:**
