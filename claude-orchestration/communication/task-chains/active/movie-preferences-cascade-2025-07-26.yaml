@@ -1,8 +1,8 @@
 id: movie-preferences-cascade-2025-07-26
 title: Movie Preferences Auto-Cascade Test
-status: in_progress
+status: active
 created: '2025-07-26T16:58:00-04:00'
-updated: '2025-07-26T17:02:02.138565'
+updated: '2025-07-26T17:02:07.007632'
 template_id: sequential-auto-cascade
 description: Auto-cascade through all 6 Claude personas to write movie preferences,
   then QA validation
@@ -170,8 +170,8 @@ phases:
     phase complete in task chain
   estimated_duration: 3 minutes
   started: '2025-07-26T17:02:02.138565'
-  completed: null
-  status: in_progress
+  completed: '2025-07-26T17:02:07.007632'
+  status: completed
   cascade_action:
     enabled: true
     next_role: claude-5-curator
@@ -179,6 +179,7 @@ phases:
     context_message: Auto-cascade to Curator - please write your movie preferences
       file next
   became_ready: '2025-07-26T17:00:58.532612'
+  completion_evidence: --evidence
 - phase_id: curator_movie
   phase_name: Curator Movie Preferences
   assigned_to: claude-5-curator
@@ -191,13 +192,14 @@ phases:
   estimated_duration: 3 minutes
   started: null
   completed: null
-  status: waiting
+  status: ready
   cascade_action:
     enabled: true
     next_role: claude-6-data
     summon_command: ./claude-summon.sh 6
     context_message: Auto-cascade to Data - please write your movie preferences file
       next
+  became_ready: '2025-07-26T17:02:07.007632'
 - phase_id: data_movie
   phase_name: Data Movie Preferences
   assigned_to: claude-6-data
