@@ -198,29 +198,63 @@
   background-color: var(--ifm-color-emphasis-100);
 }
 
-/* Fix sidebar height issues - ensure sidebar is full height */
+/* CRITICAL FIX: Sidebar height issues - ensure sidebar extends to full browser height */
 .theme-doc-sidebar-container {
-  height: 100% !important;
-  min-height: calc(100vh - var(--ifm-navbar-height)) !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
 }
 
 .menu {
   height: 100% !important;
   min-height: calc(100vh - var(--ifm-navbar-height)) !important;
+  max-height: calc(100vh - var(--ifm-navbar-height)) !important;
   overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
-/* Mobile sidebar fixes */
-@media (max-width: 768px) {
+/* Additional sidebar container fixes */
+.theme-doc-sidebar {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.theme-doc-sidebar .menu {
+  flex: 1 !important;
+  min-height: 0 !important;
+}
+
+/* Desktop layout fixes */
+@media (min-width: 997px) {
   .theme-doc-sidebar-container {
-    height: 100vh !important;
-    min-height: 100vh !important;
+    height: calc(100vh - var(--ifm-navbar-height)) !important;
+    min-height: calc(100vh - var(--ifm-navbar-height)) !important;
+    max-height: calc(100vh - var(--ifm-navbar-height)) !important;
+    position: sticky !important;
+    top: var(--ifm-navbar-height) !important;
   }
   
   .menu {
+    height: 100% !important;
+    min-height: calc(100vh - var(--ifm-navbar-height)) !important;
+    max-height: calc(100vh - var(--ifm-navbar-height)) !important;
+  }
+}
+
+/* Mobile sidebar fixes */
+@media (max-width: 996px) {
+  .theme-doc-sidebar-container {
     height: 100vh !important;
     min-height: 100vh !important;
     max-height: 100vh !important;
+  }
+  
+  .menu {
+    height: calc(100vh - var(--ifm-navbar-height)) !important;
+    min-height: calc(100vh - var(--ifm-navbar-height)) !important;
+    max-height: calc(100vh - var(--ifm-navbar-height)) !important;
   }
 }
 
