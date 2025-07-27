@@ -63,7 +63,7 @@ import sys
 from datetime import datetime
 
 # Load the chain file
-with open('$CHAIN_FILE', 'r') as f:
+with open("$CHAIN_FILE", 'r') as f:
     chain = yaml.safe_load(f)
 
 # Find the target phase

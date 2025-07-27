@@ -227,13 +227,13 @@ current_phase_name = None
 for phase in chain.get('phases', []):
     if phase['status'] in ['ready', 'in_progress']:
         current_assignee = phase.get('assigned_to', 'Unassigned')
-        current_phase_name = phase.get('phase_name', phase['phase_id'])
+        current_phase_name = phase.get('name', phase.get('phase_name', phase.get('id', phase.get('phase_id', 'unknown'))))
         break
     elif phase['status'] == 'pending':
         # If no active phase, show who should start the first pending phase
         if current_assignee is None:
             current_assignee = phase.get('assigned_to', 'Unassigned')
-            current_phase_name = phase.get('phase_name', phase['phase_id'])
+            current_phase_name = phase.get('name', phase.get('phase_name', phase.get('id', phase.get('phase_id', 'unknown'))))
             break
 
 # Color-code status
@@ -254,7 +254,7 @@ else:
     status_colored = status
 
 # Make title bold and bright - red for CRITICAL priority
-title = chain.get('title', 'Untitled Chain')
+title = chain.get('name', chain.get('title', 'Untitled Chain'))
 if priority == 'CRITICAL':
     title_colored = "\033[1;91m" + title + "\033[0m"  # Bold bright red for CRITICAL
 else:
@@ -502,7 +502,7 @@ else:
     status_colored = status
 
 # Make title bold and bright - red for CRITICAL priority
-title = chain.get('title', 'Untitled Chain')
+title = chain.get('name', chain.get('title', 'Untitled Chain'))
 if priority == 'CRITICAL':
     title_colored = "\033[1;91m" + title + "\033[0m"  # Bold bright red for CRITICAL
 else:
@@ -670,7 +670,7 @@ else:
     status_colored = status
 
 # Make title bold and bright for detailed view - red for CRITICAL priority
-title = chain.get('title', 'Untitled Chain')
+title = chain.get('name', chain.get('title', 'Untitled Chain'))
 if priority == 'CRITICAL':
     title_colored = "\033[1;91m" + title + "\033[0m"  # Bold bright red for CRITICAL
 else:
@@ -812,7 +812,7 @@ print()
 # Show phases
 for i, phase in enumerate(chain.get('phases', []), 1):
     status = phase.get('status', 'unknown')
-    phase_name = phase.get('phase_name', 'Unnamed Phase')
+    phase_name = phase.get('name', phase.get('phase_name', 'Unnamed Phase'))
     assigned_to = phase.get('assigned_to', 'unassigned')
     depends_on = phase.get('depends_on', [])
     
@@ -1001,20 +1001,20 @@ for chain_file in glob.glob(os.path.join(chains_dir, "*.yaml")):
         for phase in reversed(chain.get('phases', [])):
             if phase['status'] == 'completed':
                 current_assignee = phase.get('assigned_to', 'unassigned')
-                current_phase_type = phase.get('phase_name', phase.get('phase_id', 'unknown'))
+                current_phase_type = phase.get('name', phase.get('phase_name', phase.get('id', phase.get('phase_id', 'unknown'))))
                 break
     else:
         # For active/pending chains, find who's currently responsible
         for phase in chain.get('phases', []):
             if phase['status'] in ['ready', 'in_progress']:
                 current_assignee = phase.get('assigned_to', 'unassigned')
-                current_phase_type = phase.get('phase_name', phase.get('phase_id', 'unknown'))
+                current_phase_type = phase.get('name', phase.get('phase_name', phase.get('id', phase.get('phase_id', 'unknown'))))
                 break
             elif phase['status'] == 'pending':
                 # If no active phase, show who should start the first pending phase
                 if current_assignee is None:
                     current_assignee = phase.get('assigned_to', 'unassigned')
-                    current_phase_type = phase.get('phase_name', phase.get('phase_id', 'unknown'))
+                    current_phase_type = phase.get('name', phase.get('phase_name', phase.get('id', phase.get('phase_id', 'unknown'))))
                     break
     
     if current_assignee is None:

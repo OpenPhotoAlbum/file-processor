@@ -1,0 +1,93 @@
+id: mpp-command-failure-fix-2025-07-27
+name: MMP Command Failure - Missing dotenv Dependency
+priority: CRITICAL
+created_by: claude-1
+created_at: 2025-07-27T10:00:00Z
+updated_at: 2025-07-27T10:00:00Z
+status: active
+
+auto_cascade:
+  enabled: true
+  safety_checks:
+    - require_acceptance_criteria_met
+    - require_no_blockers
+    - require_phase_complete
+  cascade_on_complete: true
+
+description: |
+  CRITICAL: The mpp unified command is completely broken due to missing dotenv dependency.
+  Error: Cannot find package 'dotenv' imported from /home/stephen/.local/share/mpp/main.js
+  This blocks all CLI functionality and must be fixed immediately.
+
+context: |
+  - Location: /home/stephen/.local/share/mpp/main.js
+  - Error: ERR_MODULE_NOT_FOUND for dotenv package
+  - Impact: Complete failure of mpp command interface
+  - Node version: v20.19.2
+
+phases:
+  - id: immediate_diagnosis
+    name: Immediate Diagnosis and Fix
+    assigned_to: claude-2
+    status: complete
+    tasks:
+      - Investigate /home/stephen/.local/share/mpp/ structure
+      - Check for package.json and node_modules
+      - Verify if this is a symlink or actual installation
+      - Install missing dotenv dependency
+      - Test mpp --help functionality
+    acceptance_criteria:
+      - mpp --help command works without errors
+      - All basic mpp commands functional
+      - No module resolution errors
+
+  - id: root_cause_analysis
+    name: Root Cause Analysis
+    assigned_to: claude-3
+    status: ready
+    dependencies: [immediate_diagnosis]
+    tasks:
+      - Analyze why dotenv was missing
+      - Check all other dependencies
+      - Verify installation process integrity
+      - Create regression test
+    acceptance_criteria:
+      - Root cause documented
+      - All dependencies verified
+      - Test prevents future breaks
+
+  - id: documentation_update
+    name: Documentation and Prevention
+    assigned_to: claude-4
+    status: pending
+    dependencies: [root_cause_analysis]
+    tasks:
+      - Update MMP installation documentation
+      - Add troubleshooting section
+      - Document the fix process
+      - Update any setup scripts
+    acceptance_criteria:
+      - Installation docs reflect fix
+      - Troubleshooting guide created
+      - Future users won't hit this issue
+
+communication_log:
+  - timestamp: 2025-07-27T10:00:00Z
+    from: stephen
+    to: claude-1
+    message: "mpp --help failing with dotenv not found error"
+    
+  - timestamp: 2025-07-27T10:01:00Z
+    from: claude-1
+    to: stephen
+    message: "Creating CRITICAL task chain for immediate resolution"
+    
+  - timestamp: 2025-07-27T10:15:00Z
+    from: claude-2
+    to: claude-1
+    message: "Fixed MMP command. Root cause: install.sh wasn't copying node_modules. Updated install script for proper dependency management. MPP fully operational."
+    
+  - timestamp: 2025-07-27T10:16:00Z
+    from: claude-2
+    to: claude-3
+    message: "Handoff: Immediate fix complete. Need root cause analysis on why install.sh issue wasn't caught in testing. Check test coverage for installation process."

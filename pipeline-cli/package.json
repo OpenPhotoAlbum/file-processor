@@ -15,6 +15,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:generate-mocks": "npm run build && ./scripts/utilities/generate-test-mocks.sh",
+    "test:installation": "npm run build && ./scripts/test-installation.sh",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "lint:check": "eslint src/**/*.ts --max-warnings 25",

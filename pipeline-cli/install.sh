@@ -85,6 +85,15 @@ fi
 echo "Installing files..."
 cp -r dist/* "$INSTALL_SHARE/"
 
+# Copy package.json for dependency tracking
+cp package.json "$INSTALL_SHARE/"
+
+# Install production dependencies in the installation directory
+echo "Installing production dependencies..."
+cd "$INSTALL_SHARE"
+npm install --production --silent
+cd "$SCRIPT_DIR"
+
 # Copy sample media for testing
 if [ -d "scratch/sample_media" ]; then
   mkdir -p "$INSTALL_SHARE/sample_media"

@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-07-26T15:17:30.237416",
-  "file_count": 372,
+  "timestamp": "2025-07-27T11:35:32.920300",
+  "file_count": 561,
   "files": {
     "/home/stephen/Documents/initial-media-processing/docker-compose.yaml": {
       "mtime": 1751312112.5912802,
@@ -13,9 +13,9 @@
       "hash": "4973c11bd5171ceb3b3d3433e339823be8f810670d14e2e87972feb8374df541"
     },
     "/home/stephen/Documents/initial-media-processing/package.json": {
-      "mtime": 1753551110.4528174,
-      "size": 2729,
-      "hash": "f0d960a39a328887834dd58586eb8fe8387ae5a87c7ea8afe7ec733d2a14782e"
+      "mtime": 1753575033.1813757,
+      "size": 3430,
+      "hash": "e0cfbfc785a164a62b96ad136b3b04fd9504f2dc756a9f685619957f3b1b58a1"
     },
     "/home/stephen/Documents/initial-media-processing/jest.config.js": {
       "mtime": 1751121903.7464273,
@@ -23,9 +23,9 @@
       "hash": "f96097803721200fe53ec067b3a2343f744460925d94b0b6d3b5fb9f9a5badd5"
     },
     "/home/stephen/Documents/initial-media-processing/README.md": {
-      "mtime": 1751121892.5062387,
-      "size": 894,
-      "hash": "da461d528e0b84af1155e1cb89c467890da3ce704abbc26d7dca3683aa5400bb"
+      "mtime": 1753574993.7856522,
+      "size": 2718,
+      "hash": "0f6ebe387bd55efbd05250510702faad914da7150a32b60cd600cea96bcdf81b"
     },
     "/home/stephen/Documents/initial-media-processing/CLAUDE.md": {
       "mtime": 1753550993.5684798,
@@ -212,20 +212,25 @@
       "size": 9413,
       "hash": "5894609911c77ca81bce04b47629815208bd31058657ce4e85774e5e9c1c57f0"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/auto-cascade-test-documentation.md": {
+      "mtime": 1753562059.7815251,
+      "size": 1837,
+      "hash": "efdf584a2899ca37a9764b779b812fb372a26562895cf74da7d1147a8fae7ab0"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/MMP-DOCUMENTATION-PRODUCTION-READINESS.md": {
       "mtime": 1753309374.251672,
       "size": 7677,
       "hash": "6ff0e47f328637616df0b2b9e1db189035406f589744e6df158702a58f12f508"
     },
     "/home/stephen/Documents/initial-media-processing/docs/README.md": {
-      "mtime": 1753280400.647782,
-      "size": 10384,
-      "hash": "712f577347385b1966b6d1fda31bc66f5998d03bca43c160b980769d7401a954"
+      "mtime": 1753558986.5175173,
+      "size": 13394,
+      "hash": "96cfac63d9639377b39635df0c1ecaeef3cb3c56a8e835ab0c3ae631cd3b59ea"
     },
     "/home/stephen/Documents/initial-media-processing/docs/REGISTRY.md": {
-      "mtime": 1753554753.7758923,
-      "size": 20676,
-      "hash": "dbfcd749e9db8b5eb42355f2ac9d3fb9696768803e0c54e37cf490201cb34150"
+      "mtime": 1753558853.870141,
+      "size": 26969,
+      "hash": "9630b1615ce80549907de59916b1bc7910cfbff7998299e7c4fb4bfb349936e8"
     },
     "/home/stephen/Documents/initial-media-processing/docs/MMP-DOCUMENTATION-VERIFICATION-COMPLETE-2025-07-23.md": {
       "mtime": 1753311709.3647525,
@@ -258,9 +263,9 @@
       "hash": "447102be880d2c8771628fc7617b894931fc2e6eae2675e15b95927a32633f4c"
     },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/database-setup.md": {
-      "mtime": 1751151243.6533504,
-      "size": 2952,
-      "hash": "ec5a4e854cf21e759ba85f81b5865c094f9c19a48a64cc7594b5def98bb2edcd"
+      "mtime": 1753560005.0285778,
+      "size": 735,
+      "hash": "ad06a54829ae368a8310d32b07b7d3a53b1fca1144cf8ff497cefaa328295296"
     },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/claude-orchestration.md": {
       "mtime": 1753389932.6947546,
@@ -288,9 +293,9 @@
       "hash": "c54dd00298b7726d6cbd2a72ec88bb396da1f64b14b72502f68d833b7f186f75"
     },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/database-schema-design.md": {
-      "mtime": 1751121903.736427,
-      "size": 27114,
-      "hash": "479a2c53e3499581906e23f2e3858e6feac9e666728763603eb297a0996a8c87"
+      "mtime": 1753559999.1954749,
+      "size": 749,
+      "hash": "fb1477d758538f9307b561f6118cc993853626f336c5fdf215729102ef26a1b9"
     },
     "/home/stephen/Documents/initial-media-processing/docs/architecture/recreation-gov-etl.md": {
       "mtime": 1751121903.7454271,
@@ -387,6 +392,116 @@
       "size": 6788,
       "hash": "3d36e92fee8a1b2a4bfdd8234d3568b45f153608c46b9beeb314f29413936ba7"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/README.md": {
+      "mtime": 1753558289.652858,
+      "size": 2021,
+      "hash": "7a995231e3a766ba63db7306319fe32a0240675df311e0ee1b32f939409962f1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/schema/design.md": {
+      "mtime": 1753558266.858433,
+      "size": 27114,
+      "hash": "479a2c53e3499581906e23f2e3858e6feac9e666728763603eb297a0996a8c87"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/schema/README.md": {
+      "mtime": 1753558298.89803,
+      "size": 1198,
+      "hash": "9b9df2d3073c56f81aca2f35e811baf3525befe252f9363c69733c5fe8d356e7"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/schema/location-normalization.md": {
+      "mtime": 1753558270.8445075,
+      "size": 5408,
+      "hash": "3737ef1e0dbd6635956bd235325da08fd40cd7f533da9d840b7f9dd2bbea2e9d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/schema/storage-architecture.md": {
+      "mtime": 1753558273.827563,
+      "size": 9216,
+      "hash": "c54dd00298b7726d6cbd2a72ec88bb396da1f64b14b72502f68d833b7f186f75"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/etl/recreation-gov.md": {
+      "mtime": 1753558277.1116242,
+      "size": 6080,
+      "hash": "82b10efa244ea3f50adf46ddaef85cf414a55810214d0f8145247ddf3a9de51a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/etl/README.md": {
+      "mtime": 1753558318.8534007,
+      "size": 1691,
+      "hash": "f01aa5d093f919707c8f5171cabde64ce2ae081ad77d318017d3615d7e4a23d2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/setup/installation.md": {
+      "mtime": 1753558260.3363113,
+      "size": 2952,
+      "hash": "ec5a4e854cf21e759ba85f81b5865c094f9c19a48a64cc7594b5def98bb2edcd"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/setup/README.md": {
+      "mtime": 1753558307.9481983,
+      "size": 1413,
+      "hash": "3b8e6452c6db1d92ef5f8dda390bd784de8a7fb0bbb15522cc2b9ec220522fd9"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/data-layer/setup/migration.md": {
+      "mtime": 1753558263.7353747,
+      "size": 12111,
+      "hash": "c736b28648a419d7d4710f4f6d17a9dade70caa8549fd3dd9ef5b3d7e95f42ee"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/README.md": {
+      "mtime": 1753558351.5340066,
+      "size": 9560,
+      "hash": "526267c0ec2bb5ce96847f65b019f5a9bcc3ff1ff56ef155b8325395df23c16c"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/protocols/README.md": {
+      "mtime": 1753558398.2768698,
+      "size": 2847,
+      "hash": "903e6ac0c44df58b4be8712403432e806b1a66e2bff12b4703a97280f4fe6f3a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/protocols/slash-commands.md": {
+      "mtime": 1753558347.5879335,
+      "size": 15419,
+      "hash": "80fb49b4578f1b5d8faf03d4b5537a5286cd08539fca9684a7b6150a9b3a2785"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/development/README.md": {
+      "mtime": 1753558415.0561786,
+      "size": 3233,
+      "hash": "dcb06d9ee7b0d349bbdbba6e1903253c9cd5e04a8aabc79876361e2d9841c669"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/development/centralized-configuration.md": {
+      "mtime": 1753558355.181074,
+      "size": 11508,
+      "hash": "cc1b865019b7d252b984813397600735c8b44b41649c806ceb8bb1deb8cf0bd3"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/development/auto-cascade/templates-overview.md": {
+      "mtime": 1753558358.5991373,
+      "size": 9868,
+      "hash": "5336f16ebe2ef8c4243989d4a9d59ff678a32df28753a698becedc65a84c8bfe"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/development/auto-cascade/usage-guide.md": {
+      "mtime": 1753558358.5991373,
+      "size": 12963,
+      "hash": "971c3b88ea7f19b6a4bb4a73009444a7d4aac24deb13397978f9a24bbfebc1d2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/development/auto-cascade/safety-guidelines.md": {
+      "mtime": 1753558358.5991373,
+      "size": 11841,
+      "hash": "4fe060363d7ceb060959d99e2dac6bdb0af123941bf769e8c6bd768223eb5318"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/claude-orchestration/roles/README.md": {
+      "mtime": 1753558382.7015824,
+      "size": 3857,
+      "hash": "a0154a1cc504285558f73e1c022de2024c1aefbca53c429ba89df7f393dd91f6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/reference/README.md": {
+      "mtime": 1753559933.2233098,
+      "size": 5738,
+      "hash": "19b99e5c879bb13474fc67bf778963e7b826f7631c31331366aabba50fe6d790"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/reference/troubleshooting.md": {
+      "mtime": 1753561124.056535,
+      "size": 8351,
+      "hash": "cb3f388371679967b850d29e48bd16d0497b76168338669a8a8553565e31980e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/reference/error-codes.md": {
+      "mtime": 1753559978.8911164,
+      "size": 7810,
+      "hash": "96cf21cea087cce3a24ab3f5e4846b3e11380544413a53eb5250576e03a50afd"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/workflows/heritage-processing.md": {
       "mtime": 1751121903.740427,
       "size": 14116,
@@ -422,6 +537,26 @@
       "size": 6802,
       "hash": "166718587d181ce5213fe44354ca923b3c9449e86ba842c37978df236955b2ff"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/workflows/scanning/README.md": {
+      "mtime": 1753561287.643419,
+      "size": 12801,
+      "hash": "002b33173a00dc044cf236ff442964a03c7c8ad2b0e2a9c8be68c9db8711386d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/workflows/organization/README.md": {
+      "mtime": 1753561223.9423702,
+      "size": 10636,
+      "hash": "c36246b75dc40438c53735bc973d3f4f415f259306170045653ab42cf686a388"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/workflows/heritage-photos/README.md": {
+      "mtime": 1753561171.2804174,
+      "size": 8558,
+      "hash": "6fd9857efa3ca88418e24b99a1cce4863b3dbf6c21f6824e50c9c24667d4961d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/mmp/README.md": {
+      "mtime": 1753559901.3507469,
+      "size": 6860,
+      "hash": "c7640183bdae827b513d0c8aaeadf048ea4a62d630633752c8b7543aed6111a9"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/cli/media-file-inspector.md": {
       "mtime": 1751300182.4735858,
       "size": 4320,
@@ -433,9 +568,9 @@
       "hash": "9695ed788258c8bf168a2d21502c6ffd25e72047cd8e6c1b820a15ea1cf08490"
     },
     "/home/stephen/Documents/initial-media-processing/docs/cli/slash-commands.md": {
-      "mtime": 1753389888.0610735,
-      "size": 15419,
-      "hash": "80fb49b4578f1b5d8faf03d4b5537a5286cd08539fca9684a7b6150a9b3a2785"
+      "mtime": 1753560011.1496859,
+      "size": 810,
+      "hash": "36e3a9b03bd9d08b833d25250cdc6f6a2d105d14fc5ee90d2ed15af694f171f5"
     },
     "/home/stephen/Documents/initial-media-processing/docs/deployment/getting-started.md": {
       "mtime": 1752808101.8698595,
@@ -461,6 +596,26 @@
       "mtime": 1751121903.740427,
       "size": 6080,
       "hash": "3e72e319bddc040e8045e36c8adf92ae384d4d7278c3376abe4174721d97b208"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/pipeline-cli/README.md": {
+      "mtime": 1753559863.4450772,
+      "size": 8233,
+      "hash": "cbc7a5582cab8873be4d765c7acf7f988e46b857f153d1f9f50ee9c8202120f1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/quick-start/installation.md": {
+      "mtime": 1753558468.0841525,
+      "size": 3678,
+      "hash": "bcb529dbbfbfb0e5527b3094006f9a0e3d148cf5f0d8a4f30e6702afeacfe154"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/quick-start/README.md": {
+      "mtime": 1753558446.7567613,
+      "size": 3670,
+      "hash": "6cf9a432d0b080c4ed221663810ff02b9f35d8197d8190476676a4e20c1d92dd"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/quick-start/first-photos.md": {
+      "mtime": 1753558503.129794,
+      "size": 5585,
+      "hash": "ae55f83181f1c9c8b1d176b7c8fedc38a382dfa0d49d69455756addd87399b73"
     },
     "/home/stephen/Documents/initial-media-processing/docs/orchestration/auto-cascade/templates-overview.md": {
       "mtime": 1753398697.0954366,
@@ -977,20 +1132,10 @@
       "size": 1424,
       "hash": "2a43e3faed4272090dfea423e6613db7eb6db62a4ca6a153e5b0088376f56207"
     },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/pilot-auto-cascade-demo-2025-07-26.yaml": {
-      "mtime": 1753545530.1843734,
-      "size": 4923,
-      "hash": "15a310150a1543c6a319247948f1e0bfeef363cda1dcf1993b481d9da0eee04b"
-    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/universal-file-locking-system-2025-07-24-2025-07-24.yaml": {
       "mtime": 1753392390.3159409,
       "size": 5800,
       "hash": "cfe643fc8f28043bccdbf1f5c31aec82735a72f1ebf0eb0ad66397ace59c2171"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/auto-cascading-task-system-2025-07-24-2025-07-24.yaml": {
-      "mtime": 1753545659.3324597,
-      "size": 6021,
-      "hash": "123d0b34bc296dce18b15e12c1f06ee7297cc36157e64f4ddf0b2d5d8c442c3c"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/builder-template-typescript-standards-2025-07-25.yaml": {
       "mtime": 1753413277.1765075,
@@ -1001,11 +1146,6 @@
       "mtime": 1753393623.1647348,
       "size": 1880,
       "hash": "f987ea06d77640ac7b35144386bf41367a1be360a76a15775170ecff7f5e46a3"
-    },
-    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/interactive-doc-search-2025-07-24-2025-07-24.yaml": {
-      "mtime": 1753394073.2559013,
-      "size": 4240,
-      "hash": "9289aaab47020a1874ad8c0cfbb8b93280978fbb39df980165f3eb2e99d2fc00"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/templates/quality-gate-auto-cascade.yaml": {
       "mtime": 1753551438.619073,
@@ -1072,20 +1212,70 @@
       "size": 3315,
       "hash": "aec1f8c5eb65494a8d5040542c7061708cef073c9f82da811b82dc02d62eec46"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-auto-cascade-full-2025-07-26.yaml": {
+      "mtime": 1753563220.7007072,
+      "size": 2674,
+      "hash": "a28c1f897b14a1843662bcee263cfd6df67c522ac83408ef63fee2a2bde38a39"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/centralized-role-config-architecture-2025-07-24.yaml": {
       "mtime": 1753554946.8140943,
       "size": 4538,
       "hash": "b7f283bc36416d021cb49c520fd93fb917182627fb82627ed700f493cdc07f4a"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/pilot-auto-cascade-demo-2025-07-26.yaml": {
+      "mtime": 1753545530.1843734,
+      "size": 4923,
+      "hash": "15a310150a1543c6a319247948f1e0bfeef363cda1dcf1993b481d9da0eee04b"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/movie-preferences-cascade-2025-07-26.yaml": {
+      "mtime": 1753563875.1723013,
+      "size": 10219,
+      "hash": "7806fa24bbb40d8bd55c0ef2c1f45679bfd311e11f88e97d31d627f48f27d7f4"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-cascade-final-2025-07-26.yaml": {
+      "mtime": 1753563390.6066816,
+      "size": 3647,
+      "hash": "1bd6e87463adf17927c24a7a210b53c6a50ce22d2ecdd9955244a4d015634405"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/mail-deprecation-documentation-2025-07-24-2025-07-24.yaml": {
       "mtime": 1753554916.5926034,
       "size": 2972,
       "hash": "fd5dc4422a04779e4a4492de6fafec4e8c1a89726fb142d406467d3ddf21b6ae"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-auto-cascade-demo-2025-07-26.yaml": {
+      "mtime": 1753562166.8148127,
+      "size": 4089,
+      "hash": "dd151db2b2d45558e16f1321eca992be583a05ad0c0ab968f97b91f27bdaf5d1"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/auto-cascading-task-system-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753561995.4847822,
+      "size": 6171,
+      "hash": "94acf51381865f2713779d7df2a045e8e6f25cc93237d8179d96f9d67d9a0f6c"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/documentation-static-website-implementation-2025-07-26.yaml": {
+      "mtime": 1753575387.3378344,
+      "size": 9355,
+      "hash": "6c20558913490576562e6275fd3563fa8cf6083c9e17f0ca7631c0904a005890"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-communication-flow-2025-07-24.yaml": {
       "mtime": 1753554926.106762,
       "size": 7056,
       "hash": "16b9b8516c832fd23558d7528164acbb103352db0b4642e2075080474f4ef9cf"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-cascade-simple-2025-07-26.yaml": {
+      "mtime": 1753563106.1445441,
+      "size": 3322,
+      "hash": "16513d06f5e616f30dea28568e3459b0da7b2bb2bd6869a9f37711135b85083f"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/interactive-doc-search-2025-07-24-2025-07-24.yaml": {
+      "mtime": 1753394073.2559013,
+      "size": 4240,
+      "hash": "9289aaab47020a1874ad8c0cfbb8b93280978fbb39df980165f3eb2e99d2fc00"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/claude-summon.sh": {
+      "mtime": 1753563341.3823063,
+      "size": 2682,
+      "hash": "b3a70765ac32f95c426bdda2b81bf200152274c6c9336fe2ce84e2b724e86326"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/test-hide-completed-chains.sh": {
       "mtime": 1753387522.5899389,
@@ -1123,9 +1313,9 @@
       "hash": "32d2a1c6a0bd37230b3789b565efc1a4d7ebbe50491771ff34308b25ea6e8f9a"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/auto-cascade-functions.sh": {
-      "mtime": 1753391651.8149436,
-      "size": 5145,
-      "hash": "f41a5e266bf9cca0c73aab05df39ad4cd75f24535865554f53d9522723ec9a59"
+      "mtime": 1753563167.8190126,
+      "size": 5566,
+      "hash": "15bb54687d394a1e517687c6bec2a4700c5059dbf325086d7230fbcd63d5fbc9"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/README.md": {
       "mtime": 1753555077.061758,
@@ -1138,9 +1328,9 @@
       "hash": "f73d4a009750b2d4c28f6acdf3ca56aa5b72bef08b6d2ee2e2dc1d45faa8a507"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-phase.sh": {
-      "mtime": 1753555041.794297,
-      "size": 18387,
-      "hash": "9de57a6b0dd403c487c91d664d9b43872db7662dfcd2ca8ca58c344e4e35923c"
+      "mtime": 1753563210.9223998,
+      "size": 18501,
+      "hash": "55e29391cc971a4936b169f3ffd29e23780693a7839a7235bdced6dd6861d710"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-priority.sh": {
       "mtime": 1753393824.641431,
@@ -1158,9 +1348,14 @@
       "hash": "cc9b2b0e540a095062a4914b63083583cde4000ceb417056aba644790089c6b2"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/feedback/data/statistics.json": {
-      "mtime": 1753292387.1628237,
-      "size": 256,
-      "hash": "666f21f008b1454194e0bfee4b2e4ee021618c5bc8c0d89399bfd748b56b65a0"
+      "mtime": 1753562323.4257877,
+      "size": 596,
+      "hash": "16b32622e781b55e79f75fa5f8c2d5cc057dd63f6ee6034cd54cefdfbbe9d0a6"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/feedback/misunderstandings/2025-07-26T16-37-00-wrong-action.md": {
+      "mtime": 1753562297.4404535,
+      "size": 1608,
+      "hash": "b96f118608a5e8052b79b0d606a4d66b76015b1dfc8928d62113d4109f5fe05a"
     },
     "/home/stephen/Documents/initial-media-processing/stephen/THE_CONVERSATION_THAT_CHANGED_EVERYTHING.md": {
       "mtime": 1751350241.4184272,
@@ -1221,6 +1416,756 @@
       "mtime": 1753246661.311479,
       "size": 9668,
       "hash": "c1b76d31b5f2645451608855097a2034881abb361bdddaa49a559ebeaf058e66"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/INTEGRATION.md": {
+      "mtime": 1753575107.9197447,
+      "size": 10084,
+      "hash": "cde3dbd3872a79c2e07e77247a3166b3e52f2f442079bbf2435329d873ad63cc"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/tsconfig.json": {
+      "mtime": 1753565611.9889197,
+      "size": 215,
+      "hash": "3bd04d9513e33e26951d6dbf6e84a131b9939e1d19da4d0a40ee8095ff453156"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/generate-sidebar.js": {
+      "mtime": 1753566351.1310453,
+      "size": 4244,
+      "hash": "e0bca64e96ada157736703e4a0d4570bda07d733b0d1378e428ef4666e9a3905"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docusaurus.config.ts": {
+      "mtime": 1753573778.589719,
+      "size": 5283,
+      "hash": "7a61df96e18865ca7c2237ef5185130c09b8b7522b9c988b060ff257566d4f72"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/package.json": {
+      "mtime": 1753573276.763065,
+      "size": 1360,
+      "hash": "1c6fb697e54ba29b9ce8a944cfc3059f4e0f3e0284b373de8130c1ec10b47631"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/migrate-content.js": {
+      "mtime": 1753566318.2875502,
+      "size": 11285,
+      "hash": "2b86858b8ab1921eb8b8149daa7432709a52755b74baa978e383a2df2a0a463d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/README.md": {
+      "mtime": 1753574908.777087,
+      "size": 8869,
+      "hash": "067bb5e682763934cfa0ca06520601ddb07d44c2ae9a91484966195b5584a3f5"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/PHASE_1_COMPLETION.md": {
+      "mtime": 1753565986.7797287,
+      "size": 5178,
+      "hash": "6645a2a730df1a2f818b35a7fe75262d01a4d8946fd6563b852a4ab9c389a6d1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/DEPLOYMENT.md": {
+      "mtime": 1753574960.3910382,
+      "size": 8314,
+      "hash": "36f40c17d5a13b024aa65a4ff86313e08726f8ad5ee06e9c262bcd5563ea1b51"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/fix-migration.js": {
+      "mtime": 1753566398.072757,
+      "size": 8348,
+      "hash": "5b1ce37975c67c22f0827377cd02ae22df246bc1393faf273670fc9592ade85d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/final-mdx-fix.js": {
+      "mtime": 1753566536.4168794,
+      "size": 2904,
+      "hash": "d0ca936d20f3ed0400711bb26746fd54bfc3ffd5ac546647b4aae3c8b57864c1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/SIDEBAR_HEIGHT_FIX_VERIFICATION.md": {
+      "mtime": 1753577919.6202388,
+      "size": 3979,
+      "hash": "b520ba646828f97b445bea27ab02884fe3408c316511eba178081851793aaeac"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/fix-performance-metrics.js": {
+      "mtime": 1753566492.4852018,
+      "size": 1063,
+      "hash": "317a1a6ae525842c857b72a4f2893f476d44c4309a895aaf8302ff4d5ccb0d92"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/eslint.config.js": {
+      "mtime": 1753565756.6456628,
+      "size": 2401,
+      "hash": "8a84f3e79dffde83ec5dc0fb570f910e112bc018f67ec3d3caddb49f2469a214"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/sidebars.ts": {
+      "mtime": 1753566406.6798882,
+      "size": 6252,
+      "hash": "ef13e4dc78d380af7b83d2736e726be89c1c604ed4dee81569fc66fed2d68d52"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/fix-mdx-issues.js": {
+      "mtime": 1753566444.6224675,
+      "size": 3018,
+      "hash": "8f9d4eb7b23e8dcc91a2327da44cbc0b56b3feb918a8d3a0a44182c3ac778523"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/static/img/favicon.ico": {
+      "mtime": 1753565611.9879198,
+      "size": 3626,
+      "hash": "7fe55819f14792d942d86092f519b6d425e995337b482a8743e363cf5ac0ae30"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/static/img/undraw_docusaurus_tree.svg": {
+      "mtime": 1753565611.9879198,
+      "size": 11887,
+      "hash": "09704d88ef849647bf2ee02a4cb1b1b413f000de059a8d794019238ef2c5e4a7"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/static/img/undraw_docusaurus_react.svg": {
+      "mtime": 1753565611.9879198,
+      "size": 36002,
+      "hash": "1f2c1d7bcdd4219c9869d94b45c052e2856464e91c3e0704d99b4714d32cc668"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/static/img/undraw_docusaurus_mountain.svg": {
+      "mtime": 1753565611.9879198,
+      "size": 31486,
+      "hash": "5d63a81ff3dd5ea266e99156f8e33f76cc02df0f04e1a4487240663704660b7f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/static/img/logo.svg": {
+      "mtime": 1753565611.9879198,
+      "size": 6438,
+      "hash": "c2ae4b0e5603791e869ed5bc34a60a709d1ec6343fc22f75d97937aaafafd7f7"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/intro.md": {
+      "mtime": 1753565869.0511224,
+      "size": 2910,
+      "hash": "c1fb1a1ee8475e2a69764e133222fe4cbe7d43f2f22a0edaee5f3a32b915f2e6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/file-structure-analysis.md": {
+      "mtime": 1753566322.863619,
+      "size": 6288,
+      "hash": "a5c9f829bc5c0b32a864977b1063cf31d6a9d7ba3c8e220736ceaf592a4d9047"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/recreation-integration.md": {
+      "mtime": 1753566322.865619,
+      "size": 8427,
+      "hash": "9660ac481ca770570f09fc1eb3e775f1f9b8f2940b84218e1e69b619ec82913e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/filesystem-service.md": {
+      "mtime": 1753566322.864619,
+      "size": 12246,
+      "hash": "aad79c4c8dc78764f78e713e067e80761d1747dbdbfcb26f29cf5a5deaacd03a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/logging-system.md": {
+      "mtime": 1753566541.945965,
+      "size": 7711,
+      "hash": "6baabd0c01ce3240a786af1e95bd5f07f04950941c161cba56d11a6a845cb609"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 130,
+      "hash": "8f13e366018f936aadfacc97dc8baad7cc3d3b3f6b0d37498157b88a60e252f4"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/error-system.md": {
+      "mtime": 1753566541.945965,
+      "size": 9856,
+      "hash": "0b7b58456cd3084fc6b84c445df50ab44ba785cec9e8d325fa3dac04377c4867"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/timezone-handling.md": {
+      "mtime": 1753566322.865619,
+      "size": 3096,
+      "hash": "582c8fe24aacaafacfbe89d4ac589e134c9bda96f4d093f054ae77533a9c5ddf"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/architecture/path-system.md": {
+      "mtime": 1753566322.865619,
+      "size": 5326,
+      "hash": "5159fdaf210afcd98e77aea39ea086214abfb467c9deda1db209e7fec2617ffe"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/future/_category_.json": {
+      "mtime": 1753566322.8606188,
+      "size": 120,
+      "hash": "627c0345e1e9b00192cc5a2c0a8757b3ff06da5b38d6d5d14d9ae020d18b3b79"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/auto-cascade-test-documentation.md": {
+      "mtime": 1753566322.868619,
+      "size": 1962,
+      "hash": "66bde321ac621627864a127d1a1b68b11086af938e97358e7c67e4f524f58434"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/_category_.json": {
+      "mtime": 1753566322.8606188,
+      "size": 122,
+      "hash": "046092aa9f96afa3340a3a35c56893ea33cf5a1de61b7c5224cec69fb09fd21a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/testing-overview.md": {
+      "mtime": 1753566630.657343,
+      "size": 5042,
+      "hash": "ba55b03a4df3469c6b0ebd3aba8a5bbec336d2da09c523ce422ec300dbde8070"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/architecture/database-migration-strategy.md": {
+      "mtime": 1753566541.948965,
+      "size": 12234,
+      "hash": "74b1378d189346065aa3890899bb1bc6f6398d9e8cf366e10e7123e4335cb614"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/migration/mail-to-chain-status-migration.md": {
+      "mtime": 1753566322.868619,
+      "size": 9598,
+      "hash": "39d855dae4d16e37ef101264b7f6c47391b950e9a71b0e4b65ae2be1df3cf498"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/data-layer/setup/migration.md": {
+      "mtime": 1753566541.948965,
+      "size": 12216,
+      "hash": "d3e616e8a289b91724438c3af3ff65119cf564c9a82c126d1c28fc664b117ed8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/deployment/getting-started.md": {
+      "mtime": 1753566541.948965,
+      "size": 7755,
+      "hash": "12439ea7c32793506f2b47598eb105bf609e9b78fe12686ea28096a0250e3471"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/deployment/nas-migration-plan.md": {
+      "mtime": 1753566322.868619,
+      "size": 8665,
+      "hash": "f3f94124455517b05e178a3521a5409533a24e45c0fda9210105097cd3e6a313"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/deployment/hardware-specs.md": {
+      "mtime": 1753566322.868619,
+      "size": 4919,
+      "hash": "8217d7005c8d79fc99383b0a156b7873327466440c195807cd5a96a05275e43c"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/deployment/README.md": {
+      "mtime": 1753566322.868619,
+      "size": 5204,
+      "hash": "4dcd46381a771d0637d8496b8912ba3be2b892917c5d444786b8b08d80ae3305"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/deployment/linting.md": {
+      "mtime": 1753566541.949965,
+      "size": 6169,
+      "hash": "59a0f35a49b3aab31c5c6c88773e15b7f5fd0b5b7e2694b22fb88db91164145f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/testing/sample-coverage-report.md": {
+      "mtime": 1753566498.4962945,
+      "size": 8177,
+      "hash": "d6ea3ccf2279a748c2f80c5a198b0938d181839eec1b8f0c4c05d4b781f18702"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/testing/reports/auto-cascade-safety-validation-2025-07-24.md": {
+      "mtime": 1753566498.4962945,
+      "size": 11117,
+      "hash": "5530c5c18c2fc3cb59b30eecba490ff3a3a366dd33487a8d1e161dc28e8f0dca"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/development/testing/reports/centralized-role-config-validation-2025-07-24.md": {
+      "mtime": 1753566322.868619,
+      "size": 4996,
+      "hash": "bf3629812ef9c2bc3f68e9bb998d6479f851b7be5bbb3e372b5adac7dd5fd159"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/MMP-DOCUMENTATION-PRODUCTION-READINESS.md": {
+      "mtime": 1753566322.863619,
+      "size": 7821,
+      "hash": "be1081903deb83d12ea32b1a1c875a59e57543b0d69eb75567c44f562a4c4d56"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/README.md": {
+      "mtime": 1753566322.864619,
+      "size": 13503,
+      "hash": "c74c342cf1f668f0efce49a5586210e05520e9f23a2538ed63e47a39d7d53cf8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/REGISTRY.md": {
+      "mtime": 1753566322.864619,
+      "size": 27080,
+      "hash": "a21cf315b74b3bf687ab77da545ae45a6b58b7748f054672abb2280c7a282135"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/MMP-DOCUMENTATION-VERIFICATION-COMPLETE-2025-07-23.md": {
+      "mtime": 1753566322.864619,
+      "size": 4638,
+      "hash": "e045235623ed65baac2d655a1aea5de8acc6f689400967d800afa741cb567f5a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/DOCUMENTATION-UPDATE-PROTOCOL.md": {
+      "mtime": 1753566322.863619,
+      "size": 9622,
+      "hash": "50525cb276471424ca714adaac31992d43aae3ae003dbe44bb80101dbb9172ef"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/architecture/README.md": {
+      "mtime": 1753566322.864619,
+      "size": 5293,
+      "hash": "20ed96e5998597d5f52df286da4b5cd858c38b6b79dd1f38f435bd5af87d92ea"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/api/README.md": {
+      "mtime": 1753566322.864619,
+      "size": 1518,
+      "hash": "344eb03c68a9e365b347b189fd72a18c0082adabf7f159656887ec928406467f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/data-layer/README.md": {
+      "mtime": 1753566322.866619,
+      "size": 2107,
+      "hash": "d010e20566cf518bd577a61960eab2ea9e361d84d1482a4a9257cc05d8cbc7c6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/data-layer/schema/README.md": {
+      "mtime": 1753566322.866619,
+      "size": 1289,
+      "hash": "d51e5d09cb0fc698aba3657bf0039eb34b0787864af0e1c82a01958e5c0e3a9a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/data-layer/etl/README.md": {
+      "mtime": 1753566322.866619,
+      "size": 1779,
+      "hash": "b957bd7a51ae5d182cdee258ac358b4ca249835ee82f0e0f726ec39ed8fb7d03"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/data-layer/setup/README.md": {
+      "mtime": 1753566322.866619,
+      "size": 1502,
+      "hash": "c50a51806ec0af54c8a30e8030c939e700030b4907024ed032dc72509c766431"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/README.md": {
+      "mtime": 1753566322.865619,
+      "size": 9649,
+      "hash": "c687a233c4d9098188759572185294562a1afdb113d444fa60bfe29025ce691b"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/protocols/README.md": {
+      "mtime": 1753566322.866619,
+      "size": 2939,
+      "hash": "4ac49993e880ecbdabd9748fc013da37fe2190e748d9405f1037c378d700fbb2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/protocols/slash-commands.md": {
+      "mtime": 1753566322.866619,
+      "size": 15510,
+      "hash": "fb42fa2428b94494173361ffe4514af0fe030ae9fe8bb05ad51e5595d3fb90ae"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/development/README.md": {
+      "mtime": 1753566322.865619,
+      "size": 3327,
+      "hash": "6e2fc10bd09a3923c2812cfcb36015beb0777a89949d44fab586ba33fb22a4dc"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/development/centralized-configuration.md": {
+      "mtime": 1753566322.865619,
+      "size": 11632,
+      "hash": "c2d192fae1a9a7abd7b65bf1673dfac927687793765a952cf077dbe26c0dc9f5"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/development/auto-cascade/templates-overview.md": {
+      "mtime": 1753566322.865619,
+      "size": 9971,
+      "hash": "23f5f8daae0a42747c713be0f7aedb5a8511ffc43ed5c0a6fa8cdcda049cf6d1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/development/auto-cascade/usage-guide.md": {
+      "mtime": 1753566322.865619,
+      "size": 13063,
+      "hash": "112d87fedadbf46c7aa792ecff55956edefee88355da7ecc5ecae150cd5b6aca"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/development/auto-cascade/safety-guidelines.md": {
+      "mtime": 1753566322.865619,
+      "size": 11944,
+      "hash": "4efe4ef87cc15e1ebb067ad2d24c7afe577d3be72a486133950bf8bd90717049"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/claude-orchestration/roles/README.md": {
+      "mtime": 1753566322.866619,
+      "size": 3944,
+      "hash": "e7ff0f4700d3775208be549933cdf88252baa3bf720023187dcb265259d3e83d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/reference/README.md": {
+      "mtime": 1753566541.951965,
+      "size": 5836,
+      "hash": "1705c225e580b89e7e4e93b96ad8ad44b6ddbcd2a616a59af47284255db8a5f5"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/reference/troubleshooting.md": {
+      "mtime": 1753566322.867619,
+      "size": 8443,
+      "hash": "cb6efd67abfa2de345f89c19628ab243001cf800997de622955cde275b8310f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/reference/error-codes.md": {
+      "mtime": 1753566322.867619,
+      "size": 7901,
+      "hash": "d28e99d8aadee4e454bce940bc4a78c82b225479aba06377813e7f2915c7c81e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/workflows/README.md": {
+      "mtime": 1753566322.867619,
+      "size": 3141,
+      "hash": "f4f3888f04966ed1333c44407ae549a3fe9370e0fbddbc78a81147ceba18d07c"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/orchestration/auto-cascade/templates-overview.md": {
+      "mtime": 1753566322.866619,
+      "size": 9971,
+      "hash": "23f5f8daae0a42747c713be0f7aedb5a8511ffc43ed5c0a6fa8cdcda049cf6d1"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/orchestration/auto-cascade/usage-guide.md": {
+      "mtime": 1753566322.866619,
+      "size": 13063,
+      "hash": "112d87fedadbf46c7aa792ecff55956edefee88355da7ecc5ecae150cd5b6aca"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/miscellaneous/orchestration/auto-cascade/safety-guidelines.md": {
+      "mtime": 1753566322.866619,
+      "size": 11944,
+      "hash": "4efe4ef87cc15e1ebb067ad2d24c7afe577d3be72a486133950bf8bd90717049"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-extras/manage-docs-versions.md": {
+      "mtime": 1753565611.9869196,
+      "size": 1232,
+      "hash": "033e94d64c0a787487717f19e3529387ef6dfd73ba812b99f738eb460857b83d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-extras/_category_.json": {
+      "mtime": 1753565611.9869196,
+      "size": 99,
+      "hash": "5fce0a0f8e0b3fb784178b5cc047c365d2ca61dd7d685e34d880acbefe8eb321"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-extras/translate-your-site.md": {
+      "mtime": 1753565611.9869196,
+      "size": 1587,
+      "hash": "cf5fd7e45096b92231319d8e296822b593c04bb9a85e70dbaefdcd531c4abaa3"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/accomplishments/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 111,
+      "hash": "6fef3abcec8838742c4439f0f33cacb62e466f6fd4a15cb8cc518da4977482fd"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/accomplishments/accomplishments/google-takeout-completion-summary.md": {
+      "mtime": 1753566322.867619,
+      "size": 6884,
+      "hash": "ea9018da459a952d1512a2c7b4cb3173392282c103964b1b3aad0a6429663e9b"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/accomplishments/accomplishments/enrichment-results-final.md": {
+      "mtime": 1753566541.944965,
+      "size": 5108,
+      "hash": "708a79b7063a7795b2b5e235bcf05867cd7ffaf7b131e4b522590945f19a84d8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/accomplishments/accomplishments/phase-completion-overview.md": {
+      "mtime": 1753566322.868619,
+      "size": 7821,
+      "hash": "7e8112c17a63f75dbbb5618c08bb42fd74f7c49f6aa28d0c2598634108ac0630"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/accomplishments/accomplishments/json-deduplication-complete.md": {
+      "mtime": 1753566322.867619,
+      "size": 6915,
+      "hash": "7d0a617f5eee67f13ff7c1305b1c225afedd80414dc603246b9335bb61efc4ee"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/scanning/scanning-overview.md": {
+      "mtime": 1753566322.867619,
+      "size": 12895,
+      "hash": "e610cf3d49fe38566b5537c6150c068f19775184d33b969e00262b7d07a59e83"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/scanning/_category_.json": {
+      "mtime": 1753566322.8606188,
+      "size": 120,
+      "hash": "5f64f129d4c7ff71bb73c5181449c8b5bf800c063aacf4feb254fb726b9efc27"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/scanning/scanning-workflow.md": {
+      "mtime": 1753566541.952965,
+      "size": 6902,
+      "hash": "453313adef34e938717f32df936af29eb2f5d1d3098d2afeb2fb69cbe63e8f46"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/scanning/duplicate-detection-system.md": {
+      "mtime": 1753566322.864619,
+      "size": 8774,
+      "hash": "c3856becbee85488322f6a3bc36add5f632d25a233ab738600aad81a536507d7"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 120,
+      "hash": "bbefde81bbb8fd27e54d0ac85d9b073dbb489247bb107b90d8aa245e72344c35"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/design.md": {
+      "mtime": 1753566541.9479651,
+      "size": 27230,
+      "hash": "e6a4a725efd877e2cd53032f768d29a02f01dd39d6dbcae729127630fb49a112"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/metadata-storage.md": {
+      "mtime": 1753566322.865619,
+      "size": 9330,
+      "hash": "ff13f6998f78516059d4b760dcf256a11af4523efac4f333c08bb01c812e22b6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/normalized-location.md": {
+      "mtime": 1753566322.865619,
+      "size": 5528,
+      "hash": "29805b63f0cf7dbc0dbd64ced799cdefb83294664c32fa573bbd2d6834cea76f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/legacy-design.md": {
+      "mtime": 1753566322.864619,
+      "size": 851,
+      "hash": "0487906fd1fe2a6872fb9dd86452c15b3989ccf61a70eb2ee38b88ab5062f979"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/location-normalization.md": {
+      "mtime": 1753566322.866619,
+      "size": 5518,
+      "hash": "f1f33697ed33d9bd37f574de3ec3d40cac76929ca4cf24ce3d66f058c261aa71"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/_category_.json": {
+      "mtime": 1753566402.3388221,
+      "size": 57,
+      "hash": "025ffee874f42b6d640e9b03a36f8513849a99e5c861c8ec3a962c450b914c30"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/schema/storage-architecture.md": {
+      "mtime": 1753566322.866619,
+      "size": 9321,
+      "hash": "6638706ad58295396d8fb1375b5b0a8897f7ff080091bbbadee830181e4e9ce2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/etl/recreation-gov.md": {
+      "mtime": 1753566322.866619,
+      "size": 6177,
+      "hash": "3258b509e1231300cd4a5642e1ba804233bfa22529ec81e38bb8d2c9f23c1401"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/etl/_category_.json": {
+      "mtime": 1753566402.3388221,
+      "size": 57,
+      "hash": "025ffee874f42b6d640e9b03a36f8513849a99e5c861c8ec3a962c450b914c30"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/etl/recreation-gov-legacy.md": {
+      "mtime": 1753566322.865619,
+      "size": 6181,
+      "hash": "6167f8c5c5db9d434ddb80a5dafbdc7169ae09953b30cbc5e7cc6414944e267f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/setup/installation.md": {
+      "mtime": 1753566322.866619,
+      "size": 3040,
+      "hash": "c9f40e1137e24df63c03fe5d93b1e48e597fc351902b73ae56d52a94f93ea75c"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/setup/legacy-setup.md": {
+      "mtime": 1753566322.864619,
+      "size": 829,
+      "hash": "1b25e9c9fb9220159b4f6f67f20b5e70dd4888f88812727dbbab3a75559750bf"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/data-layer/setup/_category_.json": {
+      "mtime": 1753566402.3388221,
+      "size": 57,
+      "hash": "025ffee874f42b6d640e9b03a36f8513849a99e5c861c8ec3a962c450b914c30"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/claude-orchestration/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 122,
+      "hash": "fe80edef43cf221264c0230f2faa6cfc5f7e8f3696db9e0fecc0e3d413cff806"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/claude-orchestration/overview.md": {
+      "mtime": 1753566322.862619,
+      "size": 9663,
+      "hash": "757f1cdef513ddc1c24c12c4efd1bdc88ffbe6d2e6a80c55451a50e27709ef41"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/claude-orchestration/protocols/slash-commands.md": {
+      "mtime": 1753566322.862619,
+      "size": 904,
+      "hash": "9cb4dd417c90a8cd089dc270e81cbb9aa392feb599b5daddfc5bb1d6fe9e1709"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/claude-orchestration/development/centralized-configuration.md": {
+      "mtime": 1753566322.862619,
+      "size": 11637,
+      "hash": "0959d2391c6fb1d115e9c20234d59b52a8bd84e87ee6af184a1bf50993055496"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/create-a-document.md": {
+      "mtime": 1753565611.9869196,
+      "size": 1042,
+      "hash": "089c0ff3d7df059272c1f6f135b03c4c686599e868024d4b7721abe0578aed3e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/congratulations.md": {
+      "mtime": 1753565611.9869196,
+      "size": 1078,
+      "hash": "cc96dcc0a355606a4b00624eededdc4dda6d1616fa9bf354cd80d4e62e8c5a07"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/create-a-page.md": {
+      "mtime": 1753566541.952965,
+      "size": 1019,
+      "hash": "3fbb1c40d046edeeb12c238e4b61d40f0e6a82ea1e79321ee9ec504f0702d5d9"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/deploy-your-site.md": {
+      "mtime": 1753565611.9869196,
+      "size": 702,
+      "hash": "9cbd82b46bb89decdee2958cb0c8f8afc4a95a226888d5da44d185df91902652"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/create-a-blog-post.md": {
+      "mtime": 1753565611.9869196,
+      "size": 886,
+      "hash": "14d93e0f77a2326a1ceec75529acd789b8ec2a5efee9beb92ae1189063b07189"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/_category_.json": {
+      "mtime": 1753565611.9879198,
+      "size": 180,
+      "hash": "a90547675a740b11e0e466f80983715127aa6772d5a389d737f374c94315a433"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/tutorial-basics/markdown-features.mdx": {
+      "mtime": 1753565611.9879198,
+      "size": 3006,
+      "hash": "090fd8edc7f75b47c93c29f5fef3bfbfb4beeb998080ba8bd7cd2e8dd11cb95e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/processing/metadata-merge-strategy.md": {
+      "mtime": 1753566322.865619,
+      "size": 8270,
+      "hash": "91e56965d449a3e76d2c701584c0bd7ceddb2c21b88038d77a5a7d865b60522b"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/processing/enrichment-flow.md": {
+      "mtime": 1753566322.864619,
+      "size": 11602,
+      "hash": "8ba5e730fe1fae3fb871e12bc408a96f7101d4339417b92dae2c4ff07f48f4c2"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/processing/_category_.json": {
+      "mtime": 1753566322.8606188,
+      "size": 114,
+      "hash": "18f4902985b5b1c08e22e9a568a7d40e525eda8f49a83eb5b38b53fcc85f2682"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/heritage/heritage-processing.md": {
+      "mtime": 1753566541.9509652,
+      "size": 14229,
+      "hash": "79762271e18b3e2dde36034a4986186fdc053e167035ee6dab004ff2bf36bf2d"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/heritage/heritage-photos-overview.md": {
+      "mtime": 1753566322.867619,
+      "size": 8654,
+      "hash": "8384e3393d9ee0b9d83156c4751f0da72e0ad8a0abb2ae05076523555517d207"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/heritage/live-photo-detection.md": {
+      "mtime": 1753566449.3795402,
+      "size": 4561,
+      "hash": "0a7c4ac3e971b9c7bd1c5023f7442c1920624125aaef3b5a0ca0e36e124ed352"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/heritage/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 137,
+      "hash": "64139701aae684fbaa2b3b81f1922499f25751d05de508c4e43004561d5c98e7"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/heritage/architecture/archive-logger-system-design.md": {
+      "mtime": 1753566541.949965,
+      "size": 10816,
+      "hash": "6de3b4652704b93fd58e406c3e5578469a68714a5a5df5e51986f351e6af1280"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/workflows/scrapbook-treatment.md": {
+      "mtime": 1753566322.863619,
+      "size": 11199,
+      "hash": "125d37c64a3e904569534d96facf74780e2d1f9487bc2ebd30d871633abedc6e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/workflows/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 113,
+      "hash": "a8ccb0e102998c9949ca4cdd14e21daea3a68fda499dc3278cd591a5dcc4172a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/geographic/gps-coordinate-corruption-fix.md": {
+      "mtime": 1753566322.865619,
+      "size": 12645,
+      "hash": "077a3b6e32ce5def1b4788697704ec3530376d7f9954b06d9341215fcf11e4bb"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/geographic/geolocation-system.md": {
+      "mtime": 1753566322.865619,
+      "size": 7162,
+      "hash": "79ad9e52246f7daf312882b03b38299ae45bd475fc9b0923d9635e4c564c686e"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/geographic/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 123,
+      "hash": "e0a2499f12e3b00294b3b1197c699af378167ccc562b01a4e1abd54058ffb202"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/cli/media-file-inspector.md": {
+      "mtime": 1753566541.946965,
+      "size": 4448,
+      "hash": "d45efee4cf6813cd89bfc0295f3f7d991a70410220834d6101a6324d6f539797"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/cli/photo-browser-api.md": {
+      "mtime": 1753566541.946965,
+      "size": 5511,
+      "hash": "8b41da74d1edebc2cd2bc02593cdc53505db7276f972fc9fd929a589b1244a1b"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/cli/mmp-overview.md": {
+      "mtime": 1753566541.946965,
+      "size": 6947,
+      "hash": "0f5b64bc9d3a1506a3bf15d9383ade858feb7be765002fb81d7ff70a2c869a8b"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/cli/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 108,
+      "hash": "9776ba54216e359b952d1c6ceac4776294017cbe527bcb470cfc2b9819ce1c38"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/cli/pipeline-cli.md": {
+      "mtime": 1753566322.866619,
+      "size": 8332,
+      "hash": "ecee3975c717039e9d145adc8331b98d8b39a883ebc831a6c4f9bde4ea4becf0"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/cli/overview.md": {
+      "mtime": 1753566322.863619,
+      "size": 2403,
+      "hash": "555a18edc31e4717b3f4d304d150626a21ff9afcf50cd596202d603c2f7ee7f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/video/_category_.json": {
+      "mtime": 1753566322.8606188,
+      "size": 110,
+      "hash": "f306d1b22232e7f14d35cdf0eaec01aa4c4f0b8e7f3fdb8ca3b808655dc60ef6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/photo-management/organization-overview.md": {
+      "mtime": 1753566541.951965,
+      "size": 10726,
+      "hash": "3336dffc570c1c1b8ec0b8a09e8d0f555a2b7cb114490b7102735dfc85367ca6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/photo-management/large-collection-strategy.md": {
+      "mtime": 1753566322.867619,
+      "size": 6757,
+      "hash": "52fd274fc6b6a96ca13e4f59d504542b31bf2e923185df873712dbc57b22299a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/photo-management/organization-workflow.md": {
+      "mtime": 1753566322.867619,
+      "size": 9582,
+      "hash": "09ec8e35e2b9ebf63d193e5f19c60178a94dbc3fd888a3347f1448809adbc588"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/photo-management/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 126,
+      "hash": "f920036f69c5141bff7e51cc0e9ac5bd4d68149571d3962ffb4eae95ce45f0a8"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/quick-start/workflow.md": {
+      "mtime": 1753566541.952965,
+      "size": 6916,
+      "hash": "70301e6988bb9bc0afae2383f04a04aa89d50727a9ece2a2456d25a6a8539342"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/quick-start/installation.md": {
+      "mtime": 1753566322.867619,
+      "size": 3770,
+      "hash": "6fbe70326b6bbca0f306d6e13127bbffea92c9b9043f0158cefcc5045004b689"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/quick-start/_category_.json": {
+      "mtime": 1753566322.859619,
+      "size": 138,
+      "hash": "04ae4ace12bea3bd6c3505185de019fe0f04810ccf29a390ae71065d1be09455"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/quick-start/overview.md": {
+      "mtime": 1753566322.861619,
+      "size": 3749,
+      "hash": "13654560b5e462f66da129873b1957531375a99e1ff9c798b80edbf397fe33bf"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/docs/quick-start/first-photos.md": {
+      "mtime": 1753566322.867619,
+      "size": 5681,
+      "hash": "f778d0fa2cec768d9ac4bf0d84365b321581b2e4898f4676b013b5d5e06bfbc6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/blog/2019-05-29-long-blog-post.md": {
+      "mtime": 1753565611.9859197,
+      "size": 3122,
+      "hash": "70cf9d8614debab11631c767d0ac7e36936db3661452b69223f5c593f8151c41"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/blog/2019-05-28-first-blog-post.md": {
+      "mtime": 1753565611.9859197,
+      "size": 312,
+      "hash": "88fee097f14faa8faa5f5de591245c4684fa6b224d982917a32be59bb187db8f"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/blog/tags.yml": {
+      "mtime": 1753565611.9869196,
+      "size": 347,
+      "hash": "94ba7da627f8f90df90e735b1755cbbf59fb7667d1a176d5a8eb9606f0f0e4c3"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/blog/authors.yml": {
+      "mtime": 1753565611.9869196,
+      "size": 707,
+      "hash": "b161d589f651d921a73d091da15ccd2639c23ff531fd492720b1ee7be93270b6"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/blog/2021-08-01-mdx-blog-post.mdx": {
+      "mtime": 1753565611.9869196,
+      "size": 512,
+      "hash": "f6d10a1c3144d8b181b6ed6fbf72fee804aa94c5d86cdf409c38b6b6b78a5224"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/blog/2021-08-26-welcome/index.md": {
+      "mtime": 1753565611.9879198,
+      "size": 846,
+      "hash": "5443ba6eece22d651f7145f85a0269312471cc3a192b736e76d139cd741c2705"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/src/components/HomepageFeatures/index.tsx": {
+      "mtime": 1753565611.9889197,
+      "size": 1923,
+      "hash": "c5a5106aaf4ebaaa1a440650a3e6567afd2f6e62249fd974e107d40719619e75"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/src/components/HomepageFeatures/styles.module.css": {
+      "mtime": 1753565611.9879198,
+      "size": 138,
+      "hash": "a21ccb50b3f713d3fb19a00677e699b9cd0258357134b59a7f27db1771a478f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/src/pages/index.module.css": {
+      "mtime": 1753569837.2611988,
+      "size": 1170,
+      "hash": "7b1dd5f97035f5e4ca3ea1bb7c3e7c4219b59a6ed5c5493582be1cdb93ca69ce"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/src/pages/markdown-page.md": {
+      "mtime": 1753565611.9879198,
+      "size": 118,
+      "hash": "cb9b155f720a7de087d6d4b2cce7e40dc671caf5ef5017849ef64d5197f71efa"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/src/pages/index.tsx": {
+      "mtime": 1753569822.956996,
+      "size": 2367,
+      "hash": "aef529a66ced1538867397415cf7e0b33ed58ccbc8673be15b405eb589d8003a"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs-website/src/css/custom.css": {
+      "mtime": 1753577411.2611294,
+      "size": 6906,
+      "hash": "0b796cc6923960f981d479e70dbceaa2d87026554d731eb94efd6cd0565cdf01"
     },
     "/home/stephen/Documents/initial-media-processing/mmp/tsconfig.json": {
       "mtime": 1753446314.422185,

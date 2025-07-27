@@ -1,0 +1,384 @@
+name: "MPP Validate Implementation"
+id: "mpp-validate-implementation-2025-07-27"
+created: "2025-07-27T19:30:00Z"
+priority: "HIGH"
+status: "active"
+estimated_duration: "2-3 weeks"
+
+description: |
+  Implement `mpp validate` command with rule-based photo validation and auto-fix capabilities.
+  
+  Core Features:
+  - Rule-based validation for post-digital and heritage photos
+  - EXIF-based photo type detection 
+  - Metadata sidecar validation
+  - Weighted scoring system with configurable thresholds
+  - Auto-fix capabilities for common issues
+  - Integration with existing pipeline-cli infrastructure
+
+phases:
+  # Phase 1: Foundation - Validation Service Core
+  - id: "foundation_validation_service"
+    phase_name: "Foundation Validation Service"
+    assigned_to: "claude-2"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "3-4 days"
+    depends_on: []
+    
+    description: |
+      Build core ValidationService that can detect photo types and run basic validation rules.
+      
+      Implementation Focus:
+      - Photo type detection (post-digital vs heritage-scan) using existing router logic
+      - Basic rule validation framework
+      - Simple pass/fail validation for critical requirements
+      - Integration with existing pipeline-cli services
+    
+    deliverables:
+      - "pipeline-cli/src/services/validation/ValidationService.ts"
+      - "pipeline-cli/src/utils/validation-rules.ts" 
+      - Basic rule definitions for post-digital photos
+      - Unit tests for ValidationService core functionality
+    
+    acceptance_criteria:
+      - Can detect photo type from EXIF digitalSourceType
+      - Can validate has_metadata_sidecar rule
+      - Can validate sidecar_schema_valid rule  
+      - Can validate basic EXIF requirements
+      - All unit tests pass
+      - ESLint and TypeScript compliance
+
+  # QA Phase 1: Foundation Testing
+  - id: "qa_foundation_validation"
+    phase_name: "QA Foundation Validation"
+    assigned_to: "claude-3"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "1-2 days"
+    depends_on: ["foundation_validation_service"]
+    
+    description: |
+      Comprehensive testing of ValidationService foundation with real photo samples.
+      
+      Testing Focus:
+      - Photo type detection accuracy
+      - Rule validation correctness
+      - Error handling and edge cases
+      - Integration with existing services
+    
+    deliverables:
+      - Test coverage report for ValidationService
+      - Integration tests with sample photos
+      - Edge case validation tests
+      - Performance benchmarks
+    
+    acceptance_criteria:
+      - Test coverage >90% for ValidationService
+      - All existing pipeline tests still pass
+      - Photo type detection 100% accurate on test samples
+      - Validation completes under 50ms per photo
+      - No memory leaks or performance regressions
+
+  # Phase 2: Scoring and Rules Engine
+  - id: "scoring_rules_engine"
+    phase_name: "Scoring and Rules Engine"
+    assigned_to: "claude-2"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "4-5 days"
+    depends_on: ["qa_foundation_validation"]
+    
+    description: |
+      Implement weighted scoring system and complete rule sets for both photo types.
+      
+      Implementation Focus:
+      - Weighted scoring calculation (critical/quality/bonus rules)
+      - Complete post-digital rule set (7 critical + 4 quality + 2 bonus)
+      - Complete heritage-scan rule set (6 critical + 3 quality + 3 expected)
+      - Configurable pass thresholds
+      - Detailed scoring breakdown
+    
+    deliverables:
+      - Complete rule sets for both photo types
+      - Weighted scoring implementation
+      - Rule configuration system
+      - Extended ValidationService with scoring
+    
+    acceptance_criteria:
+      - All 13 post-digital rules implemented and tested
+      - All 12 heritage-scan rules implemented and tested
+      - Weighted scoring produces expected results
+      - Configurable thresholds working
+      - Rule failures properly categorized
+
+  # QA Phase 2: Scoring and Rules Testing
+  - id: "qa_scoring_rules"
+    phase_name: "QA Scoring and Rules"
+    assigned_to: "claude-3"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "2 days"
+    depends_on: ["scoring_rules_engine"]
+    
+    description: |
+      Test scoring accuracy and rule validation across diverse photo samples.
+      
+      Testing Focus:
+      - Scoring calculation accuracy
+      - Rule validation correctness for all rules
+      - Threshold behavior validation
+      - Edge cases and boundary conditions
+    
+    deliverables:
+      - Comprehensive rule validation test suite
+      - Scoring accuracy validation
+      - Test with heritage and modern photo samples
+      - Performance testing with batch validation
+    
+    acceptance_criteria:
+      - All rules validated with sample photos
+      - Scoring calculations match expected results
+      - Heritage vs post-digital detection 100% accurate
+      - Batch validation performs adequately
+      - Test coverage maintained >90%
+
+  # Phase 3: Auto-Fix Implementation
+  - id: "auto_fix_implementation"
+    phase_name: "Auto-Fix Implementation"
+    assigned_to: "claude-2"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "5-6 days"
+    depends_on: ["qa_scoring_rules"]
+    
+    description: |
+      Implement AutoFixService with safe auto-repair capabilities.
+      
+      Implementation Focus:
+      - AutoFixService class with safe fix implementations
+      - File backup system before modifications
+      - Integration with existing pipeline processing for sidecar generation
+      - Filename correction based on EXIF dates
+      - GPS enrichment for existing coordinates
+      - Color analysis re-extraction
+    
+    deliverables:
+      - "pipeline-cli/src/services/validation/AutoFixService.ts"
+      - Safe fix implementations for common issues
+      - Backup and rollback system
+      - Fix status reporting
+    
+    acceptance_criteria:
+      - Can fix missing_sidecar by running pipeline processing
+      - Can fix filename_date_mismatch with proper renaming
+      - Can fix missing_color_analysis by re-extraction
+      - Can fix missing_gps_enrichment for existing GPS data
+      - All fixes create backups before modification
+      - Fix rollback works correctly
+      - No data loss during fix operations
+
+  # QA Phase 3: Auto-Fix Testing
+  - id: "qa_auto_fix"
+    phase_name: "QA Auto-Fix"
+    assigned_to: "claude-3"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "2-3 days"
+    depends_on: ["auto_fix_implementation"]
+    
+    description: |
+      Comprehensive testing of auto-fix functionality with safety validation.
+      
+      Testing Focus:
+      - Fix operation safety and data preservation
+      - Backup and rollback functionality
+      - Fix success rates and edge cases
+      - Integration with validation workflow
+    
+    deliverables:
+      - Auto-fix safety test suite
+      - Data preservation validation
+      - Fix success rate analysis
+      - Integration test with full validate->fix->validate cycle
+    
+    acceptance_criteria:
+      - All auto-fixes tested with real photo samples
+      - Zero data loss in fix operations
+      - Backup system works correctly
+      - Fix success rates meet expectations
+      - Integration workflow works end-to-end
+      - Performance acceptable for batch operations
+
+  # Phase 4: CLI Integration
+  - id: "cli_integration"
+    phase_name: "CLI Integration"
+    assigned_to: "claude-2"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "3-4 days"
+    depends_on: ["qa_auto_fix"]
+    
+    description: |
+      Integrate validation system into pipeline-cli with command-line interface.
+      
+      Implementation Focus:
+      - CLI handler for validate command
+      - Command-line argument parsing
+      - JSON output formatting
+      - Batch processing support
+      - Configuration integration
+      - Error handling and user feedback
+    
+    deliverables:
+      - CLI validate command integration
+      - Command-line interface with all options
+      - JSON output formatting
+      - Configuration file integration
+      - Help system and usage examples
+    
+    acceptance_criteria:
+      - '"node dist/main.js --validate photo.jpg" works'
+      - All command-line options functional
+      - JSON output matches specification
+      - Batch processing works correctly
+      - Configuration integration working
+      - Help system provides clear guidance
+
+  # QA Phase 4: End-to-End Testing
+  - id: "qa_end_to_end"
+    phase_name: "QA End-to-End"
+    assigned_to: "claude-3"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "2-3 days"
+    depends_on: ["cli_integration"]
+    
+    description: |
+      Complete end-to-end testing of mpp validate system with real workflows.
+      
+      Testing Focus:
+      - Full CLI workflow testing
+      - Real photo collection validation
+      - Performance with large batches
+      - User experience and error handling
+    
+    deliverables:
+      - End-to-end test suite
+      - Performance benchmarks
+      - User workflow validation
+      - Real photo collection test results
+    
+    acceptance_criteria:
+      - CLI works correctly for single photos and batches
+      - Real heritage and modern photos validate correctly
+      - Performance acceptable for production use
+      - Error messages clear and actionable
+      - All existing pipeline functionality unaffected
+      - Full test suite passes
+
+  # Documentation Phase
+  - id: "documentation_creation"
+    phase_name: "Documentation Creation"
+    assigned_to: "claude-4"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "3-4 days"
+    depends_on: ["qa_end_to_end"]
+    
+    description: |
+      Create comprehensive documentation for mpp validate system.
+      
+      Documentation Focus:
+      - User guide with examples and workflows
+      - Rule reference documentation
+      - Configuration guide
+      - Auto-fix capabilities reference
+      - Integration with existing documentation
+    
+    deliverables:
+      - User guide: docs/cli/mpp-validate.md
+      - Rule reference: docs/reference/validation-rules.md
+      - Configuration guide: docs/reference/validation-config.md
+      - Integration with existing CLI documentation
+      - API documentation for ValidationService
+    
+    acceptance_criteria:
+      - User guide covers all command options and workflows
+      - Rule reference documents all validation rules
+      - Configuration guide explains all settings
+      - Examples work correctly
+      - Documentation integrated with existing docs structure
+      - API documentation complete for services
+
+  # Final Review and Confirmation
+  - id: "final_review"
+    phase_name: "Final Review"
+    assigned_to: "claude-1"
+    status: "pending"
+    priority: "HIGH"
+    estimated_duration: "1 day"
+    depends_on: ["documentation_creation"]
+    
+    description: |
+      Final architectural review and user confirmation before completion.
+      
+      Review Focus:
+      - System architecture validation
+      - User requirements fulfillment
+      - Performance and quality validation
+      - Documentation completeness
+      - Production readiness assessment
+    
+    deliverables:
+      - Architecture review report
+      - Feature completeness validation
+      - Production readiness checklist
+      - User acceptance confirmation
+    
+    acceptance_criteria:
+      - All original requirements implemented
+      - System meets performance standards
+      - Documentation complete and accurate
+      - Code quality meets standards
+      - User confirms system meets needs
+      - Ready for production use
+
+# Global Requirements
+requirements:
+  code_quality:
+    - "ESLint compliance with zero warnings"
+    - "TypeScript strict mode compliance"
+    - "Test coverage >90% for new code"
+    - "No use of 'any' type (use semantic-any.ts when needed)"
+  
+  performance:
+    - "Single photo validation <50ms"
+    - "Batch validation scales linearly"
+    - "Auto-fix operations <2s per photo"
+    - "Memory usage remains constant during batch processing"
+  
+  integration:
+    - "All existing pipeline tests must continue to pass"
+    - "No breaking changes to existing CLI interface"
+    - "Configuration follows existing patterns"
+    - "Error handling consistent with pipeline standards"
+
+# Success Metrics
+success_metrics:
+  functional:
+    - "Can validate both heritage and modern photos correctly"
+    - "Auto-fix resolves >90% of fixable validation failures"
+    - "Weighted scoring provides meaningful quality assessment"
+    - "Batch processing handles large collections efficiently"
+  
+  quality:
+    - "Zero data loss during auto-fix operations"
+    - "Comprehensive test coverage for all validation rules"
+    - "Clear, actionable error messages for validation failures"
+    - "Documentation enables users to understand and use system"
+  
+  performance:
+    - "Validation performance suitable for large photo collections"
+    - "CLI response time acceptable for interactive use"
+    - "System integrates seamlessly with existing pipeline"
