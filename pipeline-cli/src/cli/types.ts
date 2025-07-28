@@ -45,6 +45,18 @@ export interface CLIOptions {
   /** Extract timestamp only (skip all processing) */
   timestampOnly?: boolean;
   
+  /** Run photo validation (checks quality and completeness) */
+  validate?: boolean;
+  
+  /** Automatically fix validation issues */
+  autoFix?: boolean;
+  
+  /** Enable backup before auto-fixes (default: true) */
+  autoFixBackup?: boolean;
+  
+  /** Auto-fix configuration options */
+  autoFixTypes?: string[];
+  
   /** Store results in database */
   outputDb?: boolean;
   

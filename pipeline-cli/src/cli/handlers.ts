@@ -12,6 +12,7 @@ import { OutputHandler } from './output.js';
 import { normalizeCliOptions } from './validators.js';
 import { extractTimestampOnly } from './timestamp-extractor.js';
 import { MetadataMerger, MergeOptions, MergeMode, MetadataSection } from '../utils/metadata-merger.js';
+import { ValidationService, type AutoFixService } from '../services/validation/index.js';
 import { 
   CLIOptions, 
   ProcessingResult as CLIProcessingResult, 
@@ -60,8 +61,10 @@ export class CLIHandler {
         logger.info(`Found ${filesToProcess.length} files to process`);
       }
 
-      // Process files
-      const result = await this.processFiles(filesToProcess, options);
+      // Process files (validation or regular processing)
+      const result = options.validate 
+        ? await this.validateFiles(filesToProcess, options)
+        : await this.processFiles(filesToProcess, options);
       
       // Handle output (skip summary for certain modes)
       const suppressSummaryModes = ['timestampOnly', 'json'] as const;
@@ -213,6 +216,241 @@ export class CLIHandler {
   /**
    * Process all discovered files
    */
+  /**
+   * Validate files using ValidationService
+   */
+  private async validateFiles(
+    files: string[],
+    options: CLIOptions & { mimeTypes?: string[]; outputPath?: string }
+  ): Promise<CLIProcessingResult> {
+    const startTime = Date.now();
+    const results: FileProcessingResult[] = [];
+    const validationService = new ValidationService();
+    
+    // Initialize AutoFixService if auto-fix is enabled
+    let autoFixService: AutoFixService | undefined;
+    if (options.autoFix) {
+      const { AutoFixService } = await import('../services/validation/index.js');
+      const defaultFixTypes: string[] = ['metadata', 'filename', 'gps', 'colors'];
+      let parsedFixTypes: string[] = defaultFixTypes;
+      const fixTypesInput: string[] | string | undefined = options.autoFixTypes;
+      if (fixTypesInput) {
+        if (Array.isArray(fixTypesInput)) {
+          parsedFixTypes = fixTypesInput;
+        } else {
+          // fixTypesInput is string here due to type narrowing
+          const stringInput = fixTypesInput as string;
+          parsedFixTypes = stringInput.split(',').map((s: string) => s.trim());
+        }
+      }
+      
+      autoFixService = new AutoFixService(validationService, {
+        enableBackup: options.autoFixBackup !== false,
+        dryRun: options.dryRun || false,
+        fixTypes: {
+          missingMetadata: parsedFixTypes.includes('metadata'),
+          incorrectFilename: parsedFixTypes.includes('filename'),
+          missingGPS: parsedFixTypes.includes('gps'),
+          missingColors: parsedFixTypes.includes('colors')
+        }
+      });
+    }
+    
+    if (!options.quiet && !options.json) {
+      console.log(`\n🔍 Validating ${files.length} files...\n`);
+    }
+    
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const fileStartTime = Date.now();
+      
+      if (!options.quiet && !options.json) {
+        console.log(`[${i + 1}/${files.length}] Validating: ${sanitizePathForLogging(file)}`);
+      }
+      
+      try {
+        // Create MediaFile object manually
+        const fileValidation = await this.fs.validateFile(file);
+        if (!fileValidation.isValid) {
+          throw new Error(fileValidation.errors[0] || 'File validation failed');
+        }
+        
+        const pathValidation = await this.fs.validatePath(file);
+        if (!pathValidation.isValid) {
+          throw new Error('Path validation failed');
+        }
+        
+        const fileMetadata = await this.fs.getFileMetadata(file);
+        if (!fileMetadata) {
+          throw new Error('Could not get file metadata');
+        }
+        
+        // Simple MIME type detection based on extension
+        const ext = file.toLowerCase().split('.').pop() || '';
+        const mimeType = {
+          jpg: 'image/jpeg',
+          jpeg: 'image/jpeg',
+          png: 'image/png',
+          heic: 'image/heic',
+          gif: 'image/gif',
+          tiff: 'image/tiff',
+          mp4: 'video/mp4',
+          mov: 'video/quicktime'
+        }[ext] || 'unknown';
+        
+        const fileInfo = {
+          path: file,
+          absolutePath: pathValidation.absolutePath,
+          hash: 'temp-hash', // We don't need hash for validation
+          size: fileMetadata.size,
+          mimeType
+        };
+        
+        // Run validation
+        // eslint-disable-next-line no-await-in-loop
+        const validationReport = await validationService.validatePhoto(fileInfo);
+        
+        const duration = Date.now() - fileStartTime;
+        
+        if (!options.quiet && !options.json) {
+          // Console output with validation results
+          const passIcon = validationReport.passed ? '✅' : '❌';
+          const typeEmoji = validationReport.photoType.type === 'heritage-scan' ? '📜' : '📷';
+          
+          console.log(`   ${passIcon} ${typeEmoji} ${validationReport.photoType.type} - ` + 
+                      `Score: ${validationReport.weightedScore}% (${validationReport.overallScore}% raw)`);
+          
+          // Show category breakdown
+          const categories = ['critical', 'quality', 'bonus', 'expected'] as const;
+          categories.forEach(cat => {
+            const summary = validationReport.summary[cat];
+            if (summary.total > 0) {
+              const percentage = summary.maxScore > 0 ? Math.round((summary.score / summary.maxScore) * 100) : 0;
+              const passThreshold = validationReport.breakdown.passThresholds[cat] ? '✅' : '❌';
+              console.log(`     ${passThreshold} ${cat}: ${summary.passed}/${summary.total} (${percentage}%)`);
+            }
+          });
+          
+          // Show failed rules
+          const failedRules = validationReport.rules.filter(rule => !rule.result.passed);
+          if (failedRules.length > 0) {
+            console.log('     Failed rules:');
+            failedRules.forEach(rule => {
+              console.log(`       • ${rule.name}: ${rule.result.message}`);
+            });
+          }
+          
+          console.log(''); // Empty line for readability
+        }
+        
+        // Run auto-fix if enabled and validation failed
+        if (autoFixService && !validationReport.passed) {
+          if (!options.quiet && !options.json) {
+            console.log('   🔧 Running auto-fix...');
+          }
+          
+          try {
+            // eslint-disable-next-line no-await-in-loop
+            const autoFixReport = await autoFixService.autoFix(fileInfo);
+            
+            if (!options.quiet && !options.json) {
+              console.log(`     Fixes attempted: ${autoFixReport.fixAttempted}`);
+              console.log(`     Fixes succeeded: ${autoFixReport.fixSucceeded}`);
+              console.log(`     Fixes failed: ${autoFixReport.fixFailed}`);
+              
+              if (autoFixReport.backupDirectory) {
+                console.log(`     Backup saved to: ${autoFixReport.backupDirectory}`);
+              }
+              
+              // Show individual fix results
+              autoFixReport.fixes.forEach(fix => {
+                const icon = fix.fixed ? '✅' : '❌';
+                console.log(`     ${icon} ${fix.ruleName}: ${fix.message}`);
+              });
+              
+              // Show validation score change
+              if (autoFixReport.validationAfter) {
+                const scoreBefore = autoFixReport.validationBefore.weightedScore;
+                const scoreAfter = autoFixReport.validationAfter.weightedScore;
+                const improvement = scoreAfter - scoreBefore;
+                const passedAfter = autoFixReport.validationAfter.passed ? '✅' : '❌';
+                const improvementStr = improvement >= 0 ? '+' : '';
+                console.log(`     Score: ${scoreBefore}% → ${scoreAfter}% ` +
+                  `(${improvementStr}${improvement}%) ${passedAfter}`);
+              }
+              
+              console.log(''); // Empty line for readability
+            }
+            
+            // Use the after-fix validation report if available
+            const finalReport = autoFixReport.validationAfter || validationReport;
+            results.push({
+              filePath: sanitizePathForLogging(file),
+              success: true,
+              duration,
+              metadata: options.autoFix 
+                ? { validation: finalReport, autoFix: autoFixReport } as unknown as Record<string, unknown>
+                : finalReport as unknown as Record<string, unknown>,
+              warnings: []
+            });
+          } catch (autoFixError) {
+            // Auto-fix failed, but validation succeeded - still report validation results
+            logger.warn('Auto-fix failed', { 
+              file, 
+              error: autoFixError instanceof Error ? autoFixError.message : 'Unknown error' 
+            });
+            
+            results.push({
+              filePath: sanitizePathForLogging(file),
+              success: true,
+              duration,
+              metadata: validationReport as unknown as Record<string, unknown>,
+              warnings: [`Auto-fix failed: ${autoFixError instanceof Error ? autoFixError.message : 'Unknown error'}`]
+            });
+          }
+        } else {
+          // No auto-fix needed or not enabled
+          results.push({
+            filePath: sanitizePathForLogging(file),
+            success: true,
+            duration,
+            metadata: validationReport as unknown as Record<string, unknown>,
+            warnings: []
+          });
+        }
+        
+      } catch (error) {
+        const duration = Date.now() - fileStartTime;
+        const errorMessage = error instanceof Error ? error.message : 'Unknown validation error';
+        
+        if (!options.quiet && !options.json) {
+          console.log(`   ❌ Validation failed: ${errorMessage}\n`);
+        }
+        
+        results.push({
+          filePath: sanitizePathForLogging(file),
+          success: false,
+          duration,
+          error: errorMessage,
+          warnings: []
+        });
+      }
+    }
+    
+    const totalDuration = Date.now() - startTime;
+    
+    // Calculate summary statistics
+    const summary = this.generateSummary(results, totalDuration);
+    
+    return {
+      success: results.some(r => r.success),
+      filesProcessed: results.length,
+      duration: totalDuration,
+      results,
+      summary
+    };
+  }
+
   private async processFiles(
     files: string[], 
     options: CLIOptions & { mimeTypes?: string[]; outputPath?: string }

@@ -37,7 +37,12 @@ export async function runCLI(): Promise<void> {
     .option('--overwrite', 'overwrite existing output file (default: auto-number)')
     .option('--json', 'output in JSON format')
     .option('--quiet', 'minimal console output')
-    .option('--timestamp-only', 'extract timestamp only (skip all processing)');
+    .option('--timestamp-only', 'extract timestamp only (skip all processing)')
+    .option('--validate', 'run photo validation (checks quality and completeness)')
+    .option('--auto-fix', 'automatically fix validation issues (requires --validate)')
+    .option('--auto-fix-backup', 'enable backup before auto-fixes (default: true)')
+    .option('--no-auto-fix-backup', 'disable backup before auto-fixes')
+    .option('--auto-fix-types <types>', 'comma-separated fix types: metadata,filename,gps,colors (default: all)');
 
   // Database options
   program
@@ -89,6 +94,18 @@ Examples:
 
   # Batch process with database storage (skip color extraction for speed)
   $ media-processor -R /photos --output-db --no-colors --quiet
+
+  # Validate photo quality and completeness
+  $ media-processor -f sample:image.jpg --validate
+  
+  # Validate multiple files with JSON output  
+  $ media-processor -f *.jpg --validate --json
+  
+  # Validate and auto-fix issues with backup
+  $ media-processor -f photo.jpg --validate --auto-fix
+  
+  # Auto-fix specific issues only (no backup)
+  $ media-processor -f photo.jpg --validate --auto-fix --no-auto-fix-backup --auto-fix-types=metadata,filename
 
 Path Formats:
   sample:path/file.jpg    # Uses SAMPLE_BASE_PATH environment variable

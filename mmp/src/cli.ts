@@ -623,6 +623,431 @@ ${chalk.green('Heritage Photos:')}
     }
   });
 
+// VALIDATE command - Photo validation and quality checking
+program
+  .command('validate')
+  .argument('[files...]', 'Files or directories to validate (supports patterns, or stdin)')
+  .description('Validate photo quality and completeness')
+  .option('-r, --recursive', 'Process directories recursively')
+  .option('--critical-only', 'Check only critical requirements (faster)')
+  .option('--json', 'JSON output for programmatic use')
+  .option('-q, --quiet', 'Pipe-friendly output (validation status only)')
+  .option('-v, --verbose', 'Detailed validation information')
+  .option('--fail-fast', 'Stop on first validation failure')
+  .option('--stdin', 'Explicit stdin mode')
+  .option('--auto-fix', 'Automatically fix validation issues when possible')
+  .option('--dry-run', 'Show what would be fixed without making changes')
+  .option('--backup-dir <dir>', 'Custom backup directory for auto-fix (default: .autofix-backup)')
+  .addHelpText('after', `
+${chalk.green('Examples:')}
+  ${chalk.cyan('mmp validate photo.jpg')}
+    Validate single photo with full rule checking
+    
+  ${chalk.cyan('mmp validate *.jpg --critical-only')}
+    Fast validation of critical requirements only
+    
+  ${chalk.cyan('find /photos/staging -name "*.jpg" | mmp validate --stdin')}
+    Process files from stdin pipe
+    
+  ${chalk.cyan('mmp validate /heritage-batch/ --recursive --json')}
+    Validate directory with JSON output
+    
+  ${chalk.cyan('mmp validate *.jpg --quiet | grep FAIL')}
+    Pipe-friendly validation status checking
+    
+  ${chalk.cyan('mmp validate *.jpg --auto-fix')}
+    Validate and automatically fix issues
+    
+  ${chalk.cyan('mmp validate /staging/ --auto-fix --dry-run --recursive')}
+    Show what would be fixed without making changes
+
+${chalk.green('Validation Rules:')}
+  ${chalk.yellow('Post-Digital Photos:')} 7 critical + 4 quality + 2 bonus rules
+  • File readability and format validation
+  • Dimensions, timestamps, and resolution checks
+  • Camera metadata and GPS data presence
+  • Color analysis and technical metadata
+  
+  ${chalk.yellow('Heritage-Scan Photos:')} 6 critical + 3 quality + 3 expected rules  
+  • Heritage metadata and scan source validation
+  • High-resolution scan quality (>=2MP)
+  • Format suitability for long-term preservation
+  • Creator information and series detection
+  
+${chalk.green('Photo Type Detection:')}
+  • Automatic detection via XMP metadata
+  • Heritage photos: XMP digitalSourceType contains "Scanned"
+  • Post-digital: Standard EXIF camera metadata
+  • Uses existing pipeline router logic for consistency
+  
+${chalk.green('Auto-Fix Capabilities:')}
+  • Missing metadata sidecar generation
+  • Filename correction based on EXIF dates
+  • GPS enrichment for existing coordinates  
+  • Color analysis re-extraction
+  • File backup system before modifications
+  • Safe rollback capabilities
+`)
+  .action(async (files, options) => {
+    console.error(chalk.green('🔍 MMP Validate: Photo quality validation...'));
+    
+    try {
+      // Import validation service from pipeline-cli built distribution
+      const { ValidationService, AutoFixService } = await import('../../pipeline-cli/dist/services/validation/index.js');
+      const { FileSystemService } = await import('../../pipeline-cli/dist/services/filesystem/index.js');
+      const fs = await import('fs');
+      const path = await import('path');
+      
+      // Initialize services
+      const validationService = new ValidationService();
+      const fsService = new FileSystemService();
+      
+      // Initialize auto-fix service if requested
+      let autoFixService: any = null;
+      if (options.autoFix) {
+        autoFixService = new AutoFixService(validationService, {
+          enableBackup: !options.dryRun,
+          backupDirectory: options.backupDir,
+          dryRun: options.dryRun,
+          fixTypes: {
+            missingMetadata: true,
+            incorrectFilename: true,
+            missingGPS: true,
+            missingColors: true
+          }
+        });
+        
+        if (!options.quiet) {
+          console.error(chalk.blue(`🔧 Auto-fix enabled ${options.dryRun ? '(dry run)' : '(with backup)'}`));
+        }
+      }
+      
+      // Determine input source
+      let inputFiles: string[] = [];
+      
+      // Check if we should read from stdin
+      const shouldReadStdin = !files.length || options.stdin;
+      if (shouldReadStdin && !process.stdin.isTTY) {
+        // Read from stdin
+        const stdin = process.stdin;
+        stdin.setEncoding('utf8');
+        
+        let stdinData = '';
+        for await (const chunk of stdin) {
+          stdinData += chunk;
+        }
+        
+        inputFiles = stdinData.trim().split('\n').filter(line => line.trim());
+        
+        if (!options.quiet) {
+          console.error(chalk.blue(`📥 Read ${inputFiles.length} files from stdin`));
+        }
+      } else if (files.length > 0) {
+        inputFiles = files;
+      } else {
+        console.error(chalk.red('❌ No files provided via arguments or stdin'));
+        process.exit(1);
+      }
+      
+      // Expand file patterns and directories
+      const expandedFiles: string[] = [];
+      
+      for (const filePattern of inputFiles) {
+        try {
+          const stat = await fs.promises.stat(filePattern);
+          if (stat.isDirectory()) {
+            if (!options.recursive) {
+              console.error(chalk.red(`❌ Directory processing requires --recursive flag: ${filePattern}`));
+              process.exit(1);
+            }
+            // Find all supported files in directory
+            const pattern = path.join(filePattern, '**/*.{jpg,jpeg,tiff,tif,png,heic,gif,webp}');
+            const { glob } = await import('glob');
+            const dirFiles = await glob(pattern, { ignore: ['**/.*'] });
+            expandedFiles.push(...dirFiles);
+          } else {
+            expandedFiles.push(filePattern);
+          }
+        } catch (error) {
+          // File doesn't exist, try as glob pattern
+          const { glob } = await import('glob');
+          const globFiles = await glob(filePattern);
+          if (globFiles.length === 0) {
+            console.error(chalk.yellow(`⚠️  No files found matching: ${filePattern}`));
+          } else {
+            expandedFiles.push(...globFiles);
+          }
+        }
+      }
+      
+      if (expandedFiles.length === 0) {
+        console.error(chalk.red('❌ No files found to validate'));
+        process.exit(1);
+      }
+      
+      // Filter to supported image formats
+      const supportedExtensions = ['.jpg', '.jpeg', '.png', '.tiff', '.tif', '.heic', '.gif', '.webp'];
+      const supportedFiles = expandedFiles.filter(file => {
+        const ext = path.extname(file).toLowerCase();
+        return supportedExtensions.includes(ext);
+      });
+      
+      const unsupportedCount = expandedFiles.length - supportedFiles.length;
+      if (unsupportedCount > 0 && !options.quiet) {
+        console.error(chalk.yellow(`⚠️  Skipping ${unsupportedCount} unsupported files`));
+      }
+      
+      if (supportedFiles.length === 0) {
+        console.error(chalk.red('❌ No supported image files found'));
+        console.error(chalk.gray(`Supported formats: ${supportedExtensions.join(', ')}`));
+        process.exit(1);
+      }
+      
+      if (!options.quiet) {
+        console.error(chalk.blue(`🔍 Validating ${supportedFiles.length} photos...`));
+      }
+      
+      // Process files
+      const results = [];
+      let totalValidated = 0;
+      let totalPassed = 0;
+      let totalFailed = 0;
+      
+      for (const filePath of supportedFiles) {
+        try {
+          // Create MediaFile object using filesystem service
+          const validation = await fsService.validateFile(filePath);
+          if (!validation.isValid) {
+            throw new Error(`File validation failed: ${validation.errors.join(', ')}`);
+          }
+          
+          const metadata = await fsService.getFileMetadata(filePath);
+          if (!metadata) {
+            throw new Error('Failed to retrieve file metadata');
+          }
+          
+          // Import MIME detection and path utilities from pipeline-cli
+          const { detectMimeType } = await import('../../pipeline-cli/dist/utils/mime.js');
+          const { toRelativePath } = await import('../../pipeline-cli/dist/utils/paths.js');
+          
+          const mimeType = detectMimeType(filePath);
+          if (!mimeType) {
+            throw new Error(`Unsupported file format: ${filePath}`);
+          }
+          
+          const fileInfo = {
+            path: toRelativePath(filePath),
+            absolutePath: filePath,
+            hash: 'validation-placeholder-hash',
+            size: metadata.size,
+            mimeType,
+            sidecarMetadata: []
+          };
+          
+          let validationResult;
+          
+          if (options.criticalOnly) {
+            // Fast critical-only validation
+            validationResult = await validationService.validateCriticalRequirements(fileInfo);
+            
+            results.push({
+              file: filePath,
+              passed: validationResult.passed,
+              failures: validationResult.failures,
+              mode: 'critical-only'
+            });
+          } else {
+            // Full validation
+            let report = await validationService.validatePhoto(fileInfo);
+            
+            // Auto-fix if requested and validation failed
+            let autoFixReport = null;
+            if (autoFixService && !report.passed) {
+              if (!options.quiet) {
+                console.error(chalk.blue(`🔧 Auto-fixing: ${path.basename(filePath)}`));
+              }
+              
+              try {
+                autoFixReport = await autoFixService.autoFix(fileInfo);
+                
+                if (!options.quiet && !options.dryRun) {
+                  console.error(chalk.green(`   Fixed ${autoFixReport.fixSucceeded}/${autoFixReport.fixAttempted} issues`));
+                }
+                
+                // Re-validate after fixes
+                if (autoFixReport.fixSucceeded > 0 && !options.dryRun) {
+                  const postFixReport = await validationService.validatePhoto(fileInfo);
+                  report = postFixReport;
+                  
+                  if (!options.quiet) {
+                    // Note: report is now postFixReport, so calculate improvement from original
+                    console.error(chalk.green(`   Score improved to: ${postFixReport.weightedScore}%`));
+                  }
+                }
+              } catch (autoFixError) {
+                if (!options.quiet) {
+                  console.error(chalk.yellow(`   Auto-fix failed: ${autoFixError instanceof Error ? autoFixError.message : 'Unknown error'}`));
+                }
+              }
+            }
+            
+            results.push({
+              file: filePath,
+              passed: report.passed,
+              report: report,
+              autoFixReport,
+              mode: 'full'
+            });
+          }
+          
+          totalValidated++;
+          const currentResult = results[results.length - 1];
+          if (currentResult && currentResult.passed) {
+            totalPassed++;
+          } else {
+            totalFailed++;
+            
+            // Fail fast if requested
+            if (options.failFast) {
+              console.error(chalk.red(`❌ Validation failed, stopping: ${path.basename(filePath)}`));
+              break;
+            }
+          }
+          
+          if (options.verbose && !options.quiet) {
+            const result = results[results.length - 1];
+            if (result) {
+              const status = result.passed ? chalk.green('✅ PASS') : chalk.red('❌ FAIL');
+              console.error(`├── [${totalValidated}/${supportedFiles.length}] ${path.basename(filePath)} ${status}`);
+            }
+          }
+          
+        } catch (error) {
+          totalFailed++;
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          
+          results.push({
+            file: filePath,
+            passed: false,
+            error: errorMessage,
+            mode: 'error'
+          });
+          
+          if (!options.quiet) {
+            console.error(chalk.red(`❌ Validation error: ${path.basename(filePath)} - ${errorMessage}`));
+          }
+          
+          if (options.failFast) {
+            break;
+          }
+        }
+      }
+      
+      // Output results
+      if (options.json) {
+        // JSON output for programmatic use
+        const jsonResult = {
+          summary: {
+            total: totalValidated,
+            passed: totalPassed,
+            failed: totalFailed
+          },
+          files: results.map(r => ({
+            filename: path.basename(r.file),
+            fullPath: r.file,
+            passed: r.passed,
+            ...(r.mode === 'critical-only' && { failures: r.failures }),
+            ...(r.mode === 'full' && { 
+              photoType: r.report?.photoType,
+              overallScore: r.report?.overallScore,
+              summary: r.report?.summary 
+            }),
+            ...(r.autoFixReport && {
+              autoFix: {
+                attempted: r.autoFixReport.fixAttempted,
+                succeeded: r.autoFixReport.fixSucceeded,
+                failed: r.autoFixReport.fixFailed,
+                fixes: r.autoFixReport.fixes
+              }
+            }),
+            ...(r.error && { error: r.error })
+          }))
+        };
+        console.log(JSON.stringify(jsonResult, null, 2));
+        
+      } else if (options.quiet) {
+        // Quiet mode - output validation status for piping
+        results.forEach(r => {
+          const status = r.passed ? 'PASS' : 'FAIL';
+          console.log(`${status}:${r.file}`);
+        });
+        
+      } else {
+        // Default human-readable output
+        console.error('');
+        console.error(chalk.green('📊 Validation Results:'));
+        console.error(chalk.green(`✅ Passed: ${totalPassed} photos`));
+        
+        if (totalFailed > 0) {
+          console.error(chalk.red(`❌ Failed: ${totalFailed} photos`));
+          console.error('');
+          console.error(chalk.red('Failed validations:'));
+          
+          results
+            .filter(r => !r.passed)
+            .slice(0, 10) // Limit to first 10 failures
+            .forEach(r => {
+              if (r.mode === 'critical-only') {
+                console.error(chalk.red(`  • ${path.basename(r.file)}: ${r.failures?.join(', ')}`));
+              } else if (r.error) {
+                console.error(chalk.red(`  • ${path.basename(r.file)}: ${r.error}`));
+              } else {
+                console.error(chalk.red(`  • ${path.basename(r.file)}: Score ${r.report?.overallScore}%`));
+              }
+            });
+            
+          if (results.filter(r => !r.passed).length > 10) {
+            console.error(chalk.gray(`  ... and ${results.filter(r => !r.passed).length - 10} more failures`));
+          }
+        }
+        
+        // Show auto-fix summary if auto-fix was used
+        if (autoFixService) {
+          const autoFixResults = results.filter(r => r.autoFixReport);
+          if (autoFixResults.length > 0) {
+            console.error('');
+            console.error(chalk.blue('🔧 Auto-Fix Summary:'));
+            
+            const totalAttempted = autoFixResults.reduce((sum, r) => sum + (r.autoFixReport?.fixAttempted || 0), 0);
+            const totalSucceeded = autoFixResults.reduce((sum, r) => sum + (r.autoFixReport?.fixSucceeded || 0), 0);
+            const totalFailedFixes = autoFixResults.reduce((sum, r) => sum + (r.autoFixReport?.fixFailed || 0), 0);
+            
+            console.error(chalk.green(`✅ Fixed: ${totalSucceeded}/${totalAttempted} issues across ${autoFixResults.length} files`));
+            if (totalFailedFixes > 0) {
+              console.error(chalk.yellow(`⚠️  Failed to fix: ${totalFailedFixes} issues`));
+            }
+            
+            if (options.dryRun) {
+              console.error(chalk.gray('(Dry run - no changes were made)'));
+            }
+          }
+        }
+        
+        console.error('');
+        const passRate = totalValidated > 0 ? Math.round((totalPassed / totalValidated) * 100) : 0;
+        console.error(chalk.green(`🎉 Validation complete: ${passRate}% pass rate`));
+      }
+      
+      // Exit with appropriate code
+      process.exit(totalFailed > 0 ? 1 : 0);
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red('❌ Validation operation failed:'), errorMessage);
+      process.exit(1);
+    }
+  });
+
 // ROTATE command - Rotation operations
 program
   .command('rotate')
