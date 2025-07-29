@@ -51,8 +51,6 @@ export interface CLIOptions {
   /** Automatically fix validation issues */
   autoFix?: boolean;
   
-  /** Enable backup before auto-fixes (default: true) */
-  autoFixBackup?: boolean;
   
   /** Auto-fix configuration options */
   autoFixTypes?: string[];

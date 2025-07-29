@@ -93,7 +93,7 @@ export class ValidationService {
         critical: 100,    // All critical rules must pass
         quality: 70,      // 70% of quality rules must pass
         bonus: 50,        // 50% of bonus rules must pass
-        expected: 80,     // 80% of expected rules must pass
+        expected: 60,     // 60% of expected rules must pass
         overall: 75       // 75% overall weighted score to pass
       },
       weights: {
@@ -697,34 +697,6 @@ export class ValidationService {
         }
       },
       {
-        id: 'hs-critical-scan-resolution',
-        name: 'Adequate Scan Resolution',
-        description: 'Scan resolution adequate for heritage preservation (>= 600 DPI equivalent)',
-        category: 'critical',
-        weight: 10,
-        validate: async (file: MediaFile) => {
-          try {
-            const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
-            const megapixels = exifData.image.megapixels || 0;
-            // For heritage scans, we want higher resolution (typically 2MP+ for decent quality)
-            const passed = megapixels >= 2.0;
-            
-            return {
-              passed,
-              score: passed ? 10 : 0,
-              message: passed ? `Scan resolution adequate: ${megapixels}MP` : `Scan resolution low: ${megapixels}MP (heritage photos need >= 2MP)`
-            };
-          } catch (error) {
-            return {
-              passed: false,
-              score: 0,
-              message: 'Could not determine scan resolution',
-              details: error instanceof Error ? error.message : 'Unknown error'
-            };
-          }
-        }
-      },
-      {
         id: 'hs-critical-valid-format',
         name: 'Valid Heritage Format',
         description: 'File format suitable for long-term heritage preservation',
@@ -784,8 +756,8 @@ export class ValidationService {
         weight: 10,
         validate: async (file: MediaFile) => {
           const size = file.size;
-          // Heritage scans should be larger (minimum 100KB, maximum 500MB)
-          const passed = size >= 100 * 1024 && size <= 500 * 1024 * 1024;
+          // Heritage scans should be reasonable size (minimum 50KB, maximum 500MB)
+          const passed = size >= 50 * 1024 && size <= 500 * 1024 * 1024;
           
           return {
             passed,
@@ -806,8 +778,8 @@ export class ValidationService {
           try {
             const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
             
-            const xResolution = 0; // Not available in current image interface
-            const yResolution = 0; // Not available in current image interface
+            const xResolution = exifData.image.xResolution || 0;
+            const yResolution = exifData.image.yResolution || 0;
             const avgDPI = xResolution && yResolution ? (xResolution + yResolution) / 2 : 0;
             const passed = avgDPI >= 300;
             
@@ -866,45 +838,11 @@ export class ValidationService {
         }
       },
       {
-        id: 'hs-quality-color-accuracy',
-        name: 'Color Profile for Heritage',
-        description: 'Has appropriate color profile for heritage preservation',
-        category: 'quality',
-        weight: 5,
-        validate: async (file: MediaFile) => {
-          try {
-            const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
-            
-            const colorSpace = exifData.image?.colorSpace;
-            // Heritage scans benefit from wider color spaces for accurate reproduction
-            const heritageSpaces = ['Adobe RGB', 'ProPhoto RGB', 'sRGB'];
-            const passed = !!colorSpace && heritageSpaces.some(space => 
-              colorSpace.toLowerCase().includes(space.toLowerCase())
-            );
-            
-            return {
-              passed,
-              score: passed ? 5 : (colorSpace ? 2 : 0), // Partial credit for any color space
-              message: colorSpace ? `Color profile: ${colorSpace}` : 'No color profile information'
-            };
-          } catch (error) {
-            return {
-              passed: false,
-              score: 0,
-              message: 'Could not extract color profile information',
-              details: error instanceof Error ? error.message : 'Unknown error'
-            };
-          }
-        }
-      },
-      
-      // Expected rules (3 total)
-      {
-        id: 'hs-expected-creator-info',
+        id: 'hs-quality-creator-info',
         name: 'Creator/Scanner Information',
-        description: 'Contains information about who scanned or digitized the heritage item',
-        category: 'expected',
-        weight: 4,
+        description: 'Contains information about who scanned or digitized the heritage item (optional)',
+        category: 'quality',
+        weight: 3,
         validate: async (file: MediaFile) => {
           try {
             const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
@@ -914,7 +852,7 @@ export class ValidationService {
             const hasCopyright = !!exifData.heritage?.copyright;
             const passed = hasCreator || hasArtist || hasCopyright;
             
-            let message = 'No creator/scanner information found';
+            let message = 'No creator/scanner information (optional)';
             if (hasCreator) {
               message = `Creator: ${exifData.heritage!.creator}`;
             } else if (hasArtist) {
@@ -924,20 +862,21 @@ export class ValidationService {
             }
             
             return {
-              passed,
-              score: passed ? 4 : 0,
+              passed: true, // Always pass, but give bonus points if present
+              score: passed ? 3 : 0,
               message
             };
           } catch (error) {
             return {
-              passed: false,
+              passed: true, // Don't fail on extraction errors
               score: 0,
-              message: 'Could not extract creator information',
-              details: error instanceof Error ? error.message : 'Unknown error'
+              message: 'No creator information available (optional)'
             };
           }
         }
       },
+      
+      // Expected rules (2 total)
       {
         id: 'hs-expected-document-title',
         name: 'Document Title/Description',

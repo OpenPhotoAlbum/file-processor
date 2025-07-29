@@ -245,7 +245,7 @@ export class CLIHandler {
       }
       
       autoFixService = new AutoFixService(validationService, {
-        enableBackup: options.autoFixBackup !== false,
+        enableBackup: options.backup || false,
         dryRun: options.dryRun || false,
         fixTypes: {
           missingMetadata: parsedFixTypes.includes('metadata'),

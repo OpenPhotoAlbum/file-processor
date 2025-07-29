@@ -31,6 +31,8 @@ export interface ExifData {
     colorSpace?: string;
     compression?: string;
     megapixels?: number;
+    xResolution?: number;
+    yResolution?: number;
   };
   timestamps: {
     dateTimeOriginal?: string;
@@ -187,6 +189,8 @@ throw new Error('Empty output from ExifTool');
     exif.image.orientation = rawExif['EXIF:Orientation'] || rawExif['IFD0:Orientation'];
     exif.image.colorSpace = rawExif['EXIF:ColorSpace'];
     exif.image.compression = rawExif['EXIF:Compression'];
+    exif.image.xResolution = this.parseNumber(rawExif['EXIF:XResolution'] || rawExif['IFD0:XResolution']);
+    exif.image.yResolution = this.parseNumber(rawExif['EXIF:YResolution'] || rawExif['IFD0:YResolution']);
     
     if (exif.image.width && exif.image.height) {
       exif.image.megapixels = Math.round((exif.image.width * exif.image.height) / 1000000 * 10) / 10;
@@ -207,7 +211,7 @@ throw new Error('Empty output from ExifTool');
     // Heritage-specific fields (only extract if this is a heritage photo)
     if (this.isHeritagePhoto(rawExif)) {
       exif.heritage = {
-        imageDescription: rawExif['EXIF:ImageDescription'] || rawExif['IFD0:ImageDescription'],
+        imageDescription: rawExif['EXIF:ImageDescription'] || rawExif['IFD0:ImageDescription'] || rawExif['XMP:Description'],
         userComment: rawExif['EXIF:UserComment'] || rawExif['IFD0:UserComment'],
         creator: rawExif['EXIF:Creator'] || rawExif['IFD0:Creator'],
         keywords: rawExif['EXIF:Keywords'] || rawExif['IFD0:Keywords'],
