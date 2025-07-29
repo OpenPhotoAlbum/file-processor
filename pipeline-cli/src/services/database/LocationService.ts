@@ -1,7 +1,6 @@
 import { Knex } from 'knex';
 import { Logger } from '../../utils/logging/index.js';
 import { ProcessingResult } from '../../types/media.js';
-import { UnknownJsonContent } from '../../types/semantic-any.js';
 import { MediaLocation } from '../../database/types/tables.js';
 
 const logger = new Logger('LocationService');
@@ -73,8 +72,8 @@ export class LocationService {
   async findNearbyLocations(
     latitude: number, 
     longitude: number, 
-    radiusMeters: number = 1000,
-    limit: number = 50
+    radiusMeters = 1000,
+    limit = 50
   ): Promise<LocationRecord[]> {
     // Using Haversine formula for distance calculation
     const results = await this.db('media_locations')
@@ -143,7 +142,7 @@ export class LocationService {
   /**
    * Extract location data from processing result
    */
-   private async extractLocationData(mediaFileId: number, result: ProcessingResult): Promise<any> {
+  private async extractLocationData(mediaFileId: number, result: ProcessingResult): Promise<any> {
     const primaryGPS = result.location!.primary!;
     const geolocation = result.location?.geolocation;
 

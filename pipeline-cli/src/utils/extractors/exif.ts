@@ -6,7 +6,7 @@
 import { execSync } from 'child_process';
 import { Logger } from '../logging/index.js';
 import { createExifErrorFactory } from '../errors/factories.js';
-import type { RawExifData, CoordinateValue, ReferenceDirection } from './types.js';
+import type { CoordinateValue, ReferenceDirection } from './types.js';
 import type { ExternalToolOutput } from '../../types/semantic-any.js';
 
 export interface ExifData {
@@ -126,7 +126,7 @@ export class ExifExtractor {
       
       if (!output || output.trim() === '') {
         this.exifErrors.dataCorrupted({ filePath, reason: 'Empty output from ExifTool' });
-throw new Error('Empty output from ExifTool');
+        throw new Error('Empty output from ExifTool');
       }
       
       try {

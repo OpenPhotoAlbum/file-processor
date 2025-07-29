@@ -270,16 +270,19 @@ export class CLIHandler {
       
       try {
         // Create MediaFile object manually
+        // eslint-disable-next-line no-await-in-loop
         const fileValidation = await this.fs.validateFile(file);
         if (!fileValidation.isValid) {
           throw new Error(fileValidation.errors[0] || 'File validation failed');
         }
         
+        // eslint-disable-next-line no-await-in-loop
         const pathValidation = await this.fs.validatePath(file);
         if (!pathValidation.isValid) {
           throw new Error('Path validation failed');
         }
         
+        // eslint-disable-next-line no-await-in-loop
         const fileMetadata = await this.fs.getFileMetadata(file);
         if (!fileMetadata) {
           throw new Error('Could not get file metadata');
