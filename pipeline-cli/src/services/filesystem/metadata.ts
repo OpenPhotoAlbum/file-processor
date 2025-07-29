@@ -15,7 +15,7 @@ export class FileSystemMetadataService {
   /**
    * Get comprehensive file metadata
    */
-  async getFileMetadata(filePath: string, followSymlinks: boolean = true): Promise<FileSystemMetadata | null> {
+  async getFileMetadata(filePath: string, followSymlinks = true): Promise<FileSystemMetadata | null> {
     const absolutePath = toAbsolutePath(filePath);
     const safePath = sanitizePathForLogging(absolutePath);
     
@@ -57,7 +57,7 @@ export class FileSystemMetadataService {
    */
   async getBatchMetadata(
     filePaths: string[], 
-    followSymlinks: boolean = true
+    followSymlinks = true
   ): Promise<Map<string, FileSystemMetadata | null>> {
     this.logger.info(`Getting batch metadata for ${filePaths.length} files`);
     
@@ -73,6 +73,7 @@ export class FileSystemMetadataService {
         return [filePath, metadata] as [string, FileSystemMetadata | null];
       });
       
+      // eslint-disable-next-line no-await-in-loop
       const chunkResults = await Promise.all(chunkPromises);
       chunkResults.forEach(([path, metadata]) => {
         results.set(path, metadata);
@@ -90,7 +91,7 @@ export class FileSystemMetadataService {
    */
   async getDirectoryContentsWithMetadata(
     dirPath: string, 
-    includeHidden: boolean = false
+    includeHidden = false
   ): Promise<FileSystemMetadata[]> {
     const absolutePath = toAbsolutePath(dirPath);
     const safePath = sanitizePathForLogging(absolutePath);

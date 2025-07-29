@@ -211,7 +211,8 @@ export class ExifExtractor {
     // Heritage-specific fields (only extract if this is a heritage photo)
     if (this.isHeritagePhoto(rawExif)) {
       exif.heritage = {
-        imageDescription: rawExif['EXIF:ImageDescription'] || rawExif['IFD0:ImageDescription'] || rawExif['XMP:Description'],
+        imageDescription: rawExif['EXIF:ImageDescription'] || 
+          rawExif['IFD0:ImageDescription'] || rawExif['XMP:Description'],
         userComment: rawExif['EXIF:UserComment'] || rawExif['IFD0:UserComment'],
         creator: rawExif['EXIF:Creator'] || rawExif['IFD0:Creator'],
         keywords: rawExif['EXIF:Keywords'] || rawExif['IFD0:Keywords'],
@@ -292,7 +293,10 @@ export class ExifExtractor {
    * Parse coordinate with direction handling
    * Handles both separate reference fields and direction markers within coordinate strings
    */
-  private parseCoordinateWithDirection(coordinate: CoordinateValue, referenceField: ReferenceDirection | null): number | null {
+  private parseCoordinateWithDirection(
+    coordinate: CoordinateValue, 
+    referenceField: ReferenceDirection | null
+  ): number | null {
     if (typeof coordinate === 'number') {
       // Pure numeric coordinate - apply reference if available
       if (referenceField === 'S' || referenceField === 'South' || referenceField === 'W' || referenceField === 'West') {

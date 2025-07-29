@@ -1,7 +1,9 @@
 import { Knex } from 'knex';
 import { Logger } from '../../utils/logging/index.js';
 import { ProcessingResult } from '../../types/media.js';
-import { MediaLocation } from '../../database/types/tables.js';
+import { MediaLocation, GPSSource, ConfidenceLevel } from '../../database/types/tables.js';
+import { GeolocationData } from '../../database/types/metadata.js';
+import { DatabaseCountResult } from './LandmarkService.js';
 
 const logger = new Logger('LocationService');
 
@@ -116,7 +118,7 @@ export class LocationService {
       .limit(20);
 
     return {
-      totalLocations: Number((totalLocations as any)?.count) || 0,
+      totalLocations: Number((totalLocations as unknown as DatabaseCountResult)?.count) || 0,
       countryCounts: countryCounts.map(row => ({
         country: row.country,
         count: Number(row.count)
@@ -142,86 +144,17 @@ export class LocationService {
   /**
    * Extract location data from processing result
    */
-  private async extractLocationData(mediaFileId: number, result: ProcessingResult): Promise<any> {
+  private async extractLocationData(mediaFileId: number, result: ProcessingResult): Promise<LocationRecord> {
     const primaryGPS = result.location!.primary!;
     const geolocation = result.location?.geolocation;
-
-    // Resolve foreign key references to geo tables
-    let cityId: number | null = null;
-    let stateId: number | null = null;
-    let countryId: number | null = null;
-
-    if (geolocation) {
-      // Resolve country first (US is implied from state codes like MA)
-      const countryCode = geolocation.state_code ? 'US' : null;
-      if (countryCode) {
-        const country = await this.db('geo_countries')
-          .select('id')
-          .where('country_code', countryCode)
-          .first();
-        if (country) {
-          countryId = country.id;
-          logger.debug(`Resolved country: ${countryCode} -> ID ${countryId}`);
-        }
-      }
-
-      // Resolve state by state code
-      if (geolocation.state_code) {
-        const state = await this.db('geo_states')
-          .select('id')
-          .where('code', geolocation.state_code)
-          .first();
-        if (state) {
-          stateId = state.id;
-          logger.debug(`Resolved state: ${geolocation.state_code} -> ID ${stateId}`);
-        }
-      }
-
-      // Resolve city by name, state, and proximity to coordinates
-      if (geolocation.city && stateId) {
-        // Try exact city name match first
-        let city = await this.db('geo_cities')
-          .select('id')
-          .where('city', geolocation.city)
-          .where('state_code', geolocation.state_code)
-          .first();
-
-        // If no exact match, try case-insensitive search
-        if (!city) {
-          city = await this.db('geo_cities')
-            .select('id')
-            .whereRaw('LOWER(city) = LOWER(?)', [geolocation.city])
-            .where('state_code', geolocation.state_code)
-            .first();
-        }
-
-        if (city) {
-          cityId = city.id;
-          logger.debug(`Resolved city: ${geolocation.city} -> ID ${cityId}`);
-        } else {
-          logger.warn(`Could not resolve city: ${geolocation.city}, ${geolocation.state_code}`);
-        }
-      }
-    }
-
-    // Create minimal geolocation summary (not full location data)
-    // Full location data is stored in relational tables to prevent duplication
-    const geolocationSummary = {
-      enrichmentStatus: result.location?.enrichmentStatus || {},
-      alternatives: result.location?.alternatives || [],
-      conflicts: result.location?.conflicts || []
-    };
 
     return {
       file_id: mediaFileId,
       latitude: primaryGPS.latitude,
       longitude: primaryGPS.longitude,
-      gps_source: (primaryGPS.source || 'exif') as 'exif' | 'manual' | 'estimated',
-      gps_confidence: 'medium' as 'high' | 'medium' | 'low', // TODO: Add confidence to GPS data
-      city_id: cityId,
-      state_id: stateId,
-      country_id: countryId,
-      geolocation_data: JSON.stringify(geolocationSummary) // Minimal summary, not full location data
+      gps_source: (primaryGPS.source || 'exif') as GPSSource,
+      gps_confidence: ConfidenceLevel.MEDIUM, // TODO: Add confidence to GPS data
+      geolocation_data: geolocation as GeolocationData | undefined
     };
   }
 

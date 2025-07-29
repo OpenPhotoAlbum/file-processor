@@ -107,6 +107,7 @@ export class LandmarkService {
       
       for (const provider of this.providers) {
         try {
+          // eslint-disable-next-line no-await-in-loop
           const matches = await provider.findNearbyLandmarks(lat, lng, searchOptions);
           if (matches.length > 0) {
             allMatches.push(...matches);
@@ -227,21 +228,21 @@ export class LandmarkService {
     
     // Base confidence on relationship
     switch (relationship) {
-      case LandmarkRelationship.WITHIN_BOUNDARY:
-        confidence = 1.0;
-        break;
-      case LandmarkRelationship.AT_ENTRANCE:
-        confidence = 0.9;
-        break;
-      case LandmarkRelationship.NEARBY:
-        confidence = Math.max(0.3, 1 - (distance / 5000));
-        break;
-      case LandmarkRelationship.VISIBLE_FROM:
-        confidence = Math.max(0.2, 1 - (distance / 50000));
-        break;
-      case LandmarkRelationship.OVERLOOK:
-        confidence = 0.8;
-        break;
+    case LandmarkRelationship.WITHIN_BOUNDARY:
+      confidence = 1.0;
+      break;
+    case LandmarkRelationship.AT_ENTRANCE:
+      confidence = 0.9;
+      break;
+    case LandmarkRelationship.NEARBY:
+      confidence = Math.max(0.3, 1 - (distance / 5000));
+      break;
+    case LandmarkRelationship.VISIBLE_FROM:
+      confidence = Math.max(0.2, 1 - (distance / 50000));
+      break;
+    case LandmarkRelationship.OVERLOOK:
+      confidence = 0.8;
+      break;
     }
     
     // Boost for landmark significance
@@ -349,7 +350,7 @@ export class LandmarkService {
     cacheSize: number;
     providerCount: number;
     providers: Array<{ name: string; categories: string[] }>;
-  } {
+    } {
     return {
       cacheSize: this.cache.size,
       providerCount: this.providers.length,
@@ -367,6 +368,7 @@ export class LandmarkService {
     for (const provider of this.providers) {
       if ('close' in provider && typeof provider.close === 'function') {
         try {
+          // eslint-disable-next-line no-await-in-loop
           await provider.close();
           this.logger.debug(`Closed provider: ${provider.name}`);
         } catch (error) {

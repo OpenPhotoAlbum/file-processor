@@ -42,7 +42,7 @@ export class FileSystemService {
    */
   async discoverMediaFiles(
     path: string, 
-    recursive: boolean = false,
+    recursive = false,
     options: MediaDiscoveryOptions = {}
   ): Promise<MediaDiscoveryResult> {
     return this.scanner.discoverMediaFiles(path, recursive, options);
@@ -97,6 +97,7 @@ export class FileSystemService {
       // Search for sidecars in the same directory
       for (const ext of extensions) {
         const sidecarPath = join(dir, `${baseName}${ext}`);
+        // eslint-disable-next-line no-await-in-loop
         const validation = await this.validateOptionalFile(sidecarPath);
         
         if (validation.isValid) {
@@ -152,7 +153,10 @@ export class FileSystemService {
   /**
    * Get directory contents with full metadata
    */
-  async getDirectoryContents(dirPath: string, includeHidden: boolean = false): Promise<import('./types.js').FileSystemMetadata[]> {
+  async getDirectoryContents(
+    dirPath: string, 
+    includeHidden = false
+  ): Promise<import('./types.js').FileSystemMetadata[]> {
     return this.metadata.getDirectoryContentsWithMetadata(dirPath, includeHidden);
   }
 
@@ -209,6 +213,7 @@ export class FileSystemService {
       // Search for sidecars in this parent directory
       for (const ext of extensions) {
         const sidecarPath = join(parentDir, `${baseName}${ext}`);
+        // eslint-disable-next-line no-await-in-loop
         const validation = await this.validateOptionalFile(sidecarPath);
         
         if (validation.isValid) {

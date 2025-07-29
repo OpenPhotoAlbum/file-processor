@@ -2,8 +2,8 @@
  * Directory scanning and file enumeration functionality
  */
 
-import { readdir, stat } from 'fs/promises';
-import { join, extname, basename } from 'path';
+import { readdir } from 'fs/promises';
+import { join, extname } from 'path';
 import { Logger } from '../../utils/logging/index.js';
 import { createSystemErrorFactory } from '../../utils/errors/factories.js';
 import { toAbsolutePath, sanitizePathForLogging } from '../../utils/paths.js';
@@ -55,7 +55,7 @@ export class FileSystemScanner {
    */
   async discoverMediaFiles(
     path: string, 
-    recursive: boolean = false,
+    recursive = false,
     options: MediaDiscoveryOptions = {}
   ): Promise<MediaDiscoveryResult> {
     const startTime = Date.now();
@@ -159,6 +159,7 @@ export class FileSystemScanner {
 
         if (entry.isDirectory()) {
           if (options.recursive) {
+            // eslint-disable-next-line no-await-in-loop
             const subFiles = await this.scanDirectoryRecursive(
               fullPath,
               options,

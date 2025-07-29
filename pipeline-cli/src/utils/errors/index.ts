@@ -7,7 +7,10 @@ export * from './codes.js';
 export * from './classes.js';
 
 import { Logger } from '../logging/index.js';
-import { MPPError, ValidationError, ExifError, GPSError, TimestampError, PathError, MetadataError, ConfigError, SystemError, LandmarkError } from './classes.js';
+import { 
+  MPPError, ValidationError, ExifError, GPSError, TimestampError, 
+  PathError, MetadataError, ConfigError, SystemError, LandmarkError 
+} from './classes.js';
 import type { UnknownJsonContent } from '../../types/semantic-any.js';
 import { ErrorCode, ErrorSeverity } from './codes.js';
 
@@ -109,18 +112,18 @@ export class ErrorFactory {
     };
 
     switch (error.severity) {
-      case ErrorSeverity.FATAL:
-        this.logger.fatal(error.message, error, logData);
-        break;
-      case ErrorSeverity.ERROR:
-        this.logger.error(error.message, error, logData);
-        break;
-      case ErrorSeverity.WARNING:
-        this.logger.warn(error.message, logData);
-        break;
-      case ErrorSeverity.INFO:
-        this.logger.info(error.message, logData);
-        break;
+    case ErrorSeverity.FATAL:
+      this.logger.fatal(error.message, error, logData);
+      break;
+    case ErrorSeverity.ERROR:
+      this.logger.error(error.message, error, logData);
+      break;
+    case ErrorSeverity.WARNING:
+      this.logger.warn(error.message, logData);
+      break;
+    case ErrorSeverity.INFO:
+      this.logger.info(error.message, logData);
+      break;
     }
   }
 }

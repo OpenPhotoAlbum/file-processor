@@ -107,7 +107,8 @@ export class LivePhotoDetector {
    */
   private getVideoDuration(videoPath: string): number | null {
     try {
-      const command = `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${videoPath}" 2>/dev/null`;
+      const command = 'ffprobe -v error -show_entries format=duration ' +
+        `-of default=noprint_wrappers=1:nokey=1 '${videoPath}' 2>/dev/null`;
       const output = execSync(command, { encoding: 'utf8' }).trim();
       const duration = parseFloat(output);
       

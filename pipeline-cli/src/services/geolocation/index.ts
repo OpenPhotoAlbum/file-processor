@@ -6,6 +6,7 @@
 import mysql from 'mysql2/promise';
 import { Logger } from '../../utils/logging/index.js';
 import { createSystemErrorFactory } from '../../utils/errors/factories.js';
+import { DatabaseRowData } from '../../types/semantic-any.js';
 
 export interface LocationMatch {
   // Core location data
@@ -191,7 +192,7 @@ export class GeolocationService {
     try {
       this.logger.info('Executing boundary containment query', { lat, lng });
       const [rows] = await this.dbPool.execute(query, [lng, lat]);
-      const results = rows as any[];
+      const results = rows as DatabaseRowData[];
       
       this.logger.info('Boundary containment query results', { resultCount: results.length });
       
@@ -235,7 +236,7 @@ export class GeolocationService {
     
     try {
       const [rows] = await this.dbPool.execute(query, [lng, lat, maxDistanceMeters]);
-      const results = rows as any[];
+      const results = rows as DatabaseRowData[];
       
       if (results.length > 0) {
         const row = results[0];
@@ -281,7 +282,7 @@ export class GeolocationService {
     
     try {
       const [rows] = await this.dbPool.execute(query, [lat, lng, lat, maxDistanceMeters]);
-      const results = rows as any[];
+      const results = rows as DatabaseRowData[];
       
       if (results.length > 0) {
         const row = results[0];
@@ -351,9 +352,9 @@ export class GeolocationService {
     if (!this.dbPool) return false;
     
     try {
-      const [rows] = await this.dbPool.execute('SELECT 1 as test');
+      await this.dbPool.execute('SELECT 1 as test');
       return true;
-    } catch (error) {
+    } catch {
       this.logger.error('Database connection test failed');
       return false;
     }

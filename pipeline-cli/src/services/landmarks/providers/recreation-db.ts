@@ -166,7 +166,11 @@ export class RecreationDatabaseProvider implements LandmarkProvider {
     }
   }
 
-  private mapFacilityToLandmark(facility: RecreationFacilityRecord, _searchLat: number, _searchLng: number): LandmarkMatch {
+  private mapFacilityToLandmark(
+    facility: RecreationFacilityRecord, 
+    _searchLat: number, 
+    _searchLng: number
+  ): LandmarkMatch {
     // Convert distance from km to meters
     const distance = facility.distance_km * 1000;
 

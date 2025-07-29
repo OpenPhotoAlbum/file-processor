@@ -70,3 +70,11 @@ export type LegacyDataStructure = any;
  * the specific configuration key.
  */
 export type DynamicConfigValue = any;
+
+/**
+ * Database query results with unknown structure
+ * 
+ * Why any: Database rows from dynamic queries can have varying column sets
+ * and data types. We need to extract known fields after querying.
+ */
+export type DatabaseRowData = any;

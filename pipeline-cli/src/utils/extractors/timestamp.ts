@@ -243,7 +243,7 @@ export class TimestampExtractor {
             originalFormat: String(fieldValue),
             sourceDetails: `${sidecar.source} ${field}`
           });
-        } catch (error) {
+        } catch {
           // Skip invalid timestamps
           continue;
         }
@@ -331,7 +331,7 @@ export class TimestampExtractor {
             originalFormat: match[0],
             sourceDetails: `Filename pattern ${pattern.format}`
           });
-        } catch (error) {
+        } catch {
           // Skip invalid date patterns
           continue;
         }
@@ -499,7 +499,8 @@ export class TimestampExtractor {
           // Flag conflicts > 24 hours between high-confidence sources
           if (Math.abs(diff) > 24) {
             conflicts.push(
-              `${highConfidence[i].sourceDetails} vs ${highConfidence[j].sourceDetails}: ${Math.round(diff)}h difference`
+              `${highConfidence[i].sourceDetails} vs ${highConfidence[j].sourceDetails}: ` +
+              `${Math.round(diff)}h difference`
             );
           }
         }

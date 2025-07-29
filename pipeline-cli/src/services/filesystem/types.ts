@@ -117,7 +117,10 @@ export interface SidecarSearchOptions {
  * Common file extensions for media files
  */
 export const MEDIA_EXTENSIONS = {
-  IMAGE: ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.tif', '.webp', '.heic', '.heif', '.raw', '.cr2', '.nef', '.arw'],
+  IMAGE: [
+    '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.tif', '.webp', 
+    '.heic', '.heif', '.raw', '.cr2', '.nef', '.arw'
+  ],
   VIDEO: ['.mp4', '.avi', '.mov', '.mkv', '.webm', '.flv', '.wmv', '.m4v', '.3gp'],
   AUDIO: ['.mp3', '.wav', '.flac', '.aac', '.ogg', '.wma', '.m4a']
 } as const;

@@ -2,12 +2,27 @@ import { Knex } from 'knex';
 import { Logger } from '../../utils/logging/index.js';
 import { ProcessingResult } from '../../types/media.js';
 import { UnknownJsonContent } from '../../types/semantic-any.js';
-import { MediaLandmark, Landmark } from '../../database/types/tables.js';
+import { MediaLandmark, Landmark, LandmarkProvider } from '../../database/types/tables.js';
 
 const logger = new Logger('LandmarkService');
 
 export type LandmarkAssociationRecord = MediaLandmark;
 export type LandmarkRecord = Landmark;
+
+export interface LandmarkAssociationDetails {
+  id: number;
+  file_id: number;
+  landmark_id: number;
+  distance_meters: number;
+  landmark_name: string;
+  landmark_category: string;
+  landmark_provider: string;
+  landmark_data: UnknownJsonContent;
+}
+
+export interface DatabaseCountResult {
+  count: string | number;
+}
 
 export class LandmarkService {
   private db: Knex;
@@ -51,7 +66,7 @@ export class LandmarkService {
   /**
    * Find landmark associations by media file ID
    */
-  async findAssociationsByMediaFileId(mediaFileId: number): Promise<any[]> {
+  async findAssociationsByMediaFileId(mediaFileId: number): Promise<LandmarkAssociationDetails[]> {
     const results = await this.db('media_landmarks as ml')
       .join('landmarks as l', 'ml.landmark_id', 'l.id')
       .select(
@@ -98,8 +113,8 @@ export class LandmarkService {
       .orderBy('count', 'desc');
 
     return {
-      totalLandmarks: Number((totalLandmarks as any)?.count) || 0,
-      totalAssociations: Number((totalAssociations as any)?.count) || 0,
+      totalLandmarks: Number((totalLandmarks as unknown as DatabaseCountResult)?.count) || 0,
+      totalAssociations: Number((totalAssociations as unknown as DatabaseCountResult)?.count) || 0,
       topLandmarks: topLandmarks.map(row => ({
         name: String(row.name),
         type: String(row.type),
@@ -115,7 +130,11 @@ export class LandmarkService {
   /**
    * Process generic landmarks
    */
-  private async processLandmarks(mediaFileId: number, landmarks: unknown[], defaultProvider: string): Promise<number[]> {
+  private async processLandmarks(
+    mediaFileId: number, 
+    landmarks: unknown[], 
+    defaultProvider: string
+  ): Promise<number[]> {
     const associations: number[] = [];
 
     for (const landmarkData of landmarks) {
@@ -125,7 +144,9 @@ export class LandmarkService {
         // Extract landmark info from nested structure
         const landmarkObj = landmark.landmark as UnknownJsonContent || {};
         const name = String(landmarkObj.name || landmarkObj.fullName || landmark.name || 'Unknown');
-        const category = String(landmarkObj.category || landmarkObj.subcategory || landmark.type || landmark.category || 'generic');
+        const category = String(
+          landmarkObj.category || landmarkObj.subcategory || landmark.type || landmark.category || 'generic'
+        );
         const distance = Number(landmark.distance || 0);
         
         // Auto-detect provider from landmark data
@@ -133,6 +154,7 @@ export class LandmarkService {
         const provider = detectedProvider || defaultProvider;
         
         // Find or create landmark
+        // eslint-disable-next-line no-await-in-loop
         const landmarkId = await this.findOrCreateLandmark(
           name,
           category,
@@ -141,6 +163,7 @@ export class LandmarkService {
         );
 
         // Create association
+        // eslint-disable-next-line no-await-in-loop
         const associationId = await this.createAssociation(
           mediaFileId,
           landmarkId,
@@ -228,7 +251,12 @@ export class LandmarkService {
   /**
    * Find or create landmark
    */
-  private async findOrCreateLandmark(name: string, category: string, provider: string, providerData: any): Promise<number> {
+  private async findOrCreateLandmark(
+    name: string, 
+    category: string, 
+    provider: string, 
+    providerData: UnknownJsonContent
+  ): Promise<number> {
     // Check if landmark already exists
     const existingLandmark = await this.db('landmarks')
       .select('id')
@@ -244,8 +272,8 @@ export class LandmarkService {
     const [id] = await this.db('landmarks').insert({
       name,
       category,
-      provider: provider.toUpperCase() as any,
-      provider_data: JSON.stringify(providerData) as any
+      provider: provider.toUpperCase() as LandmarkProvider,
+      provider_data: providerData
     });
 
     return Number(id);

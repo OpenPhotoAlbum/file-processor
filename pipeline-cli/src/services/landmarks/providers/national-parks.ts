@@ -369,14 +369,34 @@ export class NationalParksProvider implements LandmarkProvider {
    * Determine relationship between coordinates and landmark
    */
   private determineRelationship(distance: number, landmark: Landmark): LandmarkRelationship {
-    // These would ideally use actual boundary data
-    if (distance < 1000) {
-      return LandmarkRelationship.WITHIN_BOUNDARY;
-    } else if (distance < 2000) {
-      return LandmarkRelationship.AT_ENTRANCE;  
-    } else if (distance < 10000) {
-      return LandmarkRelationship.NEARBY;
+    // Adjust thresholds based on landmark type and size
+    const isLargePark = landmark.name.toLowerCase().includes('national park');
+    const isVisitorCenter = landmark.name.toLowerCase().includes('visitor center');
+    const isTrail = landmark.name.toLowerCase().includes('trail');
+    
+    if (isVisitorCenter) {
+      // Visitor centers are precise locations
+      if (distance < 500) return LandmarkRelationship.WITHIN_BOUNDARY;
+      if (distance < 1000) return LandmarkRelationship.AT_ENTRANCE;
+      if (distance < 5000) return LandmarkRelationship.NEARBY;
+      return LandmarkRelationship.VISIBLE_FROM;
+    } else if (isTrail) {
+      // Trails can be long, more generous boundaries
+      if (distance < 200) return LandmarkRelationship.WITHIN_BOUNDARY;
+      if (distance < 1000) return LandmarkRelationship.AT_ENTRANCE;
+      if (distance < 3000) return LandmarkRelationship.NEARBY;
+      return LandmarkRelationship.VISIBLE_FROM;
+    } else if (isLargePark) {
+      // Large parks have expansive boundaries
+      if (distance < 2000) return LandmarkRelationship.WITHIN_BOUNDARY;
+      if (distance < 5000) return LandmarkRelationship.AT_ENTRANCE;
+      if (distance < 15000) return LandmarkRelationship.NEARBY;
+      return LandmarkRelationship.VISIBLE_FROM;
     } else {
+      // Default thresholds for other NPS features
+      if (distance < 1000) return LandmarkRelationship.WITHIN_BOUNDARY;
+      if (distance < 2000) return LandmarkRelationship.AT_ENTRANCE;
+      if (distance < 10000) return LandmarkRelationship.NEARBY;
       return LandmarkRelationship.VISIBLE_FROM;
     }
   }
@@ -393,20 +413,20 @@ export class NationalParksProvider implements LandmarkProvider {
     
     // Base confidence on relationship
     switch (relationship) {
-      case LandmarkRelationship.WITHIN_BOUNDARY:
-        confidence = 1.0;
-        break;
-      case LandmarkRelationship.AT_ENTRANCE:
-        confidence = 0.9;
-        break;
-      case LandmarkRelationship.NEARBY:
-        confidence = Math.max(0.4, 1 - (distance / 10000));
-        break;
-      case LandmarkRelationship.VISIBLE_FROM:
-        confidence = Math.max(0.2, 1 - (distance / 50000));
-        break;
-      default:
-        confidence = 0.3;
+    case LandmarkRelationship.WITHIN_BOUNDARY:
+      confidence = 1.0;
+      break;
+    case LandmarkRelationship.AT_ENTRANCE:
+      confidence = 0.9;
+      break;
+    case LandmarkRelationship.NEARBY:
+      confidence = Math.max(0.4, 1 - (distance / 10000));
+      break;
+    case LandmarkRelationship.VISIBLE_FROM:
+      confidence = Math.max(0.2, 1 - (distance / 50000));
+      break;
+    default:
+      confidence = 0.3;
     }
     
     // Boost for major landmarks

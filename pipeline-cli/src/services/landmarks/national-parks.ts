@@ -45,7 +45,7 @@ export class NationalParksService {
   /**
    * Find national parks/monuments near coordinates
    */
-  async findNearbyParks(lat: number, lng: number, radiusKm: number = 50): Promise<LandmarkMatch[]> {
+  async findNearbyParks(lat: number, lng: number, radiusKm = 50): Promise<LandmarkMatch[]> {
     try {
       // First try API if available
       if (this.apiKey) {
@@ -70,7 +70,7 @@ export class NationalParksService {
   /**
    * Search parks using NPS API
    */
-  private async searchParksAPI(lat: number, lng: number, radiusKm: number): Promise<LandmarkMatch[]> {
+  private async searchParksAPI(_lat: number, _lng: number, _radiusKm: number): Promise<LandmarkMatch[]> {
     // Note: NPS API doesn't have direct coordinate search, so we'd need to:
     // 1. Get parks by state
     // 2. Calculate distances client-side

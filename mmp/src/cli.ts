@@ -12,6 +12,9 @@ import chalk from 'chalk';
 
 const program = new Command();
 
+// Enable colors for Commander.js
+process.env.FORCE_COLOR = '1';
+
 program
   .name('mmp')
   .description(chalk.blue('Media Processing Pipeline - Unified CLI for photo and video operations'))
@@ -24,12 +27,12 @@ program
   .option('--flatbed', 'Scan from flatbed scanner')
   .option('--adf', 'Scan from automatic document feeder')
   .option('--duplex', 'Scan both sides (ADF only)')
-  .option('-d, --date <date>', 'Set capture date (YYYY-MM-DD)')
-  .option('-l, --location <location>', 'Set GPS location (name or coordinates)')
-  .option('--desc <description>', 'Description for filename')
+  .option('-d, --date <date>', 'Set capture date (YYYY-MM-DD) ' + chalk.gray('[optional]'))
+  .option('-l, --location <location>', 'Set GPS location (name or coordinates) ' + chalk.gray('[optional]'))
+  .option('--desc <description>', 'Description for filename ' + chalk.gray('[optional]'))
   .option('--device <device>', 'Scanner device', 'airscan:e0:HP')
   .option('--format <format>', 'Output format', 'jpeg')
-  .option('--resolution <dpi>', 'Scan resolution', '300')
+  .option('--resolution <dpi>', 'Scan resolution in DPI', '300')
   .option('--output <dir>', 'Output directory', '/photos/staging/')
   .action(async (options) => {
     console.error(chalk.green('📸 Starting scan operation...'));
@@ -118,7 +121,7 @@ program
   .argument('[scan-file]', 'Scan file containing multiple photos (optional if piped)')
   .description('Separate multiple photos from single scan')
   .option('-b, --background <color>', 'Background color/reference', 'white')
-  .option('-r, --reference <file>', 'Reference background image')
+  .option('-r, --reference <file>', 'Reference background image ' + chalk.gray('[optional]'))
   .option('--keep-original', 'Keep original scan file')
   .option('--output <dir>', 'Output directory', './separated/')
   .option('--min-area <pixels>', 'Minimum photo size in pixels', '500')
@@ -218,7 +221,7 @@ program
   .command('gps')
   .argument('<files...>', 'Files or directories to add GPS coordinates to')
   .description('Add GPS coordinates to media files')
-  .option('-s, --set <location>', 'Set location (coordinates, city, or shortcut)')
+  .option('-s, --set <location>', 'Set location (coordinates, city, or shortcut) ' + chalk.red('[REQUIRED]'))
   .option('--batch', 'Process multiple files/directories')
   .option('--overwrite', 'Overwrite existing GPS data')
   .addHelpText('after', `
@@ -391,9 +394,9 @@ program
   .command('dates')
   .argument('[files...]', 'Files to set dates on (supports patterns, directories, or stdin)')
   .description('Set dates on heritage photos and media files')
-  .option('-s, --set <date>', 'Set date (YYYY-MM-DD, MM-DD-YYYY, YYYY, or YYYY-MM)')
+  .option('-s, --set <date>', 'Set date (YYYY-MM-DD, MM-DD-YYYY, YYYY, or YYYY-MM) ' + chalk.red('[REQUIRED]'))
   .option('-r, --recursive', 'Process directories recursively')
-  .option('--desc <description>', 'Optional description for heritage context')
+  .option('--desc <description>', 'Optional description for heritage context ' + chalk.gray('[optional]'))
   .option('--dry-run', 'Show what would be processed without changes')
   .option('-q, --quiet', 'Pipe-friendly output (filenames only)')
   .option('--json', 'JSON output for programmatic use')
@@ -637,7 +640,7 @@ program
   .option('--stdin', 'Explicit stdin mode')
   .option('--auto-fix', 'Automatically fix validation issues when possible')
   .option('--dry-run', 'Show what would be fixed without making changes')
-  .option('--backup-dir <dir>', 'Custom backup directory for auto-fix (default: .autofix-backup)')
+  .option('--backup-dir <dir>', 'Custom backup directory for auto-fix', '.autofix-backup')
   .addHelpText('after', `
 ${chalk.green('Examples:')}
   ${chalk.cyan('mmp validate photo.jpg')}

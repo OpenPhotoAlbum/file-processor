@@ -20,7 +20,6 @@ import {
   RecreationFacility,
   RecreationCampsite,
   RecreationApiResponse,
-  RecreationCampsiteResponse,
   RecreationArea,
   RecreationAreaResponse
 } from '../../../types/recreation.types.js';
@@ -66,7 +65,9 @@ export class RecreationProvider implements LandmarkProvider {
     const maxResults = options.maxResults || 10;
 
     try {
-      this.logger.debug(`Searching Recreation.gov facilities and recreation areas near ${lat}, ${lng} within ${maxRadius}km`);
+      this.logger.debug(
+        `Searching Recreation.gov facilities and recreation areas near ${lat}, ${lng} within ${maxRadius}km`
+      );
 
       // Search both facilities and recreation areas in parallel
       const [facilitiesResponse, recreationAreasResponse] = await Promise.allSettled([
@@ -99,12 +100,17 @@ export class RecreationProvider implements LandmarkProvider {
       // Sort by distance (closest first)
       filteredMatches.sort((a, b) => a.distance - b.distance);
 
-      this.logger.debug(`Returning ${filteredMatches.length} recreation facilities and areas above confidence threshold`);
+      this.logger.debug(
+        `Returning ${filteredMatches.length} recreation facilities and areas above confidence threshold`
+      );
       
       return filteredMatches.slice(0, maxResults);
 
     } catch (error) {
-      this.logger.error('Failed to fetch Recreation.gov facilities', error instanceof Error ? error : new Error(String(error)));
+      this.logger.error(
+        'Failed to fetch Recreation.gov facilities', 
+        error instanceof Error ? error : new Error(String(error))
+      );
       return [];
     }
   }
@@ -135,7 +141,12 @@ export class RecreationProvider implements LandmarkProvider {
     return data.RECDATA.map(facility => this.mapFacilityToLandmark(facility, lat, lng));
   }
 
-  private async searchRecreationAreas(lat: number, lng: number, radius: number, limit: number): Promise<LandmarkMatch[]> {
+  private async searchRecreationAreas(
+    lat: number, 
+    lng: number, 
+    radius: number, 
+    limit: number
+  ): Promise<LandmarkMatch[]> {
     // Convert radius from km to miles for recareas endpoint
     const radiusMiles = radius * 0.621371;
     const url = `${this.baseUrl}/recareas?latitude=${lat}&longitude=${lng}&radius=${radiusMiles}&limit=${limit}`;

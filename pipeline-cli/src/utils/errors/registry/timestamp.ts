@@ -4,7 +4,6 @@
  */
 
 import { ErrorComponent, ErrorSeverity } from '../types.js';
-import { Logger } from '../../logging/index.js';
 
 // Clean constant names for external reference
 export const TimestampErrors = {

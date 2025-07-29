@@ -1,4 +1,6 @@
 import { Knex } from 'knex';
+import { UnknownJsonContent } from '../../types/semantic-any.js';
+import { DatabaseCountResult } from './LandmarkService.js';
 import { Logger } from '../../utils/logging/index.js';
 import { ProcessingResult } from '../../types/media.js';
 import { Software, MediaSoftware, SoftwareType } from '../../database/types/tables.js';
@@ -37,7 +39,10 @@ export class SoftwareService {
         const softwareName = this.determineSoftwareName(result.camera.make);
         const softwareVersion = String(result.camera.software);
         
-        logger.info(`Creating software record: name="${softwareName}", version="${softwareVersion}", vendor="${result.camera.make}"`);
+        logger.info(
+          `Creating software record: name="${softwareName}", ` +
+          `version="${softwareVersion}", vendor="${result.camera.make}"`
+        );
         
         const softwareId = await this.getOrCreateSoftware(
           softwareName,
@@ -86,11 +91,13 @@ export class SoftwareService {
       for (const key of softwareKeys) {
         if (result.technical?.[key]) {
           const software = String(result.technical[key]);
+          // eslint-disable-next-line no-await-in-loop
           const softwareId = await this.getOrCreateSoftware(
             software,
             SoftwareType.POST_PROCESSING
           );
 
+          // eslint-disable-next-line no-await-in-loop
           const associationId = await this.createAssociation(
             mediaFileId,
             softwareId,
@@ -175,7 +182,7 @@ export class SoftwareService {
     }
 
     // Create new software record
-    const metadata: any = {};
+    const metadata: UnknownJsonContent = {};
     if (vendor) metadata.vendor = vendor;
 
     const [id] = await this.db('software').insert({
@@ -200,7 +207,7 @@ export class SoftwareService {
     mediaFileId: number,
     softwareId: number,
     role: string,
-    metadata?: any
+    metadata?: UnknownJsonContent
   ): Promise<number> {
     const [id] = await this.db('media_software').insert({
       file_id: mediaFileId,
@@ -215,7 +222,7 @@ export class SoftwareService {
   /**
    * Get software associations for a media file
    */
-  async findAssociationsByMediaFileId(mediaFileId: number): Promise<any[]> {
+  async findAssociationsByMediaFileId(mediaFileId: number): Promise<UnknownJsonContent[]> {
     const results = await this.db('media_software as ms')
       .join('software as s', 'ms.software_id', 's.id')
       .select(
@@ -262,8 +269,8 @@ export class SoftwareService {
       .orderBy('count', 'desc');
 
     return {
-      totalSoftware: Number((totalSoftware as any)?.count) || 0,
-      totalAssociations: Number((totalAssociations as any)?.count) || 0,
+      totalSoftware: Number((totalSoftware as unknown as DatabaseCountResult)?.count) || 0,
+      totalAssociations: Number((totalAssociations as unknown as DatabaseCountResult)?.count) || 0,
       topSoftware: topSoftware.map(row => ({
         name: String(row.name),
         version: row.version ? String(row.version) : null,

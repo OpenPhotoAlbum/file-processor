@@ -174,7 +174,7 @@ export class FileSystemValidator {
     const result: PathValidationResult = {
       isValid: false,
       absolutePath: '',
-      safePath: safePath,
+      safePath,
       hasKnownPrefix: false,
       errors: [],
       warnings: []
@@ -252,6 +252,7 @@ export class FileSystemValidator {
         return [filePath, result] as [string, FileValidationResult];
       });
       
+      // eslint-disable-next-line no-await-in-loop
       const chunkResults = await Promise.all(chunkPromises);
       chunkResults.forEach(([path, result]) => {
         results.set(path, result);

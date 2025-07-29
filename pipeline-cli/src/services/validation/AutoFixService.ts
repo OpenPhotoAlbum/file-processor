@@ -1,14 +1,12 @@
-import { MediaFile } from '../../types/media.js';
+import { MediaFile, ProcessingResult } from '../../types/media.js';
 import { Logger } from '../../utils/logging/index.js';
 import { createValidationErrorFactory, createSystemErrorFactory } from '../../utils/errors/factories.js';
 import { FileSystemService } from '../filesystem/index.js';
 import { ValidationReport, ValidationService } from './index.js';
-import type { ProcessingResult } from '../../types/media.js';
 import { processFile } from '../../pipeline/entry.js';
 import { ExifExtractor } from '../../utils/extractors/exif.js';
 import path from 'path';
 import fs from 'fs/promises';
-import crypto from 'crypto';
 
 export interface AutoFixResult {
   fixId: string;
@@ -91,7 +89,8 @@ export class AutoFixService {
 
     try {
       // Create backup directory if needed
-      const backupBaseDir = this.config.backupDirectory || path.join(path.dirname(file.absolutePath), '.autofix-backup');
+      const backupBaseDir = this.config.backupDirectory || 
+        path.join(path.dirname(file.absolutePath), '.autofix-backup');
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
       const backupDir = path.join(backupBaseDir, timestamp);
       
@@ -128,7 +127,7 @@ export class AutoFixService {
   /**
    * Fix missing metadata sidecar
    */
-  private async fixMissingMetadata(file: MediaFile, validationReport: ValidationReport): Promise<AutoFixResult> {
+  private async fixMissingMetadata(file: MediaFile, _validationReport: ValidationReport): Promise<AutoFixResult> {
     const fixId = 'fix-missing-metadata';
     
     if (!this.config.fixTypes.missingMetadata) {
@@ -201,7 +200,7 @@ export class AutoFixService {
   /**
    * Fix incorrect filename based on EXIF date
    */
-  private async fixIncorrectFilename(file: MediaFile, validationReport: ValidationReport): Promise<AutoFixResult> {
+  private async fixIncorrectFilename(file: MediaFile, _validationReport: ValidationReport): Promise<AutoFixResult> {
     const fixId = 'fix-incorrect-filename';
     
     if (!this.config.fixTypes.incorrectFilename) {
@@ -255,6 +254,7 @@ export class AutoFixService {
             `${dateStr}_${counter.toString().padStart(3, '0')}${ext}`
           );
           try {
+            // eslint-disable-next-line no-await-in-loop
             await fs.access(finalPath);
             counter++;
           } catch {
@@ -307,7 +307,7 @@ export class AutoFixService {
   /**
    * Fix missing GPS enrichment (when coordinates exist)
    */
-  private async fixMissingGPSEnrichment(file: MediaFile, validationReport: ValidationReport): Promise<AutoFixResult> {
+  private async fixMissingGPSEnrichment(file: MediaFile, _validationReport: ValidationReport): Promise<AutoFixResult> {
     const fixId = 'fix-missing-gps-enrichment';
     
     if (!this.config.fixTypes.missingGPS) {
@@ -409,7 +409,7 @@ export class AutoFixService {
   /**
    * Fix missing color analysis
    */
-  private async fixMissingColors(file: MediaFile, validationReport: ValidationReport): Promise<AutoFixResult> {
+  private async fixMissingColors(file: MediaFile, _validationReport: ValidationReport): Promise<AutoFixResult> {
     const fixId = 'fix-missing-colors';
     
     if (!this.config.fixTypes.missingColors) {
@@ -646,7 +646,7 @@ export class AutoFixService {
       this.logger.info('Rollback completed successfully', { file: file.path });
     } catch (rollbackError) {
       const errorMessage = rollbackError instanceof Error ? rollbackError.message : 'Unknown error';
-      this.logger.error('Rollback failed: ' + errorMessage);
+      this.logger.error(`Rollback failed: ${  errorMessage}`);
       throw rollbackError;
     }
   }

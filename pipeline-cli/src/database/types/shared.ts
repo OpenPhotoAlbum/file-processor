@@ -18,11 +18,11 @@ import { ProcessingResult, ProcessingEvent } from '../../types/media.js';
  */
 export function mapConfidenceToDb(confidence: 'high' | 'medium' | 'low' | 'none'): ConfidenceLevel | null {
   switch (confidence) {
-    case 'high': return ConfidenceLevel.HIGH;
-    case 'medium': return ConfidenceLevel.MEDIUM;
-    case 'low': return ConfidenceLevel.LOW;
-    case 'none': return null;
-    default: return ConfidenceLevel.LOW;
+  case 'high': return ConfidenceLevel.HIGH;
+  case 'medium': return ConfidenceLevel.MEDIUM;
+  case 'low': return ConfidenceLevel.LOW;
+  case 'none': return null;
+  default: return ConfidenceLevel.LOW;
   }
 }
 
@@ -31,11 +31,11 @@ export function mapConfidenceToDb(confidence: 'high' | 'medium' | 'low' | 'none'
  */
 export function mapConfidenceFromDb(confidence: ConfidenceLevel | null): 'high' | 'medium' | 'low' | 'none' {
   switch (confidence) {
-    case ConfidenceLevel.HIGH: return 'high';
-    case ConfidenceLevel.MEDIUM: return 'medium';
-    case ConfidenceLevel.LOW: return 'low';
-    case null: return 'none';
-    default: return 'low';
+  case ConfidenceLevel.HIGH: return 'high';
+  case ConfidenceLevel.MEDIUM: return 'medium';
+  case ConfidenceLevel.LOW: return 'low';
+  case null: return 'none';
+  default: return 'low';
   }
 }
 
@@ -62,10 +62,10 @@ export function determineCollection(path: string): Collection {
  */
 export function mapTimestampSourceToDb(source: string): TimestampSource {
   switch (source.toLowerCase()) {
-    case 'exif': return TimestampSource.EXIF;
-    case 'filename': return TimestampSource.FILENAME;
-    case 'filesystem': return TimestampSource.FILESYSTEM;
-    default: return TimestampSource.FILESYSTEM;
+  case 'exif': return TimestampSource.EXIF;
+  case 'filename': return TimestampSource.FILENAME;
+  case 'filesystem': return TimestampSource.FILESYSTEM;
+  default: return TimestampSource.FILESYSTEM;
   }
 }
 
@@ -74,10 +74,10 @@ export function mapTimestampSourceToDb(source: string): TimestampSource {
  */
 export function mapGPSSourceToDb(source: string): GPSSource {
   switch (source.toLowerCase()) {
-    case 'exif': return GPSSource.EXIF;
-    case 'manual': return GPSSource.MANUAL;
-    case 'estimated': return GPSSource.ESTIMATED;
-    default: return GPSSource.EXIF;
+  case 'exif': return GPSSource.EXIF;
+  case 'manual': return GPSSource.MANUAL;
+  case 'estimated': return GPSSource.ESTIMATED;
+  default: return GPSSource.EXIF;
   }
 }
 

@@ -1,4 +1,5 @@
 import { MediaFile } from '../../types/media.js';
+import { UnknownJsonContent } from '../../types/semantic-any.js';
 import { Logger } from '../../utils/logging/index.js';
 import { createValidationErrorFactory, createSystemErrorFactory } from '../../utils/errors/factories.js';
 import { ExifExtractor } from '../../utils/extractors/exif.js';
@@ -11,7 +12,7 @@ export interface ValidationRule {
   description: string;
   category: 'critical' | 'quality' | 'bonus' | 'expected';
   weight: number;
-  validate: (file: MediaFile, metadata?: any) => Promise<ValidationResult>;
+  validate: (file: MediaFile, metadata?: UnknownJsonContent) => Promise<ValidationResult>;
 }
 
 export interface ValidationResult {
@@ -153,7 +154,7 @@ export class ValidationService {
             evidence.push(`XMP documentName present: ${exifData.heritage.documentName}`);
           }
           
-        } catch (exifError) {
+        } catch {
           evidence.push('EXIF extraction failed - using router detection only');
         }
         
@@ -186,7 +187,7 @@ export class ValidationService {
             evidence.push('Original capture timestamp present');
           }
           
-        } catch (exifError) {
+        } catch {
           evidence.push('EXIF extraction failed - using router detection only');
         }
         
@@ -234,7 +235,7 @@ export class ValidationService {
         weight: 10,
         validate: async (file: MediaFile) => {
           try {
-            const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
+            await this.exifExtractor.extractExifData(file.absolutePath);
             return {
               passed: true,
               score: 10,
@@ -257,7 +258,9 @@ export class ValidationService {
         category: 'critical',
         weight: 10,
         validate: async (file: MediaFile) => {
-          const supportedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/heic', 'image/gif', 'image/tiff', 'image/webp'];
+          const supportedTypes = [
+            'image/jpeg', 'image/jpg', 'image/png', 'image/heic', 'image/gif', 'image/tiff', 'image/webp'
+          ];
           const passed = supportedTypes.includes(file.mimeType.toLowerCase());
           return {
             passed,
@@ -369,7 +372,9 @@ export class ValidationService {
             return {
               passed,
               score: passed ? 10 : 0,
-              message: passed ? `Resolution adequate: ${megapixels}MP` : `Resolution too low: ${megapixels}MP (minimum 0.5MP)`
+              message: passed ? 
+                `Resolution adequate: ${megapixels}MP` : 
+                `Resolution too low: ${megapixels}MP (minimum 0.5MP)`
             };
           } catch (error) {
             return {
@@ -395,7 +400,9 @@ export class ValidationService {
           return {
             passed,
             score: passed ? 10 : 0,
-            message: passed ? `File size OK: ${Math.round(size / 1024)}KB` : `File size issue: ${Math.round(size / 1024)}KB`
+            message: passed ? 
+              `File size OK: ${Math.round(size / 1024)}KB` : 
+              `File size issue: ${Math.round(size / 1024)}KB`
           };
         }
       },
@@ -454,7 +461,9 @@ export class ValidationService {
             return {
               passed,
               score: passed ? 5 : 0,
-              message: passed ? `Camera: ${exifData.camera.make} ${exifData.camera.model}` : 'Camera information missing'
+              message: passed ? 
+                `Camera: ${exifData.camera.make} ${exifData.camera.model}` : 
+                'Camera information missing'
             };
           } catch (error) {
             return {
@@ -500,7 +509,9 @@ export class ValidationService {
             return {
               passed: !!hasGPS,
               score: hasGPS ? 5 : 0,
-              message: hasGPS ? `GPS: ${exifData.gps!.latitude}, ${exifData.gps!.longitude}` : 'No GPS coordinates found'
+              message: hasGPS ? 
+                `GPS: ${exifData.gps!.latitude}, ${exifData.gps!.longitude}` : 
+                'No GPS coordinates found'
             };
           } catch (error) {
             return {
@@ -530,7 +541,8 @@ export class ValidationService {
             return {
               passed: count >= 2, // At least 2 of 3 exposure settings
               score: count >= 2 ? 5 : Math.round((count / 3) * 5),
-              message: `Exposure settings: ${count}/3 present (ISO: ${hasISO}, Aperture: ${hasAperture}, Shutter: ${hasShutter})`
+              message: `Exposure settings: ${count}/3 present ` +
+                `(ISO: ${hasISO}, Aperture: ${hasAperture}, Shutter: ${hasShutter})`
             };
           } catch (error) {
             return {
@@ -647,7 +659,7 @@ export class ValidationService {
         weight: 10,
         validate: async (file: MediaFile) => {
           try {
-            const exifData = await this.exifExtractor.extractExifData(file.absolutePath);
+            await this.exifExtractor.extractExifData(file.absolutePath);
             return {
               passed: true,
               score: 10,
@@ -704,12 +716,16 @@ export class ValidationService {
         weight: 10,
         validate: async (file: MediaFile) => {
           // For heritage, prefer TIFF or high-quality JPEG
-          const heritageFormats = ['image/tiff', 'image/jpeg', 'image/jpg'];
+          const heritageFormats = [
+            'image/tiff', 'image/jpeg', 'image/jpg'
+          ];
           const passed = heritageFormats.includes(file.mimeType.toLowerCase());
           return {
             passed,
             score: passed ? 10 : 0,
-            message: passed ? `Heritage-suitable format: ${file.mimeType}` : `Format not ideal for heritage: ${file.mimeType}`
+            message: passed ? 
+              `Heritage-suitable format: ${file.mimeType}` : 
+              `Format not ideal for heritage: ${file.mimeType}`
           };
         }
       },
@@ -762,7 +778,9 @@ export class ValidationService {
           return {
             passed,
             score: passed ? 10 : 0,
-            message: passed ? `Heritage file size OK: ${Math.round(size / (1024 * 1024))}MB` : `Heritage file size issue: ${Math.round(size / 1024)}KB`
+            message: passed ? 
+              `Heritage file size OK: ${Math.round(size / (1024 * 1024))}MB` : 
+              `Heritage file size issue: ${Math.round(size / 1024)}KB`
           };
         }
       },
@@ -866,7 +884,7 @@ export class ValidationService {
               score: passed ? 3 : 0,
               message
             };
-          } catch (error) {
+          } catch {
             return {
               passed: true, // Don't fail on extraction errors
               score: 0,
@@ -977,6 +995,7 @@ export class ValidationService {
     const validatedRules = [];
     for (const rule of rules) {
       try {
+        // eslint-disable-next-line no-await-in-loop
         const result = await rule.validate(file);
         validatedRules.push({ ...rule, result });
         
@@ -1040,18 +1059,22 @@ export class ValidationService {
     };
 
     // Calculate overall scores
-    const totalUnweightedScore = summary.critical.score + summary.quality.score + summary.bonus.score + summary.expected.score;
-    const totalMaxScore = summary.critical.maxScore + summary.quality.maxScore + summary.bonus.maxScore + summary.expected.maxScore;
-    const overallScore = totalMaxScore > 0 ? Math.round((totalUnweightedScore / totalMaxScore) * 100) : 0;
+    const totalUnweightedScore = summary.critical.score + summary.quality.score + 
+      summary.bonus.score + summary.expected.score;
+    const totalMaxScore = summary.critical.maxScore + summary.quality.maxScore + 
+      summary.bonus.maxScore + summary.expected.maxScore;
+    const overallScore = totalMaxScore > 0 ? 
+      Math.round((totalUnweightedScore / totalMaxScore) * 100) : 0;
 
     const totalWeightedScore = weightedCategoryScores.critical + weightedCategoryScores.quality + 
-                              weightedCategoryScores.bonus + weightedCategoryScores.expected;
+      weightedCategoryScores.bonus + weightedCategoryScores.expected;
     const actualMaxWeightedScore = 
       (summary.critical.maxScore * this.config.weights.critical) +
       (summary.quality.maxScore * this.config.weights.quality) + 
       (summary.bonus.maxScore * this.config.weights.bonus) +
       (summary.expected.maxScore * this.config.weights.expected);
-    const weightedScore = actualMaxWeightedScore > 0 ? Math.round((totalWeightedScore / actualMaxWeightedScore) * 100) : 0;
+    const weightedScore = actualMaxWeightedScore > 0 ? 
+      Math.round((totalWeightedScore / actualMaxWeightedScore) * 100) : 0;
 
     // 5. Check pass thresholds for each category (only apply thresholds for categories with rules)
     const passThresholds = {

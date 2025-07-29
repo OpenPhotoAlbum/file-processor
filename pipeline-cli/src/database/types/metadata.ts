@@ -135,7 +135,11 @@ export interface NPSProviderData {
   url?: string;
 }
 
-export type LandmarkProviderData = GNISProviderData | RecreationGovProviderData | NPSProviderData | Record<string, unknown>;
+export type LandmarkProviderData = 
+  | GNISProviderData 
+  | RecreationGovProviderData 
+  | NPSProviderData 
+  | Record<string, unknown>;
 
 // Software metadata
 export interface SoftwareMetadata {

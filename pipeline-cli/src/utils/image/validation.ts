@@ -96,7 +96,9 @@ export class ImageValidator {
   /**
    * Validate file signature matches content
    */
-  async validateFileSignature(file: MediaFile): Promise<ValidationResult & { detectedMimeType?: string; fileSignature?: string }> {
+  async validateFileSignature(file: MediaFile): Promise<
+    ValidationResult & { detectedMimeType?: string; fileSignature?: string }
+  > {
     const result: ValidationResult & { detectedMimeType?: string; fileSignature?: string } = {
       isValid: true,
       errors: [],
@@ -204,7 +206,8 @@ export class ImageValidator {
     if (hex.startsWith(FILE_SIGNATURES.GIF_87A) || hex.startsWith(FILE_SIGNATURES.GIF_89A)) return 'gif';
     
     // TIFF (little-endian and big-endian)
-    if (hex.startsWith(FILE_SIGNATURES.TIFF_LITTLE_ENDIAN) || hex.startsWith(FILE_SIGNATURES.TIFF_BIG_ENDIAN)) return 'tiff';
+    if (hex.startsWith(FILE_SIGNATURES.TIFF_LITTLE_ENDIAN) || 
+        hex.startsWith(FILE_SIGNATURES.TIFF_BIG_ENDIAN)) return 'tiff';
     
     // HEIC/HEIF (check ftyp box at offset 4)
     if (hex.substring(8, 16) === FILE_SIGNATURES.HEIC_FTYP) {

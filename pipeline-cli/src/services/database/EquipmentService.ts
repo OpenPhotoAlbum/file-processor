@@ -140,7 +140,7 @@ export class EquipmentService {
       
       if (model.includes('iPhone')) {
         metadata.video_capabilities = model.includes('4') && !model.includes('4S') ? '720p HD' : 
-                                    (model.includes('4S') || model.includes('5')) ? '1080p HD' : '4K';
+          (model.includes('4S') || model.includes('5')) ? '1080p HD' : '4K';
       }
     }
     

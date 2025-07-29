@@ -8,7 +8,7 @@ import { Logger } from '../logging/index.js';
 import { createGPSErrorFactory } from '../errors/factories.js';
 import type { XMPData, GenericMetadata, CoordinateValue } from './types.js';
 import type { ExternalToolOutput } from '../../types/semantic-any.js';
-import { normalizeGPSCoordinate, normalizeGPSCoordinates } from './gps-utils.js';
+import { normalizeGPSCoordinates } from './gps-utils.js';
 import { 
   getGeolocationService, 
   getLandmarkService, 

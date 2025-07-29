@@ -7,7 +7,7 @@
  * 6 decimal places = ~0.11m accuracy at equator
  * This prevents floating-point variations from causing different distances
  */
-export function normalizeGPSCoordinate(coordinate: number, isLongitude: boolean = false): number {
+export function normalizeGPSCoordinate(coordinate: number, isLongitude = false): number {
   // Ensure coordinate is within valid range
   const max = isLongitude ? 180 : 90;
   const min = isLongitude ? -180 : -90;

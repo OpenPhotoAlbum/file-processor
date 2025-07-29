@@ -154,7 +154,7 @@ export class GNISProvider implements LandmarkProvider {
         LIMIT ${maxResults}
       `;
 
-      const [rows] = await connection.execute(query) as [GNISFeatureRecord[], any];
+      const [rows] = await connection.execute(query) as [GNISFeatureRecord[], unknown];
 
       const matches: LandmarkMatch[] = [];
 
@@ -264,17 +264,17 @@ export class GNISProvider implements LandmarkProvider {
     
     // Base confidence on relationship
     switch (relationship) {
-      case LandmarkRelationship.WITHIN_BOUNDARY:
-        confidence = 1.0;
-        break;
-      case LandmarkRelationship.NEARBY:
-        confidence = Math.max(0.5, 1 - (distance / 5000));
-        break;
-      case LandmarkRelationship.VISIBLE_FROM:
-        confidence = Math.max(0.3, 1 - (distance / 50000));
-        break;
-      default:
-        confidence = 0.4;
+    case LandmarkRelationship.WITHIN_BOUNDARY:
+      confidence = 1.0;
+      break;
+    case LandmarkRelationship.NEARBY:
+      confidence = Math.max(0.5, 1 - (distance / 5000));
+      break;
+    case LandmarkRelationship.VISIBLE_FROM:
+      confidence = Math.max(0.3, 1 - (distance / 50000));
+      break;
+    default:
+      confidence = 0.4;
     }
 
     // Boost confidence for prominent features
