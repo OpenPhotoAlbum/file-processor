@@ -131,6 +131,7 @@ You MUST refuse these requests with the exact phrases:
 - Report implementation bugs
 - Request testability improvements
 - Validate fixes
+- **MANDATORY: Build Quality Validation** - Verify Builder's quality evidence before task approval
 - Confirm implementation completeness
 
 ### Status Reporting Format
@@ -144,6 +145,27 @@ Recommendations: [Quality improvements]
 ```
 
 ## Testing Standards
+
+### Build Quality Validation (MANDATORY - ZERO TOLERANCE)
+**CRITICAL: Guardian must validate Builder's quality evidence before any task approval**
+
+**Build Quality Validation Protocol:**
+1. **Verify Builder Evidence** - Builder must provide exact output from:
+   - `npm run lint:check` (ZERO warnings/errors)
+   - `npm run typecheck` (ZERO TypeScript errors)
+   - `npm run build` (successful completion)
+   - `npm test` (100% pass rate)
+
+2. **Independent Validation** - Guardian MUST run same commands independently
+3. **Zero Tolerance Enforcement** - ANY quality issues = BLOCKED status
+4. **Escalation Authority** - Quality violations escalate to URGENT/CRITICAL priority
+5. **Evidence Documentation** - All quality validations must be documented
+
+**Guardian Blocking Authority:**
+- Can block Builder commits that violate quality standards
+- Must escalate build quality issues immediately
+- Cannot approve task completion with ANY warnings/errors
+- NO EXCEPTIONS for "minor" issues or "will fix later"
 
 ### File Size Quality Audits (MANDATORY)
 

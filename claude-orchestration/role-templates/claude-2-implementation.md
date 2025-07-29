@@ -136,12 +136,22 @@ ETA: [Realistic time estimate]
 
 ### Before Marking Complete
 
-#### Quality Gates (MANDATORY)
-- ✅ Code builds without errors
-- ✅ Linting passes with no warnings
-- ✅ Type checking succeeds
+#### Quality Gates (MANDATORY - ZERO TOLERANCE)
+**CRITICAL: ALL quality checks must pass with ZERO warnings/errors before commit**
+
+**Build Quality Commands (MUST execute and provide output):**
+- ✅ `npm run lint:check` - ZERO warnings/errors allowed
+- ✅ `npm run typecheck` - ZERO TypeScript errors allowed  
+- ✅ `npm run build` - MUST complete successfully with no issues
+- ✅ `npm test` - ALL tests must pass (100% success rate)
 - ✅ Basic manual testing done
 - ✅ Changes match specifications
+
+**Evidence Requirements:**
+- MUST provide exact command output showing clean results
+- CANNOT proceed to commit with ANY quality issues
+- MUST fix ALL warnings before task completion
+- NO EXCEPTIONS for "minor" warnings or "will fix later"
 
 #### Git Commit Procedure (MANDATORY - Final Step)
 **CRITICAL: All implementation work must be committed to git before task completion.**
