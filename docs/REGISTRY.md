@@ -167,6 +167,17 @@
   - **Owner:** Claude 2 (Implementation)
   - **Last Updated:** 2025-07-23
 
+- **Topic:** MMP Validate System
+  - **Primary Doc:** `/docs/mmp-validate-system.md`
+  - **Supporting Docs:**
+    - `/docs/mmp-validate-rules.md` (Detailed rule specifications)
+    - `/docs/mmp-validate-configuration.md` (Advanced configuration options)
+    - `/docs/mmp-validate-autofix.md` (Auto-fix capabilities and safety features)
+  - **Status:** Complete - Production-ready photo validation and auto-fix system
+  - **Keywords:** MMP validate, photo validation, auto-fix, quality assessment, heritage photos, post-digital photos, weighted scoring, backup system
+  - **Owner:** Claude 4 (Chronicler) - comprehensive documentation creation
+  - **Last Updated:** 2025-07-28
+
 - **Topic:** Photo Browser Web Interface
   - **Primary Doc:** `/docs/photo-browser-api.md`
   - **Status:** Complete - Express.js metadata viewer operational
@@ -478,6 +489,7 @@ These topics are covered by existing documentation - do NOT create new docs:
 - ❌ **Database Documentation** → Use `/docs/data-layer/` (schema, setup, ETL)
 - ❌ **Claude Orchestration** → Use `/docs/claude-orchestration/` (roles, protocols, development)
 - ❌ **CLI Tool Documentation** → Use `/docs/cli/README.md` or `/docs/mmp/` (for MMP tools)
+- ❌ **Photo Validation** → Use `/docs/mmp-validate-system.md` (MMP validate system)
 - ❌ **Pipeline Architecture** → Use `/docs/pipeline-cli/architecture/`
 - ❌ **Error Handling** → Use `/docs/error-system.md`
 - ❌ **Photo Processing** → Use `/docs/photo-organization-strategy.md`

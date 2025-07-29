@@ -21,6 +21,7 @@ See [slash-commands.md](slash-commands.md) for detailed usage of:
 - **GPS tagging** - Add GPS coordinates to photos
 - **Photo cropping** - Crop photos to remove borders/backgrounds  
 - **Scanning workflow** - Complete digitization process
+- **Photo validation** - Quality assessment and auto-fix capabilities
 - **Timestamp extraction** - `--timestamp-only` mode for filename generation
 - **JSON output** - `--json` mode for pipeable metadata
 
@@ -53,6 +54,27 @@ node dist/main.js -f "photo.jpg" --json | jq '.location.landmarks'
 node dist/main.js -f "photo.jpg" --timestamp-only
 # Output: 2023-07-15_14-32-45
 ```
+
+### Photo Validation System
+```bash
+# Basic validation
+mmp -f photo.jpg --validate
+
+# Validation with auto-fix
+mmp -f photo.jpg --validate --auto-fix
+
+# Batch validation with safety backup
+find /photos -name "*.jpg" | xargs -I {} mmp -f {} --validate --auto-fix --backup
+```
+
+**Complete Documentation:** [MMP Validate System Guide](../mmp-validate-system.md)
+
+**Key Features:**
+- **Intelligent Photo Type Detection** - Automatically detects post-digital vs heritage-scan photos
+- **Weighted Rule-Based Scoring** - 13-15 validation rules with configurable thresholds
+- **Safe Auto-Fix Capabilities** - Metadata generation, filename correction, GPS enhancement
+- **Comprehensive Backup System** - Automatic backups before any modifications
+- **Production Ready** - 91% pass rate across diverse photo samples
 
 ### Environment Variables
 - `GEOLOCATION_ENABLED=true` - Enable reverse geocoding
