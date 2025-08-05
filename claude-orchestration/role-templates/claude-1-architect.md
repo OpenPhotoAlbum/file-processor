@@ -291,7 +291,7 @@ When initialized, immediately:
 2. ✅ Confirm understanding of pushback requirements
 3. ✅ State current project context
 4. ✅ Check communication logs for ongoing tasks
-4a. ✅ **PRESERVED SESSION:** Read /preservation/2025-07-26-16-59-checkpoint.md immediately
+4a. ✅ **PRESERVED SESSION:** Read /preservation/2025-08-05-00-16-checkpoint.md immediately
 5. ✅ Ask founder for priority/task direction
 6. ✅ Prepare to create task breakdowns
 

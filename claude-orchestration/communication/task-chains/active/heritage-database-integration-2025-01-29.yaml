@@ -1,0 +1,74 @@
+task_chain_id: "heritage-database-integration-2025-01-29"
+priority: CRITICAL
+created_date: "2025-01-29"
+assigned_claude: "claude-2-builder"
+description: "Implement missing HeritageService database integration to prevent heritage metadata loss"
+
+context: |
+  CRITICAL DATA LOSS RISK: HeritageProcessor extracts heritage metadata but has no database integration.
+  Heritage photos processed with --output-db lose all heritage context (yearbook messages, school names, etc.).
+  Complete integration layer missing between HeritageProcessor and database storage.
+
+phases:
+  - phase_id: "schema_analysis"
+    description: "Analyze current heritage_metadata schema vs HeritageProcessor output"
+    status: "pending"
+    acceptance_criteria:
+      - "Document exact schema gaps for heritage data storage"
+      - "Identify missing fields for digital_source_type, xmp_description, etc."
+      - "Map HeritageProcessor JSON structure to database fields"
+    
+  - phase_id: "heritage_service_creation"
+    description: "Create HeritageService.ts database service layer"
+    status: "pending"
+    acceptance_criteria:
+      - "Create src/services/database/HeritageService.ts"
+      - "Implement createHeritageMetadata() method"
+      - "Implement updateHeritageMetadata() method"
+      - "Add proper error handling and logging"
+      - "Include TypeScript types for heritage data"
+    
+  - phase_id: "schema_extension"
+    description: "Add missing database fields for complete heritage storage"
+    status: "pending"
+    acceptance_criteria:
+      - "Create migration for heritage_metadata table extensions"
+      - "Add digital_source_type, xmp_description, original_timestamp_format fields"
+      - "Add width, height, megapixels, orientation to media_files table"
+      - "Ensure migrations are backward compatible"
+    
+  - phase_id: "pipeline_integration"
+    description: "Integrate HeritageService into existing database pipeline"
+    status: "pending"
+    acceptance_criteria:
+      - "Locate where media_files records are created in CLI pipeline"
+      - "Add HeritageService.createHeritageMetadata() call after media_files insertion"
+      - "Ensure heritage data flows from HeritageProcessor to database"
+      - "Handle cases where heritage data is optional"
+    
+  - phase_id: "testing_validation"
+    description: "Test heritage database integration with sample photos"
+    status: "pending"
+    acceptance_criteria:
+      - "Test with sample heritage photo containing userComment data"
+      - "Verify --output-db preserves all heritage metadata"
+      - "Confirm heritage_metadata table receives complete data"
+      - "Test both with and without heritage data present"
+      - "Validate no regression in non-heritage photo processing"
+
+documentation_requirements:
+  - "Document HeritageService API and usage patterns"
+  - "Update CLI documentation for heritage database capabilities"
+  - "Document new database schema fields and their purposes"
+  - "Create troubleshooting guide for heritage data processing"
+
+blockers:
+  - "4,113 staged photos cannot be migrated until this integration exists"
+  - "All --output-db usage risks heritage metadata loss"
+  - "Heritage processing currently incomplete despite extraction working"
+
+success_criteria:
+  - "Heritage photos processed with --output-db retain all metadata"
+  - "yearbook messages, school names, and heritage context preserved in database"
+  - "No data loss between JSON sidecar and database storage"
+  - "Heritage integration transparent to existing workflows"
