@@ -1064,6 +1064,124 @@ program
     console.log('Options:', options);
   });
 
+// SCRAPBOOK command - Document processing workflow
+program
+  .command('scrapbook')
+  .argument('<directory>', 'Directory containing scrapbook images')
+  .description('Process scrapbook documents with transcription and metadata')
+  .option('--series <name>', 'Series name for linking ' + chalk.red('[REQUIRED]'))
+  .option('--location <location>', 'Location name or GPS coordinates ' + chalk.red('[REQUIRED]'))
+  .option('--subject <subject>', 'Subject classification', 'scrapbook')
+  .option('--keywords <keywords>', 'Keywords for searchability ' + chalk.gray('[optional]'))
+  .option('--copyright <owner>', 'Copyright owner', 'Young Family Archive')
+  .option('--creator <name>', 'Creator/author name', 'Stephen Young')
+  .option('--no-transcribe', 'Skip transcription step')
+  .option('--no-embed-text', 'Skip embedding transcriptions in EXIF')
+  .option('--no-normalize', 'Skip filename normalization')
+  .option('--no-metadata', 'Skip metadata application')
+  .option('--dry-run', 'Show what would be processed without changes')
+  .option('-v, --verbose', 'Detailed processing information')
+  .addHelpText('after', `
+${chalk.green('Examples:')}
+  ${chalk.cyan('mmp scrapbook /photos/family-letters --series "Family Letters" --location "Boston, MA"')}
+    Full workflow with required options
+    
+  ${chalk.cyan('mmp scrapbook /scans/documents --series "Legal Docs" --location "42.3601,-71.0589" --keywords "legal, 1980s"')}
+    With GPS coordinates and keywords
+    
+  ${chalk.cyan('mmp scrapbook /heritage-docs --series "WWII Letters" --location "Massachusetts" --no-transcribe')}
+    Skip transcription if already done
+    
+${chalk.green('Processing Steps (all enabled by default):')}
+  • Transcription: Extract text using OCR
+  • Filename normalization: Replace spaces with underscores
+  • Text embedding: Add transcriptions to EXIF UserComment
+  • Metadata application: Full EXIF enrichment with series linking
+`)
+  .action(async (directory, options) => {
+    console.error(chalk.green('📄 MMP Scrapbook: Processing document collection...'));
+    
+    try {
+      // Validate required options
+      if (!options.series) {
+        console.error(chalk.red('❌ Series name is required. Use --series "Your Series Name"'));
+        console.error(chalk.gray('Example: mmp scrapbook /path --series "Family Letters" --location "Boston, MA"'));
+        process.exit(1);
+      }
+      
+      if (!options.location) {
+        console.error(chalk.red('❌ Location is required. Use --location "City, State" or coordinates'));
+        console.error(chalk.gray('Example: --location "Sandown, NH" or --location "42.3601,-71.0589"'));
+        process.exit(1);
+      }
+      
+      // Validate directory exists (like other MMP commands)
+      const fs = await import('fs');
+      if (!fs.existsSync(directory)) {
+        console.error(chalk.red(`❌ Directory not found: ${directory}`));
+        process.exit(1);
+      }
+      
+      const stat = await fs.promises.stat(directory);
+      if (!stat.isDirectory()) {
+        console.error(chalk.red(`❌ Path is not a directory: ${directory}`));
+        process.exit(1);
+      }
+      
+      // Check for supported image files
+      const { glob } = await import('glob');
+      const path = await import('path');
+      const pattern = path.join(directory, '*.{jpg,jpeg,png,tiff,tif}');
+      const imageFiles = await glob(pattern, { ignore: ['**/.*'] });
+      
+      if (imageFiles.length === 0) {
+        console.error(chalk.red('❌ No supported image files found'));
+        console.error(chalk.gray('Supported formats: .jpg, .jpeg, .png, .tiff, .tif'));
+        process.exit(1);
+      }
+      
+      console.error(chalk.blue(`🔍 Found ${imageFiles.length} images to process`));
+      
+      // Import and use ScrapbookService
+      const { ScrapbookService } = await import('./services/ScrapbookService.js');
+      const scrapbookService = new ScrapbookService();
+      
+      const scrapbookOptions = {
+        series: options.series,
+        location: options.location,
+        subject: options.subject,
+        keywords: options.keywords,
+        copyright: options.copyright,
+        creator: options.creator,
+        transcribe: !options.noTranscribe,
+        embedText: !options.noEmbedText,
+        normalizeFilenames: !options.noNormalize,
+        applyMetadata: !options.noMetadata
+      };
+      
+      if (options.dryRun) {
+        console.error(chalk.yellow('🔍 DRY RUN - No changes will be made'));
+        console.error(chalk.blue('Would process:'));
+        imageFiles.forEach((file, index) => {
+          console.error(chalk.gray(`  [${index + 1}/${imageFiles.length}] ${path.basename(file)}`));
+        });
+        return;
+      }
+      
+      await scrapbookService.processScrapbook(directory, scrapbookOptions);
+      
+      console.error(chalk.green('🎉 Scrapbook processing complete!'));
+      
+      // Output successful file paths to stdout for piping
+      imageFiles.forEach(file => console.log(file));
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red('❌ Scrapbook processing failed:'), errorMessage);
+      process.exit(1);
+    }
+  });
+
 // TRANSCRIBE command - Text/content extraction
 program
   .command('transcribe')
@@ -1096,6 +1214,7 @@ ${chalk.green('Example Commands (per plan specification):')}
   ${chalk.cyan('mmp crop /scans/multi-photo.jpg --background red')}
   ${chalk.cyan('mmp gps /photos/2020/ --location cottage --batch')}
   ${chalk.cyan('mmp dates /scanned-photos/ --set "1985-12-25"')}
+  ${chalk.cyan('mmp scrapbook /heritage-docs --series "Family Letters" --location "Boston, MA"')}
   ${chalk.cyan('mmp rotate /photos/ --interactive')}
   ${chalk.cyan('mmp transcribe document.jpg')}
   ${chalk.cyan('mmp transcribe interview.mp4 --ai-enhance')}

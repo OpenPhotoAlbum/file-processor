@@ -67,10 +67,10 @@ fi
 # Copy built files and assets
 echo "Installing files..."
 cp -r dist/* "$INSTALL_SHARE/"
-# Copy node_modules for runtime dependencies
-if [ -d "node_modules/dotenv" ]; then
-  mkdir -p "$INSTALL_SHARE/node_modules"
-  cp -r node_modules/dotenv "$INSTALL_SHARE/node_modules/"
+# Copy ALL node_modules for runtime dependencies
+if [ -d "node_modules" ]; then
+  echo "Copying runtime dependencies..."
+  cp -r node_modules "$INSTALL_SHARE/"
 fi
 if [ -d "assets" ]; then
   cp -r assets/* "$INSTALL_SHARE/" 2>/dev/null || true
