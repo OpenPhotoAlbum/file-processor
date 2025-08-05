@@ -2,7 +2,7 @@
 
 **Purpose:** Prevent duplicate documentation creation  
 **Rule:** Check this registry BEFORE creating ANY new documentation  
-**Last Updated:** 2025-07-26
+**Last Updated:** 2025-08-05
 
 ## How to Use This Registry
 
@@ -152,20 +152,41 @@
   - **Last Updated:** 2024-06-28
 
 ### 📋 Workflows & Procedures
-- **Topic:** Heritage Photo Scrapbook Treatment
+- **Topic:** Heritage Document Processing Workflow
+  - **Primary Doc:** `/docs/workflows/heritage-documents.md`
+  - **Supporting Docs:**
+    - `/docs/mmp/commands/scrapbook.md` (MMP scrapbook command reference)
+  - **Status:** Complete - Production-ready integrated heritage document workflow
+  - **Keywords:** heritage documents, complete workflow, MMP integration, OCR transcription, series linking, Pipeline CLI integration
+  - **Owner:** Claude 4 (Chronicler) - comprehensive workflow documentation
+  - **Last Updated:** 2025-08-05
+
+- **Topic:** Heritage Photo Scrapbook Treatment (Legacy)
   - **Primary Doc:** `/docs/workflows/scrapbook-treatment.md`
-  - **Status:** Active - Critical operational workflow for heritage document processing
+  - **Status:** Legacy - Replaced by integrated MMP scrapbook workflow
   - **Keywords:** scrapbook treatment, heritage photos, OCR transcription, EXIF metadata, historical documents
-  - **Owner:** Active workflow - regularly updated
+  - **Owner:** Historical reference - superseded by MMP scrapbook command
   - **Last Updated:** 2025-07-20
 
 ### 🚀 CLI & User Interface
 - **Topic:** MMP Unified CLI Tool
-  - **Primary Doc:** `/docs/cli/README.md`
-  - **Status:** Complete - Full CLI with comprehensive help system, 49/49 tests passing
-  - **Keywords:** MMP, unified CLI, command line, photo tools, timestamps, rotation, JSON output, database storage
-  - **Owner:** Claude 2 (Implementation)
-  - **Last Updated:** 2025-07-23
+  - **Primary Doc:** `/docs/mmp/README.md`
+  - **Supporting Docs:**
+    - `/docs/mmp/commands/scrapbook.md` (Heritage document processing workflow)
+    - `/docs/cli/README.md` (Legacy CLI reference)
+  - **Status:** Active - Core commands operational, scrapbook workflow production-ready
+  - **Keywords:** MMP, unified CLI, command line, photo tools, scrapbook, heritage documents, GPS, scanning, transcription
+  - **Owner:** Claude 2 (Implementation) - CLI implementation, Claude 4 (Chronicler) - documentation
+  - **Last Updated:** 2025-08-05
+
+- **Topic:** MMP Scrapbook Command - Heritage Document Processing
+  - **Primary Doc:** `/docs/mmp/commands/scrapbook.md`
+  - **Supporting Docs:**
+    - `/docs/workflows/heritage-documents.md` (Complete heritage document workflow)
+  - **Status:** Complete - Production-ready heritage document processing workflow
+  - **Keywords:** scrapbook, heritage documents, OCR transcription, EXIF embedding, series linking, filename normalization, family archives
+  - **Owner:** Claude 4 (Chronicler) - comprehensive command documentation
+  - **Last Updated:** 2025-08-05
 
 - **Topic:** MMP Validate System
   - **Primary Doc:** `/docs/mmp-validate-system.md`

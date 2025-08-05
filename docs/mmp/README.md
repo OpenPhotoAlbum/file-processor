@@ -1,8 +1,8 @@
 # MMP - Unified CLI Tools
 
 **Purpose:** User-friendly unified CLI for all media processing operations  
-**Last Updated:** July 26, 2025  
-**Status:** GPS, CROP, SCAN working; DATES, ROTATE, TRANSCRIBE pending
+**Last Updated:** August 5, 2025  
+**Status:** GPS, CROP, SCAN, SCRAPBOOK working; DATES, ROTATE, TRANSCRIBE pending
 
 ## Overview
 
@@ -16,48 +16,56 @@ cd /home/stephen/Documents/initial-media-processing/mmp/
 ./install.sh
 
 # Basic usage examples
-mmp capture --flatbed --date 1990-12-25 --location cottage
-mmp understand document.jpg --ai-enhance
-mmp locate /photos/vacation/ --set cottage
-mmp date /scanned/ --set "1985-12-25"
-mmp prepare /photos/ --fix-rotation
+mmp scan --flatbed --date 1990-12-25 --location cottage
+mmp transcribe document.jpg --ai-enhance
+mmp gps /photos/vacation/ --location cottage
+mmp dates /scanned/ --set "1985-12-25"
+mmp rotate /photos/ --interactive
+mmp scrapbook /heritage-docs --series "Family Letters" --location "Boston, MA"
 ```
 
 ## Command Categories
 
-### `mmp capture` - Get media into digital form
+### `mmp scan` - Get media into digital form
 - **Scanning:** Flatbed and ADF scanner integration
 - **Photo separation:** Multicrop tool integration for multiple photos per scan
 - **Webcam capture:** Direct photo capture
 - **Status:** ✅ Operational
 
-### `mmp understand` - Tell me what this contains
+### `mmp transcribe` - Tell me what this contains
 - **OCR:** Text extraction from images and documents
 - **Speech-to-text:** Audio transcription from videos
 - **AI analysis:** Heritage photo analysis with Claude integration
 - **Filename suggestions:** AI-powered intelligent naming
 - **Status:** 🔄 Text extraction working, AI features pending
 
-### `mmp locate` - Where was this?
+### `mmp scrapbook` - Process heritage document collections
+- **Complete workflow:** OCR transcription, filename normalization, EXIF embedding
+- **Series linking:** Automatic page numbering and cross-referencing
+- **Heritage metadata:** Full EXIF enrichment for archival documents
+- **Batch processing:** Process entire scrapbook collections efficiently
+- **Status:** ✅ Operational
+
+### `mmp gps` - Where was this?
 - **GPS tagging:** Add coordinates to photos without GPS
 - **Location shortcuts:** Use predefined locations (cottage, didi-house, etc.)
 - **Interactive picker:** Visual location selection
 - **Batch operations:** Process multiple files efficiently
 - **Status:** ✅ Operational
 
-### `mmp date` - When was this?
+### `mmp dates` - When was this?
 - **Historical dating:** Set dates on scanned vintage photos
 - **Filename extraction:** Parse dates from filenames
 - **Timezone correction:** Handle timezone conversion
 - **Batch dating:** Process collections efficiently
 - **Status:** 🔄 Pending implementation
 
-### `mmp prepare` - Get this ready for storage
+### `mmp rotate` - Get this ready for storage
 - **Rotation correction:** Fix orientation issues
-- **Filename standardization:** Consistent naming conventions
-- **Quality review:** Interactive optimization
-- **File optimization:** Size and format optimization
-- **Status:** 🔄 Rotation pending, other features available
+- **Interactive mode:** Visual rotation selection
+- **Batch operations:** Process multiple files efficiently
+- **EXIF preservation:** Maintain metadata during rotation
+- **Status:** 🔄 Pending implementation
 
 ### `mmp process` - Work on many files efficiently
 - **Batch processing:** Parallel job execution
@@ -111,28 +119,35 @@ Edit `~/.config/mmp/config.json`:
 
 ### Complete Scanning Workflow
 ```bash
-# 1. Capture with metadata
-mmp capture --flatbed --date 1985-12-25 --location cottage
+# 1. Scan with metadata
+mmp scan --flatbed --date 1985-12-25 --location cottage
 
-# 2. Understand content (if documents)
-mmp understand *.jpg --ai-enhance
+# 2. Process content (if documents)
+mmp scrapbook /scanned-docs --series "Family Documents" --location cottage
 
-# 3. Prepare for storage
-mmp prepare *.jpg --fix-rotation --standardize-names
+# 3. Add GPS and process with Pipeline CLI
+mmp gps *.jpg --location cottage
 ```
 
-### Historical Photo Processing
+### Heritage Document Processing
 ```bash
-# Scanned vintage photos workflow
-mmp date /scanned-photos/ --historical --decade 1980s
-mmp locate /scanned-photos/ --set "childhood-home"
-mmp prepare /scanned-photos/ --interactive-review
+# Complete scrapbook workflow
+mmp scrapbook /heritage-scans/family-letters \
+  --series "Grandma's Letters" \
+  --location "Sandown, NH" \
+  --keywords "family, correspondence, 1960s"
+
+# Historical photo dating
+mmp dates /scanned-photos/ --set "1985-12-25"
+mmp gps /scanned-photos/ --location "childhood-home"
 ```
 
 ### Batch Photo Organization
 ```bash
 # Process large collection efficiently
-mmp process /photos/collection/ --pipeline "locate,date,prepare" --jobs 8
+mmp gps /photos/collection/ --location cottage --batch
+mmp dates /photos/collection/ --set "1985-01-01" --batch
+mmp process /photos/collection/ --pipeline custom --jobs 8
 ```
 
 ## Integration with Pipeline CLI
@@ -143,65 +158,73 @@ MMP provides a user-friendly interface to the core Pipeline CLI system:
 
 ```bash
 # User-friendly MMP command
-mmp understand photo.jpg
+mmp transcribe document.jpg
 
 # Equivalent Pipeline CLI command (more control)
-node pipeline-cli/dist/main.js -f photo.jpg --json
+node pipeline-cli/dist/main.js -f document.jpg --json
 ```
 
 ## Command Documentation
 
 ### Available Now
-- **[Capture Commands](commands/capture.md)** - Scanning and photo capture
-- **[Locate Commands](commands/locate.md)** - GPS and location operations
+- **[Scan Commands](commands/scan.md)** - Scanning and photo capture
+- **[GPS Commands](commands/gps.md)** - GPS and location operations
+- **[Scrapbook Commands](commands/scrapbook.md)** - Heritage document processing workflow
 - **[Process Commands](commands/process.md)** - Batch processing workflows
 
 ### In Development
-- **[Date Commands](commands/date.md)** - Historical photo dating
-- **[Understand Commands](commands/understand.md)** - AI analysis and transcription
-- **[Prepare Commands](commands/prepare.md)** - File preparation and optimization
+- **[Dates Commands](commands/dates.md)** - Historical photo dating
+- **[Transcribe Commands](commands/transcribe.md)** - AI analysis and transcription
+- **[Rotate Commands](commands/rotate.md)** - Photo rotation and orientation
 
 ## Development Status
 
 ### Working Features ✅
-- **GPS tagging** - Add coordinates to photos
-- **Photo cropping** - Remove borders and backgrounds
-- **Scanning workflow** - Complete digitization process
+- **GPS tagging** - Add coordinates to photos (`mmp gps`)
+- **Photo cropping** - Remove borders and backgrounds (`mmp crop`)
+- **Scanning workflow** - Complete digitization process (`mmp scan`)
+- **Heritage document processing** - Complete scrapbook workflow (`mmp scrapbook`)
 - **Batch processing** - Process multiple files efficiently
 
 ### Pending Features 🔄
-- **Date correction** - Manual date setting for historical photos
-- **Photo rotation** - Orientation correction
-- **Audio transcription** - Speech-to-text for video files
-- **AI enhancement** - Heritage photo analysis with Claude
+- **Date correction** - Manual date setting for historical photos (`mmp dates`)
+- **Photo rotation** - Orientation correction (`mmp rotate`)
+- **Audio transcription** - Speech-to-text for video files (`mmp transcribe`)
+- **AI enhancement** - Heritage photo analysis with Claude integration
 
 ### Migration from Legacy Tools
 MMP replaces these fragmented tools:
-- `scan.sh` → `mmp capture --flatbed`
-- `multicrop-tool/scan` → `mmp capture --separate-photos`
-- `manual-photo-tools/geotag-images.py` → `mmp locate --interactive`
-- `scrapbook-treatment.js` → `mmp understand --ai-enhance`
+- `scan.sh` → `mmp scan --flatbed`
+- `multicrop-tool/multicrop` → `mmp crop --background red`
+- `manual-photo-tools/geotag-images.py` → `mmp gps --interactive`
+- **4-script scrapbook workflow** → `mmp scrapbook` (complete workflow replacement)
+  - `transcribe-all.sh` → Integrated OCR transcription
+  - `rename-spaces-to-underscores.sh` → Integrated filename normalization
+  - `add-transcriptions-to-exif.sh` → Integrated EXIF text embedding
+  - `apply-full-scrapbook-treatment.sh` → Integrated metadata application
 
 ## Help System
 
 Every command has comprehensive help:
 ```bash
 mmp --help                    # Overview of all commands
-mmp capture --help            # Scanning operations
-mmp understand --help         # Text extraction
-mmp locate --help            # GPS operations
-mmp <command> <subcommand> --help  # Detailed help
+mmp scan --help               # Scanning operations
+mmp transcribe --help         # Text extraction
+mmp gps --help               # GPS operations
+mmp scrapbook --help         # Heritage document processing
+mmp <command> --help         # Detailed command help
 ```
 
 ## Philosophy
 
 MMP organizes functionality by **user intent** rather than technical implementation:
 
-- **"I want to digitize photos"** → `mmp capture`
-- **"I want to know what's in this"** → `mmp understand`
-- **"I want to record where this was"** → `mmp locate`
-- **"I want to fix when this was taken"** → `mmp date`
-- **"I want to get this ready for storage"** → `mmp prepare`
+- **"I want to digitize photos"** → `mmp scan`
+- **"I want to process heritage documents"** → `mmp scrapbook`
+- **"I want to know what's in this"** → `mmp transcribe`
+- **"I want to record where this was"** → `mmp gps`
+- **"I want to fix when this was taken"** → `mmp dates`
+- **"I want to fix rotation issues"** → `mmp rotate`
 - **"I want to work on many files"** → `mmp process`
 
 This eliminates the "which tool should I use?" confusion that plagued the previous fragmented system.
