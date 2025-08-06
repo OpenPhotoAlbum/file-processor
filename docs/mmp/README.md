@@ -2,7 +2,7 @@
 
 **Purpose:** User-friendly unified CLI for all media processing operations  
 **Last Updated:** August 5, 2025  
-**Status:** GPS, CROP, SCAN, SCRAPBOOK working; DATES, ROTATE, TRANSCRIBE pending
+**Status:** GPS, CROP, SCAN, SCRAPBOOK, TRANSCRIBE working; DATES, ROTATE pending
 
 ## Overview
 
@@ -37,7 +37,7 @@ mmp scrapbook /heritage-docs --series "Family Letters" --location "Boston, MA"
 - **Speech-to-text:** Audio transcription from videos
 - **AI analysis:** Heritage photo analysis with Claude integration
 - **Filename suggestions:** AI-powered intelligent naming
-- **Status:** 🔄 Text extraction working, AI features pending
+- **Status:** ✅ Text extraction operational, AI enhancement available
 
 ### `mmp scrapbook` - Process heritage document collections
 - **Complete workflow:** OCR transcription, filename normalization, EXIF embedding

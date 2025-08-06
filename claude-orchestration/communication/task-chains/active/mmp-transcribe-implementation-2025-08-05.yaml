@@ -1,0 +1,74 @@
+chain_id: mmp-transcribe-implementation-2025-08-05
+id: mmp-transcribe-implementation-2025-08-05
+title: MMP Transcribe Command Implementation
+description: Implement mmp transcribe command using shared utility pattern for OCR functionality
+status: pending
+created_by: claude-1
+created: '2025-08-05T13:45:00-04:00'
+updated: '2025-08-05T13:45:00-04:00'
+priority: MEDIUM
+context:
+  trigger: Stephen requested implementation of mmp transcribe command to replace stub
+  requirements: Simple OCR command using tesseract, shared utility to avoid circular
+    dependencies, integrate with ScrapbookService
+  constraints: No database interaction needed, follow existing MMP patterns exactly
+success_criteria:
+- MMP transcribe command working end-to-end
+- Shared utility pattern implemented in /mmp/src/core/transcription.ts
+- ScrapbookService updated to use shared utility
+- TypeScript compilation successful with no 'any' types
+- Documentation integrated into existing MMP docs structure
+phases:
+- phase_id: implementation
+  phase_name: Implement MMP Transcribe Command
+  assigned_to: claude-2
+  depends_on: []
+  status: pending
+  description: Create shared transcription utility in core/, update CLI command stub,
+    modify ScrapbookService to use utility
+  deliverable: Working mmp transcribe command with shared utility pattern
+  detailed_requirements:
+  - Create /mmp/src/core/transcription.ts with transcribeImage function
+  - Update CLI command at /mmp/src/cli.ts lines 1185-1195
+  - Simple interface - mmp transcribe <file> creates <file>.txt
+  - Update ScrapbookService.ts line 35 to use shared utility
+  - Follow MMP error handling patterns (chalk colors, console.error)
+  - Validate tesseract availability and file formats
+  estimated_duration: 2-3 hours
+- phase_id: documentation
+  phase_name: Document MMP Transcribe Command
+  assigned_to: claude-4
+  depends_on:
+  - implementation
+  status: pending
+  description: Document command usage following existing MMP documentation patterns
+  deliverable: Complete documentation with usage examples and troubleshooting
+  detailed_requirements:
+  - Determine best location in existing MMP docs structure
+  - Document command syntax and supported formats
+  - Include integration examples (ScrapbookService usage)
+  - Add error scenarios and solutions
+  - Follow existing MMP documentation style
+  estimated_duration: 1-2 hours
+- phase_id: validation
+  phase_name: Final Validation
+  assigned_to: claude-1
+  depends_on:
+  - documentation
+  status: pending
+  description: Test command end-to-end and verify all requirements met
+  deliverable: Final approval and task chain completion
+  validation_checklist:
+  - mmp transcribe --help displays proper usage
+  - Test with sample images in scrapbook directory
+  - Verify ScrapbookService integration works
+  - Check documentation accuracy
+  - Ensure TypeScript quality gates pass
+  estimated_duration: 30 minutes
+technical_specifications:
+  shared_utility_location: /mmp/src/core/transcription.ts
+  cli_update_location: /mmp/src/cli.ts lines 1185-1195
+  service_update_location: /mmp/src/services/ScrapbookService.ts line 35
+  supported_formats: .jpg, .jpeg, .png, .tiff, .tif
+  command_syntax: mmp transcribe <file>
+  output_format: Creates <file>.txt with OCR content

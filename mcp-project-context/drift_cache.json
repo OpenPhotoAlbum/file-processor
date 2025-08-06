@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-07-27T11:35:32.920300",
-  "file_count": 561,
+  "timestamp": "2025-08-05T00:49:53.954107",
+  "file_count": 754,
   "files": {
     "/home/stephen/Documents/initial-media-processing/docker-compose.yaml": {
       "mtime": 1751312112.5912802,
@@ -11,6 +11,11 @@
       "mtime": 1750711388.9668145,
       "size": 539,
       "hash": "4973c11bd5171ceb3b3d3433e339823be8f810670d14e2e87972feb8374df541"
+    },
+    "/home/stephen/Documents/initial-media-processing/staging-to-archive-plan.md": {
+      "mtime": 1753761524.2105348,
+      "size": 2836,
+      "hash": "cde459da8b6d6a7c1a8c26b391682c75d2e4412322c7d4783f8c79a009d68ae6"
     },
     "/home/stephen/Documents/initial-media-processing/package.json": {
       "mtime": 1753575033.1813757,
@@ -217,6 +222,21 @@
       "size": 1837,
       "hash": "efdf584a2899ca37a9764b779b812fb372a26562895cf74da7d1147a8fae7ab0"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/mmp-validate-configuration.md": {
+      "mtime": 1753753943.4257734,
+      "size": 20186,
+      "hash": "7aab379024364c3138ac54cabe3e0d7a4f86ea7deba26872e5a5aff0e1d7b1e4"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/DOCUMENTATION-GAPS-PLAN.md": {
+      "mtime": 1753755522.900584,
+      "size": 8717,
+      "hash": "4c6884f34cb8293156100d02150420191754266b18de76d50e4c87d332161003"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/mmp-validate-system.md": {
+      "mtime": 1753753747.7566435,
+      "size": 15174,
+      "hash": "43efbbbcecd87878bf56c85e997cfc1a6cfebd78f81aa8a20142032dd9eeb206"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/MMP-DOCUMENTATION-PRODUCTION-READINESS.md": {
       "mtime": 1753309374.251672,
       "size": 7677,
@@ -227,15 +247,25 @@
       "size": 13394,
       "hash": "96cfac63d9639377b39635df0c1ecaeef3cb3c56a8e835ab0c3ae631cd3b59ea"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/mmp-validate-rules.md": {
+      "mtime": 1753753850.239278,
+      "size": 20088,
+      "hash": "3c870926d852c17964d2ad62dcbce01970436d7f2b2833492100f9b26a1553b1"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/REGISTRY.md": {
-      "mtime": 1753558853.870141,
-      "size": 26969,
-      "hash": "9630b1615ce80549907de59916b1bc7910cfbff7998299e7c4fb4bfb349936e8"
+      "mtime": 1754369048.3815908,
+      "size": 29071,
+      "hash": "b8ad22c0390945e18f47b0a18156a5b7f99befaf4448d0c6f7cea2a75e8f7489"
     },
     "/home/stephen/Documents/initial-media-processing/docs/MMP-DOCUMENTATION-VERIFICATION-COMPLETE-2025-07-23.md": {
       "mtime": 1753311709.3647525,
       "size": 4479,
       "hash": "c81730bc479ed7f055f17f5e5874fdd5c091c34afba0dba89453ca5c151ebf72"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/mmp-validate-autofix.md": {
+      "mtime": 1753754079.1339626,
+      "size": 25993,
+      "hash": "05fa68f18db61521a7ca1d6e6d91bd485c2afcbcd360667080a35346b77808e3"
     },
     "/home/stephen/Documents/initial-media-processing/docs/DOCUMENTATION-UPDATE-PROTOCOL.md": {
       "mtime": 1753247157.8310287,
@@ -512,6 +542,11 @@
       "size": 9481,
       "hash": "230334a89cc0d0a9b13eed45626aafd1d6bdbbb1709e839738de90535d3cb9c2"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/workflows/heritage-documents.md": {
+      "mtime": 1754369017.6027896,
+      "size": 12916,
+      "hash": "e894f1466eb5728ff73ef99604994079d46367e76b8ebec4203129077f079f7c"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/workflows/large-collection-strategy.md": {
       "mtime": 1751121903.740427,
       "size": 6628,
@@ -553,9 +588,14 @@
       "hash": "6fd9857efa3ca88418e24b99a1cce4863b3dbf6c21f6824e50c9c24667d4961d"
     },
     "/home/stephen/Documents/initial-media-processing/docs/mmp/README.md": {
-      "mtime": 1753559901.3507469,
-      "size": 6860,
-      "hash": "c7640183bdae827b513d0c8aaeadf048ea4a62d630633752c8b7543aed6111a9"
+      "mtime": 1754368914.4940636,
+      "size": 8238,
+      "hash": "1ec58082f171686de24de18b80acf73dc5344347512e4ad48aee8a4d8f72b126"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/mmp/commands/scrapbook.md": {
+      "mtime": 1754368815.2433686,
+      "size": 14095,
+      "hash": "277cbaaf3d39303a7e2c28d5d44f8d448fd148438b06e3c61753cf11b4a809e9"
     },
     "/home/stephen/Documents/initial-media-processing/docs/cli/media-file-inspector.md": {
       "mtime": 1751300182.4735858,
@@ -563,9 +603,9 @@
       "hash": "28c9a467ea224b77ed97e63f54309f90a62be00a4c47564e16697b6c4e465202"
     },
     "/home/stephen/Documents/initial-media-processing/docs/cli/README.md": {
-      "mtime": 1753280356.2210379,
-      "size": 2324,
-      "hash": "9695ed788258c8bf168a2d21502c6ffd25e72047cd8e6c1b820a15ea1cf08490"
+      "mtime": 1753754144.0860147,
+      "size": 3201,
+      "hash": "148fa87f14e1f5852ea7c6d09d3f5d92e41df13d95601604a9cb94a3a6334c70"
     },
     "/home/stephen/Documents/initial-media-processing/docs/cli/slash-commands.md": {
       "mtime": 1753560011.1496859,
@@ -642,10 +682,30 @@
       "size": 8038,
       "hash": "0444a56240aef974be5a0d8c30b6aff3d4aa11e060d931161dd3a7e8d0c8545e"
     },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/reports/auto-fix-validation-2025-07-28.md": {
+      "mtime": 1753675214.139551,
+      "size": 7168,
+      "hash": "17e133d740866f548139daeab725362875c59a8dccaf42600062aab003e6c770"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/reports/qa-auto-fix-validation-2025-07-28.md": {
+      "mtime": 1753678516.4226604,
+      "size": 9728,
+      "hash": "f8acaddc67320ab57418cf94b090c14afd7a6fbfae1e574e16c0adb07c57b948"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/reports/scoring-rules-engine-validation-2025-07-28.md": {
+      "mtime": 1753661294.2058678,
+      "size": 10201,
+      "hash": "ea7997a13f6fc6e30271a24f2849349d108a722e59820a33126438d4a8f07d2e"
+    },
     "/home/stephen/Documents/initial-media-processing/docs/testing/reports/auto-cascade-safety-validation-2025-07-24.md": {
       "mtime": 1753394106.4364927,
       "size": 10964,
       "hash": "2c8cbc89bfe7079a452f6c7c388ebf6e3365481937d01834c4dbc51c45c7b7e3"
+    },
+    "/home/stephen/Documents/initial-media-processing/docs/testing/reports/validation-service-foundation-validation-2025-07-27.md": {
+      "mtime": 1753657643.8546739,
+      "size": 8429,
+      "hash": "ce0a3676ee93e34ecd04e3d562c5c9be447c942f1370eeecc9868d9caea6ef44"
     },
     "/home/stephen/Documents/initial-media-processing/docs/testing/reports/centralized-role-config-validation-2025-07-24.md": {
       "mtime": 1753391671.1322143,
@@ -777,6 +837,11 @@
       "size": 1230,
       "hash": "914ec797c47712c1892633aacf971aea88663e978d1f9bd2322e0c839da35ca7"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/BUILD_QUALITY_STANDARDS.md": {
+      "mtime": 1753752663.505995,
+      "size": 3389,
+      "hash": "1376aac868e5cde8e8bddec49d1b03fba44a149bdc354a849ae21523d6437007"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/protocols/PRE_EXISTING_ISSUE_ESCALATION.md": {
       "mtime": 1753556280.775745,
       "size": 2692,
@@ -788,9 +853,9 @@
       "hash": "f7d87860d501fbb5e70dc61bfb5cb8914b4d4c3e232aae7530cf572cf62aae36"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-5-photo-intern.md": {
-      "mtime": 1753557354.5287163,
-      "size": 16181,
-      "hash": "fa7a392d44ee368371c8d2764fdc09c76a229528b0b1c9992c3985f51c15dbaa"
+      "mtime": 1753749209.629077,
+      "size": 16366,
+      "hash": "aaf1bb75994c0b94fb01f1a4901f1f6b0dc4d28052dced1d02db7b1bfba88cbf"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-generalist.md": {
       "mtime": 1753309643.6426966,
@@ -798,29 +863,29 @@
       "hash": "f9f44ba9fc2ff32ea9e073db2e7dacdb534d7604a5a2934e09839a570dac9f48"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-2-implementation.md": {
-      "mtime": 1753557204.5349917,
-      "size": 13564,
-      "hash": "05a89278437f6448294cbe690f3ae4f1f75383fed346c1e15df5147f3b038ccd"
+      "mtime": 1753752533.8200645,
+      "size": 14297,
+      "hash": "4519236db95118e6319a65765e752b2742a5efad7cba9188b9c61d9b6a75d949"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-1-architect.md": {
-      "mtime": 1753556932.9141097,
-      "size": 11741,
-      "hash": "952a12df97af7417a14d500f523aaaf9bb149be200c88fae2a94d72f7b34a8ba"
+      "mtime": 1754367467.0430565,
+      "size": 11926,
+      "hash": "252d69536057f295316c8a8544ae40ca74c54611543aa19bed6f365d06c6776e"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-6-data.md": {
-      "mtime": 1753556792.0958622,
-      "size": 17698,
-      "hash": "29d462aef860ba8c8d57e25ead8527595fee9b712d609725845ba8644272f753"
+      "mtime": 1753749215.6311991,
+      "size": 17883,
+      "hash": "d7971bcc2f0af140d23762a84c10f23087869902a00282cb021eddd41a31b3a1"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-4-documentation.md": {
-      "mtime": 1753557326.0800333,
-      "size": 14792,
-      "hash": "053fc418452627ec3de6b72f5b6d5cc90f56244ab60f3077b4a53e555d34435e"
+      "mtime": 1753749205.0589838,
+      "size": 14977,
+      "hash": "d23b294852d6f0b93fdd775000d75f72f6fb886e555d5b81d0b2be19bbd0eeb3"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/role-templates/claude-3-qa.md": {
-      "mtime": 1753557244.355012,
-      "size": 16219,
-      "hash": "8639bdcfd8de0a4f0ae83f19f59d0b5d47c209abcc84c705cf1e17912acbb9a6"
+      "mtime": 1753752645.2827864,
+      "size": 17508,
+      "hash": "33a24941700f9efc849caaa3eb9680702d11bab73c08c227f6dbc866b2e4441e"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/tasks/critical-mmp-documentation-understates-capabilities-2025-07-23.md": {
       "mtime": 1753311649.6879926,
@@ -992,6 +1057,11 @@
       "size": 814,
       "hash": "48b92d3041a6f0cfa1d7240791ea87f4aca8f225b6cb85bba36b7cf18ae04d80"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-08-05-00-16-checkpoint.md": {
+      "mtime": 1754367443.621046,
+      "size": 4593,
+      "hash": "0e85ef8151e8fce49a78fcae79abb3033dcb47cb15830e2ba637b7f5850f5a37"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-26-16-59-quick-ref.md": {
       "mtime": 1753549180.645719,
       "size": 993,
@@ -1047,10 +1117,25 @@
       "size": 5362,
       "hash": "00ce5fb31cb61dc6734eb84fa7a3ca025e2a62cfbeaa236715f1f68df99f80ed"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-01-29-13-47-quick-ref.md": {
+      "mtime": 1753762507.812319,
+      "size": 1099,
+      "hash": "9890b92fb845802ddc6fc2d577dd7845e85782ac4fdc419b242b160e18bf08af"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/restore-2025-08-05-00-16.md": {
+      "mtime": 1754367476.0728137,
+      "size": 1297,
+      "hash": "33afa5f86cab32dbc3c24bea5bbeb365629632eb5e973a3bbc5c3de606cf6304"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-22-23-55-checkpoint.md": {
       "mtime": 1753242982.1514559,
       "size": 5547,
       "hash": "247885be4fa7be28db7177665f4d3c2794fe5012874d4693922204fca49976ae"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-08-05-00-16-quick-ref.md": {
+      "mtime": 1754367454.7140067,
+      "size": 1485,
+      "hash": "3440feed06a050bea53c22f554baac318ca53c104df82057bfe2603f8ace6d1c"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-01-03-quick-ref.md": {
       "mtime": 1753333624.4217536,
@@ -1092,6 +1177,11 @@
       "size": 5492,
       "hash": "121027fc4f93c777586f006e7b5feef27617741f25fcdf6e9825ed1c99e24a96"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/restore-2025-01-29-13-47.md": {
+      "mtime": 1753762556.1561005,
+      "size": 1019,
+      "hash": "fdf62d969b80de2ac1666027724ad80f6e012ba18dde8a5aa90a29f94f8171b2"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-24-13-37-checkpoint.md": {
       "mtime": 1753378666.3215253,
       "size": 5898,
@@ -1111,6 +1201,11 @@
       "mtime": 1753240270.8202658,
       "size": 757,
       "hash": "94b50ce569f000b99b55e30c2e969b38aa2fc60890aaa350801144adbf1e5cc0"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-01-29-13-47-checkpoint.md": {
+      "mtime": 1753762494.0580971,
+      "size": 4351,
+      "hash": "e68ad79fb2497f782804074069c25b3656dd959ab68d5c934a4477ee905379da"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/preservation/2025-07-26-16-59-checkpoint.md": {
       "mtime": 1753549168.594572,
@@ -1141,6 +1236,11 @@
       "mtime": 1753413277.1765075,
       "size": 3972,
       "hash": "034f155e74e3c8af8b7964d91ab4ee0d13f2de64ab82e6a6a7fadd771ab8d95a"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/heritage-database-integration-2025-01-29.yaml": {
+      "mtime": 1753766330.0296288,
+      "size": 3523,
+      "hash": "e23176193d43cabbb24392f4a6b5bc20365c4701d7f1f1ef25e046c5acaa2b56"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/active/testing-continuity--institutional-memory-solution-2025-07-24.yaml": {
       "mtime": 1753393623.1647348,
@@ -1247,6 +1347,11 @@
       "size": 4089,
       "hash": "dd151db2b2d45558e16f1321eca992be583a05ad0c0ab968f97b91f27bdaf5d1"
     },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/mpp-command-failure-fix-2025-07-27.yaml": {
+      "mtime": 1753635127.773356,
+      "size": 3053,
+      "hash": "f2526605bd8b7e4bf5e40f9c343601d4a50c2d151547d3d11a60bc414a45a837"
+    },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/auto-cascading-task-system-2025-07-24-2025-07-24.yaml": {
       "mtime": 1753561995.4847822,
       "size": 6171,
@@ -1261,6 +1366,11 @@
       "mtime": 1753554926.106762,
       "size": 7056,
       "hash": "16b9b8516c832fd23558d7528164acbb103352db0b4642e2075080474f4ef9cf"
+    },
+    "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/mpp-validate-implementation-2025-07-27.yaml": {
+      "mtime": 1753754469.3013115,
+      "size": 14597,
+      "hash": "d92116382605778e9d10f37688f336bc69dd453f7c7380c4c32d74889e37309c"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/communication/task-chains/completed/test-cascade-simple-2025-07-26.yaml": {
       "mtime": 1753563106.1445441,
@@ -1298,9 +1408,9 @@
       "hash": "393f28d8bfcab34e7df7a4b27df73668f87622ef91f098da84ff57398ed8b36a"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/chain-status.sh": {
-      "mtime": 1753394348.6588898,
-      "size": 46500,
-      "hash": "64bc20ae1abbb2ac864b6d9d53039c4cede57ddc7f7c7cd132a52b7881020d8a"
+      "mtime": 1753634637.046753,
+      "size": 46786,
+      "hash": "3d82096e7aec533561b5285d0f8f5d58bc9d89ddc1eed2949cf43b130851dabc"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/test-chain-status-labeling.sh": {
       "mtime": 1753387710.2523975,
@@ -1328,9 +1438,9 @@
       "hash": "f73d4a009750b2d4c28f6acdf3ca56aa5b72bef08b6d2ee2e2dc1d45faa8a507"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-phase.sh": {
-      "mtime": 1753563210.9223998,
+      "mtime": 1753656382.4522066,
       "size": 18501,
-      "hash": "55e29391cc971a4936b169f3ffd29e23780693a7839a7235bdced6dd6861d710"
+      "hash": "654d93be31eceba914b33a07d0879fda4c261a87745a22b364d9fed5fdf01dc3"
     },
     "/home/stephen/Documents/initial-media-processing/claude-orchestration/tools/update-priority.sh": {
       "mtime": 1753393824.641431,
@@ -2178,9 +2288,9 @@
       "hash": "428cdf6b2d9c383472b8bc5b2dff011a2c946c1e9fb3f4b6c85aea7d08406556"
     },
     "/home/stephen/Documents/initial-media-processing/mmp/install.sh": {
-      "mtime": 1753446313.7391722,
-      "size": 4243,
-      "hash": "2699d1839ee92f3400f39898a4319472a236d31eb6f542fcdc7d54c7c724e754"
+      "mtime": 1754368587.741841,
+      "size": 4220,
+      "hash": "bc503ec5c0f39fd380d80acfcee0773e7231fc34e3d3e422f9ae6da989bbb546"
     },
     "/home/stephen/Documents/initial-media-processing/mmp/README.md": {
       "mtime": 1753447392.176484,
@@ -2198,9 +2308,9 @@
       "hash": "fa9bc9e452ae20e5269d5a6cfd650d8649d5029123f2e8b3f5f638124dbde6de"
     },
     "/home/stephen/Documents/initial-media-processing/mmp/src/cli.ts": {
-      "mtime": 1753446314.4211848,
-      "size": 26420,
-      "hash": "4b490f78f48d4677cad30c6fa08c7923ffd9c35852942875056a4425d467da10"
+      "mtime": 1754367643.8543077,
+      "size": 48732,
+      "hash": "74d230d9ba74c9ea3cddc74a5c149c517a953359673b4317f4e8240fbbb4612c"
     },
     "/home/stephen/Documents/initial-media-processing/mmp/src/commands/understand.ts": {
       "mtime": 1753446314.4211848,
@@ -2236,6 +2346,11 @@
       "mtime": 1753446314.422185,
       "size": 3124,
       "hash": "6e332929ccdad1e94884fa8aa9fc5e621ae0270f19d983e81406b46aa86abf51"
+    },
+    "/home/stephen/Documents/initial-media-processing/mmp/src/services/ScrapbookService.ts": {
+      "mtime": 1754368519.064747,
+      "size": 7402,
+      "hash": "3cadd2b93d00fb07165f0055cb9c152fce7dfffe0165e2ace2c3623df98b9892"
     },
     "/home/stephen/Documents/initial-media-processing/mmp/src/services/DateService.ts": {
       "mtime": 1753446314.422185,
@@ -2278,14 +2393,14 @@
       "hash": "d76a97bde1f28cb652196405b37fb5040cee93235709832919bf24a66104d19b"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/package.json": {
-      "mtime": 1753548211.0511758,
-      "size": 1843,
-      "hash": "be7a381a30092f14a24caaddc244b9d3365902a196abfcc3542eee963b5ad3c9"
+      "mtime": 1753749429.6894636,
+      "size": 2036,
+      "hash": "63585f3518985f05270861cfd2817ae261b98f0bd4d46d9da02b8ceab562beba"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/install.sh": {
-      "mtime": 1753548865.7803998,
-      "size": 5267,
-      "hash": "e3959ef9ef02b840f6cd7c74161dce3c143d22c4d05fca94117555c53d5a50dc"
+      "mtime": 1753634763.2678173,
+      "size": 5527,
+      "hash": "e46cffa373640ff19ddb251213163a393a48f76800e1bb991af34f4d0fd0979c"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/jest.config.js": {
       "mtime": 1753548261.4131002,
@@ -2298,9 +2413,14 @@
       "hash": "bd40f1d6daf4135cc0d4642ed26a9386a6b5ed692420e57703d15a58e5f6ad44"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/eslint.config.js": {
-      "mtime": 1753548264.5741582,
-      "size": 2483,
-      "hash": "4b68652180381b5a78380c0dc9d8a566f7a89081de7893380a19a37185cec3d2"
+      "mtime": 1753749415.7371905,
+      "size": 2511,
+      "hash": "d1c8160645014daef0819f22369a034656f37ca441199413df240f311a2e8289"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/scripts/test-installation.sh": {
+      "mtime": 1753635867.6478937,
+      "size": 4435,
+      "hash": "7c0bf7f21f840e0c7a7c309ace14afc749aa67b78d1fe625ed740b41628c7a95"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/scripts/utilities/generate-test-mocks.sh": {
       "mtime": 1753548185.048698,
@@ -2332,6 +2452,16 @@
       "size": 2391,
       "hash": "30332a9f4f529808fbd8c579216620d0a726908159b4a27e6a5395acabf34eb1"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/installation/installation.test.ts": {
+      "mtime": 1753635939.5879872,
+      "size": 9104,
+      "hash": "94ad3560cc8d9665a7bf2a5f0e10a765d0c114602eb4049906a62d339ccf12e3"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/installation/dependency-validation.test.ts": {
+      "mtime": 1753635972.1644847,
+      "size": 7180,
+      "hash": "ced6f2d9d197ceb89bb429350fb74c381064f0b56d1777ada4cf80aa7d30ad44"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/tests/cli-response/cli-responses.spec.ts": {
       "mtime": 1753157570.6200585,
       "size": 14451,
@@ -2348,14 +2478,39 @@
       "hash": "05346050cbeb226552fb6dc6964ef35e23b9778b554eec6361a3b2e6b03b99bb"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/index.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 656,
-      "hash": "a9f27e32e889b194726b0cfa9c3ae9b61f03b74451fc7ea4c25c0c0cd2f806fc"
+      "mtime": 1753656723.0781083,
+      "size": 841,
+      "hash": "3171b59054e297c8a65778f16ea62d7fa1496b97813c243bcd67831bc4151b65"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/CLAUDE.md": {
       "mtime": 1751331057.1817582,
       "size": 9292,
       "hash": "10ee9e97e24c57444731e075370286af82a37c5be67c1afaff5a77442f87df32"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/index.js": {
+      "mtime": 1753656819.8485384,
+      "size": 518,
+      "hash": "894316db15a13e65b668aceff04f32f7cefd455ae526a6f11b33052d490d702c"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/index.js.map": {
+      "mtime": 1753656819.8485384,
+      "size": 419,
+      "hash": "84075b95a39cdfa70c8cfe820e55026547c5bd8d4426f321969afadd29b999ad"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/index.d.ts": {
+      "mtime": 1753656819.8485384,
+      "size": 815,
+      "hash": "0274e34e46adb0a52ef60f0999c146573c68652fb212090b01210d7736a43a53"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/factory.js": {
+      "mtime": 1753656819.8285382,
+      "size": 1292,
+      "hash": "5d49cdc6dd232cb94ded77592c83707a99cfc104b9cd0318f8badeedd053273d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/factory.d.ts": {
+      "mtime": 1753656819.8285382,
+      "size": 330,
+      "hash": "8e706f1266abf51d567669d1f83d1c11f3cfcf11ef830771eecbce89e3504b39"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/factory.ts": {
       "mtime": 1753157212.5155616,
@@ -2363,104 +2518,314 @@
       "hash": "f7c2dc42aa28d4170aa2bcee8c73ea093b4e75a9e8f86ed272e75fe3985d5836"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/index.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 11376,
-      "hash": "c3517e1f7b68f28e76a43de9d09adb2c7238c067f71ee6bac2200dee6354de50"
+      "mtime": 1753750506.4865458,
+      "size": 11452,
+      "hash": "05352338987539003c68cd5a4a329166ef4a70c75b0c59a31f2713ab600b6d0b"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/factory.js.map": {
+      "mtime": 1753656819.8285382,
+      "size": 1024,
+      "hash": "0da48f58c9b6d18468e8fd76b8e98a62b7b65396770ea3d978275ff787736d05"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/index.js": {
+      "mtime": 1753656819.8275383,
+      "size": 11162,
+      "hash": "d37e01833224623ecfa4b98bc3e98cbc7bc13a2cd9e2209f93eb8ce61647a65a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/index.js.map": {
+      "mtime": 1753656819.826538,
+      "size": 8827,
+      "hash": "460ef62a101bb3fc3e3549a313642ae124626609faa5022fee0c83995342afae"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/geolocation/index.d.ts": {
+      "mtime": 1753656819.8275383,
+      "size": 2135,
+      "hash": "81085b6d588f01b40d851ab0a4a0263602ff82ba08bc8716a3c240435d607947"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/factory.js": {
+      "mtime": 1753656819.8475385,
+      "size": 3794,
+      "hash": "f613b0dc9a60cbfa416d49a2cf5465ffc84f18522eb3ccf68a19690675cb5c74"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/factory.d.ts": {
+      "mtime": 1753656819.8475385,
+      "size": 413,
+      "hash": "ccf2d4712ac1b1deabd542727ec210092988398bb608d8e14be81615f0b89539"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/factory.ts": {
       "mtime": 1751121904.1934347,
       "size": 3616,
       "hash": "87e8c67477fa90e6fcd7c0c560791eb5fff31d467a26a3b94e9156016d5f354f"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/types.js": {
+      "mtime": 1753656819.829538,
+      "size": 2714,
+      "hash": "bd9b5c3f54b9952c225a3f057a16c34ab877326cf9f87c1ba47d4cceac20f9cb"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/types.ts": {
       "mtime": 1751121904.1944346,
       "size": 4103,
       "hash": "a37db20abb83634a6612c29e215b0c3149fa0a21a602649e58f968a139adde3a"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/types.d.ts": {
+      "mtime": 1753656819.829538,
+      "size": 3800,
+      "hash": "44fae984063aef76da02d7aa70267f475c708519b100bba92dcd1b584bf22a11"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/index.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 10952,
-      "hash": "bc1a98812088226052bf3725f80009c2a1e6775a9490d815a0699afe944c0d0e"
+      "mtime": 1753750853.2180922,
+      "size": 11034,
+      "hash": "9db7f21b13ee0da37d7ddfc03344d757e15672c29bcec1b9855f60bc40d90a6d"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/national-parks.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 7935,
-      "hash": "008a22edde09c1e9d9fee89346af37fbae3dd36d25487238badd6cb65be059ad"
+      "mtime": 1753750260.0480487,
+      "size": 7930,
+      "hash": "018e9ad97ed586769c5b40851cb29c52f8027dba1d0cee6e2a91aeae1868332a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/factory.js.map": {
+      "mtime": 1753656819.8475385,
+      "size": 2806,
+      "hash": "161fdc8bf9ae59e5e5d916bc9bd68286f8307e366cf1f976c33878fa53d9fd6e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/types.js.map": {
+      "mtime": 1753656819.829538,
+      "size": 1092,
+      "hash": "c9b433b78a5f6b99ded0fa2e90fa545ac7c9089c018c339a848be3268f740269"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/index.js": {
+      "mtime": 1753656819.8335383,
+      "size": 11382,
+      "hash": "3b9d01042e7ea398caa019463a87eea28e2ed0a8d3b98568ddb54441421860f5"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/index.js.map": {
+      "mtime": 1753656819.8335383,
+      "size": 10066,
+      "hash": "15ff5b8b366a2f65e51c5a3729822ee8480122274c400857afe69868f134d785"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/index.d.ts": {
+      "mtime": 1753656819.8345382,
+      "size": 2018,
+      "hash": "a7f4ff58806703be52899362f015ca83501f4913e21ba12cb094191576c88513"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation.d.ts": {
+      "mtime": 1753656819.8465385,
+      "size": 1234,
+      "hash": "7d87dd927d46451ebd55325e141c2ccd5e3e5d9bfd055143ad3a30c993a8bfb2"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation.js": {
+      "mtime": 1753656819.8455384,
+      "size": 17241,
+      "hash": "1952bd744183415755993069af076c1123e15ad31a7e819eb2488ac3fb71e450"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation.ts": {
-      "mtime": 1753306756.4178574,
-      "size": 16940,
-      "hash": "fef363870cb64c4ac004d80297490d1968228a30c9dc489f15ae401511809de9"
+      "mtime": 1753751907.5514872,
+      "size": 16990,
+      "hash": "093dce6fdbf549294f5531e834fcfd9d96d398edc86e4596ad7b8b3f14fd1b79"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation.js.map": {
+      "mtime": 1753656819.8455384,
+      "size": 14169,
+      "hash": "c96f2b16289c56bb5b357a114473f69a1acab5d419b06129ad7e909a75b66ddc"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/national-parks.d.ts": {
+      "mtime": 1753656819.8375382,
+      "size": 1408,
+      "hash": "83eb3832a7ef169b319ed9927c8cd0e14882f5a28e17d3cf02fd2f7cfeca2223"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/gnis.js.map": {
+      "mtime": 1753656819.8405383,
+      "size": 7541,
+      "hash": "b199c311e585bfe9c208485ea5c4fd677112555d55d809aca2aeeee56d957917"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/national-parks.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 13742,
-      "hash": "b80e7cad8fcf93c382ee344b950a8bef8c4b717004ef5e7be5f01a82b6ee2847"
+      "mtime": 1753750041.46903,
+      "size": 14954,
+      "hash": "b6cbe9c1ccc363a171e9445b5c12bfe21e66a1f3fc15c10dd59da20ea12f98f6"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/gnis.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 11304,
-      "hash": "0071888d548345491d0327b6fd39a562bbc632ca9be18ddadec0da431175332d"
+      "mtime": 1753750540.204159,
+      "size": 11286,
+      "hash": "9cc63c791d168923b28a9a4a96d0151561855f809f8f3c54ba7eaf8790579216"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/recreation-db.ts": {
-      "mtime": 1751121904.1934347,
-      "size": 9873,
-      "hash": "c143ed76a932f30f13679f6b807ba110b1f1e580ba9180a4eaaff355c0de0bd2"
+      "mtime": 1753750937.6242435,
+      "size": 9891,
+      "hash": "3f30b9cf8b4c66ced0719ba3f1e56da49aa04fa3d7c85669a727a5d25281d713"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/gnis.js": {
+      "mtime": 1753656819.8405383,
+      "size": 11444,
+      "hash": "b9458125c43b7b37b1ace5e54a955c47f83a5dc82b5d1ebebe6ee70e8c91c447"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/national-parks.js": {
+      "mtime": 1753656819.8375382,
+      "size": 15544,
+      "hash": "a945f51968bf0ac8bc981ea8238f0a45c3cdda5a9b430bf41528aa98321771b4"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/gnis.d.ts": {
+      "mtime": 1753656819.8405383,
+      "size": 1285,
+      "hash": "3c7f12d2e726e2bd4015f5274f0226578aa1b0866bd731331d8ea1e2cdcec5d5"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/landmarks/providers/national-parks.js.map": {
+      "mtime": 1753656819.8375382,
+      "size": 10240,
+      "hash": "335320c9e60a9acd6fc9b931f3e222a295e06de4824f5103f34f26496fe1cf45"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/MediaFileService.ts": {
-      "mtime": 1753448359.8155203,
-      "size": 15183,
-      "hash": "75277b65bfd915bf52cb9cefe408cc1bdcf9e7d2d7760fca498be26a92221c54"
+      "mtime": 1753751429.1436584,
+      "size": 15444,
+      "hash": "040944a552e87f3ca7c68a278e3a85741ed64da6381823301b62562468af9353"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/LandmarkService.ts": {
-      "mtime": 1751303293.696559,
-      "size": 8650,
-      "hash": "b86f3a2a03650efa38ac1fe8a6ba5ed6b72811ef2cf5c1ddf2755ea084afb149"
+      "mtime": 1753751656.3313315,
+      "size": 9237,
+      "hash": "31587265e6af196230620728c4d1d969bc3d8cf78fb1a6dbaeca6669a1ebe847"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/EquipmentService.ts": {
-      "mtime": 1751157721.3241196,
-      "size": 7485,
-      "hash": "539306603c8a04d1196b81525f97658e1b25dcee2bff559503807b1f1b57aa54"
+      "mtime": 1753749440.721679,
+      "size": 7459,
+      "hash": "5874e5d3f096d55d8af5398c69b266fab05d801bde967db58f5c9562ac059601"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/SoftwareService.ts": {
-      "mtime": 1751297417.2855875,
-      "size": 8624,
-      "hash": "a0260bc30b54773f0361d4b1b4309d739678ac48965fb5faefd06c8d2c64572b"
+      "mtime": 1753751899.7843575,
+      "size": 8994,
+      "hash": "062c78af00a59994bc905334cd97cba072c780bf186064b5107eb5f0c9e5ba5d"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/database/LocationService.ts": {
-      "mtime": 1751312507.576614,
-      "size": 7817,
-      "hash": "00627251b35c95fa65fc2f3ca078ead4da1634b8929aa71039a00eb3bf299b5f"
+      "mtime": 1753751567.714887,
+      "size": 5478,
+      "hash": "40a1432c5e7bf44ea25df241e08e465a756b5ba72cfe9aec1f896bb5e43974f2"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/metadata.ts": {
-      "mtime": 1751121904.1924348,
-      "size": 6337,
-      "hash": "7698277306eddb5aa579f44690daa10e8ae497a41fe1991c5ba30bdce435f590"
+      "mtime": 1753750791.4402826,
+      "size": 6361,
+      "hash": "87796aeb5978492f97a8685b29bac7ee7966075039e0b5aecb60c67b7e12c57e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/scanner.js": {
+      "mtime": 1753656819.815538,
+      "size": 7657,
+      "hash": "8c51aaf426cbe97190964a8e38bf36d82dd7398bb5bcffee70a1725959310cf5"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/scanner.ts": {
-      "mtime": 1751121904.1924348,
-      "size": 7340,
-      "hash": "71b14449350b1e452f0de980f0fc11463cdf89e7e03efd4dbc7925133fe05c50"
+      "mtime": 1753750810.0475233,
+      "size": 7372,
+      "hash": "ad38a2d9a941ca893d7ed2a16f669f296dcea2abf57a511e6db7e062e8c574ff"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/types.js": {
+      "mtime": 1753656819.812538,
+      "size": 750,
+      "hash": "1bb67df0ba9e2ec1c7d97c109794de2cb249fe745b928f8ffc47042cc6326ad3"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/demo.ts": {
       "mtime": 1751121904.1924348,
       "size": 2407,
       "hash": "1442236a7833efc45fb36923513fa43e847d98e2d64d28c60fa1c8c0dfd07840"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/validator.js.map": {
+      "mtime": 1753656819.818538,
+      "size": 7884,
+      "hash": "d4f73cb2dde60a4437eab4471c2e8b849cbfaf667328bad715a2491f3e91c5a1"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/validator.d.ts": {
+      "mtime": 1753656819.818538,
+      "size": 1089,
+      "hash": "d62c4c655af6271bc002f54baf0ad496f86da2120a0b15b7943b88eff411356e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/metadata.d.ts": {
+      "mtime": 1753656819.821538,
+      "size": 1531,
+      "hash": "d76fdb6fa017378259dcb1d4f77f0fa40b8b2fd50f684472f0f70168a7d9bde0"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/types.ts": {
-      "mtime": 1751121904.1924348,
-      "size": 3672,
-      "hash": "5d0db941a375e84547ebf1b4fe4069e64112b18120846ddf69baa89c7b41df6a"
+      "mtime": 1753751670.4945636,
+      "size": 3685,
+      "hash": "5ffd4e8e3985fff0e0a17ac168dc487009e45aca38f0838c1c591b142b86f783"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/metadata.js.map": {
+      "mtime": 1753656819.821538,
+      "size": 5737,
+      "hash": "f9fc376082a42fb593e71f066df5be6dbb7c34597eb9bb14b2b181c43cd6e2ce"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/types.d.ts": {
+      "mtime": 1753656819.8135378,
+      "size": 3739,
+      "hash": "cc8848c692a239367087d921a696a1942bc38e98e703f144afc4dbbc41d66d95"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/index.ts": {
-      "mtime": 1751121904.1924348,
-      "size": 7003,
-      "hash": "7e6507bed6d3e53934ccef200de4e15f69c62439097c1f007828a96b62d905ba"
+      "mtime": 1753750916.882956,
+      "size": 7104,
+      "hash": "8109c30902723f1665137df1be7329328619a011ad0027ae7ef9755c88817944"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/validator.js": {
+      "mtime": 1753656819.818538,
+      "size": 10093,
+      "hash": "1d7629a70f0ba17385f96c94d6ea21d418032b4f3fb660c2c0c50687b22f6ce8"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/types.js.map": {
+      "mtime": 1753656819.812538,
+      "size": 713,
+      "hash": "7b33851e5690e5c4a0dca3f2f187a65ace71095021658c77b69ae7ecf277265c"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/metadata.js": {
+      "mtime": 1753656819.821538,
+      "size": 6316,
+      "hash": "3d3e8c06a3b0a7760b6563ca0ff3a699ecde76c0b7d04c2069dd071b6f898844"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/index.js": {
+      "mtime": 1753656819.823538,
+      "size": 6443,
+      "hash": "4c43b6a54e9f87f2e637ce0042024fcbc80fbdcc4fa2f577c3b51e4b461cb6df"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/index.js.map": {
+      "mtime": 1753656819.823538,
+      "size": 4741,
+      "hash": "707e6e6ceba48a44c90d620b4d94e549c9250691c26539bdebbf3509a0cca827"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/validator.ts": {
-      "mtime": 1751121904.1924348,
-      "size": 9215,
-      "hash": "92e3d1fb242b407fdffcf8d16c8de1a78d11cff65b93fd8131f24652fee8ebc5"
+      "mtime": 1753750829.7797813,
+      "size": 9256,
+      "hash": "0122ed64e7b1c8b48286fbc5e3bb3ac83eb4d2e69b8814553a1cc75ede84acde"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/index.d.ts": {
+      "mtime": 1753656819.823538,
+      "size": 2912,
+      "hash": "ea43784e432292bfaa938703a72cc5b7d11acbefbea51cf55f6a7637eba3f319"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/scanner.js.map": {
+      "mtime": 1753656819.815538,
+      "size": 5879,
+      "hash": "6e79ddb9c1d5874f978f749161ebc48ef74726048ed4b18d2ec810cf25a4d260"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/filesystem/scanner.d.ts": {
+      "mtime": 1753656819.816538,
+      "size": 1188,
+      "hash": "35b45bd38eb62429d040a546366efb33c46462a821c40bb9b2044d4dcb90e9a3"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/validation/index.ts": {
+      "mtime": 1753751923.726757,
+      "size": 41708,
+      "hash": "1834f492f0e0ae80ec52c6736cf85dfc9840f143c11f4cded03fb881fa1437cf"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/validation/AutoFixService.ts": {
+      "mtime": 1753751699.5340405,
+      "size": 19835,
+      "hash": "753b23a295bc491d0514a6ca117cbe1e40572d923f6e85b034d69c69e81c1515"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/validation/index.js": {
+      "mtime": 1753656819.880539,
+      "size": 23250,
+      "hash": "7573d183da1a33a0ac18bf6387b7d63affb992a6fc7099b22e0255cd16a78923"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/validation/index.js.map": {
+      "mtime": 1753656819.880539,
+      "size": 14918,
+      "hash": "79f08e7f82af10308383300091a128829f7ac4dbed4a2a98fc46aa12bae116d5"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/services/validation/index.d.ts": {
+      "mtime": 1753656819.882539,
+      "size": 2360,
+      "hash": "659e21260c5731fc32e57dacaac026b9c794e1ed5d0b502dd8df3c7ec489f5fe"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/knexfile.ts": {
       "mtime": 1751161443.2744224,
@@ -2508,9 +2873,9 @@
       "hash": "4197926be767153123b9ba33d90befb11e146bacc007742aaeaa5e74abafa8b5"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/types/metadata.ts": {
-      "mtime": 1751154061.458975,
-      "size": 3864,
-      "hash": "48cd1a2ad5202e578108131052765a5fbc0ef8c5078a59af3a821a1ac931a634"
+      "mtime": 1753750588.9748788,
+      "size": 3878,
+      "hash": "a8ead856949d7afbaca399a7f91c16b46b5f00111e38b490769f6a7261923ce1"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/types/tables.ts": {
       "mtime": 1751297013.0286698,
@@ -2518,19 +2883,59 @@
       "hash": "1623c97d619d12eb4957caad84060d8ea3836a21b013be87e43cfb8ea4ac934a"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/database/types/shared.ts": {
-      "mtime": 1751132055.839651,
-      "size": 6738,
-      "hash": "f89f74ad06d0aa69ade17a6e09181a3decfeb289eaefcd17e013c8179150532c"
+      "mtime": 1753749440.721679,
+      "size": 6702,
+      "hash": "45968ab140219ad0a2b455c58ee3b90486349ec912d5a3533473e297db24193a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/image.processor.js": {
+      "mtime": 1753656819.8695388,
+      "size": 11481,
+      "hash": "4abb7e77e0e8b7578baad31aef509dc7585172f5d86dbab1da530518e4d585ba"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/image.processor.ts": {
       "mtime": 1753448358.283496,
       "size": 10042,
       "hash": "2c6bd71294a15f299fd102b94cd2245e74acc6940ad96880e266fb9c79deccee"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/image.processor.js.map": {
+      "mtime": 1753656819.8695388,
+      "size": 7626,
+      "hash": "92cc46789c4ddb7cc53f06644db8f33ba5df901fad65fb2ddfb705deb004841f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/video.processor.d.ts": {
+      "mtime": 1753656819.8735387,
+      "size": 789,
+      "hash": "36a65e821a259718e7d7a787e46e976990813f581619834790153517493b14ba"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/image.processor.d.ts": {
+      "mtime": 1753656819.8705387,
+      "size": 1064,
+      "hash": "4ed157365b6fe7b9ea9cc8cc5bf881148d01488e48009ff6a9df6b959b3429c1"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/base.processor.js.map": {
+      "mtime": 1753656819.8595386,
+      "size": 286,
+      "hash": "efb7f4c9014425c9e0dec8059d3567e16121366a5c77a70d44b5ae159ace5677"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/heritage.processor.js.map": {
+      "mtime": 1753656819.8755388,
+      "size": 5558,
+      "hash": "48adc8966e46b87b223a47a118498c4704ef490de6f37c3f78f984351ad90f21"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/video.processor.js.map": {
+      "mtime": 1753656819.8735387,
+      "size": 5842,
+      "hash": "ef69511a86f5bf12f234c31ec4a2d5309b83c86772270096de7bbd59e8a738ce"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/CLAUDE.md": {
       "mtime": 1751331000.121063,
       "size": 8270,
       "hash": "23058e10366458e584ff51c117a05224549b97f451c1ab7c3257aeebd5edf0eb"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/base.processor.js": {
+      "mtime": 1753656819.8595386,
+      "size": 326,
+      "hash": "115371febba54e1ace6a8c1ffc66f22bc3f8c91e061cfaf806eb510a909b0d05"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/base.processor.ts": {
       "mtime": 1751121904.1924348,
@@ -2547,10 +2952,40 @@
       "size": 7369,
       "hash": "2dc9356bea67f1d4eea49e47878afb64642e1b2c9f6be848ccab20bdf26a7368"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/video.processor.js": {
+      "mtime": 1753656819.8735387,
+      "size": 8403,
+      "hash": "9242020d24f962b2d666f7a04c4a93071c35b3fb9dfa44d3295fb4e4801a931a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/heritage.processor.d.ts": {
+      "mtime": 1753656819.8755388,
+      "size": 522,
+      "hash": "304d3a6cc8bbbe9c0440502d0cea98c881f85af459d701de651b42ab7dea57a6"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/base.processor.d.ts": {
+      "mtime": 1753656819.8595386,
+      "size": 462,
+      "hash": "d2235674416ea04555336b517571d34727bf86048a467da6940b8b8572e256f7"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/processors/heritage.processor.js": {
+      "mtime": 1753656819.8755388,
+      "size": 7775,
+      "hash": "5934f077ee9a30515a4ae2f974717b3ee5390159f649998be44b71d3a680ecf7"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/post-processor.ts": {
       "mtime": 1751296587.8469818,
       "size": 4416,
       "hash": "01e3bb51b931c7b4a9159ff7ddb6fc112716c12366d99336d0d4de42796cbcf8"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/router.js": {
+      "mtime": 1753656819.876539,
+      "size": 1918,
+      "hash": "96173eee3ace449884f723e75febe4586acd6dc347e7039f29bf4e778714eb45"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/router.js.map": {
+      "mtime": 1753656819.876539,
+      "size": 1309,
+      "hash": "9b2e60faeb4576c5365ec6135de8df72ed120fcba51f473fcfe2372f64cbd3c8"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/CLAUDE.md": {
       "mtime": 1751330899.8273194,
@@ -2562,6 +2997,11 @@
       "size": 2218,
       "hash": "9d0615ca8b3df95d27d40d20ad7ea4af9377aecbde7c0646d21935897208be25"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/router.d.ts": {
+      "mtime": 1753656819.876539,
+      "size": 256,
+      "hash": "5e304430c491b7a314773118cb504b846a1545584e6e57582a906dbb17f93834"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/pipeline/router.ts": {
       "mtime": 1753155392.7986808,
       "size": 1934,
@@ -2572,15 +3012,40 @@
       "size": 7229,
       "hash": "1f2e9df966bb5308fbe61a530fc8c96d8bd51b87fa52364571bb1259dda54b5d"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/paths.d.ts": {
+      "mtime": 1753656819.812538,
+      "size": 2438,
+      "hash": "e92f102bc86cb06068179ccb0497bd37f8d36822b059d012691f43a3a2f18b53"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime-config.d.ts": {
+      "mtime": 1753656819.8675387,
+      "size": 742,
+      "hash": "da7c143ce9b86b0dbcf02dd921afb4a319535b1a4cbc1d804ac2fb5037e9a2fe"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime.ts": {
       "mtime": 1751121904.1964347,
       "size": 1085,
       "hash": "ef3130de8b3cccac0a5cdb897c83bb9a92a43fbbfa7775f0014bfeda5f02023e"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/paths.js.map": {
+      "mtime": 1753656819.811538,
+      "size": 2663,
+      "hash": "87faed35cc4a51cc6ff9951ea30c11372ff1170fc0f8440116f6145092e5837a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime-config.js": {
+      "mtime": 1753656819.8675387,
+      "size": 3118,
+      "hash": "bc237a54343e43eb03f3f8b3e29f8357b67dbaf428fc84ae10049f95aa93cb40"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/metadata-merger.ts": {
       "mtime": 1751137299.0048802,
       "size": 17352,
       "hash": "39d904d9a1800d1b757ba6bdd49aff4d511bbc4dd167a208cd1b050ba47c2279"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime-config.js.map": {
+      "mtime": 1753656819.8665388,
+      "size": 2254,
+      "hash": "d4c324893a8b178956e2851c91ece767ede7aa2a6bee327f0e1f4169e95c695b"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/CLAUDE.md": {
       "mtime": 1751331166.9984822,
@@ -2592,35 +3057,110 @@
       "size": 4197,
       "hash": "870c74f2103ca95732276eeaab2dbbfaf454646de1dc3f05e7741f58871e3490"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/paths.js": {
+      "mtime": 1753656819.811538,
+      "size": 4331,
+      "hash": "b9c5813bc4008f5b33da82cf076f1145bcf732ef5261ca8e9f5c1132363ac700"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/mime-config.ts": {
       "mtime": 1751121904.1964347,
       "size": 3006,
       "hash": "63739dd305f3cf9619f68be5926bb52c7e3fdac327febf19f16dd6cf552b8bb6"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/logger.js.map": {
+      "mtime": 1753656819.7385368,
+      "size": 6429,
+      "hash": "aa4e3220c2f3682026218388b3d1a1d20f520af631d85797b39bdf334671d454"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/types.js": {
+      "mtime": 1753656819.7295368,
+      "size": 383,
+      "hash": "c662eb3f2cb2f6254e6c617d7c1b1c64209d008fe96bfcc41645cbad5cad0c91"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/types.ts": {
       "mtime": 1751134920.6779633,
       "size": 719,
       "hash": "e0d2b66b4f104aa9e0708c07dc91978ea42dd23cdb1eafa085938b2b6ebf5eca"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/logger.js": {
+      "mtime": 1753656819.7385368,
+      "size": 7459,
+      "hash": "1102735eedd18042dcc62596713fd0385e09a061c5712373884223c0f141c72c"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/types.d.ts": {
+      "mtime": 1753656819.7305367,
+      "size": 698,
+      "hash": "b6891cea5cc5f94b3638e135b697632a25e8e396b409f06c79df2492eb8b2385"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/index.ts": {
       "mtime": 1751121904.1964347,
       "size": 181,
       "hash": "25598b92466111c2e72fa6c46bae90b731f840f107c3f6a62e85c7105b645e2b"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/logger.d.ts": {
+      "mtime": 1753656819.7395368,
+      "size": 1836,
+      "hash": "3047467f432b150447e00f5834ede702c6898cc8224a1afd7ad5968d17cb0d14"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/types.js.map": {
+      "mtime": 1753656819.7295368,
+      "size": 262,
+      "hash": "a8efd49db25801bd5a2dc473c6510245d4c6cf04173710307444116d9537b229"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/logger.ts": {
       "mtime": 1751136361.0133836,
       "size": 7029,
       "hash": "3c36d8b4914c31d30470443a2fabfda3da673f001bc7ea52c6f0079ce1c4392b"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/index.js": {
+      "mtime": 1753656819.7395368,
+      "size": 155,
+      "hash": "2314d0b0a4d557fd0068440022a5b6b050d2e9fbf4edd06ba3428278f696aacc"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/index.js.map": {
+      "mtime": 1753656819.7395368,
+      "size": 196,
+      "hash": "0eccf2d4a496c52d22f461c93797fa4e7c42d06a70f092384a1dbde38f269403"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/logging/index.d.ts": {
+      "mtime": 1753656819.740537,
+      "size": 181,
+      "hash": "333463bf361bd623fee54952acaa0269cae367e778b31ae52a8b143190d138b7"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/color.d.ts": {
+      "mtime": 1753656819.8655386,
+      "size": 496,
+      "hash": "52dbd5739991078b1b0ec3380cca30b01821462e5beedd3445ea8827578c5a8b"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/timestamp.ts": {
-      "mtime": 1751133910.0685413,
-      "size": 19030,
-      "hash": "e437f56b5dbe8ccca79e9a8ffa05ad386b18a3a076ae66f277c3c277927e34f9"
+      "mtime": 1753751821.8680613,
+      "size": 19033,
+      "hash": "12a7e4542ec5a74345e99c71d446de87f14c0db4b6fe103514190f8dc8f6fe60"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/types.js": {
+      "mtime": 1753656819.8035378,
+      "size": 552,
+      "hash": "ebb04ba34f8c9af6a4722799aebeb6a660ea0a3ba0e0a21fd8e7a7917d689230"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/color.js": {
+      "mtime": 1753656819.8645387,
+      "size": 6683,
+      "hash": "c2ddeb9bf1aa14b493acbe9d5d0af31f036727de088f82c6c211abdaaa62efbf"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/types.ts": {
       "mtime": 1751134027.7729034,
       "size": 3100,
       "hash": "206cd68b746c475636ba7cfdee88a0fc1ca7bbfe81ce285079efeb1347ff825e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/exif.d.ts": {
+      "mtime": 1753656819.8595386,
+      "size": 2896,
+      "hash": "9825d2e6caf7b623f4c18e487e6e3993b3c786dc2680fba3a5a6a392268df996"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/types.d.ts": {
+      "mtime": 1753656819.8045378,
+      "size": 2260,
+      "hash": "cdfbfd058815bb81a7643bd5aa2805bdaacb43abcd9c4f48bf451f01a2d26650"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/index.ts": {
       "mtime": 1753448117.3136976,
@@ -2632,20 +3172,100 @@
       "size": 7281,
       "hash": "e49eee015990796348bf82df4cc900553269886fa56e8676a59c156365a7ff36"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps.js": {
+      "mtime": 1753656819.8535385,
+      "size": 18154,
+      "hash": "e507b4da95a5b3e1b7604ef717bb54458c6d4034c276ec6c7702f7525abb0b93"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps.js.map": {
+      "mtime": 1753656819.8525386,
+      "size": 13869,
+      "hash": "080d7a7560683fdbbe948c74987b272360b49c98887e8a0467fe129882446e9c"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/exif.ts": {
-      "mtime": 1753155872.9068651,
-      "size": 13836,
-      "hash": "357f458722a25dcc911ae71064ea46ef705cdddaf4eb923e875f94365f68feea"
+      "mtime": 1753751813.7259262,
+      "size": 14151,
+      "hash": "e30220ee7927e34317a36aae7eb89761db79a61fafd3e1d3064369bb690ea05d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/timestamp.js": {
+      "mtime": 1753656819.809538,
+      "size": 18940,
+      "hash": "cfe846fb319aa85f9b268a194d43111aae1cb6659355fd0e179798eb76c002a8"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/timestamp.d.ts": {
+      "mtime": 1753656819.809538,
+      "size": 3162,
+      "hash": "b45311cd26b246868ba0742e5a4839bd5f120e046a2bc461a7a64d9eb364a344"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps-utils.js.map": {
+      "mtime": 1753656819.8105378,
+      "size": 1175,
+      "hash": "96ec4c4f6f9a040d735cc4d197a74bb1df3f4976d955023004264534817f2484"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/timestamp.js.map": {
+      "mtime": 1753656819.809538,
+      "size": 13364,
+      "hash": "3b445f50153b214c8355b1b3a6767d1e5d8d5462658d0e1e2a0a48882b240945"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/exif.js": {
+      "mtime": 1753656819.8585386,
+      "size": 13161,
+      "hash": "f49b31324ba884085c5b495423e7b3c4e9725c05daa877cde9cca6c4b2d3e1f4"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/types.js.map": {
+      "mtime": 1753656819.8035378,
+      "size": 531,
+      "hash": "92f16fa68ce764edabd5b1134bf60d2ae1beebd467a905d81d98a1b65d7b9e13"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/exif.js.map": {
+      "mtime": 1753656819.8585386,
+      "size": 9742,
+      "hash": "26a911d2f66599b2afad153251c36e15687bac013240c25819fcc2f4d08b20c1"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps-utils.d.ts": {
+      "mtime": 1753656819.8105378,
+      "size": 717,
+      "hash": "d0c0dea36b4d3491cb9fdaf2b49d1c1e44cf03a2bd14299503ed5a1ab7fd5688"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/index.js": {
+      "mtime": 1753656819.8655386,
+      "size": 254,
+      "hash": "6900b0a9b30a13bc4ba415cc70ef16437416fbd302d96fb80dcbe76fb4e97c6f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/index.js.map": {
+      "mtime": 1753656819.8655386,
+      "size": 191,
+      "hash": "c7e88213931e985e61122da441d55986284ec7a054371e581c89c63cdc1f83ea"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps-utils.js": {
+      "mtime": 1753656819.8105378,
+      "size": 1484,
+      "hash": "cd4b8d11934554575f997e6e3143c832bfc48fd9cd5321e80b58a0efb50f4c93"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps.ts": {
-      "mtime": 1751290443.700202,
-      "size": 18147,
-      "hash": "90fdef74942a0b82d4199d1b63ba77098752c4a57da47a3c0c8689466c373786"
+      "mtime": 1753749604.094832,
+      "size": 18123,
+      "hash": "ff835035ae8e6592490f30258948af291c09761ad95a3cdf7fef33b26d7bc7d1"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps-utils.ts": {
-      "mtime": 1751290316.3256965,
-      "size": 1533,
-      "hash": "ec614a6e253e5d6d29f6af9785e5fc17b87bae2d54aedf29005647665040d499"
+      "mtime": 1753749440.721679,
+      "size": 1524,
+      "hash": "703a797435986d83184f3545cf36a4fb932ef7e4731700016299db8fb84f0219"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/index.d.ts": {
+      "mtime": 1753656819.8655386,
+      "size": 221,
+      "hash": "fa4d30d256f0930960c0acadbbc78a15d2562cd04326dcb02b27814cfaf8663e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/color.js.map": {
+      "mtime": 1753656819.8645387,
+      "size": 7130,
+      "hash": "3b170ac35aea3b7c123a22ffcafadbd2d3558bf789bc9d902c4152ae6b01333e"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/extractors/gps.d.ts": {
+      "mtime": 1753656819.8535385,
+      "size": 2930,
+      "hash": "512ae7a29cefca2dc3f4629cbfad4a9e072d70ad7ac7e0aa59fdd8524cf4350a"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/factories.ts": {
       "mtime": 1751121904.1944346,
@@ -2657,10 +3277,25 @@
       "size": 1081,
       "hash": "2ae90329c57b810c1552ac9039d093af51724fbbd63999cce0095345b9815813"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/types.js": {
+      "mtime": 1753656819.740537,
+      "size": 906,
+      "hash": "2ee2a4a7982a45b470966334d6ab02ff3c27858721139dd74eecf99b958d93cf"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/types.ts": {
       "mtime": 1751121904.1954348,
       "size": 937,
       "hash": "7d41f117bd822d0939106e9ca8ecb32703fe83fc28a4f4ccb6db8ec2299429c7"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/factories.js": {
+      "mtime": 1753656819.7865376,
+      "size": 5713,
+      "hash": "22ab9f36f28a299cc824d49c4bf7f75d78de3985327b0fe8cc11a76f386d3904"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/types.d.ts": {
+      "mtime": 1753656819.7415369,
+      "size": 821,
+      "hash": "334325814a93db68ccfadc7e45700d92658c64ed34713c5b0f04efc9521f76db"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/classes.ts": {
       "mtime": 1751133945.6172595,
@@ -2668,89 +3303,359 @@
       "hash": "d2d77a09de5ca0b75b38c9b5046a14dba6f2108ccc0205e4afdc4fd2b5943add"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/index.ts": {
-      "mtime": 1751133996.9762897,
-      "size": 4430,
-      "hash": "821b4acd2ab592bdfeec962ab159b9f74fad1ed9b2b9ccdf0d932b8a8c0256d9"
+      "mtime": 1753750603.5720372,
+      "size": 4413,
+      "hash": "46bb6ab48d16b5475be365d2585a1a79d7df85747d85b06985d2502b2fdf4c6c"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/codes.js": {
+      "mtime": 1753656819.7745373,
+      "size": 922,
+      "hash": "9c7d3865444ebde7fc33eb82989e599604bce2dd333337c900809f422607488d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/codes.js.map": {
+      "mtime": 1753656819.7735374,
+      "size": 754,
+      "hash": "7896ce32ff7d347ab4fad1f0dce434ea77c9be4605e618cf8b8c3853e5f85400"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/codes.d.ts": {
+      "mtime": 1753656819.7765374,
+      "size": 15757,
+      "hash": "97b048b2165988cde08c05d0f2a4151bb381d2b040aa5968caa4de164554dbf1"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/factories.js.map": {
+      "mtime": 1753656819.7865376,
+      "size": 5437,
+      "hash": "e1d2876d0f9d8dd67112e489557c45ee97307aea48cc8d4ba800d07f9cb1df65"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/types.js.map": {
+      "mtime": 1753656819.740537,
+      "size": 532,
+      "hash": "f9495334cc94c7fdf3a9dab9329bb476aa2670ebe6d7799a83c5e37adae3514b"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/classes.d.ts": {
+      "mtime": 1753656819.7825375,
+      "size": 3682,
+      "hash": "a35563a1c03f8a0f4a5d9cd29b0caafb749ff069f9c74d883b3c13f1b5ed750f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/factories.d.ts": {
+      "mtime": 1753656819.8035378,
+      "size": 3861,
+      "hash": "2fb3c0ef276c52c9bef127073657a7ecfa5ffbbefe78db1ee67d654b24c8cf21"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/classes.js.map": {
+      "mtime": 1753656819.7815375,
+      "size": 3320,
+      "hash": "a5d3efcb2686d9840d8ba2045e5f685752df8b5657b40fe8f793bfc8d7ca2897"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/index.js": {
+      "mtime": 1753656819.7835374,
+      "size": 4080,
+      "hash": "7a772a08e21aa2adb67a960eb03cc4b1f19526f3bc73ffc63ecbbb275a5af009"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/index.js.map": {
+      "mtime": 1753656819.7835374,
+      "size": 3442,
+      "hash": "9a0ca97e7beb2bf3d3b0e32e0566de871763d8bbdb35ca1ec8eb05685ecb566b"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/index.d.ts": {
+      "mtime": 1753656819.7845376,
+      "size": 2666,
+      "hash": "509df11188559b82c41d4d58091a8bc2950f302596d14b5c8add7bd746130587"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/classes.js": {
+      "mtime": 1753656819.7815375,
+      "size": 3748,
+      "hash": "e4ca0b4da38379efb92674ef6177b9ecafe22ca4eddab2ddec02d582cfe55696"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/validation.d.ts": {
+      "mtime": 1753749595.9606764,
+      "size": 1951,
+      "hash": "90fe05678b0f1f0a8e9bf457ad81d3a3e4e55d70c0e5273541782b59f0de4bb9"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark-registry.js.map": {
+      "mtime": 1753656819.755537,
+      "size": 3563,
+      "hash": "21966f0aacce949f7c9b6582d9ba4eeae387424be3a5c8a5ae99f9beaaec3015"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/metadata.ts": {
-      "mtime": 1751121904.1954348,
-      "size": 1379,
-      "hash": "873b407e731d1b60633deba73416df9ff13471d66e380f4e37086b28761c6ff6"
+      "mtime": 1753749595.9616766,
+      "size": 1330,
+      "hash": "9f36dca10c1d5984bc9aede3f0e71f0c1a4df54d077cc8702bb64225a57244f3"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/validation.js.map": {
+      "mtime": 1753656819.7415369,
+      "size": 1067,
+      "hash": "95dcd0378e0ffdae6c329421186dc07ed32d61b48ef67e73c2e15f10f0aa7214"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark-registry.js": {
+      "mtime": 1753656819.755537,
+      "size": 6727,
+      "hash": "8a216874b0e8bca63f3ca87509f925133f716f3ec1aa329369f68208581fb1ab"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/timestamp.ts": {
-      "mtime": 1751121904.1954348,
-      "size": 2070,
-      "hash": "dfaefc797294914895c5455a23f70827c5400268e00641ed402f2c6c74ea66dd"
+      "mtime": 1753749595.9636765,
+      "size": 2021,
+      "hash": "dfbf0474e1f75b013fa67ef745d520fd0781add1ac395c14b50035d62e1884b8"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark-registry.ts": {
-      "mtime": 1751121904.1954348,
+      "mtime": 1753749595.9636765,
       "size": 6236,
       "hash": "177e500d4811e92acd05d993ffc8bd6614f73994b8444482a77f7af61fab0722"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/path.js": {
+      "mtime": 1753656819.748537,
+      "size": 1778,
+      "hash": "8b3b2f812e380aa641d872703c75eaf05bb2fbb14328e993b6aad8bfcf777fb2"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/config.js": {
+      "mtime": 1753656819.750537,
+      "size": 1046,
+      "hash": "d4f75c5b873c979db913366e7da0cb527160c35d09a84462abadca198f1e1516"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/metadata.d.ts": {
+      "mtime": 1753749595.9646766,
+      "size": 1469,
+      "hash": "24e9158a6e76a54bdb9208716b5c5f425bdde177ba122f8c59ee1c2e14160cd9"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/system.ts": {
-      "mtime": 1751121904.1954348,
-      "size": 1365,
-      "hash": "fdd6446dd49ded759da970e1366423a095a51aff1c2ec2adc30068bea64454f4"
+      "mtime": 1753749595.9666765,
+      "size": 1316,
+      "hash": "34dd830badd1e27317dfca804889c7783c47a19fa3434e4da7dc11300cbd2f9d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/metadata.js.map": {
+      "mtime": 1753656819.749537,
+      "size": 856,
+      "hash": "9eee9cc374f5976dd31e7fd85ea28888b65fce1cf0cfedf20286f9f424469ff8"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/exif.d.ts": {
+      "mtime": 1753749595.9666765,
+      "size": 1911,
+      "hash": "65b6bd037074637bdcc3a0ad9c212136717e08ce886694b0c07cf41527bc16b4"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/validation.ts": {
-      "mtime": 1751121904.1954348,
-      "size": 1802,
-      "hash": "82e00afcb5c9da00d794a5d7cb235ba882396ceaa2a3d2f043e8d4041000494d"
+      "mtime": 1753749595.9676766,
+      "size": 1753,
+      "hash": "66345df17eabc8d675f48412cb9f0a4cf341ba0cd3ea3e23b35b7bf5a37fe7b5"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/path.d.ts": {
+      "mtime": 1753749595.9696767,
+      "size": 1880,
+      "hash": "5df4520818e31217a2ad91d1be922cfd1e57328d2fc7fc79c825df21487d423f"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/index.ts": {
-      "mtime": 1751121904.1954348,
+      "mtime": 1753749595.9706767,
       "size": 1278,
       "hash": "d5c94b879715d2020240489e7a2d4d6c7e5688be17c83bafda9b6862947b70b9"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/validation.js": {
+      "mtime": 1753656819.7415369,
+      "size": 1873,
+      "hash": "6b3c6f52916445420ed5de30ad8fdbe4f9c8e439468d3c2456ac32dc70318ede"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark.ts": {
-      "mtime": 1751121904.1954348,
+      "mtime": 1753749595.9706767,
       "size": 1421,
       "hash": "3cacf83337c16b6fd9343c7dc343667b24d502fbbc335603e7a0035b652c7ea1"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/gps.js": {
+      "mtime": 1753656819.745537,
+      "size": 1738,
+      "hash": "4010cbb202f0f89bf04a377d7c21dcadf9263808121b9cc873f4008b781c225d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/gps.js.map": {
+      "mtime": 1753656819.745537,
+      "size": 1045,
+      "hash": "9d06f7b512cdab159915ebdae7c0713599704de4d15408c1781d1904d7da0485"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/exif.ts": {
-      "mtime": 1751121904.1944346,
-      "size": 1745,
-      "hash": "7a0728ccd4c9e789be5371e8a24167adf16b60e61aa933501a3d79f2c287b7bb"
+      "mtime": 1753749595.9716766,
+      "size": 1696,
+      "hash": "d5786c7e253f2b93ac285ba419df986aee1cc5c711bb6a0d232ff69150fe17dc"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/timestamp.js": {
+      "mtime": 1753656819.746537,
+      "size": 2166,
+      "hash": "a37c4e10681e307597fd2414087b16b0adc9d55d6dbea9a812ca01394b7cbd3f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/timestamp.d.ts": {
+      "mtime": 1753749595.9726768,
+      "size": 2296,
+      "hash": "ed8d74792e4a3e911613233691f39c0ef9b3a99618faa58793a99f537b805f26"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/config.ts": {
-      "mtime": 1751121904.1944346,
-      "size": 1031,
-      "hash": "61d1dc4fef9769c47839a65d37213943225181b02939eef641366bde8f5bfd8c"
+      "mtime": 1753749595.9736767,
+      "size": 982,
+      "hash": "0ecba7878ef76cf9251df4469fe3f7f910b9d072f3f6bbc50ed324657a45b785"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/system.d.ts": {
+      "mtime": 1753749595.9746768,
+      "size": 1444,
+      "hash": "9f43e873e2a28e1ecd76d3dccb5a5a640d5ad796f4285e36c0cf2f9f184c6e20"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/config.js.map": {
+      "mtime": 1753656819.750537,
+      "size": 653,
+      "hash": "36b6b3c96bbccfa8c70539ee69ad4059562ad7a190b08fb5dcf3369ef0b95cc5"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/timestamp.js.map": {
+      "mtime": 1753656819.746537,
+      "size": 1262,
+      "hash": "aceaaaf3dc6046c64ff0d3f61aa1670c447bf9afc48c1cec76967c3a8e8c0c8f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark-registry.d.ts": {
+      "mtime": 1753749595.9756768,
+      "size": 7349,
+      "hash": "30ad8329ca4e30948659dbde26146c84cc249a1be47699d62b05c06cd93061f9"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/exif.js": {
+      "mtime": 1753656819.743537,
+      "size": 1810,
+      "hash": "6b843bab6b8d18bc446402535f051eb26b413fc07a6ed7ee323acc5fc590baa9"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/path.js.map": {
+      "mtime": 1753656819.748537,
+      "size": 1055,
+      "hash": "b365e597b3e04384eb820df9d9dc2a28952d5ec2f15210af9aff64481dc67bb6"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark.js": {
+      "mtime": 1753656819.752537,
+      "size": 1399,
+      "hash": "229ac460b4795a7a40f0b8aabdb6248072e9ba16b7dd3007efefec2098007c82"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark.d.ts": {
+      "mtime": 1753749595.9766767,
+      "size": 1306,
+      "hash": "0aeb03b229ade02139c04f73e35b04814818aad185dfb1fa9f826e6c51c57672"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/system.js": {
+      "mtime": 1753656819.751537,
+      "size": 1406,
+      "hash": "4f56f6324aa1b5a24c9ae8908dc3df71714e0c272736d1c3a0d01bcc8ae599c4"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/exif.js.map": {
+      "mtime": 1753656819.743537,
+      "size": 1055,
+      "hash": "09ae7d39f46bdcbb48ea63006dcfd81807f6a9f262f35516e6eb0930894ffcb9"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/config.d.ts": {
+      "mtime": 1753749595.9776769,
+      "size": 1049,
+      "hash": "96354fdd4219bcaadfec3745ba685e7d1862aa9b6cf39b7b95ed09c11166ee95"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/system.js.map": {
+      "mtime": 1753656819.751537,
+      "size": 852,
+      "hash": "11b241a20536b9408e39d35ea480e8092fda00b0038f3255f878ed435b5b0f6a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/metadata.js": {
+      "mtime": 1753656819.749537,
+      "size": 1422,
+      "hash": "83bbfcc67cbe6405f9151f96633813bb308871fdd673d3ddab35f57abf385f52"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/index.js": {
+      "mtime": 1753656819.7575371,
+      "size": 1318,
+      "hash": "565e2d79aa69e246ef6fa455057872708f3516756191e800cd2a1eb8a53d1177"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/index.js.map": {
+      "mtime": 1753656819.7575371,
+      "size": 1072,
+      "hash": "83606e51f1ddd5dc6b6556d27d5af984371bfff32d632fa3afadd7d8f0655f33"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/gps.ts": {
-      "mtime": 1751121904.1954348,
-      "size": 1674,
-      "hash": "9ebb31f6c25fc67831917d8c5c8cec6a6eda0b7105a56c2022880210536d3d29"
+      "mtime": 1753749595.9786768,
+      "size": 1625,
+      "hash": "3e219e2270a5ed5b60500b900b4c8546223fb0e27166eb39878c7faa0746f245"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/index.d.ts": {
+      "mtime": 1753749595.9796767,
+      "size": 20441,
+      "hash": "fda22e8971a530efdfcd8191a35158e01bf5b169c30fb393de644b397da0412d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/gps.d.ts": {
+      "mtime": 1753749595.980677,
+      "size": 1848,
+      "hash": "acc43db5cafdaf99f7789b26bd9bc8984d777bd16fc7dff4f52b689c96ca39fa"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/path.ts": {
-      "mtime": 1751121904.1954348,
-      "size": 1713,
-      "hash": "e9bbca1be50b1ffecfc57397c2f41b7e89e70f543590cc57bedb6f0ef88c3f6a"
+      "mtime": 1753749595.9816768,
+      "size": 1664,
+      "hash": "0b3923cad78be78275dcc43bdc44fc798f047605cf2c568ce9479a31449eaa6f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/errors/registry/landmark.js.map": {
+      "mtime": 1753656819.752537,
+      "size": 687,
+      "hash": "4088df44a2ddb437095a66776ce74382749bb400dd0e79f92c9e2a2af6ca5642"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/image/validation.d.ts": {
+      "mtime": 1753656819.8635387,
+      "size": 1378,
+      "hash": "166d399045d61c4106685f6489cba0a61c0ac4d7ea0675d729608fa6ce8a0ad1"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/image/validation.js.map": {
+      "mtime": 1753656819.8635387,
+      "size": 7121,
+      "hash": "669fa1ddcd3a6bf654c2608ee42214f8afed1d67a602f87ed88cde1a8ffd65b1"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/image/validation.ts": {
-      "mtime": 1751121904.1964347,
-      "size": 8106,
-      "hash": "d8f786c8bbed1383448f26d3a0ae73868a90283addec3e03f72266b00aa28e19"
+      "mtime": 1753751837.1043143,
+      "size": 8123,
+      "hash": "cb4655cf4acfd0ea9efd2da57600bd114cfa2150f30e0f52cfebd5f2b1bb12c3"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/image/validation.js": {
+      "mtime": 1753656819.8635387,
+      "size": 8286,
+      "hash": "e4f1c114e08404b18c008e7e6a12356f2d948159568ca48e11b197103dce4f12"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/live-photo-detector.js": {
+      "mtime": 1753656819.8715389,
+      "size": 5464,
+      "hash": "3d151530cfa35988371c5b2c27587e2a4d3c648787f425d5f622890e8b522cf8"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/index.ts": {
       "mtime": 1751121904.1964347,
       "size": 174,
       "hash": "52dc93d864409d478689bed7bd02946685d20a2e466aa9ad966ac7ee9bd46125"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/live-photo-detector.d.ts": {
+      "mtime": 1753656819.8715389,
+      "size": 1124,
+      "hash": "3f820774dc8b05c45fc7466f29e7f70c8ca846395f53ffb9bb85f9261559ab11"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/live-photo-detector.ts": {
-      "mtime": 1751121904.1974347,
-      "size": 5554,
-      "hash": "c76f74f9f5482852b208a1ccc8e1862f652269f216c0fb8a8636840e5f0f0548"
+      "mtime": 1753751964.3664365,
+      "size": 5567,
+      "hash": "8ad5c5e6b929a49ffe2cffe2f19967301cee1dc11d2fa0c86ce567ef409538fe"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/video/live-photo-detector.js.map": {
+      "mtime": 1753656819.8715389,
+      "size": 4119,
+      "hash": "bd35ad8c66b15a83815d5388327e88d927b2c092be316bf4c54b3aac48f21f6a"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/config/logging.ts": {
       "mtime": 1751121904.1944346,
       "size": 5553,
       "hash": "566d689fb6b8607128b92c2cb7dbb094f76a3572a3fb4f4f4f79d332ee84c812"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/config/logging.js.map": {
+      "mtime": 1753656819.7325368,
+      "size": 3958,
+      "hash": "ddea83e83c8ceebc874fd33304ee1cfbe0ff2c10f49dc9b73fe3b5f5475de22d"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/config/logging.d.ts": {
+      "mtime": 1753656819.7345366,
+      "size": 2083,
+      "hash": "6bb3b26ed79875031ebd138d19325c2d64869b9b3d34da9b4a8918b3bbe4cc60"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/utils/config/logging.js": {
+      "mtime": 1753656819.7325368,
+      "size": 4529,
+      "hash": "2417a19127b62cb082e810c9cf5c9625cc917ae5df336f5ffeba14bac8806910"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/types.ts": {
-      "mtime": 1751256498.8857827,
-      "size": 3197,
-      "hash": "0457f64ee08559d5de464844fa3ae8e690dbb7f283e5facdbb55526f69b7e22d"
+      "mtime": 1753746136.7468548,
+      "size": 3428,
+      "hash": "6fb2cab9cd57248f7f58f83387742ca9bff02f8625c547d32f6911376657c9db"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/timestamp-extractor.ts": {
       "mtime": 1751121904.1914346,
@@ -2758,9 +3663,9 @@
       "hash": "28ea335f2f05e0fd1be8cbd560d08898017eff79e26dc5bcc0c0184f76d9d88b"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/index.ts": {
-      "mtime": 1751256531.098628,
-      "size": 5085,
-      "hash": "82471f055023c5be99a79e70a0c7894baae02f5e7d4ee5584e09141f07570b44"
+      "mtime": 1753746119.1915421,
+      "size": 6926,
+      "hash": "d9b872c9a778dc877a28b07c8bbb38aa7febbdd0981454bfc6b58fcce280d1f2"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/CLAUDE.md": {
       "mtime": 1751330807.932649,
@@ -2768,9 +3673,9 @@
       "hash": "23022865c75af1e7858fb9f9e7a29d9eae7199675b27336263c46582e9f8e781"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/handlers.ts": {
-      "mtime": 1751260885.33975,
-      "size": 16066,
-      "hash": "7256ff1db2cdce49c0ed7fcb481c19ce69ddbf996d98e9701c785743371e8d71"
+      "mtime": 1753749393.29475,
+      "size": 25770,
+      "hash": "7a123d433aee81f498da59586b4a950bb23cee8bd4f8ca8b716078786ed7f4d3"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/cli/output.ts": {
       "mtime": 1751136948.840445,
@@ -2782,30 +3687,90 @@
       "size": 6248,
       "hash": "240a87c8af13328d75be5cf71527931ae422d0b03227ce26edf3febaac79d5ca"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/media.js": {
+      "mtime": 1753656819.8545384,
+      "size": 1996,
+      "hash": "f034c14bbec30b01af76ce989b199c6ee1f75467ff73be402ac8dcf6211ec552"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/semantic-any.d.ts": {
+      "mtime": 1753656819.7765374,
+      "size": 2356,
+      "hash": "2b869825ac78982f6c73739282916068656aea29e6965b47d665f6f4350effc9"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/recreation.types.ts": {
       "mtime": 1753306736.2914412,
       "size": 2682,
       "hash": "414816c5456af86d9991f33bb31dac7f69b00ccacb1d9caf6a5e61d5ee715ea1"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/semantic-any.ts": {
-      "mtime": 1751134126.7238579,
-      "size": 2427,
-      "hash": "4bc9fa37e6135c2bb5d4e6820a8082f5fad7bfbaf28e0d4cfd75607dc5d37e1e"
+      "mtime": 1753750996.8960798,
+      "size": 2667,
+      "hash": "63e93ceecbb1cab3f354e46cd966c2c943307089f628f2cad9fc5ddf235945fb"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/semantic-any.js.map": {
+      "mtime": 1753656819.7765374,
+      "size": 140,
+      "hash": "6b24d058bbd0d4b0a5298015d73c2cb15988a8bec0c904d4811bdd500d961341"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/recreation.types.d.ts": {
+      "mtime": 1753656819.8415384,
+      "size": 2942,
+      "hash": "bae2fe9bd839915d81485b098905526a537b2e968fa2786de77a50784ffb9fbc"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/recreation.types.js.map": {
+      "mtime": 1753656819.8415384,
+      "size": 131,
+      "hash": "204d848eebe72cad1156d3ae5ff44b1c3ef1e51dd23353402b292dde85f6f526"
     },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/CLAUDE.md": {
       "mtime": 1751331111.4885743,
       "size": 8331,
       "hash": "153ed08860e2525a1b2d370f1117ab7e9911d18e364d3720d4201cc25da6e358"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/processors.js": {
+      "mtime": 1753656819.8595386,
+      "size": 49,
+      "hash": "74d6b37883aa4a0d300521c8a88a353d2a33696238b8abe6cdb446ca780f4203"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/recreation.types.js": {
+      "mtime": 1753656819.8415384,
+      "size": 283,
+      "hash": "44302735112486a2536d074cdede683a82cacd2bd2cd29d19cb322c73a663291"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/processors.d.ts": {
+      "mtime": 1753656819.8595386,
+      "size": 231,
+      "hash": "dea56e63991d1ee4425bd1f24e441656e98d89d643665f998ee3732c97dbcdf4"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/media.ts": {
       "mtime": 1753155054.3120193,
       "size": 4481,
       "hash": "c7f751fa317364c7ed1717ca294d64d3855b8f17d73d13e4dcf23b64aee5e341"
     },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/semantic-any.js": {
+      "mtime": 1753656819.7765374,
+      "size": 572,
+      "hash": "cfb30b5840674323d5a2b3e4266cf5a95b253ed2a3c36bb8d64c8464a3d9331f"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/media.d.ts": {
+      "mtime": 1753656819.8555386,
+      "size": 4582,
+      "hash": "80444ca768929c4fad0d91d9580b926135a66f8928a9fb4e2e0acb251d316a93"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/processors.js.map": {
+      "mtime": 1753656819.8595386,
+      "size": 105,
+      "hash": "a53490ea66df23493253d4291fca285e2aca56531f6eeb14071384169d984568"
+    },
     "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/processors.ts": {
       "mtime": 1751121904.1944346,
       "size": 273,
       "hash": "dc4a13456dc96c6c60b686ce3cdce4733e033313e37b9080ce21f4009636922a"
+    },
+    "/home/stephen/Documents/initial-media-processing/pipeline-cli/src/types/media.js.map": {
+      "mtime": 1753656819.8545384,
+      "size": 855,
+      "hash": "fba09f67accd2f4439b25233a36f472020ca204b0c2afd0843ff270186ff8d31"
     }
   }
 }

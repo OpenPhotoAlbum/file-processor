@@ -1,19 +1,28 @@
-template_name: CLI Feature Implementation
-template_id: cli-feature
-description: Standard workflow for implementing new CLI commands or features
-version: '2.0'
+template_name: MPP CLI Feature Implementation (Database-Integrated)
+template_id: mpp-cli-feature
+description: Standard workflow for implementing new MPP CLI commands with database integration
+version: '2.1'
 use_cases:
-- Adding new MMP CLI commands
-- Extending existing CLI functionality
-- CLI option additions or modifications
+- Adding new MPP (Media Processing Pipeline) CLI commands that interact with database
+- Extending existing MPP CLI functionality with database considerations
+- MPP CLI features requiring data persistence or ETL operations
+required_fields_note: |
+  CRITICAL: When creating task chains from this template, ensure ALL required fields
+  are populated. See REQUIRED-FIELDS-REFERENCE.md for complete list.
+  Missing fields will cause tools to display "unknown" or "Untitled Chain".
 variables:
   feature_name: '{{FEATURE_NAME}}'
   cli_command: '{{CLI_COMMAND}}'
   complexity_level: '{{COMPLEXITY_LEVEL}}'
-  priority_level: '{{PRIORITY_LEVEL}}'  # Legacy field for backwards compatibility
-# PRIORITY FIELD (required when creating task chain)
-# Set to one of: CRITICAL, URGENT, HIGH, MEDIUM, LOW, TRIVIAL
-# priority: MEDIUM  # Uncomment and set when creating task from template
+  chain_id: '{{CHAIN_ID}}'  # Format: feature-name-YYYY-MM-DD
+  created_timestamp: '{{CREATED_TIMESTAMP}}'  # ISO format: 2025-08-05T14:00:00-04:00
+# When creating from template, you MUST set:
+# id: (same as chain_id)
+# title: (human readable title)
+# status: pending
+# created: (ISO timestamp)
+# updated: (ISO timestamp)
+# priority: CRITICAL|URGENT|HIGH|MEDIUM|LOW|TRIVIAL
 success_criteria:
 - CLI command implemented and tested end-to-end
 - Database operations validated for safety and performance

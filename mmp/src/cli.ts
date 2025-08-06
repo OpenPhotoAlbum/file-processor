@@ -52,7 +52,7 @@ program
     try {
       // Generate filename with timestamp
       const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '').replace('T', '_');
-      const desc = options.desc ? `${options.desc}_` : '';
+      const desc = options.desc ? `${options.desc.replace(/ /g, '_')}_` : '';
       const scanType = options.flatbed ? 'flatbed' : 'adf';
       const filename = `${timestamp}_${desc}${scanType}.${options.format}`;
       const outputPath = `${options.output}/${filename}`;
@@ -87,15 +87,48 @@ program
         process.exit(1);
       });
       
-      scanProcess.on('close', (code: number) => {
+      scanProcess.on('close', async (code: number) => {
         if (code === 0) {
           console.error(chalk.green(`✅ Scan complete: ${filename}`));
           
           // Apply metadata if provided
           if (options.date || options.location) {
             console.error(chalk.blue('📝 Applying metadata...'));
-            // TODO: Apply EXIF metadata with date/location
-            console.error(chalk.gray('Metadata application not yet implemented'));
+            
+            try {
+              // Apply date metadata if provided
+              if (options.date) {
+                const { DateService } = await import('./services/DateService.js');
+                const { EXIFDateService } = await import('./services/EXIFDateService.js');
+                
+                const dateService = new DateService();
+                const exifDateService = new EXIFDateService();
+                
+                const dateResult = dateService.parseDate(options.date);
+                if (dateResult.isValid && dateResult.date) {
+                  await exifDateService.writeDate(outputPath, dateResult.date, options.desc);
+                  console.error(chalk.green(`✅ Date applied: ${dateResult.date.toLocaleDateString()}`));
+                } else {
+                  console.error(chalk.yellow(`⚠️  Invalid date format: ${options.date}`));
+                }
+              }
+              
+              // Apply location metadata if provided
+              if (options.location) {
+                const { locationService } = await import('./services/LocationService.js');
+                const { gpsService } = await import('./services/GPSService.js');
+                
+                const locationResult = await locationService.resolveLocation(options.location);
+                const { lat, lng } = locationResult.coordinates;
+                
+                await gpsService.writeGPS(outputPath, lat, lng);
+                console.error(chalk.green(`✅ GPS applied: ${locationService.formatCoordinates(lat, lng)}`));
+              }
+            } catch (metadataError) {
+              const errorMessage = metadataError instanceof Error ? metadataError.message : String(metadataError);
+              console.error(chalk.yellow(`⚠️  Metadata application failed: ${errorMessage}`));
+              console.error(chalk.gray('Scan completed but metadata could not be applied'));
+            }
           }
           
           console.error(chalk.green('🎉 Scan finished successfully!'));
@@ -1185,13 +1218,174 @@ ${chalk.green('Processing Steps (all enabled by default):')}
 // TRANSCRIBE command - Text/content extraction
 program
   .command('transcribe')
-  .argument('<file>', 'Media file (image or video)')
-  .description('Extract text or speech from media')
-  .option('--ai-enhance', 'Use AI for enhanced analysis')
+  .argument('<file>', 'Media file (image, video, or audio)')
+  .description('Extract text or speech from media files')
+  .option('-o, --output <file>', 'Output file path (default: stdout)')
+  .option('--format <format>', 'Output format (txt, json, srt, vtt)', 'txt')
+  .option('--ai-enhance', 'Use Claude AI for enhanced text recognition')
+  .option('--lang <language>', 'OCR language code (e.g., eng, fra, deu)', 'eng')
+  .option('--confidence', 'Include confidence scores in output')
+  .option('--preserve-layout', 'Maintain original text layout')
+  .option('--json', 'Shortcut for --format json')
+  .option('-q, --quiet', 'Suppress progress output')
+  .option('-v, --verbose', 'Detailed processing information')
+  .addHelpText('after', `
+${chalk.green('Examples:')}
+  ${chalk.cyan('mmp transcribe document.jpg')}
+    Basic OCR text extraction to stdout
+    
+  ${chalk.cyan('mmp transcribe scan.png --ai-enhance')}
+    OCR with AI enhancement for better accuracy
+    
+  ${chalk.cyan('mmp transcribe letter.jpg -o letter.txt')}
+    Save transcription to file
+    
+  ${chalk.cyan('mmp transcribe photo.jpg --json --confidence')}
+    JSON output with confidence scores
+    
+  ${chalk.cyan('mmp transcribe german-doc.jpg --lang deu')}
+    OCR with German language model
+    
+  ${chalk.cyan('mmp transcribe handwritten.jpg --ai-enhance --preserve-layout')}
+    Best quality for handwritten text with layout
+
+${chalk.green('Supported Formats:')}
+  • Images: jpg, jpeg, png, tiff, tif, bmp, pdf
+  • Videos: mp4, mov, avi, mkv (coming soon)
+  • Audio: mp3, wav, m4a, ogg (coming soon)
+  
+${chalk.green('Language Codes:')}
+  • eng - English (default)
+  • fra - French
+  • deu - German
+  • spa - Spanish
+  • ita - Italian
+  • por - Portuguese
+  • nld - Dutch
+  • pol - Polish
+  • rus - Russian
+  • chi_sim - Chinese Simplified
+  • jpn - Japanese
+  • kor - Korean
+  
+${chalk.green('AI Enhancement:')}
+  • Requires CLAUDE_API_KEY or ANTHROPIC_API_KEY environment variable
+  • Uses Claude to correct OCR errors and find missed text
+  • Particularly effective for handwritten or damaged documents
+  • Marks enhanced sections in output for transparency
+`)
   .action(async (file, options) => {
-    console.log(chalk.red('❌ TRANSCRIBE command not yet implemented - refactoring in progress'));
-    console.log('File:', file);
-    console.log('Options:', options);
+    // Handle quiet mode output
+    const log = options.quiet ? () => {} : console.error;
+    
+    log(chalk.green('📝 MMP Transcribe: Extracting text from media...'));
+    
+    try {
+      // Import transcription service
+      const { transcriptionService } = await import('./services/TranscriptionService.js');
+      const fs = await import('fs');
+      const path = await import('path');
+      
+      // Validate input file exists
+      if (!fs.existsSync(file)) {
+        console.error(chalk.red(`❌ File not found: ${file}`));
+        process.exit(1);
+      }
+      
+      // Handle --json shortcut
+      if (options.json) {
+        options.format = 'json';
+      }
+      
+      // Prepare transcription options
+      const transcriptionOptions = {
+        format: options.format as 'txt' | 'json' | 'srt' | 'vtt',
+        language: options.lang,
+        confidence: options.confidence,
+        preserveLayout: options.preserveLayout,
+        aiEnhance: options.aiEnhance,
+        verbose: options.verbose,
+        quiet: options.quiet
+      };
+      
+      if (options.verbose) {
+        log(chalk.blue('🔧 Options:'));
+        log(chalk.gray(`  Format: ${options.format}`));
+        log(chalk.gray(`  Language: ${options.lang}`));
+        log(chalk.gray(`  AI Enhancement: ${options.aiEnhance ? 'Yes' : 'No'}`));
+        log(chalk.gray(`  Confidence Scores: ${options.confidence ? 'Yes' : 'No'}`));
+        log(chalk.gray(`  Preserve Layout: ${options.preserveLayout ? 'Yes' : 'No'}`));
+      }
+      
+      // Check Tesseract availability for images
+      const ext = path.extname(file).toLowerCase();
+      const imageExtensions = ['.jpg', '.jpeg', '.png', '.tiff', '.tif', '.bmp', '.pdf'];
+      
+      if (imageExtensions.includes(ext)) {
+        const tesseractAvailable = await transcriptionService.checkTesseractAvailable();
+        if (!tesseractAvailable) {
+          console.error(chalk.red('❌ Tesseract OCR not found'));
+          console.error(chalk.yellow('💡 Install with: apt install tesseract-ocr'));
+          
+          // Install language packs hint
+          if (options.lang && options.lang !== 'eng') {
+            console.error(chalk.yellow(`💡 For ${options.lang} support: apt install tesseract-ocr-${options.lang}`));
+          }
+          process.exit(1);
+        }
+      }
+      
+      // Perform transcription
+      log(chalk.blue(`🔍 Processing: ${path.basename(file)}`));
+      
+      const result = await transcriptionService.transcribe(file, transcriptionOptions);
+      
+      if (!result.success) {
+        console.error(chalk.red('❌ Transcription failed:'), result.error);
+        process.exit(1);
+      }
+      
+      // Handle output
+      const outputText = result.formattedOutput || result.text || '';
+      
+      if (options.output) {
+        // Write to file
+        await fs.promises.writeFile(options.output, outputText, 'utf-8');
+        log(chalk.green(`✅ Transcription saved to: ${options.output}`));
+        
+        if (result.confidence !== undefined && !options.quiet) {
+          log(chalk.blue(`📊 Confidence: ${result.confidence.toFixed(1)}%`));
+        }
+        
+        if (result.aiEnhanced && !options.quiet) {
+          log(chalk.green('🤖 AI enhancement applied successfully'));
+        }
+      } else {
+        // Output to stdout for piping
+        console.log(outputText);
+        
+        // Log additional info to stderr if not quiet
+        if (result.confidence !== undefined && !options.quiet) {
+          console.error(chalk.blue(`📊 Confidence: ${result.confidence.toFixed(1)}%`));
+        }
+        
+        if (result.aiEnhanced && !options.quiet) {
+          console.error(chalk.green('🤖 AI enhancement applied successfully'));
+        }
+      }
+      
+      if (!options.quiet) {
+        if (result.metadata) {
+          log(chalk.gray(`⏱️  Processing time: ${result.metadata.processingTime}ms`));
+        }
+        log(chalk.green('🎉 Transcription complete!'));
+      }
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red('❌ Transcription failed:'), errorMessage);
+      process.exit(1);
+    }
   });
 
 // SUGGEST-NAME command - AI filename suggestions

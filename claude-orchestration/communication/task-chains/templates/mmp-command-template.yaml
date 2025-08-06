@@ -1,0 +1,64 @@
+template_name: MMP Command Implementation (Simple)
+template_id: mmp-command
+description: Streamlined workflow for implementing simple MMP (Media Management Platform) commands
+version: '1.1'
+use_cases:
+- Adding new MMP unified CLI commands (transcribe, prepare, etc.)
+- Simple standalone utilities without database dependencies
+- MMP command extensions that don't require complex orchestration
+required_fields_note: |
+  CRITICAL: When creating task chains from this template, ensure ALL required fields
+  are populated. See REQUIRED-FIELDS-REFERENCE.md for complete list.
+  Missing fields will cause tools to display "unknown" or "Untitled Chain".
+variables:
+  command_name: '{{COMMAND_NAME}}'
+  command_description: '{{COMMAND_DESCRIPTION}}'
+  chain_id: '{{CHAIN_ID}}'  # Format: command-name-YYYY-MM-DD
+  created_timestamp: '{{CREATED_TIMESTAMP}}'  # ISO format: 2025-08-05T14:00:00-04:00
+# When creating from template, you MUST set:
+# id: (same as chain_id)
+# title: (human readable title)
+# status: pending
+# created: (ISO timestamp)
+# updated: (ISO timestamp) 
+# priority: CRITICAL|URGENT|HIGH|MEDIUM|LOW|TRIVIAL
+success_criteria:
+- MMP command implemented and working end-to-end
+- Follows existing MMP patterns and error handling
+- TypeScript compilation successful with no 'any' types
+- Documentation includes usage examples
+- Integration with existing MMP services works correctly
+phases:
+- phase_id: implementation
+  phase_name: Implement MMP Command
+  assigned_to: claude-2
+  depends_on: []
+  description: Build the MMP command following existing patterns, implement core functionality
+    and integrate with any required services
+  deliverable: Working MMP command with proper error handling + mark this phase complete
+    in task chain (next Claude automatically notified)
+  estimated_duration: 2-3 hours
+- phase_id: documentation
+  phase_name: Document MMP Command
+  assigned_to: claude-4
+  depends_on:
+  - implementation
+  description: Document command usage, examples, error scenarios, and integration patterns
+    following existing MMP documentation structure
+  deliverable: Complete documentation integrated into existing docs + mark this phase
+    complete in task chain (next Claude automatically notified)
+  estimated_duration: 1-2 hours
+- phase_id: validation
+  phase_name: Final Validation
+  assigned_to: claude-1
+  depends_on:
+  - documentation
+  description: Test command end-to-end, verify documentation accuracy, ensure quality
+    standards met
+  deliverable: Final approval and task chain completion
+  estimated_duration: 30 minutes
+template_notes:
+- Simplified workflow for MMP commands without database dependencies
+- Builder implements, Chronicler documents, Architect validates
+- Focus on following existing MMP patterns and conventions
+- No database assessment needed for these simple utilities
